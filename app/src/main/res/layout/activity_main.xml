@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:fitsSystemWindows="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:fitsSystemWindows="false"
+        android:id="@+id/layout_main"
+        android:layout_height="match_parent">
+        <include layout="@layout/toolbar_cont"
+            android:id="@+id/toolbar"/>
+        <com.cookiegames.smartcookie.view.AnimatedProgressBar
+            android:layout_height="2dp"
+            android:layout_width="match_parent"
+            android:id="@+id/progressBar"
+            android:layout_below="@id/toolbar"/>
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:id="@+id/root"
+            android:layout_below="@id/progressBar"
+            android:layout_height="match_parent" >
+            <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/gridview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:columnWidth="90dp"
+                android:numColumns="auto_fit"
+                android:verticalSpacing="10dp"
+                android:horizontalSpacing="10dp"
+                android:stretchMode="columnWidth"
+                android:gravity="center"
+                android:background="?attr/drawerColor"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/left_navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:itemTextColor="?android:attr/textColor"
+        android:background="?attr/drawerColor"
+        app:menu="@menu/nav">
+</android.support.design.widget.NavigationView>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/right_navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:itemTextColor="@color/menu_item"
+        android:background="?attr/drawerColor"
+        android:layout_gravity="end">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_ta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:src="@drawable/ic_add_white_24dp"
+            app:backgroundTint="@android:color/holo_green_light"
+            app:layout_anchor="@id/right_navigation"
+            app:layout_anchorGravity="bottom|right|end" />
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_close_white_24dp"
+            app:backgroundTint="?attr/delBtnColor"
+            android:clickable="true"
+            android:id="@+id/remove_tab"
+            app:layout_anchor="@id/right_navigation"
+            app:layout_anchorGravity="bottom|left|start" />
+    </android.support.design.widget.NavigationView>
+</android.support.v4.widget.DrawerLayout>

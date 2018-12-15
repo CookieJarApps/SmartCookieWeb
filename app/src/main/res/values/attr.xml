@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AnimateHorizontalProgressBar">
+        <attr name="ahp_progressColor" format="color|reference" />
+        <attr name="ahp_backgroundColor" format="color|reference" />
+    </declare-styleable>
+    <attr name="searchBoxColor" format="color|reference"/>
+    <attr name="drawerColor" format="color|reference"/>
+    <attr name="delBtnColor" format="color|reference"/>
+    <attr name="addBtnColor" format="color|reference"/>
+</resources>

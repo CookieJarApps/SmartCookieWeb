@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Smart Cookie Secure Web Browser</string>
+    <string name="go">Search</string>
+    <string name="bookmarksshow">Show bookmarks</string>
+    <string name="action_history">History</string>
+    <string name="historyclear">Clear history</string>
+    <string name="action_tabs">Tabs</string>
+    <string name="action_settings">Settings</string>
+    <string name="credits">Credits</string>
+    <string name="desktop">Desktop site</string>
+    <string name="action_incognito">Incognito</string>
+    <string name="action_added">Added</string>
+    <string name="action_see">See</string>
+    <string name="historytast">History cleared</string>
+    <string name="delete_dialog_title">Delete bookmark?</string>
+    <string name="delete_dialog_content">Are you sure you want to delete this bookmark?</string>
+    <string name="boomarks">Bookmarks</string>
+    <string name="home">Home</string>
+    <string name="look">Look</string>
+    <string name="looksummary">Customize browser theme</string>
+    <string name="browser">Browser Settings</string>
+    <string name="theme">Theme</string>
+    <string name="themesummary">Choose browser theme</string>
+    <string name="text">Text size</string>
+    <string name="textsummary">Choose browser text size</string>
+    <string name="search_engine">Choose search engine</string>
+    <string name="java">Enable JavaScript</string>
+    <string name="plugins">Enable plugins</string>
+    <string name="plugins_summary">Will enable plugins in browser</string>
+    <string name="cache">Enable cache storage</string>
+    <string name="startpage">Start page</string>
+    <string name="about">About</string>
+    <string name="notes">Version 3.4</string>
+    <string name="startpagedialog">Enter the URL to set as your start page</string>
+    <string name="bookmark_dialog">Enter the name for your bookmark</string>
+    <string name="version">Version</string>
+    <string name="stop">Stop</string>
+    <string name="download">Would you like to download: </string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="license_about">Licensed under Apache License v2.0</string>
+    <string name="license">Licence</string>
+    <string name="github">Source code release coming soon...</string>
+    <string name="delete">Delete</string>
+    <string name="press_to_quit">Press again to quit</string>
+    <string name="picture">Change sidebar picture</string>
+    <string name="see_picture">View image</string>
+    <string name="download_picture">Download image</string>
+    <string name="save_link">Copy link</string>
+    <string name="share">Share</string>
+    <string name="lock">Lock right navigation sidebar</string>
+    <string name="find">Find text</string>
+    <string name="action_find">Find in page</string>
+    <string name="action_export">Export current configuration to file</string>
+    <string name="action_import">Import configuration from file</string>
+    <string name="action_img_block">Block images</string>
+    <string name="action_ad_block">Block ads</string>
+    <string name="action_location">Enable location</string>
+    <string name="choose">Choose</string>
+    <string name="succes_save">Save successful</string>
+    <string name="succes_import">Import successful</string>
+    <string name="error">Error</string>
+    <string name="select">Select</string>
+    <string name="cookie">Enable third-party cookies</string>
+    <string name="tab_close">Close sidebar on tab click</string>
+    <string name="night_mode">Invert colours</string>
+    <string-array name="color">
+        <item name = "1">Light</item>
+        <item name ="2">Grey</item>
+        <item name ="3">Red</item>
+        <item name="4">Dark Blue</item>
+        <item name="5">Green</item>
+        <item name="6">Dark</item>
+        <item name ="7">Purple</item>
+        <item name="8">Light Blue</item>
+        <item name="9">Orange</item>
+        <item name="10">Light Green</item>
+    </string-array>
+    <string-array name="text">
+        <item name = "1">Small</item>
+        <item name ="2">Normal</item>
+        <item name ="3">Large</item>
+        <item name="4">Very large</item>
+    </string-array>
+    <string-array name="home_page">
+        <item name = "default">Default</item>
+        <item name ="custom">Custom</item>
+    </string-array>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+</resources>
+
+
+

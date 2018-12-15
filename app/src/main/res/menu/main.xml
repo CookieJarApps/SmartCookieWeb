@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.cookiegames.smartcookie.activity.MainActivity">
+    <item android:id="@+id/action_home"
+        android:title=""
+        android:icon="@drawable/ic_home_black_24dp"
+        android:orderInCategory="1"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_book"
+        android:title=""
+        android:icon="@drawable/ic_bookmark_border_black_24dp"
+        android:orderInCategory="2"
+        app:showAsAction="always"
+        />
+
+
+</menu>

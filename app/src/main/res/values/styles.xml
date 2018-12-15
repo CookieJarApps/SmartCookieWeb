@@ -1,0 +1,150 @@
+<resources>
+
+    <!-- Base grey theme. -->
+    <style name="GreyTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/grey_primary</item>
+        <item name="colorPrimaryDark">@color/grey_secondary</item>
+        <item name="colorAccent">@color/grey_accent</item>
+        <item name="android:textColor">@color/grey_text</item>
+        <item name="searchBoxColor">@color/grey_search</item>
+        <item name="drawerColor">@color/grey_drawerColor</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="delBtnColor">@color/grey_del_btn</item>
+        <item name="addBtnColor">@color/grey_add_btn</item>
+    </style>
+
+    <!-- Base white theme -->
+    <style name="WhiteTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">#e0e0e0</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="searchBoxColor">#e0e0e0</item>
+        <item name="drawerColor">@color/white</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="delBtnColor">@color/grey_del_btn</item>
+        <item name="addBtnColor">@color/grey_add_btn</item>
+    </style>
+
+    <!-- Base Red Theme -->
+    <style name="RedTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/red_primary</item>
+        <item name="colorPrimaryDark">@color/red_secondary</item>
+        <item name="colorAccent">@color/red_accent</item>
+        <item name="android:textColor">@color/red_text</item>
+        <item name="searchBoxColor">@color/red_search</item>
+        <item name="drawerColor">@color/red_drawerColor</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="delBtnColor">@color/red_del_btn</item>
+        <item name="addBtnColor">@color/red_add_btn</item>
+    </style>
+
+    <!-- Base Blue Theme -->
+    <style name="BlueTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/blue_primary</item>
+        <item name="colorPrimaryDark">@color/blue_secondary</item>
+        <item name="colorAccent">@color/blue_accent</item>
+        <item name="android:textColor">@color/blue_text</item>
+        <item name="searchBoxColor">@color/blue_search</item>
+        <item name="drawerColor">@color/blue_drawerColor</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="delBtnColor">@color/blue_del_btn</item>
+        <item name="addBtnColor">@color/blue_add_btn</item>
+    </style>
+
+    <!-- Base Green Theme -->
+    <style name="GreenTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/green_primary</item>
+        <item name="colorPrimaryDark">@color/green_secondary</item>
+        <item name="colorAccent">@color/green_accent</item>
+        <item name="android:textColor">@color/green_text</item>
+        <item name="searchBoxColor">@color/green_search</item>
+        <item name="drawerColor">@color/green_drawerColor</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="delBtnColor">@color/green_del_btn</item>
+        <item name="addBtnColor">@color/green_add_btn</item>
+    </style>
+
+    <!-- Base Black Theme -->
+    <style name="BlackTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="searchBoxColor">#212121</item>
+        <item name="drawerColor">@color/black</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="delBtnColor">@color/green_del_btn</item>
+        <item name="addBtnColor">@color/green_add_btn</item>
+    </style>
+    <style name="blackDialogTheme">
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!-- Base Indigo Theme -->
+    <style name="IndigoTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">#303f9f</item>
+        <item name="colorPrimaryDark">#283593</item>
+        <item name="colorAccent">#3f51b5</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="searchBoxColor">#5c6bc0</item>
+        <item name="drawerColor">#303f9f</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="delBtnColor">@color/green_del_btn</item>
+        <item name="addBtnColor">@color/green_add_btn</item>
+    </style>
+
+    <!-- Base Cyan Theme -->
+    <style name="CyanTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">#0097a7</item>
+        <item name="colorPrimaryDark">#00838f</item>
+        <item name="colorAccent">#00bcd4</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="searchBoxColor">#26c6da</item>
+        <item name="drawerColor">#0097a7</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="delBtnColor">@color/green_del_btn</item>
+        <item name="addBtnColor">@color/green_add_btn</item>
+    </style>
+
+    <!-- Base Orange Theme -->
+    <style name="OrangeTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">#f57c00</item>
+        <item name="colorPrimaryDark">#ef6c00</item>
+        <item name="colorAccent">#ff9800</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="searchBoxColor">#ffa726</item>
+        <item name="drawerColor">#f57c00</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="delBtnColor">@color/green_del_btn</item>
+        <item name="addBtnColor">@color/green_add_btn</item>
+    </style>
+
+    <!-- Base Lime Theme -->
+    <style name="LimeTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">#afb42b</item>
+        <item name="colorPrimaryDark">#9e9d24</item>
+        <item name="colorAccent">#cddc39</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="searchBoxColor">#d4e157</item>
+        <item name="drawerColor">#afb42b</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="delBtnColor">@color/green_del_btn</item>
+        <item name="addBtnColor">@color/green_add_btn</item>
+    </style>
+
+</resources>

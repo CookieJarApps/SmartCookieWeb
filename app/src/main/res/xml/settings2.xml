@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference android:key="color"
+        android:title="@string/theme"
+        android:summary="@string/themesummary"
+        android:entries="@array/color"
+        android:entryValues="@array/color_values"
+        android:defaultValue="1">
+    </ListPreference>
+    <ListPreference android:key="size"
+        android:summary="@string/textsummary"
+        android:title="@string/text"
+        android:entries="@array/text"
+        android:entryValues="@array/text_size"
+        android:defaultValue="18">
+    </ListPreference>
+    <CheckBoxPreference
+        android:key="night"
+        android:title="@string/night_mode"
+        android:defaultValue="false" />
+    <CheckBoxPreference
+        android:key="lock"
+        android:title="@string/lock"
+        android:defaultValue="false" />
+    <CheckBoxPreference
+        android:key="tab_close"
+        android:title="@string/tab_close"
+        android:defaultValue="true" />
+    <Preference android:key="change"
+        android:title="@string/picture"/>
+</PreferenceScreen>

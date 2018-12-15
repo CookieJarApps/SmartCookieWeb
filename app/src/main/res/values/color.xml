@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <!-- Grey Theme Colors -->
+    <color name="grey_primary">#9e9e9e</color>
+    <color name="grey_secondary">#757575</color>
+    <color name="grey_accent">#e0e0e0</color>
+    <color name="grey_text">#000000</color>
+    <color name="grey_search">#bdbdbd</color>
+    <color name="grey_drawerColor">#bdbdbd</color>
+    <color name="grey_del_btn">#ef5350</color>
+    <color name="grey_add_btn">#42a5f5</color>
+
+    <!-- Red Theme Colors -->
+    <color name="red_primary">#d32f2f</color>
+    <color name="red_secondary">#c62828</color>
+    <color name="red_accent">#f44336</color>
+    <color name="red_text">#000000</color>
+    <color name="red_search">#ef5350</color>
+    <color name="red_drawerColor">#e53935</color>
+    <color name="red_del_btn">#d50000</color>
+    <color name="red_add_btn">#42a5f5</color>
+
+    <!--  Blue Theme Colors -->
+    <color name="blue_primary">#1976d2</color>
+    <color name="blue_secondary">#1565c0</color>
+    <color name="blue_accent">#2196f3</color>
+    <color name="blue_text">#000000</color>
+    <color name="blue_search">#42a5f5</color>
+    <color name="blue_drawerColor">#2196f3</color>
+    <color name="blue_del_btn">#d50000</color>
+    <color name="blue_add_btn">#0d47a1</color>
+
+    <!--  Green Theme Colors -->
+    <color name="green_primary">#388e3c</color>
+    <color name="green_secondary">#2e7d32</color>
+    <color name="green_accent">#4caf50</color>
+    <color name="green_text">#000000</color>
+    <color name="green_search">#81c784</color>
+    <color name="green_drawerColor">#66bb6a</color>
+    <color name="green_del_btn">#d50000</color>
+    <color name="green_add_btn">#0d47a1</color>
+
+</resources>

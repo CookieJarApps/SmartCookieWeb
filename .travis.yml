@@ -1,0 +1,23 @@
+language: android
+sudo: required
+android:
+  components:
+    - tools
+
+    - build-tools-25.0.1
+    - android-25
+    - extra-android-support
+    - extra-android-m2repository
+  licenses:
+    - 'android-sdk-license-.+'
+    - '.*intel.+'
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
+before_install:
+  - chmod +x gradlew
+  - git submodule update --init --recursive
+script:
+  
+  - ./gradlew build check
