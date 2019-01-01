@@ -17,7 +17,7 @@
     <string name="delete_dialog_content">Are you sure you want to delete this bookmark?</string>
     <string name="boomarks">Bookmarks</string>
     <string name="home">Home</string>
-    <string name="look">Look</string>
+    <string name="look">Theme</string>
     <string name="looksummary">Customize browser theme</string>
     <string name="browser">Browser Settings</string>
     <string name="theme">Theme</string>
@@ -31,7 +31,7 @@
     <string name="cache">Enable cache storage</string>
     <string name="startpage">Start page</string>
     <string name="about">About</string>
-    <string name="notes">Version 3.4</string>
+    <string name="notes">Version 3.5</string>
     <string name="startpagedialog">Enter the URL to set as your start page</string>
     <string name="bookmark_dialog">Enter the name for your bookmark</string>
     <string name="version">Version</string>
@@ -41,7 +41,7 @@
     <string name="ok">OK</string>
     <string name="license_about">Licensed under Apache License v2.0</string>
     <string name="license">Licence</string>
-    <string name="github">Source code release coming soon...</string>
+    <string name="github">Source Code</string>
     <string name="delete">Delete</string>
     <string name="press_to_quit">Press again to quit</string>
     <string name="picture">Change sidebar picture</string>

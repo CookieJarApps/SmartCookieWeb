@@ -19,7 +19,7 @@
     <PreferenceScreen
           android:key="hu"
           android:title="@string/github"
-          android:action="#">
+          android:action="https://github.com/CookieGamesOfficial/SmartCookieWeb">
     <intent
         android:action="android.intent.action.VIEW"
         android:data="#"/>

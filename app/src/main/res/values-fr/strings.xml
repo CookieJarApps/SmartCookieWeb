@@ -30,7 +30,7 @@
     <string name="cache">Permettre la cachette</string>
     <string name="startpage">Page principale</string>
     <string name="about">Concernat</string>
-    <string name="notes">Version 3.4</string>
+    <string name="notes">Version 3.5</string>
     <string name="startpagedialog">Entrez l\'URL à définir comme page de démarrage</string>
     <string name="bookmark_dialog">Entrez un nom pour le signet</string>
     <string name="version">Version</string>
@@ -40,7 +40,7 @@
     <string name="ok">D\'accord</string>
     <string name="license_about">Ce travail est autorisé comformént à Apache Licence v2.0</string>
     <string name="license">Licence</string>
-    <string name="github">Publication du code source à venir...</string>
+    <string name="github">Code source</string>
     <string name="delete">Supprimer</string>
     <string name="press_to_quit">Appuyez à nouveau pour quitter</string>
     <string name="picture">Changer l\'image de la barre latérale</string>

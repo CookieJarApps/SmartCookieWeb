@@ -18,3 +18,6 @@
 -keepattributes *Annotation*
 -keepattributes JavascriptInterface
 -dontwarn okio.**
+-dontwarn com.bumptech.glide.**
+-dontwarn okio.**
+-dontwarn okhttp3.**

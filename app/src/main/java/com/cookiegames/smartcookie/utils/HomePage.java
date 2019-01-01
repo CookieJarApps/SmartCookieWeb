@@ -32,7 +32,7 @@ public class HomePage extends AsyncTask<Void, Void, Void> {
             + "<style>body{background:#f4f5f7;text-align:center;margin:0px;}#search_input{height:35px; "
             + "width:100%;outline:none;border:none;font-size: 16px;background-color:transparent;}"
             + "span { display: block; overflow: hidden; padding-left:5px;vertical-align:middle;}"
-            + ".search_bar{display:table;vertical-align:middle;width:90%;height:35px;max-width:500px;margin:0 auto;background-color:#993333;box-shadow: 0px 2px 3px rgba( 0, 0, 0, 0.25 );"
+            + ".search_bar{display:table;vertical-align:middle;width:90%;height:35px;max-width:500px;margin:0 auto;background-color: \t#cca853;box-shadow: 0px 2px 3px rgba( 0, 0, 0, 0.25 );"
             + "font-family: Arial;color: #444;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;}"
             + "#search_submit{outline:none;height:37px;float:right;color:#404040;font-size:16px;font-weight:bold;border:none;"
             + "background-color:transparent;}.outer { display: table; position: absolute; height: 100%; width: 100%;}"
