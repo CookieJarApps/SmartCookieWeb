@@ -21,7 +21,9 @@ Smart Cookie Secure Web Browser
 ## Install
 
 Get the APK here: [Download APK](https://CloudCookie--onecookieleft.repl.co/files/smartcookiebrowser.apk)
+
 -or-
+
 Get it on Google Play here: [Google Play](https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie)
 
 ## License
