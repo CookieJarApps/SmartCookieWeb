@@ -297,7 +297,7 @@ public class BeHeView extends WebView{
 	}
 	public void setDesktop(){
 		getSettings().setDisplayZoomControls(true);
-		getSettings().setUserAgentString("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36");
+		getSettings().setUserAgentString("Mozilla/5.0 (Windows NT 6.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36");
 		setInitialScale(-10);
 		getSettings().setBuiltInZoomControls(true);
 		reload();
@@ -308,7 +308,7 @@ public class BeHeView extends WebView{
 		if (API >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
 			getSettings().setUserAgentString(WebSettings.getDefaultUserAgent(WEB_ACTIVITY));
 		} else {
-			getSettings().setUserAgentString("Mozilla/5.0 (Linux; <Android Version>; <Build Tag etc.>) AppleWebKit/<WebKit Rev> (KHTML, like Gecko) Chrome/<Chrome Rev> Mobile Safari/<WebKit Rev> ");
+			getSettings().setUserAgentString("Mozilla/5.0 (Linux; <Android Version>; CookieShield <Build Tag>) AppleWebKit/<WebKit Rev> (KHTML, like Gecko) Chrome/<Chrome Rev> Mobile Safari/<WebKit Rev> ");
 		}
 		setInitialScale(0);
 		reload();
