@@ -1,8 +1,9 @@
-https://www.transifex.com/cookiejarapps/smartcookie-lightweight-web-browser
+
 
 <a href="http://cookiejarapps.com/">
     <img src="https://CloudCookie--onecookieleft.repl.co/images/smartcookiebrowser.png" alt="SmartCookie logo" title="Smart Cookie Secure Web Browser" align="right" height="60" />
 </a>
+
 
 Smart Cookie Secure Web Browser
 ======================
@@ -36,3 +37,4 @@ To be honest, I don't really mind what you do with this code. Just don't use the
 * [Web site](http://cookiejarapps.com)
 * [Forum](https://cookieforum.wikidot.com/)
 * [Issue tracker](http://cookiebugtracker.wikidot.com/)
+* [Translate Smart Cookie](https://www.transifex.com/cookiejarapps/smartcookie-lightweight-web-browser)
