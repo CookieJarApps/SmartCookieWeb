@@ -42,7 +42,7 @@ import java.util.Map;
  */
 
 
-public class BeHeView extends WebView{
+public class CustomView extends WebView{
 	ThemeUtils theme;
 	private boolean isPrivate;
 	private String TEXT = "1";
@@ -69,25 +69,25 @@ public class BeHeView extends WebView{
 			0, 0, 0, 1.0f, 0 // alpha
 	};
 
-	public BeHeChromeClient chromeClient;
+	public CustomChromeClient chromeClient;
 	/*
 	* Public constructors of BeHeView
 	 */
-	public BeHeView(Context c,Activity activity){
+	public CustomView(Context c, Activity activity){
 		super(c);
 		WEB_ACTIVITY = (AppCompatActivity) activity;
 	}
-	public BeHeView(Context context, AppCompatActivity activity, ProgressBar pBar, boolean Private, final EditText txt)  {
+	public CustomView(Context context, AppCompatActivity activity, ProgressBar pBar, boolean Private, final EditText txt)  {
 		super(activity);
 		theme = new ThemeUtils(activity);
 		isPrivate = Private;
 		P_BAR = pBar;
 		WEB_ACTIVITY = activity;
 		text = txt;
-		chromeClient = new BeHeChromeClient(P_BAR,this,WEB_ACTIVITY);
+		chromeClient = new CustomChromeClient(P_BAR,this,WEB_ACTIVITY);
 		setWebChromeClient(chromeClient);
-	    setWebViewClient(new BeHeWebClient(text,WEB_ACTIVITY,false,this));
-	    setDownloadListener(new CiobanDownloadListener(WEB_ACTIVITY, this));
+	    setWebViewClient(new CustomWebClient(text,WEB_ACTIVITY,false,this));
+	    setDownloadListener(new CustomDownloadListener(WEB_ACTIVITY, this));
         WEB_ACTIVITY.registerForContextMenu(this);
 	    initializeSettings();
 
@@ -231,7 +231,7 @@ public class BeHeView extends WebView{
 			loadUrl(crawler);
 			break;
 			case 9:
-			String myweb = "http://int.search.mywebsearch.com/mywebsearch/GGmain.jhtml?searchfor=" +  query.replace(" ","+");
+			String myweb = "https://www.wolframalpha.com/input/?i=" +  query.replace(" ","+");
 			loadUrl(myweb);
 			break;
 			case 10:
@@ -247,7 +247,7 @@ public class BeHeView extends WebView{
 			loadUrl(startpage);
 			break;
 			case 13:
-			String searx = "https://searx.me/?q="  + query.replace(" ","+");
+			String searx = "http://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&ch=&tn=baidu&bar=&wd="  + query.replace(" ","+");
 			loadUrl(searx);
 			break;
 			}
@@ -371,10 +371,10 @@ public class BeHeView extends WebView{
 		P_BAR = pBar;
 		WEB_ACTIVITY = activity;
 		isPrivate = pvt;
-		chromeClient = new BeHeChromeClient(P_BAR,this,WEB_ACTIVITY);
+		chromeClient = new CustomChromeClient(P_BAR,this,WEB_ACTIVITY);
 		setWebChromeClient(chromeClient);
-		setWebViewClient(new BeHeWebClient(text,WEB_ACTIVITY,false,this));
-		setDownloadListener(new CiobanDownloadListener(WEB_ACTIVITY, this));
+		setWebViewClient(new CustomWebClient(text,WEB_ACTIVITY,false,this));
+		setDownloadListener(new CustomDownloadListener(WEB_ACTIVITY, this));
 		initializeSettings();
 	}
     public void setMAtch(String t){
@@ -403,7 +403,7 @@ public class BeHeView extends WebView{
 		}
 	}
 
-	private BeHeChromeClient videoEnabledWebChromeClient;
+	private CustomChromeClient videoEnabledWebChromeClient;
 	private boolean addedJavascriptInterface;
 
 	private void addJavascriptInterface()
@@ -443,7 +443,7 @@ public class BeHeView extends WebView{
 		addJavascriptInterface();
 		super.loadUrl(url, additionalHttpHeaders);
 	}
-    public BeHeChromeClient getBeHeChromeClient(){
+    public CustomChromeClient getBeHeChromeClient(){
 		return chromeClient;
 	}
     public boolean isFull(){

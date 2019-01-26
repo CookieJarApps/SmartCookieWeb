@@ -19,7 +19,7 @@ import android.widget.ProgressBar;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
-import com.cookiegames.smartcookie.view.BeHeView;
+import com.cookiegames.smartcookie.view.CustomView;
 
 
 import android.webkit.CookieManager;
@@ -27,25 +27,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TabManager {
-   private static List<BeHeView> mViewsList = new ArrayList<BeHeView>();
+   private static List<CustomView> mViewsList = new ArrayList<CustomView>();
    private static PreferenceManager MANAGER;
-   static BeHeView currentTab;
+   static CustomView currentTab;
    private static NavigationView VIEW;
-   public static void addTab(BeHeView view){
+   public static void addTab(CustomView view){
        mViewsList.add(view);
    }
    @Nullable
-    public static List<BeHeView> getList(){
+    public static List<CustomView> getList(){
         return mViewsList;
     }
 
-    public static void removeTab(BeHeView view){
+    public static void removeTab(CustomView view){
         int index = mViewsList.indexOf(view);
         if(index != 0){
           mViewsList.remove(view);
         }
         else {
-            BeHeView behe = mViewsList.get(index + 1);
+            CustomView behe = mViewsList.get(index + 1);
             mViewsList.set(0,behe);
             mViewsList.remove(index + 1);
             mViewsList.remove(view);
@@ -53,7 +53,7 @@ public class TabManager {
         }
         view.destroy();
     }
-    public static BeHeView getCurrentTab(){
+    public static CustomView getCurrentTab(){
         if(currentTab != null) {
             return currentTab;
         }
@@ -65,7 +65,7 @@ public class TabManager {
         VIEW = view;
     }
     public static void setCookie(boolean cookie){
-        for (BeHeView view : mViewsList){
+        for (CustomView view : mViewsList){
             if(Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
                 CookieManager.getInstance().setAcceptThirdPartyCookies(view,cookie);
             }
@@ -74,7 +74,7 @@ public class TabManager {
     public static void updateTabView(){
         VIEW.getMenu().clear();
         for(int i = 0;i < mViewsList.size();i++) {
-            BeHeView  view = mViewsList.get(i);
+            CustomView view = mViewsList.get(i);
             VIEW.getMenu().add(view.getTitle());
             if(view == TabManager.currentTab){
                 VIEW.getMenu().getItem(i).setChecked(true);
@@ -90,15 +90,15 @@ public class TabManager {
             VIEW.getMenu().getItem(i).setIcon(drawable);
         }
     }
-    public static void setCurrentTab(BeHeView view){
-        for(BeHeView behe : getList()){
+    public static void setCurrentTab(CustomView view){
+        for(CustomView behe : getList()){
             behe.setIsCurrentTab(false);
         }
         view.setIsCurrentTab(true);
         currentTab = view;
     }
-    public static BeHeView getTabByTitle(String title){
-        for(BeHeView view : getList()){
+    public static CustomView getTabByTitle(String title){
+        for(CustomView view : getList()){
             String web = view.getTitle();
             if(web.matches(title)){
                 return view;
@@ -109,7 +109,7 @@ public class TabManager {
         }
         return null;
     }
-    public static BeHeView getTabAtPosition(MenuItem menuItem){
+    public static CustomView getTabAtPosition(MenuItem menuItem){
         List<MenuItem> items = new ArrayList<>();
         Menu menu = VIEW.getMenu();
         for(int i = 0; i < menu.size();i++){
@@ -117,24 +117,24 @@ public class TabManager {
             items.add(item);
         }
         int index = items.indexOf(menuItem);
-        BeHeView view = getList().get(index);
+        CustomView view = getList().get(index);
         return view;
     }
     public static void removeAllTabs(){
        mViewsList.clear();
     }
     public static void resetAll(AppCompatActivity act, ProgressBar pBar, boolean pvt, EditText txt){
-          for(BeHeView view : mViewsList){
+          for(CustomView view : mViewsList){
               view.setNewParams(txt,pBar,act,pvt);
           }
     }
     public static void stopPlayback(){
-        for(BeHeView view : mViewsList){
+        for(CustomView view : mViewsList){
             view.onPause();
         }
     }
    public static void resume(){
-       for(BeHeView view : mViewsList){
+       for(CustomView view : mViewsList){
            view.onResume();
        }
    }
@@ -200,7 +200,7 @@ public class TabManager {
         }
     }
     public static void deleteAllHistory(){
-        for(BeHeView view : mViewsList){
+        for(CustomView view : mViewsList){
             view.clearHistory();
         }
     }

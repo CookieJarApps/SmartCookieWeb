@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 import okhttp3.HttpUrl;
 /**
- * Created by todo on 08.02.2017.
+ * SC AdBlocker
  */
 public class AdBlocker {
     private static final String AD_HOSTS_FILE = "hosts.txt";

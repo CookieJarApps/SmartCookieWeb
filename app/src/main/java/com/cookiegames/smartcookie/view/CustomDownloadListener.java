@@ -24,10 +24,10 @@ import com.cookiegames.smartcookie.R;
 import com.cookiegames.smartcookie.activity.MainActivity;
 
 
-public class CiobanDownloadListener implements DownloadListener {
+public class CustomDownloadListener implements android.webkit.DownloadListener {
    private WebView view;
     private AppCompatActivity mActivity;
-    public CiobanDownloadListener(AppCompatActivity activity,WebView web) {
+    public CustomDownloadListener(AppCompatActivity activity, WebView web) {
         super();
         mActivity = activity;
         view = web;

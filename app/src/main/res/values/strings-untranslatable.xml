@@ -46,10 +46,10 @@
         <item name="6">WOW</item>
         <item name="7">Aol Search</item>
         <item name="8">WebCrawler</item>
-        <item name="9">MyWebSearch</item>
+        <item name="9">WolframAlpha</item>
         <item name="10">InfoSpace</item>
         <item name="11">Yandex</item>
         <item name="12">StartPage</item>
-        <item name="13">SearX</item>
+        <item name="13">Baidu</item>
     </string-array>
 </resources>

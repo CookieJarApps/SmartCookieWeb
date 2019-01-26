@@ -53,7 +53,6 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -85,7 +84,7 @@ import com.cookiegames.smartcookie.database.HistoryDatabase;
 import com.cookiegames.smartcookie.utils.PreferenceUtils;
 import com.cookiegames.smartcookie.utils.ThemeUtils;
 import com.cookiegames.smartcookie.view.AnimatedProgressBar;
-import com.cookiegames.smartcookie.view.BeHeView;
+import com.cookiegames.smartcookie.view.CustomView;
 import com.cookiegames.smartcookie.R;
 
 
@@ -106,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 	AnimatedProgressBar pBar;
 	MenuItem m1;
 	MenuItem m2;
-	BeHeView web;
+	CustomView web;
 	RelativeLayout swipe;
 	TextView txe;
 	RelativeLayout root;
@@ -163,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 		m1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 			@Override
 			public boolean onMenuItemClick(MenuItem menuItem) {
-				BeHeView view = TabManager.getCurrentTab();
+				CustomView view = TabManager.getCurrentTab();
 				view.loadHomepage();
 				return false;
 			}
@@ -202,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog, int id) {
 										HashMap<String, String> map = new HashMap<>();
-										BeHeView view = TabManager.getCurrentTab();
+										CustomView view = TabManager.getCurrentTab();
 										try {
 											String result = userInput.getText().toString();
 											File toWrite = new File(getApplicationContext().getFilesDir(), "bookmarks.oi");
@@ -315,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
 		addTab.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				BeHeView behe = new BeHeView(getApplicationContext(), activity, pBar, false, txt);
+				CustomView behe = new CustomView(getApplicationContext(), activity, pBar, false, txt);
 				behe.loadHomepage();
 				TabManager.addTab(behe);
 				TabManager.setCurrentTab(behe);
@@ -329,8 +328,8 @@ public class MainActivity extends AppCompatActivity {
 			public void onClick(View view) {
 				int size = TabManager.getList().size();
 				if (size > 1) {
-					BeHeView tab = TabManager.getCurrentTab();
-					BeHeView main = TabManager.getList().get(0);
+					CustomView tab = TabManager.getCurrentTab();
+					CustomView main = TabManager.getList().get(0);
 					TabManager.setCurrentTab(main);
 					TabManager.removeTab(tab);
 					TabManager.updateTabView();
@@ -350,7 +349,7 @@ public class MainActivity extends AppCompatActivity {
 					itm.setChecked(false);
 				}
 				item.setChecked(true);
-				BeHeView view = TabManager.getTabAtPosition(item);
+				CustomView view = TabManager.getTabAtPosition(item);
 				TabManager.setCurrentTab(view);
 				refreshTab();
 				if(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("tab_close",true)){
@@ -565,7 +564,7 @@ public class MainActivity extends AppCompatActivity {
 		desktop.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-				BeHeView behe = TabManager.getCurrentTab();
+				CustomView behe = TabManager.getCurrentTab();
 				if (b) {
 					behe.setDesktop();
 				} else {
@@ -576,7 +575,7 @@ public class MainActivity extends AppCompatActivity {
 		privat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-				BeHeView behe = TabManager.getCurrentTab();
+				CustomView behe = TabManager.getCurrentTab();
 				behe.setPrivate(b);
 				if(!b) {
 					TypedValue typedValue = new TypedValue();
@@ -763,9 +762,9 @@ public class MainActivity extends AppCompatActivity {
 
 	}
 	public void initializeBeHeView() {
-		List<BeHeView> list = TabManager.getList();
+		List<CustomView> list = TabManager.getList();
 		if (list != null && list.isEmpty()) {
-			web = new BeHeView(getApplicationContext(), this, pBar, false, txt);
+			web = new CustomView(getApplicationContext(), this, pBar, false, txt);
 			TabManager.addTab(web);
 			TabManager.setCurrentTab(web);
 		} else {
@@ -848,7 +847,7 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 				try {
-					BeHeView behe = TabManager.getCurrentTab();
+					CustomView behe = TabManager.getCurrentTab();
 					behe.loadUrl(u.get(i));
 					hideBookMarks();
 				} catch (Exception e) {
@@ -908,7 +907,7 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 		txt.setText(getResources().getText(R.string.boomarks));
-		BeHeView view = TabManager.getCurrentTab();
+		CustomView view = TabManager.getCurrentTab();
 		view.setIsCurrentTab(false);
 		root.removeAllViews();
 		mGrid.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
@@ -918,7 +917,7 @@ public class MainActivity extends AppCompatActivity {
 
 	public void hideBookMarks() {
 		if (mGrid != null) {
-			BeHeView view = TabManager.getCurrentTab();
+			CustomView view = TabManager.getCurrentTab();
 			view.setIsCurrentTab(true);
 			txt.setText(view.getUrl());
 			mGrid.setVisibility(View.GONE);

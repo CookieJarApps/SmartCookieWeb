@@ -17,7 +17,7 @@ import java.io.FilenameFilter;
 import java.util.ArrayList;
 
 /**
- * Created by todo on 06.02.2017.
+ * FileChooser
  */
 public class FileChooser   {
     ListView list;

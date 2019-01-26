@@ -25,13 +25,13 @@ import com.cookiegames.smartcookie.utils.PreferenceUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BeHeWebClient extends WebViewClient {
+public class CustomWebClient extends WebViewClient {
     private EditText TEXT;
     private Map<String, Boolean> loadedUrls = new HashMap<>();
     Activity act;
-    BeHeView mainView;
+    CustomView mainView;
     boolean priv;
-    public BeHeWebClient(EditText textView,Activity ac,boolean privat,BeHeView view){
+    public CustomWebClient(EditText textView, Activity ac, boolean privat, CustomView view){
       super();
       TEXT = textView;
       act = ac;

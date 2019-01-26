@@ -21,15 +21,15 @@ import android.widget.ProgressBar;
 import com.cookiegames.smartcookie.controllers.TabManager;
 
 
-public class BeHeChromeClient extends WebChromeClient {
+public class CustomChromeClient extends WebChromeClient {
     private ProgressBar PBar;
     private AppCompatActivity ACTIVITY;
-    private BeHeView mWeb;
+    private CustomView mWeb;
     private View v;
     private  CustomViewCallback callback;
     private boolean isVideoFullscreen; // Indicates if the video is being displayed using a custom view (typically full-screen)
 
-    public BeHeChromeClient(ProgressBar pBar, BeHeView web,AppCompatActivity act) {
+    public CustomChromeClient(ProgressBar pBar, CustomView web, AppCompatActivity act) {
         super();
         mWeb = web;
         PBar = pBar;

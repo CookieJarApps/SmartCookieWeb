@@ -1,7 +1,7 @@
 package com.cookiegames.smartcookie.utils;
 
 /**
- * Created by todo on 24.01.2017.
+ * PreferenceHelper
  */
 public class PreferenceHelper {
     private static boolean isLook = false;
