@@ -1,10 +1,8 @@
 
 
 <a href="http://cookiejarapps.com/">
-    <img src="https://CloudCookie--onecookieleft.repl.co/images/smartcookiebrowser.png" alt="SmartCookie logo" title="Smart Cookie Secure Web Browser" align="right" height="60" />
+    <img src="https://CloudCookie--onecookieleft.repl.co/images/smartcookiebrowser.png" alt="SmartCookie logo" title="Smart Cookie Secure Web Browser" height="60" />
 </a>
-
-
 
 Smart Cookie Secure Web Browser
 ======================
