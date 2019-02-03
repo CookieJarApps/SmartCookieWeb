@@ -22,7 +22,7 @@
           android:action="https://github.com/CookieGamesOfficial/SmartCookieWeb">
     <intent
         android:action="android.intent.action.VIEW"
-        android:data="#"/>
+        android:data="https://github.com/CookieGamesOfficial/SmartCookieWeb"/>
     </PreferenceScreen>
     <PreferenceScreen
         android:key="hi"
