@@ -1,150 +1,152 @@
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Base grey theme. -->
-    <style name="GreyTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/grey_primary</item>
-        <item name="colorPrimaryDark">@color/grey_secondary</item>
-        <item name="colorAccent">@color/grey_accent</item>
-        <item name="android:textColor">@color/grey_text</item>
-        <item name="searchBoxColor">@color/grey_search</item>
-        <item name="drawerColor">@color/grey_drawerColor</item>
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="delBtnColor">@color/grey_del_btn</item>
-        <item name="addBtnColor">@color/grey_add_btn</item>
+    <!-- Settings themes -->
+    <style name="Theme.SettingsTheme" parent="Theme.LightTheme">
+        <item name="android:windowBackground">@null</item>
+        <item name="toolbarSettingsBackground">@drawable/toolbar_elevate</item>
     </style>
 
-    <!-- Base white theme -->
-    <style name="WhiteTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryDark">#e0e0e0</item>
-        <item name="colorAccent">@color/black</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="searchBoxColor">#e0e0e0</item>
-        <item name="drawerColor">@color/white</item>
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="delBtnColor">@color/grey_del_btn</item>
-        <item name="addBtnColor">@color/grey_add_btn</item>
+    <style name="Theme.SettingsTheme.Dark" parent="Theme.DarkTheme">
+        <item name="android:windowBackground">@null</item>
+        <item name="toolbarSettingsBackground">@drawable/toolbar_elevate_dark</item>
+
+        <!-- Dark settings has a special primary dark -->
+        <item name="colorPrimaryDark">@color/secondary_color_settings_dark</item>
     </style>
 
-    <!-- Base Red Theme -->
-    <style name="RedTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/red_primary</item>
-        <item name="colorPrimaryDark">@color/red_secondary</item>
-        <item name="colorAccent">@color/red_accent</item>
-        <item name="android:textColor">@color/red_text</item>
-        <item name="searchBoxColor">@color/red_search</item>
-        <item name="drawerColor">@color/red_drawerColor</item>
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="delBtnColor">@color/red_del_btn</item>
-        <item name="addBtnColor">@color/red_add_btn</item>
+    <style name="Theme.SettingsTheme.Black" parent="Theme.BlackTheme">
+        <item name="android:windowBackground">@null</item>
+        <item name="toolbarSettingsBackground">@drawable/toolbar_elevate_black</item>
     </style>
 
-    <!-- Base Blue Theme -->
-    <style name="BlueTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/blue_primary</item>
-        <item name="colorPrimaryDark">@color/blue_secondary</item>
-        <item name="colorAccent">@color/blue_accent</item>
-        <item name="android:textColor">@color/blue_text</item>
-        <item name="searchBoxColor">@color/blue_search</item>
-        <item name="drawerColor">@color/blue_drawerColor</item>
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="delBtnColor">@color/blue_del_btn</item>
-        <item name="addBtnColor">@color/blue_add_btn</item>
+    <!-- Regular themes -->
+    <style name="Theme.LightTheme" parent="Theme.BaseLightTheme">
+        <item name="searchBackground">@drawable/card_bg_elevate</item>
+        <item name="listBackground">@drawable/list_bg</item>
+        <item name="progressBackgroundColor">@color/secondary_color</item>
     </style>
 
-    <!-- Base Green Theme -->
-    <style name="GreenTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/green_primary</item>
-        <item name="colorPrimaryDark">@color/green_secondary</item>
-        <item name="colorAccent">@color/green_accent</item>
-        <item name="android:textColor">@color/green_text</item>
-        <item name="searchBoxColor">@color/green_search</item>
-        <item name="drawerColor">@color/green_drawerColor</item>
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="delBtnColor">@color/green_del_btn</item>
-        <item name="addBtnColor">@color/green_add_btn</item>
+    <style name="Theme.DarkTheme" parent="Theme.BaseDarkTheme">
+        <item name="searchBackground">@drawable/card_bg_elevate</item>
+        <item name="listBackground">@drawable/list_bg</item>
+        <item name="progressBackgroundColor">@color/secondary_color</item>
     </style>
 
-    <!-- Base Black Theme -->
-    <style name="BlackTheme" parent="Theme.AppCompat.Light">
+    <style name="Theme.BlackTheme" parent="Theme.BaseBlackTheme">
+        <item name="searchBackground">@drawable/card_bg_elevate</item>
+        <item name="listBackground">@drawable/list_bg</item>
+        <item name="progressBackgroundColor">@color/black</item>
+    </style>
+
+    <!-- Base Themes -->
+    <style name="Theme.BaseLightTheme" parent="Theme.AppCompat.Light">
+
+        <!-- Theme Colors -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="drawerBackground">@color/drawer_background</item>
+        <item name="dividerColor">@color/divider_light</item>
+
+        <item name="selectedBackground">@color/selected_light</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <!-- Overflow menu -->
+        <item name="actionOverflowButtonStyle">@style/overFlowButtonStyle</item>
+
+        <!-- Alert dialogs -->
+        <item name="alertDialogTheme">@style/AppCompatDialogStyle.Light</item>
+
+    </style>
+
+    <style name="Theme.BaseDarkTheme" parent="Theme.AppCompat">
+
+        <!-- Theme colors -->
+        <item name="colorPrimary">@color/primary_color_dark</item>
+        <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="drawerBackground">@color/drawer_background_dark</item>
+        <item name="dividerColor">@color/divider_dark</item>
+
+        <item name="selectedBackground">@color/selected_dark</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <!-- Overflow menu -->
+        <item name="actionOverflowButtonStyle">@style/overFlowButtonStyle</item>
+
+        <!-- Alert dialogs -->
+        <item name="alertDialogTheme">@style/AppCompatDialogStyle.Dark</item>
+    </style>
+
+    <style name="Theme.BaseBlackTheme" parent="Theme.AppCompat">
+
+        <!-- Theme Colors -->
         <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/white</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="searchBoxColor">#212121</item>
-        <item name="drawerColor">@color/black</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="drawerBackground">@color/black</item>
+        <item name="dividerColor">@color/black</item>
+
+        <item name="selectedBackground">@color/selected_dark</item>
+
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="delBtnColor">@color/green_del_btn</item>
-        <item name="addBtnColor">@color/green_add_btn</item>
-    </style>
-    <style name="blackDialogTheme">
-        <item name="android:windowBackground">@color/black</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:backgroundDimEnabled">true</item>
+
+        <!-- Overflow menu -->
+        <item name="actionOverflowButtonStyle">@style/overFlowButtonStyle</item>
+
+        <!-- Alert dialogs -->
+        <item name="alertDialogTheme">@style/AppCompatDialogStyle.Black</item>
     </style>
 
-    <!-- Base Indigo Theme -->
-    <style name="IndigoTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">#303f9f</item>
-        <item name="colorPrimaryDark">#283593</item>
-        <item name="colorAccent">#3f51b5</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="searchBoxColor">#5c6bc0</item>
-        <item name="drawerColor">#303f9f</item>
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="delBtnColor">@color/green_del_btn</item>
-        <item name="addBtnColor">@color/green_add_btn</item>
+    <!-- AlertDialog Theming -->
+    <style name="AppCompatDialogStyle.Light" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/accent_color</item>
     </style>
 
-    <!-- Base Cyan Theme -->
-    <style name="CyanTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">#0097a7</item>
-        <item name="colorPrimaryDark">#00838f</item>
-        <item name="colorAccent">#00bcd4</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="searchBoxColor">#26c6da</item>
-        <item name="drawerColor">#0097a7</item>
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="delBtnColor">@color/green_del_btn</item>
-        <item name="addBtnColor">@color/green_add_btn</item>
+    <style name="AppCompatDialogStyle.Dark" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorAccent">@color/accent_color</item>
     </style>
 
-    <!-- Base Orange Theme -->
-    <style name="OrangeTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">#f57c00</item>
-        <item name="colorPrimaryDark">#ef6c00</item>
-        <item name="colorAccent">#ff9800</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="searchBoxColor">#ffa726</item>
-        <item name="drawerColor">#f57c00</item>
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="delBtnColor">@color/green_del_btn</item>
-        <item name="addBtnColor">@color/green_add_btn</item>
+    <style name="AppCompatDialogStyle.Black" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorAccent">@color/accent_color</item>
     </style>
 
-    <!-- Base Lime Theme -->
-    <style name="LimeTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">#afb42b</item>
-        <item name="colorPrimaryDark">#9e9d24</item>
-        <item name="colorAccent">#cddc39</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="searchBoxColor">#d4e157</item>
-        <item name="drawerColor">#afb42b</item>
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="delBtnColor">@color/green_del_btn</item>
-        <item name="addBtnColor">@color/green_add_btn</item>
+    <!-- Overflow Menu Customization -->
+    <style name="overFlowButtonStyle" parent="@style/Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:minWidth">48dp</item>
+        <item name="android:padding">0dp</item>
     </style>
+
+    <!-- Text Customization -->
+    <style name="boldText">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="normalText">
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/secondary_color</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+
 
 </resources>
