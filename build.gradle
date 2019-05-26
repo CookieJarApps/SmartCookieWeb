@@ -32,8 +32,8 @@ ext {
 
     //Please use the new naming system stated here:
     //Version naming system: major.minor[.revision[.build[-channel[.release]]]]
-    versionNameMain = '4.4.0'
-    versionNameDev = '4.4.0'
-    versionCode_dev = 24
-    versionCode_main = 24
+    versionNameMain = '4.4.1'
+    versionNameDev = '4.4.1'
+    versionCode_dev = 26
+    versionCode_main = 26
 }

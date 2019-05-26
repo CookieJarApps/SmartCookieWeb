@@ -93,7 +93,7 @@
     <string name="download_no_sdcard_dlg_title">Pas de carte SD</string>
     <string name="download_no_sdcard_dlg_msg">Un stockage USB est requis pour télécharger le fichier.</string>
     <string name="download_sdcard_busy_dlg_title">Stockage USB indisponible</string>
-    <string name="download_sdcard_busy_dlg_msg">Le stockage est occupé. Pour autoriser les téléchargements, appuyez sur \ 'Désactiver le stockage USB \' dans la notification.</string>
+    <string name="download_sdcard_busy_dlg_msg">Le stockage est occupé. Pour autoriser les téléchargements, appuyez sur \'Désactiver le stockage USB \' dans la notification.</string>
     <string name="incognito_cookies">Activer les cookies en mode navigation privée</string>
     <string name="title_flash">Adobe Flash</string>
     <string name="action_manual">Manuel</string>
@@ -221,11 +221,11 @@
     <string name="hosts_source">Hôtes de fichier et source de blocage</string>
     <string name="settings_adblock">Paramètres du bloc d\'annonces</string>
     <string name="tabs_in_drawer">Afficher les onglets dans le tiroir de navigation</string>
-    <string name="swap_bookmarks_and_tabs">Échange de signets et de tiroirs</string>
+    <string name="swap_bookmarks_and_tabs">échange de signets et de tiroirs</string>
     <string name="do_not_track">Demande \ \'Ne pas suivre \'</string>
     <string name="remove_identifying_headers">Supprimer les en-têtes HTTP d\'identification</string>
-    <string name="action_add_to_homescreen">Ajouter à l\'écran d'accueil</string>
-    <string name="message_added_to_homescreen">Raccourci ajouté à l\'écran d'accueil</string>
+    <string name="action_add_to_homescreen">Ajouter à l\'écran d\'accueil</string>
+    <string name="message_added_to_homescreen">Raccourci ajouté à l\'écran d\'accueil</string>
     <string name="action_delete_all_bookmarks">Supprimer tous les favoris</string>
     <string name="flash_not_supported">Votre appareil ne supporte pas Flash Player</string>
     <string name="message_open_download_fail">Ce fichier n’existe plus</string>
@@ -272,7 +272,7 @@
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
 
-    <string name="title_activity_welcome">Écran d\'accueil</string>
+    <string name="title_activity_welcome">écran d\'accueil</string>
     <string name="next">Suivant</string>
     <string name="skip">Sauter</string>
     <string name="start">Je l\'ai</string>
