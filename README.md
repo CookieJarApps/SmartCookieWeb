@@ -18,5 +18,5 @@ A secure, open source web browser for Android.
 
 * Proxy support
 
-#License
+# License
 SmartCookieWeb uses the GNU GPL 3.0 license.
