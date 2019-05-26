@@ -34,8 +34,6 @@ ext {
     //Version naming system: major.minor[.revision[.build[-channel[.release]]]]
     versionNameMain = '4.4.0'
     versionNameDev = '4.4.0'
-    //versionCode_lite = 98
-    //versionCode_plus = 120
     versionCode_dev = 24
     versionCode_main = 24
 }
