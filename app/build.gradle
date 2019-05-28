@@ -1,0 +1,141 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.getkeepsafe.dexcount'
+
+android {
+    compileSdkVersion project.targetSdkVersion
+
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        vectorDrawables.useSupportLibrary = true
+        ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
+    }
+
+    sourceSets {
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles 'proguard-project.txt'
+        }
+
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles 'proguard-project.txt'
+        }
+    }
+
+    flavorDimensions "color"
+
+    productFlavors {
+
+        scmain {
+            buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
+            applicationId "com.cookiegames.smartcookie"
+            versionCode project.versionCode_main
+            versionName project.versionNameMain
+            //minSdkVersion project.minSdkVersionDev
+        }
+
+        scdev {
+            buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
+            applicationId "com.cookiegames.smartcookie"
+            versionCode project.versionCode_dev
+            versionName project.versionNameDev
+            //minSdkVersion project.minSdkVersionMain
+        }
+
+        noGoogleServices {
+            buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
+            applicationId "com.cookiegames.smartcookie"
+            versionCode project.versionCode_main
+            versionName project.versionNameMain
+            //minSdkVersion project.minSdkVersionMain
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    packagingOptions {
+        exclude '.readme'
+    }
+}
+
+dexcount {
+    includeClasses = false
+    includeFieldCount = false
+    format = "tree"
+    orderByMethodCount = true
+    verbose = false
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+
+    // support libraries
+    def supportLibVersion = '28.0.0'
+    implementation "com.android.support:palette-v7:$supportLibVersion"
+    implementation "com.android.support:appcompat-v7:$supportLibVersion"
+    implementation "com.android.support:design:$supportLibVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibVersion"
+    implementation "com.android.support:support-v4:$supportLibVersion"
+
+    // html parsing for reading mode
+    implementation 'org.jsoup:jsoup:1.10.2'
+
+    // dependency injection
+    def daggerVersion = '2.11'
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+
+    // view binding
+    def butterknifeVersion = '8.8.1'
+    implementation "com.jakewharton:butterknife:$butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+
+    // permissions
+    implementation 'com.anthonycr.grant:permissions:1.1.2'
+
+    // proxy support
+    implementation 'net.i2p.android:client:0.8'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+
+    // tor proxy
+    def netcipherVersion = '2.0.0-alpha1'
+    implementation "info.guardianproject.netcipher:netcipher:$netcipherVersion"
+    implementation "info.guardianproject.netcipher:netcipher-webkit:$netcipherVersion"
+
+    implementation 'com.anthonycr.bonsai:bonsai:1.1.0'
+
+    implementation 'com.anthonycr.progress:animated-progress:1.0'
+
+    // memory leak analysis
+    def leakCanaryVersion = '1.5.1'
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
+
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // ...
+    implementation 'com.google.firebase:firebase-core:11.2.2'
+    implementation 'com.google.firebase:firebase-messaging:11.2.2'
+    implementation 'com.firebase:firebase-jobdispatcher:0.7.0'
+
+    // material intro (onboarding)
+    implementation 'com.github.chyrta:AndroidOnboarder:0.7'
+
+    // material about library
+    //implementation 'com.github.daniel-stoneuk:material-about-library:2.2.3-support26.1.0'
+}
+
+apply plugin: 'com.google.gms.google-services'
