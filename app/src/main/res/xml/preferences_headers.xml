@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+    <header
+        android:fragment="com.cookiegames.smartcookie.settings.fragment.GeneralSettingsFragment"
+        android:title="@string/settings_general"
+        android:summary="@string/settings_general_explain" />
+    <header
+        android:fragment="com.cookiegames.smartcookie.settings.fragment.BookmarkSettingsFragment"
+        android:title="@string/bookmark_settings"
+        android:summary="@string/settings_bookmark_explain" />
+    <header
+        android:fragment="com.cookiegames.smartcookie.settings.fragment.DisplaySettingsFragment"
+        android:title="@string/settings_display"
+        android:summary="@string/settings_display_explain" />
+    <header
+        android:fragment="com.cookiegames.smartcookie.settings.fragment.PrivacySettingsFragment"
+        android:title="@string/settings_privacy"
+        android:summary="@string/settings_privacy_explain" />
+    <header
+        android:fragment="com.cookiegames.smartcookie.settings.fragment.AdvancedSettingsFragment"
+        android:title="@string/settings_advanced"
+        android:summary="@string/settings_advanced_explain" />
+    <header
+        android:fragment="com.cookiegames.smartcookie.settings.fragment.AboutSettingsFragment"
+        android:summary="@string/settings_about_explain"
+        android:title="@string/settings_about"/>
+    <header
+        android:summary="@string/privacy_info"
+        android:title="@string/privacy">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://files.cookiegames.co.uk/files/privacy.html">
+            <extra
+                android:name="SOURCE"
+                android:value="SELF"/>
+        </intent>
+    </header>
+   <!-- <header
+        android:fragment="com.cookiegames.smartcookie.settings.fragment.DebugSettingsFragment"
+        android:title="@string/debug_title"/> -->
+</preference-headers>

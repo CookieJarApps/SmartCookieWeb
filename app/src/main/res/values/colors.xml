@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#ff000000</color>
+    <color name="gray_dark">#222222</color>
+    <color name="gray_medium">#cdcdcd</color>
+    <color name="white">#ffffff</color>
+    <color name="gray_list_bg">#0d000000</color>
+
+    <color name="primary_color">#E0E0E0</color>
+    <color name="secondary_color">#66000000</color>
+    <color name="accent_color">#0073EF</color>
+
+    <color name="drawer_background">#ffffff</color>
+    <color name="drawer_background_dark">#424242</color>
+
+    <color name="secondary_color_settings">#9C9C9C</color>
+    <color name="secondary_color_settings_dark">#2E2E2E</color>
+
+    <color name="hint_text">#BDBDBD</color>
+
+    <color name="primary_color_dark">#424242</color>
+
+    <color name="divider_dark">#1FFFFFFF</color>
+    <color name="divider_light">#1F000000</color>
+
+
+    <color name="selected_dark">#0FFFFFFF</color>
+    <color name="selected_light">#0F000000</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="icon_light_theme">#8A000000</color>
+    <color name="icon_dark_theme">#FFFFFFFF</color>
+    <color name="icon_light_theme_disabled">#40000000</color>
+    <color name="icon_dark_theme_disabled">#8AFFFFFF</color>
+
+    <color name="error_red">#F44336</color>
+
+    <color name="bookmark_default_blue">#2196F3</color>
+    <color name="bookmark_default_green">#4CAF50</color>
+    <color name="bookmark_default_red">#EF5350</color>
+    <color name="bookmark_default_orange">#FF9800</color>
+
+    <color name="colorAccent">#FFFFFFFF</color>
+
+    <!-- Screens background color-->
+    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen3">#3395ff</color>
+    <color name="bg_screen4">#c873f4</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#d1395c</color>
+    <color name="dot_dark_screen2">#14a895</color>
+    <color name="dot_dark_screen3">#2278d4</color>
+    <color name="dot_dark_screen4">#a854d4</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#f98da5</color>
+    <color name="dot_light_screen2">#8cf9eb</color>
+    <color name="dot_light_screen3">#93c6fd</color>
+    <color name="dot_light_screen4">#e4b5fc</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+    </array>
+
+    <color name="primary_text">#FAFAFA</color>
+    <color name="secondary_text">#E0E0E0</color>
+
+</resources>
