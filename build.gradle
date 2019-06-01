@@ -27,13 +27,13 @@ ext {
     //minSdkVersion = 22
     //minSdkVersionDev = 22
     //minSdkVersionMain = 15
-    targetSdkVersion = 28
+    targetSdkVersion = 26
     buildToolsVersion = '27.0.3'
 
     //Please use the new naming system stated here:
     //Version naming system: major.minor[.revision[.build[-channel[.release]]]]
-    versionNameMain = '4.4.3'
-    versionNameDev = '4.4.3'
-    versionCode_dev = 28
-    versionCode_main = 28
+    versionNameMain = '4.4.5'
+    versionNameDev = '4.4.5'
+    versionCode_dev = 30
+    versionCode_main = 30
 }
