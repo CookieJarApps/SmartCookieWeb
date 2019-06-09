@@ -18,5 +18,15 @@ A secure, open source web browser for Android.
 
 * Proxy support
 
+# 2019 Feature Checklist
+
+- [x] Proxy Support
+- [x] Malware Blocking
+- [x] Improved Ad Blocker
+- [x] Custom Error Page
+- [ ] Extensions
+- [ ] Custom Browser Engine/WebView Implementation
+- [ ] New UI
+ 
 # License
 SmartCookieWeb uses the Mozilla Public License 2.0
