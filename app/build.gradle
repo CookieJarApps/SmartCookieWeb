@@ -124,12 +124,7 @@ dependencies {
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
 
     // kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    // ...
-    implementation 'com.google.firebase:firebase-core:11.2.2'
-    implementation 'com.google.firebase:firebase-messaging:11.2.2'
-    implementation 'com.firebase:firebase-jobdispatcher:0.7.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version" 
 
     // material intro (onboarding)
     implementation 'com.github.chyrta:AndroidOnboarder:0.7'
