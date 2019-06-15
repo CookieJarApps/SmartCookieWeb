@@ -5,10 +5,12 @@ sudo: false
 android:
   components:
     - tools
-    - build-tools-27.0.3
-    - android-26
+    - build-tools-27.0.2
     - extra-android-support
+    - extra-google-m2repository
     - extra-android-m2repository
+licenses:
+    - 'android-sdk-license-.+'
   
 before_install:
   - chmod +x gradlew
