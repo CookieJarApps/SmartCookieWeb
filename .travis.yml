@@ -9,9 +9,7 @@ android:
     - android-26
     - extra-android-support
     - extra-android-m2repository
-  licenses:
-    - 'android-sdk-license-.+'
-    - '.*intel.+'
+  
 before_install:
   - chmod +x gradlew
   - git submodule update --init --recursive
