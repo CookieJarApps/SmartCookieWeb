@@ -1,5 +1,7 @@
 package com.cookiegames.smartcookie.search.engine
 
+import com.cookiegames.smartcookie.CheckForInternet
+import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.constant.Constants
 

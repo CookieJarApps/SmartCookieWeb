@@ -5,6 +5,7 @@ package com.cookiegames.smartcookie.adblock
  */
 import com.cookiegames.smartcookie.utils.StringBuilderUtils
 import android.app.Application
+import android.content.SharedPreferences
 import android.util.Log
 import com.anthonycr.bonsai.Completable
 import com.anthonycr.bonsai.CompletableAction
@@ -24,7 +25,6 @@ import javax.inject.Singleton
 @Singleton
 class AssetsAdBlocker @Inject
 internal constructor(private val application: Application) : AdBlocker {
-
     private val blockedDomainsList = HashSet<String>()
 
     init {

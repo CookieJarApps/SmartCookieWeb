@@ -182,6 +182,9 @@ public class LightningWebClient extends WebViewClient {
                 view.loadUrl("file:///android_asset/warn.html");
             }
         }
+        if(url=="sc:about" | url.endsWith("sc%3Aabout") && !url.contains("sc%3Aabout ")){
+            view.loadUrl("file:///android_asset/about.html");
+        }
         mLightningView.getTitleInfo().setFavicon(null);
         if (mLightningView.isShown()) {
             mUIController.updateUrl(url, true);

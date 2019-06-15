@@ -21,31 +21,6 @@ import com.cookiegames.smartcookie.browser.activity.BrowserActivity;
 @SuppressWarnings("deprecation")
 public class MainActivity extends BrowserActivity {
 
-    //Firstrun instance
-/**
-    SharedPreferences prefs = null;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // Perhaps set content view here
-
-        prefs = getSharedPreferences("com.jtechme.jumpgo", MODE_PRIVATE);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (prefs.getBoolean("firstrun", true)) {
-            // Do first run stuff here then set 'firstrun' as false
-            // using the following line to edit/commit prefs
-            prefs.edit().putBoolean("firstrun", false).commit();
-            startActivity(new Intent(this, IntroActivity.class));
-        }
-    }
-*/
-    //End of firstrun instance
 
     @NonNull
     @Override
