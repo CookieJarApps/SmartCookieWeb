@@ -302,4 +302,8 @@
     <string name="privacy_info">Read the SmartCookieWeb privacy policy</string>
     <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Block Malicious Sites</string>
+    <string name="block_sites">Custom Site Block (beta)</string>
+    <string name="block_sites_title">Custom Site Block (seperate sites with 3 spaces)</string>
+    <string name="none">None</string>
+    <string name="block_info">Enter words to block in URLs (seperated with 3 spaces).</string>
 </resources>

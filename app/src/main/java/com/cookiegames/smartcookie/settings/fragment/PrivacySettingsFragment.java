@@ -45,7 +45,6 @@ public class PrivacySettingsFragment extends LightningPreferenceFragment impleme
     private static final String SETTINGS_WEBSTORAGEEXIT = "clear_webstorage_exit";
     private static final String SETTINGS_DONOTTRACK = "do_not_track";
     private static final String SETTINGS_IDENTIFYINGHEADERS = "remove_identifying_headers";
-    private static final String SETTINGS_BLOCKMALWARE = "block_malware";
 
     private Activity mActivity;
 
@@ -77,7 +76,6 @@ public class PrivacySettingsFragment extends LightningPreferenceFragment impleme
         CheckBoxPreference cbcookiesexit = (CheckBoxPreference) findPreference(SETTINGS_COOKIEEXIT);
         CheckBoxPreference cbwebstorageexit = (CheckBoxPreference) findPreference(SETTINGS_WEBSTORAGEEXIT);
         CheckBoxPreference cbDoNotTrack = (CheckBoxPreference) findPreference(SETTINGS_DONOTTRACK);
-        CheckBoxPreference cbBlockMalware = (CheckBoxPreference) findPreference(SETTINGS_BLOCKMALWARE);
         CheckBoxPreference cbIdentifyingHeaders = (CheckBoxPreference) findPreference(SETTINGS_IDENTIFYINGHEADERS);
 
         clearcache.setOnPreferenceClickListener(this);
@@ -93,7 +91,6 @@ public class PrivacySettingsFragment extends LightningPreferenceFragment impleme
         cbcookiesexit.setOnPreferenceChangeListener(this);
         cbwebstorageexit.setOnPreferenceChangeListener(this);
         cbDoNotTrack.setOnPreferenceChangeListener(this);
-        cbBlockMalware.setOnPreferenceChangeListener(this);
         cbIdentifyingHeaders.setOnPreferenceChangeListener(this);
 
         cblocation.setChecked(mPreferenceManager.getLocationEnabled());
@@ -104,7 +101,6 @@ public class PrivacySettingsFragment extends LightningPreferenceFragment impleme
         cb3cookies.setChecked(mPreferenceManager.getBlockThirdPartyCookiesEnabled());
         cbwebstorageexit.setChecked(mPreferenceManager.getClearWebStorageExitEnabled());
         cbDoNotTrack.setChecked(mPreferenceManager.getDoNotTrackEnabled() && Utils.doesSupportHeaders());
-        cbBlockMalware.setChecked(mPreferenceManager.getBlockMalwareEnabled());
         cbIdentifyingHeaders.setChecked(mPreferenceManager.getRemoveIdentifyingHeadersEnabled() && Utils.doesSupportHeaders());
 
         cbDoNotTrack.setEnabled(Utils.doesSupportHeaders());
@@ -251,9 +247,6 @@ public class PrivacySettingsFragment extends LightningPreferenceFragment impleme
                 return true;
             case SETTINGS_DONOTTRACK:
                 mPreferenceManager.setDoNotTrackEnabled((Boolean) newValue);
-                return true;
-            case SETTINGS_BLOCKMALWARE:
-                mPreferenceManager.setBlockMalwareEnabled((Boolean) newValue);
                 return true;
             case SETTINGS_IDENTIFYINGHEADERS:
                 mPreferenceManager.setRemoveIdentifyingHeadersEnabled((Boolean) newValue);

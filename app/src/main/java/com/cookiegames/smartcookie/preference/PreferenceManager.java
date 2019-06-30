@@ -38,6 +38,7 @@ public class PreferenceManager {
         static final String USE_WIDE_VIEWPORT = "wideviewport";
         static final String USER_AGENT = "agentchoose";
         static final String USER_AGENT_STRING = "userAgentString";
+        static final String BLOCK_SITES_STRING = "blockSitesString";
         static final String CLEAR_HISTORY_EXIT = "clearHistoryExit";
         static final String CLEAR_COOKIES_EXIT = "clearCookiesExit";
         static final String SAVE_URL = "saveUrl";
@@ -57,6 +58,7 @@ public class PreferenceManager {
         static final String SEARCH_SUGGESTIONS = "searchSuggestions";
         static final String BLACK_STATUS_BAR = "blackStatusBar";
         static final String BLOCK_MALWARE = "blockMalware";
+        static final String BLOCK_SITES = "blockSites";
 
         static final String USE_PROXY = "useProxy";
         static final String PROXY_CHOICE = "proxyChoice";
@@ -270,6 +272,14 @@ public class PreferenceManager {
 
     public int getUserAgentChoice() {
         return mPrefs.getInt(Name.USER_AGENT, 1);
+    }
+
+    public int getSiteBlockChoice() {
+        return mPrefs.getInt(Name.BLOCK_SITES, 1);
+    }
+    @Nullable
+    public String getSiteBlockString(@Nullable String def) {
+        return mPrefs.getString(Name.BLOCK_SITES_STRING, def);
     }
 
     @Nullable
@@ -511,6 +521,14 @@ public class PreferenceManager {
 
     public void setUserAgentString(@Nullable String agent) {
         putString(Name.USER_AGENT_STRING, agent);
+    }
+
+    public void setSiteBlockChoice(int choice) {
+        putInt(Name.BLOCK_SITES, choice);
+    }
+
+    public void setSiteBlockString(@Nullable String agent) {
+        putString(Name.BLOCK_SITES_STRING, agent);
     }
 
     public void setUseWideViewportEnabled(boolean enable) {

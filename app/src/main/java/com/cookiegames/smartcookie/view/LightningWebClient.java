@@ -42,6 +42,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -145,6 +146,16 @@ public class LightningWebClient extends WebViewClient {
                 ByteArrayInputStream EMPTY = new ByteArrayInputStream("Something has gone wrong. Make sure SmartCookieWeb is up to date or try another website.".getBytes());
                 return new WebResourceResponse("text/plain", "utf-8", EMPTY);
         }
+
+        if(mPreferences.getSiteBlockChoice() == 1){
+            if(mPreferences.getSiteBlockString("") != "" && mPreferences.getSiteBlockString("") != null){
+                if(mPreferences.getSiteBlockString("").contains(url)){
+                    ByteArrayInputStream EMPTY = new ByteArrayInputStream("Site blocked in settings.".getBytes());
+                    return new WebResourceResponse("text/plain", "utf-8", EMPTY);
+                }
+            }
+        }
+
         return null;
 
     }
@@ -175,6 +186,18 @@ public class LightningWebClient extends WebViewClient {
         webview.loadUrl("file:///android_asset/error.html");
     }
 
+    public static boolean stringContainsItemFromList(String inputStr, String[] items)
+    {
+        for(int i =0; i < items.length; i++)
+        {
+            if(inputStr.contains(items[i]))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
         if (mPreferences.getBlockMalwareEnabled()) {
@@ -182,9 +205,23 @@ public class LightningWebClient extends WebViewClient {
                 view.loadUrl("file:///android_asset/warn.html");
             }
         }
+
+        if(mPreferences.getSiteBlockChoice() == 2){
+            Log.d(TAG, "Yes1");
+            if(mPreferences.getSiteBlockString("") != "" && mPreferences.getSiteBlockString("") != null){
+                Log.d(TAG, "Yes2");
+                String arrayOfURLs = mPreferences.getSiteBlockString("");
+                String[] strgs = arrayOfURLs.split("   ");
+                if(stringContainsItemFromList(url, strgs)){
+                    Log.d(TAG, "Yes3");
+                    view.loadUrl("file:///android_asset/block.html");
+                }
+            }
+        }
         if(url=="sc:about" | url.endsWith("sc%3Aabout") && !url.contains("sc%3Aabout ")){
             view.loadUrl("file:///android_asset/about.html");
         }
+
         mLightningView.getTitleInfo().setFavicon(null);
         if (mLightningView.isShown()) {
             mUIController.updateUrl(url, true);
@@ -271,9 +308,10 @@ public class LightningWebClient extends WebViewClient {
         if (error.hasError(SslError.SSL_EXPIRED)) {
             errorCodeMessageCodes.add(R.string.message_certificate_expired);
         }
-        if (error.hasError(SslError.SSL_IDMISMATCH)) {
-            errorCodeMessageCodes.add(R.string.message_certificate_domain_mismatch);
-        }
+        //causes issues
+        //if (error.hasError(SslError.SSL_IDMISMATCH)) {
+         //   errorCodeMessageCodes.add(R.string.message_certificate_domain_mismatch);
+        //}
         if (error.hasError(SslError.SSL_NOTYETVALID)) {
             errorCodeMessageCodes.add(R.string.message_certificate_not_yet_valid);
         }

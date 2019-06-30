@@ -35,6 +35,17 @@
                 android:value="SELF"/>
         </intent>
     </header>
+    <header
+        android:summary="@string/faq_description"
+        android:title="@string/faq">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://files.cookiegames.co.uk/files/faq.html">
+            <extra
+                android:name="SOURCE"
+                android:value="SELF"/>
+        </intent>
+    </header>
    <!-- <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.DebugSettingsFragment"
         android:title="@string/debug_title"/> -->
