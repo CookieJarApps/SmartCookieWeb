@@ -150,8 +150,13 @@ public class LightningWebClient extends WebViewClient {
         if(mPreferences.getSiteBlockChoice() == 1){
             if(mPreferences.getSiteBlockString("") != "" && mPreferences.getSiteBlockString("") != null){
                 if(mPreferences.getSiteBlockString("").contains(url)){
-                    ByteArrayInputStream EMPTY = new ByteArrayInputStream("Site blocked in settings.".getBytes());
-                    return new WebResourceResponse("text/plain", "utf-8", EMPTY);
+                    if(url.contains("file:///android_asset")){
+
+                    }
+                    else {
+                        ByteArrayInputStream EMPTY = new ByteArrayInputStream("Site blocked in settings.".getBytes());
+                        return new WebResourceResponse("text/plain", "utf-8", EMPTY);
+                    }
                 }
             }
         }
@@ -213,8 +218,13 @@ public class LightningWebClient extends WebViewClient {
                 String arrayOfURLs = mPreferences.getSiteBlockString("");
                 String[] strgs = arrayOfURLs.split("   ");
                 if(stringContainsItemFromList(url, strgs)){
-                    Log.d(TAG, "Yes3");
-                    view.loadUrl("file:///android_asset/block.html");
+                    if(url.contains("file:///android_asset")){
+                        return;
+                    }
+                    else {
+                        Log.d(TAG, "Yes3");
+                        view.loadUrl("file:///android_asset/block.html");
+                    }
                 }
             }
         }

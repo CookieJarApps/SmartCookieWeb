@@ -26,11 +26,11 @@ ext {
     //minSdkVersion = 22
     //minSdkVersionDev = 22
     //minSdkVersionMain = 15
-    targetSdkVersion = 26
+    targetSdkVersion = 28
     buildToolsVersion = '27.0.3'
 
-    versionNameMain = '4.5.0'
-    versionNameDev = '4.5.0'
-    versionCode_dev = 33
-    versionCode_main = 33
+    versionNameMain = '4.5.1'
+    versionNameDev = '4.5.1'
+    versionCode_dev = 34
+    versionCode_main = 34
 }

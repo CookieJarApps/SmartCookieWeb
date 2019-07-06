@@ -103,7 +103,7 @@
     <string name="action_manual">Manual</string>
     <string name="action_auto">Auto</string>
     <string name="action_follow_me">Contact me</string>
-    <string name="url_insta" translatable="false">www.cookiegames.co.uk</string>
+    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Clear cache</string>
     <string name="message_cache_cleared">Cache cleared</string>
     <string name="message_import">Bookmarks were imported</string>
@@ -294,16 +294,16 @@
     <string name="slide_3_desc">The settings page is now opened by pressing the button in the top right corner.</string>
 
     <string name="slide_4_title">More Secure</string>
-    <string name="slide_4_desc">You can now set up a proxy or change your user agent by opening the privacy page in settings.</string>
+    <string name="slide_4_desc">You can now set up a proxy, block sites or change your user agent by opening the privacy page in settings.</string>
 
-    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again_desc">To see the welcome slider again, go to Settings -> Apps -> SmartCookieWeb -> Clear Data</string>
     <string name="play_again">Play Again</string>
     <string name="privacy">View Privacy Policy</string>
     <string name="privacy_info">Read the SmartCookieWeb privacy policy</string>
     <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
-    <string name="block_malware">Block Malicious Sites</string>
-    <string name="block_sites">Custom Site Block (beta)</string>
-    <string name="block_sites_title">Custom Site Block (seperate sites with 3 spaces)</string>
+    <string name="block_malware">Block malicious sites</string>
+    <string name="block_sites">Custom site block (beta)</string>
+    <string name="block_sites_title">Custom Site Block (separate sites with 3 spaces)</string>
     <string name="none">None</string>
-    <string name="block_info">Enter words to block in URLs (seperated with 3 spaces).</string>
+    <string name="block_info">Enter words to block in URLs (separated with 3 spaces).</string>
 </resources>

@@ -19,7 +19,7 @@
             android:title="@string/action_follow_me">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://cookiegames.co.uk">
+                android:data="https://cookiegames.co.uk/">
                 <!--extra
                     android:name="SOURCE"
                     android:value="SELF" /-->
