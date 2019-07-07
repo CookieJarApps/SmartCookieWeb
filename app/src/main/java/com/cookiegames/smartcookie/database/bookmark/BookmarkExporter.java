@@ -2,8 +2,8 @@ package com.cookiegames.smartcookie.database.bookmark;
 
 import android.content.Context;
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.annotation.WorkerThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.WorkerThread;
 import android.util.Log;
 
 import com.anthonycr.bonsai.Completable;

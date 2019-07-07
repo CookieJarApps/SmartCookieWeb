@@ -24,21 +24,21 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.support.annotation.ColorInt;
-import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.DrawerLayout.DrawerListener;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.graphics.Palette;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.ColorInt;
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.drawerlayout.widget.DrawerLayout.DrawerListener;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.palette.graphics.Palette;
+import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -127,7 +127,6 @@ import com.cookiegames.smartcookie.utils.Utils;
 import com.cookiegames.smartcookie.utils.WebUtils;
 import com.cookiegames.smartcookie.view.Handlers;
 import com.cookiegames.smartcookie.view.LightningView;
-import com.cookiegames.smartcookie.view.LightningWebClient;
 import com.cookiegames.smartcookie.view.SearchView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -612,23 +611,23 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
             maxWidth = Utils.dpToPx(300);
         }
         if (width > maxWidth) {
-            DrawerLayout.LayoutParams params = (android.support.v4.widget.DrawerLayout.LayoutParams) mDrawerLeft
+            DrawerLayout.LayoutParams params = (DrawerLayout.LayoutParams) mDrawerLeft
                 .getLayoutParams();
             params.width = maxWidth;
             mDrawerLeft.setLayoutParams(params);
             mDrawerLeft.requestLayout();
-            DrawerLayout.LayoutParams paramsRight = (android.support.v4.widget.DrawerLayout.LayoutParams) mDrawerRight
+            DrawerLayout.LayoutParams paramsRight = (DrawerLayout.LayoutParams) mDrawerRight
                 .getLayoutParams();
             paramsRight.width = maxWidth;
             mDrawerRight.setLayoutParams(paramsRight);
             mDrawerRight.requestLayout();
         } else {
-            DrawerLayout.LayoutParams params = (android.support.v4.widget.DrawerLayout.LayoutParams) mDrawerLeft
+            DrawerLayout.LayoutParams params = (DrawerLayout.LayoutParams) mDrawerLeft
                 .getLayoutParams();
             params.width = width;
             mDrawerLeft.setLayoutParams(params);
             mDrawerLeft.requestLayout();
-            DrawerLayout.LayoutParams paramsRight = (android.support.v4.widget.DrawerLayout.LayoutParams) mDrawerRight
+            DrawerLayout.LayoutParams paramsRight = (DrawerLayout.LayoutParams) mDrawerRight
                 .getLayoutParams();
             paramsRight.width = width;
             mDrawerRight.setLayoutParams(paramsRight);

@@ -15,8 +15,8 @@
  */
 package com.cookiegames.smartcookie.utils;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.Patterns;
 import android.webkit.URLUtil;
 

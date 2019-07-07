@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.webkit.URLUtil;
 

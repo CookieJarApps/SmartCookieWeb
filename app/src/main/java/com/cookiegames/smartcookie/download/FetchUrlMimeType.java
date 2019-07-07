@@ -7,7 +7,7 @@ import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.os.Environment;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 import android.webkit.URLUtil;

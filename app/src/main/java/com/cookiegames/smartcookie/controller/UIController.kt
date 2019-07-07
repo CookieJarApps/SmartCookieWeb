@@ -8,7 +8,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Message
-import android.support.annotation.ColorInt
+import androidx.annotation.ColorInt
 import android.view.View
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient.CustomViewCallback

@@ -1,6 +1,6 @@
 package com.cookiegames.smartcookie.utils;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * A collection of utils methods for

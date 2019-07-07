@@ -1,7 +1,7 @@
 package com.cookiegames.smartcookie.browser
 
 import android.content.DialogInterface
-import android.support.annotation.StringRes
+import androidx.annotation.StringRes
 import android.view.View
 
 interface BrowserView {

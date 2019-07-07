@@ -1,6 +1,6 @@
 package com.cookiegames.smartcookie.animation
 
-import android.support.annotation.DrawableRes
+import androidx.annotation.DrawableRes
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.Transformation

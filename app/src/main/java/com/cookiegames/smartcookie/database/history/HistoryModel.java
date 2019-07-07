@@ -1,7 +1,7 @@
 package com.cookiegames.smartcookie.database.history;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.anthonycr.bonsai.Completable;
 import com.anthonycr.bonsai.Single;

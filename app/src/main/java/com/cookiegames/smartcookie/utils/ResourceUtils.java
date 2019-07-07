@@ -1,8 +1,8 @@
 package com.cookiegames.smartcookie.utils;
 
 import android.content.Context;
-import android.support.annotation.DimenRes;
-import android.support.annotation.NonNull;
+import androidx.annotation.DimenRes;
+import androidx.annotation.NonNull;
 
 /**
  * Utils related to resources.

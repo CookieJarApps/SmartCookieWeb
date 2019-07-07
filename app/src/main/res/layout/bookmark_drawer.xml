@@ -43,7 +43,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"/>
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/right_drawer_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -98,7 +98,7 @@
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp"
                 android:paddingTop="4dp"
-                app:srcCompat="@drawable/ic_action_star"/>
+                app:srcCompat="@drawable/ic_action_bookmark"/>
         </FrameLayout>
 
         <FrameLayout

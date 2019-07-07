@@ -7,8 +7,8 @@
     <color name="white">#ffffff</color>
     <color name="gray_list_bg">#0d000000</color>
 
-    <color name="primary_color">#E0E0E0</color>
-    <color name="secondary_color">#66000000</color>
+    <color name="primary_color">#FFFFFF</color>
+    <color name="secondary_color">#663D3C3C</color>
     <color name="accent_color">#0073EF</color>
 
     <color name="drawer_background">#ffffff</color>

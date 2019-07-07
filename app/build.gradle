@@ -12,7 +12,10 @@ android {
         vectorDrawables.useSupportLibrary = true
         ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     sourceSets {
     }
 
@@ -80,15 +83,15 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     // support libraries
-    def supportLibVersion = '27.1.0'
-    implementation "com.android.support:palette-v7:$supportLibVersion"
-    implementation "com.android.support:appcompat-v7:$supportLibVersion"
-    implementation "com.android.support:design:$supportLibVersion"
-    implementation "com.android.support:recyclerview-v7:$supportLibVersion"
-    implementation "com.android.support:support-v4:$supportLibVersion"
+    def supportLibVersion = '28.0.0'
+    implementation 'androidx.palette:palette:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // html parsing for reading mode
-    implementation 'org.jsoup:jsoup:1.10.2'
+    implementation 'org.jsoup:jsoup:1.12.1'
 
     // dependency injection
     def daggerVersion = '2.11'
@@ -97,7 +100,7 @@ dependencies {
     compileOnly 'javax.annotation:jsr250-api:1.0'
 
     // view binding
-    def butterknifeVersion = '8.8.1'
+    def butterknifeVersion = '10.1.0'
     implementation "com.jakewharton:butterknife:$butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
 
@@ -119,17 +122,11 @@ dependencies {
     implementation 'com.anthonycr.progress:animated-progress:1.0'
 
     // memory leak analysis
-    def leakCanaryVersion = '1.5.1'
+    def leakCanaryVersion = '1.6.3'
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
 
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    // material intro (onboarding)
-    implementation 'com.github.chyrta:AndroidOnboarder:0.7'
-
-    // material about library
-    //implementation 'com.github.daniel-stoneuk:material-about-library:2.2.3-support26.1.0'
 }
 

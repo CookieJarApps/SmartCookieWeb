@@ -1,7 +1,7 @@
 package com.cookiegames.smartcookie.database.downloads;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.WorkerThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.WorkerThread;
 
 import com.anthonycr.bonsai.Completable;
 import com.anthonycr.bonsai.Single;

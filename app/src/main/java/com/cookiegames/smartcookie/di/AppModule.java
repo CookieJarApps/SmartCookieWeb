@@ -2,7 +2,7 @@ package com.cookiegames.smartcookie.di;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import net.i2p.android.ui.I2PAndroidHelper;
 

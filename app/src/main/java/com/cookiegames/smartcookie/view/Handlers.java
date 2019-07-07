@@ -2,7 +2,7 @@ package com.cookiegames.smartcookie.view;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Simple holder for useful handlers that

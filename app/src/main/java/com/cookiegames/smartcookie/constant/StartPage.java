@@ -4,7 +4,7 @@
 package com.cookiegames.smartcookie.constant;
 
 import android.app.Application;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.anthonycr.bonsai.Single;
 import com.anthonycr.bonsai.SingleAction;
@@ -50,7 +50,7 @@ public class StartPage {
         + "border-radius: 20px;}</style><body> <div class=\"outer\"><div class=\"middle\"><div class=\"inner\"><img class=\"smaller\" src=\"";
 
     private static final String MIDDLE = "\" ></br></br><form onsubmit=\"return search()\" class=\"search_bar\" autocomplete=\"off\">"
-        + "<input type=\"submit\" id=\"search_submit\" value=\"Search\" ><span><input class=\"search\" type=\"text\" value=\"\" id=\"search_input\" >"
+        + "<button type=\"submit\" id=\"search_submit\" value=\"Search\" ><img alt=\"\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDBWMHoiLz48cGF0aCBkPSJNMTUuNSAxNGgtLjc5bC0uMjgtLjI3YzEuMi0xLjQgMS44Mi0zLjMxIDEuNDgtNS4zNC0uNDctMi43OC0yLjc5LTUtNS41OS01LjM0LTQuMjMtLjUyLTcuNzkgMy4wNC03LjI3IDcuMjcuMzQgMi44IDIuNTYgNS4xMiA1LjM0IDUuNTkgMi4wMy4zNCAzLjk0LS4yOCA1LjM0LTEuNDhsLjI3LjI4di43OWw0LjI1IDQuMjVjLjQxLjQxIDEuMDguNDEgMS40OSAwIC40MS0uNDEuNDEtMS4wOCAwLTEuNDlMMTUuNSAxNHptLTYgMEM3LjAxIDE0IDUgMTEuOTkgNSA5LjVTNy4wMSA1IDkuNSA1IDE0IDcuMDEgMTQgOS41IDExLjk5IDE0IDkuNSAxNHoiLz48L3N2Zz4=\" /></button> <span><input class=\"search\" type=\"text\" value=\"\" id=\"search_input\" >"
         + "</span></form></br></br></div></div></div><script type=\"text/javascript\">function search(){if(document.getElementById(\"search_input\").value != \"\"){window.location.href = \"";
 
     private static final String END = "\" + document.getElementById(\"search_input\").value;document.getElementById(\"search_input\").value = \"\";}return false;}</script></body></html>";

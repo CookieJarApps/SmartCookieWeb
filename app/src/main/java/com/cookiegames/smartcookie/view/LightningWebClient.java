@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,10 +13,10 @@ import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
+import androidx.appcompat.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,16 +32,10 @@ import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -50,7 +43,6 @@ import javax.inject.Inject;
 
 import com.cookiegames.smartcookie.BrowserApp;
 import com.cookiegames.smartcookie.BuildConfig;
-import com.cookiegames.smartcookie.MainActivity;
 import com.cookiegames.smartcookie.R;
 import com.cookiegames.smartcookie.adblock.AdBlocker;
 import com.cookiegames.smartcookie.constant.Constants;
@@ -63,8 +55,6 @@ import com.cookiegames.smartcookie.utils.Preconditions;
 import com.cookiegames.smartcookie.utils.ProxyUtils;
 import com.cookiegames.smartcookie.utils.UrlUtils;
 import com.cookiegames.smartcookie.utils.Utils;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class LightningWebClient extends WebViewClient {
 

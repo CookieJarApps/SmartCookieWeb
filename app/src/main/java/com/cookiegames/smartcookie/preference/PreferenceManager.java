@@ -2,8 +2,8 @@ package com.cookiegames.smartcookie.preference;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -144,7 +144,7 @@ public class PreferenceManager {
     }
 
     public boolean getColorModeEnabled() {
-        return mPrefs.getBoolean(Name.ENABLE_COLOR_MODE, true);
+        return mPrefs.getBoolean(Name.ENABLE_COLOR_MODE, false);
     }
 
     public boolean getCookiesEnabled() {
@@ -301,7 +301,7 @@ public class PreferenceManager {
     }
 
     public boolean getDoNotTrackEnabled() {
-        return mPrefs.getBoolean(Name.DO_NOT_TRACK, false);
+        return mPrefs.getBoolean(Name.DO_NOT_TRACK, true);
     }
 
     public boolean getBlockMalwareEnabled() {
