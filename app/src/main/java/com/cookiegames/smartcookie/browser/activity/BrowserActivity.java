@@ -249,7 +249,7 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
         ActionBar actionBar = getSupportActionBar();
 
         //TODO make sure dark theme flag gets set correctly
-        mDarkTheme = mPreferences.getUseTheme() != 0 || isIncognito();
+        mDarkTheme = mPreferences.getUseTheme() != 0|| isIncognito();
         mIconColor = mDarkTheme ? ThemeUtils.getIconDarkThemeColor(this) : ThemeUtils.getIconLightThemeColor(this);
         mDisabledIconColor = mDarkTheme ? ContextCompat.getColor(this, R.color.icon_dark_theme_disabled) :
             ContextCompat.getColor(this, R.color.icon_light_theme_disabled);

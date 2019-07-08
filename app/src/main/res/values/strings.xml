@@ -215,6 +215,9 @@
     <string name="theme">App theme</string>
     <string name="light_theme">Light theme</string>
     <string name="black_theme">Black theme</string>
+    <string name="blue_theme">Blue theme</string>
+    <string name="yellow_theme">Yellow theme</string>
+    <string name="green_theme">Green theme</string>
     <string name="folder">Folder name</string>
     <string name="action_folder">Folder</string>
     <string name="action_rename">Rename</string>

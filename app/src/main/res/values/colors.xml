@@ -10,6 +10,10 @@
     <color name="primary_color">#FFFFFF</color>
     <color name="secondary_color">#663D3C3C</color>
     <color name="accent_color">#0073EF</color>
+    
+    <!--<color name="blue_color">#0073EF</color>
+    <color name="yellow_color">#FFE135</color>
+    <color name="green_color">#4cad4c</color>-->
 
     <color name="drawer_background">#ffffff</color>
     <color name="drawer_background_dark">#424242</color>
@@ -30,7 +34,7 @@
 
     <color name="transparent">#00000000</color>
 
-    <color name="icon_light_theme">#8A000000</color>
+    <color name="icon_light_theme">#3c4043</color>
     <color name="icon_dark_theme">#FFFFFFFF</color>
     <color name="icon_light_theme_disabled">#40000000</color>
     <color name="icon_dark_theme_disabled">#8AFFFFFF</color>
