@@ -31,7 +31,6 @@ import com.cookiegames.smartcookie.MainActivity;
 import com.cookiegames.smartcookie.R;
 import com.cookiegames.smartcookie.constant.Constants;
 import com.cookiegames.smartcookie.database.HistoryItem;
-import com.squareup.haha.perflib.Main;
 
 /**
  * The disk backed bookmark database.

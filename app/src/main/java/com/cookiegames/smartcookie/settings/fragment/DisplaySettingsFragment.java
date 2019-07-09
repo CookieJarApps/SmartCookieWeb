@@ -26,7 +26,6 @@ import android.widget.TextView;
 import com.cookiegames.smartcookie.MainActivity;
 import com.cookiegames.smartcookie.R;
 import com.cookiegames.smartcookie.dialog.BrowserDialog;
-import com.squareup.haha.perflib.Main;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
