@@ -60,6 +60,9 @@ public class PreferenceManager {
         static final String BLOCK_MALWARE = "blockMalware";
         static final String BLOCK_SITES = "blockSites";
 
+        static final String START_THEME = "theme_start";
+        static final String PAGE_THEME = "theme_page";
+
         static final String USE_PROXY = "useProxy";
         static final String PROXY_CHOICE = "proxyChoice";
         static final String USE_PROXY_HOST = "useProxyHost";
@@ -113,6 +116,14 @@ public class PreferenceManager {
 
     public boolean getBlockImagesEnabled() {
         return mPrefs.getBoolean(Name.BLOCK_IMAGES, false);
+    }
+
+    public boolean getStartPageThemeEnabled() {
+        return mPrefs.getBoolean(Name.START_THEME, true);
+    }
+
+    public boolean getPageThemeEnabled() {
+        return mPrefs.getBoolean(Name.PAGE_THEME, false);
     }
 
     public boolean getBlockThirdPartyCookiesEnabled() {
@@ -338,6 +349,14 @@ public class PreferenceManager {
 
     public void setDoNotTrackEnabled(boolean doNotTrack) {
         putBoolean(Name.DO_NOT_TRACK, doNotTrack);
+    }
+
+    public void setStartPageThemeEnabled(boolean startPageThemeEnabled) {
+        putBoolean(Name.START_THEME, startPageThemeEnabled);
+    }
+
+    public void setPageThemeEnabled(boolean pageThemeEnabled) {
+        putBoolean(Name.PAGE_THEME, pageThemeEnabled);
     }
 
     public void setBlockMalwareEnabled(boolean blockMalware) {

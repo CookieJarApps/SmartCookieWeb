@@ -309,4 +309,6 @@
     <string name="block_sites_title">Custom Site Block (separate sites with 3 spaces)</string>
     <string name="none">None</string>
     <string name="block_info">Enter words to block in URLs (separated with 3 spaces).</string>
+    <string name="startpage">Apply theme to startpage</string>
+    <string name="allpage">Apply theme to web pages (beta)</string>
 </resources>

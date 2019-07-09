@@ -6,21 +6,29 @@ package com.cookiegames.smartcookie.settings.fragment;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.cookiegames.smartcookie.MainActivity;
 import com.cookiegames.smartcookie.R;
 import com.cookiegames.smartcookie.dialog.BrowserDialog;
+import com.squareup.haha.perflib.Main;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class DisplaySettingsFragment extends LightningPreferenceFragment implements Preference.OnPreferenceClickListener, Preference.OnPreferenceChangeListener {
 
@@ -34,6 +42,8 @@ public class DisplaySettingsFragment extends LightningPreferenceFragment impleme
     private static final String SETTINGS_DRAWERTABS = "cb_drawertabs";
     private static final String SETTINGS_SWAPTABS = "cb_swapdrawers";
     private static final String SETTINGS_BLACK_STATUS = "black_status_bar";
+    private static final String SETTINGS_STARTTHEME = "theme_startpage";
+    private static final String SETTINGS_PAGETHEME = "theme_pages";
 
     private static final float XXLARGE = 30.0f;
     private static final float XLARGE = 26.0f;
@@ -73,6 +83,8 @@ public class DisplaySettingsFragment extends LightningPreferenceFragment impleme
         CheckBoxPreference cbBlackStatus = (CheckBoxPreference) findPreference(SETTINGS_BLACK_STATUS);
         CheckBoxPreference cbDrawerTabs = (CheckBoxPreference) findPreference(SETTINGS_DRAWERTABS);
         CheckBoxPreference cbSwapTabs = (CheckBoxPreference) findPreference(SETTINGS_SWAPTABS);
+        CheckBoxPreference cbStartTheme = (CheckBoxPreference) findPreference(SETTINGS_STARTTHEME);
+        CheckBoxPreference cbPageTheme = (CheckBoxPreference) findPreference(SETTINGS_PAGETHEME);
 
         mTheme.setOnPreferenceClickListener(this);
         textSize.setOnPreferenceClickListener(this);
@@ -84,6 +96,8 @@ public class DisplaySettingsFragment extends LightningPreferenceFragment impleme
         cbBlackStatus.setOnPreferenceChangeListener(this);
         cbDrawerTabs.setOnPreferenceChangeListener(this);
         cbSwapTabs.setOnPreferenceChangeListener(this);
+        cbStartTheme.setOnPreferenceChangeListener(this);
+        //cbPageTheme.setOnPreferenceChangeListener(this);
 
         cbStatus.setChecked(mPreferenceManager.getHideStatusBarEnabled());
         cbFullScreen.setChecked(mPreferenceManager.getFullScreenEnabled());
@@ -93,6 +107,9 @@ public class DisplaySettingsFragment extends LightningPreferenceFragment impleme
         cbBlackStatus.setChecked(mPreferenceManager.getUseBlackStatusBar());
         cbDrawerTabs.setChecked(mPreferenceManager.getShowTabsInDrawer(true));
         cbSwapTabs.setChecked(mPreferenceManager.getBookmarksAndTabsSwapped());
+        cbStartTheme.setChecked(mPreferenceManager.getStartPageThemeEnabled());
+        //cbPageTheme.setChecked(mPreferenceManager.getPageThemeEnabled());
+        cbBlackStatus.setChecked(mPreferenceManager.getUseBlackStatusBar());
 
         mTheme.setSummary(mThemeOptions[mPreferenceManager.getUseTheme()]);
     }
@@ -142,6 +159,12 @@ public class DisplaySettingsFragment extends LightningPreferenceFragment impleme
                 return true;
             case SETTINGS_BLACK_STATUS:
                 mPreferenceManager.setUseBlackStatusBar(checked);
+                return true;
+            case SETTINGS_STARTTHEME:
+                mPreferenceManager.setStartPageThemeEnabled(checked);
+                return true;
+            case SETTINGS_PAGETHEME:
+                mPreferenceManager.setPageThemeEnabled(checked);
                 return true;
             default:
                 return false;
@@ -217,6 +240,8 @@ public class DisplaySettingsFragment extends LightningPreferenceFragment impleme
                 public void onClick(DialogInterface dialog, int which) {
                     if (mCurrentTheme != mPreferenceManager.getUseTheme()) {
                         getActivity().onBackPressed();
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
                     }
                 }
             });

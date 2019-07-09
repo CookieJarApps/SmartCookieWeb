@@ -293,4 +293,7 @@
     <string name="privacy">Gizlilik Politikasını Görüntüle</string>
     <string name="privacy_info">Smartcookieweb Gizlilik Politikasını Okuyun</string>
     <string name="block_malware">Block Malicious Sites</string>
+    <string name="block_sites">Özel site bloğu (beta)</string>
+    <string name="block_sites_title">"Özel Site Bloğu (3 boşluklu ayrı siteler)  "</string>
+    <string name="block_info">"URL’lerde engellenecek kelimeleri girin (3 boşlukla ayrılmış).  "</string>
 </resources>

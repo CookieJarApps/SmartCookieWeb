@@ -2,6 +2,7 @@ package com.cookiegames.smartcookie.database.bookmark;
 
 import android.app.Application;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.anthonycr.bonsai.Completable;
 import com.anthonycr.bonsai.CompletableAction;
@@ -25,9 +27,11 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import com.cookiegames.smartcookie.MainActivity;
 import com.cookiegames.smartcookie.R;
 import com.cookiegames.smartcookie.constant.Constants;
 import com.cookiegames.smartcookie.database.HistoryItem;
+import com.squareup.haha.perflib.Main;
 
 /**
  * The disk backed bookmark database.
@@ -302,6 +306,7 @@ public class BookmarkDatabase extends SQLiteOpenHelper implements BookmarkModel 
 
                 subscriber.onItem(id != -1);
                 subscriber.onComplete();
+
             }
         });
     }

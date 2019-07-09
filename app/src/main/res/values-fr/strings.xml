@@ -294,4 +294,8 @@
     <string name="privacy">Voir la politique de confidentialité</string>
     <string name="privacy_info">Lire la politique de confidentialité de SmartCookieWeb</string>
     <string name="block_malware">Block Malicious Sites</string>
+    <string name="block_sites">Bloc de site personnalisé (beta)</string>
+    <string name="block_sites_title">Bloc de site personnalisé (sites séparés avec 3 espaces)</string>
+    <string name="block_info">"Entrez les mots à bloquer dans les URL (séparés par 3 espaces).  "</string>
+    <string name="allpage">Appliquer le thème aux pages Web (version bêta)</string>
 </resources>

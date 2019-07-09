@@ -295,4 +295,7 @@
     <string name="privacy">Visualizza l\'informativa sulla privacy</string>
     <string name="privacy_info">Leggi l\'informativa sulla privacy di SmartCookieWeb</string>
     <string name="block_malware">Block Malicious Sites</string>
+    <string name="block_sites">"Blocco sito personalizzato (beta)  "</string>
+    <string name="block_sites_title">"Blocco sito personalizzato (siti separati con 3 spazi)  "</string>
+    <string name="block_info">Inserisci le parole per bloccare gli URL (separati da 3 spazi).</string>
 </resources>

@@ -174,6 +174,8 @@ public class LightningWebClient extends WebViewClient {
             mLightningView.getInvertePage()) {
             view.evaluateJavascript(Constants.JAVASCRIPT_INVERT_PAGE, null);
         }
+
+
         mUIController.tabChanged(mLightningView);
     }
 

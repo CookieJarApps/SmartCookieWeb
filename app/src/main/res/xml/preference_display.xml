@@ -37,10 +37,18 @@
             android:key="text_reflow"
             android:title="@string/reflow"/>
         <Preference
-            android:key="app_theme"
-            android:title="@string/theme"/>
-        <Preference
             android:key="text_size"
             android:title="@string/title_text_size"/>
+        <Preference
+            android:key="app_theme"
+            android:title="@string/theme"/>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="theme_startpage"
+            android:title="@string/startpage"/>
+       <!-- <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="theme_pages"
+            android:title="@string/allpage"/> -->
     </PreferenceCategory>
 </PreferenceScreen>

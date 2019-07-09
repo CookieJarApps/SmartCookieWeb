@@ -28,6 +28,8 @@
     <color name="divider_dark">#1FFFFFFF</color>
     <color name="divider_light">#1F000000</color>
 
+    <color name="bookmark_dark"></color>
+    <color name="bookmark_light"></color>
 
     <color name="selected_dark">#0FFFFFFF</color>
     <color name="selected_light">#0F000000</color>

@@ -38,7 +38,7 @@ import com.cookiegames.smartcookie.utils.Preconditions;
 import com.cookiegames.smartcookie.utils.UrlUtils;
 
 /**
- * TODO Rename this class it doesn't build dialogs only for bookmarks
+ *
  * <p/>
  * Created by Stefano Pacifici on 02/09/15, based on Anthony C. Restaino's code.
  */
