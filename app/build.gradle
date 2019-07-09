@@ -125,6 +125,7 @@ dependencies {
     def leakCanaryVersion = '1.6.3'
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-haha:2.0-alpha-1"
 
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
