@@ -18,10 +18,6 @@
             android:defaultValue="false"
             android:key="cb_images"
             android:title="@string/block" />
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="block_malware"
-            android:title="@string/block_malware"/>
         <Preference
             android:key="sites"
             android:title="@string/block_sites" />

@@ -55,7 +55,7 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
     private static final String SETTINGS_HOME = "home";
     private static final String SETTINGS_SEARCHENGINE = "search";
     private static final String SETTINGS_SUGGESTIONS = "suggestions_choice";
-    private static final String SETTINGS_BLOCKMALWARE = "block_malware";
+
 
     private Activity mActivity;
     private static final int API = android.os.Build.VERSION.SDK_INT;
@@ -95,7 +95,7 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
         CheckBoxPreference cbImages = (CheckBoxPreference) findPreference(SETTINGS_IMAGES);
         CheckBoxPreference cbJsScript = (CheckBoxPreference) findPreference(SETTINGS_JAVASCRIPT);
         CheckBoxPreference cbColorMode = (CheckBoxPreference) findPreference(SETTINGS_COLORMODE);
-        CheckBoxPreference cbBlockMalware = (CheckBoxPreference) findPreference(SETTINGS_BLOCKMALWARE);
+
 
         proxy.setOnPreferenceClickListener(this);
         useragent.setOnPreferenceClickListener(this);
@@ -108,7 +108,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
         cbAds.setOnPreferenceChangeListener(this);
         cbImages.setOnPreferenceChangeListener(this);
         cbJsScript.setOnPreferenceChangeListener(this);
-        cbBlockMalware.setOnPreferenceChangeListener(this);
         mAgentChoice = mPreferenceManager.getUserAgentChoice();
         mBlockChoice = mPreferenceManager.getSiteBlockChoice();
         mHomepage = mPreferenceManager.getHomepage();
@@ -185,10 +184,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
 
         cbAds.setEnabled(BuildConfig.FULL_VERSION);
 
-        if (!BuildConfig.FULL_VERSION) {
-            //cbAds.setSummary(R.string.upsell_plus_version);
-        }
-
         if (API < Build.VERSION_CODES.KITKAT) {
             cbFlash.setEnabled(true);
         } else {
@@ -200,7 +195,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
         cbJsScript.setChecked(enableJSBool);
         cbFlash.setChecked(flashNum > 0);
         cbAds.setChecked(BuildConfig.FULL_VERSION && mPreferenceManager.getAdBlockEnabled());
-        cbBlockMalware.setChecked(mPreferenceManager.getBlockMalwareEnabled());
     }
 
     private void showUrlPicker(@NonNull final CustomSearch customSearch) {
@@ -705,9 +699,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
                 return true;
             case SETTINGS_JAVASCRIPT:
                 mPreferenceManager.setJavaScriptEnabled(checked);
-                return true;
-            case SETTINGS_BLOCKMALWARE:
-                mPreferenceManager.setBlockMalwareEnabled((Boolean) newValue);
                 return true;
             case SETTINGS_COLORMODE:
                 mPreferenceManager.setColorModeEnabled(checked);

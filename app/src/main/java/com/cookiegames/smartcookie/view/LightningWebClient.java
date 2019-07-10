@@ -34,10 +34,16 @@ import android.widget.TextView;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -66,6 +72,7 @@ public class LightningWebClient extends WebViewClient {
     @NonNull private final IntentUtils mIntentUtils;
     private String urlName;
     private int adsBlocked;
+    private String newHTTPS;
     SharedPreferences sharedPref;
 
     @Inject ProxyUtils mProxyUtils;
@@ -85,6 +92,24 @@ public class LightningWebClient extends WebViewClient {
         mMalwareBlock = chooseMalwareBlocker();
         mIntentUtils = new IntentUtils(activity);
     }
+
+    public static boolean exists(String URLName) {
+
+        try {
+            HttpURLConnection.setFollowRedirects(false);
+            // note : you may also need
+            // HttpURLConnection.setInstanceFollowRedirects(false)
+            HttpURLConnection con = (HttpURLConnection) new URL(URLName)
+                    .openConnection();
+            con.setRequestMethod("HEAD");
+            return (con.getResponseCode() == HttpURLConnection.HTTP_OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 
     public void updatePreferences() {
             mAdBlock = chooseAdBlocker();
@@ -151,6 +176,28 @@ public class LightningWebClient extends WebViewClient {
             }
         }
 
+        if(mPreferences.getForceHTTPSenabled() || mPreferences.getPreferHTTPSenabled()){
+            if(!url.contains("file:///") && url != ""){
+                if(url.contains("https://")){
+                    //Secure!
+                }
+                else{
+                    url = url.replace("http://", "https://");
+                    if(exists(url)){
+                        //Supports HTTPS, but SSL isn't used, so redirect to HTTPS
+                    }
+                    else{
+                        //Dosen't support HTTPS :(
+                        if(mPreferences.getForceHTTPSenabled()){
+                            //Stop site loading while error page loads
+                            ByteArrayInputStream EMPTY = new ByteArrayInputStream("".getBytes());
+                            return new WebResourceResponse("text/plain", "utf-8", EMPTY);
+                        }
+                    }
+                }
+            }
+        }
+
         return null;
 
     }
@@ -175,6 +222,33 @@ public class LightningWebClient extends WebViewClient {
             view.evaluateJavascript(Constants.JAVASCRIPT_INVERT_PAGE, null);
         }
 
+        if(mPreferences.getForceHTTPSenabled() || mPreferences.getPreferHTTPSenabled()){
+            if(!url.contains("file:///") && url != ""){
+                if(url.contains("https://")){
+                    //Secure!
+                }
+                else{
+                    url = url.replace("http://", "https://");
+                    if(exists(url)){
+                        //Supports HTTPS, but SSL isn't used, so redirect to HTTPS
+                        try {
+                            TimeUnit.MILLISECONDS.sleep(500);
+                        }
+                        catch(InterruptedException ex)
+                        {
+                            Thread.currentThread().interrupt();
+                        }
+                        view.loadUrl(url);
+                    }
+                    else{
+                        //Dosen't support HTTPS :(
+                        if(mPreferences.getForceHTTPSenabled()){
+                            view.loadUrl("file:///android_asset/http.html");
+                        }
+                    }
+                }
+            }
+        }
 
         mUIController.tabChanged(mLightningView);
     }

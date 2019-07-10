@@ -186,7 +186,7 @@
     <string name="settings_general_explain">Adblocker, Search engine, Homepage...</string>
     <string name="settings_display">Display Settings</string>
     <string name="settings_display_explain">Full screen mode, Text size, etc...</string>
-    <string name="settings_privacy">Privacy Settings</string>
+    <string name="settings_privacy">Privacy and Security Settings</string>
     <string name="settings_privacy_explain">Cache, cookies, history, etc...</string>
     <string name="settings_about">About</string>
     <string name="settings_about_explain">Details about version, author and license.</string>
@@ -311,4 +311,8 @@
     <string name="block_info">Enter words to block in URLs (separated with 3 spaces).</string>
     <string name="startpage">Apply theme to startpage</string>
     <string name="allpage">Apply theme to web pages (beta)</string>
+    <string name="forcehttps">Block non-HTTPS sites</string>
+    <string name="preferhttps">Prefer HTTPS site versions</string>
+    <string name="forcehttpsdesc">Only load HTTPS sites</string>
+    <string name="preferhttpsdesc">Always use HTTPS on supported sites (can cause issues)</string>
 </resources>

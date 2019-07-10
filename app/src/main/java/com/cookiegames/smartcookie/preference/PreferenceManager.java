@@ -59,6 +59,8 @@ public class PreferenceManager {
         static final String BLACK_STATUS_BAR = "blackStatusBar";
         static final String BLOCK_MALWARE = "blockMalware";
         static final String BLOCK_SITES = "blockSites";
+        static final String PREFER_HTTPS = "preferHTTPS";
+        static final String FORCE_HTTPS = "forceHTTPS";
 
         static final String START_THEME = "theme_start";
         static final String PAGE_THEME = "theme_page";
@@ -112,6 +114,14 @@ public class PreferenceManager {
 
     public boolean getAdBlockEnabled() {
         return mPrefs.getBoolean(Name.BLOCK_ADS, true);
+    }
+
+    public boolean getForceHTTPSenabled() {
+        return mPrefs.getBoolean(Name.FORCE_HTTPS, false);
+    }
+
+    public boolean getPreferHTTPSenabled() {
+        return mPrefs.getBoolean(Name.PREFER_HTTPS, false);
     }
 
     public boolean getBlockImagesEnabled() {
@@ -373,6 +383,14 @@ public class PreferenceManager {
 
     public void setAdBlockEnabled(boolean enable) {
         putBoolean(Name.BLOCK_ADS, enable);
+    }
+
+    public void setPreferHTTPSenabled(boolean enable) {
+        putBoolean(Name.PREFER_HTTPS, enable);
+    }
+
+    public void setForceHTTPSenabled(boolean enable) {
+        putBoolean(Name.FORCE_HTTPS, enable);
     }
 
     public void setBlockImagesEnabled(boolean enable) {

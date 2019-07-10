@@ -45,6 +45,9 @@ public class PrivacySettingsFragment extends LightningPreferenceFragment impleme
     private static final String SETTINGS_WEBSTORAGEEXIT = "clear_webstorage_exit";
     private static final String SETTINGS_DONOTTRACK = "do_not_track";
     private static final String SETTINGS_IDENTIFYINGHEADERS = "remove_identifying_headers";
+    private static final String SETTINGS_BLOCKMALWARE = "block_malware";
+    private static final String SETTINGS_FORCEHTTPS = "force_https";
+    private static final String SETTINGS_PREFERHTTPS = "prefer_https";
 
     private Activity mActivity;
 
@@ -77,6 +80,9 @@ public class PrivacySettingsFragment extends LightningPreferenceFragment impleme
         CheckBoxPreference cbwebstorageexit = (CheckBoxPreference) findPreference(SETTINGS_WEBSTORAGEEXIT);
         CheckBoxPreference cbDoNotTrack = (CheckBoxPreference) findPreference(SETTINGS_DONOTTRACK);
         CheckBoxPreference cbIdentifyingHeaders = (CheckBoxPreference) findPreference(SETTINGS_IDENTIFYINGHEADERS);
+        CheckBoxPreference cbBlockMalware = (CheckBoxPreference) findPreference(SETTINGS_BLOCKMALWARE);
+        CheckBoxPreference cbPreferHTTPS = (CheckBoxPreference) findPreference(SETTINGS_PREFERHTTPS);
+        CheckBoxPreference cbForceHTTPS = (CheckBoxPreference) findPreference(SETTINGS_FORCEHTTPS);
 
         clearcache.setOnPreferenceClickListener(this);
         clearhistory.setOnPreferenceClickListener(this);
@@ -92,8 +98,12 @@ public class PrivacySettingsFragment extends LightningPreferenceFragment impleme
         cbwebstorageexit.setOnPreferenceChangeListener(this);
         cbDoNotTrack.setOnPreferenceChangeListener(this);
         cbIdentifyingHeaders.setOnPreferenceChangeListener(this);
+        cbBlockMalware.setOnPreferenceChangeListener(this);
+        cbForceHTTPS.setOnPreferenceChangeListener(this);
+        cbPreferHTTPS.setOnPreferenceChangeListener(this);
 
         cblocation.setChecked(mPreferenceManager.getLocationEnabled());
+        cbBlockMalware.setChecked(mPreferenceManager.getBlockMalwareEnabled());
         cbsavepasswords.setChecked(mPreferenceManager.getSavePasswordsEnabled());
         cbcacheexit.setChecked(mPreferenceManager.getClearCacheExit());
         cbhistoryexit.setChecked(mPreferenceManager.getClearHistoryExitEnabled());
@@ -102,6 +112,8 @@ public class PrivacySettingsFragment extends LightningPreferenceFragment impleme
         cbwebstorageexit.setChecked(mPreferenceManager.getClearWebStorageExitEnabled());
         cbDoNotTrack.setChecked(mPreferenceManager.getDoNotTrackEnabled() && Utils.doesSupportHeaders());
         cbIdentifyingHeaders.setChecked(mPreferenceManager.getRemoveIdentifyingHeadersEnabled() && Utils.doesSupportHeaders());
+        cbForceHTTPS.setChecked(mPreferenceManager.getForceHTTPSenabled());
+        cbPreferHTTPS.setChecked(mPreferenceManager.getPreferHTTPSenabled());
 
         cbDoNotTrack.setEnabled(Utils.doesSupportHeaders());
         cbIdentifyingHeaders.setEnabled(Utils.doesSupportHeaders());
@@ -250,6 +262,15 @@ public class PrivacySettingsFragment extends LightningPreferenceFragment impleme
                 return true;
             case SETTINGS_IDENTIFYINGHEADERS:
                 mPreferenceManager.setRemoveIdentifyingHeadersEnabled((Boolean) newValue);
+                return true;
+            case SETTINGS_BLOCKMALWARE:
+                mPreferenceManager.setBlockMalwareEnabled((Boolean) newValue);
+                return true;
+            case SETTINGS_PREFERHTTPS:
+                mPreferenceManager.setPreferHTTPSenabled((Boolean) newValue);
+                return true;
+            case SETTINGS_FORCEHTTPS:
+                mPreferenceManager.setForceHTTPSenabled((Boolean) newValue);
                 return true;
             default:
                 return false;
