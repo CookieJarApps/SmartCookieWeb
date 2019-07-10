@@ -899,7 +899,7 @@ public class LightningView {
      */
     public synchronized void goBack() {
         if (mWebView != null) {
-            if(getUrl().contains("file:///android_asset/http.html")){
+            if(getUrl().contains("file:///android_asset/http.html") || getUrl().contains("file:///android_asset/warn.html") || getUrl().contains("file:///android_asset/error.html")){
                 mWebView.goBack();
                 mWebView.goBack();
             }
