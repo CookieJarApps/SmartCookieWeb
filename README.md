@@ -28,9 +28,11 @@ A secure, open source web browser for Android.
 - [x] Malware Blocking
 - [x] Improved Ad Blocker
 - [x] Custom Error Page
+- [x] HTTPS Everywhere
+- [x] New UI
 - [ ] Extensions
-- [ ] Custom Browser Engine/WebView Implementation
-- [ ] New UI
+- [ ] Custom Themes
+
  
 # License
 SmartCookieWeb uses the Mozilla Public License 2.0
