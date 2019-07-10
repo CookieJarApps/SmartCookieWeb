@@ -1,7 +1,7 @@
 # SmartCookieWeb
 ![Rating](https://img.shields.io/static/v1.svg?label=Rating&message=4/5&color=green)
 ![License](https://img.shields.io/static/v1.svg?label=License&message=MPLv2.0&color=brightgreen)
-![Downloads](https://img.shields.io/static/v1.svg?label=Downloads&message=7,000&color=brightgreen) 
+![Downloads](https://img.shields.io/static/v1.svg?label=Downloads&message=10,000&color=brightgreen) 
 [![Build Status](https://travis-ci.org/CookieGamesOfficial/SmartCookieWeb.svg?branch=master)](https://travis-ci.org/CookieGamesOfficial/SmartCookieWeb) 
 [![GitHub stars](https://img.shields.io/github/stars/CookieGamesOfficial/SmartCookieWeb.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/CookieGamesOfficial/SmartCookieWeb)
 
@@ -28,9 +28,11 @@ A secure, open source web browser for Android.
 - [x] Malware Blocking
 - [x] Improved Ad Blocker
 - [x] Custom Error Page
+- [x] HTTPS Everywhere
+- [x] New UI
 - [ ] Extensions
-- [ ] Custom Browser Engine/WebView Implementation
-- [ ] New UI
+- [ ] Custom Themes
+
  
 # License
 SmartCookieWeb uses the Mozilla Public License 2.0
