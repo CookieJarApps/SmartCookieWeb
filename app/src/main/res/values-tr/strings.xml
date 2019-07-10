@@ -296,4 +296,9 @@
     <string name="block_sites">Özel site bloğu (beta)</string>
     <string name="block_sites_title">"Özel Site Bloğu (3 boşluklu ayrı siteler)  "</string>
     <string name="block_info">"URL’lerde engellenecek kelimeleri girin (3 boşlukla ayrılmış).  "</string>
+    <string name="forcehttps">HTTPS olmayan siteleri engelleyin</string>
+    <string name="forcehttpsdesc">"Sadece HTTPS sitelerini yükle  "</string>
+    <string name="preferhttps">"HTTPS site sürümlerini tercih et  "</string>
+    <string name="preferhttpsdesc">"Desteklenen sitelerde her zaman HTTPS kullanın (sorunlara neden olabilir)  "</string>
+    <string name="startpage">"Temayı ana sayfaya uygula  "</string>
 </resources>

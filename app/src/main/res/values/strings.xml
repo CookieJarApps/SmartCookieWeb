@@ -309,10 +309,10 @@
     <string name="block_sites_title">Custom Site Block (separate sites with 3 spaces)</string>
     <string name="none">None</string>
     <string name="block_info">Enter words to block in URLs (separated with 3 spaces).</string>
-    <string name="startpage">Apply theme to startpage</string>
+    <string name="startpage">Apply theme to homepage</string>
     <string name="allpage">Apply theme to web pages (beta)</string>
     <string name="forcehttps">Block non-HTTPS sites</string>
     <string name="preferhttps">Prefer HTTPS site versions</string>
     <string name="forcehttpsdesc">Only load HTTPS sites</string>
-    <string name="preferhttpsdesc">Always use HTTPS on supported sites (can cause issues)</string>
+    <string name="preferhttpsdesc">Always use HTTPS on supported sites (may cause issues)</string>
 </resources>

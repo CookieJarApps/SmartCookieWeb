@@ -298,4 +298,9 @@
     <string name="block_sites_title">Bloc de site personnalisé (sites séparés avec 3 espaces)</string>
     <string name="block_info">"Entrez les mots à bloquer dans les URL (séparés par 3 espaces).  "</string>
     <string name="allpage">Appliquer le thème aux pages Web (version bêta)</string>
+    <string name="forcehttps">Bloquer les sites non HTTPS</string>
+    <string name="forcehttpsdesc">Charger uniquement les sites HTTPS</string>
+    <string name="preferhttps">Préférer les versions de site HTTPS</string>
+    <string name="preferhttpsdesc">"Toujours utiliser HTTPS sur les sites pris en charge (peut causer des problèmes)  "</string>
+    <string name="startpage">"Appliquer le thème à la page d'accueil  "</string>
 </resources>

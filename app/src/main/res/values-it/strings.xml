@@ -298,4 +298,9 @@
     <string name="block_sites">"Blocco sito personalizzato (beta)  "</string>
     <string name="block_sites_title">"Blocco sito personalizzato (siti separati con 3 spazi)  "</string>
     <string name="block_info">Inserisci le parole per bloccare gli URL (separati da 3 spazi).</string>
+    <string name="forcehttps">Blocca siti non HTTPS</string>
+    <string name="forcehttpsdesc">"Carica solo siti HTTPS  "</string>
+    <string name="preferhttps">Preferisci le versioni del sito HTTPS</string>
+    <string name="preferhttpsdesc">"Usa sempre HTTPS su siti supportati (potrebbe causare problemi)  "</string>
+    <string name="startpage">"Applica il tema alla homepage  "</string>
 </resources>

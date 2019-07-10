@@ -296,4 +296,9 @@
     <string name="block_sites">Bloque de sitio personalizado (beta)</string>
     <string name="block_sites_title">Bloque de sitios personalizados (sitios separados con 3 espacios)</string>
     <string name="block_info">"Introduzca palabras para bloquear en las URL (separadas por 3 espacios).  "</string>
+    <string name="forcehttps">"Bloquear sitios que no sean HTTPS  "</string>
+    <string name="forcehttpsdesc">"Solo cargar sitios HTTPS  "</string>
+    <string name="preferhttps">"Prefiere las versiones del sitio HTTPS  "</string>
+    <string name="preferhttpsdesc">"Siempre use HTTPS en los sitios compatibles (puede causar problemas)  "</string>
+    <string name="startpage">Aplicar el tema a la página de inicio.</string>
 </resources>
