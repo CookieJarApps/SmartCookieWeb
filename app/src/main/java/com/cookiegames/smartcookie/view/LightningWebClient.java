@@ -53,6 +53,7 @@ import com.cookiegames.smartcookie.R;
 import com.cookiegames.smartcookie.adblock.AdBlocker;
 import com.cookiegames.smartcookie.constant.Constants;
 import com.cookiegames.smartcookie.controller.UIController;
+import com.cookiegames.smartcookie.database.history.HistoryModel;
 import com.cookiegames.smartcookie.dialog.BrowserDialog;
 import com.cookiegames.smartcookie.malwareblock.MalwareBlock;
 import com.cookiegames.smartcookie.preference.PreferenceManager;
@@ -61,6 +62,7 @@ import com.cookiegames.smartcookie.utils.Preconditions;
 import com.cookiegames.smartcookie.utils.ProxyUtils;
 import com.cookiegames.smartcookie.utils.UrlUtils;
 import com.cookiegames.smartcookie.utils.Utils;
+import com.cookiegames.smartcookie.database.history.HistoryDatabase;
 
 public class LightningWebClient extends WebViewClient {
 
