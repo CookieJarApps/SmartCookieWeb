@@ -303,4 +303,6 @@
     <string name="preferhttps">Préférer les versions de site HTTPS</string>
     <string name="preferhttpsdesc">"Toujours utiliser HTTPS sur les sites pris en charge (peut causer des problèmes)  "</string>
     <string name="startpage">"Appliquer le thème à la page d'accueil  "</string>
+    <string name="updatehomepage">"Ouvrez un nouvel onglet pour voir la page d'accueil mise à jour  "</string>
+    <string name="startpagedesc">"Définissez la couleur de la page d'accueil par défaut sur celle utilisée dans le thème.  "</string>
 </resources>

@@ -45,6 +45,7 @@
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="theme_startpage"
+            android:summary="@string/startpagedesc"
             android:title="@string/startpage"/>
        <!-- <CheckBoxPreference
             android:defaultValue="false"

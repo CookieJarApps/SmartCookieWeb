@@ -301,4 +301,7 @@
     <string name="preferhttps">"HTTPS site sürümlerini tercih et  "</string>
     <string name="preferhttpsdesc">"Desteklenen sitelerde her zaman HTTPS kullanın (sorunlara neden olabilir)  "</string>
     <string name="startpage">"Temayı ana sayfaya uygula  "</string>
+    <string name="allpage">Web sayfalarına tema uygula (beta)</string>
+    <string name="updatehomepage">"Güncellenen ana sayfayı görmek için yeni bir sekme açın  "</string>
+    <string name="startpagedesc">"Varsayılan ana sayfanın rengini temada kullanılana ayarlayın.  "</string>
 </resources>

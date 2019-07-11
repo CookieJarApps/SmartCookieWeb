@@ -5,6 +5,7 @@ package com.cookiegames.smartcookie.settings.fragment;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,9 +23,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cookiegames.smartcookie.MainActivity;
 import com.cookiegames.smartcookie.R;
+import com.cookiegames.smartcookie.controller.UIController;
 import com.cookiegames.smartcookie.dialog.BrowserDialog;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
@@ -55,6 +58,7 @@ public class DisplaySettingsFragment extends LightningPreferenceFragment impleme
     private Preference mTheme;
     private String[] mThemeOptions;
     private int mCurrentTheme;
+    private UIController mUiController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -161,6 +165,8 @@ public class DisplaySettingsFragment extends LightningPreferenceFragment impleme
                 return true;
             case SETTINGS_STARTTHEME:
                 mPreferenceManager.setStartPageThemeEnabled(checked);
+                String updatehomepage = getResources().getString(R.string.updatehomepage);
+                Toast.makeText(getActivity(), updatehomepage, Toast.LENGTH_LONG).show();
                 return true;
             case SETTINGS_PAGETHEME:
                 mPreferenceManager.setPageThemeEnabled(checked);

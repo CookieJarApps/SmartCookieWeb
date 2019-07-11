@@ -124,7 +124,7 @@
     <string name="message_certificate_not_yet_valid">Certificate is not yet valid</string>
     <string name="message_certificate_untrusted">Certificate is not trusted</string>
     <string name="title_form_resubmission">Form resubmission</string>
-    <string name="message_form_resubmission">Would you like to resend the data?</string>
+    <string name="message_form_resubmission">Would you like to resend the submitted data?</string>
     <string name="message_location">\nWould like to use your location</string>
     <string name="action_allow">Allow</string>
     <string name="action_dont_allow">Don\'t allow</string>
@@ -315,4 +315,7 @@
     <string name="preferhttps">Prefer HTTPS site versions</string>
     <string name="forcehttpsdesc">Only load HTTPS sites</string>
     <string name="preferhttpsdesc">Always use HTTPS on supported sites (may cause issues)</string>
+
+    <string name="startpagedesc">Set the color of the default homepage to the one used in the theme.</string>
+    <string name="updatehomepage">Open a new tab to see updated homepage</string>
 </resources>

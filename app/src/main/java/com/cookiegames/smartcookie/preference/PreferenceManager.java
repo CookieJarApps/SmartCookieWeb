@@ -1,6 +1,7 @@
 package com.cookiegames.smartcookie.preference;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,11 +9,13 @@ import androidx.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import com.cookiegames.smartcookie.MainActivity;
 import com.cookiegames.smartcookie.constant.Constants;
 import com.cookiegames.smartcookie.utils.FileUtils;
 
 @Singleton
 public class PreferenceManager {
+    private Context context;
 
     private static class Name {
         static final String ADOBE_FLASH_SUPPORT = "enableflash";
@@ -73,6 +76,8 @@ public class PreferenceManager {
         static final String INITIAL_CHECK_FOR_I2P = "checkForI2P";
 
         static final String LEAK_CANARY = "leakCanary";
+
+
     }
 
     public enum Suggestion {
