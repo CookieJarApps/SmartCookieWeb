@@ -276,13 +276,13 @@
     <string name="skip">Omitir</string>
     <string name="start">Lo Tengo</string>
 
-    <string name="slide_1_title">¡Bienvenido A Smartcookieweb 4.0!</string>
+    <string name="slide_1_title">¡Bienvenido A SmartCookie 5.0!</string>
     <string name="slide_1_desc">¡Navegar Por La Web Ahora Es Aún Más Fácil Y Más Seguro!</string>
 
-    <string name="slide_2_title">Las Pestañas Se Han Movido</string>
-    <string name="slide_2_desc">Ahora Puede Acceder A Sus Pestañas Y Navegación De La Página Presionando El Botón En La Esquina Superior Izquierda.</string>
+    <string name="slide_2_title">Abrir pestañas</string>
+    <string name="slide_2_desc">"Se puede acceder a las pestañas y la navegación de la página presionando el botón en la esquina superior izquierda.  "</string>
 
-    <string name="slide_3_title">Los Ajustes Se Han Movido</string>
+    <string name="slide_3_title">Cambiar ajustes</string>
     <string name="slide_3_desc">La Página De Configuración Se Abre Ahora Presionando El Botón En La Esquina Superior Derecha.</string>
 
     <string name="slide_4_title">Más Seguro</string>

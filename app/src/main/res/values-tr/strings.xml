@@ -276,13 +276,13 @@
     <string name="skip">Atlamak</string>
     <string name="start">Anladım</string>
 
-    <string name="slide_1_title">Smartcookieweb 4.0\'A Hoşgeldiniz!</string>
+    <string name="slide_1_title">SmartCookie 5.0\'A Hoşgeldiniz!</string>
     <string name="slide_1_desc">İnternette Gezinmek Artık Daha Kolay Ve Daha Güvenli!</string>
 
     <string name="slide_2_title">Sekmeler Taşındı</string>
-    <string name="slide_2_desc">Sekmelerinize Ve Sayfa Navigasyonunuza Şimdi Sol Üst Köşedeki Düğmeye Basarak Erişebilirsiniz.</string>
+    <string name="slide_2_desc">Sekmelerinize ve sayfa gezintisine sol üst köşedeki düğmeye basarak erişilebilir.</string>
 
-    <string name="slide_3_title">Ayarlar Taşındı</string>
+    <string name="slide_3_title">Ayarları değiştir</string>
     <string name="slide_3_desc">Ayarlar Sayfası Şimdi Sağ Üst Köşedeki Düğmeye Basılarak Açılmıştır.</string>
 
     <string name="slide_4_title">Daha Güvenli</string>

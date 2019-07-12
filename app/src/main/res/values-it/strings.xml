@@ -278,13 +278,13 @@
     <string name="skip">Salta</string>
     <string name="start">Fatto</string>
 
-    <string name="slide_1_title">Benvenuto in SmartCookieWeb 4.0!</string>
+    <string name="slide_1_title">Benvenuto in SmartCookie 5.0!</string>
     <string name="slide_1_desc">Navigare sul Web è ora ancora più semplice e sicuro!</string>
 
-    <string name="slide_2_title">Le schede sono state spostate</string>
-    <string name="slide_2_desc">È ora possibile accedere alle schede e alla navigazione della pagina premendo il pulsante nell\'angolo in alto a sinistra.</string>
+    <string name="slide_2_title">Aprire le schede</string>
+    <string name="slide_2_desc">"È possibile accedere alle schede e alla navigazione della pagina premendo il pulsante nell'angolo in alto a sinistra.  "</string>
 
-    <string name="slide_3_title">Le impostazioni sono state spostate</string>
+    <string name="slide_3_title">"Cambia impostazioni  "</string>
     <string name="slide_3_desc">La pagina delle impostazioni è ora aperta premendo il pulsante nell\'angolo in alto a destra.</string>
 
     <string name="slide_4_title">Più sicuro</string>

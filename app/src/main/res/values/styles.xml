@@ -151,13 +151,15 @@
     <style name="overFlowButtonStyle" parent="@style/Widget.AppCompat.ActionButton.Overflow">
         <item name="android:minWidth">48dp</item>
         <item name="android:padding">0dp</item>
-        <item name="srcCompat">@drawable/ic_baseline_more_vert_24px</item>
+        <item name="android:tint">#000000</item>
+        <!-- <item name="srcCompat">@drawable/ic_baseline_more_vert_24px</item> -->
     </style>
 
     <style name="overFlowButtonStyleWhite" parent="@style/Widget.AppCompat.ActionButton.Overflow">
         <item name="android:minWidth">48dp</item>
         <item name="android:padding">0dp</item>
-        <item name="srcCompat">@drawable/ic_baseline_more_vert_white</item>
+        <item name="android:tint">#ffffff</item>
+        <!-- <item name="srcCompat">@drawable/ic_baseline_more_vert_white</item> -->
     </style>
 
     <!-- Text Customization -->

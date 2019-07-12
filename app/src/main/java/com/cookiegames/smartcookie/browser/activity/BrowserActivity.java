@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -130,6 +131,7 @@ import com.cookiegames.smartcookie.view.LightningView;
 import com.cookiegames.smartcookie.view.SearchView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 
 public abstract class BrowserActivity extends ThemableBrowserActivity implements BrowserView, UIController, OnClickListener {
 
@@ -241,6 +243,55 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
         mPresenter = new BrowserPresenter(this, isIncognito());
 
         initialize(savedInstanceState);
+
+        String tabs = getString (R.string.slide_2_title);
+        String tabs1 = getString (R.string.slide_2_desc);
+
+        String settings = getString (R.string.slide_3_title);
+        String settings1 = getString (R.string.slide_3_desc);
+
+        SharedPreferences prefs = this.getSharedPreferences("com.cookiegames.smartcookie", Context.MODE_PRIVATE);
+        Boolean startedBefore = prefs.getBoolean("dialogShown", false);
+
+        if(!startedBefore){
+            new MaterialTapTargetPrompt.Builder(BrowserActivity.this)
+                    .setTarget(findViewById(R.id.tab_header_button))
+                    .setPrimaryText(tabs)
+                    .setSecondaryText(tabs1)
+                    .setOnHidePromptListener(new MaterialTapTargetPrompt.OnHidePromptListener()
+                    {
+                        @Override
+                        public void onHidePrompt(MotionEvent event, boolean tappedTarget)
+                        {
+                            new MaterialTapTargetPrompt.Builder(BrowserActivity.this)
+                                    .setTarget(findViewById(R.id.right_drawer))
+                                    .setPrimaryText(settings)
+                                    .setSecondaryText(settings1)
+                                    .setOnHidePromptListener(new MaterialTapTargetPrompt.OnHidePromptListener()
+                                    {
+                                        @Override
+                                        public void onHidePrompt(MotionEvent event, boolean tappedTarget)
+                                        {
+                                            prefs.edit().putBoolean("dialogShown",true).commit();
+                                        }
+
+                                        @Override
+                                        public void onHidePromptComplete()
+                                        {
+                                        }
+                                    })
+                                    .show();
+                        }
+
+                        @Override
+                        public void onHidePromptComplete()
+                        {
+                        }
+                    })
+                    .show();
+        }
+
+
     }
 
     private synchronized void initialize(Bundle savedInstanceState) {

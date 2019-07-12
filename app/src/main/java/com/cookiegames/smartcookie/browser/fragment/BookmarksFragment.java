@@ -302,7 +302,7 @@ public class BookmarksFragment extends Fragment implements View.OnClickListener,
             });
     }
 
-    private void setBookmarkDataSet(@NonNull List<HistoryItem> items, boolean animate) {
+    private void setBookmarkDataSet(List<HistoryItem> items, boolean animate) {
         mBookmarkAdapter.updateItems(items);
         final int resource;
         if (mUiModel.isRootFolder()) {
