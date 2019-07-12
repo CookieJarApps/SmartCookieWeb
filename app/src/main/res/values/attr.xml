@@ -11,5 +11,15 @@
     <attr name="drawerBackground" format="reference|color" />
     <attr name="dividerColor" format="reference|color" />
     <attr name="selectedBackground" format="reference|color" />
+    <attr name="colorAccent" format="reference|color" />
+
+    <attr name="ic_round_settings" format="reference"/>
+    <attr name="ic_action_star" format="reference"/>
+    <attr name="ic_round_smartphone" format="reference"/>
+    <attr name="ic_round_lock" format="reference"/>
+    <attr name="ic_round_add" format="reference"/>
+    <attr name="ic_round_person" format="reference"/>
+    <attr name="ic_round_world_lock" format="reference"/>
+    <attr name="ic_round_question_answer" format="reference"/>
 
 </resources>

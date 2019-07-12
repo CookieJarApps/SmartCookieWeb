@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- Settings themes -->
     <style name="Theme.SettingsTheme" parent="Theme.LightTheme">
@@ -61,6 +61,15 @@
         <!-- Alert dialogs -->
         <item name="alertDialogTheme">@style/AppCompatDialogStyle.Light</item>
 
+        <item name="ic_round_settings">@drawable/ic_round_settings</item>
+        <item name="ic_action_star">@drawable/ic_action_star</item>
+        <item name="ic_round_smartphone">@drawable/ic_round_smartphone</item>
+        <item name="ic_round_lock">@drawable/ic_round_lock</item>
+        <item name="ic_round_add">@drawable/ic_round_add</item>
+        <item name="ic_round_person">@drawable/ic_round_person</item>
+        <item name="ic_round_world_lock">@drawable/ic_round_world_lock</item>
+        <item name="ic_round_question_answer">@drawable/ic_round_question_answer</item>
+
     </style>
 
     <style name="Theme.BaseDarkTheme" parent="Theme.AppCompat">
@@ -83,6 +92,15 @@
 
         <!-- Alert dialogs -->
         <item name="alertDialogTheme">@style/AppCompatDialogStyle.Dark</item>
+
+        <item name="ic_round_settings">@drawable/ic_round_settings_light</item>
+        <item name="ic_action_star">@drawable/ic_action_star_light</item>
+        <item name="ic_round_smartphone">@drawable/ic_round_smartphone_light</item>
+        <item name="ic_round_lock">@drawable/ic_round_lock_light</item>
+        <item name="ic_round_add">@drawable/ic_round_add_light</item>
+        <item name="ic_round_person">@drawable/ic_round_person_light</item>
+        <item name="ic_round_world_lock">@drawable/ic_round_world_lock_light</item>
+        <item name="ic_round_question_answer">@drawable/ic_round_question_answer_light</item>
     </style>
 
     <style name="Theme.BaseBlackTheme" parent="Theme.AppCompat">
@@ -105,6 +123,15 @@
 
         <!-- Alert dialogs -->
         <item name="alertDialogTheme">@style/AppCompatDialogStyle.Black</item>
+
+        <item name="ic_round_settings">@drawable/ic_round_settings_light</item>
+        <item name="ic_action_star">@drawable/ic_action_star_light</item>
+        <item name="ic_round_smartphone">@drawable/ic_round_smartphone_light</item>
+        <item name="ic_round_lock">@drawable/ic_round_lock_light</item>
+        <item name="ic_round_add">@drawable/ic_round_add_light</item>
+        <item name="ic_round_person">@drawable/ic_round_person_light</item>
+        <item name="ic_round_world_lock">@drawable/ic_round_world_lock_light</item>
+        <item name="ic_round_question_answer">@drawable/ic_round_question_answer_light</item>
     </style>
 
     <!-- AlertDialog Theming -->
@@ -124,13 +151,13 @@
     <style name="overFlowButtonStyle" parent="@style/Widget.AppCompat.ActionButton.Overflow">
         <item name="android:minWidth">48dp</item>
         <item name="android:padding">0dp</item>
-        <item name="android:src">@drawable/ic_baseline_more_vert_24px</item>
+        <item name="srcCompat">@drawable/ic_baseline_more_vert_24px</item>
     </style>
 
     <style name="overFlowButtonStyleWhite" parent="@style/Widget.AppCompat.ActionButton.Overflow">
         <item name="android:minWidth">48dp</item>
         <item name="android:padding">0dp</item>
-        <item name="android:src">@drawable/ic_baseline_more_vert_white</item>
+        <item name="srcCompat">@drawable/ic_baseline_more_vert_white</item>
     </style>
 
     <!-- Text Customization -->
