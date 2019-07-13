@@ -30,6 +30,7 @@ A secure, open source web browser for Android.
 - [x] Custom Error Page
 - [x] HTTPS Everywhere
 - [x] New UI
+- [ ] Inspect element
 - [ ] Extensions
 - [ ] Custom Themes
 
