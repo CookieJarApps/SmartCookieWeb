@@ -19,13 +19,13 @@ public final class Constants {
 
     // Search query URLs
     public static final String YAHOO_SEARCH = "https://search.yahoo.com/search?p=";
-    public static final String GOOGLE_SEARCH = "https://www.google.com/search?client=lightning&ie=UTF-8&oe=UTF-8&q=";
+    public static final String GOOGLE_SEARCH = "https://www.google.com/search?ie=UTF-8&oe=UTF-8&q=";
     public static final String BING_SEARCH = "https://www.bing.com/search?q=";
-    public static final String DUCK_SEARCH = "https://duckduckgo.com/?t=lightning&q=";
+    public static final String DUCK_SEARCH = "https://duckduckgo.com/?q=";
     public static final String DUCK_LITE_SEARCH = "https://duckduckgo.com/lite/?t=lightning&q=";
     public static final String STARTPAGE_MOBILE_SEARCH = "https://startpage.com/do/m/mobilesearch?language=english&query=";
     public static final String STARTPAGE_SEARCH = "https://startpage.com/do/search?language=english&query=";
-    public static final String ASK_SEARCH = "http://www.ask.com/web?qsrc=0&o=0&l=dir&qo=LightningBrowser&q=";
+    public static final String ASK_SEARCH = "http://www.ask.com/web?qsrc=0&o=0&l=dir&q=";
     public static final String BAIDU_SEARCH = "https://www.baidu.com/s?wd=";
     public static final String YANDEX_SEARCH = "https://yandex.ru/yandsearch?lr=21411&text=";
 
