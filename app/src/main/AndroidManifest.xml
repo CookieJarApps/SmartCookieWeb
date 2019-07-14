@@ -70,7 +70,7 @@
    <!-- <activity
             android:name=".onboarding.WelcomeActivity"
             android:theme="@style/AppTheme">
-        </activity>
+        </activity> -->
         <activity
             android:name=".IncognitoActivity"
             android:alwaysRetainTaskState="true"
@@ -84,7 +84,7 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity> -->
+        </activity>
         <activity
             android:name=".newTab"
             android:alwaysRetainTaskState="true"

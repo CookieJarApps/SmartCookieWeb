@@ -318,4 +318,7 @@
 
     <string name="startpagedesc">Set the color of the default homepage to the one used in the theme.</string>
     <string name="updatehomepage">Open a new tab to see updated homepage</string>
+
+    <string name="inspect">Inject JavaScript</string>
+    <string name="bookmark">Bookmark added</string>
 </resources>

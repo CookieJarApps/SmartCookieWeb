@@ -135,6 +135,7 @@ import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 
 public abstract class BrowserActivity extends ThemableBrowserActivity implements BrowserView, UIController, OnClickListener {
 
+
     private static final String TAG = "BrowserActivity";
 
     private static final String INTENT_PANIC_TRIGGER = "info.guardianproject.panic.action.TRIGGER";
@@ -470,6 +471,9 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
         Intent intent = savedInstanceState == null ? getIntent() : null;
 
         boolean launchedFromHistory = intent != null && (intent.getFlags() & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) != 0;
+
+        //View b = findViewById(R.id.action_inspect);
+        //b.setVisibility(View.GONE);
 
         if (isPanicTrigger(intent)) {
             setIntent(null);
@@ -903,7 +907,7 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
             case R.id.action_add_bookmark:
                 if (currentUrl != null && !UrlUtils.isSpecialUrl(currentUrl)) {
                     addBookmark(currentView.getTitle(), currentUrl);
-                    Toast.makeText(this, "BookMark Added", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Bookmark added", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             case R.id.action_find:
@@ -916,6 +920,9 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
                     startActivity(read);
                 }
                 return true;
+            //case R.id.action_inspect:
+              //  findInPage(); //INSPECT!
+                //return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -54,5 +54,7 @@
     <item
         android:id="@+id/action_settings"
         android:title="@string/settings"/>
-
+   <!-- <item
+        android:id="@+id/action_inspect"
+        android:title="@string/inspect"/> -->
 </menu>
