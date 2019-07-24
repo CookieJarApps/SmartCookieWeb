@@ -5,8 +5,8 @@ sudo: false
 android:
   components:
     - tools
-    - build-tools-27.0.2
-    - android-27
+    - build-tools-28.0.0
+    - android-28
     - extra-android-support
     - extra-google-m2repository
     - extra-android-m2repository
@@ -14,6 +14,7 @@ licenses:
     - 'android-sdk-license-.+'
   
 before_install:
+  - yes | sdkmanager "platforms;android-28"
   - chmod +x gradlew
   - git submodule update --init --recursive
 install:
