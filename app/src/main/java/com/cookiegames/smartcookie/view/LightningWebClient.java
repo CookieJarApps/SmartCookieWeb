@@ -75,7 +75,9 @@ public class LightningWebClient extends WebViewClient {
     private String urlName;
     private int adsBlocked;
     private String newHTTPS;
+    private String[] strgs = {"", ""};
     SharedPreferences sharedPref;
+
 
     @Inject ProxyUtils mProxyUtils;
     @Inject PreferenceManager mPreferences;
@@ -280,18 +282,43 @@ public class LightningWebClient extends WebViewClient {
         }
 
         if(mPreferences.getSiteBlockChoice() == 2){
-            Log.d(TAG, "Yes1");
             if(mPreferences.getSiteBlockString("") != "" && mPreferences.getSiteBlockString("") != null){
-                Log.d(TAG, "Yes2");
                 String arrayOfURLs = mPreferences.getSiteBlockString("");
-                String[] strgs = arrayOfURLs.split("   ");
-                if(stringContainsItemFromList(url, strgs)){
-                    if(url.contains("file:///android_asset")){
-                        return;
+
+                if(arrayOfURLs.contains("   ")){
+                    String[] strgs = arrayOfURLs.split("   ");
+                    if(stringContainsItemFromList(url, strgs)){
+                        if(url.contains("file:///android_asset")){
+                            return;
+                        }
+                        else {
+                            Log.d(TAG, "Yes3");
+                            view.loadUrl("file:///android_asset/block.html");
+                        }
                     }
-                    else {
-                        Log.d(TAG, "Yes3");
-                        view.loadUrl("file:///android_asset/block.html");
+                }
+                else if(arrayOfURLs.contains(", ")){
+                    String[] strgs = arrayOfURLs.split(", ");
+                    if(stringContainsItemFromList(url, strgs)){
+                        if(url.contains("file:///android_asset")){
+                            return;
+                        }
+                        else {
+                            Log.d(TAG, "Yes3");
+                            view.loadUrl("file:///android_asset/block.html");
+                        }
+                    }
+                }
+                else{
+                    String[] strgs = arrayOfURLs.split(",");
+                    if(stringContainsItemFromList(url, strgs)){
+                        if(url.contains("file:///android_asset")){
+                            return;
+                        }
+                        else {
+                            Log.d(TAG, "Yes3");
+                            view.loadUrl("file:///android_asset/block.html");
+                        }
                     }
                 }
             }

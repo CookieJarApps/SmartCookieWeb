@@ -1,0 +1,324 @@
+<resources xmlns:ns0="http://schemas.android.com/tools" ns0:ignore="MissingTranslation">
+    <string name="app_name" translatable="false">SmartCookieWeb</string>
+    <string name="app_lightning" translatable="false">Lightning</string>
+    <string name="action_new_tab">Новая вкладка</string>
+    <string name="action_share">Поделиться</string>
+    <string name="action_history">история</string>
+    <string name="action_bookmarks">закладки</string>
+    <string name="action_downloads">Загрузки</string>
+    <string name="action_add_bookmark">Добавить закладку</string>
+    <string name="action_copy">Копировать ссылку</string>
+    <string name="action_forward">Вперед</string>
+    <string name="settings">настройки</string>
+    <string name="location">Доступ к местоположению</string>
+    <string name="password">Сохраните ваши пароли</string>
+    <string name="agent">Пользовательский агент</string>
+    <string name="flash">Включить Adobe Flash</string>
+    <string name="home">домашняя страница</string>
+    <string name="fullscreen">Полноэкранный режим</string>
+    <string name="java">Включить JavaScript</string>
+    <string name="download">Местоположение загрузки</string>
+    <string name="settings_advanced">Расширенные настройки</string>
+    <string name="settings_advanced_explain">Содержимое поля URL, режим рендеринга, кодировка текста ...</string>
+    <string name="apache">Apache License 2.0</string>
+    <string name="version">Версия приложения</string>
+    <string name="cache">Очистить кеш при выходе</string>
+    <string name="reflow">Включить переформатирование текста</string>
+    <string name="block">Блок изображений</string>
+    <string name="window">Разрешить сайтам открывать новые окна</string>
+    <string name="cookies">Включить куки</string>
+    <string name="importbookmarks">Импортировать закладки из браузера</string>
+    <string name="size">Размер текста</string>
+    <string name="recommended">рекомендуемые</string>
+    <string name="search">Поисковый движок</string>
+    <string name="search_hint">Поиск</string>
+    <string name="wideViewPort">Используйте широкий видовой экран</string>
+    <string name="overViewMode">Загрузка страниц в режиме обзора</string>
+    <string name="restore">Восстановление потерянных вкладок при запуске</string>
+    <string name="supported_browsers_title">Поддерживаемые браузеры</string>
+    <string name="stock_browser">Фондовый браузер</string>
+    <string name="stock_browser_unavailable">Браузер не обнаружен</string>
+    <string name="stock_browser_available">Обнаружен поддерживаемый стоковый браузер</string>
+    <string name="fullScreenOption">Скрыть строку состояния при просмотре</string>
+    <string name="clear_cookies">Очистить куки браузера</string>
+    <string name="clear_history">Очистить историю браузера</string>
+    <string name="dialog_image">Что бы вы хотели сделать с этим изображением?</string>
+    <string name="action_download">Скачать</string>
+    <string name="action_open">открыто</string>
+    <string name="dialog_link">Что бы вы хотели сделать по этой ссылке?</string>
+    <string name="dialog_title_share">Поделиться этой страницей</string>
+    <string name="dialog_history_long_press">Что бы вы хотели сделать с этим элементом истории?</string>
+    <string name="dialog_bookmark">Что бы вы хотели сделать с этой закладкой?</string>
+    <string name="action_delete">удалять</string>
+    <string name="action_blank">Пустая страница</string>
+    <string name="agent_default">По умолчанию</string>
+    <string name="agent_desktop">рабочий стол</string>
+    <string name="agent_mobile">мобильный</string>
+    <string name="agent_custom">изготовленный на заказ</string>
+    <string name="title_search_engine">Поисковый движок</string>
+    <string name="action_ok">Хорошо</string>
+    <string name="dialog_download">Вы хотите скачать этот файл? (% 1 $ s)</string>
+    <string name="unknown_size">Неизвестный размер</string>
+    <string name="action_cancel">отменить</string>
+    <string name="title_warning">Предупреждение</string>
+    <string name="dialog_adobe_not_installed">Adobe Flash Player не установлен. \ NПожалуйста, установите Flash Player.</string>
+    <string name="title_user_agent">Пользовательский агент</string>
+    <string name="title_download_location">Местоположение загрузки</string>
+    <string name="title_custom_homepage">Пользовательская домашняя страница</string>
+    <string name="action_webpage">Страница интернета</string>
+    <string name="title_clear_history">Чистая история</string>
+    <string name="title_clear_cookies">Очистить куки</string>
+    <string name="dialog_history">Хотите очистить историю своего браузера?</string>
+    <string name="dialog_cookies">Вы хотите очистить куки браузера?</string>
+    <string name="action_yes">да</string>
+    <string name="action_no">нет</string>
+    <string name="title_text_size">Размер текста</string>
+    <string name="size_largest">Самый большой</string>
+    <string name="size_large">большой</string>
+    <string name="size_normal">Нормальный</string>
+    <string name="size_small">Маленький</string>
+    <string name="size_smallest">Наименьший</string>
+    <string name="title_error">ошибка</string>
+    <string name="dialog_import_error">Обнаружен браузер для импорта закладок из.</string>
+    <string name="hint_title">заглавие</string>
+    <string name="hint_url">URL</string>
+    <string name="title_edit_bookmark">Изменить закладку</string>
+    <string name="action_edit">редактировать</string>
+    <string name="action_incognito">Новая вкладка инкогнито</string>
+    <string name="action_homepage">По умолчанию</string>
+    <string name="action_back">назад</string>
+    <string name="action_find">Найти на странице</string>
+    <string name="download_pending">Начало загрузки \ u2026</string>
+    <string name="cannot_download">Можно загружать только HTTP или HTTPS URL.</string>
+    <string name="problem_download">Обнаружен неверный URL, невозможно загрузить</string>
+    <string name="problem_location_download">Невозможно загрузить в указанное место</string>
+    <string name="download_no_sdcard_dlg_title">Нет SD-карты</string>
+    <string name="download_no_sdcard_dlg_msg">Для загрузки файла требуется USB-накопитель.</string>
+    <string name="download_sdcard_busy_dlg_title">USB-накопитель недоступен</string>
+    <string name="download_sdcard_busy_dlg_msg">Хранилище занято. Чтобы разрешить загрузку, нажмите «Отключить USB-накопитель» в уведомлении.</string>
+    <string name="incognito_cookies">Включить куки в режиме инкогнито</string>
+    <string name="title_flash">Adobe Flash</string>
+    <string name="action_manual">Руководство</string>
+    <string name="action_auto">Авто</string>
+    <string name="action_follow_me">Свяжитесь со мной</string>
+    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
+    <string name="clear_cache">Очистить кэш</string>
+    <string name="message_cache_cleared">Кеш очищен</string>
+    <string name="message_import">Закладки были импортированы</string>
+    <string name="message_clear_history">История очищена</string>
+    <string name="message_cookies_cleared">Печенье очищено</string>
+    <string name="max_tabs">Достигнуто максимальное количество вкладок</string>
+    <string name="message_text_copied">Текст скопирован в буфер обмена</string>
+    <string name="message_link_copied">Ссылка скопирована в буфер обмена</string>
+    <string name="message_blocked_local">Локальный файл заблокирован от загрузки</string>
+    <string name="licenses">Лицензии с открытым исходным кодом</string>
+    <string name="suggestion">Ищи</string>
+    <string name="block_ads">Блокировка рекламы и трекеров</string>
+    <string name="message_insecure_connection">Соединение с этим сайтом небезопасно: %1$s В любом случае посетить сайт?</string>
+    <string name="message_certificate_date_invalid">Дата сертификата недействительна</string>
+    <string name="message_certificate_expired">Срок действия сертификата истек</string>
+    <string name="message_certificate_domain_mismatch">Домен в сертификате не соответствует домену сайта</string>
+    <string name="message_certificate_invalid">Сертификат недействителен</string>
+    <string name="message_certificate_not_yet_valid">Сертификат еще не действителен</string>
+    <string name="message_certificate_untrusted">Сертификат не является доверенным</string>
+    <string name="title_form_resubmission">Форма повторной подачи</string>
+    <string name="message_form_resubmission">Вы хотите отправить отправленные данные?</string>
+    <string name="message_location">\ nХотите использовать ваше местоположение</string>
+    <string name="action_allow">Разрешать</string>
+    <string name="action_dont_allow">Не позволяйте</string>
+    <string name="title_sign_in">войти в систему</string>
+    <string name="label_realm">Сообщение сервера: %s</string>
+    <string name="hint_username">имя пользователя</string>
+    <string name="hint_password">пароль</string>
+    <string name="search_suggestions">Поиск предложений</string>
+    <string name="powered_by_google">Google</string>
+    <string name="powered_by_duck">DuckDuckGo</string>
+    <string name="powered_by_baidu">Baidu</string>
+    <string name="search_suggestions_off">Нет предложений поиска</string>
+    <string name="http_proxy">HTTP прокси</string>
+    <string-array name="proxy_choices_array">
+        <item>Никто</item>
+        <item>скрепить</item>
+        <item>I2P</item>
+        <item>Руководство</item>
+    </string-array>
+    <string name="manual_proxy">Ручной прокси</string>
+    <string name="host">Ведущий:</string>
+    <string name="port">Порт:</string>
+    <string name="use_tor_prompt">Похоже, у вас установлен Orbot. Вы хотите использовать Tor?</string>
+    <string name="use_i2p_prompt">Похоже, у вас установлен I2P. Вы хотите использовать I2P?</string>
+    <string name="install_orbot">Установите Orbot для прокси с Tor.spac</string>
+    <string name="i2p_not_running">I2P не работает.</string>
+    <string name="i2p_tunnels_not_ready">Туннели I2P еще не готовы.</string>
+    <string name="yes">да</string>
+    <string name="no">нет</string>
+    <string name="clear_cookies_exit">Очистить куки на выходе</string>
+    <string name="clear_history_exit">Очистить историю при выходе</string>
+    <string name="folder_default">По умолчанию</string>
+    <string name="folder_custom">изготовленный на заказ</string>
+    <string name="untitled">Без названия</string>
+    <string name="mpl_license">Общественная лицензия Mozilla 2.0</string>
+    <string name="freeware">Freeware</string>
+    <string name="android_open_source_project">Android-проект с открытым исходным кодом</string>
+    <string name="hphosts_ad_server_list">Список серверов объявлений hpHosts</string>
+    <string name="deleted_tab">Открыта старая вкладка</string>
+    <string name="rendering_mode">Режим рендеринга</string>
+    <string name="name_inverted">перевернутый</string>
+    <string name="name_grayscale">Оттенки серого</string>
+    <string name="name_inverted_grayscale">Перевернутая шкала серого</string>
+    <string name="name_increase_contrast">Увеличить контраст</string>
+    <string name="name_normal">Нормальный</string>
+    <string name="sync_history">Синхронизировать историю с Google</string>
+    <string name="title_file_chooser">Выбор файла</string>
+    <string name="library_netcipher">NetCipher</string>
+    <string name="license_gnu">GNU Lesser General Public License</string>
+    <string name="export_bookmarks">Экспорт закладок в резервную копию</string>
+    <string name="import_backup">Импорт закладок из резервной копии</string>
+    <string name="bookmark_export_path">Закладки экспортированы в</string>
+    <string name="bookmark_export_failure">Извините, закладки не могут быть экспортированы!</string>
+    <string name="bookmark_settings">Настройки закладки</string>
+    <string name="settings_bookmark_explain">Экспорт и импорт ...</string>
+    <string name="import_bookmark_error">Не удалось импортировать закладки из файла</string>
+    <string name="title_chooser">Выберите файл</string>
+    <string name="settings_general">общие настройки</string>
+    <string name="settings_general_explain">Блокировщик рекламы, поисковая система, домашняя страница ...</string>
+    <string name="settings_display">Настройки экрана</string>
+    <string name="settings_display_explain">Полноэкранный режим, размер текста, темы ...</string>
+    <string name="settings_privacy">Настройки конфиденциальности и безопасности</string>
+    <string name="settings_privacy_explain">Кеш, печенье, история…</string>
+    <string name="settings_about">Около</string>
+    <string name="settings_about_explain">Номер версии, автор и лицензия ...</string>
+    <string name="close_tab">Закрыть текущая вкладка</string>
+    <string name="close_all_tabs">Закройте все вкладки</string>
+    <string name="close_other_tabs">Закройте другие вкладки</string>
+    <string name="third_party">Блокировать сторонние куки</string>
+    <string name="color_mode">Включить цветовой режим</string>
+    <string name="reading_mode">Режим чтения</string>
+    <string name="loading">Loading ...</string>
+    <string name="loading_failed">Не могу ничего загрузить со страницы.</string>
+    <string name="snacktory">Snacktory</string>
+    <string name="jsoup">jsoup: Java HTML Parser</string>
+    <string name="mit_license">С лицензией</string>
+    <string name="url_contents">Содержимое поля URL</string>
+    <string name="text_encoding">Кодировка текста</string>
+    <string-array name="url_content_array">
+        <item>Домен (по умолчанию)</item>
+        <item>URL</item>
+        <item>заглавие</item>
+    </string-array>
+    <string name="invert_color">Инвертировать цвет</string>
+    <string name="dark_theme">Темная тема</string>
+    <string name="settings_black_status_bar">Черная строка состояния</string>
+    <string name="tabs">Вкладки</string>
+    <string name="theme">Тема приложения</string>
+    <string name="light_theme">Светлая тема</string>
+    <string name="black_theme">Черная тема</string>
+    <string name="blue_theme">Синяя тема</string>
+    <string name="yellow_theme">Желтая тема</string>
+    <string name="green_theme">Зеленая тема</string>
+    <string name="folder">Имя папки</string>
+    <string name="action_folder">скоросшиватель</string>
+    <string name="action_rename">переименовывать</string>
+    <string name="title_rename_folder">Переименовать папку</string>
+    <string name="dialog_folder">Что бы вы хотели сделать с этой папкой?</string>
+    <string name="clear_web_storage">Очистить веб-хранилище</string>
+    <string name="clear_web_storage_exit">Очистить веб-хранилище при выходе</string>
+    <string name="message_web_storage_cleared">Веб-хранилище очищено</string>
+    <string name="hosts_source">Источник блокировки рекламы в файле хостов</string>
+    <string name="settings_adblock">Настройки рекламного блока</string>
+    <string name="tabs_in_drawer">Показать вкладки в окне навигации</string>
+    <string name="swap_bookmarks_and_tabs">Поменяйте местами закладки и закладки</string>
+    <string name="do_not_track">Запрос \ "Не отслеживать \"</string>
+    <string name="remove_identifying_headers">Удалить идентифицирующие заголовки HTTP</string>
+    <string name="action_add_to_homescreen">Добавить на домашний экран</string>
+    <string name="message_added_to_homescreen">Ярлык добавлен на домашний экран</string>
+    <string name="action_delete_all_bookmarks">Удалить все закладки</string>
+    <string name="flash_not_supported">Ваше устройство не поддерживает Flash Player</string>
+    <string name="message_open_download_fail">Этот файл больше не существует</string>
+    <string name="this_project">Этот проект</string>
+
+
+    <string name="jgh">SmartCookieWeb Исходный код</string>
+    <string name="action_home">Главная</string>
+    <string name="the_jumpgo_project" translatable="false">Smart Cookie Web</string>
+    <string name="jgh_description">Узнайте о SmartCookieWeb</string>
+    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
+
+    <string name="faq">Часто задаваемые вопросы</string>
+    <string name="faq_description">Часто задаваемые вопросы</string>
+
+
+    <string name="debug_title">Настройки отладки</string>
+    <string name="debug_leak_canary">LeakCanary</string>
+    <string name="app_restart">Пожалуйста, перезапустите приложение, чтобы изменения вступили в силу.</string>
+
+
+    <string name="dialog_open_new_tab">Открыть в новой вкладке</string>
+    <string name="dialog_open_background_tab">Открыть в фоновой вкладке</string>
+    <string name="dialog_open_incognito_tab">Открыть на вкладке инкогнито</string>
+    <string name="dialog_remove_bookmark">Удалить закладку</string>
+    <string name="dialog_edit_bookmark">Изменить закладку</string>
+    <string name="dialog_remove_from_history">Удалить из истории</string>
+    <string name="dialog_download_image">Скачать картинку</string>
+    <string name="dialog_copy_link">Копировать ссылку</string>
+    <string name="dialog_rename_folder">Переименовать папку</string>
+    <string name="dialog_remove_folder">Удалить папку</string>
+    <string name="dialog_title_close_browser">Закрыть браузер</string>
+    <string name="dialog_delete_download">Удалить загрузку</string>
+    <string name="dialog_delete_all_downloads">Удалить все загрузки</string>
+
+
+    <string name="search_engine_custom">Пользовательский URL</string>
+    <string name="search_engine_google">Google</string>
+    <string name="search_engine_ask">Просить</string>
+    <string name="search_engine_bing">Bing</string>
+    <string name="search_engine_yahoo">Yahoo</string>
+    <string name="search_engine_startpage" translatable="false">StartPage</string>
+    <string name="search_engine_startpage_mobile">StartPage Mobile</string>
+    <string name="search_engine_duckduckgo">DuckDuckGo</string>
+    <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
+    <string name="search_engine_baidu">Baidu</string>
+    <string name="search_engine_yandex">Яндекс</string>
+
+    <string name="title_activity_welcome">Домашний экран</string>
+    <string name="next">следующий</string>
+    <string name="skip">Пропускать</string>
+    <string name="start">Понял</string>
+
+    <string name="slide_1_title">Добро пожаловать в SmartCookie 5.0!</string>
+    <string name="slide_1_desc">Просмотр веб-страниц теперь стал еще проще и безопаснее!</string>
+
+    <string name="slide_2_title">Открытые вкладки</string>
+    <string name="slide_2_desc">Доступ к вашим вкладкам и навигации по страницам можно получить, нажав кнопку в левом верхнем углу.</string>
+
+    <string name="slide_3_title">Изменить настройки</string>
+    <string name="slide_3_desc">Страница настроек открывается нажатием кнопки в правом верхнем углу и выбором «настроек» из выпадающего списка.</string>
+
+    <string name="slide_4_title">Безопасность сосредоточена</string>
+    <string name="slide_4_desc">Вы можете заблокировать сайты, изменить свой пользовательский агент, заблокировать рекламу и многое другое в настройках.</string>
+
+    <string name="play_again_desc">Чтобы снова увидеть ползунок приветствия, перейдите в «Настройки» -&gt; «Приложения» -&gt; SmartCookieWeb -&gt; «Очистить данные».</string>
+    <string name="play_again">Играть снова</string>
+    <string name="privacy">Посмотреть политику конфиденциальности</string>
+    <string name="privacy_info">Ознакомьтесь с политикой конфиденциальности SmartCookieWeb</string>
+    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
+    <string name="block_malware">Блокировать вредоносные сайты</string>
+    <string name="block_sites">Пользовательский блок сайта (бета)</string>
+    <string name="block_sites_title">Пользовательский блок сайта (отдельные сайты с запятой)</string>
+    <string name="none">Никто</string>
+    <string name="block_info">Введите слова для блокировки в URL (разделенные запятой).</string>
+    <string name="startpage">Применить тему к домашней странице</string>
+    <string name="allpage">Применить тему к веб-страницам (бета)</string>
+    <string name="forcehttps">Блокировать не HTTPS сайты</string>
+    <string name="preferhttps">Предпочитаю HTTPS версии сайта</string>
+    <string name="forcehttpsdesc">Загружать только HTTPS сайты</string>
+    <string name="preferhttpsdesc">Всегда используйте HTTPS на поддерживаемых сайтах (может вызвать проблемы)</string>
+
+    <string name="startpagedesc">Установите цвет домашней страницы по умолчанию на тот, который используется в теме.</string>
+    <string name="updatehomepage">Откройте новую вкладку, чтобы увидеть обновленную домашнюю страницу</string>
+
+    <string name="inspect">Введите JavaScript</string>
+    <string name="bookmark">Добавлена закладка</string>
+    <!-- Generated by Automatic String Resource Translation
+    --><!--          https://asrt.gluege.boerde.de
+--></resources>

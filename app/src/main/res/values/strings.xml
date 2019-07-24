@@ -149,7 +149,7 @@
     <string name="port">Port:</string>
     <string name="use_tor_prompt">It looks like you have Orbot installed. Do you want to use Tor?</string>
     <string name="use_i2p_prompt">It looks like you have I2P installed. Do you want to use I2P?</string>
-    <string name="install_orbot">Install Orbot in order to proxy with Tor.</string>
+    <string name="install_orbot">Install Orbot in order to proxy with Tor.spac</string>
     <string name="i2p_not_running">I2P is not running.</string>
     <string name="i2p_tunnels_not_ready">I2P tunnels are not ready yet.</string>
     <string name="yes">Yes</string>
@@ -275,7 +275,7 @@
     <string name="search_engine_ask">Ask</string>
     <string name="search_engine_bing">Bing</string>
     <string name="search_engine_yahoo">Yahoo</string>
-    <string name="search_engine_startpage">StartPage</string>
+    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
@@ -306,9 +306,9 @@
     <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Block malicious sites</string>
     <string name="block_sites">Custom site block (beta)</string>
-    <string name="block_sites_title">Custom Site Block (separate sites with 3 spaces)</string>
+    <string name="block_sites_title">Custom Site Block (separate sites with a comma)</string>
     <string name="none">None</string>
-    <string name="block_info">Enter words to block in URLs (separated with 3 spaces).</string>
+    <string name="block_info">Enter words to block in URLs (separated with a comma).</string>
     <string name="startpage">Apply theme to homepage</string>
     <string name="allpage">Apply theme to web pages (beta)</string>
     <string name="forcehttps">Block non-HTTPS sites</string>

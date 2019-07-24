@@ -1,0 +1,321 @@
+<resources xmlns:ns0="http://schemas.android.com/tools" ns0:ignore="MissingTranslation">
+    <string name="app_name" translatable="false">SmartCookieWeb</string>
+    <string name="app_lightning" translatable="false">Lightning</string>
+    <string name="action_new_tab">新標籤</string>
+    <string name="action_share">分享</string>
+    <string name="action_history">歷史</string>
+    <string name="action_bookmarks">書籤</string>
+    <string name="action_downloads">下載</string>
+    <string name="action_add_bookmark">添加書籤</string>
+    <string name="action_copy">複製鏈接</string>
+    <string name="action_forward">向前</string>
+    <string name="settings">設置</string>
+    <string name="location">位置訪問</string>
+    <string name="password">保存密碼</string>
+    <string name="agent">用戶代理</string>
+    <string name="flash">啟用Adobe Flash</string>
+    <string name="home">主頁</string>
+    <string name="fullscreen">全屏模式</string>
+    <string name="java">啟用JavaScript</string>
+    <string name="download">下載位置</string>
+    <string name="settings_advanced">高級設置</string>
+    <string name="settings_advanced_explain">URL框內容，渲染模式，文本編碼......</string>
+    <string name="apache">Apache License 2.0</string>
+    <string name="version">應用版本</string>
+    <string name="cache">退出時清除緩存</string>
+    <string name="reflow">啟用文本重排</string>
+    <string name="block">阻止圖像</string>
+    <string name="window">允許站點打開新窗口</string>
+    <string name="cookies">啟用Cookie</string>
+    <string name="importbookmarks">從瀏覽器導入書籤</string>
+    <string name="size">字體大小</string>
+    <string name="recommended">推薦的</string>
+    <string name="search">搜索引擎</string>
+    <string name="search_hint">搜索</string>
+    <string name="wideViewPort">使用寬視口</string>
+    <string name="overViewMode">以概覽模式加載頁面</string>
+    <string name="restore">在開始時恢復丟失的標籤</string>
+    <string name="supported_browsers_title">支持的瀏覽器</string>
+    <string name="stock_browser">股票瀏覽器</string>
+    <string name="stock_browser_unavailable">沒有檢測到庫存瀏覽器</string>
+    <string name="stock_browser_available">檢測到支持的庫存瀏覽</string>
+    <string name="fullScreenOption">瀏覽時隱藏狀態欄</string>
+    <string name="clear_cookies">清除瀏覽器cookie</string>
+    <string name="clear_history">清除瀏覽器歷史記</string>
+    <string name="dialog_image">你想用這張圖片做什麼？</string>
+    <string name="action_download">下載</string>
+    <string name="action_open">打開</string>
+    <string name="dialog_link">你想用這個鏈接做什麼？</string>
+    <string name="dialog_title_share">分享此頁面</string>
+    <string name="dialog_history_long_press">你想對這個歷史項目做什麼？</string>
+    <string name="dialog_bookmark">你想用這個書籤做什麼？</string>
+    <string name="action_delete">刪除</string>
+    <string name="action_blank">空白頁</string>
+    <string name="agent_default">默認</string>
+    <string name="agent_desktop">桌面</string>
+    <string name="agent_mobile">移動</string>
+    <string name="agent_custom">習慣</string>
+    <string name="title_search_engine">搜索引擎</string>
+    <string name="action_ok">好</string>
+    <string name="dialog_download">要下載此文件嗎？ （％1 $ S）</string>
+    <string name="unknown_size">未知的大小</string>
+    <string name="action_cancel">取消</string>
+    <string name="title_warning">警告</string>
+    <string name="dialog_adobe_not_installed">未安裝Adobe Flash Player。\ n請安裝Flash Player。</string>
+    <string name="title_user_agent">用戶代理</string>
+    <string name="title_download_location">下載位置</string>
+    <string name="title_custom_homepage">自定義主頁</string>
+    <string name="action_webpage">網頁</string>
+    <string name="title_clear_history">清除歷史記錄</string>
+    <string name="title_clear_cookies">清除Cookies</string>
+    <string name="dialog_history">您想清除瀏覽器歷史記錄嗎？</string>
+    <string name="dialog_cookies">您想清除瀏覽器Cookie嗎？</string>
+    <string name="action_yes">是</string>
+    <string name="action_no">沒有</string>
+    <string name="title_text_size">字體大小</string>
+    <string name="size_largest">最大</string>
+    <string name="size_large">大</string>
+    <string name="size_normal">正常</string>
+    <string name="size_small">小</string>
+    <string name="size_smallest">最少</string>
+    <string name="title_error">錯誤</string>
+    <string name="dialog_import_error">未檢測到瀏覽器從中導入書籤。</string>
+    <string name="hint_title">標題</string>
+    <string name="hint_url">網址</string>
+    <string name="title_edit_bookmark">編輯書籤</string>
+    <string name="action_edit">編輯</string>
+    <string name="action_incognito">新的隱身標籤</string>
+    <string name="action_homepage">默認</string>
+    <string name="action_back">背部</string>
+    <string name="action_find">在頁面中查找</string>
+    <string name="download_pending">開始下載\ u2026</string>
+    <string name="cannot_download">只能下載HTTP或HTTPS URL。</string>
+    <string name="problem_download">遇到無效的網址，無法下載</string>
+    <string name="problem_location_download">無法下載到指定位置</string>
+    <string name="download_no_sdcard_dlg_title">沒有SD卡</string>
+    <string name="download_no_sdcard_dlg_msg">下載文件需要USB存儲空間。</string>
+    <string name="download_sdcard_busy_dlg_title">USB存儲不可用</string>
+    <string name="download_sdcard_busy_dlg_msg">存儲很忙。要允許下載，請在通知中觸摸“關閉USB存儲”。</string>
+    <string name="incognito_cookies">以隱身模式啟用Cookie</string>
+    <string name="title_flash">Adobe Flash</string>
+    <string name="action_manual">手冊</string>
+    <string name="action_auto">汽車</string>
+    <string name="action_follow_me">聯絡我</string>
+    <string name="clear_cache">清除緩存</string>
+    <string name="message_cache_cleared">緩存清除</string>
+    <string name="message_import">書籤已導入</string>
+    <string name="message_clear_history">歷史清除</string>
+    <string name="message_cookies_cleared">餅乾已清除</string>
+    <string name="max_tabs">達到最大標籤</string>
+    <string name="message_text_copied">文本已復製到剪貼板</string>
+    <string name="message_link_copied">鏈接複製到剪貼板</string>
+    <string name="message_blocked_local">本地文件已被阻止加載</string>
+    <string name="licenses">開源許可證</string>
+    <string name="suggestion">搜索</string>
+    <string name="block_ads">阻止廣告和跟踪器</string>
+    <string name="message_insecure_connection">與此站點的連接不安全：%1$s 無論如何訪問網站？</string>
+    <string name="message_certificate_date_invalid">證書日期無效</string>
+    <string name="message_certificate_expired">證書已過期</string>
+    <string name="message_certificate_domain_mismatch">證書中的域與站點域不匹配</string>
+    <string name="message_certificate_invalid">證書無效</string>
+    <string name="message_certificate_not_yet_valid">證書尚未生效</string>
+    <string name="message_certificate_untrusted">證書不受信任</string>
+    <string name="title_form_resubmission">表格重新提交</string>
+    <string name="message_form_resubmission">您要重新發送提交的數據嗎？</string>
+    <string name="message_location">\ n想要使用您的位置</string>
+    <string name="action_allow">允許</string>
+    <string name="action_dont_allow">不允許</string>
+    <string name="title_sign_in">登入</string>
+    <string name="label_realm">服務器消息：%s</string>
+    <string name="hint_username">用戶名</string>
+    <string name="hint_password">密碼</string>
+    <string name="search_suggestions">搜索建議</string>
+    <string name="powered_by_google">谷歌</string>
+    <string name="powered_by_duck">DuckDuckGo</string>
+    <string name="powered_by_baidu">Baidu</string>
+    <string name="search_suggestions_off">沒有搜索建議</string>
+    <string name="http_proxy">HTTP代理</string>
+    <string-array name="proxy_choices_array">
+        <item>沒有</item>
+        <item>系</item>
+        <item>I2P</item>
+        <item>手冊</item>
+    </string-array>
+    <string name="manual_proxy">手動代理</string>
+    <string name="host">主辦：</string>
+    <string name="port">港口：</string>
+    <string name="use_tor_prompt">看起來你安裝了Orbot。你想用Tor嗎？</string>
+    <string name="use_i2p_prompt">看起來你已經安裝了I2P。你想用I2P嗎？</string>
+    <string name="install_orbot">安裝Orbot以便使用Tor進行代理。</string>
+    <string name="i2p_not_running">I2P沒有運行。</string>
+    <string name="i2p_tunnels_not_ready">I2P隧道還沒準備好。</string>
+    <string name="yes">是</string>
+    <string name="no">沒有</string>
+    <string name="clear_cookies_exit">退出時清除cookie</string>
+    <string name="clear_history_exit">退出時清除歷史記錄</string>
+    <string name="folder_default">默認</string>
+    <string name="folder_custom">習慣</string>
+    <string name="untitled">無標題</string>
+    <string name="mpl_license">Mozilla公共許可證2.0</string>
+    <string name="freeware">免費軟件</string>
+    <string name="android_open_source_project">Android開源項目</string>
+    <string name="hphosts_ad_server_list">hpHosts廣告服務器列表</string>
+    <string name="deleted_tab">重新打開舊標籤</string>
+    <string name="rendering_mode">渲染模式</string>
+    <string name="name_inverted">倒</string>
+    <string name="name_grayscale">灰度</string>
+    <string name="name_inverted_grayscale">倒灰度</string>
+    <string name="name_increase_contrast">增加對比度</string>
+    <string name="name_normal">正常</string>
+    <string name="sync_history">與Google同步歷史記錄</string>
+    <string name="title_file_chooser">文件選擇器</string>
+    <string name="library_netcipher">NetCipher</string>
+    <string name="license_gnu">GNU較寬鬆通用公共許可證</string>
+    <string name="export_bookmarks">將書籤導出為備份</string>
+    <string name="import_backup">從備份導入書籤</string>
+    <string name="bookmark_export_path">導出的書籤</string>
+    <string name="bookmark_export_failure">對不起，書籤無法導出！</string>
+    <string name="bookmark_settings">書籤設置</string>
+    <string name="settings_bookmark_explain">出口和進口......</string>
+    <string name="import_bookmark_error">無法從文件導入書籤</string>
+    <string name="title_chooser">選擇一個文件</string>
+    <string name="settings_general">常規設置</string>
+    <string name="settings_general_explain">廣告攔截器，搜索引擎，主頁......</string>
+    <string name="settings_display">顯示設置</string>
+    <string name="settings_display_explain">全屏模式，文字大小，主題......</string>
+    <string name="settings_privacy">隱私和安全設置</string>
+    <string name="settings_privacy_explain">緩存，cookie，歷史......</string>
+    <string name="settings_about">關於</string>
+    <string name="settings_about_explain">版本號，作者和許可證......</string>
+    <string name="close_tab">關閉當前選項卡</string>
+    <string name="close_all_tabs">關閉所有標籤</string>
+    <string name="close_other_tabs">關閉其他標籤</string>
+    <string name="third_party">阻止第三方cookie</string>
+    <string name="color_mode">啟用顏色模式</string>
+    <string name="reading_mode">讀者模式</string>
+    <string name="loading">載入中...</string>
+    <string name="loading_failed">無法從頁面加載任何內容。</string>
+    <string name="snacktory">Snacktory</string>
+    <string name="jsoup">jsoup：Java HTML Parser</string>
+    <string name="mit_license">帶許可證</string>
+    <string name="url_contents">網址框內容</string>
+    <string name="text_encoding">文字編碼</string>
+    <string-array name="url_content_array">
+        <item>域（默認）</item>
+        <item>網址</item>
+        <item>標題</item>
+    </string-array>
+    <string name="invert_color">反轉顏色</string>
+    <string name="dark_theme">黑暗的主題</string>
+    <string name="settings_black_status_bar">黑色狀態欄</string>
+    <string name="tabs">標籤</string>
+    <string name="theme">應用主題</string>
+    <string name="light_theme">輕主題</string>
+    <string name="black_theme">黑色主題</string>
+    <string name="blue_theme">藍色主題</string>
+    <string name="yellow_theme">黃色主題</string>
+    <string name="green_theme">綠色主題</string>
+    <string name="folder">文件夾名稱</string>
+    <string name="action_folder">夾</string>
+    <string name="action_rename">改名</string>
+    <string name="title_rename_folder">重命名文件夾</string>
+    <string name="dialog_folder">你想對這個文件夾做什麼？</string>
+    <string name="clear_web_storage">清除網絡存儲</string>
+    <string name="clear_web_storage_exit">退出時清除網絡存儲空間</string>
+    <string name="message_web_storage_cleared">網絡存儲空了</string>
+    <string name="hosts_source">主持文件廣告攔截源</string>
+    <string name="settings_adblock">廣告塊設置</string>
+    <string name="tabs_in_drawer">在導航欄中顯示標籤</string>
+    <string name="swap_bookmarks_and_tabs">交換書籤和標籤抽屜</string>
+    <string name="do_not_track">請求\'不跟踪\'</string>
+    <string name="remove_identifying_headers">刪除標識的HTTP標頭</string>
+    <string name="action_add_to_homescreen">添加到主屏幕</string>
+    <string name="message_added_to_homescreen">快捷方式添加到主屏幕</string>
+    <string name="action_delete_all_bookmarks">刪除所有書籤</string>
+    <string name="flash_not_supported">您的設備不支持Flash Player</string>
+    <string name="message_open_download_fail">這個文件不再存在了</string>
+    <string name="this_project">這個項目</string>
+
+
+    <string name="jgh">SmartCookieWeb源代碼</string>
+    <string name="action_home">家</string>
+    <string name="the_jumpgo_project" translatable="false">Smart Cookie Web</string>
+    <string name="jgh_description">了解SmartCookieWeb</string>
+
+    <string name="faq">常問問題</string>
+    <string name="faq_description">經常問的問題</string>
+
+
+    <string name="debug_title">調試設置</string>
+    <string name="debug_leak_canary">LeakCanary</string>
+    <string name="app_restart">請重新啟動應用以使更改生效。</string>
+
+
+    <string name="dialog_open_new_tab">在新標籤頁中打開</string>
+    <string name="dialog_open_background_tab">在背景選項卡中打開</string>
+    <string name="dialog_open_incognito_tab">在隱身標籤中打開</string>
+    <string name="dialog_remove_bookmark">刪除書籤</string>
+    <string name="dialog_edit_bookmark">編輯書籤</string>
+    <string name="dialog_remove_from_history">從歷史中刪除</string>
+    <string name="dialog_download_image">下載圖片</string>
+    <string name="dialog_copy_link">複製鏈接</string>
+    <string name="dialog_rename_folder">重命名文件夾</string>
+    <string name="dialog_remove_folder">刪除文件夾</string>
+    <string name="dialog_title_close_browser">關閉瀏覽器</string>
+    <string name="dialog_delete_download">刪除下載</string>
+    <string name="dialog_delete_all_downloads">刪除所有下載</string>
+
+
+    <string name="search_engine_custom">自定義網址</string>
+    <string name="search_engine_google">谷歌</string>
+    <string name="search_engine_ask">問</string>
+    <string name="search_engine_bing">Bing</string>
+    <string name="search_engine_yahoo">雅虎</string>
+    <string name="search_engine_startpage" translatable="false">StartPage</string>
+    <string name="search_engine_startpage_mobile">StartPage Mobile</string>
+    <string name="search_engine_duckduckgo">DuckDuckGo</string>
+    <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
+    <string name="search_engine_baidu">Baidu</string>
+    <string name="search_engine_yandex">Yandex的</string>
+
+    <string name="title_activity_welcome">主屏幕</string>
+    <string name="next">下一個</string>
+    <string name="skip">跳躍</string>
+    <string name="start">得到它了</string>
+
+    <string name="slide_1_title">歡迎來到SmartCookie 5.0！</string>
+    <string name="slide_1_desc">瀏覽網頁現在變得更加輕鬆和安全！</string>
+
+    <string name="slide_2_title">打開標籤頁</string>
+    <string name="slide_2_desc">按左上角的按鈕可以訪問您的標籤頁和頁面導航。</string>
+
+    <string name="slide_3_title">更改設置</string>
+    <string name="slide_3_desc">通過按右上角的按鈕並從下拉列表中選擇“設置”來打開設置頁面。</string>
+
+    <string name="slide_4_title">安全集中</string>
+    <string name="slide_4_desc">您可以在設置中屏蔽網站，更改用戶代理，屏蔽廣告等等。</string>
+
+    <string name="play_again_desc">要再次查看歡迎滑塊，請轉到設置 - &gt;應用程序 - &gt; SmartCookieWeb  - &gt;清除數據</string>
+    <string name="play_again">再玩一次</string>
+    <string name="privacy">查看隱私政策</string>
+    <string name="privacy_info">閱讀SmartCookieWeb隱私政策</string>
+    <string name="block_malware">阻止惡意網站</string>
+    <string name="block_sites">自定義網站塊（測試版）</string>
+    <string name="block_sites_title">自定義網站阻止（帶逗號的單獨網站）</string>
+    <string name="none">沒有</string>
+    <string name="block_info">在URL中輸入要阻止的單詞（用逗號分隔）。</string>
+    <string name="startpage">將主題應用於主頁</string>
+    <string name="allpage">將主題應用於網頁（測試版）</string>
+    <string name="forcehttps">阻止非HTTPS站點</string>
+    <string name="preferhttps">首選HTTPS站點版本</string>
+    <string name="forcehttpsdesc">僅加載HTTPS站點</string>
+    <string name="preferhttpsdesc">始終在支持的站點上使用HTTPS（可能會導致問題）</string>
+
+    <string name="startpagedesc">將默認主頁的顏色設置為主題中使用的顏色。</string>
+    <string name="updatehomepage">打開新標籤頁以查看更新的主頁</string>
+
+    <string name="inspect">注入JavaScript</string>
+    <string name="bookmark">書籤已添加</string>
+    <!-- Generated by Automatic String Resource Translation
+    --><!--          https://asrt.gluege.boerde.de
+--></resources>
