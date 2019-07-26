@@ -37,3 +37,5 @@ A secure, open source web browser for Android.
  
 # License
 SmartCookieWeb uses the Mozilla Public License 2.0
+
+SmartCookieWeb is a fork of Lightning Browser (https://github.com/anthonycr/lightning-browser)
