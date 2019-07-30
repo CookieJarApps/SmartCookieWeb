@@ -307,4 +307,9 @@
     <string name="startpagedesc">"Imposta il colore della homepage di default su quello usato nel tema.  "</string>
     <string name="error_reload">Ricarica</string>
     <string name="error_title">Oh no! &lt;br&gt; Quel sito non può essere caricato.</string>
+    <string name="blocked_title">"Oh no! &lt;br&gt; Quel sito è stato bloccato nelle impostazioni.  "</string>
+    <string name="bookmark">Segnalibro aggiunto</string>
+    <string name="malware_message">Contatta support@cookiegames.co.uk se questo è un errore.</string>
+    <string name="malware_title">"Oh no! &lt;br&gt; Quel sito sembra essere malware.  "</string>
+    <string name="https_title">Oh no! &lt;br&gt; Quel sito non supporta HTTPS e il blocco HTTP è abilitato.</string>
 </resources>

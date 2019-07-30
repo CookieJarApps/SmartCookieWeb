@@ -306,4 +306,9 @@
     <string name="startpagedesc">"Définissez la couleur de la page d'accueil par défaut sur celle utilisée dans le thème.  "</string>
     <string name="error_reload">Rafraîchir</string>
     <string name="error_title">Oh non! &lt;br&gt; Ce site ne peut pas être chargé.</string>
+    <string name="blocked_title">Oh non! &lt;br&gt; Ce site a été bloqué dans les paramètres.</string>
+    <string name="bookmark">Signet ajouté</string>
+    <string name="malware_message">Contactez support@cookiegames.co.uk s\'il s\'agit d\'une erreur.</string>
+    <string name="malware_title">Oh non! &lt;br&gt; Ce site semble être un malware.</string>
+    <string name="https_title">Oh non! &lt;br&gt; Ce site ne prend pas en charge HTTPS et le blocage HTTP est activé.</string>
 </resources>

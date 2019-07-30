@@ -305,4 +305,9 @@
     <string name="startpagedesc">"Establezca el color de la página de inicio predeterminada al que se usa en el tema.  "</string>
     <string name="error_reload">Recargar</string>
     <string name="error_title">¡Oh no! &lt;br&gt; Ese sitio no se puede cargar.</string>
+    <string name="blocked_title">¡Oh no! &lt;br&gt; Ese sitio ha sido bloqueado en la configuración.</string>
+    <string name="bookmark">"Marcador agregado  "</string>
+    <string name="malware_message">Póngase en contacto con support@cookiegames.co.uk si esto es un error.</string>
+    <string name="malware_title">¡Oh no! &lt;br&gt; Ese sitio parece ser malware.</string>
+    <string name="https_title">¡Oh no! &lt;br&gt; Ese sitio no es compatible con HTTPS y el bloqueo de HTTP está habilitado.</string>
 </resources>

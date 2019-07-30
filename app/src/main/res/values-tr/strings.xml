@@ -305,4 +305,9 @@
     <string name="startpagedesc">"Varsayılan ana sayfanın rengini temada kullanılana ayarlayın.  "</string>
     <string name="error_reload">Tekrar yükle</string>
     <string name="error_title">Oh hayır! &lt;br&gt; Bu site yüklenemiyor.</string>
+    <string name="blocked_title">"Oh hayır! &lt;br&gt; Bu site ayarlarda engellendi.  "</string>
+    <string name="bookmark">Yer işareti eklendi</string>
+    <string name="malware_message">Bu bir hata ise, support@cookiegames.co.uk adresine başvurun.</string>
+    <string name="malware_title">"Oh hayır! &lt;br&gt; Bu site kötü amaçlı yazılım gibi görünüyor.  "</string>
+    <string name="https_title">"Oh hayır! &lt;br&gt; Bu site HTTPS'yi desteklemiyor ve HTTP engelle etkin.  "</string>
 </resources>

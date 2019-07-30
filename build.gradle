@@ -29,8 +29,8 @@ ext {
     targetSdkVersion = 28
     buildToolsVersion = '27.0.3'
 
-    versionNameMain = '4.6.1'
-    versionNameDev = '4.6.1'
-    versionCode_dev = 36
-    versionCode_main = 36
+    versionNameMain = '4.6.2'
+    versionNameDev = '4.6.2'
+    versionCode_dev = 37
+    versionCode_main = 37
 }
