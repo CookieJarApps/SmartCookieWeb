@@ -303,4 +303,6 @@
     <string name="allpage">Web sayfalarına tema uygula (beta)</string>
     <string name="updatehomepage">"Güncellenen ana sayfayı görmek için yeni bir sekme açın  "</string>
     <string name="startpagedesc">"Varsayılan ana sayfanın rengini temada kullanılana ayarlayın.  "</string>
+    <string name="error_reload">Tekrar yükle</string>
+    <string name="error_title">Oh hayır! &lt;br&gt; Bu site yüklenemiyor.</string>
 </resources>

@@ -304,4 +304,6 @@
     <string name="startpage">"Appliquer le thème à la page d'accueil  "</string>
     <string name="updatehomepage">"Ouvrez un nouvel onglet pour voir la page d'accueil mise à jour  "</string>
     <string name="startpagedesc">"Définissez la couleur de la page d'accueil par défaut sur celle utilisée dans le thème.  "</string>
+    <string name="error_reload">Rafraîchir</string>
+    <string name="error_title">Oh non! &lt;br&gt; Ce site ne peut pas être chargé.</string>
 </resources>

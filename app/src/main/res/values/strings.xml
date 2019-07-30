@@ -239,7 +239,6 @@
     <string name="message_open_download_fail">This file doesn\'t exist anymore</string>
     <string name="this_project">This Project</string>
 
-    <!-- Link to JumpGo landing page in settings -->
     <string name="jgh">SmartCookieWeb Source Code</string>
     <string name="action_home">Home</string>
     <string name="the_jumpgo_project" translatable="false">Smart Cookie Web</string>
@@ -321,4 +320,17 @@
 
     <string name="inspect">Inject JavaScript</string>
     <string name="bookmark">Bookmark added</string>
+
+    <string name="error_title">Oh crumbs! &lt;br&gt; That site can\'t be loaded.</string>
+    <string name="error_reload">Reload</string>
+
+    <string name="https_title">Oh crumbs! &lt;br&gt; That site doesn\'t support HTTPS and block HTTP is enabled.</string>
+
+    <string name="malware_title">Oh crumbs! &lt;br&gt; That site appears to be malware.</string>
+    <string name="malware_message">Contact support@cookiegames.co.uk if this is a mistake.</string>
+
+    <string name="blocked_title">Oh crumbs! &lt;br&gt; That site has been blocked in settings.</string>
+
+
+    <!-- finish pages -->
 </resources>

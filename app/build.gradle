@@ -100,7 +100,7 @@ dependencies {
     implementation 'com.anthonycr.grant:permissions:1.1.2'
 
     // proxy support
-    implementation 'net.i2p.android:client:0.9.40'
+    //implementation 'net.i2p.android:client:0.9.40'
     implementation 'net.i2p.android:helper:0.9.5'
 
     implementation 'com.squareup.okhttp3:okhttp:3.12.0'

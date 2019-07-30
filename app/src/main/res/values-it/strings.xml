@@ -305,4 +305,6 @@
     <string name="allpage">Applicare il tema alle pagine Web (beta)</string>
     <string name="updatehomepage">"Apri una nuova scheda per vedere la home page aggiornata  "</string>
     <string name="startpagedesc">"Imposta il colore della homepage di default su quello usato nel tema.  "</string>
+    <string name="error_reload">Ricarica</string>
+    <string name="error_title">Oh no! &lt;br&gt; Quel sito non può essere caricato.</string>
 </resources>

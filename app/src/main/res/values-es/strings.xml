@@ -303,4 +303,6 @@
     <string name="allpage">"Aplicar tema a páginas web (beta)  "</string>
     <string name="updatehomepage">Abre una nueva pestaña para ver la página de inicio actualizada</string>
     <string name="startpagedesc">"Establezca el color de la página de inicio predeterminada al que se usa en el tema.  "</string>
+    <string name="error_reload">Recargar</string>
+    <string name="error_title">¡Oh no! &lt;br&gt; Ese sitio no se puede cargar.</string>
 </resources>
