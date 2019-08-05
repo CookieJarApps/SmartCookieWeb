@@ -56,7 +56,7 @@
     <string name="agent_custom">Personalizado</string>
     <string name="title_search_engine">Buscador</string>
     <string name="action_ok">De Acuerdo</string>
-    <string name="dialog_download">¿Quieres Descargar Este Archivo? (%1$S)</string>
+    <string name="dialog_download">¿Quieres Descargar Este Archivo? (%1$s)</string>
     <string name="unknown_size">Talla Desconocida</string>
     <string name="action_cancel">Cancelar</string>
     <string name="title_warning">Advertencia</string>

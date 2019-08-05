@@ -1,6 +1,4 @@
 <resources xmlns:ns0="http://schemas.android.com/tools" ns0:ignore="MissingTranslation">
-    <string name="app_name" translatable="false">SmartCookieWeb</string>
-    <string name="app_lightning" translatable="false">Lightning</string>
     <string name="action_new_tab">Новая вкладка</string>
     <string name="action_share">Поделиться</string>
     <string name="action_history">история</string>
@@ -57,7 +55,7 @@
     <string name="agent_custom">изготовленный на заказ</string>
     <string name="title_search_engine">Поисковый движок</string>
     <string name="action_ok">Хорошо</string>
-    <string name="dialog_download">Вы хотите скачать этот файл? (% 1 $ s)</string>
+    <string name="dialog_download">Вы хотите скачать этот файл? (%1$s)</string>
     <string name="unknown_size">Неизвестный размер</string>
     <string name="action_cancel">отменить</string>
     <string name="title_warning">Предупреждение</string>

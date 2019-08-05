@@ -1,6 +1,4 @@
 <resources xmlns:ns0="http://schemas.android.com/tools" ns0:ignore="MissingTranslation">
-    <string name="app_name" translatable="false">SmartCookieWeb</string>
-    <string name="app_lightning" translatable="false">Lightning</string>
     <string name="action_new_tab">新标签</string>
     <string name="action_share">分享</string>
     <string name="action_history">历史</string>
@@ -57,7 +55,7 @@
     <string name="agent_custom">习惯</string>
     <string name="title_search_engine">搜索引擎</string>
     <string name="action_ok">好</string>
-    <string name="dialog_download">要下载此文件吗？ （％1 $ S）</string>
+    <string name="dialog_download">要下载此文件吗？ （%1$s）</string>
     <string name="unknown_size">未知的大小</string>
     <string name="action_cancel">取消</string>
     <string name="title_warning">警告</string>

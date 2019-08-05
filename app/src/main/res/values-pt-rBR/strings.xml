@@ -1,6 +1,4 @@
 <resources xmlns:ns0="http://schemas.android.com/tools" ns0:ignore="MissingTranslation">
-    <string name="app_name" translatable="false">SmartCookieWeb</string>
-    <string name="app_lightning" translatable="false">Lightning</string>
     <string name="action_new_tab">Nova aba</string>
     <string name="action_share">Compartilhar</string>
     <string name="action_history">História</string>
@@ -57,7 +55,7 @@
     <string name="agent_custom">personalizadas</string>
     <string name="title_search_engine">Motor de pesquisa</string>
     <string name="action_ok">Está bem</string>
-    <string name="dialog_download">Você quer baixar este arquivo? (% 1 $ s)</string>
+    <string name="dialog_download">Você quer baixar este arquivo? (%1$s)</string>
     <string name="unknown_size">Tamanho desconhecido</string>
     <string name="action_cancel">Cancelar</string>
     <string name="title_warning">Aviso</string>
@@ -315,7 +313,7 @@
     <string name="inspect">Injetar JavaScript</string>
     <string name="bookmark">Marcador adicionado</string>
     <string name="error_reload">Recarregar</string>
-    <string name="error_title">Ah não! &lt;br&gt;  Esse site não pode ser carregado.</string>
+    <string name="error_title">Ah não! &lt;br&gt; Esse site não pode ser carregado.</string>
     <string name="blocked_title">Ah não! &lt;br&gt; Esse site foi bloqueado nas configurações.</string>
     <string name="malware_message">"Entre em contato com support@cookiegames.co.uk se isso for um erro.  "</string>
     <string name="malware_title">"Ah não! &lt;br&gt; Esse site parece ser malware.  "</string>

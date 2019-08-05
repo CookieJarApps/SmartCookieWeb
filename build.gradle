@@ -5,7 +5,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:3.4.2'
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // ...
@@ -23,14 +23,11 @@ allprojects {
 
 ext {
     minSdkVersion = 15
-    //minSdkVersion = 22
-    //minSdkVersionDev = 22
-    //minSdkVersionMain = 15
     targetSdkVersion = 28
     buildToolsVersion = '27.0.3'
 
-    versionNameMain = '4.6.2'
-    versionNameDev = '4.6.2'
+    versionNameMain = '4.8.0'
+    versionNameDev = '4.8.0'
     versionCode_dev = 37
     versionCode_main = 37
 }
