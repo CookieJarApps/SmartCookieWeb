@@ -14,7 +14,6 @@ import android.util.Log;
 import android.webkit.WebView;
 
 import com.anthonycr.bonsai.Schedulers;
-import com.squareup.leakcanary.LeakCanary;
 
 import java.util.List;
 
@@ -45,6 +44,8 @@ public class BrowserApp extends Application {
     @Inject PreferenceManager mPreferenceManager;
     @Inject BookmarkModel mBookmarkModel;
 
+    public static BrowserApp instance;
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
@@ -53,6 +54,7 @@ public class BrowserApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         if (BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectAll()
@@ -101,9 +103,6 @@ public class BrowserApp extends Application {
             }
         });
 
-        if (mPreferenceManager.getUseLeakCanary() && !isRelease()) {
-            LeakCanary.install(this);
-        }
         if (!isRelease() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             WebView.setWebContentsDebuggingEnabled(true);
         }
@@ -138,4 +137,11 @@ public class BrowserApp extends Application {
         clipboard.setPrimaryClip(clip);
     }
 
+    @Override
+    public Context getApplicationContext() {
+        return super.getApplicationContext();
+    }
+    public static BrowserApp getInstance() {
+        return instance;
+    }
 }

@@ -91,6 +91,7 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
+import com.cookiegames.smartcookie.ExceptionHandler;
 import com.cookiegames.smartcookie.R;
 import com.cookiegames.smartcookie.controller.UIController;
 import com.cookiegames.smartcookie.interpolator.BezierDecelerateInterpolator;
@@ -236,6 +237,13 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /* Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
+
+        if (getIntent().getBooleanExtra("crash", false)) {
+            Toast.makeText(this, "App restarted after crash", Toast.LENGTH_SHORT).show();
+        } */
+
         BrowserApp.getAppComponent().inject(this);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -273,7 +281,7 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
                                         @Override
                                         public void onHidePrompt(MotionEvent event, boolean tappedTarget)
                                         {
-                                            prefs.edit().putBoolean("dialogShown",true).commit();
+                                            prefs.edit().putBoolean("dialogShown",true).apply();
                                         }
 
                                         @Override
@@ -291,11 +299,10 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
                     })
                     .show();
         }
-
-
     }
 
     private synchronized void initialize(Bundle savedInstanceState) {
+
         initializeToolbarHeight(getResources().getConfiguration());
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();

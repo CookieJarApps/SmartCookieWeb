@@ -48,7 +48,7 @@
         android:title="@string/faq">
         <intent
             android:action="android.intent.action.VIEW"
-            android:data="https://files.cookiegames.co.uk/files/faq.html">
+            android:data="https://cookiegames.co.uk/schelp.php">
             <extra
                 android:name="SOURCE"
                 android:value="SELF"/>
