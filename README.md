@@ -50,5 +50,5 @@ SmartCookieWeb is a fork of Lightning Browser (https://github.com/anthonycr/ligh
 - Theme search pages
 - Fixed Travis CI support
 - Onboarding to help new users
-- Enabled Cleartext (HTTP sites now work on Android 9+ unlike Lightning)
+- Enabled Cleartext (HTTP sites now work on Android 9+, whilst the app targets a newer API version unlike Lightning)
 - Bug fixes
