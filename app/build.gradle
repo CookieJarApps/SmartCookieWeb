@@ -114,7 +114,7 @@ dependencies {
 
     implementation 'com.anthonycr.progress:animated-progress:1.0'
 
-    implementation 'uk.co.samuelwall:material-tap-target-prompt:1.1.4'
+    compile 'com.github.chyrta:AndroidOnboarder:0.7'
 
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

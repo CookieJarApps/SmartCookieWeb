@@ -88,13 +88,16 @@ import com.anthonycr.progress.AnimatedProgressBar;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
 import com.cookiegames.smartcookie.ExceptionHandler;
+import com.cookiegames.smartcookie.MainActivity;
 import com.cookiegames.smartcookie.R;
 import com.cookiegames.smartcookie.controller.UIController;
 import com.cookiegames.smartcookie.interpolator.BezierDecelerateInterpolator;
+import com.cookiegames.smartcookie.onboarding.WelcomeActivity;
 import com.cookiegames.smartcookie.reading.activity.ReadingActivity;
 import com.cookiegames.smartcookie.browser.BookmarksView;
 import com.cookiegames.smartcookie.browser.BrowserPresenter;
@@ -130,9 +133,9 @@ import com.cookiegames.smartcookie.utils.WebUtils;
 import com.cookiegames.smartcookie.view.Handlers;
 import com.cookiegames.smartcookie.view.LightningView;
 import com.cookiegames.smartcookie.view.SearchView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 
 public abstract class BrowserActivity extends ThemableBrowserActivity implements BrowserView, UIController, OnClickListener {
 
@@ -217,6 +220,8 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
     // Proxy
     @Inject ProxyUtils mProxyUtils;
 
+    SharedPreferences prefs = null;
+
     // Constant
     private static final int API = android.os.Build.VERSION.SDK_INT;
     private static final String NETWORK_BROADCAST_ACTION = "android.net.conn.CONNECTIVITY_CHANGE";
@@ -237,6 +242,14 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        prefs = getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE);
+
+        if (prefs.getBoolean("firstrun", true)) {
+            prefs.edit().putBoolean("firstrun", false).apply();
+            Intent intent = new Intent(this, WelcomeActivity .class);
+            startActivity(intent);
+        }
 
         /* Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
 
@@ -262,43 +275,7 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
         SharedPreferences prefs = this.getSharedPreferences("com.cookiegames.smartcookie", Context.MODE_PRIVATE);
         Boolean startedBefore = prefs.getBoolean("dialogShown", false);
 
-        if(!startedBefore){
-            new MaterialTapTargetPrompt.Builder(BrowserActivity.this)
-                    .setTarget(findViewById(R.id.tab_header_button))
-                    .setPrimaryText(tabs)
-                    .setSecondaryText(tabs1)
-                    .setOnHidePromptListener(new MaterialTapTargetPrompt.OnHidePromptListener()
-                    {
-                        @Override
-                        public void onHidePrompt(MotionEvent event, boolean tappedTarget)
-                        {
-                            new MaterialTapTargetPrompt.Builder(BrowserActivity.this)
-                                    .setTarget(findViewById(R.id.right_drawer))
-                                    .setPrimaryText(settings)
-                                    .setSecondaryText(settings1)
-                                    .setOnHidePromptListener(new MaterialTapTargetPrompt.OnHidePromptListener()
-                                    {
-                                        @Override
-                                        public void onHidePrompt(MotionEvent event, boolean tappedTarget)
-                                        {
-                                            prefs.edit().putBoolean("dialogShown",true).apply();
-                                        }
 
-                                        @Override
-                                        public void onHidePromptComplete()
-                                        {
-                                        }
-                                    })
-                                    .show();
-                        }
-
-                        @Override
-                        public void onHidePromptComplete()
-                        {
-                        }
-                    })
-                    .show();
-        }
     }
 
     private synchronized void initialize(Bundle savedInstanceState) {
@@ -493,6 +470,8 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
             setIntent(null);
             mProxyUtils.checkForProxy(this);
         }
+
+
     }
 
     @IdRes

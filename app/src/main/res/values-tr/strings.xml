@@ -284,8 +284,8 @@
     <string name="slide_3_title">Ayarları değiştir</string>
     <string name="slide_3_desc">Ayarlar Sayfası Şimdi Sağ Üst Köşedeki Düğmeye Basılarak Açılmıştır.</string>
 
-    <string name="slide_4_title">Daha Güvenli</string>
-    <string name="slide_4_desc">Artık Ayarlarda Gizlilik Sayfasını Açarak Bir Proxy Ayarlayabilir Veya Kullanıcı Aracınızı Değiştirebilirsiniz.</string>
+    <string name="slide_4_title">Yer imlerini aç</string>
+    <string name="slide_4_desc">Açılır pencereyi kullanarak veya ekranın sağ tarafından kaydırarak yer imlerini açın. Yer imlerinde, bir sitenin masaüstü sürümünü açabilir, bir yer imi oluşturabilir veya açık bir okuma modu oluşturabilirsiniz.</string>
 
     <string name="play_again_desc">Açılış Kaydırıcısını Tekrar Görmek Için, Ayarlar -&gt; Uygulamalar -&gt; Açılış Kaydırıcısını -&gt; Verileri Temizle</string>
     <string name="play_again">Tekrar Oyna</string>

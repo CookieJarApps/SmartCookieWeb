@@ -286,8 +286,8 @@
     <string name="slide_3_title">"Cambia impostazioni  "</string>
     <string name="slide_3_desc">La pagina delle impostazioni è ora aperta premendo il pulsante nell\'angolo in alto a destra.</string>
 
-    <string name="slide_4_title">Più sicuro</string>
-    <string name="slide_4_desc">Ora puoi impostare un proxy o cambiare il tuo agente utente aprendo la pagina sulla privacy nelle impostazioni.</string>
+    <string name="slide_4_title">Apri segnalibri</string>
+    <string name="slide_4_desc">"Apri i segnalibri utilizzando il menu a discesa o scorrendo dal lato destro dello schermo. Nei segnalibri, è possibile aprire la versione desktop di un sito, creare un segnalibro o aprire la modalità di lettura.  "</string>
 
     <string name="play_again_desc">Per visualizzare nuovamente il cursore di benvenuto, vai a Impostazioni -&gt; app -&gt; benvenuto cursore -&gt; cancella dati</string>
     <string name="play_again">Gioca di nuovo</string>

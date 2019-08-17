@@ -67,10 +67,12 @@
             android:name="com.sec.android.intent.category.MULTIWINDOW_LAUNCHER"
             android:value="true" />
 
-   <!-- <activity
+   <activity
             android:name=".onboarding.WelcomeActivity"
             android:theme="@style/AppTheme">
-        </activity> -->
+
+
+        </activity>
         <activity
             android:name=".IncognitoActivity"
             android:alwaysRetainTaskState="true"

@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.StrictMode;
 import androidx.annotation.NonNull;
@@ -34,6 +35,7 @@ import com.cookiegames.smartcookie.utils.Preconditions;
 public class BrowserApp extends Application {
 
     private static final String TAG = "BrowserApp";
+    SharedPreferences prefs = null;
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT);
@@ -96,9 +98,7 @@ public class BrowserApp extends Application {
                     // If there are old bookmarks, import them
                     mBookmarkModel.addBookmarkList(oldBookmarks).subscribeOn(Schedulers.io()).subscribe();
                 } else if (mBookmarkModel.count() == 0) {
-                    // If the database is empty, fill it from the assets list
-                    List<HistoryItem> assetsBookmarks = BookmarkExporter.importBookmarksFromAssets(BrowserApp.this);
-                    mBookmarkModel.addBookmarkList(assetsBookmarks).subscribeOn(Schedulers.io()).subscribe();
+                    //No bookmarks
                 }
             }
         });
@@ -112,6 +112,7 @@ public class BrowserApp extends Application {
             public void onActivityDestroyed(Activity activity) {
                 Log.d(TAG, "Cleaning up after the Android framework");
                 MemoryLeakUtils.clearNextServedView(activity, BrowserApp.this);
+
             }
         });
     }

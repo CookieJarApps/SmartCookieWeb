@@ -285,8 +285,8 @@
     <string name="slide_3_title">"Modifier les paramètres  "</string>
     <string name="slide_3_desc">La page des paramètres est maintenant ouverte en appuyant sur le bouton dans le coin supérieur droit.</string>
 
-    <string name="slide_4_title">Plus sécurisé</string>
-    <string name="slide_4_desc">Vous pouvez maintenant configurer un proxy ou modifier votre agent utilisateur en ouvrant la page de confidentialité dans les paramètres.</string>
+    <string name="slide_4_title">Ouvrir les favoris</string>
+    <string name="slide_4_desc">Ouvrez les signets à l\'aide du menu déroulant ou en balayant du côté droit de l\'écran. Dans les signets, vous pouvez ouvrir la version de bureau d\'un site, créer un signet ou ouvrir le mode de lecture.</string>
 
     <string name="play_again_desc">Pour voir à nouveau le curseur de bienvenue, allez dans Paramètres -&gt; applications -&gt; curseur de bienvenue -&gt; effacer les données</string>
     <string name="play_again">Rejouer</string>

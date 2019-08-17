@@ -271,6 +271,18 @@ public class LightningWebClient extends WebViewClient {
                 }
             }
         }
+        view.getSettings().setJavaScriptEnabled(true);
+        //TODO: better solution to WebView crash
+        view.loadUrl(
+         "javascript:(function() { " +
+         "var links = document.links; \n" +
+                 "if (links != null) { \n" +
+                 "for (var i = 0; i < links.length; i++) {\n" +
+                 "links[i].rel = '';\n" +
+                 "}\n" +
+                 "}" +
+        "})()");
+        view.getSettings().setJavaScriptEnabled(mPreferences.getJavaScriptEnabled());
 
         mUIController.tabChanged(mLightningView);
     }
@@ -396,10 +408,6 @@ public class LightningWebClient extends WebViewClient {
                 }
             }
         }
-        if(url=="sc:about" | url.endsWith("sc%3Aabout") && !url.contains("sc%3Aabout ")){
-            view.loadUrl("file:///android_asset/about.html");
-        }
-
         mLightningView.getTitleInfo().setFavicon(null);
         if (mLightningView.isShown()) {
             mUIController.updateUrl(url, true);

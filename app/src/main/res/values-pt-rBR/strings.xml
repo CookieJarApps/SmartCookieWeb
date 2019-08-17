@@ -288,8 +288,8 @@
     <string name="slide_3_title">Mudar configurações</string>
     <string name="slide_3_desc">A página de configurações é aberta pressionando o botão no canto superior direito e escolhendo \'configurações \' no menu suspenso.</string>
 
-    <string name="slide_4_title">Segurança focada</string>
-    <string name="slide_4_desc">Você pode bloquear sites, alterar seu agente de usuário, bloquear anúncios e muito mais nas configurações.</string>
+    <string name="slide_4_title">Abrir marcadores</string>
+    <string name="slide_4_desc">Abra os marcadores usando o menu suspenso ou deslizando do lado direito da tela. Nos favoritos, você pode abrir a versão de área de trabalho de um site, criar um marcador ou abrir o modo de leitura.</string>
 
     <string name="play_again_desc">Para ver o controle deslizante de boas-vindas novamente, vá para Configurações -&gt; Aplicativos -&gt; SmartCookieWeb -&gt; Limpar dados</string>
     <string name="play_again">Jogar de novo</string>

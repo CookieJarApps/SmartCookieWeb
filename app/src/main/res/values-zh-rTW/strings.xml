@@ -288,8 +288,8 @@
     <string name="slide_3_title">更改設置</string>
     <string name="slide_3_desc">通過按右上角的按鈕並從下拉列表中選擇“設置”來打開設置頁面。</string>
 
-    <string name="slide_4_title">安全集中</string>
-    <string name="slide_4_desc">您可以在設置中屏蔽網站，更改用戶代理，屏蔽廣告等等。</string>
+    <string name="slide_4_title">打开书签</string>
+    <string name="slide_4_desc">使用下拉列表或從屏幕右側滑動來打開書籤。在書籤中，您可以打開網站的桌面版本，創建書籤或打開閱讀模式。</string>
 
     <string name="play_again_desc">要再次查看歡迎滑塊，請轉到設置 - &gt;應用程序 - &gt; SmartCookieWeb  - &gt;清除數據</string>
     <string name="play_again">再玩一次</string>

@@ -286,8 +286,8 @@
     <string name="skip">Skip</string>
     <string name="start">Got It</string>
 
-    <string name="slide_1_title">Welcome to SmartCookie 5.0!</string>
-    <string name="slide_1_desc">Browsing the web is now even easier and more secure!</string>
+    <string name="slide_1_title">Welcome to SmartCookie 5.0</string>
+    <string name="slide_1_desc">Browsing the web is now even easier and even more secure!</string>
 
     <string name="slide_2_title">Open tabs</string>
     <string name="slide_2_desc">Your tabs and page navigation can be accessed by pressing the button in the top left corner.</string>
@@ -295,8 +295,8 @@
     <string name="slide_3_title">Change settings</string>
     <string name="slide_3_desc">The settings page is opened by pressing the button in the top right corner and choosing \'settings\' from the dropdown.</string>
 
-    <string name="slide_4_title">Security focused</string>
-    <string name="slide_4_desc">You can block sites, change your user agent, block ads and much more in settings.</string>
+    <string name="slide_4_title">Open Bookmarks</string>
+    <string name="slide_4_desc">Open bookmarks using the dropdown or by swiping from the right side of the screen. In bookmarks, you can open the desktop version of a site, create a bookmark or open reading mode.</string>
 
     <string name="play_again_desc">To see the welcome slider again, go to Settings -> Apps -> SmartCookieWeb -> Clear Data</string>
     <string name="play_again">Play Again</string>

@@ -284,8 +284,8 @@
     <string name="slide_3_title">Cambiar ajustes</string>
     <string name="slide_3_desc">La Página De Configuración Se Abre Ahora Presionando El Botón En La Esquina Superior Derecha.</string>
 
-    <string name="slide_4_title">Más Seguro</string>
-    <string name="slide_4_desc">Ahora Puede Configurar Un Proxy O Cambiar Su Agente De Usuario Abriendo La Página De Privacidad En La Configuración.</string>
+    <string name="slide_4_title">Abrir marcadores</string>
+    <string name="slide_4_desc">Abra los marcadores usando el menú desplegable o deslizando el dedo desde el lado derecho de la pantalla. En los marcadores, puede abrir la versión de escritorio de un sitio, crear un marcador o abrir el modo de lectura.</string>
 
     <string name="play_again_desc">Para Volver A Ver El Control Deslizante De Bienvenida, Vaya A Configuración -&gt; Aplicaciones -&gt; Control Deslizante De Bienvenida -&gt; Borrar Datos</string>
     <string name="play_again">Juega De Nuevo</string>

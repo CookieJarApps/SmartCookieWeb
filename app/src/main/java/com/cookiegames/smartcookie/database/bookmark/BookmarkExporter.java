@@ -54,40 +54,6 @@ public class BookmarkExporter {
      * @param context the context necessary to open assets.
      * @return a non null list of the bookmarks stored in assets.
      */
-    @NonNull
-    public static List<HistoryItem> importBookmarksFromAssets(@NonNull Context context) {
-        List<HistoryItem> bookmarks = new ArrayList<>();
-        BufferedReader bookmarksReader = null;
-        InputStream inputStream = null;
-        try {
-            inputStream = context.getResources().openRawResource(R.raw.default_bookmarks);
-            //noinspection IOResourceOpenedButNotSafelyClosed
-            bookmarksReader = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
-            while ((line = bookmarksReader.readLine()) != null) {
-                try {
-                    JSONObject object = new JSONObject(line);
-                    HistoryItem item = new HistoryItem();
-                    item.setTitle(object.getString(KEY_TITLE));
-                    final String url = object.getString(KEY_URL);
-                    item.setUrl(url);
-                    item.setFolder(object.getString(KEY_FOLDER));
-                    item.setPosition(object.getInt(KEY_ORDER));
-                    item.setImageId(R.drawable.ic_bookmark);
-                    bookmarks.add(item);
-                } catch (JSONException e) {
-                    Log.e(TAG, "Can't parse line " + line, e);
-                }
-            }
-        } catch (IOException e) {
-            Log.e(TAG, "Error reading the bookmarks file", e);
-        } finally {
-            Utils.close(bookmarksReader);
-            Utils.close(inputStream);
-        }
-
-        return bookmarks;
-    }
 
     /**
      * Exports the list of bookmarks to a file.
