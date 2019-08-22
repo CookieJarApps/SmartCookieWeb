@@ -163,6 +163,7 @@ public class LightningWebClient extends WebViewClient {
     @TargetApi(Build.VERSION_CODES.KITKAT_WATCH)
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
+
         if (mAdBlock.isAd(url)) {
             ByteArrayInputStream EMPTY = new ByteArrayInputStream("".getBytes());
             return new WebResourceResponse("text/plain", "utf-8", EMPTY);

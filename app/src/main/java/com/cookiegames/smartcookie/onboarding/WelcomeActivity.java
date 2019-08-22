@@ -3,13 +3,11 @@ package com.cookiegames.smartcookie.onboarding;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.Browser;
 
 import com.chyrta.onboarder.OnboarderActivity;
 import com.chyrta.onboarder.OnboarderPage;
 import com.cookiegames.smartcookie.MainActivity;
 import com.cookiegames.smartcookie.R;
-import com.cookiegames.smartcookie.browser.activity.BrowserActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +28,10 @@ public class WelcomeActivity extends OnboarderActivity {
         OnboarderPage onboarderPage3 = new OnboarderPage(R.string.slide_3_title, R.string.slide_3_desc, R.drawable.ic_round_settings);
         OnboarderPage onboarderPage4 = new OnboarderPage(R.string.slide_4_title, R.string.slide_4_desc, R.drawable.ic_action_bookmark);
 
-        onboarderPage1.setBackgroundColor(R.color.accent_color);
-        onboarderPage2.setBackgroundColor(R.color.accent_color);
-        onboarderPage3.setBackgroundColor(R.color.accent_color);
-        onboarderPage4.setBackgroundColor(R.color.accent_color);
+        onboarderPage1.setBackgroundColor(R.color.onboarding);
+        onboarderPage2.setBackgroundColor(R.color.onboarding);
+        onboarderPage3.setBackgroundColor(R.color.onboarding);
+        onboarderPage4.setBackgroundColor(R.color.onboarding);
 
        //TODO: Switch to for loop + center text if/when library is fixed
 

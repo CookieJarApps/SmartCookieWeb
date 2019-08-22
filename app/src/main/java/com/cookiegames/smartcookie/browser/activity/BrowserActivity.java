@@ -245,8 +245,8 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
 
         prefs = getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE);
 
-        if (prefs.getBoolean("firstrun", true)) {
-            prefs.edit().putBoolean("firstrun", false).apply();
+        if (prefs.getBoolean("dialogShown", true)) {
+            prefs.edit().putBoolean("dialogShown", false).apply();
             Intent intent = new Intent(this, WelcomeActivity .class);
             startActivity(intent);
         }

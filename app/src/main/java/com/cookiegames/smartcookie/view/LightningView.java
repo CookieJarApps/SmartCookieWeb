@@ -149,6 +149,10 @@ public class LightningView {
         initializeSettings();
         initializePreferences(activity);
 
+        WebSettings settings = mWebView.getSettings();
+        settings.setJavaScriptCanOpenWindowsAutomatically(false);
+        settings.setSupportMultipleWindows(false);
+
         if (url != null) {
             if (!url.trim().isEmpty()) {
                 mWebView.loadUrl(url, mRequestHeaders);

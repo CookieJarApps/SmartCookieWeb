@@ -11,7 +11,10 @@
     <color name="secondary_color">#663D3C3C</color>
     <color name="accent_color">
         <!--#0073EF0-->
-        #00c2ca
+        #C88C36
+    </color>
+    <color name="onboarding">
+        #0ec4af
     </color>
     
     <!--<color name="blue_color">#0073EF</color>
