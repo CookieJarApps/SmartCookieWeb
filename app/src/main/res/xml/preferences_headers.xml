@@ -25,6 +25,11 @@
         android:icon="?attr/ic_round_add"
         android:title="@string/settings_advanced"
         android:summary="@string/settings_advanced_explain" />
+   <!-- <header
+        android:fragment="com.cookiegames.smartcookie.settings.fragment.AdvancedSettingsFragment"
+        android:icon="?attr/ic_round_add"
+        android:title="Parental Controls Settings"
+        android:summary="Block sites, limit time, " /> -->
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.AboutSettingsFragment"
         android:icon="?attr/ic_round_person"

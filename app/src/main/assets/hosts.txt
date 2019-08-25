@@ -37,8 +37,8 @@ images.mpression.net
 images.millennialmedia.com
 oasc04012.247realmedia.com
 assets.cntdy.mobi
-ad.leadboltapps.net ## another airpush style ad#
-api.airpush.com ## hope this is all #
+ad.leadboltapps.net
+api.airpush.com
 ad.where.com
 i.tapit.com
 cdn1.crispadvertising.com
@@ -78,43 +78,30 @@ ads.ookla.com
 mobiledl.adobe.com
 ads.flurry.com
 gemini.yahoo.com
-
-# [hosted on cloudfront]
+z.moatads.com
 d3anogn3pbtk4v.cloudfront.net
 d3oltyb66oj2v8.cloudfront.net
 d2bgg7rjywcwsy.cloudfront.net
-
-# [vserv.mobi]
 a.vserv.mobi
 admin.vserv.mobi
 c.vserv.mobi
 ads.vserv.mobi
 sf.vserv.mobi
-
-# [pflexads.com]
 hybl9bazbc35.pflexads.com
 hhbekxxw5d9e.pflexads.com
 www.pflexads.com
 orencia.pflexads.com
-
-# [velti.com]
 atti.velti.com
 ru.velti.com
 mwc.velti.com
-
-# [celtra.com]
 cdn.celtra.com
 ads.celtra.com
 cache-ssl.celtra.com
 cache.celtra.com
 track.celtra.com
-
-# [inner-active.mobi]
 wv.inner-active.mobi
 cdn1.inner-active.mobi
 m2m1.inner-active.mobi
-
-# [Jumptab]
 bos-tapreq01.jumptap.com
 bos-tapreq02.jumptap.com
 bos-tapreq03.jumptap.com
@@ -140,13 +127,10 @@ web63.jumptap.com
 web65.jumptap.com
 bo.jumptap.com
 i.jumptap.com
-
-# [applovin]
+cdn.krxd.net
 a.applovin.com
 d.applovin.com
 pdn.applovin.com
-
-# [Mobpartner]
 mobpartner.mobi
 go.mobpartner.mobi
 r.mobpartner.mobi
@@ -373,6 +357,7 @@ c.greystripe.com
 aax-us-east.amazon-adsystem.com
 aax-us-west.amazon-adsystem.com
 s.amazon-adsystem.com
+c.amazon-adsystem.com
 admarvel.s3.amazonaws.com
 html5adkit.plusmo.s3.amazonaws.com
 inneractive-assets.s3.amazonaws.com
@@ -404,15 +389,15 @@ aos.wall.youmi.net
 coconuts.boy.jp
 iacpromotion.s3.amazonaws.com
 plugin.2easydroid.com
-
+cdn.concert.io
 adimg3.search.naver.net
-
+cdn.permutive.com
 st.a-link.co.kr
 cdn.ajillionmax.com
 dispatch.admixer.co.kr
 ifc.inmobi.com
 thinknear-hosted.thinknearhub.com
-
+googletagmanager.com
 ads.adadapted.com
 
 analytics.localytics.com
