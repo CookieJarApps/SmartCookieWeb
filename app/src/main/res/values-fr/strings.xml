@@ -311,4 +311,5 @@
     <string name="malware_message">Contactez support@cookiegames.co.uk s\'il s\'agit d\'une erreur.</string>
     <string name="malware_title">Oh non! &lt;br&gt; Ce site semble être un malware.</string>
     <string name="https_title">Oh non! &lt;br&gt; Ce site ne prend pas en charge HTTPS et le blocage HTTP est activé.</string>
+    <string name="close_app">Fermer le navigateur</string>
 </resources>

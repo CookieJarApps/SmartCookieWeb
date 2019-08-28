@@ -1044,6 +1044,15 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
                     public void onClick() {
                         closeBrowser();
                     }
+                },
+                new BrowserDialog.Item(R.string.close_app) {
+                        @Override
+                        public void onClick() {
+                            Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                            homeIntent.addCategory( Intent.CATEGORY_HOME );
+                            homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(homeIntent);
+                        }
                 });
     }
 

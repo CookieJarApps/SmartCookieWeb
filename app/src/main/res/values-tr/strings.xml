@@ -310,4 +310,5 @@
     <string name="malware_message">Bu bir hata ise, support@cookiegames.co.uk adresine başvurun.</string>
     <string name="malware_title">"Oh hayır! &lt;br&gt; Bu site kötü amaçlı yazılım gibi görünüyor.  "</string>
     <string name="https_title">"Oh hayır! &lt;br&gt; Bu site HTTPS'yi desteklemiyor ve HTTP engelle etkin.  "</string>
+    <string name="close_app">Tarayıcıyı Kapat</string>
 </resources>

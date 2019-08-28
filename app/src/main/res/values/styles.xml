@@ -69,7 +69,7 @@
         <item name="ic_round_person">@drawable/ic_round_person</item>
         <item name="ic_round_world_lock">@drawable/ic_round_world_lock</item>
         <item name="ic_round_question_answer">@drawable/ic_round_question_answer</item>
-
+        <item name="ic_parental_controls">@drawable/ic_parental_controls</item>
     </style>
 
     <style name="Theme.BaseDarkTheme" parent="Theme.AppCompat">
@@ -101,6 +101,7 @@
         <item name="ic_round_person">@drawable/ic_round_person_light</item>
         <item name="ic_round_world_lock">@drawable/ic_round_world_lock_light</item>
         <item name="ic_round_question_answer">@drawable/ic_round_question_answer_light</item>
+        <item name="ic_parental_controls">@drawable/ic_parental_controls_light</item>
     </style>
 
     <style name="Theme.BaseBlackTheme" parent="Theme.AppCompat">
@@ -132,6 +133,7 @@
         <item name="ic_round_person">@drawable/ic_round_person_light</item>
         <item name="ic_round_world_lock">@drawable/ic_round_world_lock_light</item>
         <item name="ic_round_question_answer">@drawable/ic_round_question_answer_light</item>
+        <item name="ic_parental_controls">@drawable/ic_parental_controls_light</item>
     </style>
 
     <!-- AlertDialog Theming -->
