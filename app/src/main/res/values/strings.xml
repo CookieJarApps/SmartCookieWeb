@@ -331,6 +331,8 @@
 
     <string name="blocked_title">Oh crumbs! &lt;br&gt; That site has been blocked in settings.</string>
     <string name="close_app">Close Browser</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="wrong_password">Password Incorrect</string>
 
 
     <!-- finish pages -->

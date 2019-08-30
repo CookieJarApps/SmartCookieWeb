@@ -129,6 +129,37 @@ public class BrowserDialog {
         showEditText(activity, title, hint, null, action, listener);
     }
 
+    public static void showHiddenEditText(@NonNull Activity activity,
+                                    @StringRes int title,
+                                    @StringRes int hint,
+                                    @Nullable String currentText,
+                                    @StringRes int action,
+                                    @NonNull final EditorListener listener) {
+        View dialogView = LayoutInflater.from(activity).inflate(R.layout.dialog_edit_text, null);
+        final EditText editText = dialogView.findViewById(R.id.dialog_edit_text);
+
+        editText.setHint(hint);
+        if (currentText != null) {
+            editText.setText(currentText);
+        }
+
+        final AlertDialog.Builder editorDialog = new AlertDialog.Builder(activity)
+                .setTitle(title)
+                .setView(dialogView)
+                .setCancelable(false)
+                .setPositiveButton(action,
+                        new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                listener.onClick(editText.getText().toString());
+                            }
+                        });
+
+        Dialog dialog = editorDialog.show();
+        setDialogSize(activity, dialog);
+    }
+
     public static void showEditText(@NonNull Activity activity,
                                     @StringRes int title,
                                     @StringRes int hint,

@@ -311,4 +311,5 @@
     <string name="malware_title">¡Oh no! &lt;br&gt; Ese sitio parece ser malware.</string>
     <string name="https_title">¡Oh no! &lt;br&gt; Ese sitio no es compatible con HTTPS y el bloqueo de HTTP está habilitado.</string>
     <string name="close_app">"Cerrar navegador  "</string>
+    <string name="enter_password">Enter Password  Learn to pronounce  Introducir la contraseña</string>
 </resources>

@@ -47,7 +47,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
     private static final String SETTINGS_FLASH = "cb_flash";
     private static final String SETTINGS_ADS = "cb_ads";
     private static final String SETTINGS_IMAGES = "cb_images";
-    private static final String SETTINGS_SITES = "sites";
     private static final String SETTINGS_JAVASCRIPT = "cb_javascript";
     private static final String SETTINGS_COLORMODE = "cb_colormode";
     private static final String SETTINGS_USERAGENT = "agent";
@@ -60,7 +59,7 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
     private Activity mActivity;
     private static final int API = android.os.Build.VERSION.SDK_INT;
     private CharSequence[] mProxyChoices;
-    private Preference proxy, useragent, blockedsites, downloadloc, home, searchengine, searchsSuggestions;
+    private Preference proxy, useragent, downloadloc, home, searchengine, searchsSuggestions;
     private String mDownloadLocation;
     private int mAgentChoice;
     private int mBlockChoice;
@@ -84,7 +83,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
     private void initPrefs() {
         proxy = findPreference(SETTINGS_PROXY);
         useragent = findPreference(SETTINGS_USERAGENT);
-        blockedsites = findPreference(SETTINGS_SITES);
         downloadloc = findPreference(SETTINGS_DOWNLOAD);
         home = findPreference(SETTINGS_HOME);
         searchengine = findPreference(SETTINGS_SEARCHENGINE);
@@ -99,7 +97,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
 
         proxy.setOnPreferenceClickListener(this);
         useragent.setOnPreferenceClickListener(this);
-        blockedsites.setOnPreferenceClickListener(this);
         downloadloc.setOnPreferenceClickListener(this);
         home.setOnPreferenceClickListener(this);
         searchsSuggestions.setOnPreferenceClickListener(this);
@@ -168,14 +165,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
                 break;
             case 4:
                 useragent.setSummary(getResources().getString(R.string.agent_custom));
-        }
-
-        switch (mBlockChoice) {
-            case 1:
-                blockedsites.setSummary(getResources().getString(R.string.none));
-                break;
-            case 2:
-                blockedsites.setSummary(getResources().getString(R.string.agent_custom));
         }
 
         int flashNum = mPreferenceManager.getFlashSupport();
@@ -565,46 +554,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
                 });
     }
 
-    private void blockDialog() {
-        AlertDialog.Builder blockPicker = new AlertDialog.Builder(mActivity);
-        blockPicker.setTitle(getResources().getString(R.string.block_sites));
-        mAgentChoice = mPreferenceManager.getSiteBlockChoice();
-        blockPicker.setSingleChoiceItems(R.array.blocked_sites, mBlockChoice - 1,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        mPreferenceManager.setSiteBlockChoice(which + 1);
-                        switch (which) {
-                            case 0:
-                                blockedsites.setSummary(getResources().getString(R.string.none));
-                                break;
-                            case 1:
-                                blockedsites.setSummary(getResources().getString(R.string.agent_custom));
-                                blockPicker();
-                                break;
-                        }
-                    }
-                });
-        blockPicker.setPositiveButton(getResources().getString(R.string.action_ok), null);
-        Dialog dialog = blockPicker.show();
-        BrowserDialog.setDialogSize(mActivity, dialog);
-    }
-
-    private void blockPicker() {
-
-        BrowserDialog.showEditText(mActivity,
-                R.string.block_sites_title,
-                R.string.block_info,
-                mPreferenceManager.getSiteBlockString(""),
-                R.string.action_ok,
-                new BrowserDialog.EditorListener() {
-                    @Override
-                    public void onClick(String text) {
-                        mPreferenceManager.setSiteBlockString(text);
-                        blockedsites.setSummary(mActivity.getString(R.string.agent_custom));
-                    }
-                });
-    }
 
     private void downPicker() {
 
@@ -650,9 +599,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
                 return true;
             case SETTINGS_USERAGENT:
                 agentDialog();
-                return true;
-            case SETTINGS_SITES:
-                blockDialog();
                 return true;
             case SETTINGS_DOWNLOAD:
                 downloadLocDialog();

@@ -19,9 +19,6 @@
             android:key="cb_images"
             android:title="@string/block" />
         <Preference
-            android:key="sites"
-            android:title="@string/block_sites" />
-        <Preference
             android:key="proxy"
             android:title="@string/http_proxy" />
        <CheckBoxPreference

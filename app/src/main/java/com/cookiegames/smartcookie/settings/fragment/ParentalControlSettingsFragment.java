@@ -6,6 +6,7 @@ package com.cookiegames.smartcookie.settings.fragment;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -14,10 +15,12 @@ import android.preference.Preference;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -40,6 +43,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.cookiegames.smartcookie.preference.PreferenceManager.Suggestion;
 
 public class ParentalControlSettingsFragment extends LightningPreferenceFragment implements Preference.OnPreferenceClickListener, Preference.OnPreferenceChangeListener {
@@ -48,10 +52,9 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
     private static final String SETTINGS_FLASH = "cb_flash";
     private static final String SETTINGS_ADS = "cb_ads";
     private static final String SETTINGS_IMAGES = "cb_images";
-    private static final String SETTINGS_SITES = "sites";
+    private static final String SETTINGS_SITES = "siteblock";
     private static final String SETTINGS_JAVASCRIPT = "cb_javascript";
     private static final String SETTINGS_COLORMODE = "cb_colormode";
-    private static final String SETTINGS_USERAGENT = "agent";
     private static final String SETTINGS_DOWNLOAD = "download";
     private static final String SETTINGS_HOME = "home";
     private static final String SETTINGS_SEARCHENGINE = "search";
@@ -61,13 +64,16 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
     private Activity mActivity;
     private static final int API = Build.VERSION.SDK_INT;
     private CharSequence[] mProxyChoices;
-    private Preference proxy, useragent, blockedsites, downloadloc, home, searchengine, searchsSuggestions;
+    private Preference password, blockedsites, downloadloc, home, searchengine, searchsSuggestions;
     private String mDownloadLocation;
     private int mAgentChoice;
     private int mBlockChoice;
     private String mHomepage;
 
-    @Inject SearchEngineProvider mSearchEngineProvider;
+    SharedPreferences prefs = null;
+
+    @Inject
+    SearchEngineProvider mSearchEngineProvider;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,47 +86,61 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
         mActivity = getActivity();
 
         initPrefs();
+
+        prefs = mActivity.getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE);
+
+        if (prefs.getBoolean("noPassword", true)) {
+        } else {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("password", prefs.getString("password", ""));
+            editor.commit();
+            String text = prefs.getString("password", "");
+            StringBuilder builder = new StringBuilder(text);
+            builder.deleteCharAt(0);
+            builder.deleteCharAt(text.length() - 2);
+            String removed = builder.toString();
+            String str = removed.replaceAll("[a-zA-Z1-9]", "?");
+            password.setSummary(text.charAt(0) + str + text.charAt(text.length() - 1));
+
+            passwordDialog();
+        }
+    }
+
+    private void passwordDialog() {
+        BrowserDialog.showHiddenEditText(mActivity,
+                R.string.enter_password,
+                R.string.enter_password,
+                "",
+                R.string.action_ok,
+                new BrowserDialog.EditorListener() {
+                    @Override
+                    public void onClick(String text) {
+                        if (text.equals(prefs.getString("password", ""))) {
+                        } else {
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast toast = Toast.makeText(mActivity, getResources().getString(R.string.wrong_password), duration);
+                            toast.show();
+                            passwordDialog();
+                        }
+
+                    }
+                });
     }
 
     private void initPrefs() {
-        proxy = findPreference(SETTINGS_PROXY);
-        useragent = findPreference(SETTINGS_USERAGENT);
+        password = findPreference(SETTINGS_PROXY);
+        // useragent = findPreference(SETTINGS_USERAGENT);
         blockedsites = findPreference(SETTINGS_SITES);
-        downloadloc = findPreference(SETTINGS_DOWNLOAD);
-        home = findPreference(SETTINGS_HOME);
-        searchengine = findPreference(SETTINGS_SEARCHENGINE);
-        searchsSuggestions = findPreference(SETTINGS_SUGGESTIONS);
 
-        CheckBoxPreference cbFlash = (CheckBoxPreference) findPreference(SETTINGS_FLASH);
-        CheckBoxPreference cbAds = (CheckBoxPreference) findPreference(SETTINGS_ADS);
-        CheckBoxPreference cbImages = (CheckBoxPreference) findPreference(SETTINGS_IMAGES);
-        CheckBoxPreference cbJsScript = (CheckBoxPreference) findPreference(SETTINGS_JAVASCRIPT);
-        CheckBoxPreference cbColorMode = (CheckBoxPreference) findPreference(SETTINGS_COLORMODE);
-
-
-        proxy.setOnPreferenceClickListener(this);
-        useragent.setOnPreferenceClickListener(this);
+        password.setOnPreferenceClickListener(this);
+        //useragent.setOnPreferenceClickListener(this);
         blockedsites.setOnPreferenceClickListener(this);
-        downloadloc.setOnPreferenceClickListener(this);
-        home.setOnPreferenceClickListener(this);
-        searchsSuggestions.setOnPreferenceClickListener(this);
-        searchengine.setOnPreferenceClickListener(this);
-        cbFlash.setOnPreferenceChangeListener(this);
-        cbAds.setOnPreferenceChangeListener(this);
-        cbImages.setOnPreferenceChangeListener(this);
-        cbJsScript.setOnPreferenceChangeListener(this);
-        mAgentChoice = mPreferenceManager.getUserAgentChoice();
+
+        // mAgentChoice = mPreferenceManager.getUserAgentChoice();
         mBlockChoice = mPreferenceManager.getSiteBlockChoice();
         mHomepage = mPreferenceManager.getHomepage();
         mDownloadLocation = mPreferenceManager.getDownloadDirectory();
         mProxyChoices = getResources().getStringArray(R.array.proxy_choices_array);
-
-        int choice = mPreferenceManager.getProxyChoice();
-        if (choice == Constants.PROXY_MANUAL) {
-            proxy.setSummary(mPreferenceManager.getProxyHost() + ':' + mPreferenceManager.getProxyPort());
-        } else {
-            proxy.setSummary(mProxyChoices[choice]);
-        }
 
         if (API >= Build.VERSION_CODES.KITKAT) {
             mPreferenceManager.setFlashSupport(0);
@@ -129,35 +149,7 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
         //BaseSearchEngine currentSearchEngine = mSearchEngineProvider.getCurrentSearchEngine();
         //setSearchEngineSummary(currentSearchEngine);
 
-        downloadloc.setSummary(mDownloadLocation);
-
-        switch (mPreferenceManager.getSearchSuggestionChoice()) {
-            case SUGGESTION_GOOGLE:
-                searchsSuggestions.setSummary(R.string.powered_by_google);
-                break;
-            case SUGGESTION_DUCK:
-                searchsSuggestions.setSummary(R.string.powered_by_duck);
-                break;
-            case SUGGESTION_BAIDU:
-                searchsSuggestions.setSummary(R.string.powered_by_baidu);
-                break;
-            case SUGGESTION_NONE:
-                searchsSuggestions.setSummary(R.string.search_suggestions_off);
-                break;
-        }
-
-
-        if (mHomepage.contains(Constants.SCHEME_HOMEPAGE)) {
-            home.setSummary(getResources().getString(R.string.action_homepage));
-        } else if (mHomepage.contains(Constants.SCHEME_BLANK)) {
-            home.setSummary(getResources().getString(R.string.action_blank));
-        } else if (mHomepage.contains(Constants.SCHEME_BOOKMARKS)) {
-            home.setSummary(getResources().getString(R.string.action_bookmarks));
-        } else {
-            home.setSummary(mHomepage);
-        }
-
-        switch (mAgentChoice) {
+        /*switch (mAgentChoice) {
             case 1:
                 useragent.setSummary(getResources().getString(R.string.agent_default));
                 break;
@@ -169,7 +161,7 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
                 break;
             case 4:
                 useragent.setSummary(getResources().getString(R.string.agent_custom));
-        }
+        }*/
 
         switch (mBlockChoice) {
             case 1:
@@ -177,25 +169,13 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
                 break;
             case 2:
                 blockedsites.setSummary(getResources().getString(R.string.agent_custom));
+            case 3:
+                blockedsites.setSummary("Only Allow Listed Sites");
         }
 
         int flashNum = mPreferenceManager.getFlashSupport();
         boolean imagesBool = mPreferenceManager.getBlockImagesEnabled();
         boolean enableJSBool = mPreferenceManager.getJavaScriptEnabled();
-
-        cbAds.setEnabled(BuildConfig.FULL_VERSION);
-
-        if (API < Build.VERSION_CODES.KITKAT) {
-            cbFlash.setEnabled(true);
-        } else {
-            cbFlash.setEnabled(false);
-            cbFlash.setSummary(R.string.flash_not_supported);
-        }
-
-        cbImages.setChecked(imagesBool);
-        cbJsScript.setChecked(enableJSBool);
-        cbFlash.setChecked(flashNum > 0);
-        cbAds.setChecked(BuildConfig.FULL_VERSION && mPreferenceManager.getAdBlockEnabled());
     }
 
     private void showUrlPicker(@NonNull final CustomSearch customSearch) {
@@ -265,61 +245,34 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
 
     private void setProxyChoice(@Constants.Proxy int choice) {
         switch (choice) {
-            case Constants.PROXY_ORBOT:
-                choice = ProxyUtils.setProxyChoice(choice, mActivity);
-                break;
-            case Constants.PROXY_I2P:
-                choice = ProxyUtils.setProxyChoice(choice, mActivity);
-                break;
             case Constants.PROXY_MANUAL:
                 manualProxyPicker();
                 break;
             case Constants.NO_PROXY:
                 break;
         }
-
-        mPreferenceManager.setProxyChoice(choice);
-        if (choice < mProxyChoices.length)
-            proxy.setSummary(mProxyChoices[choice]);
     }
 
     private void manualProxyPicker() {
-        View v = mActivity.getLayoutInflater().inflate(R.layout.dialog_manual_proxy, null);
-        final EditText eProxyHost = v.findViewById(R.id.proxyHost);
-        final EditText eProxyPort = v.findViewById(R.id.proxyPort);
-
-        // Limit the number of characters since the port needs to be of type int
-        // Use input filters to limite the EditText length and determine the max
-        // length by using length of integer MAX_VALUE
-        int maxCharacters = Integer.toString(Integer.MAX_VALUE).length();
-        InputFilter[] filterArray = new InputFilter[1];
-        filterArray[0] = new InputFilter.LengthFilter(maxCharacters - 1);
-        eProxyPort.setFilters(filterArray);
-
-        eProxyHost.setText(mPreferenceManager.getProxyHost());
-        eProxyPort.setText(Integer.toString(mPreferenceManager.getProxyPort()));
-
-        Dialog dialog = new AlertDialog.Builder(mActivity)
-                .setTitle(R.string.manual_proxy)
-                .setView(v)
-                .setPositiveButton(R.string.action_ok, new DialogInterface.OnClickListener() {
+        BrowserDialog.showHiddenEditText(mActivity,
+                R.string.enter_password,
+                R.string.enter_password,
+                mPreferenceManager.getSiteBlockString(""),
+                R.string.action_ok,
+                new BrowserDialog.EditorListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String proxyHost = eProxyHost.getText().toString();
-                        int proxyPort;
-                        try {
-                            // Try/Catch in case the user types an empty string or a number
-                            // larger than max integer
-                            proxyPort = Integer.parseInt(eProxyPort.getText().toString());
-                        } catch (NumberFormatException ignored) {
-                            proxyPort = mPreferenceManager.getProxyPort();
-                        }
-                        mPreferenceManager.setProxyHost(proxyHost);
-                        mPreferenceManager.setProxyPort(proxyPort);
-                        proxy.setSummary(proxyHost + ':' + proxyPort);
+                    public void onClick(String text) {
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putString("password", text);
+                        editor.commit();
+                        StringBuilder builder = new StringBuilder(text);
+                        builder.deleteCharAt(0);
+                        builder.deleteCharAt(text.length() - 2);
+                        String removed = builder.toString();
+                        String str = removed.replaceAll("[a-zA-Z1-9]", "?");
+                        password.setSummary(text.charAt(0) + str + text.charAt(text.length() - 1));
                     }
-                }).show();
-        BrowserDialog.setDialogSize(mActivity, dialog);
+                });
     }
 
     @NonNull
@@ -519,53 +472,6 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
         BrowserDialog.setDialogSize(mActivity, dialog);
     }
 
-    private void agentDialog() {
-        AlertDialog.Builder agentPicker = new AlertDialog.Builder(mActivity);
-        agentPicker.setTitle(getResources().getString(R.string.title_user_agent));
-        mAgentChoice = mPreferenceManager.getUserAgentChoice();
-        agentPicker.setSingleChoiceItems(R.array.user_agent, mAgentChoice - 1,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        mPreferenceManager.setUserAgentChoice(which + 1);
-                        switch (which) {
-                            case 0:
-                                useragent.setSummary(getResources().getString(R.string.agent_default));
-                                break;
-                            case 1:
-                                useragent.setSummary(getResources().getString(R.string.agent_desktop));
-                                break;
-                            case 2:
-                                useragent.setSummary(getResources().getString(R.string.agent_mobile));
-                                break;
-                            case 3:
-                                useragent.setSummary(getResources().getString(R.string.agent_custom));
-                                agentPicker();
-                                break;
-                        }
-                    }
-                });
-        agentPicker.setPositiveButton(getResources().getString(R.string.action_ok), null);
-        Dialog dialog = agentPicker.show();
-        BrowserDialog.setDialogSize(mActivity, dialog);
-    }
-
-    private void agentPicker() {
-
-        BrowserDialog.showEditText(mActivity,
-                R.string.title_user_agent,
-                R.string.title_user_agent,
-                mPreferenceManager.getUserAgentString(""),
-                R.string.action_ok,
-                new BrowserDialog.EditorListener() {
-                    @Override
-                    public void onClick(String text) {
-                        mPreferenceManager.setUserAgentString(text);
-                        useragent.setSummary(mActivity.getString(R.string.agent_custom));
-                    }
-                });
-    }
-
     private void blockDialog() {
         AlertDialog.Builder blockPicker = new AlertDialog.Builder(mActivity);
         blockPicker.setTitle(getResources().getString(R.string.block_sites));
@@ -581,6 +487,10 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
                                 break;
                             case 1:
                                 blockedsites.setSummary(getResources().getString(R.string.agent_custom));
+                                blockPicker();
+                                break;
+                            case 2:
+                                blockedsites.setSummary("Only Allow Listed Sites");
                                 blockPicker();
                                 break;
                         }
@@ -606,6 +516,7 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
                     }
                 });
     }
+
 
     private void downPicker() {
 
@@ -648,9 +559,6 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
         switch (preference.getKey()) {
             case SETTINGS_PROXY:
                 proxyChoicePicker();
-                return true;
-            case SETTINGS_USERAGENT:
-                agentDialog();
                 return true;
             case SETTINGS_SITES:
                 blockDialog();
@@ -710,7 +618,8 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
     }
 
     private static class DownloadLocationTextWatcher implements TextWatcher {
-        @NonNull private final EditText getDownload;
+        @NonNull
+        private final EditText getDownload;
         private final int errorColor;
         private final int regularColor;
 
@@ -721,10 +630,12 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
         }
 
         @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
 
         @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
 
         @Override
         public void afterTextChanged(@NonNull Editable s) {
