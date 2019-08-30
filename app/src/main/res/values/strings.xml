@@ -340,6 +340,7 @@
     <string name="block_all_sites">Block All Listed Sites</string>
     <string name="only_allow_sites">Only Allow Listed Sites</string>
     <string name="parental_controls">Parental Controls Settings</string>
+    <string name="settings_parents">Block sites, set password...</string>
 
 
     <!-- finish pages -->

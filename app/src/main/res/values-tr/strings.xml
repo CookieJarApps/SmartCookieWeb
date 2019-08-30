@@ -322,4 +322,5 @@
     <string name="none">Yok</string>
     <string name="block_all_sites">Listelenen Tüm Siteleri Engelle</string>
     <string name="parental_controls">Ebeveyn Denetimleri Ayarları</string>
+    <string name="settings_parents">Siteleri engelle, şifreyi ayarla...</string>
 </resources>

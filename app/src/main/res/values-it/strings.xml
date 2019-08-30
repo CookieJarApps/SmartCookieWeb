@@ -323,4 +323,5 @@
     <string name="none">Nessuna</string>
     <string name="block_all_sites">Blocca tutti i siti elencati</string>
     <string name="parental_controls">Impostazioni del controllo genitori</string>
+    <string name="settings_parents">Blocca siti, imposta password...</string>
 </resources>
