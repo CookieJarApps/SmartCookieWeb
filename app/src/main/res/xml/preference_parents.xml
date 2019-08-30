@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/settings_general">
+    <PreferenceCategory android:title="@string/parental_controls">
         <Preference
             android:key="siteblock"
             android:title="@string/block_sites" />
@@ -9,7 +9,7 @@
             android:key="agent"
             android:title="Time limit" /> -->
         <Preference
-            android:key="proxy"
+            android:key="password"
             android:title="Page password" />
     </PreferenceCategory>
 </PreferenceScreen>

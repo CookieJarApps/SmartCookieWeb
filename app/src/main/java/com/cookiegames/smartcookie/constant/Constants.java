@@ -73,6 +73,11 @@ public final class Constants {
     public static final int PROXY_I2P = 2;
     public static final int PROXY_MANUAL = 3;
 
+    public @interface Password {}
+
+    public static final int NO_PASSWORD = 0;
+    public static final int CUSTOM_PASSWORD = 1;
+
     public static final String UTF8 = "UTF-8";
 
     // Default text encoding we will use

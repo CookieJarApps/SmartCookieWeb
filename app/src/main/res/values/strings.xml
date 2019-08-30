@@ -144,6 +144,10 @@
         <item>I2P</item>
         <item>Manual</item>
     </string-array>
+    <string-array name="password_set_array">
+        <item>None</item>
+        <item>Custom</item>
+    </string-array>
     <string name="manual_proxy">Manual proxy</string>
     <string name="host">Host:</string>
     <string name="port">Port:</string>
@@ -333,6 +337,9 @@
     <string name="close_app">Close Browser</string>
     <string name="enter_password">Enter Password</string>
     <string name="wrong_password">Password Incorrect</string>
+    <string name="block_all_sites">Block All Listed Sites</string>
+    <string name="only_allow_sites">Only Allow Listed Sites</string>
+    <string name="parental_controls">Parental Controls Settings</string>
 
 
     <!-- finish pages -->

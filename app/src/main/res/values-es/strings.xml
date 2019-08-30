@@ -134,10 +134,15 @@
     <string name="powered_by_baidu">Baidu</string>
     <string name="search_suggestions_off">No Hay Sugerencias De Búsqueda</string>
     <string name="http_proxy">Proxy Http</string>
-    <string-array name="proxy_choices_array"><item>None</item>
+    <string-array name="proxy_choices_array">
+        <item>Ninguno</item>
         <item>Orbot</item>
         <item>I2P</item>
         <item>Manual</item>
+    </string-array>
+    <string-array name="password_set_array">
+        <item>Ninguno</item>
+        <item>Personalizado</item>
     </string-array>
     <string name="manual_proxy">Proxy Manual</string>
     <string name="host">Anfitrión:</string>
@@ -312,4 +317,9 @@
     <string name="https_title">¡Oh no! &lt;br&gt; Ese sitio no es compatible con HTTPS y el bloqueo de HTTP está habilitado.</string>
     <string name="close_app">"Cerrar navegador  "</string>
     <string name="enter_password">Enter Password  Learn to pronounce  Introducir la contraseña</string>
+    <string name="wrong_password">Contraseña incorrecta</string>
+    <string name="only_allow_sites">Solo permitir sitios listados</string>
+    <string name="none">Ninguno</string>
+    <string name="block_all_sites">Bloquear todos los sitios listados</string>
+    <string name="parental_controls">Configuración de controles parentales</string>
 </resources>

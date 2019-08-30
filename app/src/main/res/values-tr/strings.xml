@@ -134,10 +134,15 @@
     <string name="powered_by_baidu">Baidu</string>
     <string name="search_suggestions_off">Arama Önerisi Yok</string>
     <string name="http_proxy">Http Vekil</string>
-    <string-array name="proxy_choices_array"><item>None</item>
+    <string-array name="proxy_choices_array">
+        <item>Yok</item>
         <item>Orbot</item>
         <item>I2P</item>
-        <item>Manual</item>
+        <item>Görenek</item>
+    </string-array>
+    <string-array name="password_set_array">
+        <item>Yok</item>
+        <item>Görenek</item>
     </string-array>
     <string name="manual_proxy">Manuel Vekil</string>
     <string name="host">Host:</string>
@@ -312,4 +317,9 @@
     <string name="https_title">"Oh hayır! &lt;br&gt; Bu site HTTPS'yi desteklemiyor ve HTTP engelle etkin.  "</string>
     <string name="close_app">Tarayıcıyı Kapat</string>
     <string name="enter_password">"Şifre girin  "</string>
+    <string name="wrong_password">Yanlış şifre</string>
+    <string name="only_allow_sites">Yalnızca Listelenen Sitelere İzin Ver</string>
+    <string name="none">Yok</string>
+    <string name="block_all_sites">Listelenen Tüm Siteleri Engelle</string>
+    <string name="parental_controls">Ebeveyn Denetimleri Ayarları</string>
 </resources>

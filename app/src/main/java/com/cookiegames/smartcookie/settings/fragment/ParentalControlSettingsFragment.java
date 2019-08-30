@@ -48,7 +48,7 @@ import static com.cookiegames.smartcookie.preference.PreferenceManager.Suggestio
 
 public class ParentalControlSettingsFragment extends LightningPreferenceFragment implements Preference.OnPreferenceClickListener, Preference.OnPreferenceChangeListener {
 
-    private static final String SETTINGS_PROXY = "proxy";
+    private static final String SETTINGS_PASSWORD = "password";
     private static final String SETTINGS_FLASH = "cb_flash";
     private static final String SETTINGS_ADS = "cb_ads";
     private static final String SETTINGS_IMAGES = "cb_images";
@@ -63,7 +63,7 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
 
     private Activity mActivity;
     private static final int API = Build.VERSION.SDK_INT;
-    private CharSequence[] mProxyChoices;
+    private CharSequence[] mPasswordChoices;
     private Preference password, blockedsites, downloadloc, home, searchengine, searchsSuggestions;
     private String mDownloadLocation;
     private int mAgentChoice;
@@ -128,7 +128,7 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
     }
 
     private void initPrefs() {
-        password = findPreference(SETTINGS_PROXY);
+        password = findPreference(SETTINGS_PASSWORD);
         // useragent = findPreference(SETTINGS_USERAGENT);
         blockedsites = findPreference(SETTINGS_SITES);
 
@@ -140,7 +140,7 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
         mBlockChoice = mPreferenceManager.getSiteBlockChoice();
         mHomepage = mPreferenceManager.getHomepage();
         mDownloadLocation = mPreferenceManager.getDownloadDirectory();
-        mProxyChoices = getResources().getStringArray(R.array.proxy_choices_array);
+        mPasswordChoices = getResources().getStringArray(R.array.password_set_array);
 
         if (API >= Build.VERSION_CODES.KITKAT) {
             mPreferenceManager.setFlashSupport(0);
@@ -168,9 +168,9 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
                 blockedsites.setSummary(getResources().getString(R.string.none));
                 break;
             case 2:
-                blockedsites.setSummary(getResources().getString(R.string.agent_custom));
+                blockedsites.setSummary(getResources().getString(R.string.block_all_sites));
             case 3:
-                blockedsites.setSummary("Only Allow Listed Sites");
+                blockedsites.setSummary(getResources().getString(R.string.only_allow_sites));
         }
 
         int flashNum = mPreferenceManager.getFlashSupport();
@@ -230,12 +230,12 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
     private void proxyChoicePicker() {
         AlertDialog.Builder picker = new AlertDialog.Builder(mActivity);
         picker.setTitle(R.string.http_proxy);
-        picker.setSingleChoiceItems(mProxyChoices, mPreferenceManager.getProxyChoice(),
+        picker.setSingleChoiceItems(mPasswordChoices, mPreferenceManager.getPasswordChoice(),
                 new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        setProxyChoice(which);
+                        setPasswordChoice(which);
                     }
                 });
         picker.setPositiveButton(R.string.action_ok, null);
@@ -243,17 +243,21 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
         BrowserDialog.setDialogSize(mActivity, dialog);
     }
 
-    private void setProxyChoice(@Constants.Proxy int choice) {
+    private void setPasswordChoice(@Constants.Password int choice) {
         switch (choice) {
-            case Constants.PROXY_MANUAL:
-                manualProxyPicker();
+            case Constants.PROXY_ORBOT:
+                manualPasswordPicker();
                 break;
             case Constants.NO_PROXY:
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("noPassword", true);
+                editor.commit();
+                password.setSummary("");
                 break;
         }
     }
 
-    private void manualProxyPicker() {
+    private void manualPasswordPicker() {
         BrowserDialog.showHiddenEditText(mActivity,
                 R.string.enter_password,
                 R.string.enter_password,
@@ -271,6 +275,8 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
                         String removed = builder.toString();
                         String str = removed.replaceAll("[a-zA-Z1-9]", "?");
                         password.setSummary(text.charAt(0) + str + text.charAt(text.length() - 1));
+                        editor.putBoolean("noPassword", false);
+                        editor.commit();
                     }
                 });
     }
@@ -486,11 +492,11 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
                                 blockedsites.setSummary(getResources().getString(R.string.none));
                                 break;
                             case 1:
-                                blockedsites.setSummary(getResources().getString(R.string.agent_custom));
+                                blockedsites.setSummary(getResources().getString(R.string.block_all_sites));
                                 blockPicker();
                                 break;
                             case 2:
-                                blockedsites.setSummary("Only Allow Listed Sites");
+                                blockedsites.setSummary(getResources().getString(R.string.only_allow_sites));
                                 blockPicker();
                                 break;
                         }
@@ -512,7 +518,6 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
                     @Override
                     public void onClick(String text) {
                         mPreferenceManager.setSiteBlockString(text);
-                        blockedsites.setSummary(mActivity.getString(R.string.agent_custom));
                     }
                 });
     }
@@ -557,7 +562,7 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
     @Override
     public boolean onPreferenceClick(@NonNull Preference preference) {
         switch (preference.getKey()) {
-            case SETTINGS_PROXY:
+            case SETTINGS_PASSWORD:
                 proxyChoicePicker();
                 return true;
             case SETTINGS_SITES:

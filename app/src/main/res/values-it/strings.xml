@@ -140,6 +140,10 @@
         <item>I2P</item>
         <item>Manuale</item>
     </string-array>
+    <string-array name="password_set_array">
+        <item>Nessuna</item>
+        <item>Costume</item>
+    </string-array>
     <string name="manual_proxy">Proxy manuale</string>
     <string name="host">Ospite:</string>
     <string name="port">Porta:</string>
@@ -314,4 +318,9 @@
     <string name="https_title">Oh no! &lt;br&gt; Quel sito non supporta HTTPS e il blocco HTTP è abilitato.</string>
     <string name="close_app">Chiudi il browser</string>
     <string name="enter_password">Inserire la password</string>
+    <string name="wrong_password">Password non corretta</string>
+    <string name="only_allow_sites">"Consenti solo siti elencati  "</string>
+    <string name="none">Nessuna</string>
+    <string name="block_all_sites">Blocca tutti i siti elencati</string>
+    <string name="parental_controls">Impostazioni del controllo genitori</string>
 </resources>

@@ -75,6 +75,8 @@ public class PreferenceManager {
         static final String INITIAL_CHECK_FOR_TOR = "checkForTor";
         static final String INITIAL_CHECK_FOR_I2P = "checkForI2P";
 
+        static final String PASSWORD_CHOICE = "password";
+
         static final String LEAK_CANARY = "leakCanary";
 
 
@@ -293,6 +295,18 @@ public class PreferenceManager {
                 return proxy;
             default:
                 return Constants.NO_PROXY;
+        }
+    }
+
+    @Constants.Password
+    public int getPasswordChoice() {
+        @Constants.Password int password = mPrefs.getInt(Name.PASSWORD_CHOICE, Constants.NO_PASSWORD);
+        switch (password) {
+            case Constants.NO_PASSWORD:
+            case Constants.CUSTOM_PASSWORD:
+                return password;
+            default:
+                return Constants.NO_PASSWORD;
         }
     }
 

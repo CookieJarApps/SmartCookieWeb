@@ -139,6 +139,10 @@
         <item>I2P</item>
         <item>Manuel</item>
     </string-array>
+    <string-array name="password_set_array">
+        <item>Aucun</item>
+        <item>Douane</item>
+    </string-array>
     <string name="manual_proxy">Procuration manuelle</string>
     <string name="host">Hôte:</string>
     <string name="port">Port:</string>
@@ -313,4 +317,9 @@
     <string name="https_title">Oh non! &lt;br&gt; Ce site ne prend pas en charge HTTPS et le blocage HTTP est activé.</string>
     <string name="close_app">Fermer le navigateur</string>
     <string name="enter_password">Entrer le mot de passe</string>
+    <string name="wrong_password">Mot de passe incorrect</string>
+    <string name="only_allow_sites">Autoriser uniquement les sites répertoriés</string>
+    <string name="none">Aucun</string>
+    <string name="block_all_sites">Bloquer tous les sites listés</string>
+    <string name="parental_controls">Paramètres de contrôle parental</string>
 </resources>

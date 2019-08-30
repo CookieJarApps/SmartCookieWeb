@@ -28,7 +28,7 @@
   <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.ParentalControlSettingsFragment"
         android:icon="?attr/ic_parental_controls"
-        android:title="Parental Controls Settings"
+        android:title="@string/parental_controls"
         android:summary="Block sites, limit time, set password..." />
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.AboutSettingsFragment"
