@@ -310,6 +310,10 @@ public class PreferenceManager {
         }
     }
 
+    public void setPasswordChoice(int choice) {
+        putInt(Name.PASSWORD_CHOICE, choice);
+    }
+
     public int getUserAgentChoice() {
         return mPrefs.getInt(Name.USER_AGENT, 1);
     }

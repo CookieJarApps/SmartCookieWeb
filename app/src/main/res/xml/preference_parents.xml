@@ -10,6 +10,6 @@
             android:title="Time limit" /> -->
         <Preference
             android:key="password"
-            android:title="Page password" />
+            android:title="@string/enter_password" />
     </PreferenceCategory>
 </PreferenceScreen>
