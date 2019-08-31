@@ -107,7 +107,6 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
             passwordDialog();
         }
     }
-//FIX AFTER CLICKING ON BLOCK SITES, DIALOG REENTERS NONE
     private void passwordDialog() {
         View dialogView = LayoutInflater.from(mActivity).inflate(R.layout.dialog_edit_text, null);
         final EditText editText = dialogView.findViewById(R.id.dialog_edit_text);
@@ -247,17 +246,26 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
                 new BrowserDialog.EditorListener() {
                     @Override
                     public void onClick(String text) {
-                        SharedPreferences.Editor editor = prefs.edit();
-                        editor.putString("password", text);
-                        editor.commit();
-                        StringBuilder builder = new StringBuilder(text);
-                        builder.deleteCharAt(0);
-                        builder.deleteCharAt(text.length() - 2);
-                        String removed = builder.toString();
-                        String str = removed.replaceAll("[a-zA-Z1-9]", "?");
-                        password.setSummary(text.charAt(0) + str + text.charAt(text.length() - 1));
-                        editor.putBoolean("noPassword", false);
-                        editor.commit();
+                        if(text.length() > 1){
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putString("password", text);
+                            editor.commit();
+                            StringBuilder builder = new StringBuilder(text);
+                            builder.deleteCharAt(0);
+                            builder.deleteCharAt(text.length() - 2);
+                            String removed = builder.toString();
+                            String str = removed.replaceAll("[a-zA-Z1-9]", "?");
+                            password.setSummary(text.charAt(0) + str + text.charAt(text.length() - 1));
+                            editor.putBoolean("noPassword", false);
+                            editor.commit();
+                        }
+                        else{
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putString("password", text);
+                            password.setSummary("?");
+                            editor.putBoolean("noPassword", false);
+                            editor.commit();
+                        }
                     }
                 });
     }
@@ -326,21 +334,7 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
         if (newValue instanceof Boolean) {
             checked = Boolean.TRUE.equals(newValue);
         }
-        switch (preference.getKey()) {
-            case SETTINGS_ADS:
-                mPreferenceManager.setAdBlockEnabled(checked);
-                return true;
-            case SETTINGS_IMAGES:
-                mPreferenceManager.setBlockImagesEnabled(checked);
-                return true;
-            case SETTINGS_JAVASCRIPT:
-                mPreferenceManager.setJavaScriptEnabled(checked);
-                return true;
-            case SETTINGS_COLORMODE:
-                mPreferenceManager.setColorModeEnabled(checked);
-                return true;
-            default:
-                return false;
-        }
+        return false;
+
     }
 }
