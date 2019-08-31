@@ -134,6 +134,7 @@ public class BrowserDialog {
                                     @StringRes int hint,
                                     @Nullable String currentText,
                                     @StringRes int action,
+                                    @StringRes int negative,
                                     @NonNull final EditorListener listener) {
         View dialogView = LayoutInflater.from(activity).inflate(R.layout.dialog_edit_text, null);
         final EditText editText = dialogView.findViewById(R.id.dialog_edit_text);
@@ -147,6 +148,12 @@ public class BrowserDialog {
                 .setTitle(title)
                 .setView(dialogView)
                 .setCancelable(false)
+                .setNegativeButton(negative, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        listener.onClick(editText.getText().toString());
+                    }
+                })
                 .setPositiveButton(action,
                         new DialogInterface.OnClickListener() {
 

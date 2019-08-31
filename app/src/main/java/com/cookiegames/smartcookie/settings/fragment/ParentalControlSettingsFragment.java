@@ -6,12 +6,14 @@ package com.cookiegames.smartcookie.settings.fragment;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -34,6 +36,7 @@ import com.cookiegames.smartcookie.dialog.BrowserDialog;
 import com.cookiegames.smartcookie.search.SearchEngineProvider;
 import com.cookiegames.smartcookie.search.engine.BaseSearchEngine;
 import com.cookiegames.smartcookie.search.engine.CustomSearch;
+import com.cookiegames.smartcookie.settings.activity.SettingsActivity;
 import com.cookiegames.smartcookie.utils.FileUtils;
 import com.cookiegames.smartcookie.utils.ProxyUtils;
 import com.cookiegames.smartcookie.utils.ThemeUtils;
@@ -44,6 +47,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.cookiegames.smartcookie.dialog.BrowserDialog.setDialogSize;
 import static com.cookiegames.smartcookie.preference.PreferenceManager.Suggestion;
 
 public class ParentalControlSettingsFragment extends LightningPreferenceFragment implements Preference.OnPreferenceClickListener, Preference.OnPreferenceChangeListener {
@@ -105,11 +109,49 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
     }
 //FIX AFTER CLICKING ON BLOCK SITES, DIALOG REENTERS NONE
     private void passwordDialog() {
+        View dialogView = LayoutInflater.from(mActivity).inflate(R.layout.dialog_edit_text, null);
+        final EditText editText = dialogView.findViewById(R.id.dialog_edit_text);
+
+        editText.setHint(R.string.enter_password);
+
+        final AlertDialog.Builder editorDialog = new AlertDialog.Builder(mActivity)
+                .setTitle(R.string.enter_password)
+                .setView(dialogView)
+                .setCancelable(false)
+                .setNegativeButton(R.string.action_back, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //listener.onClick(editText.getText().toString());
+                        Intent settings = new Intent(mActivity, SettingsActivity.class);
+                        settings.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(settings);
+                    }
+                })
+                .setPositiveButton(R.string.action_ok,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //listener.onClick(editText.getText().toString());
+                                if (editText.getText().toString().equals(prefs.getString("password", ""))) {
+                                } else {
+                                    int duration = Toast.LENGTH_SHORT;
+                                    Toast toast = Toast.makeText(mActivity, getResources().getString(R.string.wrong_password), duration);
+                                    toast.show();
+                                    passwordDialog();
+                                }
+                            }
+                        });
+
+        Dialog dialog = editorDialog.show();
+        setDialogSize(mActivity, dialog);
+        /*
+
         BrowserDialog.showHiddenEditText(mActivity,
                 R.string.enter_password,
                 R.string.enter_password,
                 "",
                 R.string.action_ok,
+                R.string.action_back,
                 new BrowserDialog.EditorListener() {
                     @Override
                     public void onClick(String text) {
@@ -122,7 +164,7 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
                         }
 
                     }
-                });
+                });*/
     }
 
     private void initPrefs() {
@@ -177,7 +219,7 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
                 });
         picker.setPositiveButton(R.string.action_ok, null);
         Dialog dialog = picker.show();
-        BrowserDialog.setDialogSize(mActivity, dialog);
+        setDialogSize(mActivity, dialog);
     }
 
     private void setPasswordChoice(@Constants.Password int choice) {
@@ -197,7 +239,7 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
     }
 
     private void manualPasswordPicker() {
-        BrowserDialog.showHiddenEditText(mActivity,
+        BrowserDialog.showEditText(mActivity,
                 R.string.enter_password,
                 R.string.enter_password,
                 mPreferenceManager.getSiteBlockString(""),
@@ -246,7 +288,7 @@ public class ParentalControlSettingsFragment extends LightningPreferenceFragment
                 });
         blockPicker.setPositiveButton(getResources().getString(R.string.action_ok), null);
         Dialog dialog = blockPicker.show();
-        BrowserDialog.setDialogSize(mActivity, dialog);
+        setDialogSize(mActivity, dialog);
     }
 
     private void blockPicker() {
