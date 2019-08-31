@@ -30,6 +30,7 @@ A secure, open source web browser for Android.
 - [x] Custom Error Page
 - [x] HTTPS Everywhere
 - [x] New UI
+- [x] Parental Controls
 - [ ] Inspect element
 - [ ] Extensions
 - [ ] Custom Themes
@@ -51,4 +52,5 @@ SmartCookieWeb is a fork of Lightning Browser (https://github.com/anthonycr/ligh
 - Fixed Travis CI support
 - Onboarding to help new users
 - Enabled Cleartext (HTTP sites now work on Android 9+, whilst the app targets a newer API version unlike Lightning)
+- Parental controls
 - Bug fixes
