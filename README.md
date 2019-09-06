@@ -35,9 +35,13 @@ A secure, open source web browser for Android.
 - [ ] Extensions
 - [ ] Custom Themes
 
- 
 # License
 SmartCookieWeb uses the Mozilla Public License 2.0
+
+# Contributors
+Contributions are greatly appreciated. Here are some people who have recently contributed:
+
+[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/0)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/0)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/1)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/1)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/2)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/2)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/3)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/3)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/4)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/4)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/5)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/5)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/6)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/6)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/7)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/7)
 
 # How is Smart Cookie different to Lightning?
 SmartCookieWeb is a fork of Lightning Browser (https://github.com/anthonycr/lightning-browser). Here are some of the changes I've made since I started:
