@@ -12,22 +12,22 @@
     <string name="settings">Definições</string>
     <string name="location">Acesso à localização</string>
     <string name="password">Guardar palavras-passe</string>
-    <string name="agent">Agente de utiluzador</string>
+    <string name="agent">Agente de utilizador</string>
     <string name="flash">Ativar Adobe Flash</string>
     <string name="home">Pagina inicial</string>
     <string name="fullscreen">Ecrã completo</string>
     <string name="java">Javascript ativado</string>
     <string name="download">Local para descargas</string>
     <string name="settings_advanced">Definições avançadas</string>
-    <string name="settings_advanced_explain">Conteúdo da caixa de URL, modo de renderização, codificação de texto#8230;</string>
+    <string name="settings_advanced_explain">Conteúdo da caixa de URL, modo de renderização, codificação do texto&#8230;</string>
     <string name="apache">Apache License 2.0</string>
     <string name="version">Versão da aplicação</string>
     <string name="cache">Limpar cache ao sair</string>
-    <string name="reflow">Ativar reflow de texto</string>
+    <string name="reflow">Ativar \'reflow\' de texto</string>
     <string name="block">Bloquear imagens</string>
     <string name="window">Permitir aos sites abrir novas janelas</string>
     <string name="cookies">Ativar cookies</string>
-    <string name="importbookmarks">Importar marcador do navegador</string>
+    <string name="importbookmarks">Importar marcadores do navegador</string>
     <string name="size">Tamanho do texto</string>
     <string name="recommended">Recomendado</string>
     <string name="search">Motor de pesquisa</string>
@@ -47,7 +47,7 @@
     <string name="action_open">Abrir</string>
     <string name="dialog_link">O que deseja fazer com esta ligação?</string>
     <string name="dialog_title_share">Partilhar página</string>
-    <string name="dialog_history_long_press">O que deeseja fazer com este item de histórico?</string>
+    <string name="dialog_history_long_press">O que deseja fazer com este item de histórico?</string>
     <string name="dialog_bookmark">O que deseja fazer com este marcador?</string>
     <string name="action_delete">Apagar</string>
     <string name="action_blank">Página vazia</string>
@@ -61,9 +61,9 @@
     <string name="unknown_size">Tamanho desconhecido</string>
     <string name="action_cancel">Cancelar</string>
     <string name="title_warning">Aviso</string>
-    <string name="dialog_adobe_not_installed">O Adobe Flash Player não está instalado.\nPor favor, instale o Flash Player.</string>
+    <string name="dialog_adobe_not_installed">Adobe Flash Player não está instalado.\nPor favor, instale o Flash Player.</string>
     <string name="title_user_agent">Agente de utilizador</string>
-    <string name="title_download_location">Local para a descarga</string>
+    <string name="title_download_location">Local para descargas</string>
     <string name="title_custom_homepage">Página personalizada</string>
     <string name="action_webpage">Página web</string>
     <string name="title_clear_history">Limpar histórico</string>
@@ -79,7 +79,7 @@
     <string name="size_small">Pequeno</string>
     <string name="size_smallest">Menor</string>
     <string name="title_error">Erro</string>
-    <string name="dialog_import_error">Não foi detetado qualquer navegado do qual importar os marcadores.</string>
+    <string name="dialog_import_error">Não foi detetado qualquer navegador para importar os marcadores.</string>
     <string name="hint_title">Título</string>
     <string name="hint_url">URL</string>
     <string name="title_edit_bookmark">Editar marcador</string>
@@ -113,7 +113,7 @@
     <string name="licenses">Licenças Open Source</string>
     <string name="suggestion">Pesquisar por</string>
     <string name="block_ads">Bloquear anúncios e rastreadores</string>
-    <string name="message_insecure_connection">A ligação este site não é segura: %1$s. Continuar?</string>
+    <string name="message_insecure_connection">A ligação a este site não é segura: %1$s. Continuar?</string>
     <string name="message_certificate_date_invalid">A data do certificado é inválida</string>
     <string name="message_certificate_expired">Certificado expirado</string>
     <string name="message_certificate_domain_mismatch">O domínio no certificado não coincide com o domínio do site</string>
@@ -122,9 +122,9 @@
     <string name="message_certificate_untrusted">O certificado não é de confiança</string>
     <string name="title_form_resubmission">Reenviar formulário</string>
     <string name="message_form_resubmission">Gostaria de reenviar os dados?</string>
-    <string name="message_location">\nDeseja utilizar a sua localização</string>
-    <string name="action_allow">Permitir</string>
-    <string name="action_dont_allow">Não permitir</string>
+    <string name="message_location">\nDeseja utilizar a sua localização?</string>
+    <string name="action_allow">Sim</string>
+    <string name="action_dont_allow">Não</string>
     <string name="title_sign_in">Iniciar sessão</string>
     <string name="label_realm">Mensagem do servidor: %s</string>
     <string name="hint_username">Nome de utilizador</string>
@@ -133,7 +133,7 @@
     <string name="powered_by_google">Google</string>
     <string name="powered_by_duck">DuckDuckGo</string>
     <string name="powered_by_baidu">Baidu</string>
-    <string name="search_suggestions_off">Não existem sugestões</string>
+    <string name="search_suggestions_off">Não utilizar sugestões</string>
     <string name="http_proxy">Proxy HTTP</string>
     <string-array name="proxy_choices_array">
         <item>Nenhum</item>
@@ -148,9 +148,9 @@
     <string name="manual_proxy">Proxy manual</string>
     <string name="host">Servidor:</string>
     <string name="port">Porta:</string>
-    <string name="use_tor_prompt">Parece que você tem o Orbot instalado. Deseja utilizar a rede Tor?</string>
-    <string name="use_i2p_prompt">Parece que você tem o I2P instalado. Deseja utilizar a rede I2P?</string>
-    <string name="install_orbot">Instale o Orbot para fazer proxy com Tor.spac</string>
+    <string name="use_tor_prompt">Parece que tem o Orbot instalado. Deseja utilizar a rede Tor?</string>
+    <string name="use_i2p_prompt">Parece que tem o I2P instalado. Deseja utilizar a rede I2P?</string>
+    <string name="install_orbot">Instale Orbot para fazer proxy com Tor.spac</string>
     <string name="i2p_not_running">I2P não está em execução.</string>
     <string name="i2p_tunnels_not_ready">Os túneis I2P ainda não estão prontos.</string>
     <string name="yes">Sim</string>
@@ -184,14 +184,14 @@
     <string name="import_bookmark_error">Não foi possível importar os marcadores</string>
     <string name="title_chooser">Escolha um ficheiro</string>
     <string name="settings_general">Definições gerais</string>
-    <string name="settings_general_explain">Bloqueador de anúncios, motor de pesquisa, página inicial#8230;</string>
+    <string name="settings_general_explain">Bloqueador de anúncios, motor de pesquisa, página inicial&#8230;</string>
     <string name="settings_display">Definições de exibição</string>
-    <string name="settings_display_explain">Ecrã completo, tamanho do texto, temas#8230;</string>
+    <string name="settings_display_explain">Ecrã completo, tamanho do texto, temas&#8230;</string>
     <string name="settings_privacy">Definições de privacidade e de segurança</string>
-    <string name="settings_privacy_explain">Cache, cookies, histórico#8230;</string>
+    <string name="settings_privacy_explain">Cache, cookies, histórico&#8230;</string>
     <string name="settings_about">Acerca</string>
     <string name="settings_about_explain">Número da versão, autor e licença&#8230;</string>
-    <string name="close_tab">Fechechar separador atual</string>
+    <string name="close_tab">Fechar separador atual</string>
     <string name="close_all_tabs">Fechar todos os separadores</string>
     <string name="close_other_tabs">Fechar todos os outros separadores</string>
     <string name="third_party">Bloquear cookies de terceiros</string>
@@ -227,7 +227,7 @@
     <string name="clear_web_storage">Limpar armazenamento web</string>
     <string name="clear_web_storage_exit">Limpar armazenamento web ao sair</string>
     <string name="message_web_storage_cleared">Armazenamento web eliminado</string>
-    <string name="hosts_source">Fonte ficheiro hosts</string>
+    <string name="hosts_source">Fonte do ficheiro hosts</string>
     <string name="settings_adblock">Definições de Adblock</string>
     <string name="tabs_in_drawer">Mostrar separadores no menu de navegação</string>
     <string name="swap_bookmarks_and_tabs">Trocar menus de marcadores e separadores</string>
@@ -240,7 +240,7 @@
     <string name="message_open_download_fail">Este ficheiro já não existe</string>
     <string name="this_project">Este projeto</string>
 
-    <string name="jgh">Código-fonte SmartCookieWeb</string>
+    <string name="jgh">Código-fonte</string>
     <string name="action_home">Página web</string>
     <string name="jgh_description">Saber mais</string>
     
@@ -288,19 +288,19 @@
     <string name="slide_1_desc">Navegar na web agora é ainda mais fácil e seguro!</string>
 
     <string name="slide_2_title">Abrir separadores</string>
-    <string name="slide_2_desc">Pode aceder as separadores tocando no botão existente no canto superior esquerdo do ecrã.</string>
+    <string name="slide_2_desc">Pode aceder aos separadores tocando no botão existente no canto superior esquerdo do ecrã.</string>
 
     <string name="slide_3_title">Definições</string>
-    <string name="slide_3_desc">Pode aceder às definições tocando no botão existente no canto superior direito do ecrã e escolhendo \'Definições\' na lista.</string>
+    <string name="slide_3_desc">Pode aceder às definições tocando no botão existente no canto superior direito do ecrã e escolhendo \'Definições\'.</string>
 
     <string name="slide_4_title">Abrir marcadores</string>
-    <string name="slide_4_desc">Pode aceder aos marcadores através da lista suspensa ou deslizando desde a margem direita do ecrã. Nos marcadores, pode abrir a versão desktop no site, criar um marcador ou abrir o site no modo de leitura.</string>
+    <string name="slide_4_desc">Pode aceder aos marcadores através da lista suspensa ou deslizando desde a margem direita do ecrã. Nos marcadores, pode criar um marcador e abrir o site no modo desktop ou no modo de leitura.</string>
 
     <string name="play_again_desc">Para ver novamente a introdução, aceda a Definições -> Aplicações -> SmartCookieWeb -> Limpar dados</string>
     <string name="play_again">Mostrar novamente</string>
 
-    <string name="privacy">Ver política de privacidade</string>
-    <string name="privacy_info">Leia a política de privacidade do SmartCookieWeb</string>
+    <string name="privacy">Política de privacidade</string>
+    <string name="privacy_info">Ver a política de privacidade do SmartCookieWeb</string>
     
     <string name="block_malware">Bloquear sites maliciosos</string>
     <string name="block_sites">Bloqueio personalizado por site (beta)</string>
@@ -314,7 +314,7 @@
     <string name="forcehttpsdesc">Carregar apenas sites HTTPS</string>
     <string name="preferhttpsdesc">Utilizar sempre HTTPS nos sites suportados (pode causar problemas)</string>
 
-    <string name="startpagedesc">Utilizar cor do tema na página inicial.</string>
+    <string name="startpagedesc">Utilizar cor do tema na página inicial</string>
     <string name="updatehomepage">Abra um novo separador para ver a página inicial atualizada</string>
 
     <string name="inspect">Injetar JavaScript</string>
@@ -335,7 +335,7 @@
     <string name="block_all_sites">Bloquear todos os sites listados</string>
     <string name="only_allow_sites">Permitir apenas os sites listados</string>
     <string name="parental_controls">Definições de controlo parental</string>
-    <string name="settings_parents">Bloquear sites, definir palavra-passe...</string>
+    <string name="settings_parents">Bloquear sites, definir palavra-passe&#8230;</string>
 
     <!-- finish pages -->
 </resources>
