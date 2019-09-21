@@ -216,7 +216,7 @@ class LightningWebClient(
                 view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
             }
             if (userPreferences.forceHTTPSenabled || userPreferences.preferHTTPSenabled) {
-                if (url.contains("http") && url.contains("://")) {
+                if (url.contains("http://")) {
                     if (url.contains("https://")) {
                         //Secure!
                     } else {

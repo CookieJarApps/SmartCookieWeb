@@ -16,7 +16,7 @@
             android:summary="@string/recommended"
             android:title="@string/password"/>
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="do_not_track"
             android:title="@string/do_not_track"/>
         <CheckBoxPreference

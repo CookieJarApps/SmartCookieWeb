@@ -4,7 +4,7 @@
 
     <PreferenceCategory android:title="@string/settings_about">
         <Preference
-            android:summary="@string/url_contact"
+            android:summary="@string/url_project"
             android:title="@string/action_follow_me">
             <intent
                 android:action="android.intent.action.VIEW"
