@@ -5,7 +5,14 @@
 [![Build Status](https://travis-ci.org/CookieGamesOfficial/SmartCookieWeb.svg?branch=master)](https://travis-ci.org/CookieGamesOfficial/SmartCookieWeb) 
 [![GitHub stars](https://img.shields.io/github/stars/CookieGamesOfficial/SmartCookieWeb.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/CookieGamesOfficial/SmartCookieWeb)
 
-<a href="https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="60"></a>
+<a href="https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="60"></a> <a href="https://f-droid.org/packages/com.cookiegames.smartcookie">
+    <img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+    alt="Get it on F-Droid"
+    height="60">
+</a>
+
+
+
 
 A secure, open source web browser for Android.
 
