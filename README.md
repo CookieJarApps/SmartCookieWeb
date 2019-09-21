@@ -1,70 +1,60 @@
-# Lightning Browser [![Build Status](https://travis-ci.org/anthonycr/Lightning-Browser.svg?branch=master)](https://travis-ci.org/anthonycr/Lightning-Browser)
+# SmartCookieWeb
+![Rating](https://img.shields.io/static/v1.svg?label=Rating&message=4/5&color=green)
+![License](https://img.shields.io/static/v1.svg?label=License&message=MPLv2.0&color=brightgreen)
+![Downloads](https://img.shields.io/static/v1.svg?label=Downloads&message=14,000&color=brightgreen) 
+[![Build Status](https://travis-ci.org/CookieGamesOfficial/SmartCookieWeb.svg?branch=master)](https://travis-ci.org/CookieGamesOfficial/SmartCookieWeb) 
+[![GitHub stars](https://img.shields.io/github/stars/CookieGamesOfficial/SmartCookieWeb.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/CookieGamesOfficial/SmartCookieWeb)
 
-#### Speed, Simplicity, Security
-![](launcher_icon_small.png)
+<a href="https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="60"></a>
 
-#### Download
-[<img src="https://f-droid.org/badge/get-it-on.png"
-      alt="Get it on F-Droid"
-      height="80">](https://f-droid.org/app/acr.browser.lightning) [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" 
-alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=acr.browser.lightning)
+A secure, open source web browser for Android.
 
-#### Master Branch
-* [![Build Status](https://travis-ci.org/anthonycr/Lightning-Browser.svg?branch=master)](https://travis-ci.org/anthonycr/Lightning-Browser)
-
-#### Dev Branch
-* [![Build Status](https://travis-ci.org/anthonycr/Lightning-Browser.svg?branch=dev)](https://travis-ci.org/anthonycr/Lightning-Browser)
-
-#### Features
+# Features
 * Bookmarks
 
 * History
 
-* Multiple search engines (Google, Bing, Yahoo, StartPage, DuckDuckGo, etc.)
+* Search Suggestions
+
+* Custom Search Engine
 
 * Incognito mode
 
-* Follows Google design guidelines
+* Proxy support
 
-* Unique utilization of navigation drawer for tabs
+# 2019 Feature Checklist
 
-* Google search suggestions
+- [x] Proxy Support
+- [x] Malware Blocking
+- [x] Improved Ad Blocker
+- [x] Custom Error Page
+- [x] HTTPS Everywhere
+- [x] New UI
+- [x] Parental Controls
+- [ ] Inspect element
+- [ ] Extensions
+- [ ] Custom Themes
 
-* Orbot Proxy support and I2P support
+# License
+SmartCookieWeb uses the Mozilla Public License 2.0
 
-#### Permissions
+# Contributors
+Contributions are greatly appreciated. Here are some people who have recently contributed:
 
-##### Automatically granted
-* `INTERNET`: necessary to access the internet.
-* `ACCESS_NETWORK_STATE`: used by the browser to stop loading resources when network access is lost.
-* `INSTALL_SHORTCUT`: used to add shortcuts with the "Add to home screen" option.
+[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/0)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/0)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/1)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/1)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/2)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/2)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/3)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/3)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/4)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/4)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/5)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/5)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/6)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/6)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/7)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/7)
 
-##### Requested only when needed
-* `WRITE_EXTERNAL_STORAGE`: needed to download files and export bookmarks.
-* `READ_EXTERNAL_STORAGE`: needed to download files and import bookmarks.
-* `ACCESS_FINE_LOCATION`: needed for sites like Google Maps, requires "Location access" option to be enabled (default disabled).
-* `RECORD_AUDIO`: needed to support WebRTC, requires "WebRTC Support" option to be enabled (default disabled).
-* `CAMERA`: needed to support WebRTC, requires "WebRTC Support" option to be enabled (default disabled).
-* `MODIFY_AUDIO_SETTINGS`: needed to support WebRTC, requires "WebRTC Support" option to be enabled (default disabled).
-
-#### The Code
-* Please contribute code back if you can. The code isn't perfect.
-* Please add translations/translation fixes as you see need
-
-#### Contributing
-* [The Trello Board](https://trello.com/b/Gwjx8MC3/lightning-browser)
-* Contributions are always welcome
-* Make pull requests into the `dev` branch.
-
-#### License
-```
-Copyright 2014 Anthony Restaino
-
-Lightning Browser
-
-   This Source Code Form is subject to the terms of the 
-   Mozilla Public License, v. 2.0. If a copy of the MPL 
-   was not distributed with this file, You can obtain one at 
-   
-   http://mozilla.org/MPL/2.0/
-```
+# How is Smart Cookie different to Lightning?
+SmartCookieWeb is a fork of Lightning Browser (https://github.com/anthonycr/lightning-browser). Here are some of the changes I've made since I started:
+- New, more modern UI
+- Error pages
+- Custom site block 
+- HTTPS everywhere
+- Block insecure sites
+- Block malicious sites
+- Moved some settings
+- Theme search pages
+- Fixed Travis CI support
+- Onboarding to help new users
+~~- Enabled Cleartext (HTTP sites now work on Android 9+, whilst the app targets a newer API version unlike Lightning)~~ (fixed in Lightning)
+- Parental controls
+- Bug fixes
