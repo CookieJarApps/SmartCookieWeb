@@ -12,14 +12,14 @@ interface TabsView {
 
     /**
      * Called when a tab has been removed.
-
+     *
      * @param position the position of the tab that has been removed.
      */
     fun tabRemoved(position: Int)
 
     /**
      * Called when a tab's metadata has been changed.
-
+     *
      * @param position the position of the tab that has been changed.
      */
     fun tabChanged(position: Int)
@@ -28,4 +28,14 @@ interface TabsView {
      * Called when the tabs are completely initialized for the first time.
      */
     fun tabsInitialized()
+
+    /**
+     * Enables and disables the go back button.
+     */
+    fun setGoBackEnabled(isEnabled: Boolean)
+
+    /**
+     * Enables and disables the go forward button.
+     */
+    fun setGoForwardEnabled(isEnabled: Boolean)
 }

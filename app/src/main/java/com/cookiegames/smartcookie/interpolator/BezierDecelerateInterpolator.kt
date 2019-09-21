@@ -11,11 +11,9 @@ import android.view.animation.Interpolator
 class BezierDecelerateInterpolator : Interpolator {
 
     companion object {
-        private val PATH_INTERPOLATOR: Interpolator = androidx.core.view.animation.PathInterpolatorCompat.create(0.25f, 0.1f, 0.25f, 1f)
+        private val PATH_INTERPOLATOR: Interpolator = PathInterpolatorCompat.create(0.25f, 0.1f, 0.25f, 1f)
     }
 
-    override fun getInterpolation(input: Float): Float {
-        return PATH_INTERPOLATOR.getInterpolation(input)
-    }
+    override fun getInterpolation(input: Float): Float = PATH_INTERPOLATOR.getInterpolation(input)
 
 }

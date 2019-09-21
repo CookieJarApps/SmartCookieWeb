@@ -129,13 +129,35 @@
     <string name="action_allow">Allow</string>
     <string name="action_dont_allow">Don\'t allow</string>
     <string name="title_sign_in">Sign in</string>
-    <string name="label_realm">Server message: %s</string>
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
     <string name="search_suggestions">Search suggestions</string>
     <string name="powered_by_google">Google</string>
     <string name="powered_by_duck">DuckDuckGo</string>
     <string name="powered_by_baidu">Baidu</string>
+    <string name="powered_by_naver">Naver</string>
+
+    <string name="search_engine_naver">Naver</string>
+
+    <string name="block_ads_upsell_source">Upgrade to Lightning Plus to choose</string>
+
+    <string name="shortcut_message_failed_to_add">Sorry, your launcher does not support shortcuts.</string>
+
+    <!-- SSL -->
+    <string name="ssl_info_issued_by">Issued by</string>
+    <string name="ssl_info_issued_to">Issued to</string>
+    <string name="ssl_info_issued_on">Issued on</string>
+    <string name="ssl_info_expires_on">Expires on</string>
+
+    <!-- SSL don't ask again -->
+    <string name="ssl_warning_dont_ask_again">Don\'t ask again for this browsing session.</string>
+
+    <!-- Tools dialog -->
+    <string name="dialog_tools_title">Page tools</string>
+    <string name="dialog_toggle_desktop">Toggle desktop user agent</string>
+    <string name="dialog_adblock_enable_for_site">Enable ad block for site</string>
+    <string name="dialog_adblock_disable_for_site">Disable ad block for site</string>
+
     <string name="search_suggestions_off">No search suggestions</string>
     <string name="http_proxy">HTTP proxy</string>
     <string-array name="proxy_choices_array">
@@ -231,7 +253,10 @@
     <string name="clear_web_storage_exit">Clear web storage on exit</string>
     <string name="message_web_storage_cleared">Web storage cleared</string>
     <string name="hosts_source">Hosts file ad blocking source</string>
-    <string name="settings_adblock">Ad block settings</string>
+    <string name="settings_adblock">Content block settings</string>
+    <string name="adblock_summary">Ad block, cookie dialog block...</string>
+    <string name="adblock_category">Ad block</string>
+    <string name="cookie_category">Cookie dialog block</string>
     <string name="tabs_in_drawer">Show tabs in navigation drawer</string>
     <string name="swap_bookmarks_and_tabs">Swap bookmark and tab drawers</string>
     <string name="do_not_track">Request \'Do Not Track\'</string>
@@ -251,6 +276,55 @@
 
     <string name="faq">FAQ</string>
     <string name="faq_description">Frequently asked questions</string>
+
+    <string name="block_source_default">Default hosts</string>
+    <string name="block_source_local">Local hosts file</string>
+    <string name="block_source_local_description">File: %1$s</string>
+    <string name="block_source_remote">Remote hosts file</string>
+    <string name="block_source_remote_description">URL: %1$s</string>
+
+    <string-array name="block_ad_source_list">
+        <item>@string/block_source_default</item>
+        <item>@string/block_source_local</item>
+        <item>@string/block_source_remote</item>
+    </string-array>
+
+    <!--Ad block -->
+    <string name="ad_block_load_failure">Failed to load hosts from ad blocking source.</string>
+
+    <string name="infinity">∞</string>
+
+    <string name="reopening_recent_tab">Reopened old tab</string>
+
+    <!-- Search in page -->
+    <string name="search_in_page_query">\'%1$s\'</string>
+
+    <string name="message_bookmark_added">Bookmark added.</string>
+
+    <!-- Notifications -->
+    <plurals name="notification_incognito_running_title">
+        <item quantity="one">%1$d incognito tab open</item>
+        <item quantity="other">%1$d incognito tabs open</item>
+    </plurals>
+    <string name="notification_incognito_running_message">Touch to open</string>
+    <string name="notification_incognito_running_description">Ongoing incognito notification</string>
+
+    <!-- Common actions -->
+    <string name="action_message_canceled">Action canceled.</string>
+
+    <string name="upsell_plus_version">Upgrade to Lightning Plus to block ads</string>
+
+    <!-- permissions request -->
+    <string name="title_permission_request">Permission request</string>
+    <string name="message_permission_request">%1$s  would like to use:  %2$s</string>
+
+    <!-- Ad block -->
+    <string name="block_ad_source">Hosts file source</string>
+    <string name="block_ad_remote_refresh_frequency_description">For remote hosts file</string>
+    <string name="block_ad_refresh_now">Refresh hosts now</string>
+
+    <string name="webrtc_support">WebRTC Support</string>
+    <string name="save_data">Request \'Save-Data\'</string>
 
     <!-- debug strings -->
     <string name="debug_title">Debug Settings</string>
@@ -341,6 +415,7 @@
     <string name="only_allow_sites">Only Allow Listed Sites</string>
     <string name="parental_controls">Parental Controls Settings</string>
     <string name="settings_parents">Block sites, set password...</string>
+    <string name="label_realm">Server message: %s</string>
 
 
     <!-- finish pages -->

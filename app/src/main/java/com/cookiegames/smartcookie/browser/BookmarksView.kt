@@ -1,6 +1,6 @@
 package com.cookiegames.smartcookie.browser
 
-import com.cookiegames.smartcookie.database.HistoryItem
+import com.cookiegames.smartcookie.database.Bookmark
 
 interface BookmarksView {
 
@@ -8,6 +8,6 @@ interface BookmarksView {
 
     fun handleUpdatedUrl(url: String)
 
-    fun handleBookmarkDeleted(item: HistoryItem)
+    fun handleBookmarkDeleted(bookmark: Bookmark)
 
 }

@@ -51,5 +51,3 @@ out
 # https://gitlab.com/fdroid/fdroidclient/raw/master/.gitignore
 
 *.iml
-app/google-services.json
-app/google-services.json

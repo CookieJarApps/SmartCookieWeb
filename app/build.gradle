@@ -1,66 +1,83 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: 'jacoco'
+apply plugin: 'com.github.ben-manes.versions'
 
 android {
     compileSdkVersion project.targetSdkVersion
+    buildToolsVersion project.buildToolsVersion
 
     defaultConfig {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
+        versionName "5.0.2"
         vectorDrawables.useSupportLibrary = true
-        ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+
     sourceSets {
+        scMain.setRoot('src/LightningPlus')
     }
 
     buildTypes {
         debug {
+            multiDexEnabled true
             minifyEnabled false
             shrinkResources false
             proguardFiles 'proguard-project.txt'
+            testCoverageEnabled true
         }
 
         release {
+            multiDexEnabled false
             minifyEnabled true
             shrinkResources true
             proguardFiles 'proguard-project.txt'
+            testCoverageEnabled false
+
+            ndk {
+                abiFilters "arm64-v8a", "armeabi-v7a", "armeabi", "mips"
+            }
         }
     }
 
-    flavorDimensions "color"
+    testOptions {
+        unitTests.all {
+            jacoco {
+                // This option needs to be included for robolectric tests
+                includeNoLocationClasses = true
+            }
+        }
+    }
+
+    flavorDimensions "capabilities"
 
     productFlavors {
-
-        scmain {
+        scMain {
+            dimension "capabilities"
             buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
             applicationId "com.cookiegames.smartcookie"
-            versionCode project.versionCode_main
-            versionName project.versionNameMain
-            //minSdkVersion project.minSdkVersionDev
-        }
-
-        scdev {
-            buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
-            applicationId "com.cookiegames.smartcookie"
-            versionCode project.versionCode_dev
-            versionName project.versionNameDev
-            //minSdkVersion project.minSdkVersionMain
+            versionCode 100
         }
     }
 
     lintOptions {
-        abortOnError false
+        abortOnError true
     }
 
     packagingOptions {
         exclude '.readme'
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+jacoco {
+    toolVersion = '0.7.9'
 }
 
 dexcount {
@@ -72,30 +89,48 @@ dexcount {
 }
 
 dependencies {
+    // multidex debug
+    debugImplementation 'androidx.multidex:multidex:2.0.1'
+
+    // test dependencies
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.assertj:assertj-core:3.13.2'
+    testImplementation 'org.mockito:mockito-core:3.0.0'
+    testImplementation 'com.nhaarman:mockito-kotlin:1.6.0', {
+        exclude group: 'org.jetbrains.kotlin'
+    }
+    testImplementation 'org.robolectric:robolectric:4.3'
 
     // support libraries
-    def supportLibVersion = '28.0.0'
-    implementation 'androidx.palette:palette:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.palette:palette:1.0.0"
+    implementation "androidx.annotation:annotation:1.1.0"
+    implementation "androidx.vectordrawable:vectordrawable-animated:1.1.0"
+    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation "com.google.android.material:material:1.0.0"
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+    implementation "androidx.core:core:1.1.0"
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+    implementation "androidx.fragment:fragment:1.1.0"
+    implementation "androidx.drawerlayout:drawerlayout:1.0.0"
 
     // html parsing for reading mode
-    implementation 'org.jsoup:jsoup:1.12.1'
+    implementation 'org.jsoup:jsoup:1.11.3'
+
+    // file reading
+    final def mezzanineVersion = '1.1.1'
+    implementation "com.anthonycr.mezzanine:mezzanine:$mezzanineVersion"
+    kapt "com.anthonycr.mezzanine:mezzanine-compiler:$mezzanineVersion"
 
     // dependency injection
-    def daggerVersion = '2.11'
+    final def daggerVersion = '2.24'
     implementation "com.google.dagger:dagger:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
-
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     compileOnly 'javax.annotation:jsr250-api:1.0'
 
     // view binding
-    def butterknifeVersion = '10.1.0'
-    implementation "com.jakewharton:butterknife:$butterknifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+    final def butterKnifeVersion = '10.1.0'
+    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
+    kapt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
     // permissions
     implementation 'com.anthonycr.grant:permissions:1.1.2'
@@ -103,20 +138,62 @@ dependencies {
     // proxy support
     implementation 'net.i2p.android:helper:0.9.5'
 
-    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.3'
 
-    // tor proxy
-    def netcipherVersion = '2.0.0-alpha1'
-    implementation "info.guardianproject.netcipher:netcipher:$netcipherVersion"
-    implementation "info.guardianproject.netcipher:netcipher-webkit:$netcipherVersion"
+    // rx
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.12'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
 
     implementation 'com.anthonycr.bonsai:bonsai:1.1.0'
 
+    // tor proxy
+    final def netCipherVersion = '2.0.0-alpha1'
+    implementation "info.guardianproject.netcipher:netcipher:$netCipherVersion"
+    implementation "info.guardianproject.netcipher:netcipher-webkit:$netCipherVersion"
+
     implementation 'com.anthonycr.progress:animated-progress:1.0'
-
-    compile 'com.github.chyrta:AndroidOnboarder:0.7'
-
     // kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    implementation 'androidx.core:core-ktx:1.2.0-alpha04'
 }
 
+kapt {
+    arguments {
+        arg("mezzanine.projectPath", project.rootDir)
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+        kotlinOptions {
+            freeCompilerArgs += ['-XXLanguage:+InlineClasses']
+            freeCompilerArgs += ['-progressive']
+        }
+    }
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testLightningPlusDebugUnitTest', 'createLightningPlusDebugCoverageReport']) {
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+    final def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
+    final def debugTree = fileTree(dir: "$buildDir/intermediates/classes/lightningPlus/debug", excludes: fileFilter)
+    final def kotlinDebugTree = fileTree(dir: "$buildDir/tmp/kotlin-classes/lightningPlusDebug", excludes: fileFilter)
+    final def mainSrc = "${project.projectDir}/src/test/java"
+
+    sourceDirectories = files([mainSrc])
+    classDirectories = files([debugTree], [kotlinDebugTree])
+    executionData = fileTree(dir: "$buildDir", includes: [
+            "jacoco/testLightningPlusDebugUnitTest.exec",
+            "jacoco/testLightningPlusDebugUnitTest.exec",
+            "outputs/code-coverage/connected/*coverage.ec"
+    ])
+}

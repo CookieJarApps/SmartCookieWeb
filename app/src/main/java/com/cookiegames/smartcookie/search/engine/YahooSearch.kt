@@ -1,7 +1,6 @@
 package com.cookiegames.smartcookie.search.engine
 
 import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.constant.Constants
 
 /**
  * The Yahoo search engine.
@@ -10,7 +9,7 @@ import com.cookiegames.smartcookie.constant.Constants
  * for the icon.
  */
 class YahooSearch : BaseSearchEngine(
-        "file:///android_asset/yahoo.png",
-        Constants.YAHOO_SEARCH,
-        R.string.search_engine_yahoo
+    "file:///android_asset/yahoo.png",
+    "https://search.yahoo.com/search?p=",
+    R.string.search_engine_yahoo
 )

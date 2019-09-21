@@ -1,7 +1,6 @@
 package com.cookiegames.smartcookie.search.engine
 
 import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.constant.Constants
 
 /**
  * The Yandex search engine.
@@ -10,7 +9,7 @@ import com.cookiegames.smartcookie.constant.Constants
  * for the icon.
  */
 class YandexSearch : BaseSearchEngine(
-        "file:///android_asset/yandex.png",
-        Constants.YANDEX_SEARCH,
-        R.string.search_engine_yandex
+    "file:///android_asset/yandex.png",
+    "https://yandex.ru/yandsearch?lr=21411&text=",
+    R.string.search_engine_yandex
 )

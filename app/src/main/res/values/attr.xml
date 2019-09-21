@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="numberColor" format="reference|color" />
+    <attr name="iconColor" format="reference|color" />
+    <attr name="iconColorState" format="reference|color" />
     <attr name="autoCompleteTitleColor" format="reference|color" />
     <attr name="autoCompleteUrlColor" format="reference|color" />
     <attr name="listBackground" format="reference|color" />
@@ -11,7 +12,6 @@
     <attr name="drawerBackground" format="reference|color" />
     <attr name="dividerColor" format="reference|color" />
     <attr name="selectedBackground" format="reference|color" />
-    <attr name="colorAccent" format="reference|color" />
 
     <attr name="ic_round_settings" format="reference"/>
     <attr name="ic_action_star" format="reference"/>
@@ -22,5 +22,12 @@
     <attr name="ic_round_world_lock" format="reference"/>
     <attr name="ic_round_question_answer" format="reference"/>
     <attr name="ic_parental_controls" format="reference"/>
+    <attr name="ic_action_block" format="reference"/>
 
+    <declare-styleable name="TabCountView">
+        <attr name="tabIconColor" format="reference|color" />
+        <attr name="tabIconTextSize" format="dimension"/>
+        <attr name="tabIconBorderWidth" format="dimension"/>
+        <attr name="tabIconBorderRadius" format="dimension"/>
+    </declare-styleable>
 </resources>

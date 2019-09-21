@@ -3,33 +3,43 @@ package com.cookiegames.smartcookie.utils;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import android.util.Log;
 
 import net.i2p.android.ui.I2PAndroidHelper;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import com.cookiegames.smartcookie.R;
 import com.cookiegames.smartcookie.BrowserApp;
-import com.cookiegames.smartcookie.constant.Constants;
+import com.cookiegames.smartcookie.R;
+import com.cookiegames.smartcookie.browser.ProxyChoice;
 import com.cookiegames.smartcookie.dialog.BrowserDialog;
-import com.cookiegames.smartcookie.preference.PreferenceManager;
+import com.cookiegames.smartcookie.extensions.ActivityExtensions;
+import com.cookiegames.smartcookie.extensions.AlertDialogExtensionsKt;
+import com.cookiegames.smartcookie.preference.DeveloperPreferences;
+import com.cookiegames.smartcookie.preference.UserPreferences;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import info.guardianproject.netcipher.proxy.OrbotHelper;
 import info.guardianproject.netcipher.webkit.WebkitProxy;
+import kotlin.Pair;
+import kotlin.Unit;
 
 @Singleton
-public class ProxyUtils {
+public final class ProxyUtils {
 
     private static final String TAG = "ProxyUtils";
 
     // Helper
-    private static boolean mI2PHelperBound;
-    private static boolean mI2PProxyInitialized;
+    private static boolean sI2PHelperBound;
+    private static boolean sI2PProxyInitialized;
 
-    @Inject PreferenceManager mPreferences;
+    @Inject UserPreferences mUserPreferences;
+    @Inject DeveloperPreferences mDeveloperPreferences;
     @Inject I2PAndroidHelper mI2PHelper;
 
     @Inject
@@ -42,54 +52,56 @@ public class ProxyUtils {
      * proxying for this session
      */
     public void checkForProxy(@NonNull final Activity activity) {
-        boolean useProxy = mPreferences.getUseProxy();
+        final ProxyChoice currentProxyChoice = mUserPreferences.getProxyChoice();
 
         final boolean orbotInstalled = OrbotHelper.isOrbotInstalled(activity);
-        boolean orbotChecked = mPreferences.getCheckedForTor();
+        boolean orbotChecked = mDeveloperPreferences.getCheckedForTor();
         boolean orbot = orbotInstalled && !orbotChecked;
 
         boolean i2pInstalled = mI2PHelper.isI2PAndroidInstalled();
-        boolean i2pChecked = mPreferences.getCheckedForI2P();
+        boolean i2pChecked = mDeveloperPreferences.getCheckedForI2P();
         boolean i2p = i2pInstalled && !i2pChecked;
 
-        // TODO Is the idea to show this per-session, or only once?
-        if (!useProxy && (orbot || i2p)) {
-            if (orbot) mPreferences.setCheckedForTor(true);
-            if (i2p) mPreferences.setCheckedForI2P(true);
+        // Do only once per install
+        if (currentProxyChoice != ProxyChoice.NONE && (orbot || i2p)) {
+            if (orbot) {
+                mDeveloperPreferences.setCheckedForTor(true);
+            }
+            if (i2p) {
+                mDeveloperPreferences.setCheckedForI2P(true);
+            }
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
             if (orbotInstalled && i2pInstalled) {
                 String[] proxyChoices = activity.getResources().getStringArray(R.array.proxy_choices_array);
-                builder.setTitle(activity.getResources().getString(R.string.http_proxy))
-                    .setSingleChoiceItems(proxyChoices, mPreferences.getProxyChoice(),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                mPreferences.setProxyChoice(which);
-                            }
-                        })
-                    .setPositiveButton(activity.getResources().getString(R.string.action_ok),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (mPreferences.getUseProxy())
-                                    initializeProxy(activity);
-                            }
-                        });
-            } else {
-                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case DialogInterface.BUTTON_POSITIVE:
-                                mPreferences.setProxyChoice(orbotInstalled ?
-                                    Constants.PROXY_ORBOT : Constants.PROXY_I2P);
-                                initializeProxy(activity);
-                                break;
-                            case DialogInterface.BUTTON_NEGATIVE:
-                                mPreferences.setProxyChoice(Constants.NO_PROXY);
-                                break;
+                final List<ProxyChoice> values = Arrays.asList(ProxyChoice.NONE, ProxyChoice.ORBOT, ProxyChoice.I2P);
+                final List<Pair<ProxyChoice, String>> list = new ArrayList<>();
+                for (ProxyChoice proxyChoice : values) {
+                    list.add(new Pair<>(proxyChoice, proxyChoices[proxyChoice.getValue()]));
+                }
+                builder.setTitle(activity.getResources().getString(R.string.http_proxy));
+                AlertDialogExtensionsKt.withSingleChoiceItems(builder, list, mUserPreferences.getProxyChoice(), newProxyChoice -> {
+                    mUserPreferences.setProxyChoice(newProxyChoice);
+                    return Unit.INSTANCE;
+                });
+                builder.setPositiveButton(activity.getResources().getString(R.string.action_ok),
+                    (dialog, which) -> {
+                        if (mUserPreferences.getProxyChoice() != ProxyChoice.NONE) {
+                            initializeProxy(activity);
                         }
+                    });
+            } else {
+                DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
+                    switch (which) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            mUserPreferences.setProxyChoice(orbotInstalled
+                                ? ProxyChoice.ORBOT
+                                : ProxyChoice.I2P);
+                            initializeProxy(activity);
+                            break;
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            mUserPreferences.setProxyChoice(ProxyChoice.NONE);
+                            break;
                     }
                 };
 
@@ -109,32 +121,29 @@ public class ProxyUtils {
         String host;
         int port;
 
-        switch (mPreferences.getProxyChoice()) {
-            case Constants.NO_PROXY:
+        switch (mUserPreferences.getProxyChoice()) {
+            case NONE:
                 // We shouldn't be here
                 return;
-            case Constants.PROXY_ORBOT:
+            case ORBOT:
                 if (!OrbotHelper.isOrbotRunning(activity)) {
                     OrbotHelper.requestStartTor(activity);
                 }
                 host = "localhost";
                 port = 8118;
                 break;
-            case Constants.PROXY_I2P:
-                mI2PProxyInitialized = true;
-                if (mI2PHelperBound && !mI2PHelper.isI2PAndroidRunning()) {
+            case I2P:
+                sI2PProxyInitialized = true;
+                if (sI2PHelperBound && !mI2PHelper.isI2PAndroidRunning()) {
                     mI2PHelper.requestI2PAndroidStart(activity);
                 }
                 host = "localhost";
                 port = 4444;
                 break;
             default:
-                host = mPreferences.getProxyHost();
-                port = mPreferences.getProxyPort();
-                break;
-            case Constants.PROXY_MANUAL:
-                host = mPreferences.getProxyHost();
-                port = mPreferences.getProxyPort();
+            case MANUAL:
+                host = mUserPreferences.getProxyHost();
+                port = mUserPreferences.getProxyPort();
                 break;
         }
 
@@ -147,12 +156,12 @@ public class ProxyUtils {
     }
 
     public boolean isProxyReady(@NonNull Activity activity) {
-        if (mPreferences.getProxyChoice() == Constants.PROXY_I2P) {
+        if (mUserPreferences.getProxyChoice() == ProxyChoice.I2P) {
             if (!mI2PHelper.isI2PAndroidRunning()) {
-                Utils.showSnackbar(activity, R.string.i2p_not_running);
+                ActivityExtensions.snackbar(activity, R.string.i2p_not_running);
                 return false;
             } else if (!mI2PHelper.areTunnelsActive()) {
-                Utils.showSnackbar(activity, R.string.i2p_tunnels_not_ready);
+                ActivityExtensions.snackbar(activity, R.string.i2p_tunnels_not_ready);
                 return false;
             }
         }
@@ -161,55 +170,51 @@ public class ProxyUtils {
     }
 
     public void updateProxySettings(@NonNull Activity activity) {
-        if (mPreferences.getUseProxy()) {
+        if (mUserPreferences.getProxyChoice() != ProxyChoice.NONE) {
             initializeProxy(activity);
         } else {
             try {
                 WebkitProxy.resetProxy(BrowserApp.class.getName(), activity.getApplicationContext());
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.e(TAG, "Unable to reset proxy", e);
             }
 
-            mI2PProxyInitialized = false;
+            sI2PProxyInitialized = false;
         }
     }
 
     public void onStop() {
         mI2PHelper.unbind();
-        mI2PHelperBound = false;
+        sI2PHelperBound = false;
     }
 
     public void onStart(final Activity activity) {
-        if (mPreferences.getProxyChoice() == Constants.PROXY_I2P) {
+        if (mUserPreferences.getProxyChoice() == ProxyChoice.I2P) {
             // Try to bind to I2P Android
-            mI2PHelper.bind(new I2PAndroidHelper.Callback() {
-                @Override
-                public void onI2PAndroidBound() {
-                    mI2PHelperBound = true;
-                    if (mI2PProxyInitialized && !mI2PHelper.isI2PAndroidRunning())
-                        mI2PHelper.requestI2PAndroidStart(activity);
-                }
+            mI2PHelper.bind(() -> {
+                sI2PHelperBound = true;
+                if (sI2PProxyInitialized && !mI2PHelper.isI2PAndroidRunning())
+                    mI2PHelper.requestI2PAndroidStart(activity);
             });
         }
     }
 
-    @Constants.Proxy
-    public static int setProxyChoice(int choice, @NonNull Activity activity) {
+    public static ProxyChoice sanitizeProxyChoice(ProxyChoice choice, @NonNull Activity activity) {
         switch (choice) {
-            case Constants.PROXY_ORBOT:
+            case ORBOT:
                 if (!OrbotHelper.isOrbotInstalled(activity)) {
-                    choice = Constants.NO_PROXY;
-                    Utils.showSnackbar(activity, R.string.install_orbot);
+                    choice = ProxyChoice.NONE;
+                    ActivityExtensions.snackbar(activity, R.string.install_orbot);
                 }
                 break;
-            case Constants.PROXY_I2P:
+            case I2P:
                 I2PAndroidHelper ih = new I2PAndroidHelper(activity.getApplication());
                 if (!ih.isI2PAndroidInstalled()) {
-                    choice = Constants.NO_PROXY;
+                    choice = ProxyChoice.NONE;
                     ih.promptToInstall(activity);
                 }
                 break;
-            case Constants.PROXY_MANUAL:
+            case MANUAL:
                 break;
         }
         return choice;

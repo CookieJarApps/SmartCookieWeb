@@ -3,12 +3,13 @@
  */
 package com.cookiegames.smartcookie.download;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import static android.util.Patterns.GOOD_IRI_CHAR;
 

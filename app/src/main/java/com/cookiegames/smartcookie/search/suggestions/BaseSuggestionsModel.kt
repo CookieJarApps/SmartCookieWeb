@@ -1,149 +1,93 @@
 package com.cookiegames.smartcookie.search.suggestions
 
-import com.cookiegames.smartcookie.database.HistoryItem
-import com.cookiegames.smartcookie.utils.FileUtils
-import com.cookiegames.smartcookie.utils.Utils
-import android.app.Application
-import android.text.TextUtils
-import android.util.Log
-import okhttp3.*
-import java.io.File
+import com.cookiegames.smartcookie.database.SearchSuggestion
+import com.cookiegames.smartcookie.extensions.safeUse
+import com.cookiegames.smartcookie.log.Logger
+import io.reactivex.Single
+import okhttp3.HttpUrl
+import okhttp3.OkHttpClient
+import okhttp3.Response
+import okhttp3.ResponseBody
 import java.io.IOException
-import java.io.InputStream
 import java.io.UnsupportedEncodingException
-import java.net.URL
 import java.net.URLEncoder
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 /**
- * The base search suggestions API. Provides common
- * fetching and caching functionality for each potential
- * suggestions provider.
+ * The base search suggestions API. Provides common fetching and caching functionality for each
+ * potential suggestions provider.
  */
-abstract class BaseSuggestionsModel internal constructor(application: Application, private val encoding: String) {
+abstract class BaseSuggestionsModel internal constructor(
+    private val okHttpClient: Single<OkHttpClient>,
+    private val requestFactory: RequestFactory,
+    private val encoding: String,
+    locale: Locale,
+    private val logger: Logger
+) : SuggestionsRepository {
 
-    private val httpClient: OkHttpClient
-    private val cacheControl = CacheControl.Builder().maxStale(1, TimeUnit.DAYS).build()
+    private val language = locale.language.takeIf(String::isNotEmpty) ?: DEFAULT_LANGUAGE
 
     /**
      * Create a URL for the given query in the given language.
-
+     *
      * @param query    the query that was made.
-     * *
      * @param language the locale of the user.
-     * *
-     * @return should return a URL that can be fetched using a GET.
+     * @return should return a [HttpUrl] that can be fetched using a GET.
      */
-    protected abstract fun createQueryUrl(query: String, language: String): String
+    abstract fun createQueryUrl(query: String, language: String): HttpUrl
 
     /**
-     * Parse the results of an input stream into a list of [HistoryItem].
-
-     * @param inputStream the raw input to parse.
-     * *
-     * @param results     the list to populate.
-     * *
-     * @throws Exception throw an exception if anything goes wrong.
+     * Parse the results of an input stream into a list of [SearchSuggestion].
+     *
+     * @param responseBody the raw [ResponseBody] to parse.
      */
     @Throws(Exception::class)
-    protected abstract fun parseResults(inputStream: InputStream, results: MutableList<HistoryItem>)
+    protected abstract fun parseResults(responseBody: ResponseBody): List<SearchSuggestion>
 
-    init {
-        val suggestionsCache = File(application.cacheDir, "suggestion_responses")
-        httpClient = OkHttpClient.Builder()
-                .cache(Cache(suggestionsCache, FileUtils.megabytesToBytes(1)))
-                .addNetworkInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR)
-                .build()
-    }
+    override fun resultsForSearch(rawQuery: String): Single<List<SearchSuggestion>> =
+        okHttpClient.flatMap { client ->
+            Single.fromCallable {
+                val query = try {
+                    URLEncoder.encode(rawQuery, encoding)
+                } catch (throwable: UnsupportedEncodingException) {
+                    logger.log(TAG, "Unable to encode the URL", throwable)
 
-    /**
-     * Retrieves the results for a query.
+                    return@fromCallable emptyList<SearchSuggestion>()
+                }
 
-     * @param rawQuery the raw query to retrieve the results for.
-     * *
-     * @return a list of history items for the query.
-     */
-    fun fetchResults(rawQuery: String): List<HistoryItem> {
-        val filter = ArrayList<HistoryItem>(5)
-
-        val query: String
-        try {
-            query = URLEncoder.encode(rawQuery, encoding)
-        } catch (e: UnsupportedEncodingException) {
-            Log.e(TAG, "Unable to encode the URL", e)
-
-            return filter
+                return@fromCallable client.downloadSuggestionsForQuery(query, language)
+                    ?.body()
+                    ?.safeUse(::parseResults)
+                    ?.take(MAX_RESULTS) ?: emptyList()
+            }
         }
-
-        val inputStream = downloadSuggestionsForQuery(query, language) ?: return filter
-
-        try {
-            parseResults(inputStream, filter)
-        } catch (e: Exception) {
-            Log.e(TAG, "Unable to parse results", e)
-        } finally {
-            Utils.close(inputStream)
-        }
-
-        return filter
-    }
 
     /**
      * This method downloads the search suggestions for the specific query.
      * NOTE: This is a blocking operation, do not fetchResults on the UI thread.
-
+     *
      * @param query the query to get suggestions for
-     * *
+     *
      * @return the cache file containing the suggestions
      */
-    private fun downloadSuggestionsForQuery(query: String, language: String): InputStream? {
+    private fun OkHttpClient.downloadSuggestionsForQuery(query: String, language: String): Response? {
         val queryUrl = createQueryUrl(query, language)
-
-        try {
-            val url = URL(queryUrl)
-
-            // OkHttp automatically gzips requests
-            val suggestionsRequest = Request.Builder().url(url)
-                    .addHeader("Accept-Charset", encoding)
-                    .cacheControl(cacheControl)
-                    .build()
-
-            val suggestionsResponse = httpClient.newCall(suggestionsRequest).execute()
-
-            val responseBody = suggestionsResponse.body()
-
-            return responseBody?.byteStream()
+        val request = requestFactory.createSuggestionsRequest(queryUrl, encoding)
+        return try {
+            newCall(request).execute()
         } catch (exception: IOException) {
-            Log.e(TAG, "Problem getting search suggestions", exception)
+            logger.log(TAG, "Problem getting search suggestions", exception)
+            null
         }
-
-        return null
     }
 
     companion object {
 
-        private val TAG = "BaseSuggestionsModel"
+        private const val TAG = "BaseSuggestionsModel"
 
-        internal val MAX_RESULTS = 5
-        private val INTERVAL_DAY = TimeUnit.DAYS.toSeconds(1)
-        private val DEFAULT_LANGUAGE = "en"
+        private const val MAX_RESULTS = 5
+        private const val DEFAULT_LANGUAGE = "en"
 
-        private val language by lazy {
-            var lang = Locale.getDefault().language
-            if (TextUtils.isEmpty(lang)) {
-                lang = DEFAULT_LANGUAGE
-            }
-
-            lang
-        }
-
-        private val REWRITE_CACHE_CONTROL_INTERCEPTOR = Interceptor { chain ->
-            val originalResponse = chain.proceed(chain.request())
-            originalResponse.newBuilder()
-                    .header("cache-control", "max-age=$INTERVAL_DAY, max-stale=$INTERVAL_DAY")
-                    .build()
-        }
     }
 
 }

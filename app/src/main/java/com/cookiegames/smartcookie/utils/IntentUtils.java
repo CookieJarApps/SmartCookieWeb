@@ -6,7 +6,6 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.Log;
@@ -22,7 +21,7 @@ import com.cookiegames.smartcookie.constant.Constants;
 
 public class IntentUtils {
 
-    private final Activity mActivity;
+    @NonNull private final Activity mActivity;
 
     private static final Pattern ACCEPTED_URI_SCHEMA = Pattern.compile("(?i)"
         + // switch on case insensitive matching
@@ -46,9 +45,7 @@ public class IntentUtils {
 
         intent.addCategory(Intent.CATEGORY_BROWSABLE);
         intent.setComponent(null);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
-            intent.setSelector(null);
-        }
+        intent.setSelector(null);
 
         if (mActivity.getPackageManager().resolveActivity(intent, 0) == null) {
             String packagename = intent.getPackage();

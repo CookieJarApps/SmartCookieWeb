@@ -2,7 +2,10 @@ package com.cookiegames.smartcookie.utils;
 
 import androidx.annotation.Nullable;
 
-public class Preconditions {
+public final class Preconditions {
+
+    private Preconditions() {}
+
     /**
      * Ensure that an object is not null
      * and throw a RuntimeException if it

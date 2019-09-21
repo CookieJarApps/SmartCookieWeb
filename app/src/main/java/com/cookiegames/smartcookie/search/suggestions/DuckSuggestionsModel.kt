@@ -1,38 +1,45 @@
 package com.cookiegames.smartcookie.search.suggestions
 
 import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.constant.Constants
-import com.cookiegames.smartcookie.database.HistoryItem
-import com.cookiegames.smartcookie.utils.FileUtils
+import com.cookiegames.smartcookie.constant.UTF8
+import com.cookiegames.smartcookie.database.SearchSuggestion
+import com.cookiegames.smartcookie.extensions.map
+import com.cookiegames.smartcookie.extensions.preferredLocale
+import com.cookiegames.smartcookie.log.Logger
 import android.app.Application
+import io.reactivex.Single
+import okhttp3.HttpUrl
+import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import org.json.JSONArray
-import java.io.InputStream
+import org.json.JSONObject
 
 /**
  * The search suggestions provider for the DuckDuckGo search engine.
  */
-class DuckSuggestionsModel(application: Application) : BaseSuggestionsModel(application, Constants.UTF8) {
+class DuckSuggestionsModel(
+    okHttpClient: Single<OkHttpClient>,
+    requestFactory: RequestFactory,
+    application: Application,
+    logger: Logger
+) : BaseSuggestionsModel(okHttpClient, requestFactory, UTF8, application.preferredLocale, logger) {
 
     private val searchSubtitle = application.getString(R.string.suggestion)
 
-    override fun createQueryUrl(query: String, language: String): String {
-        return "https://duckduckgo.com/ac/?q=$query"
-    }
+    // https://duckduckgo.com/ac/?q={query}
+    override fun createQueryUrl(query: String, language: String): HttpUrl = HttpUrl.Builder()
+        .scheme("https")
+        .host("duckduckgo.com")
+        .encodedPath("/ac/")
+        .addEncodedQueryParameter("q", query)
+        .build()
 
     @Throws(Exception::class)
-    override fun parseResults(inputStream: InputStream, results: MutableList<HistoryItem>) {
-        val content = FileUtils.readStringFromStream(inputStream, Constants.UTF8)
-        val jsonArray = JSONArray(content)
-
-        var n = 0
-        val size = jsonArray.length()
-        while (n < size && n < BaseSuggestionsModel.MAX_RESULTS) {
-            val `object` = jsonArray.getJSONObject(n)
-            val suggestion = `object`.getString("phrase")
-            results.add(HistoryItem(searchSubtitle + " \"$suggestion\"",
-                    suggestion, R.drawable.ic_search))
-            n++
-        }
+    override fun parseResults(responseBody: ResponseBody): List<SearchSuggestion> {
+        return JSONArray(responseBody.string())
+            .map { it as JSONObject }
+            .map { it.getString("phrase") }
+            .map { SearchSuggestion("$searchSubtitle \"$it\"", it) }
     }
 
 }

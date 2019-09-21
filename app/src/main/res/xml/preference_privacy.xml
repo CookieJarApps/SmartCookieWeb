@@ -12,17 +12,13 @@
             android:title="@string/third_party"/>
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="block_malware"
-            android:title="@string/block_malware"/>
-        <CheckBoxPreference
-            android:defaultValue="true"
             android:key="password"
             android:summary="@string/recommended"
             android:title="@string/password"/>
         <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="do_not_track"
-        android:title="@string/do_not_track"/>
+            android:defaultValue="false"
+            android:key="do_not_track"
+            android:title="@string/do_not_track"/>
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="prefer_https"
@@ -37,6 +33,14 @@
             android:defaultValue="false"
             android:key="remove_identifying_headers"
             android:title="@string/remove_identifying_headers"/>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="block_malicious_sites"
+            android:title="@string/block_malware"/>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="webrtc_support"
+            android:title="@string/webrtc_support"/>
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="clear_cache_exit"

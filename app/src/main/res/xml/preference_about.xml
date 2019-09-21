@@ -4,25 +4,14 @@
 
     <PreferenceCategory android:title="@string/settings_about">
         <Preference
-            android:summary="@string/url_project"
-            android:title="@string/this_project">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://github.com/CookieGamesOfficial/SmartCookieWeb">
-                <!--extra
-                    android:name="SOURCE"
-                    android:value="SELF" /-->
-            </intent>
-        </Preference>
-        <Preference
             android:summary="@string/url_contact"
             android:title="@string/action_follow_me">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://cookiegames.co.uk/">
-                <!--extra
+                android:data="https://github.com/CookieGamesOfficial/SmartCookieWeb">
+                <extra
                     android:name="SOURCE"
-                    android:value="SELF" /-->
+                    android:value="SELF" />
             </intent>
         </Preference>
         <Preference
@@ -32,13 +21,13 @@
     <PreferenceCategory android:title="@string/licenses">
         <Preference
             android:summary="@string/mpl_license"
-            android:title="@string/the_jumpgo_project">
+            android:title="@string/app_name">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/CookieGamesOfficial/SmartCookieWeb">
-                <!--extra
+                android:data="http://www.mozilla.org/MPL/2.0/">
+                <extra
                     android:name="SOURCE"
-                    android:value="SELF" /-->
+                    android:value="SELF" />
             </intent>
         </Preference>
         <Preference
@@ -46,10 +35,10 @@
             android:title="@string/app_lightning">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="http://mozilla.org/MPL/2.0/">
-                <!--extra
+                android:data="http://www.mozilla.org/MPL/2.0/">
+                <extra
                     android:name="SOURCE"
-                    android:value="SELF" /-->
+                    android:value="SELF" />
             </intent>
         </Preference>
         <Preference
@@ -58,9 +47,9 @@
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="http://www.apache.org/licenses/LICENSE-2.0">
-                <!--<extra
+                <extra
                     android:name="SOURCE"
-                    android:value="SELF" />-->
+                    android:value="SELF" />
             </intent>
         </Preference>
         <Preference
@@ -69,9 +58,9 @@
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="http://hosts-file.net/">
-                <!--<extra
+                <extra
                     android:name="SOURCE"
-                    android:value="SELF" />-->
+                    android:value="SELF" />
             </intent>
         </Preference>
         <Preference
@@ -80,9 +69,9 @@
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="http://www.gnu.org/licenses/lgpl.html">
-                <!--<extra
+                <extra
                     android:name="SOURCE"
-                    android:value="SELF" />-->
+                    android:value="SELF" />
             </intent>
         </Preference>
         <Preference
@@ -91,9 +80,9 @@
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="http://www.apache.org/licenses/LICENSE-2.0">
-                <!--<extra
+                <extra
                     android:name="SOURCE"
-                    android:value="SELF" />-->
+                    android:value="SELF" />
             </intent>
         </Preference>
         <Preference
@@ -102,9 +91,9 @@
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="http://jsoup.org/license">
-                <!--<extra
+                <extra
                     android:name="SOURCE"
-                    android:value="SELF" />-->
+                    android:value="SELF" />
             </intent>
         </Preference>
     </PreferenceCategory>

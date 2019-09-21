@@ -25,7 +25,12 @@
         android:icon="?attr/ic_round_add"
         android:title="@string/settings_advanced"
         android:summary="@string/settings_advanced_explain" />
-  <header
+    <header
+        android:fragment="com.cookiegames.smartcookie.settings.fragment.AdBlockSettingsFragment"
+        android:icon="?attr/ic_action_block"
+        android:title="@string/settings_adblock"
+        android:summary="@string/adblock_summary"/>
+    <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.ParentalControlSettingsFragment"
         android:icon="?attr/ic_parental_controls"
         android:title="@string/parental_controls"
@@ -59,7 +64,4 @@
                 android:value="SELF"/>
         </intent>
     </header>
-   <!-- <header
-        android:fragment="com.cookiegames.smartcookie.settings.fragment.DebugSettingsFragment"
-        android:title="@string/debug_title"/> -->
 </preference-headers>

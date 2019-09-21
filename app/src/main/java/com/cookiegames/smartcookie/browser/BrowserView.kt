@@ -1,8 +1,8 @@
 package com.cookiegames.smartcookie.browser
 
-import android.content.DialogInterface
-import androidx.annotation.StringRes
+import com.cookiegames.smartcookie.ssl.SslState
 import android.view.View
+import androidx.annotation.StringRes
 
 interface BrowserView {
 
@@ -16,11 +16,13 @@ interface BrowserView {
 
     fun updateTabNumber(number: Int)
 
+    fun updateSslState(sslState: SslState)
+
     fun closeBrowser()
 
     fun closeActivity()
 
-    fun showBlockedLocalFileDialog(listener: DialogInterface.OnClickListener)
+    fun showBlockedLocalFileDialog(onPositiveClick: () -> Unit)
 
     fun showSnackbar(@StringRes resource: Int)
 

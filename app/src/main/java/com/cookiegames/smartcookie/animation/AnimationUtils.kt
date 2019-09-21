@@ -1,10 +1,10 @@
 package com.cookiegames.smartcookie.animation
 
-import androidx.annotation.DrawableRes
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.Transformation
 import android.widget.ImageView
+import androidx.annotation.DrawableRes
 
 /**
  * Animation specific helper code.
@@ -12,40 +12,35 @@ import android.widget.ImageView
 object AnimationUtils {
 
     /**
-     * Creates an animation that rotates an [ImageView]
-     * around the Y axis by 180 degrees and changes the image
-     * resource shown when the view is rotated 90 degrees to the user.
-
+     * Creates an animation that rotates an [ImageView] around the Y axis by 180 degrees and changes
+     * the image resource shown when the view is rotated 90 degrees to the user.
+     *
      * @param imageView   the view to rotate.
-     * *
-     * @param drawableRes the drawable to set when the view
-     * *                    is rotated by 90 degrees.
-     * *
+     * @param drawableRes the drawable to set when the view is rotated by 90 degrees.
      * @return an animation that will change the image shown by the view.
      */
-    fun createRotationTransitionAnimation(imageView: ImageView,
-                                          @DrawableRes drawableRes: Int): Animation {
-        val animation = object : Animation() {
+    @JvmStatic
+    fun createRotationTransitionAnimation(
+        imageView: ImageView,
+        @DrawableRes drawableRes: Int
+    ): Animation = object : Animation() {
 
-            private var mSetFinalDrawable: Boolean = false
+        private var setFinalDrawable: Boolean = false
 
-            override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
-                if (interpolatedTime < 0.5f) {
-                    imageView.rotationY = 90f * interpolatedTime * 2f
-                } else {
-                    if (!mSetFinalDrawable) {
-                        mSetFinalDrawable = true
-                        imageView.setImageResource(drawableRes)
-                    }
-                    imageView.rotationY = -90 + 90f * (interpolatedTime - 0.5f) * 2f
+        override fun applyTransformation(interpolatedTime: Float, t: Transformation) =
+            if (interpolatedTime < 0.5f) {
+                imageView.rotationY = 90f * interpolatedTime * 2f
+            } else {
+                if (!setFinalDrawable) {
+                    setFinalDrawable = true
+                    imageView.setImageResource(drawableRes)
                 }
+                imageView.rotationY = -90 + 90f * (interpolatedTime - 0.5f) * 2f
             }
-        }
 
-        animation.duration = 300
-        animation.interpolator = AccelerateDecelerateInterpolator()
-
-        return animation
+    }.apply {
+        duration = 300
+        interpolator = AccelerateDecelerateInterpolator()
     }
 
 }

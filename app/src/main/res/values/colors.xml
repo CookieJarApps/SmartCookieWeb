@@ -8,18 +8,8 @@
     <color name="gray_list_bg">#0d000000</color>
 
     <color name="primary_color">#FFFFFF</color>
-    <color name="secondary_color">#663D3C3C</color>
-    <color name="accent_color">
-        <!--#0073EF0-->
-        #C88C36
-    </color>
-    <color name="onboarding">
-        #0ec4af
-    </color>
-    
-    <!--<color name="blue_color">#0073EF</color>
-    <color name="yellow_color">#FFE135</color>
-    <color name="green_color">#4cad4c</color>-->
+    <color name="secondary_color">#66000000</color>
+    <color name="accent_color">#C88C36</color>
 
     <color name="drawer_background">#ffffff</color>
     <color name="drawer_background_dark">#424242</color>
@@ -27,22 +17,20 @@
     <color name="secondary_color_settings">#9C9C9C</color>
     <color name="secondary_color_settings_dark">#2E2E2E</color>
 
-    <color name="hint_text">#BDBDBD</color>
+    <color name="hint_text_light_theme">#80000000</color>
+    <color name="hint_text_dark_theme">#80ffffff</color>
 
     <color name="primary_color_dark">#424242</color>
 
     <color name="divider_dark">#1FFFFFFF</color>
     <color name="divider_light">#1F000000</color>
 
-    <color name="bookmark_dark"></color>
-    <color name="bookmark_light"></color>
-
     <color name="selected_dark">#0FFFFFFF</color>
     <color name="selected_light">#0F000000</color>
 
     <color name="transparent">#00000000</color>
 
-    <color name="icon_light_theme">#3c4043</color>
+    <color name="icon_light_theme">#000000</color>
     <color name="icon_dark_theme">#FFFFFFFF</color>
     <color name="icon_light_theme_disabled">#40000000</color>
     <color name="icon_dark_theme_disabled">#8AFFFFFF</color>
@@ -54,9 +42,7 @@
     <color name="bookmark_default_red">#EF5350</color>
     <color name="bookmark_default_orange">#FF9800</color>
 
-    <color name="colorAccent">#FFFFFFFF</color>
-
-    <color name="primary_text">#FAFAFA</color>
-    <color name="secondary_text">#E0E0E0</color>
+    <color name="ssl_secured">#4CAF50</color>
+    <color name="ssl_unsecured">#F44336</color>
 
 </resources>
