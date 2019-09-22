@@ -56,6 +56,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.provider.Browser
 import android.provider.MediaStore
 import android.view.*
 import android.view.View.*
@@ -309,7 +310,13 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 }
             }
             search_ssl_status.updateVisibilityForContent()
-            search_refresh.setImageResource(R.drawable.ic_action_refresh)
+
+            if(isDarkTheme) {
+                search_refresh.setImageResource(R.drawable.ic_action_refresh_light)
+            }
+            else{
+                search_refresh.setImageResource(R.drawable.ic_action_refresh)
+            }
 
             val searchListener = SearchListenerClass()
             setOnKeyListener(searchListener)
@@ -827,7 +834,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             DialogItem(title = R.string.close_other_tabs) {
                 presenter?.closeAllOtherTabs()
             },
-            DialogItem(title = R.string.close_all_tabs, onClick = this::closeBrowser))
+            DialogItem(title = R.string.close_all_tabs, onClick = this::closeBrowser),
+            DialogItem(title = R.string.close_app, onClick = this::closeApp))
     }
 
     override fun notifyTabViewRemoved(position: Int) {
@@ -1046,6 +1054,12 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         finish()
     }
 
+    fun closeApp(){
+        val a = Intent(Intent.ACTION_MAIN)
+        a.addCategory(Intent.CATEGORY_HOME)
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(a)
+    }
     override fun onBackPressed() {
         val currentTab = tabsManager.currentTab
         if (drawer_layout.isDrawerOpen(getTabDrawer())) {
@@ -1730,7 +1744,13 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     private fun setIsLoading(isLoading: Boolean) {
         if (searchView?.hasFocus() == false) {
             search_ssl_status.updateVisibilityForContent()
-            search_refresh.setImageResource(if (isLoading) R.drawable.ic_action_delete else R.drawable.ic_action_refresh)
+            search_refresh.setImageResource(if (isLoading) R.drawable.ic_action_delete else
+                if(isDarkTheme) {
+                    R.drawable.ic_action_refresh_light
+                }
+                else{
+                    R.drawable.ic_action_refresh
+                })
         }
     }
 

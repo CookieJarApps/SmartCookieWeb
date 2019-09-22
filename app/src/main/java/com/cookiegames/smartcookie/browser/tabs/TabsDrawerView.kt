@@ -12,6 +12,8 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cookiegames.smartcookie.AppTheme
+import com.cookiegames.smartcookie.browser.activity.BrowserActivity
 
 /**
  * A view which displays tabs in a vertical [RecyclerView].

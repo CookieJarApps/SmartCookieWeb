@@ -90,7 +90,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/action_new_tab"
             android:scaleType="center"
-            app:srcCompat="@drawable/ic_action_plus" />
+            app:srcCompat="?attr/ic_round_add" />
     </LinearLayout>
 
 </merge>
