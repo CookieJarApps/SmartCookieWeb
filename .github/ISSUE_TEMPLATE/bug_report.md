@@ -21,12 +21,12 @@ Steps to reproduce the behavior:
 A clear and concise description of what you expected to happen.
 
 **Screenshots**
-If applicable, add screenshots to help explain your problem.
+If applicable, add screenshots or a screen recording to help explain your problem.
 
 **Device (please complete the following information):**
- - Device: [e.g. Xiaomi Mi 9]
- - OS: [e.g. Android 9.0]
- - Version [e.g. 4.4.5]
+ - Device: [e.g. Xiaomi Mi Mix 3]
+ - OS: [e.g. Android 10.0]
+ - Version [e.g. 5.0.0]
 
 **Additional context**
 Add any other context about the problem here.
