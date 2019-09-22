@@ -38,7 +38,7 @@ A secure, open source web browser for Android.
 - [x] HTTPS Everywhere
 - [x] New UI
 - [x] Parental Controls
-- [ ] Inspect element
+- [x] Inspect element
 - [ ] Extensions
 - [ ] Custom Themes
 
