@@ -35,6 +35,8 @@ class UserPreferences @Inject constructor(
 
     var blockMalwareEnabled by preferences.booleanPreference(BLOCK_MALWARE, true)
 
+    var startPageThemeEnabled by preferences.booleanPreference(START_THEME, true)
+
     /**
      * True if the browser should block ads, false otherwise.
      */
@@ -354,3 +356,4 @@ private const val PASSWORD = "password"
 private const val USE_PASSWORD = "usePassword"
 private const val BLOCK_MALWARE = "blockMalware"
 private const val COOKIE_BLOCK = "blockCookieDialogs"
+private const val START_THEME = "startPageTheme"

@@ -39,6 +39,10 @@
         <Preference
             android:key="app_theme"
             android:title="@string/theme"/>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="startpage_theme"
+            android:title="@string/startpage"/>
         <Preference
             android:key="text_size"
             android:title="@string/title_text_size"/>

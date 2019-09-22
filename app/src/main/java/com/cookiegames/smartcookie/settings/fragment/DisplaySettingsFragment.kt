@@ -18,6 +18,9 @@ import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import javax.inject.Inject
+import android.content.Intent
+import com.cookiegames.smartcookie.MainActivity
+
 
 class DisplaySettingsFragment : AbstractSettingsFragment() {
 
@@ -91,6 +94,12 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
             isChecked = userPreferences.bookmarksAndTabsSwapped,
             onCheckChange = { userPreferences.bookmarksAndTabsSwapped = it }
         )
+
+        checkBoxPreference(
+                preference = SETTINGS_STARTPAGE,
+                isChecked = userPreferences.startPageThemeEnabled,
+                onCheckChange = { userPreferences.startPageThemeEnabled = it }
+        )
     }
 
     private fun showTextSizePicker() {
@@ -128,9 +137,11 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
                 userPreferences.useTheme = it
                 summaryUpdater.updateSummary(it.toDisplayString())
             }
-            setPositiveButton(resources.getString(R.string.action_ok)) { _, _ ->
+            setPositiveButton(resources.getString(com.cookiegames.smartcookie.R.string.action_ok)) { _, _ ->
                 if (currentTheme != userPreferences.useTheme) {
-                    activity.onBackPressed()
+                    //activity.onBackPressed()
+                    val intent = Intent(activity, MainActivity::class.java)
+                    startActivity(intent)
                 }
             }
             setOnCancelListener {
@@ -173,6 +184,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_DRAWERTABS = "cb_drawertabs"
         private const val SETTINGS_SWAPTABS = "cb_swapdrawers"
         private const val SETTINGS_BLACK_STATUS = "black_status_bar"
+        private const val SETTINGS_STARTPAGE = "startpage_theme"
 
         private const val XX_LARGE = 30.0f
         private const val X_LARGE = 26.0f

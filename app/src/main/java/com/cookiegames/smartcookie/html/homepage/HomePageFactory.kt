@@ -7,6 +7,8 @@ import com.cookiegames.smartcookie.html.HtmlPageFactory
 import com.cookiegames.smartcookie.html.jsoup.*
 import com.cookiegames.smartcookie.search.SearchEngineProvider
 import android.app.Application
+import com.cookiegames.smartcookie.AppTheme
+import com.cookiegames.smartcookie.preference.UserPreferences
 import dagger.Reusable
 import io.reactivex.Single
 import java.io.File
@@ -20,7 +22,8 @@ import javax.inject.Inject
 class HomePageFactory @Inject constructor(
     private val application: Application,
     private val searchEngineProvider: SearchEngineProvider,
-    private val homePageReader: HomePageReader
+    private val homePageReader: HomePageReader,
+    private var userPreferences: UserPreferences
 ) : HtmlPageFactory {
 
     private val title = application.getString(R.string.home)
@@ -46,7 +49,23 @@ class HomePageFactory @Inject constructor(
         .map { content -> Pair(createHomePage(), content) }
         .doOnSuccess { (page, content) ->
             FileWriter(page, false).use {
-                it.write(content)
+                if(userPreferences.startPageThemeEnabled && userPreferences.useTheme == AppTheme.LIGHT){
+                    it.write(content)
+                }
+                else if(userPreferences.startPageThemeEnabled && userPreferences.useTheme == AppTheme.BLACK){
+                    it.write(content + "<style>body {\n" +
+                            "    background-color: #000000;\n" +
+                            "}</style>")
+                }
+                else if(userPreferences.startPageThemeEnabled && userPreferences.useTheme == AppTheme.DARK){
+                    it.write(content + "<style>body {\n" +
+                            "    background-color: #2a2a2a;\n" +
+                            "}</style>")
+                }
+                else{
+                    it.write(content)
+                }
+
             }
         }
         .map { (page, _) -> "$FILE$page" }
