@@ -280,14 +280,14 @@
 
     <string name="block_source_default">Подразумевани домаћини</string>
     <string name="block_source_local">Датотека локалних хостова</string>
-    <string name="block_source_local_description">Датотека:% 1 $ с</string>
+    <string name="block_source_local_description">Датотека: %1$s</string>
     <string name="block_source_remote">Датотека удаљених домаћина</string>
-    <string name="block_source_remote_description">УРЛ:% 1 $ с</string>
+    <string name="block_source_remote_description">УРЛ: %1$s</string>
 
     <string-array name="block_ad_source_list">
-        <item>@ стринг / блоцк_соурце_дефаулт</item>
-        <item>@ стринг / блоцк_соурце_лоцал</item>
-        <item>@ стринг / блоцк_соурце_ремоте</item>
+        <item>@string/block_source_default</item>
+        <item>@string/block_source_local</item>
+        <item>@string/block_source_remote</item>
     </string-array>
 
     

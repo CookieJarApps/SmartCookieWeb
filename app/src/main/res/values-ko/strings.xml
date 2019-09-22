@@ -282,7 +282,7 @@
     <string name="block_source_local">로컬 호스트 파일</string>
     <string name="block_source_local_description">파일 : % 1 $ s</string>
     <string name="block_source_remote">원격 호스트 파일</string>
-    <string name="block_source_remote_description">URL : % 1 $ s</string>
+    <string name="block_source_remote_description">URL: %1$s</string>
 
     <string-array name="block_ad_source_list">
         <item>@string/block_source_default</item>

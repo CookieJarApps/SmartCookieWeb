@@ -282,12 +282,12 @@
     <string name="block_source_local">Arquivo de hosts locais</string>
     <string name="block_source_local_description">Arquivo:% 1 $ s</string>
     <string name="block_source_remote">Arquivo de hosts remotos</string>
-    <string name="block_source_remote_description">URL:% 1 $ s</string>
+    <string name="block_source_remote_description">URL: %1$s</string>
 
     <string-array name="block_ad_source_list">
-        <item>@ string / block_source_default</item>
-        <item>@ string / block_source_local</item>
-        <item>@ string / block_source_remote</item>
+        <item>@string/block_source_default</item>
+        <item>@string/block_source_local</item>
+        <item>@string/block_source_remote</item>
     </string-array>
 
     

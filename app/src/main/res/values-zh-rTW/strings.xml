@@ -282,7 +282,7 @@
     <string name="block_source_local">本地主機文件</string>
     <string name="block_source_local_description">檔案：％1 $ s</string>
     <string name="block_source_remote">遠程主機文件</string>
-    <string name="block_source_remote_description">網址：％1$s</string>
+    <string name="block_source_remote_description">網址：%1$s</string>
 
     <string-array name="block_ad_source_list">
         <item>@string/block_source_default</item>

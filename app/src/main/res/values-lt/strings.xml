@@ -282,7 +282,7 @@
     <string name="block_source_local">Vietinių kompiuterių failas</string>
     <string name="block_source_local_description">Failas:%1$s</string>
     <string name="block_source_remote">Nuotolinių kompiuterių failas</string>
-    <string name="block_source_remote_description">URL:%1$s</string>
+    <string name="block_source_remote_description">URL: %1$s</string>
 
     <string-array name="block_ad_source_list">
         <item>@string/block_source_default</item>

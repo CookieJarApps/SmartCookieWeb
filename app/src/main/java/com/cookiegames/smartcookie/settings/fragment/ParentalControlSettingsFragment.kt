@@ -45,7 +45,6 @@ import javax.inject.Inject
  */
 class ParentalControlSettingsFragment : AbstractSettingsFragment() {
 
-    @Inject lateinit var searchEngineProvider: SearchEngineProvider
     @Inject lateinit var userPreferences: UserPreferences
 
     private lateinit var proxyChoices: Array<String>
@@ -203,14 +202,14 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
 
             val editor: SharedPreferences.Editor = prefs.edit()
             editor.putBoolean("noPassword", false)
-            editor.commit()
+            editor.apply()
         }
         else{
             val prefs: SharedPreferences = activity.getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
 
             val editor: SharedPreferences.Editor = prefs.edit()
             editor.putBoolean("noPassword", true)
-            editor.commit()
+            editor.apply()
 
             summaryUpdater.updateSummary(resources.getString(R.string.none))
         }
@@ -244,13 +243,5 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
     companion object {
         private const val SETTINGS_SITE_BLOCK = "siteblock"
         private const val SETTINGS_PASSWORD = "password"
-        private const val SETTINGS_SAVEDATA = "savedata"
-        private const val SETTINGS_JAVASCRIPT = "cb_javascript"
-        private const val SETTINGS_COLOR_MODE = "cb_colormode"
-        private const val SETTINGS_USER_AGENT = "agent"
-        private const val SETTINGS_DOWNLOAD = "download"
-        private const val SETTINGS_HOME = "home"
-        private const val SETTINGS_SEARCH_ENGINE = "search"
-        private const val SETTINGS_SUGGESTIONS = "suggestions_choice"
     }
 }

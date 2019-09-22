@@ -280,14 +280,14 @@
 
     <string name="block_source_default">المضيفين الافتراضي</string>
     <string name="block_source_local">ملف المضيفين المحليين</string>
-    <string name="block_source_local_description">الملف:٪ 1 $ s</string>
+    <string name="block_source_local_description">"الملف %1$s "</string>
     <string name="block_source_remote">ملف المضيفين عن بعد</string>
-    <string name="block_source_remote_description">عنوان URL: ٪1$s</string>
+    <string name="block_source_remote_description">عنوان URL: %1$s</string>
 
     <string-array name="block_ad_source_list">
-        <item>@ سلسلة / block_source_default</item>
-        <item>@ سلسلة / block_source_local</item>
-        <item>@ سلسلة / block_source_remote</item>
+        <item>@string/block_source_default</item>
+        <item>@string/block_source_local</item>
+        <item>@string/block_source_remote</item>
     </string-array>
 
     
@@ -298,7 +298,7 @@
     <string name="reopening_recent_tab">فتح علامة التبويب القديمة</string>
 
     
-    <string name="search_in_page_query"> \' ٪ 1 $ ق \'</string>
+    <string name="search_in_page_query">\' %1$s \'</string>
 
     <string name="message_bookmark_added">وأضاف المرجعية.</string>
 

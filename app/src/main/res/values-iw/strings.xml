@@ -282,7 +282,7 @@
     <string name="block_source_local">קובץ מארחים מקומי</string>
     <string name="block_source_local_description">קובץ: %1$s</string>
     <string name="block_source_remote">קובץ מארחים מרוחק</string>
-    <string name="block_source_remote_description">כתובת אתר: %1$s</string>
+    <string name="block_source_remote_description">כתובת אתר:%1$s</string>
 
     <string-array name="block_ad_source_list">
         <item>@string/block_source_default</item>
