@@ -260,7 +260,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             TabsDesktopView(this).also(findViewById<FrameLayout>(getTabsContainerId())::addView)
         }
 
-        bookmarksView = BookmarksDrawerView(this).also(findViewById<FrameLayout>(getBookmarksContainerId())::addView)
+        bookmarksView = BookmarksDrawerView(this, this).also(findViewById<FrameLayout>(getBookmarksContainerId())::addView)
 
         if (shouldShowTabsInDrawer) {
             tabs_toolbar_container.visibility = GONE

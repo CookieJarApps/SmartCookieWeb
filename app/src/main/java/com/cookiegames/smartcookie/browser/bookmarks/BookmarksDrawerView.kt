@@ -22,17 +22,16 @@ import com.cookiegames.smartcookie.favicon.FaviconModel
 import com.cookiegames.smartcookie.reading.activity.ReadingActivity
 import com.cookiegames.smartcookie.utils.isSpecialUrl
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.util.AttributeSet
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.view.*
+import android.widget.*
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cookiegames.smartcookie.extensions.resizeAndShow
+import com.cookiegames.smartcookie.settings.fragment.DisplaySettingsFragment
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
@@ -45,6 +44,7 @@ import javax.inject.Inject
  */
 class BookmarksDrawerView @JvmOverloads constructor(
     context: Context,
+    private val activity: Activity,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr), BookmarksView {
@@ -222,6 +222,21 @@ class BookmarksDrawerView @JvmOverloads constructor(
                     // TODO add back drawer closing
                 }
             },
+                DialogItem(
+                        icon= context.drawable(R.drawable.ic_page_tools),
+                        title = R.string.inspect
+
+                ){
+                    val builder = AlertDialog.Builder(context)
+                    val inflater = activity.layoutInflater
+                    builder.setTitle(R.string.inspect)
+                    val dialogLayout = inflater.inflate(R.layout.dialog_edit_text, null)
+                    val editText  = dialogLayout.findViewById<EditText>(R.id.dialog_edit_text)
+                    builder.setView(dialogLayout)
+                    builder.setPositiveButton("OK") { dialogInterface, i -> currentTab.loadUrl("javascript:(function() {" + editText.text.toString() + "})()") }
+                    builder.show()
+
+                },
             DialogItem(
                 icon = context.drawable(R.drawable.ic_block),
                 colorTint = context.color(R.color.error_red).takeIf { isAllowedAds },
