@@ -93,7 +93,9 @@ class BrowserApp : Application() {
             .subscribe()
 
         if (buildInfo.buildType == BuildType.DEBUG) {
-            WebView.setWebContentsDebuggingEnabled(true)
+            if(android.os.Build.VERSION.SDK_INT > 19) {
+                WebView.setWebContentsDebuggingEnabled(true)
+            }
         }
 
         registerActivityLifecycleCallbacks(object : MemoryLeakUtils.LifecycleAdapter() {
