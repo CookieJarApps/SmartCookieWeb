@@ -2,6 +2,8 @@
 <resources xmlns:ns0="http://schemas.android.com/tools" ns0:ignore="MissingTranslation">
 
     <string name="action_new_tab">Novo separador</string>
+    <string name="app_lightning" translatable="false">Lightning</string>
+    <string name="action_new_tab">Novo separador</string>
     <string name="action_share">Partilhar</string>
     <string name="action_history">Histórico</string>
     <string name="action_bookmarks">Marcadores</string>
@@ -14,7 +16,7 @@
     <string name="password">Guardar palavras-passe</string>
     <string name="agent">Agente de utilizador</string>
     <string name="flash">Ativar Adobe Flash</string>
-    <string name="home">Pagina inicial</string>
+    <string name="home">Página inicial</string>
     <string name="fullscreen">Ecrã completo</string>
     <string name="java">Javascript ativado</string>
     <string name="download">Local para descargas</string>
@@ -79,18 +81,18 @@
     <string name="size_small">Pequeno</string>
     <string name="size_smallest">Menor</string>
     <string name="title_error">Erro</string>
-    <string name="dialog_import_error">Não foi detetado qualquer navegador para importar os marcadores.</string>
+    <string name="dialog_import_error">Não foi detetado qualquer navegador do qual importar os marcadores.</string>
     <string name="hint_title">Título</string>
     <string name="hint_url">URL</string>
     <string name="title_edit_bookmark">Editar marcador</string>
     <string name="action_edit">Editar</string>
     <string name="action_incognito">Separador anónimo</string>
     <string name="action_homepage">Padrão</string>
-    <string name="action_back">De volta</string>
+    <string name="action_back">Recuar</string>
     <string name="action_find">Localizar na página</string>
     <string name="download_pending">A iniciar descarga\u2026</string>
     <string name="cannot_download">Apenas pode descarregar de URL em HTTP e HTTPS.</string>
-    <string name="problem_download">URL inválido, não é possível descarregar</string>
+    <string name="problem_download">URL inválido, não é possível a descarga</string>
     <string name="problem_location_download">Não é possível descarregar para o local especificado</string>
     <string name="download_no_sdcard_dlg_title">Nenhum cartão SD</string>
     <string name="download_no_sdcard_dlg_msg">Necessita de um cartão SD para guardar o ficheiro.</string>
@@ -101,6 +103,7 @@
     <string name="action_manual">Manual</string>
     <string name="action_auto">Automático</string>
     <string name="action_follow_me">Contactos</string>
+	<string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Limpar cache</string>
     <string name="message_cache_cleared">Cache limpa</string>
     <string name="message_import">Marcadores importados</string>
@@ -126,13 +129,35 @@
     <string name="action_allow">Sim</string>
     <string name="action_dont_allow">Não</string>
     <string name="title_sign_in">Iniciar sessão</string>
-    <string name="label_realm">Mensagem do servidor: %s</string>
     <string name="hint_username">Nome de utilizador</string>
     <string name="hint_password">Palavra-passe</string>
     <string name="search_suggestions">Sugestões de pesquisa</string>
     <string name="powered_by_google">Google</string>
     <string name="powered_by_duck">DuckDuckGo</string>
     <string name="powered_by_baidu">Baidu</string>
+    <string name="powered_by_naver">Naver</string>
+
+    <string name="search_engine_naver">Naver</string>
+
+    <string name="block_ads_upsell_source">Atualize para Lightning Plus para escolher</string>
+
+    <string name="shortcut_message_failed_to_add">Lamentamos mas o seu launcher não permite atalhos.</string>
+
+    <!-- SSL -->
+    <string name="ssl_info_issued_by">Emitido por</string>
+    <string name="ssl_info_issued_to">Emitido para</string>
+    <string name="ssl_info_issued_on">Emitido em</string>
+    <string name="ssl_info_expires_on">Expira em</string>
+
+    <!-- SSL don't ask again -->
+    <string name="ssl_warning_dont_ask_again">Não perguntar de novo para esta sessão.</string>
+
+    <!-- Tools dialog -->
+    <string name="dialog_tools_title">Ferramentas da página</string>
+    <string name="dialog_toggle_desktop">Alternar agente de utilizador</string>
+    <string name="dialog_adblock_enable_for_site">Ativar bloqueio de anúncios para este site</string>
+    <string name="dialog_adblock_disable_for_site">Desativar bloqueio de anúncios para este site</string>
+
     <string name="search_suggestions_off">Não utilizar sugestões</string>
     <string name="http_proxy">Proxy HTTP</string>
     <string-array name="proxy_choices_array">
@@ -148,8 +173,8 @@
     <string name="manual_proxy">Proxy manual</string>
     <string name="host">Servidor:</string>
     <string name="port">Porta:</string>
-    <string name="use_tor_prompt">Parece que tem o Orbot instalado. Deseja utilizar a rede Tor?</string>
-    <string name="use_i2p_prompt">Parece que tem o I2P instalado. Deseja utilizar a rede I2P?</string>
+    <string name="use_tor_prompt">Parece que tem Orbot instalado. Deseja utilizar a rede Tor?</string>
+    <string name="use_i2p_prompt">Parece que tem I2P instalado. Deseja utilizar a rede I2P?</string>
     <string name="install_orbot">Instale Orbot para fazer proxy com Tor.spac</string>
     <string name="i2p_not_running">I2P não está em execução.</string>
     <string name="i2p_tunnels_not_ready">Os túneis I2P ainda não estão prontos.</string>
@@ -228,7 +253,8 @@
     <string name="clear_web_storage_exit">Limpar armazenamento web ao sair</string>
     <string name="message_web_storage_cleared">Armazenamento web eliminado</string>
     <string name="hosts_source">Fonte do ficheiro hosts</string>
-    <string name="settings_adblock">Definições de Adblock</string>
+	<string name="settings_adblock">Definições de Adblock</string>
+        
     <string name="tabs_in_drawer">Mostrar separadores no menu de navegação</string>
     <string name="swap_bookmarks_and_tabs">Trocar menus de marcadores e separadores</string>
     <string name="do_not_track">Solicitar \'Do Not Track\'</string>
@@ -239,13 +265,63 @@
     <string name="flash_not_supported">O seu dispositivo não tem suporte a Flash Player</string>
     <string name="message_open_download_fail">Este ficheiro já não existe</string>
     <string name="this_project">Este projeto</string>
-
+    
     <string name="jgh">Código-fonte</string>
     <string name="action_home">Página web</string>
+	<string name="the_jumpgo_project" translatable="false">Smart Cookie Web</string>
     <string name="jgh_description">Saber mais</string>
+    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">FAQ</string>
     <string name="faq_description">Perguntas frequentes</string>
+    <string name="block_source_default">Hosts padrão</string>
+    <string name="block_source_local">Ficheiro local</string>
+    <string name="block_source_local_description">Ficheiro: %1$s</string>
+    <string name="block_source_remote">Ficheiro remoto</string>
+    <string name="block_source_remote_description">URL: %1$s</string>
+
+    <string-array name="block_ad_source_list">
+        <item>@string/block_source_default</item>
+        <item>@string/block_source_local</item>
+        <item>@string/block_source_remote</item>
+    </string-array>
+
+    <!--Ad block -->
+    <string name="ad_block_load_failure">Falha ao carregar o ficheiro hosts tendo por base a origem.</string>
+
+    <string name="infinity">âˆž</string>
+
+    <string name="reopening_recent_tab">Separador antigo reaberto</string>
+
+    <!-- Search in page -->
+    <string name="search_in_page_query">\'%1$s\'</string>
+
+    <string name="message_bookmark_added">Marcador adicionado</string>
+
+    <!-- Notifications -->
+    <plurals name="notification_incognito_running_title">
+        <item quantity="one">%1$d separador anónimo aberto</item>
+        <item quantity="other">%1$d separadores anónimos abertos</item>
+    </plurals>
+    <string name="notification_incognito_running_message">Toque para abrir</string>
+    <string name="notification_incognito_running_description">Notificação persistente no modo anónimo</string>
+
+    <!-- Common actions -->
+    <string name="action_message_canceled">Ação cancelada.</string>
+
+    <string name="upsell_plus_version">Atualize para a versão Lightning Plus para poder remover anúncios</string>
+
+    <!-- permissions request -->
+    <string name="title_permission_request">Pedido de permissão</string>
+    <string name="message_permission_request">%1$s gostaria de utilizar: %2$s</string>
+
+    <!-- Ad block -->
+    <string name="block_ad_source">Origem do ficheiro hosts</string>
+    <string name="block_ad_remote_refresh_frequency_description">Para ficheiros remotos</string>
+    <string name="block_ad_refresh_now">Recarregar lista agora</string>
+
+    <string name="webrtc_support">Suporte WebRTC</string>
+    <string name="save_data">Solicitar \'Save-Data\'</string>
 
     <!-- debug strings -->
     <string name="debug_title">Definições de depuração</string>
@@ -273,6 +349,7 @@
     <string name="search_engine_ask">Ask</string>
     <string name="search_engine_bing">Bing</string>
     <string name="search_engine_yahoo">Yahoo</string>
+    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
@@ -290,7 +367,7 @@
     <string name="slide_2_title">Abrir separadores</string>
     <string name="slide_2_desc">Pode aceder aos separadores tocando no botão existente no canto superior esquerdo do ecrã.</string>
 
-    <string name="slide_3_title">Definições</string>
+    <string name="slide_3_title">Alterar definições</string>
     <string name="slide_3_desc">Pode aceder às definições tocando no botão existente no canto superior direito do ecrã e escolhendo \'Definições\'.</string>
 
     <string name="slide_4_title">Abrir marcadores</string>
@@ -298,15 +375,14 @@
 
     <string name="play_again_desc">Para ver novamente a introdução, aceda a Definições -> Aplicações -> SmartCookieWeb -> Limpar dados</string>
     <string name="play_again">Mostrar novamente</string>
-
     <string name="privacy">Política de privacidade</string>
     <string name="privacy_info">Ver a política de privacidade do SmartCookieWeb</string>
-
+    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Bloquear sites maliciosos</string>
     <string name="block_sites">Bloqueio personalizado por site (beta)</string>
     <string name="block_sites_title">Bloqueio personalizado (separe os sites com vírgulas)</string>
     <string name="none">Nenhum</string>
-    <string name="block_info">Digite as palavras a bloquear nos URL (separadas com vírgulas).</string>
+    <string name="block_info">Introduza as palavras a bloquear nos URL (separadas com vírgulas).</string>
     <string name="startpage">Aplicar tema à página inicial</string>
     <string name="allpage">Aplicar tema às páginas web (beta)</string>
     <string name="forcehttps">Bloquear sites não HTTPS</string>
@@ -330,48 +406,13 @@
 
     <string name="blocked_title">&lt;br&gt; Este site está bloqueado nas definições</string>
     <string name="close_app">Fechar navegador</string>
-    <string name="enter_password">Digite a palavra-passe</string>
+    <string name="enter_password">Introduza a palavra-passe</string>
     <string name="wrong_password">Palavra-passe incorreta</string>
     <string name="block_all_sites">Bloquear todos os sites listados</string>
     <string name="only_allow_sites">Permitir apenas os sites listados</string>
     <string name="parental_controls">Definições de controlo parental</string>
     <string name="settings_parents">Bloquear sites, definir palavra-passe&#8230;</string>
-    <string name="title_permission_request">Pedido de permissão</string>
-    <string name="ssl_warning_dont_ask_again">Não peça novamente para esta sessão de navegação.</string>
-    <string name="ssl_info_issued_to">Concedida a</string>
-    <string name="ssl_info_issued_on">Emitida em</string>
-    <string name="ssl_info_issued_by">Publicado por</string>
-    <string name="ssl_info_expires_on">Expira em</string>
-    <string name="shortcut_message_failed_to_add">Desculpe, seu iniciador não suporta atalhos.</string>
-    <string name="search_in_page_query">\' %1$s \'</string>
-    <string name="search_engine_naver">Naver</string>
-    <string name="reopening_recent_tab">Aba antiga reaberta</string>
-    <string name="powered_by_naver">Naver</string>
-    <string name="notification_incognito_running_description">Notificação anônima em andamento</string>
-    <string name="notification_incognito_running_message">Toque para abrir</string>
-    <string name="message_permission_request">%1$s     gostaria de usar:     %2$s</string>
-    <string name="message_bookmark_added">Marcador adicionado.</string>
-    <string name="infinity">∞</string>
-    <string name="dialog_toggle_desktop">Alternar agente de usuário de desktop</string>
-    <string name="dialog_tools_title">Ferramentas da página</string>
-    <string name="dialog_adblock_disable_for_site">Desativar bloco de anúncios para o site</string>
-    <string name="dialog_adblock_enable_for_site">Ativar bloco de anúncios para o site</string>
-    <string name="cookie_category">Bloco de diálogo de cookie</string>
-    <string name="block_source_remote">Arquivo de hosts remotos</string>
-    <string name="block_source_remote_description">URL: %1$s</string>
-    <string name="block_source_local_description">Arquivo: %1$s</string>
-    <string name="block_source_local">Arquivo de hosts locais</string>
-    <string name="block_source_default">Hosts padrão</string>
-    <string name="block_ads_upsell_source">Atualize para o Lightning Plus para escolher</string>
-    <string name="block_ad_source">Origem do arquivo hosts</string>
-    <string name="block_ad_remote_refresh_frequency_description">Para arquivo de hosts remotos</string>
-    <string name="block_ad_refresh_now">Atualizar hosts agora</string>
-    <string name="adblock_summary">Bloco de anúncios, bloco de diálogo de cookies ...</string>
-    <string name="adblock_category">Bloco de anúncios</string>
-    <string name="ad_block_load_failure">Falha ao carregar hosts da fonte de bloqueio de anúncios.</string>
-    <string name="action_message_canceled">Ação cancelada.</string>
-    <string name="webrtc_support">Suporte WebRTC</string>
-    <string name="upsell_plus_version">Atualize para o Lightning Plus para bloquear anúncios</string>
+    <string name="label_realm">Mensagem do servidor: %s</string>    
 
     <!-- finish pages -->
 </resources>
