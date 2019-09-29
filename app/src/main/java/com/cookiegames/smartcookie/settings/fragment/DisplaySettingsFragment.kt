@@ -100,6 +100,12 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
                 isChecked = userPreferences.startPageThemeEnabled,
                 onCheckChange = { userPreferences.startPageThemeEnabled = it }
         )
+
+        checkBoxPreference(
+                preference = SETTINGS_FOREGROUND,
+                isChecked = userPreferences.tabsToForegroundEnabled,
+                onCheckChange = { userPreferences.tabsToForegroundEnabled = it }
+        )
     }
 
     private fun showTextSizePicker() {
@@ -185,6 +191,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_SWAPTABS = "cb_swapdrawers"
         private const val SETTINGS_BLACK_STATUS = "black_status_bar"
         private const val SETTINGS_STARTPAGE = "startpage_theme"
+        private const val SETTINGS_FOREGROUND = "new_tabs_foreground"
 
         private const val XX_LARGE = 30.0f
         private const val X_LARGE = 26.0f

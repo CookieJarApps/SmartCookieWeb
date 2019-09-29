@@ -58,6 +58,7 @@ import android.os.Handler
 import android.os.Message
 import android.provider.Browser
 import android.provider.MediaStore
+import android.util.Log
 import android.view.*
 import android.view.View.*
 import android.view.ViewGroup.LayoutParams
@@ -90,6 +91,7 @@ import kotlinx.android.synthetic.main.browser_content.*
 import kotlinx.android.synthetic.main.search.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.two_line_autocomplete.*
 import java.io.IOException
 import javax.inject.Inject
 import kotlin.system.exitProcess
@@ -305,9 +307,21 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         // create the search EditText in the ToolBar
         searchView = customView.findViewById<SearchView>(R.id.search).apply {
             search_ssl_status.setOnClickListener {
-                tabsManager.currentTab?.let { tab ->
-                    tab.sslCertificate?.let { showSslDialog(it, tab.currentSslState()) }
+                if(tabsManager.currentTab?.sslCertificate == null){
+                    val builder = AlertDialog.Builder(context)
+                    builder.setTitle(R.string.site_not_secure)
+                    builder.setPositiveButton(R.string.action_ok) { dialog, which ->
+                        Toast.makeText(context,
+                                "ok", Toast.LENGTH_SHORT).show()
+                    }
+                    builder.show()
                 }
+                else{
+                    tabsManager.currentTab?.let { tab ->
+                        tab.sslCertificate?.let { showSslDialog(it, tab.currentSslState()) }
+                    }
+                }
+
             }
             search_ssl_status.updateVisibilityForContent()
 
@@ -859,7 +873,15 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     override fun updateSslState(sslState: SslState) {
-        search_ssl_status.setImageDrawable(createSslDrawableForState(sslState))
+        val currentTab = tabsManager.currentTab
+        val url = currentTab?.url
+        if(url!!.contains("http://") || url.contains("https://")){
+            search_ssl_status.setImageDrawable(createSslDrawableForState(sslState))
+        }
+       else{
+            search_ssl_status.setImageDrawable(null)
+        }
+
 
         if (searchView?.hasFocus() == false) {
             search_ssl_status.updateVisibilityForContent()
@@ -939,10 +961,18 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     override fun newTabButtonClicked() {
-        presenter?.newTab(
-            homePageInitializer,
-            true
-        )
+        if(userPreferences.tabsToForegroundEnabled){
+            presenter?.newTab(
+                    homePageInitializer,
+                    true
+            )
+        }
+        else{
+            presenter?.newTab(
+                    homePageInitializer,
+                    false
+            )
+        }
     }
 
     override fun newTabButtonLongClicked() {

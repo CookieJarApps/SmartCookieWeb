@@ -37,6 +37,8 @@ class UserPreferences @Inject constructor(
 
     var startPageThemeEnabled by preferences.booleanPreference(START_THEME, true)
 
+    var tabsToForegroundEnabled by preferences.booleanPreference(FOREGROUND, true)
+
     /**
      * True if the browser should block ads, false otherwise.
      */
@@ -357,3 +359,4 @@ private const val USE_PASSWORD = "usePassword"
 private const val BLOCK_MALWARE = "blockMalware"
 private const val COOKIE_BLOCK = "blockCookieDialogs"
 private const val START_THEME = "startPageTheme"
+private const val FOREGROUND = "tabsToForeground"

@@ -416,6 +416,9 @@
     <string name="parental_controls">Parental Controls Settings</string>
     <string name="settings_parents">Block sites, set password...</string>
     <string name="label_realm">Server message: %s</string>
+    <string name="new_tab_foreground">Bring tabs to foreground</string>
+    <string name="new_tab_foreground_summary">Close the tab drawer when a tab is closed/opened</string>
+    <string name="site_not_secure">This site does not use HTTPS</string>
 
 
     <!-- finish pages -->
