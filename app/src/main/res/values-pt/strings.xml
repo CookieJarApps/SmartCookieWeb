@@ -414,7 +414,10 @@
     <string name="only_allow_sites">Permitir apenas os sites listados</string>
     <string name="parental_controls">Definições de controlo parental</string>
     <string name="settings_parents">Bloquear sites, definir palavra-passe&#8230;</string>
-    <string name="label_realm">Mensagem do servidor: %s</string>    
+    <string name="label_realm">Mensagem do servidor: %s</string>
+    <string name="new_tab_foreground">Trazer separadores para primeiro plano</string>
+    <string name="new_tab_foreground_summary">Fechar menu de separadores ao fechar/abrir um separador</string>
+    <string name="site_not_secure">Este site não utiliza HTTPS</string>    
 
     <!-- finish pages -->
 </resources>
