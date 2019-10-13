@@ -31,7 +31,7 @@ class GoogleSuggestionsModel(
         .host("suggestqueries.google.com")
         .encodedPath("/complete/search")
         .addQueryParameter("output", "toolbar")
-        .addQueryParameter("hl", language)
+        //.addQueryParameter("hl", language)
         .addEncodedQueryParameter("q", query)
         .build()
 

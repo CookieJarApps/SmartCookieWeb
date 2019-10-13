@@ -91,7 +91,6 @@ import kotlinx.android.synthetic.main.browser_content.*
 import kotlinx.android.synthetic.main.search.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
-import kotlinx.android.synthetic.main.two_line_autocomplete.*
 import java.io.IOException
 import javax.inject.Inject
 import kotlin.system.exitProcess
