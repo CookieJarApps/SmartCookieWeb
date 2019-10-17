@@ -253,7 +253,8 @@ class BrowserPresenter(
      * BrowserActivity is destroyed so that we don't leak any memory.
      */
     fun shutdown() {
-        onTabChanged(null)
+        //TODO: Fix a crash when this is called!
+        //onTabChanged(null)
         tabsModel.cancelPendingWork()
         sslStateSubscription?.dispose()
     }
