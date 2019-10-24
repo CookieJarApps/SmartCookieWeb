@@ -68,15 +68,16 @@
         <item name="alertDialogTheme">@style/AppCompatDialogStyle.Light</item>
 
         <item name="ic_round_settings">@drawable/ic_round_settings</item>
-        <item name="ic_action_star">@drawable/ic_action_star</item>
+        <item name="ic_action_star">@drawable/ic_round_star_settings</item>
         <item name="ic_round_smartphone">@drawable/ic_round_smartphone</item>
         <item name="ic_round_lock">@drawable/ic_round_lock</item>
-        <item name="ic_round_add">@drawable/ic_round_add</item>
+        <item name="ic_round_add">@drawable/ic_round_add_settings</item>
         <item name="ic_round_person">@drawable/ic_round_person</item>
         <item name="ic_round_world_lock">@drawable/ic_round_world_lock</item>
         <item name="ic_round_question_answer">@drawable/ic_round_question_answer</item>
         <item name="ic_parental_controls">@drawable/ic_parental_controls</item>
-        <item name="ic_action_block">@drawable/ic_action_block</item>
+        <item name="ic_action_block">@drawable/ic_round_block</item>
+        <item name="ic_extension">@drawable/ic_extension</item>
 
     </style>
 
@@ -107,16 +108,17 @@
         <!-- Alert dialogs -->
         <item name="alertDialogTheme">@style/AppCompatDialogStyle.Dark</item>
 
-        <item name="ic_round_settings">@drawable/ic_round_settings_light</item>
-        <item name="ic_action_star">@drawable/ic_action_star_light</item>
-        <item name="ic_round_smartphone">@drawable/ic_round_smartphone_light</item>
-        <item name="ic_round_lock">@drawable/ic_round_lock_light</item>
-        <item name="ic_round_add">@drawable/ic_round_add_light</item>
-        <item name="ic_round_person">@drawable/ic_round_person_light</item>
+        <item name="ic_round_settings">@drawable/ic_round_settings</item>
+        <item name="ic_action_star">@drawable/ic_round_star_settings</item>
+        <item name="ic_round_smartphone">@drawable/ic_round_smartphone</item>
+        <item name="ic_round_lock">@drawable/ic_round_lock</item>
+        <item name="ic_round_add">@drawable/ic_round_add_settings</item>
+        <item name="ic_round_person">@drawable/ic_round_person</item>
         <item name="ic_round_world_lock">@drawable/ic_round_world_lock_light</item>
-        <item name="ic_round_question_answer">@drawable/ic_round_question_answer_light</item>
-        <item name="ic_parental_controls">@drawable/ic_parental_controls_light</item>
-        <item name="ic_action_block">@drawable/ic_action_block_light</item>
+        <item name="ic_round_question_answer">@drawable/ic_round_question_answer</item>
+        <item name="ic_parental_controls">@drawable/ic_parental_controls</item>
+        <item name="ic_action_block">@drawable/ic_round_block</item>
+        <item name="ic_extension">@drawable/ic_extension</item>
     </style>
 
     <style name="Theme.BaseBlackTheme" parent="Theme.AppCompat">
@@ -146,16 +148,17 @@
         <!-- Alert dialogs -->
         <item name="alertDialogTheme">@style/AppCompatDialogStyle.Black</item>
 
-        <item name="ic_round_settings">@drawable/ic_round_settings_light</item>
-        <item name="ic_action_star">@drawable/ic_action_star_light</item>
-        <item name="ic_round_smartphone">@drawable/ic_round_smartphone_light</item>
-        <item name="ic_round_lock">@drawable/ic_round_lock_light</item>
-        <item name="ic_round_add">@drawable/ic_round_add_light</item>
-        <item name="ic_round_person">@drawable/ic_round_person_light</item>
+        <item name="ic_round_settings">@drawable/ic_round_settings</item>
+        <item name="ic_action_star">@drawable/ic_round_star_settings</item>
+        <item name="ic_round_smartphone">@drawable/ic_round_smartphone</item>
+        <item name="ic_round_lock">@drawable/ic_round_lock</item>
+        <item name="ic_round_add">@drawable/ic_round_add_settings</item>
+        <item name="ic_round_person">@drawable/ic_round_person</item>
         <item name="ic_round_world_lock">@drawable/ic_round_world_lock_light</item>
-        <item name="ic_round_question_answer">@drawable/ic_round_question_answer_light</item>
-        <item name="ic_parental_controls">@drawable/ic_parental_controls_light</item>
-        <item name="ic_action_block">@drawable/ic_action_block_light</item>
+        <item name="ic_round_question_answer">@drawable/ic_round_question_answer</item>
+        <item name="ic_parental_controls">@drawable/ic_parental_controls</item>
+        <item name="ic_action_block">@drawable/ic_round_block</item>
+        <item name="ic_extension">@drawable/ic_extension</item>
     </style>
 
     <!-- AlertDialog Theming -->

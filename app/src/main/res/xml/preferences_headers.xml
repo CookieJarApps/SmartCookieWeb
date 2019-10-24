@@ -35,12 +35,17 @@
         android:icon="?attr/ic_parental_controls"
         android:title="@string/parental_controls"
         android:summary="@string/settings_parents" />
+   <!-- <header
+        android:fragment="com.cookiegames.smartcookie.settings.fragment.ExtensionsSettingsFragment"
+        android:icon="?attr/ic_extension"
+        android:title="Extensions"
+        android:summary="Make extensions, download extensions..." /> -->
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.AboutSettingsFragment"
         android:icon="?attr/ic_round_person"
         android:summary="@string/settings_about_explain"
         android:title="@string/settings_about"/>
-    <header
+   <!-- <header
         android:summary="@string/privacy_info"
         android:icon="?attr/ic_round_world_lock"
         android:title="@string/privacy">
@@ -51,7 +56,8 @@
                 android:name="SOURCE"
                 android:value="SELF"/>
         </intent>
-    </header>
+    </header>-->
+
     <header
         android:icon="?attr/ic_round_question_answer"
         android:summary="@string/faq_description"

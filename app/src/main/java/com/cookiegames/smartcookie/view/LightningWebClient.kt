@@ -32,6 +32,7 @@ import android.webkit.*
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
 import com.cookiegames.smartcookie.BrowserApp
@@ -155,6 +156,31 @@ class LightningWebClient(
             uiController.setForwardButtonEnabled(view.canGoForward())
             view.postInvalidate()
         }
+        if(url.contains("?install_extension=true") && url.contains("//extensions.cookiejarapps.com/")){
+            val builder = AlertDialog.Builder(activity)
+            builder.setTitle("Install Extension")
+            builder.setMessage("This extension is verified. Do you want to install this extension?")
+            builder.setPositiveButton("Yes"){dialog, which ->
+                Toast.makeText(activity,"Extension installed.",Toast.LENGTH_SHORT).show()
+            }
+            builder.setNegativeButton("No"){dialog,which ->
+            }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+        }
+        else if(url.contains("?install_extension=true")){
+            val builder = AlertDialog.Builder(activity)
+            builder.setTitle("Install Extension")
+            builder.setMessage("This extension is not verified! Do you still want to install this extension?")
+            builder.setPositiveButton("Yes"){dialog, which ->
+                Toast.makeText(activity,"Extension installed.",Toast.LENGTH_SHORT).show()
+            }
+            builder.setNegativeButton("No"){dialog,which ->
+            }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+        }
+
         if (view.title == null || view.title.isEmpty()) {
             lightningView.titleInfo.setTitle(activity.getString(R.string.untitled))
         } else {

@@ -71,6 +71,8 @@ interface AppComponent {
 
     fun inject(fragment: DebugSettingsFragment)
 
+    fun inject(fragment: ExtensionsSettingsFragment)
+
     fun inject(suggestionsAdapter: SuggestionsAdapter)
 
     fun inject(chromeClient: LightningChromeClient)
