@@ -13,18 +13,6 @@
     <attr name="dividerColor" format="reference|color" />
     <attr name="selectedBackground" format="reference|color" />
 
-    <attr name="ic_round_settings" format="reference"/>
-    <attr name="ic_action_star" format="reference"/>
-    <attr name="ic_round_smartphone" format="reference"/>
-    <attr name="ic_round_lock" format="reference"/>
-    <attr name="ic_round_add" format="reference"/>
-    <attr name="ic_round_person" format="reference"/>
-    <attr name="ic_round_world_lock" format="reference"/>
-    <attr name="ic_round_question_answer" format="reference"/>
-    <attr name="ic_parental_controls" format="reference"/>
-    <attr name="ic_action_block" format="reference"/>
-    <attr name="ic_extension" format="reference"/>
-
 
     <declare-styleable name="TabCountView">
         <attr name="tabIconColor" format="reference|color" />

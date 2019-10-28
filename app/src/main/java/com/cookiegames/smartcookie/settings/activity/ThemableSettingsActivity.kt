@@ -27,6 +27,18 @@ abstract class ThemableSettingsActivity : AppCompatPreferenceActivity() {
                 setTheme(R.style.Theme_SettingsTheme)
                 window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColor(this)))
             }
+            AppTheme.GREEN -> {
+                setTheme(R.style.Theme_SettingsTheme)
+                window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColor(this)))
+            }
+            AppTheme.BLUE -> {
+                setTheme(R.style.Theme_SettingsTheme_Blue)
+                window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColor(this)))
+            }
+            AppTheme.YELLOW -> {
+                setTheme(R.style.Theme_SettingsTheme_Yellow)
+                window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColor(this)))
+            }
             AppTheme.DARK -> {
                 setTheme(R.style.Theme_SettingsTheme_Dark)
                 window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColorDark(this)))

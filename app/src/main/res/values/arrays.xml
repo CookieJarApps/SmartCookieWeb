@@ -42,5 +42,8 @@
         <item>@string/light_theme</item>
         <item>@string/dark_theme</item>
         <item>@string/black_theme</item>
+        <item>@string/blue_theme</item>
+        <item>@string/yellow_theme</item>
+        <item>@string/green_theme</item>
     </string-array>
 </resources>

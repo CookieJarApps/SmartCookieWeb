@@ -113,6 +113,8 @@ dependencies {
     implementation "androidx.fragment:fragment:1.1.0"
     implementation "androidx.drawerlayout:drawerlayout:1.0.0"
 
+    implementation 'com.github.chenglei1986.statusbar:library:1.1.0'
+
     // html parsing for reading mode
     implementation 'org.jsoup:jsoup:1.11.3'
 

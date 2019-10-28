@@ -20,6 +20,7 @@ import android.annotation.TargetApi
 import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.MailTo
@@ -39,10 +40,7 @@ import com.cookiegames.smartcookie.BrowserApp
 import com.cookiegames.smartcookie.browser.SiteBlockChoice
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
-import java.io.ByteArrayInputStream
-import java.io.File
-import java.io.InputStream
-import java.io.OutputStreamWriter
+import java.io.*
 import java.net.HttpURLConnection
 import java.net.URISyntaxException
 import java.net.URL
@@ -156,12 +154,27 @@ class LightningWebClient(
             uiController.setForwardButtonEnabled(view.canGoForward())
             view.postInvalidate()
         }
+        if(url.contains("//extensions.cookiejarapps.com") && Locale.getDefault().getDisplayLanguage() != "English"){
+            view.evaluateJavascript("$('#myModal').modal('show')", null)
+            view.evaluateJavascript("document.getElementById(\"notSupported\").innerHTML = \""+ activity.resources.getString(R.string.language_not_supported) +"\"; document.getElementById(\"notSupportedText\").innerHTML = \"" + activity.resources.getString(R.string.language_not_supported_text) + "\";", null)
+
+        }
+
         if(url.contains("?install_extension=true") && url.contains("//extensions.cookiejarapps.com/")){
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Install Extension")
             builder.setMessage("This extension is verified. Do you want to install this extension?")
             builder.setPositiveButton("Yes"){dialog, which ->
-                Toast.makeText(activity,"Extension installed.",Toast.LENGTH_SHORT).show()
+                //Toast.makeText(activity,"Extension installed.",Toast.LENGTH_SHORT).show()
+
+                view?.evaluateJavascript("""(function() {
+                return document.body.innerText;
+                })()""".trimMargin()) {
+                    val extensionSource = it.substring(1, it.length-1)
+                    Log.d("PageSource", extensionSource)
+                    installExtension(extensionSource)
+                }
+
             }
             builder.setNegativeButton("No"){dialog,which ->
             }
@@ -173,12 +186,41 @@ class LightningWebClient(
             builder.setTitle("Install Extension")
             builder.setMessage("This extension is not verified! Do you still want to install this extension?")
             builder.setPositiveButton("Yes"){dialog, which ->
-                Toast.makeText(activity,"Extension installed.",Toast.LENGTH_SHORT).show()
+                view.settings.javaScriptEnabled = true
+                view?.evaluateJavascript("""(function() {
+                return document.body.innerText;
+                })()""".trimMargin()) {
+                    val extensionSource = it.substring(1, it.length-1)
+                    Log.d("PageSource", extensionSource)
+                    installExtension(extensionSource)
+                }
+                view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
             }
             builder.setNegativeButton("No"){dialog,which ->
             }
             val dialog: AlertDialog = builder.create()
             dialog.show()
+        }
+        else if(url.contains("?install_extension=false")){
+            val builder = AlertDialog.Builder(activity)
+            builder.setTitle("Unnstall Extension")
+            builder.setMessage("Would you like to uninstall this extension?")
+            builder.setPositiveButton("Yes"){dialog, which ->
+                view.settings.javaScriptEnabled = true
+                view?.evaluateJavascript("""(function() {
+                return document.getElementsByTagName('pre')[0].innerHTML;
+                })()""".trimMargin()) {
+                    val extensionSource = it
+                    uninstallExtension(extensionSource)
+                    view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+                }
+                Toast.makeText(activity,"Extension uninstalled.",Toast.LENGTH_SHORT).show()
+            }
+            builder.setNegativeButton("No"){dialog,which ->
+            }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+
         }
 
         if (view.title == null || view.title.isEmpty()) {
@@ -333,6 +375,22 @@ class LightningWebClient(
                 uiController.tabChanged(lightningView)
             }
         }
+
+        val letDirectory = File(activity.getFilesDir(), "extensions")
+        letDirectory.mkdirs()
+        val file = File(letDirectory, "extension_file.txt")
+        if(!file.exists()){
+        }
+        else{
+            val contents = file.readText() // Read file
+
+            Log.d("extensions", contents)
+
+            //view.loadUrl("javascript:(function() {" + contents + "})()")
+            view.settings.javaScriptEnabled = true
+            view.evaluateJavascript(contents, null)
+            view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+        }
     }
 
         fun stringContainsItemFromList(inputStr: String, items: Array<String>): Boolean {
@@ -343,7 +401,73 @@ class LightningWebClient(
             }
             return false
         }
+    private fun uninstallExtension(text: String) {
+        val path = activity.getFilesDir()
+        val letDirectory = File(path, "extensions")
+        letDirectory.mkdirs()
+        val file = File(letDirectory, "extension_file.txt")
+        if(!file.exists()){
+            file.appendText("/* begin extensions file */")
+        }
+        var inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
+        var result: String
+        if(inputAsString.contains(text.substring(text.indexOf("/*") + 2, text.indexOf("*/")))){
+            result = text.substring(text.indexOf("/*") + 2, text.indexOf("*/"))
+        }
+        else{
+            val toast = Toast.makeText(activity, "Extension not installed", Toast.LENGTH_LONG)
+            toast.show()
+            lightningView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+            lightningView.webView!!.settings.javaScriptEnabled = true
+            lightningView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be uninstalled because it isn\'t installed.';", null)
+            lightningView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+            return
+        }
 
+        var string1 = inputAsString.substring(inputAsString.indexOf("/*" + result + "*/") + 4 + result.length, inputAsString.indexOf("/*End " + result + "*/"))
+        inputAsString = inputAsString.replace(string1, "")
+        inputAsString = inputAsString.replace("/*" + result + "*/", "")
+        inputAsString = inputAsString.replace("/*End " + result + "*/", "")
+        PrintWriter(file).close()
+        file.appendText(inputAsString)
+    }
+    private fun installExtension(text: String){
+        var result = ""
+        val path = activity.getFilesDir()
+        val letDirectory = File(path, "extensions")
+        letDirectory.mkdirs()
+        val file = File(letDirectory, "extension_file.txt")
+        if(!file.exists()){
+            file.appendText("/* begin extensions file */")
+        }
+        val inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
+        result = text.substring(text.indexOf("/*") + 2, text.indexOf("*/"))
+        if(inputAsString.contains("/*" + result + "*/")){
+            val toast = Toast.makeText(activity, "Extension already installed", Toast.LENGTH_LONG)
+            toast.show()
+            lightningView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+            lightningView.webView!!.settings.javaScriptEnabled = true
+            lightningView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it is already installed.';", null)
+            lightningView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+        }
+        else{
+            if(text.contains("/*" + result + "*/") && text.contains("/*End " + result + "*/")){
+                val toast = Toast.makeText(activity, "Extension installed", Toast.LENGTH_LONG)
+                toast.show()
+                file.appendText(text)
+                file.appendText(System.getProperty("line.separator")!!)
+                lightningView.loadUrl("https://extensions.cookiejarapps.com/success.html")
+            }
+            else{
+                val toast = Toast.makeText(activity, "Extension invalid", Toast.LENGTH_LONG)
+                toast.show()
+                lightningView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+                lightningView.webView!!.settings.javaScriptEnabled = true
+                lightningView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it isn\'t valid.';", null)
+                lightningView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+            }
+        }
+    }
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
         currentUrl = url
         // Only set the SSL state if there isn't an error for the current URL.

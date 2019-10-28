@@ -83,6 +83,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.palette.graphics.Palette
 import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
+import com.github.chenglei1986.statusbar.StatusBarColorManager
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy
@@ -92,7 +93,9 @@ import kotlinx.android.synthetic.main.search.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.io.IOException
+import java.util.*
 import javax.inject.Inject
+import kotlin.concurrent.schedule
 import kotlin.system.exitProcess
 
 abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIController, OnClickListener {
@@ -203,7 +206,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         injector.inject(this)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
-
         if (isIncognito()) {
             incognitoNotification = IncognitoNotification(this, notificationManager)
         }
@@ -238,7 +240,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         val actionBar = requireNotNull(supportActionBar)
 
         //TODO make sure dark theme flag gets set correctly
-        isDarkTheme = userPreferences.useTheme != AppTheme.LIGHT || isIncognito()
+        isDarkTheme = userPreferences.useTheme == AppTheme.DARK || userPreferences.useTheme == AppTheme.BLACK || isIncognito()
         shouldShowTabsInDrawer = userPreferences.showTabsInDrawer
         swapBookmarksAndTabs = userPreferences.bookmarksAndTabsSwapped
 
@@ -310,8 +312,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     val builder = AlertDialog.Builder(context)
                     builder.setTitle(R.string.site_not_secure)
                     builder.setPositiveButton(R.string.action_ok) { dialog, which ->
-                        Toast.makeText(context,
-                                "ok", Toast.LENGTH_SHORT).show()
                     }
                     builder.show()
                 }
@@ -376,6 +376,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             setIntent(null)
             proxyUtils.checkForProxy(this)
         }
+
+
     }
 
     private fun getBookmarksContainerId(): Int = if (swapBookmarksAndTabs) {
@@ -516,6 +518,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             } else {
                 drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, tabsDrawer)
             }
+
+
+
         }
 
         override fun onDrawerSlide(v: View, arg: Float) = Unit

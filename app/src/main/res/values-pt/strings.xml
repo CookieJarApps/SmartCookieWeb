@@ -270,7 +270,6 @@
 
     <string name="jgh">Código-fonte</string>
     <string name="action_home">Página web</string>
-	<string name="the_jumpgo_project" translatable="false">Smart Cookie Web</string>
     <string name="jgh_description">Saber mais</string>
     <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
@@ -416,6 +415,11 @@
     <string name="settings_parents">Bloquear sites, definir palavra-passe&#8230;</string>
     <string name="label_realm">Mensagem do servidor: %s</string>
     <string name="site_not_secure">Este site não usa HTTPS</string>
+    <string name="language_not_supported">Idioma não suportado</string>
+    <string name="language_not_supported_text">Infelizmente, a loja de extensões ainda não está disponível no seu idioma. Use o botão abaixo para continuar em inglês de qualquer maneira.</string>
+    <string name="extensions">Add-ons</string>
+    <string name="extensions_description">Transferir Add-ons ...</string>
+    <string name="extensions_store">Loja de complementos</string>
 
     <!-- finish pages -->
 </resources>

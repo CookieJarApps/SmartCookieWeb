@@ -62,6 +62,21 @@ class HomePageFactory @Inject constructor(
                             "    background-color: #2a2a2a;\n" +
                             "}</style>")
                 }
+                else if(userPreferences.startPageThemeEnabled && userPreferences.useTheme == AppTheme.BLUE){
+                    it.write(content + "<style>body {\n" +
+                            "    background-color: #AEC6CF;\n" +
+                            "}</style>")
+                }
+                else if(userPreferences.startPageThemeEnabled && userPreferences.useTheme == AppTheme.GREEN){
+                    it.write(content + "<style>body {\n" +
+                            "    background-color: #ACDF87;\n" +
+                            "}</style>")
+                }
+                else if(userPreferences.startPageThemeEnabled && userPreferences.useTheme == AppTheme.YELLOW){
+                    it.write(content + "<style>body {\n" +
+                            "    background-color: #FEFEBE;\n" +
+                            "}</style>")
+                }
                 else{
                     it.write(content)
                 }

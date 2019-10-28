@@ -20,6 +20,21 @@
         <item name="toolbarSettingsBackground">@color/black</item>
     </style>
 
+    <style name="Theme.SettingsTheme.Blue" parent="Theme.BlueTheme">
+        <item name="android:windowBackground">@null</item>
+        <item name="toolbarSettingsBackground">@color/primary_color</item>
+    </style>
+
+    <style name="Theme.SettingsTheme.Green" parent="Theme.GreenTheme">
+        <item name="android:windowBackground">@null</item>
+        <item name="toolbarSettingsBackground">@color/primary_color</item>
+    </style>
+
+    <style name="Theme.SettingsTheme.Yellow" parent="Theme.YellowTheme">
+        <item name="android:windowBackground">@null</item>
+        <item name="toolbarSettingsBackground">@color/primary_color</item>
+    </style>
+
     <!-- Regular themes -->
     <style name="Theme.LightTheme" parent="Theme.BaseLightTheme">
         <item name="searchBackground">@drawable/card_bg</item>
@@ -27,6 +42,51 @@
         <item name="progressBackgroundColor">@color/transparent</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/secondary_color</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <!-- READ THIS:
+            windowTranslucentStatus will set a semitransparent color to the status bar
+            primaryColorDark will set a color below the actual status bar color that
+                will be below the navigation drawers, but above the content of the app
+            windowDrawsSystemBarBackgrounds
+        -->
+    </style>
+    <!-- Regular themes -->
+    <style name="Theme.BlueTheme" parent="Theme.BaseBlueTheme">
+        <item name="searchBackground">@drawable/card_bg</item>
+        <item name="listBackground">?attr/listChoiceBackgroundIndicator</item>
+        <item name="progressBackgroundColor">@color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/color_blue</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <!-- READ THIS:
+            windowTranslucentStatus will set a semitransparent color to the status bar
+            primaryColorDark will set a color below the actual status bar color that
+                will be below the navigation drawers, but above the content of the app
+            windowDrawsSystemBarBackgrounds
+        -->
+    </style>
+    <!-- Regular themes -->
+    <style name="Theme.GreenTheme" parent="Theme.BaseGreenTheme">
+        <item name="searchBackground">@drawable/card_bg</item>
+        <item name="listBackground">?attr/listChoiceBackgroundIndicator</item>
+        <item name="progressBackgroundColor">@color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/color_green</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <!-- READ THIS:
+            windowTranslucentStatus will set a semitransparent color to the status bar
+            primaryColorDark will set a color below the actual status bar color that
+                will be below the navigation drawers, but above the content of the app
+            windowDrawsSystemBarBackgrounds
+        -->
+    </style>
+    <!-- Regular themes -->
+    <style name="Theme.YellowTheme" parent="Theme.BaseYellowTheme">
+        <item name="searchBackground">@drawable/card_bg</item>
+        <item name="listBackground">?attr/listChoiceBackgroundIndicator</item>
+        <item name="progressBackgroundColor">@color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/bookmark_default_orange</item>
         <item name="android:windowTranslucentStatus">false</item>
         <!-- READ THIS:
             windowTranslucentStatus will set a semitransparent color to the status bar

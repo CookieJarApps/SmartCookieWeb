@@ -10,6 +10,7 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import androidx.annotation.StyleRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.withStyledAttributes
@@ -43,6 +44,9 @@ abstract class ThemableBrowserActivity : AppCompatActivity() {
             AppTheme.LIGHT -> R.style.Theme_LightTheme
             AppTheme.DARK -> R.style.Theme_DarkTheme
             AppTheme.BLACK -> R.style.Theme_BlackTheme
+            AppTheme.YELLOW -> R.style.Theme_YellowTheme
+            AppTheme.GREEN -> R.style.Theme_GreenTheme
+            AppTheme.BLUE -> R.style.Theme_BlueTheme
         })
         super.onCreate(savedInstanceState)
 

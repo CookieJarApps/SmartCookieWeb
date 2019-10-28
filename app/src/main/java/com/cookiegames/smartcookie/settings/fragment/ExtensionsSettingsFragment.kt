@@ -23,6 +23,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Environment
+import android.preference.Preference
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
@@ -38,6 +39,10 @@ import com.cookiegames.smartcookie.browser.PasswordChoice
 import com.cookiegames.smartcookie.browser.SiteBlockChoice
 import com.cookiegames.smartcookie.dialog.BrowserDialog.setDialogSize
 import com.cookiegames.smartcookie.settings.activity.SettingsActivity
+import java.io.File
+import java.io.FileInputStream
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 import javax.inject.Inject
 
 /**
@@ -49,7 +54,7 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
 
     private lateinit var proxyChoices: Array<String>
 
-    override fun providePreferencesXmlResource() = R.xml.preference_parents
+    override fun providePreferencesXmlResource() = R.xml.preference_extensions
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,190 +63,53 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
 
         proxyChoices = resources.getStringArray(R.array.blocked_sites)
 
-        clickableDynamicPreference(
-                preference = SETTINGS_SITE_BLOCK,
-                summary = userPreferences.siteBlockChoice.toSummary(),
-                onClick = ::showSiteBlockPicker
-        )
-        clickableDynamicPreference(
-                preference = SETTINGS_PASSWORD,
-                summary = userPreferences.passwordChoice.toSummary(),
-                onClick = ::showPasswordPicker
-        )
         val prefs: SharedPreferences = activity.getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
 
-        if (prefs.getBoolean("noPassword", true)) {
-            Log.d("TAGGG", "nopassword")
-        }
-        else {
-            Log.d("TAGGG", userPreferences.passwordText)
-            passwordDialog()
-        }
-    }
-
-    private fun passwordDialog() {
-        val dialogView = LayoutInflater.from(activity).inflate(R.layout.dialog_edit_text, null)
-        val editText = dialogView.findViewById<EditText>(R.id.dialog_edit_text)
-
-        editText.setHint(R.string.enter_password)
-
-        val editorDialog = AlertDialog.Builder(activity)
-                .setTitle(R.string.enter_password)
-                .setView(dialogView)
-                .setCancelable(false)
-                .setNegativeButton(R.string.action_back) { dialog, which ->
-                    //listener.onClick(editText.getText().toString());
-                    val settings = Intent(activity, SettingsActivity::class.java)
-                    settings.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                    startActivity(settings)
-                }
-                .setPositiveButton(R.string.action_ok
-                ) { dialog, which ->
-                    //listener.onClick(editText.getText().toString());
-                    if (editText.text.toString() == userPreferences.passwordText) {
-                    } else {
-                        val duration = Toast.LENGTH_SHORT
-                        val toast = Toast.makeText(activity, resources.getString(R.string.wrong_password), duration)
-                        toast.show()
-                        passwordDialog()
-                    }
-                }
-
-        val dialog = editorDialog.show()
-        setDialogSize(activity, dialog)
-    }
-
-    private fun SiteBlockChoice.toSummary(): String {
-        val stringArray = resources.getStringArray(R.array.blocked_sites)
-        return when (this) {
-            SiteBlockChoice.NONE -> stringArray[0]
-            SiteBlockChoice.WHITELIST -> userPreferences.siteBlockNames
-            SiteBlockChoice.BLACKLIST -> userPreferences.siteBlockNames
-        }
-    }
-
-    private fun showSiteBlockPicker(summaryUpdater: SummaryUpdater) {
-        BrowserDialog.showCustomDialog(activity) {
-            setTitle(R.string.block_sites_title)
-            val stringArray = resources.getStringArray(R.array.blocked_sites)
-            val values = SiteBlockChoice.values().map {
-                Pair(it, when (it) {
-                    SiteBlockChoice.NONE -> stringArray[0]
-                    SiteBlockChoice.WHITELIST -> stringArray[1]
-                    SiteBlockChoice.BLACKLIST -> stringArray[2]
-                })
+        var pref: Preference = findPreference(EXTENSIONS_LIST)
+        pref.setOnPreferenceClickListener {
+            val path = activity.getFilesDir()
+            val letDirectory = File(path, "extensions")
+            letDirectory.mkdirs()
+            val file = File(letDirectory, "extension_file.txt")
+            if(!file.exists()){
+                file.appendText("/* begin extensions file */")
             }
-            withSingleChoiceItems(values, userPreferences.siteBlockChoice) {
-                updateSiteBlockChoice(it, activity, summaryUpdater)
+            var allMatches = ArrayList<String>()
+            var inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
+            var match: Matcher = Pattern.compile("(?! begin extensions file)(?!End)(?<=\\/\\*)(.*?)(?=\\*\\/)").matcher(inputAsString)
+            while (match.find()) {
+                allMatches.add(match.group())
             }
-            setPositiveButton(R.string.action_ok, null)
-        }
-    }
 
-    private fun updateSiteBlockChoice(choice: SiteBlockChoice, activity: Activity, summaryUpdater: SummaryUpdater) {
-        if (choice == SiteBlockChoice.WHITELIST || choice == SiteBlockChoice.BLACKLIST) {
-            showManualSiteBlockPicker(activity, summaryUpdater)
-        }
+            var formattedString:String = allMatches.toString()
+            .replace("[", "")  //remove the right bracket
+            .replace("]", "")  //remove the left bracket
+            .trim()
 
-        userPreferences.siteBlockChoice = choice
-        summaryUpdater.updateSummary(choice.toSummary())
-    }
-
-    private fun showManualSiteBlockPicker(activity: Activity, summaryUpdater: SummaryUpdater) {
-        val v = activity.layoutInflater.inflate(R.layout.site_block, null)
-        val eProxyHost = v.findViewById<TextView>(R.id.siteBlock)
-
-        // Limit the number of characters since the port needs to be of type int
-        // Use input filters to limit the EditText length and determine the max
-        // length by using length of integer MAX_VALUE
-        val maxCharacters = Integer.MAX_VALUE.toString().length
-
-        eProxyHost.text = userPreferences.siteBlockNames
-
-        BrowserDialog.showCustomDialog(activity) {
-            setTitle(R.string.block_sites_title)
-            setView(v)
-            setPositiveButton(R.string.action_ok) { _, _ ->
-                val proxyHost = eProxyHost.text.toString()
-                userPreferences.siteBlockNames = proxyHost
-                summaryUpdater.updateSummary("$proxyHost")
+            if(formattedString == ""){
+                formattedString = resources.getString(R.string.none)
             }
-        }
-    }
 
-    private fun PasswordChoice.toSummary(): String {
-        val stringArray = resources.getStringArray(R.array.password)
-        return when (this) {
-            PasswordChoice.NONE -> resources.getString(R.string.none)
-            PasswordChoice.CUSTOM -> resources.getString(R.string.agent_custom)
-        }
-    }
+            val builder = AlertDialog.Builder(activity)
+            builder.setTitle("Extensions List")
+            builder.setMessage(formattedString)
 
-    private fun showPasswordPicker(summaryUpdater: SummaryUpdater) {
-        BrowserDialog.showCustomDialog(activity) {
-            setTitle(R.string.enter_password)
-            val stringArray = resources.getStringArray(R.array.password)
-            val values = PasswordChoice.values().map {
-                Pair(it, when (it) {
-                    PasswordChoice.NONE -> stringArray[0]
-                    PasswordChoice.CUSTOM -> stringArray[1]
-                })
+
+            builder.setPositiveButton(resources.getString(R.string.action_ok)){dialogInterface , which ->
+
             }
-            withSingleChoiceItems(values, userPreferences.passwordChoice) {
-                updatePasswordChoice(it, activity, summaryUpdater)
-            }
-            setPositiveButton(R.string.action_ok, null)
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.setCancelable(false)
+            alertDialog.show()
+            true
         }
     }
 
-    private fun updatePasswordChoice(choice: PasswordChoice, activity: Activity, summaryUpdater: SummaryUpdater) {
-        if (choice == PasswordChoice.CUSTOM) {
-            showPasswordTextPicker(activity, summaryUpdater)
 
-            val prefs: SharedPreferences = activity.getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
-
-            val editor: SharedPreferences.Editor = prefs.edit()
-            editor.putBoolean("noPassword", false)
-            editor.apply()
-        }
-        else{
-            val prefs: SharedPreferences = activity.getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
-
-            val editor: SharedPreferences.Editor = prefs.edit()
-            editor.putBoolean("noPassword", true)
-            editor.apply()
-
-            summaryUpdater.updateSummary(resources.getString(R.string.none))
-        }
-
-        userPreferences.passwordChoice = choice
-        summaryUpdater.updateSummary(choice.toSummary())
-    }
-
-    private fun showPasswordTextPicker(activity: Activity, summaryUpdater: SummaryUpdater) {
-        val v = activity.layoutInflater.inflate(R.layout.password, null)
-        val passwordText = v.findViewById<TextView>(R.id.password)
-
-        // Limit the number of characters since the port needs to be of type int
-        // Use input filters to limit the EditText length and determine the max
-        // length by using length of integer MAX_VALUE
-        val maxCharacters = Integer.MAX_VALUE.toString().length
-
-        passwordText.text = userPreferences.passwordText
-
-        BrowserDialog.showCustomDialog(activity) {
-            setTitle(R.string.enter_password)
-            setView(v)
-            setPositiveButton(R.string.action_ok) { _, _ ->
-                val passwordCode = passwordText.text.toString()
-                userPreferences.passwordText = passwordCode
-            }
-        }
-    }
 
 
     companion object {
-        private const val SETTINGS_SITE_BLOCK = "siteblock"
-        private const val SETTINGS_PASSWORD = "password"
+        private const val EXTENSIONS_LIST = "extensions_list"
+        private const val UNINSTALL = "uninstall_extensions"
     }
 }

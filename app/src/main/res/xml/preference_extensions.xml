@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="Extensions">
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="auto_install"
-            android:title="Auto install extensions"
-            android:summary="Install extensions without showing a popup first."/>
         <Preference
-            android:key="extensions_file"
-            android:summary="Edit the extensions file."
-            android:title="Extensions file"/>
+            android:key="extensions_list"
+            android:summary="Show a list of installed extensions."
+            android:title="Installed extensions"/>
         <Preference
-            android:summary="Open the extensions store."
-            android:title="Extensions store">
+            android:key="uninstall_extension"
+            android:summary="Uninstall an extension."
+            android:title="Uninstall extension"/>
+        <Preference
+            android:summary="@string/extensions_description"
+            android:title="@string/extensions_store">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://extensions.cookiejarapps.com">

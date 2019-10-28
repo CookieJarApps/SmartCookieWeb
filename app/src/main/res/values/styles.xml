@@ -20,6 +20,24 @@
         <item name="toolbarSettingsBackground">@drawable/toolbar_elevate_black</item>
     </style>
 
+    <style name="Theme.SettingsTheme.Green" parent="Theme.GreenTheme">
+        <item name="android:windowBackground">@null</item>
+        <item name="toolbarSettingsBackground">@drawable/toolbar_elevate</item>
+    </style>
+
+
+    <style name="Theme.SettingsTheme.Yellow" parent="Theme.YellowTheme">
+        <item name="android:windowBackground">@null</item>
+        <item name="toolbarSettingsBackground">@drawable/toolbar_elevate</item>
+    </style>
+
+
+    <style name="Theme.SettingsTheme.Blue" parent="Theme.BlueTheme">
+        <item name="android:windowBackground">@null</item>
+        <item name="toolbarSettingsBackground">@drawable/toolbar_elevate_black</item>
+    </style>
+
+
     <!-- Regular themes -->
     <style name="Theme.LightTheme" parent="Theme.BaseLightTheme">
         <item name="searchBackground">@drawable/card_bg_elevate</item>
@@ -39,11 +57,30 @@
         <item name="progressBackgroundColor">@color/black</item>
     </style>
 
+    <style name="Theme.BlueTheme" parent="Theme.BaseBlueTheme">
+        <item name="searchBackground">@drawable/card_bg_elevate</item>
+        <item name="listBackground">@drawable/list_bg</item>
+        <item name="progressBackgroundColor">@color/secondary_color</item>
+    </style>
+
+    <style name="Theme.YellowTheme" parent="Theme.BaseYellowTheme">
+        <item name="searchBackground">@drawable/card_bg_elevate</item>
+        <item name="listBackground">@drawable/list_bg</item>
+        <item name="progressBackgroundColor">@color/secondary_color</item>
+    </style>
+
+    <style name="Theme.GreenTheme" parent="Theme.BaseGreenTheme">
+        <item name="searchBackground">@drawable/card_bg_elevate</item>
+        <item name="listBackground">@drawable/list_bg</item>
+        <item name="progressBackgroundColor">@color/secondary_color</item>
+    </style>
+
     <!-- Base Themes -->
     <style name="Theme.BaseLightTheme" parent="Theme.AppCompat.Light">
 
         <!-- Theme Colors -->
         <item name="colorPrimary">@color/primary_color</item>
+
         <item name="colorPrimaryDark">@color/transparent</item>
         <item name="colorAccent">@color/accent_color</item>
         <item name="drawerBackground">@color/drawer_background</item>
@@ -66,18 +103,6 @@
 
         <!-- Alert dialogs -->
         <item name="alertDialogTheme">@style/AppCompatDialogStyle.Light</item>
-
-        <item name="ic_round_settings">@drawable/ic_round_settings</item>
-        <item name="ic_action_star">@drawable/ic_round_star_settings</item>
-        <item name="ic_round_smartphone">@drawable/ic_round_smartphone</item>
-        <item name="ic_round_lock">@drawable/ic_round_lock</item>
-        <item name="ic_round_add">@drawable/ic_round_add_settings</item>
-        <item name="ic_round_person">@drawable/ic_round_person</item>
-        <item name="ic_round_world_lock">@drawable/ic_round_world_lock</item>
-        <item name="ic_round_question_answer">@drawable/ic_round_question_answer</item>
-        <item name="ic_parental_controls">@drawable/ic_parental_controls</item>
-        <item name="ic_action_block">@drawable/ic_round_block</item>
-        <item name="ic_extension">@drawable/ic_extension</item>
 
     </style>
 
@@ -108,17 +133,6 @@
         <!-- Alert dialogs -->
         <item name="alertDialogTheme">@style/AppCompatDialogStyle.Dark</item>
 
-        <item name="ic_round_settings">@drawable/ic_round_settings</item>
-        <item name="ic_action_star">@drawable/ic_round_star_settings</item>
-        <item name="ic_round_smartphone">@drawable/ic_round_smartphone</item>
-        <item name="ic_round_lock">@drawable/ic_round_lock</item>
-        <item name="ic_round_add">@drawable/ic_round_add_settings</item>
-        <item name="ic_round_person">@drawable/ic_round_person</item>
-        <item name="ic_round_world_lock">@drawable/ic_round_world_lock_light</item>
-        <item name="ic_round_question_answer">@drawable/ic_round_question_answer</item>
-        <item name="ic_parental_controls">@drawable/ic_parental_controls</item>
-        <item name="ic_action_block">@drawable/ic_round_block</item>
-        <item name="ic_extension">@drawable/ic_extension</item>
     </style>
 
     <style name="Theme.BaseBlackTheme" parent="Theme.AppCompat">
@@ -148,17 +162,92 @@
         <!-- Alert dialogs -->
         <item name="alertDialogTheme">@style/AppCompatDialogStyle.Black</item>
 
-        <item name="ic_round_settings">@drawable/ic_round_settings</item>
-        <item name="ic_action_star">@drawable/ic_round_star_settings</item>
-        <item name="ic_round_smartphone">@drawable/ic_round_smartphone</item>
-        <item name="ic_round_lock">@drawable/ic_round_lock</item>
-        <item name="ic_round_add">@drawable/ic_round_add_settings</item>
-        <item name="ic_round_person">@drawable/ic_round_person</item>
-        <item name="ic_round_world_lock">@drawable/ic_round_world_lock_light</item>
-        <item name="ic_round_question_answer">@drawable/ic_round_question_answer</item>
-        <item name="ic_parental_controls">@drawable/ic_parental_controls</item>
-        <item name="ic_action_block">@drawable/ic_round_block</item>
-        <item name="ic_extension">@drawable/ic_extension</item>
+    </style>
+
+    <style name="Theme.BaseBlueTheme" parent="Theme.AppCompat">
+
+        <!-- Theme Colors -->
+        <item name="colorPrimary">@color/color_blue</item>
+        <item name="colorPrimaryDark">@color/color_blue</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="drawerBackground">@color/drawer_background</item>
+        <item name="dividerColor">@color/divider_light</item>
+
+        <item name="iconColor">@color/icon_light_theme</item>
+        <item name="iconColorState">@color/state_color_icons_light</item>
+
+        <item name="autoCompleteTitleColor">@color/black</item>
+        <item name="autoCompleteUrlColor">@color/hint_text_light_theme</item>
+
+        <item name="selectedBackground">@color/selected_light</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <!-- Overflow menu -->
+        <item name="actionOverflowButtonStyle">@style/overFlowButtonStyle</item>
+
+        <!-- Alert dialogs -->
+        <item name="alertDialogTheme">@style/AppCompatDialogStyle.Light</item>
+
+    </style>
+
+    <style name="Theme.BaseYellowTheme" parent="Theme.AppCompat">
+
+        <!-- Theme Colors -->
+        <item name="colorPrimary">@color/bookmark_default_orange</item>
+        <item name="colorPrimaryDark">@color/bookmark_default_orange</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="drawerBackground">@color/drawer_background</item>
+        <item name="dividerColor">@color/divider_light</item>
+
+        <item name="iconColor">@color/icon_light_theme</item>
+        <item name="iconColorState">@color/state_color_icons_light</item>
+
+        <item name="autoCompleteTitleColor">@color/black</item>
+        <item name="autoCompleteUrlColor">@color/hint_text_light_theme</item>
+
+        <item name="selectedBackground">@color/selected_light</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <!-- Overflow menu -->
+        <item name="actionOverflowButtonStyle">@style/overFlowButtonStyle</item>
+
+        <!-- Alert dialogs -->
+        <item name="alertDialogTheme">@style/AppCompatDialogStyle.Light</item>
+
+    </style>
+
+    <style name="Theme.BaseGreenTheme" parent="Theme.AppCompat">
+
+        <!-- Theme Colors -->
+        <item name="colorPrimary">@color/color_green</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="drawerBackground">@color/drawer_background</item>
+        <item name="dividerColor">@color/divider_light</item>
+
+        <item name="iconColor">@color/icon_light_theme</item>
+        <item name="iconColorState">@color/state_color_icons_light</item>
+
+        <item name="autoCompleteTitleColor">@color/black</item>
+        <item name="autoCompleteUrlColor">@color/hint_text_light_theme</item>
+
+        <item name="selectedBackground">@color/selected_light</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <!-- Overflow menu -->
+        <item name="actionOverflowButtonStyle">@style/overFlowButtonStyle</item>
+
+        <!-- Alert dialogs -->
+        <item name="alertDialogTheme">@style/AppCompatDialogStyle.Light</item>
+
     </style>
 
     <!-- AlertDialog Theming -->
