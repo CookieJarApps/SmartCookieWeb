@@ -39,7 +39,7 @@ A secure, open source web browser for Android.
 - [x] New UI
 - [x] Parental Controls
 - [x] Inspect element
-- [ ] Extensions
+- [x] Extensions
 - [ ] Custom Themes
 
 # License
