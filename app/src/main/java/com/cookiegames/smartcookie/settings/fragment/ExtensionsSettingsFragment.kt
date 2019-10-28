@@ -38,9 +38,11 @@ import androidx.core.content.ContextCompat
 import com.cookiegames.smartcookie.browser.PasswordChoice
 import com.cookiegames.smartcookie.browser.SiteBlockChoice
 import com.cookiegames.smartcookie.dialog.BrowserDialog.setDialogSize
+import com.cookiegames.smartcookie.extensions.toast
 import com.cookiegames.smartcookie.settings.activity.SettingsActivity
 import java.io.File
 import java.io.FileInputStream
+import java.io.PrintWriter
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 import javax.inject.Inject
@@ -103,6 +105,51 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
             alertDialog.show()
             true
         }
+
+        var pref2: Preference = findPreference(UNINSTALL)
+        pref2.setOnPreferenceClickListener {
+            val builder = AlertDialog.Builder(activity)
+            val edittext = EditText(activity)
+            builder.setMessage("Enter the name of the extension you want to uninstall")
+            builder.setTitle("Uninstall extensions")
+
+            builder.setView(edittext)
+
+            builder.setPositiveButton(resources.getString(R.string.action_ok)){dialogInterface , which ->
+                val text = edittext.text.toString()
+                val path = activity.getFilesDir()
+                var result = ""
+                val letDirectory = File(path, "extensions")
+                letDirectory.mkdirs()
+                val file = File(letDirectory, "extension_file.txt")
+                if(!file.exists()){
+                    file.appendText("/* begin extensions file */")
+                }
+                var inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
+                if(inputAsString.contains("/*") && inputAsString.contains("*/") && inputAsString.contains("/*" + edittext.text.toString()) && edittext.text.toString() != ""){
+                    var string1 = inputAsString.substring(inputAsString.indexOf("/*" + edittext.text.toString() + "*/") + 4 + edittext.text.toString().length, inputAsString.indexOf("/*End " + edittext.text.toString() + "*/"))
+                    inputAsString = inputAsString.replace(string1, "")
+                    inputAsString = inputAsString.replace("/*" + edittext.text.toString() + "*/", "")
+                    inputAsString = inputAsString.replace("/*End " + edittext.text.toString() + "*/", "")
+                    PrintWriter(file).close()
+                    file.appendText(inputAsString)
+                    Toast.makeText(activity,"Extension uninstalled.",Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else{
+                    val toast = Toast.makeText(activity, "Extension not installed", Toast.LENGTH_LONG)
+                    toast.show()
+                    false
+                }
+            }
+            builder.setNegativeButton(resources.getString(R.string.action_cancel)){dialogInterface , which ->
+
+            }
+
+            builder.show()
+            true
+        }
+
     }
 
 
@@ -110,6 +157,6 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
 
     companion object {
         private const val EXTENSIONS_LIST = "extensions_list"
-        private const val UNINSTALL = "uninstall_extensions"
+        private const val UNINSTALL = "uninstall_extension"
     }
 }

@@ -26,6 +26,7 @@ import android.graphics.Bitmap
 import android.net.MailTo
 import android.net.http.SslError
 import android.os.Build
+import android.os.Handler
 import android.os.Message
 import android.util.Log
 import android.view.LayoutInflater
@@ -411,16 +412,18 @@ class LightningWebClient(
         }
         var inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
         var result: String
-        if(inputAsString.contains(text.substring(text.indexOf("/*") + 2, text.indexOf("*/")))){
+        if(inputAsString.contains("/*") && inputAsString.contains("*/")){
             result = text.substring(text.indexOf("/*") + 2, text.indexOf("*/"))
         }
         else{
             val toast = Toast.makeText(activity, "Extension not installed", Toast.LENGTH_LONG)
             toast.show()
             lightningView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+            Handler().postDelayed({
             lightningView.webView!!.settings.javaScriptEnabled = true
             lightningView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be uninstalled because it isn\'t installed.';", null)
             lightningView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+            }, 600)
             return
         }
 
@@ -446,9 +449,11 @@ class LightningWebClient(
             val toast = Toast.makeText(activity, "Extension already installed", Toast.LENGTH_LONG)
             toast.show()
             lightningView.loadUrl("https://extensions.cookiejarapps.com/error.html")
-            lightningView.webView!!.settings.javaScriptEnabled = true
-            lightningView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it is already installed.';", null)
-            lightningView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+            Handler().postDelayed({
+                lightningView.webView!!.settings.javaScriptEnabled = true
+                lightningView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it is already installed.';", null)
+                lightningView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+            }, 600)
         }
         else{
             if(text.contains("/*" + result + "*/") && text.contains("/*End " + result + "*/")){
@@ -462,9 +467,11 @@ class LightningWebClient(
                 val toast = Toast.makeText(activity, "Extension invalid", Toast.LENGTH_LONG)
                 toast.show()
                 lightningView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+                Handler().postDelayed({
                 lightningView.webView!!.settings.javaScriptEnabled = true
                 lightningView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it isn\'t valid.';", null)
                 lightningView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+            }, 600)
             }
         }
     }
