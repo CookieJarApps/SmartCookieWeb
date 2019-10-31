@@ -414,12 +414,12 @@
     <string name="parental_controls">Definições de controlo parental</string>
     <string name="settings_parents">Bloquear sites, definir palavra-passe&#8230;</string>
     <string name="label_realm">Mensagem do servidor: %s</string>
-    <string name="site_not_secure">Este site não usa HTTPS</string>
+    <string name="site_not_secure">Este site não utiliza HTTPS</string>
     <string name="language_not_supported">Idioma não suportado</string>
-    <string name="language_not_supported_text">Infelizmente, a loja de extensões ainda não está disponível no seu idioma. Use o botão abaixo para continuar em inglês de qualquer maneira.</string>
-    <string name="extensions">Add-ons</string>
-    <string name="extensions_description">Transferir Add-ons ...</string>
-    <string name="extensions_store">Loja de complementos</string>
+    <string name="language_not_supported_text">Infelizmente, a loja de extensões ainda não está disponível no seu idioma. Utilize o botão abaixo para continuar em inglês.</string>
+    <string name="extensions">Extensões</string>
+    <string name="extensions_description">Descarregar extensões&#8230;</string>
+    <string name="extensions_store">Loja de extensões</string>
 
     <!-- finish pages -->
 </resources>
