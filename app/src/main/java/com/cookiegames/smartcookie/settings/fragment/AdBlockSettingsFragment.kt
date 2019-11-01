@@ -64,11 +64,7 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
         clickableDynamicPreference(
             preference = "preference_hosts_source",
             isEnabled = BuildConfig.FULL_VERSION,
-            summary = if (BuildConfig.FULL_VERSION) {
-                userPreferences.selectedHostsSource().toSummary()
-            } else {
-                getString(R.string.block_ads_upsell_source)
-            },
+            summary =  userPreferences.selectedHostsSource().toSummary(),
             onClick = ::showHostsSourceChooser
         )
 

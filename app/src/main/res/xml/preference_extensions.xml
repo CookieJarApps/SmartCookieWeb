@@ -3,12 +3,10 @@
     <PreferenceCategory android:title="Extensions">
         <Preference
             android:key="extensions_list"
-            android:summary="Show a list of installed extensions."
-            android:title="Installed extensions"/>
+            android:title="@string/extensions_list"/>
         <Preference
             android:key="uninstall_extension"
-            android:summary="Uninstall an extension."
-            android:title="Uninstall extension"/>
+            android:title="@string/uninstall_extension"/>
         <Preference
             android:summary="@string/extensions_description"
             android:title="@string/extensions_store">

@@ -20,7 +20,7 @@
     <string name="fullscreen">Fullscreen mode</string>
     <string name="java">Enable JavaScript</string>
     <string name="download">Download location</string>
-    <string name="settings_advanced">Advanced Settings</string>
+    <string name="settings_advanced">Advanced settings</string>
     <string name="settings_advanced_explain">URL box contents, rendering mode, text encoding&#8230;</string>
     <string name="apache">Apache License 2.0</string>
     <string name="version">Application version</string>
@@ -36,7 +36,7 @@
     <string name="search_hint">Search</string>
     <string name="wideViewPort">Use wide viewport</string>
     <string name="overViewMode">Load pages in overview mode</string>
-    <string name="restore">Restore lost tabs on start</string>
+    <string name="restore">Restore tabs on start</string>
     <string name="supported_browsers_title">Supported browsers</string>
     <string name="stock_browser">Stock browser</string>
     <string name="stock_browser_unavailable">No stock browser detected</string>
@@ -102,7 +102,7 @@
     <string name="title_flash">Adobe Flash</string>
     <string name="action_manual">Manual</string>
     <string name="action_auto">Auto</string>
-    <string name="action_follow_me">Contact me</string>
+    <string name="action_follow_me">More info</string>
     <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Clear cache</string>
     <string name="message_cache_cleared">Cache cleared</string>
@@ -138,9 +138,6 @@
     <string name="powered_by_naver">Naver</string>
 
     <string name="search_engine_naver">Naver</string>
-
-    <string name="block_ads_upsell_source">Upgrade to Lightning Plus to choose</string>
-
     <string name="shortcut_message_failed_to_add">Sorry, your launcher does not support shortcuts.</string>
 
     <!-- SSL -->
@@ -175,7 +172,7 @@
     <string name="port">Port:</string>
     <string name="use_tor_prompt">It looks like you have Orbot installed. Do you want to use Tor?</string>
     <string name="use_i2p_prompt">It looks like you have I2P installed. Do you want to use I2P?</string>
-    <string name="install_orbot">Install Orbot in order to proxy with Tor.spac</string>
+    <string name="install_orbot">Install Orbot in order to proxy with Tor.</string>
     <string name="i2p_not_running">I2P is not running.</string>
     <string name="i2p_tunnels_not_ready">I2P tunnels are not ready yet.</string>
     <string name="yes">Yes</string>
@@ -188,7 +185,7 @@
     <string name="mpl_license">Mozilla Public License 2.0</string>
     <string name="freeware">Freeware</string>
     <string name="android_open_source_project">Android Open Source Project</string>
-    <string name="hphosts_ad_server_list">hpHosts Ad Server List</string>
+    <string name="hphosts_ad_server_list">Steven Black\'s Ad Hosts List</string>
     <string name="deleted_tab">Reopened old tab</string>
     <string name="rendering_mode">Rendering mode</string>
     <string name="name_inverted">Inverted</string>
@@ -215,13 +212,13 @@
     <string name="settings_privacy">Privacy and Security Settings</string>
     <string name="settings_privacy_explain">Cache, cookies, history&#8230;</string>
     <string name="settings_about">About</string>
-    <string name="settings_about_explain">Version number, author and license&#8230;</string>
+    <string name="settings_about_explain">Version number, author and licenses&#8230;</string>
     <string name="close_tab">Close current tab</string>
     <string name="close_all_tabs">Close all tabs</string>
     <string name="close_other_tabs">Close other tabs</string>
     <string name="third_party">Block 3rd party cookies</string>
     <string name="color_mode">Enable color mode</string>
-    <string name="reading_mode">Reader mode</string>
+    <string name="reading_mode">Reading mode</string>
     <string name="loading">Loading&#8230;</string>
     <string name="loading_failed">Couldn\'t load anything from the page.</string>
     <string name="snacktory">Snacktory</string>
@@ -256,7 +253,7 @@
     <string name="settings_adblock">Content block settings</string>
     <string name="adblock_summary">Ad block, cookie dialog block...</string>
     <string name="adblock_category">Ad block</string>
-    <string name="cookie_category">Cookie dialog block</string>
+    <string name="cookie_category">Cookie dialog block (beta)</string>
     <string name="tabs_in_drawer">Show tabs in navigation drawer</string>
     <string name="swap_bookmarks_and_tabs">Swap bookmark and tab drawers</string>
     <string name="do_not_track">Request \'Do Not Track\'</string>
@@ -268,10 +265,10 @@
     <string name="message_open_download_fail">This file doesn\'t exist anymore</string>
     <string name="this_project">This Project</string>
 
-    <string name="jgh">SmartCookieWeb Source Code</string>
+    <string name="scw">SmartCookieWeb Source Code</string>
     <string name="action_home">Home</string>
     <string name="the_jumpgo_project" translatable="false">Smart Cookie Web</string>
-    <string name="jgh_description">Learn about SmartCookieWeb</string>
+    <string name="description">Learn about SmartCookieWeb</string>
     <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">FAQ</string>
@@ -339,7 +336,7 @@
     <string name="dialog_edit_bookmark">Edit bookmark</string>
     <string name="dialog_remove_from_history">Remove from history</string>
     <string name="dialog_download_image">Download image</string>
-    <string name="dialog_copy_link">Copy link</string>
+    <string name="dialog_copy_link">Copy page link</string>
     <string name="dialog_rename_folder">Rename folder</string>
     <string name="dialog_remove_folder">Remove folder</string>
     <string name="dialog_title_close_browser">Close browser</string>
@@ -359,25 +356,6 @@
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
 
-    <string name="title_activity_welcome">Home Screen</string>
-    <string name="next">Next</string>
-    <string name="skip">Skip</string>
-    <string name="start">Got It</string>
-
-    <string name="slide_1_title">Welcome to SmartCookie 5.0</string>
-    <string name="slide_1_desc">Browsing the web is now even more user friendly and secure!</string>
-
-    <string name="slide_2_title">Open tabs</string>
-    <string name="slide_2_desc">Your tabs and page navigation can be accessed by pressing the button in the top left corner.</string>
-
-    <string name="slide_3_title">Change settings</string>
-    <string name="slide_3_desc">The settings page is opened by pressing the button in the top right corner and choosing \'settings\' from the dropdown.</string>
-
-    <string name="slide_4_title">Open Bookmarks</string>
-    <string name="slide_4_desc">Open bookmarks using the dropdown or by swiping from the right side of the screen. In bookmarks, you can open the desktop version of a site, create a bookmark or open reading mode.</string>
-
-    <string name="play_again_desc">To see the welcome slider again, go to Settings -> Apps -> SmartCookieWeb -> Clear Data</string>
-    <string name="play_again">Play Again</string>
     <string name="privacy">View Privacy Policy</string>
     <string name="privacy_info">Read the SmartCookieWeb privacy policy</string>
     <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
@@ -418,12 +396,14 @@
     <string name="label_realm">Server message: %s</string>
     <string name="new_tab_foreground">Bring tabs to foreground</string>
     <string name="new_tab_foreground_summary">Close the tab drawer when a tab is closed/opened</string>
-    <string name="site_not_secure">This site does not use HTTPS</string>
+    <string name="site_not_secure">The connection to this site is not secure.</string>
     <string name="language_not_supported">Language Not Supported</string>
     <string name="language_not_supported_text">Unfortunately, the extensions store is not available in your language yet. Use the button below to continue in English anyway.</string>
     <string name="extensions">Extensions</string>
     <string name="extensions_description">Download extensions...</string>
     <string name="extensions_store">Extensions store</string>
+    <string name="extensions_list">Extensions list</string>
+    <string name="uninstall_extension">Uninstall extension</string>
 
 
     <!-- finish pages -->

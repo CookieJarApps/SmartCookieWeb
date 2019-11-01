@@ -78,7 +78,7 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
             }
             var allMatches = ArrayList<String>()
             var inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
-            var match: Matcher = Pattern.compile("(?! begin extensions file)(?!End)(?<=\\/\\*)(.*?)(?=\\*\\/)").matcher(inputAsString)
+            var match: Matcher = Pattern.compile("(?! begin extensions file)(?!End)(?<=/\\*)(.*?)(?=\\*/)").matcher(inputAsString)
             while (match.find()) {
                 allMatches.add(match.group())
             }

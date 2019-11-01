@@ -98,8 +98,7 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
                 .setPositiveButton(R.string.action_ok
                 ) { dialog, which ->
                     //listener.onClick(editText.getText().toString());
-                    if (editText.text.toString() == userPreferences.passwordText) {
-                    } else {
+                    if (editText.text.toString() != userPreferences.passwordText){
                         val duration = Toast.LENGTH_SHORT
                         val toast = Toast.makeText(activity, resources.getString(R.string.wrong_password), duration)
                         toast.show()

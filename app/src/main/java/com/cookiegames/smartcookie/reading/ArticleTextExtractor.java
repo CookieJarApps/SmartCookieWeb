@@ -59,7 +59,7 @@ public class ArticleTextExtractor {
     private static final int MAX_AUTHOR_NAME_LENGHT = 255;
     private static final int MIN_AUTHOR_NAME_LENGTH = 4;
     private static final List<Pattern> CLEAN_AUTHOR_PATTERNS = Collections.singletonList(
-        Pattern.compile("By\\S*(.*)[\\.,].*")
+        Pattern.compile("By\\S*(.*)[.,].*")
     );
     private static final int MAX_AUTHOR_DESC_LENGHT = 1000;
     private static final int MAX_IMAGE_LENGHT = 255;

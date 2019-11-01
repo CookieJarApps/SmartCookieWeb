@@ -53,11 +53,11 @@
             </intent>
         </Preference>
         <Preference
-            android:summary="@string/freeware"
+            android:summary="@string/mit_license"
             android:title="@string/hphosts_ad_server_list">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="http://hosts-file.net/">
+                android:data="https://github.com/StevenBlack/hosts">
                 <extra
                     android:name="SOURCE"
                     android:value="SELF" />

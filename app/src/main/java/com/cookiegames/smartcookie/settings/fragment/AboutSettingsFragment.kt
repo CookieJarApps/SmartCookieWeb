@@ -6,6 +6,8 @@ package com.cookiegames.smartcookie.settings.fragment
 import com.cookiegames.smartcookie.BuildConfig
 import com.cookiegames.smartcookie.R
 import android.os.Bundle
+import android.preference.Preference
+import androidx.appcompat.app.AlertDialog
 
 class AboutSettingsFragment : AbstractSettingsFragment() {
 
@@ -19,6 +21,22 @@ class AboutSettingsFragment : AbstractSettingsFragment() {
             summary = BuildConfig.VERSION_NAME,
             onClick = { }
         )
+
+        var pref: Preference = findPreference(SETTINGS_VERSION)
+        pref.setOnPreferenceClickListener {
+            val builder = AlertDialog.Builder(activity)
+            builder.setTitle("Smart Cookie Secure Web Browser Version " + BuildConfig.VERSION_NAME)
+            builder.setMessage("What's new:\n- Improved translations")
+
+
+            builder.setPositiveButton(resources.getString(R.string.action_ok)){dialogInterface , which ->
+
+            }
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.setCancelable(false)
+            alertDialog.show()
+            true
+        }
     }
 
     companion object {

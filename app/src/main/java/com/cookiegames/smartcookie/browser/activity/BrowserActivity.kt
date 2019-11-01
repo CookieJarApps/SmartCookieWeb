@@ -311,6 +311,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 if(tabsManager.currentTab?.sslCertificate == null){
                     val builder = AlertDialog.Builder(context)
                     builder.setTitle(R.string.site_not_secure)
+                    builder.setIcon(R.drawable.ic_alert)
                     builder.setPositiveButton(R.string.action_ok) { dialog, which ->
                     }
                     builder.show()
@@ -1596,6 +1597,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         } else if (drawer_layout.closeDrawerIfOpen(getBookmarkDrawer())) {
             // Don't do anything other than close the bookmarks drawer when the activity is being
             // delegated to.
+            return
         }
     }
 

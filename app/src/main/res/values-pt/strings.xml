@@ -139,7 +139,6 @@
 
     <string name="search_engine_naver">Naver</string>
 
-    <string name="block_ads_upsell_source">Atualize para Lightning Plus para escolher</string>
 
     <string name="shortcut_message_failed_to_add">lamentamos mas o seu launcher não permite atalhos.</string>
 
@@ -268,9 +267,9 @@
     <string name="message_open_download_fail">Este ficheiro já não existe</string>
     <string name="this_project">Este projeto</string>
 
-    <string name="jgh">Código-fonte</string>
+    <string name="scw">Código-fonte</string>
     <string name="action_home">Página web</string>
-    <string name="jgh_description">Saber mais</string>
+    <string name="description">Saber mais</string>
     <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">FAQ</string>
@@ -357,25 +356,6 @@
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
 
-    <string name="title_activity_welcome">Ecrã inicial</string>
-    <string name="next">Seguinte</string>
-    <string name="skip">Ignorar</string>
-    <string name="start">Percebi</string>
-
-    <string name="slide_1_title">Bem-vindo ao SmartCookie!</string>
-    <string name="slide_1_desc">Navegar na web agora é ainda mais fácil e seguro!</string>
-
-    <string name="slide_2_title">Abrir separadores</string>
-    <string name="slide_2_desc">Pode aceder aos separadores tocando no botão existente no canto superior esquerdo do ecrã.</string>
-
-    <string name="slide_3_title">Alterar definições</string>
-    <string name="slide_3_desc">Pode aceder às definições tocando no botão existente no canto superior direito do ecrã e escolhendo \'Definições\'.</string>
-
-    <string name="slide_4_title">Abrir marcadores</string>
-    <string name="slide_4_desc">Pode aceder aos marcadores através da lista suspensa ou deslizando desde a margem direita do ecrã. Nos marcadores, pode criar um marcador e abrir o site no modo desktop ou no modo de leitura.</string>
-
-    <string name="play_again_desc">Para ver novamente a introdução, aceda a Definições -> Aplicações -> SmartCookieWeb -> Limpar dados</string>
-    <string name="play_again">Mostrar novamente</string>
     <string name="privacy">Política de privacidade</string>
     <string name="privacy_info">Ver a política de privacidade do SmartCookieWeb</string>
     <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>

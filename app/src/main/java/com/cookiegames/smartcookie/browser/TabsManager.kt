@@ -55,7 +55,7 @@ class TabsManager @Inject constructor(
      * Adds a listener to be notified when the number of tabs changes.
      */
     fun addTabNumberChangedListener(listener: ((Int) -> Unit)) {
-        tabNumberListeners += listener
+        tabNumberListeners = tabNumberListeners + listener
     }
 
     /**
@@ -72,7 +72,7 @@ class TabsManager @Inject constructor(
         if (isInitialized) {
             runnable()
         } else {
-            postInitializationWorkList += runnable
+            postInitializationWorkList = postInitializationWorkList + runnable
         }
     }
 

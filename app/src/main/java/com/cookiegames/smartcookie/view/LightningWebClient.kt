@@ -168,7 +168,7 @@ class LightningWebClient(
             builder.setPositiveButton("Yes"){dialog, which ->
                 //Toast.makeText(activity,"Extension installed.",Toast.LENGTH_SHORT).show()
 
-                view?.evaluateJavascript("""(function() {
+                view.evaluateJavascript("""(function() {
                 return document.body.innerText;
                 })()""".trimMargin()) {
                     val extensionSource = it.substring(1, it.length-1)
@@ -188,7 +188,7 @@ class LightningWebClient(
             builder.setMessage("This extension is not verified! Do you still want to install this extension?")
             builder.setPositiveButton("Yes"){dialog, which ->
                 view.settings.javaScriptEnabled = true
-                view?.evaluateJavascript("""(function() {
+                view.evaluateJavascript("""(function() {
                 return document.body.innerText;
                 })()""".trimMargin()) {
                     val extensionSource = it.substring(1, it.length-1)
@@ -208,7 +208,7 @@ class LightningWebClient(
             builder.setMessage("Would you like to uninstall this extension?")
             builder.setPositiveButton("Yes"){dialog, which ->
                 view.settings.javaScriptEnabled = true
-                view?.evaluateJavascript("""(function() {
+                view.evaluateJavascript("""(function() {
                 return document.getElementsByTagName('pre')[0].innerHTML;
                 })()""".trimMargin()) {
                     val extensionSource = it
@@ -262,7 +262,7 @@ class LightningWebClient(
                             "\n" +
                             "if(elem4 != null){\n" +
                             "elem4.parentNode.removeChild(elem4)\n" +
-                            "}" +
+                            "}" + "if(document.getElementById(\"cmp-container-id\"0 != null){ document.getElementById(\"cmp-container-id\").parentNode.removeChild(document.getElementById(\"cmp-container-id\"));}" +
                             "})()")
             view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
         }
@@ -288,6 +288,7 @@ class LightningWebClient(
                 if (url.contains("http://")) {
                     if (url.contains("https://")) {
                         //Secure!
+                        return
                     } else {
                         var newUrl = url.replace("http://", "https://")
                         if (exists(newUrl)) {
@@ -380,9 +381,7 @@ class LightningWebClient(
         val letDirectory = File(activity.getFilesDir(), "extensions")
         letDirectory.mkdirs()
         val file = File(letDirectory, "extension_file.txt")
-        if(!file.exists()){
-        }
-        else{
+        if(file.exists()){
             val contents = file.readText() // Read file
 
             Log.d("extensions", contents)

@@ -28,7 +28,6 @@ public class OutputFormatter {
     private Pattern unlikelyPattern = Pattern.compile("display:none|visibility:hidden");
     private final int minFirstParagraphText;
     private final int minParagraphText;
-    private final List<String> nodesToReplace;
     private String nodesToKeepCssSelector = "p, ol";
 
     public OutputFormatter() {
@@ -47,7 +46,6 @@ public class OutputFormatter {
                             List<String> nodesToReplace) {
         this.minFirstParagraphText = minFirstParagraphText;
         this.minParagraphText = minParagraphText;
-        this.nodesToReplace = nodesToReplace;
     }
 
     /**
