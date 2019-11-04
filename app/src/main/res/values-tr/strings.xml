@@ -20,8 +20,8 @@
     <string name="fullscreen">Tam ekran modu</string>
     <string name="java">JavaScript\'i etkinleştir</string>
     <string name="download">İndirme konumu</string>
-    <string name="settings_advanced">Gelişmiş Ayarlar</string>
-    <string name="settings_advanced_explain">URL kutusu içeriği, oluşturma modu, metin kodlaması…</string>
+    <string name="settings_advanced">Gelişmiş ayarlar</string>
+    <string name="settings_advanced_explain">URL kutusu içeriği, oluşturma modu, metin kodlaması&#8230;</string>
     <string name="apache">Apache Lisansı 2.0</string>
     <string name="version">Uygulama sürümü</string>
     <string name="cache">Çıkışta önbelleği temizle</string>
@@ -30,13 +30,13 @@
     <string name="window">Sitelerin yeni pencereler açmasına izin ver</string>
     <string name="cookies">Çerezleri etkinleştir</string>
     <string name="importbookmarks">Yer imlerini tarayıcıdan içe aktar</string>
-    <string name="size">Yazı Boyutu</string>
+    <string name="size">Yazı boyutu</string>
     <string name="recommended">Önerilen</string>
     <string name="search">Arama motoru</string>
     <string name="search_hint">Ara</string>
-    <string name="wideViewPort">Geniş görünüm alanı kullanın</string>
+    <string name="wideViewPort">Geniş görünüm alanı kullan</string>
     <string name="overViewMode">Sayfaları genel bakış modunda yükle</string>
-    <string name="restore">Başlangıçta kaybolan sekmeleri geri yükle</string>
+    <string name="restore">Başlangıçta sekmeleri geri yükle</string>
     <string name="supported_browsers_title">Desteklenen tarayıcılar</string>
     <string name="stock_browser">Stok tarayıcı</string>
     <string name="stock_browser_unavailable">Stok tarayıcı bulunamadı</string>
@@ -49,7 +49,7 @@
     <string name="action_open">Aç</string>
     <string name="dialog_link">Bu bağlantı ile ne yapmak istersiniz?</string>
     <string name="dialog_title_share">Bu sayfayı paylaş</string>
-    <string name="dialog_history_long_press">Bu geçmiş ile ne yapmak istersiniz?</string>
+    <string name="dialog_history_long_press">Bu geçmiş öğesiyle ne yapmak istersiniz?</string>
     <string name="dialog_bookmark">Bu yer imi ile ne yapmak istersiniz?</string>
     <string name="action_delete">Sil</string>
     <string name="action_blank">Boş sayfa</string>
@@ -65,7 +65,7 @@
     <string name="title_warning">Uyarı</string>
     <string name="dialog_adobe_not_installed">Adobe Flash Player yüklü değil. \nLütfen Flash Player\'ı yükleyin.</string>
     <string name="title_user_agent">Kullanıcı aracısı</string>
-    <string name="title_download_location">İndirme yeri</string>
+    <string name="title_download_location">İndirme konumu</string>
     <string name="title_custom_homepage">Özel ana sayfa</string>
     <string name="action_webpage">İnternet sayfası</string>
     <string name="title_clear_history">Geçmişi temizle</string>
@@ -74,7 +74,7 @@
     <string name="dialog_cookies">Tarayıcı çerezlerinizi silmek ister misiniz?</string>
     <string name="action_yes">Evet</string>
     <string name="action_no">Hayır</string>
-    <string name="title_text_size">Yazı Boyutu</string>
+    <string name="title_text_size">Yazı boyutu</string>
     <string name="size_largest">En büyük</string>
     <string name="size_large">Büyük</string>
     <string name="size_normal">Normal</string>
@@ -90,7 +90,7 @@
     <string name="action_homepage">Varsayılan</string>
     <string name="action_back">Geri</string>
     <string name="action_find">Sayfada bul</string>
-    <string name="download_pending">İndirme işlemi başlatılıyor \u2026</string>
+    <string name="download_pending">İndirme işlemi başlatılıyor\u2026</string>
     <string name="cannot_download">Yalnızca HTTP veya HTTPS URL\'lerini indirebilir.</string>
     <string name="problem_download">Geçersiz URL ile karşılaşıldı, indirilemiyor</string>
     <string name="problem_location_download">Belirtilen konuma indirilemiyor</string>
@@ -99,10 +99,10 @@
     <string name="download_sdcard_busy_dlg_title">USB depolama kullanılamıyor</string>
     <string name="download_sdcard_busy_dlg_msg">Depolama alanı meşgul. İndirmeye izin vermek için bildirimdeki \'USB Depolama Birimini Kapat \' seçeneğine dokunun.</string>
     <string name="incognito_cookies">Çerezleri gizli modda etkinleştir</string>
-    <string name="title_flash">Adobe Flash programı</string>
+    <string name="title_flash">Adobe Flash</string>
     <string name="action_manual">Manuel</string>
     <string name="action_auto">Otomatik</string>
-    <string name="action_follow_me">Bana ulaşın</string>
+    <string name="action_follow_me">Daha fazla bilgi</string>
     <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Önbelleği temizle</string>
     <string name="message_cache_cleared">Önbellek temizlendi</string>
@@ -111,7 +111,7 @@
     <string name="message_cookies_cleared">Çerezler temizlendi</string>
     <string name="max_tabs">En fazla sekmeye ulaşıldı</string>
     <string name="message_text_copied">Metin panoya kopyalandı</string>
-    <string name="message_link_copied">Bağlantı kopyalandı</string>
+    <string name="message_link_copied">Bağlantı panoya kopyalandı</string>
     <string name="message_blocked_local">Yerel dosyanın yüklenmesi engellendi</string>
     <string name="licenses">Açık Kaynak Lisansları</string>
     <string name="suggestion">Ara</string>
@@ -122,14 +122,13 @@
     <string name="message_certificate_domain_mismatch">Sertifikadaki etki alanı site etki alanıyla eşleşmiyor</string>
     <string name="message_certificate_invalid">Sertifika geçersiz</string>
     <string name="message_certificate_not_yet_valid">Sertifika henüz geçerli değil</string>
-    <string name="message_certificate_untrusted">Sertifikaya güvenilmiyor</string>
+    <string name="message_certificate_untrusted">Sertifika güvenilir değil</string>
     <string name="title_form_resubmission">Formun yeniden gönderimi</string>
     <string name="message_form_resubmission">Gönderilen verileri tekrar göndermek ister misiniz?</string>
-    <string name="message_location">\n Konumunuzu kullanmak ister misiniz</string>
+    <string name="message_location">\nKonumunuzu kullanmak ister misiniz</string>
     <string name="action_allow">İzin ver</string>
     <string name="action_dont_allow">İzin verme</string>
     <string name="title_sign_in">Oturum aç</string>
-    <string name="label_realm">Sunucu mesajı: %s</string>
     <string name="hint_username">Kullanıcı adı</string>
     <string name="hint_password">Parola</string>
     <string name="search_suggestions">Arama önerileri</string>
@@ -139,8 +138,6 @@
     <string name="powered_by_naver">Naver</string>
 
     <string name="search_engine_naver">Naver</string>
-
-
     <string name="shortcut_message_failed_to_add">Üzgünüz, başlatıcınız kısayolları desteklemiyor.</string>
 
     
@@ -171,11 +168,11 @@
         <item>Özel</item>
     </string-array>
     <string name="manual_proxy">Manuel vekil</string>
-    <string name="host">Host:</string>
-    <string name="port">Liman:</string>
+    <string name="host">Sunucu:</string>
+    <string name="port">Bağlantı noktası:</string>
     <string name="use_tor_prompt">Orbot kurulu gibi görünüyor. Tor kullanmak ister misin?</string>
     <string name="use_i2p_prompt">I2P kurulu gibi görünüyor. I2P kullanmak ister misiniz?</string>
-    <string name="install_orbot">Tor.spac ile proxy yapmak için Orbot\'u kurun</string>
+    <string name="install_orbot">Tor ile proxy yapmak için Orbot\'u kurun</string>
     <string name="i2p_not_running">I2P çalışmıyor.</string>
     <string name="i2p_tunnels_not_ready">I2P tünelleri henüz hazır değil.</string>
     <string name="yes">Evet</string>
@@ -185,10 +182,10 @@
     <string name="folder_default">Varsayılan</string>
     <string name="folder_custom">Özel</string>
     <string name="untitled">Başlıksız</string>
-    <string name="mpl_license">Mozilla Public License 2.0</string>
-    <string name="freeware">SORULAR</string>
+    <string name="mpl_license">Mozilla Kamu Lisansı 2.0</string>
+    <string name="freeware">Ücretsiz</string>
     <string name="android_open_source_project">Android Açık Kaynak Projesi</string>
-    <string name="hphosts_ad_server_list">hpHosts Reklam Sunucusu Listesi</string>
+    <string name="hphosts_ad_server_list">Steven Black\'nin Reklam Sunucuları Listesi</string>
     <string name="deleted_tab">Eski sekme yeniden açıldı</string>
     <string name="rendering_mode">Oluşturma modu</string>
     <string name="name_inverted">Ters</string>
@@ -201,28 +198,28 @@
     <string name="library_netcipher">NetCipher</string>
     <string name="license_gnu">GNU Küçük Genel Kamu Lisansı</string>
     <string name="export_bookmarks">Yer imlerini yedekle</string>
-    <string name="import_backup">Yer imlerini içe aktar</string>
+    <string name="import_backup">Yer imlerini yedekten içe aktar</string>
     <string name="bookmark_export_path">Dışa aktarılan yer imleri</string>
     <string name="bookmark_export_failure">Maalesef yer imleri dışa aktarılamadı!</string>
-    <string name="bookmark_settings">Yer imi ayarları</string>
-    <string name="settings_bookmark_explain">İçe/dışa aktar…</string>
+    <string name="bookmark_settings">Yer imi Ayarları</string>
+    <string name="settings_bookmark_explain">İçe ve dışa aktarma&#8230;</string>
     <string name="import_bookmark_error">Yer imleri dosyadan içe aktarılamadı</string>
     <string name="title_chooser">Bir dosya seçin</string>
     <string name="settings_general">Genel Ayarlar</string>
-    <string name="settings_general_explain">Reklam engelleyici, arama motoru, ana sayfa…</string>
-    <string name="settings_display">Görüntü ayarları</string>
-    <string name="settings_display_explain">Tam ekran modu, metin boyutu, temalar…</string>
+    <string name="settings_general_explain">Reklam engelleyici, arama motoru, ana sayfa&#8230;</string>
+    <string name="settings_display">Ekran Ayarları</string>
+    <string name="settings_display_explain">Tam ekran modu, metin boyutu, temalar&#8230;</string>
     <string name="settings_privacy">Gizlilik ve Güvenlik Ayarları</string>
-    <string name="settings_privacy_explain">Önbellek, çerezler, tarihçe…</string>
+    <string name="settings_privacy_explain">Önbellek, çerezler, geçmiş&#8230;</string>
     <string name="settings_about">Hakkında</string>
-    <string name="settings_about_explain">Sürüm numarası, yazar ve lisans…</string>
+    <string name="settings_about_explain">Sürüm numarası, yazar ve lisanslar&#8230;</string>
     <string name="close_tab">Geçerli sekmeyi kapat</string>
     <string name="close_all_tabs">Tüm sekmeleri kapat</string>
     <string name="close_other_tabs">Diğer sekmeleri kapat</string>
-    <string name="third_party">3. parti çerezlerini engelle</string>
+    <string name="third_party">3. taraf çerezlerini engelle</string>
     <string name="color_mode">Renk modunu etkinleştir</string>
     <string name="reading_mode">Okuyucu modu</string>
-    <string name="loading">Yükleniyor…</string>
+    <string name="loading">Yükleniyor&#8230;</string>
     <string name="loading_failed">Sayfadan hiçbir şey yüklenemedi.</string>
     <string name="snacktory">Snacktory</string>
     <string name="jsoup">jsoup: Java HTML Ayrıştırıcı</string>
@@ -246,30 +243,31 @@
     <string name="green_theme">Yeşil tema</string>
     <string name="folder">Klasör ismi</string>
     <string name="action_folder">Klasör</string>
-    <string name="action_rename">Adını değiştir</string>
-    <string name="title_rename_folder">Dosyayı yeniden adlandır</string>
+    <string name="action_rename">Yeniden adlandır</string>
+    <string name="title_rename_folder">Klasörü yeniden adlandır</string>
     <string name="dialog_folder">Bu klasörle ne yapmak istersiniz?</string>
     <string name="clear_web_storage">Web depolama alanını temizle</string>
     <string name="clear_web_storage_exit">Çıkışta web depolama alanını temizle</string>
-    <string name="message_web_storage_cleared">Web depolama temizlendi</string>
-    <string name="hosts_source">Dosya reklam engelleme kaynağını barındırır</string>
+    <string name="message_web_storage_cleared">Web depolama alanı temizlendi</string>
+    <string name="hosts_source">Reklam engelleme kaynağı sunucular dosyası</string>
     <string name="settings_adblock">İçerik engelleme ayarları</string>
-    <string name="adblock_summary">Reklam engelleyici, çerez iletişim engelleyici...</string>
+    <string name="adblock_summary">Reklam engelleyici, çerez iletişim penceresi engelleyici...</string>
     <string name="adblock_category">Reklam engelleyici</string>
-    <string name="cookie_category">Çerez iletişim engelleyici</string>
+    <string name="cookie_category">Çerez iletişim penceresi engelleyici (beta)</string>
     <string name="tabs_in_drawer">Gezinme çekmecesinde sekmeleri göster</string>
-    <string name="swap_bookmarks_and_tabs">Yer imi ve sekme çekmecelerini değiştir</string>
-    <string name="do_not_track">\'İzlemeyin \' İsteği</string>
+    <string name="swap_bookmarks_and_tabs">Yer imi ve sekme çekmecelerini takas et</string>
+    <string name="do_not_track">\'İzlemeyin\' İsteği</string>
     <string name="remove_identifying_headers">Tanımlayıcı HTTP başlıklarını kaldır</string>
     <string name="action_add_to_homescreen">Ana ekrana ekle</string>
     <string name="message_added_to_homescreen">Ana ekrana kısayol eklendi</string>
     <string name="action_delete_all_bookmarks">Tüm yer imlerini sil</string>
     <string name="flash_not_supported">Cihazınız Flash Player\'ı desteklemiyor</string>
     <string name="message_open_download_fail">Bu dosya artık mevcut değil</string>
-    <string name="this_project">Bu proje</string>
+    <string name="this_project">Bu Proje</string>
 
     <string name="scw">SmartCookieWeb Kaynak Kodu</string>
     <string name="action_home">Anasayfa</string>
+    <string name="the_jumpgo_project" translatable="false">Smart Cookie Web</string>
     <string name="description">SmartCookieWeb hakkında bilgi edinin</string>
     <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
@@ -279,7 +277,7 @@
     <string name="block_source_default">Varsayılan ana bilgisayarlar</string>
     <string name="block_source_local">Yerel ana bilgisayar dosyası</string>
     <string name="block_source_local_description">Dosya: %1$s</string>
-    <string name="block_source_remote">Uzak ana dosya</string>
+    <string name="block_source_remote">Uzak ana bilgisayar dosyası</string>
     <string name="block_source_remote_description">URL: %1$s</string>
 
     <string-array name="block_ad_source_list">
@@ -302,8 +300,8 @@
 
     
     <plurals name="notification_incognito_running_title">
-        <item quantity="one">%1$d incognito tab open</item>
-        <item quantity="other">%1$d incognito tabs open</item>
+        <item quantity="one">%1$d gizli sekme açık</item>
+        <item quantity="other">%1$d gizli sekme açık</item>
     </plurals>
     <string name="notification_incognito_running_message">Açmak için dokunun</string>
     <string name="notification_incognito_running_description">Devam eden gizli bildirim</string>
@@ -315,15 +313,15 @@
 
     
     <string name="title_permission_request">İzin isteği</string>
-    <string name="message_permission_request">%1$s \n \n kullanmak istiyor: \n \n %2$s</string>
+    <string name="message_permission_request">%1$s kullanmak istiyor: %2$s</string>
 
     
     <string name="block_ad_source">Ana bilgisayar dosya kaynağı</string>
-    <string name="block_ad_remote_refresh_frequency_description">Uzak ana dosyalar için</string>
+    <string name="block_ad_remote_refresh_frequency_description">Uzak ana bilgisayar dosyaları için</string>
     <string name="block_ad_refresh_now">Ana bilgisayarları şimdi yenile</string>
 
     <string name="webrtc_support">WebRTC Desteği</string>
-    <string name="save_data">\'Veri kaydetmeyi \' iste</string>
+    <string name="save_data">\'Veri kaydetme\' isteği</string>
 
     
     <string name="debug_title">Hata Ayıklama Ayarları</string>
@@ -338,11 +336,11 @@
     <string name="dialog_edit_bookmark">Yer imini düzenle</string>
     <string name="dialog_remove_from_history">Geçmişten kaldır</string>
     <string name="dialog_download_image">Resmi indir</string>
-    <string name="dialog_copy_link">Bağlantıyı kopyala</string>
-    <string name="dialog_rename_folder">Dosyayı yeniden adlandır</string>
+    <string name="dialog_copy_link">Sayfa bağlantısını kopyala</string>
+    <string name="dialog_rename_folder">Klasörü yeniden adlandır</string>
     <string name="dialog_remove_folder">Klasörü kaldır</string>
     <string name="dialog_title_close_browser">Tarayıcıyı kapat</string>
-    <string name="dialog_delete_download">İndirmeyi sil</string>
+    <string name="dialog_delete_download">İndirileni sil</string>
     <string name="dialog_delete_all_downloads">Tüm indirilenleri sil</string>
 
     
@@ -352,7 +350,7 @@
     <string name="search_engine_bing">Bing</string>
     <string name="search_engine_yahoo">Yahoo</string>
     <string name="search_engine_startpage" translatable="false">StartPage</string>
-    <string name="search_engine_startpage_mobile">StartPage Mobile</string>
+    <string name="search_engine_startpage_mobile">StartPage Mobil</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
     <string name="search_engine_baidu">Baidu</string>
@@ -362,7 +360,7 @@
     <string name="privacy_info">SmartCookieWeb gizlilik politikasını okuyun</string>
     <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Kötü amaçlı siteleri engelle</string>
-    <string name="block_sites">Özel site engelle (beta)</string>
+    <string name="block_sites">Özel site engelleme (beta)</string>
     <string name="block_sites_title">Özel Site Engelleme (virgül içeren ayrı siteler)</string>
     <string name="none">Yok</string>
     <string name="block_info">URL’lerde engellenecek kelimeleri girin (virgülle ayrılmış).</string>
@@ -395,17 +393,18 @@
     <string name="only_allow_sites">Yalnızca Listelenen Sitelere İzin Ver</string>
     <string name="parental_controls">Ebeveyn Denetimi Ayarları</string>
     <string name="settings_parents">Siteleri engelle, şifreyi ayarla ...</string>
-    <string name="new_tab_foreground">" Learn to pronounce  Sekmeleri ön plana getir"</string>
-    <string name="site_not_secure">Bu site HTTPS kullanmıyor</string>
+    <string name="label_realm">Sunucu mesajı: %s</string>
+    <string name="new_tab_foreground">Sekmeleri ön plana getir</string>
+    <string name="new_tab_foreground_summary">Bir sekme kapatıldığında/açıldığında sekme çekmecesini kapat</string>
+    <string name="site_not_secure">Bu siteye bağlantı güvenli değil.</string>
     <string name="language_not_supported">Dil Desteklenmiyor</string>
-    <string name="language_not_supported_text">Maalesef, uzantı deposu henüz sizin dilinizde mevcut değil. Yine de İngilizce\'ye devam etmek için aşağıdaki düğmeyi kullanın.</string>
+    <string name="language_not_supported_text">Maalesef, eklenti deposu henüz sizin dilinizde mevcut değil. Yine de İngilizce\'ye devam etmek için aşağıdaki düğmeyi kullanın.</string>
     <string name="extensions">Eklentiler</string>
-    <string name="extensions_description">Eklentileri indir...</string>
-    <string name="extensions_store">Eklenti deposu</string>
-    <string name="uninstall_extension">Eklentiyi kaldır</string>
+    <string name="extensions_description">Eklenti indir...</string>
+    <string name="extensions_store">Eklenti mağazası</string>
     <string name="extensions_list">Eklenti listesi</string>
+    <string name="uninstall_extension">Eklentiyi kaldır</string>
 
-
-    <!-- Generated by Automatic String Resource Translation
-    --><!--          https://asrt.gluege.boerde.de
---></resources>
+    
+   <!-- finish pages -->
+</resources>
