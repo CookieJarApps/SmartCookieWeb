@@ -110,8 +110,8 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
         pref2.setOnPreferenceClickListener {
             val builder = AlertDialog.Builder(activity)
             val edittext = EditText(activity)
-            builder.setMessage("Enter the name of the extension you want to uninstall")
-            builder.setTitle("Uninstall extensions")
+            builder.setMessage(resources.getString(R.string.uninstall_more))
+            builder.setTitle(resources.getString(R.string.uninstall_extension))
 
             builder.setView(edittext)
 
