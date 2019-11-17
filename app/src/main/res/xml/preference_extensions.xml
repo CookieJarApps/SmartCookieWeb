@@ -12,7 +12,7 @@
             android:title="@string/extensions_store">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://extensions.cookiejarapps.com">
+                android:data="https://cookiejarapps.com/extensions/">
                 <extra
                     android:name="SOURCE"
                     android:value="SELF" />
