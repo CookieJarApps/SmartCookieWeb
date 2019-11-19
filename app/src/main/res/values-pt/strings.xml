@@ -402,6 +402,8 @@
     <string name="extensions">Extensões</string>
     <string name="extensions_description">Descarregar extensões&#8230;</string>
     <string name="extensions_store">Loja de extensões</string>
-
+    <string name="extensions_list">Lista de extensões</string>
+    <string name="uninstall_extension">Desinstalar extensões</string>
+    <string name="uninstall_more">Digite o nome da extensão que deseja desinstalar</string>
     <!-- finish pages -->
 </resources>
