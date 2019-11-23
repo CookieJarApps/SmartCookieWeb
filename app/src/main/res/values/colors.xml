@@ -46,7 +46,8 @@
     <color name="bookmark_default_red">#EF5350</color>
     <color name="bookmark_default_orange">#FF9800</color>
 
-    <color name="ssl_secured">#4CAF50</color>
-    <color name="ssl_unsecured">#F44336</color>
-
+    <!--<color name="ssl_secured">#4CAF50</color>
+    <color name="ssl_unsecured">#F44336</color>-->
+    <color name="ssl_secured">#5cb85c</color>
+    <color name="ssl_unsecured">#d9534f</color>
 </resources>

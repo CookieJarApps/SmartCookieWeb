@@ -168,7 +168,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     implementation 'androidx.core:core-ktx:1.2.0-rc01'
 
-    implementation 'agency.tango.android:material-intro-screen:0.0.5'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
 }
 
 kapt {
