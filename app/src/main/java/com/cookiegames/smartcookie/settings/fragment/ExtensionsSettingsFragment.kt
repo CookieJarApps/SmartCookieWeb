@@ -142,6 +142,17 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
                     false
                 }
             }
+            builder.setNeutralButton("Delete All"){dialogInterface, which ->
+                val path = activity.getFilesDir()
+                val letDirectory = File(path, "extensions")
+                letDirectory.mkdirs()
+                val file = File(letDirectory, "extension_file.txt")
+                if(!file.exists()){
+                    file.appendText("/* begin extensions file */")
+                }
+                PrintWriter(file).close()
+                Toast.makeText(activity, "Uninstalled all extensions", Toast.LENGTH_LONG).show()
+            }
             builder.setNegativeButton(resources.getString(R.string.action_cancel)){dialogInterface , which ->
 
             }
