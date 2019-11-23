@@ -116,7 +116,7 @@ dependencies {
     implementation "androidx.vectordrawable:vectordrawable-animated:1.1.0"
     implementation "androidx.appcompat:appcompat:1.1.0"
     implementation "com.google.android.material:material:1.0.0"
-    implementation "androidx.recyclerview:recyclerview:1.0.0"
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation "androidx.core:core:1.1.0"
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"
     implementation "androidx.fragment:fragment:1.1.0"
@@ -166,7 +166,9 @@ dependencies {
     implementation 'com.anthonycr.progress:animated-progress:1.0'
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
-    implementation 'androidx.core:core-ktx:1.2.0-alpha04'
+    implementation 'androidx.core:core-ktx:1.2.0-rc01'
+
+    implementation 'agency.tango.android:material-intro-screen:0.0.5'
 }
 
 kapt {
