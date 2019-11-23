@@ -100,7 +100,7 @@ import kotlin.system.exitProcess
 
 abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIController, OnClickListener {
 
-    // Toolbar Views
+    // Toolbar ViewscreateSslDrawableForState
     private var searchBackground: View? = null
     private var searchView: SearchView? = null
     private var homeImageView: ImageView? = null
