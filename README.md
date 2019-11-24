@@ -46,7 +46,7 @@ Contributions are greatly appreciated. Here are some people who have recently co
 # How is Smart Cookie different to Lightning?
 SmartCookieWeb is a fork of Lightning Browser (https://github.com/anthonycr/lightning-browser). Here are some of the changes I've made since I started:
 - New, more modern UI
-- Error pages
+- Error pages with themes
 - Custom site block 
 - HTTPS everywhere
 - Block insecure sites
