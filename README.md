@@ -1,7 +1,7 @@
 # SmartCookieWeb
 ![Rating](https://img.shields.io/static/v1.svg?label=Rating&message=4/5&color=green)
 ![License](https://img.shields.io/static/v1.svg?label=License&message=MPLv2.0&color=brightgreen)
-![Downloads](https://img.shields.io/static/v1.svg?label=Downloads&message=17,500&color=brightgreen) 
+![Downloads](https://img.shields.io/static/v1.svg?label=Downloads&message=20,000&color=brightgreen) 
 [![Build Status](https://travis-ci.org/CookieGamesOfficial/SmartCookieWeb.svg?branch=master)](https://travis-ci.org/CookieGamesOfficial/SmartCookieWeb) 
 [![GitHub stars](https://img.shields.io/github/stars/CookieGamesOfficial/SmartCookieWeb.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/CookieGamesOfficial/SmartCookieWeb)
 
@@ -59,3 +59,6 @@ SmartCookieWeb is a fork of Lightning Browser (https://github.com/anthonycr/ligh
 - Bug fixes
 - Inject Javascript
 - Extensions
+
+# Extensions
+SmartCookieWeb supports extensions. The extension store is available here: (https://extensions.cookiejarapps.com) and the source code for the store is available here: (https://github.com/CookieGamesOfficial/SmartCookieWebExtensions).
