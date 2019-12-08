@@ -1,7 +1,7 @@
 # SmartCookieWeb
 ![Rating](https://img.shields.io/static/v1.svg?label=Rating&message=4/5&color=green)
 ![License](https://img.shields.io/static/v1.svg?label=License&message=MPLv2.0&color=brightgreen)
-![Downloads](https://img.shields.io/static/v1.svg?label=Downloads&message=17,500&color=brightgreen) 
+![Downloads](https://img.shields.io/static/v1.svg?label=Downloads&message=20,000&color=brightgreen) 
 [![Build Status](https://travis-ci.org/CookieGamesOfficial/SmartCookieWeb.svg?branch=master)](https://travis-ci.org/CookieGamesOfficial/SmartCookieWeb) 
 [![GitHub stars](https://img.shields.io/github/stars/CookieGamesOfficial/SmartCookieWeb.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/CookieGamesOfficial/SmartCookieWeb)
 
@@ -29,18 +29,11 @@ A secure, open source web browser for Android.
 
 * Proxy support
 
-# 2019 Feature Checklist
-
-- [x] Proxy Support
-- [x] Malware Blocking
-- [x] Improved Ad Blocker
-- [x] Custom Error Page
-- [x] HTTPS Everywhere
-- [x] New UI
-- [x] Parental Controls
-- [x] Inspect element
-- [x] Extensions
-- [ ] Custom Themes
+# 2020 Feature Checklist
+- [ ] Custom themes
+- [ ] Convert user scripts to extensions
+- [ ] Change from WebView to GeckoView
+- [ ] Web dark theme
 
 # License
 SmartCookieWeb uses the Mozilla Public License 2.0
@@ -53,7 +46,7 @@ Contributions are greatly appreciated. Here are some people who have recently co
 # How is Smart Cookie different to Lightning?
 SmartCookieWeb is a fork of Lightning Browser (https://github.com/anthonycr/lightning-browser). Here are some of the changes I've made since I started:
 - New, more modern UI
-- Error pages
+- Error pages with themes
 - Custom site block 
 - HTTPS everywhere
 - Block insecure sites
@@ -66,3 +59,6 @@ SmartCookieWeb is a fork of Lightning Browser (https://github.com/anthonycr/ligh
 - Bug fixes
 - Inject Javascript
 - Extensions
+
+# Extensions
+SmartCookieWeb supports extensions. The extension store is available here: (https://extensions.cookiejarapps.com) and the source code for the store is available here: (https://github.com/CookieGamesOfficial/SmartCookieWebExtensions).
