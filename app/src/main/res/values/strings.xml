@@ -201,15 +201,15 @@
     <string name="import_backup">Import bookmarks from backup</string>
     <string name="bookmark_export_path">Bookmarks exported to</string>
     <string name="bookmark_export_failure">Sorry, bookmarks could not be exported!</string>
-    <string name="bookmark_settings">Bookmark Settings</string>
+    <string name="bookmark_settings">Bookmark settings</string>
     <string name="settings_bookmark_explain">Exporting and importing&#8230;</string>
     <string name="import_bookmark_error">Could not import bookmarks from file</string>
     <string name="title_chooser">Choose a file</string>
-    <string name="settings_general">General Settings</string>
+    <string name="settings_general">General settings</string>
     <string name="settings_general_explain">Ad blocker, search engine, homepage&#8230;</string>
-    <string name="settings_display">Display Settings</string>
+    <string name="settings_display">Display settings</string>
     <string name="settings_display_explain">Full screen mode, text size, themes&#8230;</string>
-    <string name="settings_privacy">Privacy and Security Settings</string>
+    <string name="settings_privacy">Privacy and security settings</string>
     <string name="settings_privacy_explain">Cache, cookies, history&#8230;</string>
     <string name="settings_about">About</string>
     <string name="settings_about_explain">Version number, author and licenses&#8230;</string>
@@ -272,7 +272,7 @@
     <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">FAQ</string>
-    <string name="faq_description">Frequently asked questions</string>
+    <string name="faq_description">Frequently asked questions...</string>
 
     <string name="block_source_default">Default hosts</string>
     <string name="block_source_local">Local hosts file</string>
@@ -391,7 +391,7 @@
     <string name="wrong_password">Password Incorrect</string>
     <string name="block_all_sites">Block All Listed Sites</string>
     <string name="only_allow_sites">Only Allow Listed Sites</string>
-    <string name="parental_controls">Parental Controls Settings</string>
+    <string name="parental_controls">Parental controls settings</string>
     <string name="settings_parents">Block sites, set password...</string>
     <string name="label_realm">Server message: %s</string>
     <string name="new_tab_foreground">Bring tabs to foreground</string>

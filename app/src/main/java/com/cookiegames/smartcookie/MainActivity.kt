@@ -8,6 +8,13 @@ import android.view.Menu
 import android.webkit.CookieManager
 import android.webkit.CookieSyncManager
 import io.reactivex.Completable
+import android.R.menu
+import androidx.appcompat.view.menu.MenuBuilder
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.graphics.drawable.DrawableCompat
+
 
 class MainActivity : BrowserActivity() {
 
@@ -22,6 +29,9 @@ class MainActivity : BrowserActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
+        if (menu is MenuBuilder) {
+            menu.setOptionalIconsVisible(true)
+        }
         return super.onCreateOptionsMenu(menu)
     }
 

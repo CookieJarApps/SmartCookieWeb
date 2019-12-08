@@ -18,39 +18,51 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:icon="@drawable/ic_round_add"
         android:id="@+id/action_new_tab"
         android:title="@string/action_new_tab"/>
     <item
+        android:icon="@drawable/ic_notification_incognito"
         android:id="@+id/action_incognito"
         android:title="@string/action_incognito"/>
     <item
+        android:icon="@drawable/ic_share_black_24dp"
         android:id="@+id/action_share"
         android:title="@string/action_share"/>
     <item
+        android:icon="@drawable/ic_history"
         android:id="@+id/action_history"
         android:title="@string/action_history"/>
     <item
+        android:icon="@drawable/ic_file_download_black_24dp"
         android:id="@+id/action_downloads"
         android:title="@string/action_downloads"/>
     <item
+        android:icon="@drawable/ic_search"
         android:id="@+id/action_find"
         android:title="@string/action_find"/>
     <item
+        android:icon="@drawable/ic_content_copy_black_24dp"
         android:id="@+id/action_copy"
         android:title="@string/action_copy"/>
     <item
+        android:icon="@drawable/ic_round_smartphone"
         android:id="@+id/action_add_to_homescreen"
         android:title="@string/action_add_to_homescreen"/>
     <item
+        android:icon="@drawable/state_ic_bookmark"
         android:id="@+id/action_bookmarks"
         android:title="@string/action_bookmarks"/>
     <item
+        android:icon="@drawable/ic_bookmark"
         android:id="@+id/action_add_bookmark"
         android:title="@string/action_add_bookmark"/>
     <item
+        android:icon="@drawable/ic_action_reading"
         android:id="@+id/action_reading_mode"
         android:title="@string/reading_mode"/>
     <item
+        android:icon="@drawable/ic_round_settings"
         android:id="@+id/action_settings"
         android:title="@string/settings"/>
 

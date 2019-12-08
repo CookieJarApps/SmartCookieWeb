@@ -26,7 +26,7 @@ class AboutSettingsFragment : AbstractSettingsFragment() {
         pref.setOnPreferenceClickListener {
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Smart Cookie Secure Web Browser Version " + BuildConfig.VERSION_NAME)
-            builder.setMessage("What's new:\n- Fixed a bug with icon colours")
+            builder.setMessage("What's new:\n- Added Icons to Menu\n- Fixed bugs")
 
 
             builder.setPositiveButton(resources.getString(R.string.action_ok)){dialogInterface , which ->
