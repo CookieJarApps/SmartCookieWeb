@@ -6,8 +6,8 @@
         android:icon="@drawable/ic_action_plus"
         android:title="@string/action_new_tab"/>
     <item
-        android:id="@+id/action_share"
         android:icon="@drawable/ic_share_black_24dp"
+        android:id="@+id/action_share"
         android:title="@string/action_share"/>
     <item
         android:id="@+id/action_find"

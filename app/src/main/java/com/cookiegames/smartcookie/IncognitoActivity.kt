@@ -9,6 +9,12 @@ import android.view.Menu
 import android.webkit.CookieManager
 import android.webkit.CookieSyncManager
 import io.reactivex.Completable
+import android.R.menu
+import androidx.appcompat.view.menu.MenuBuilder
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+
+
 
 class IncognitoActivity : BrowserActivity() {
 
@@ -25,6 +31,10 @@ class IncognitoActivity : BrowserActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.incognito, menu)
+        if (menu is MenuBuilder) {
+
+            menu.setOptionalIconsVisible(true)
+        }
         return super.onCreateOptionsMenu(menu)
     }
 
