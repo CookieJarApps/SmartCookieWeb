@@ -140,27 +140,52 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     private var findResult: FindResults? = null
 
     // The singleton BookmarkManager
-    @Inject lateinit var bookmarkManager: BookmarkRepository
-    @Inject lateinit var historyModel: HistoryRepository
-    @Inject lateinit var searchBoxModel: SearchBoxModel
-    @Inject lateinit var searchEngineProvider: SearchEngineProvider
-    @Inject lateinit var inputMethodManager: InputMethodManager
-    @Inject lateinit var clipboardManager: ClipboardManager
-    @Inject lateinit var notificationManager: NotificationManager
-    @Inject @field:DiskScheduler lateinit var diskScheduler: Scheduler
-    @Inject @field:DatabaseScheduler lateinit var databaseScheduler: Scheduler
-    @Inject @field:MainScheduler lateinit var mainScheduler: Scheduler
-    @Inject lateinit var tabsManager: TabsManager
-    @Inject lateinit var homePageFactory: HomePageFactory
-    @Inject lateinit var bookmarkPageFactory: BookmarkPageFactory
-    @Inject lateinit var historyPageFactory: HistoryPageFactory
-    @Inject lateinit var historyPageInitializer: HistoryPageInitializer
-    @Inject lateinit var downloadPageInitializer: DownloadPageInitializer
-    @Inject lateinit var homePageInitializer: HomePageInitializer
-    @Inject @field:MainHandler lateinit var mainHandler: Handler
-    @Inject lateinit var proxyUtils: ProxyUtils
-    @Inject lateinit var logger: Logger
-    @Inject lateinit var bookmarksDialogBuilder: LightningDialogBuilder
+    @Inject
+    lateinit var bookmarkManager: BookmarkRepository
+    @Inject
+    lateinit var historyModel: HistoryRepository
+    @Inject
+    lateinit var searchBoxModel: SearchBoxModel
+    @Inject
+    lateinit var searchEngineProvider: SearchEngineProvider
+    @Inject
+    lateinit var inputMethodManager: InputMethodManager
+    @Inject
+    lateinit var clipboardManager: ClipboardManager
+    @Inject
+    lateinit var notificationManager: NotificationManager
+    @Inject
+    @field:DiskScheduler
+    lateinit var diskScheduler: Scheduler
+    @Inject
+    @field:DatabaseScheduler
+    lateinit var databaseScheduler: Scheduler
+    @Inject
+    @field:MainScheduler
+    lateinit var mainScheduler: Scheduler
+    @Inject
+    lateinit var tabsManager: TabsManager
+    @Inject
+    lateinit var homePageFactory: HomePageFactory
+    @Inject
+    lateinit var bookmarkPageFactory: BookmarkPageFactory
+    @Inject
+    lateinit var historyPageFactory: HistoryPageFactory
+    @Inject
+    lateinit var historyPageInitializer: HistoryPageInitializer
+    @Inject
+    lateinit var downloadPageInitializer: DownloadPageInitializer
+    @Inject
+    lateinit var homePageInitializer: HomePageInitializer
+    @Inject
+    @field:MainHandler
+    lateinit var mainHandler: Handler
+    @Inject
+    lateinit var proxyUtils: ProxyUtils
+    @Inject
+    lateinit var logger: Logger
+    @Inject
+    lateinit var bookmarksDialogBuilder: LightningDialogBuilder
 
     // Image
     private var webPageBitmap: Bitmap? = null
@@ -221,15 +246,15 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         }
 
         presenter = BrowserPresenter(
-            this,
-            isIncognito(),
-            userPreferences,
-            tabsManager,
-            mainScheduler,
-            homePageFactory,
-            bookmarkPageFactory,
-            RecentTabModel(),
-            logger
+                this,
+                isIncognito(),
+                userPreferences,
+                tabsManager,
+                mainScheduler,
+                homePageFactory,
+                bookmarkPageFactory,
+                RecentTabModel(),
+                logger
         )
 
         initialize(savedInstanceState)
@@ -309,15 +334,14 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         // create the search EditText in the ToolBar
         searchView = customView.findViewById<SearchView>(R.id.search).apply {
             search_ssl_status.setOnClickListener {
-                if(tabsManager.currentTab?.sslCertificate == null){
+                if (tabsManager.currentTab?.sslCertificate == null) {
                     val builder = AlertDialog.Builder(context)
                     builder.setTitle(R.string.site_not_secure)
                     builder.setIcon(R.drawable.ic_alert)
                     builder.setPositiveButton(R.string.action_ok) { dialog, which ->
                     }
                     builder.show()
-                }
-                else{
+                } else {
                     tabsManager.currentTab?.let { tab ->
                         tab.sslCertificate?.let { showSslDialog(it, tab.currentSslState()) }
                     }
@@ -326,10 +350,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             }
             search_ssl_status.updateVisibilityForContent()
 
-            if(isDarkTheme) {
+            if (isDarkTheme) {
                 search_refresh.setImageResource(R.drawable.ic_action_refresh_light)
-            }
-            else{
+            } else {
                 search_refresh.setImageResource(R.drawable.ic_action_refresh)
             }
 
@@ -425,9 +448,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     private inner class SearchListenerClass : OnKeyListener,
-        OnEditorActionListener,
-        OnFocusChangeListener,
-        SearchView.PreFocusListener {
+            OnEditorActionListener,
+            OnFocusChangeListener,
+            SearchView.PreFocusListener {
 
         override fun onKey(view: View, keyCode: Int, keyEvent: KeyEvent): Boolean {
             when (keyCode) {
@@ -450,11 +473,11 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             // hide the keyboard and search the web when the enter key
             // button is pressed
             if (actionId == EditorInfo.IME_ACTION_GO
-                || actionId == EditorInfo.IME_ACTION_DONE
-                || actionId == EditorInfo.IME_ACTION_NEXT
-                || actionId == EditorInfo.IME_ACTION_SEND
-                || actionId == EditorInfo.IME_ACTION_SEARCH
-                || arg2?.action == KeyEvent.KEYCODE_ENTER) {
+                    || actionId == EditorInfo.IME_ACTION_DONE
+                    || actionId == EditorInfo.IME_ACTION_NEXT
+                    || actionId == EditorInfo.IME_ACTION_SEND
+                    || actionId == EditorInfo.IME_ACTION_SEARCH
+                    || arg2?.action == KeyEvent.KEYCODE_ENTER) {
                 searchView?.let {
                     inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
                     searchTheWeb(it.text.toString())
@@ -520,7 +543,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             } else {
                 drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, tabsDrawer)
             }
-
 
 
         }
@@ -613,8 +635,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     KeyEvent.KEYCODE_T -> {
                         // Open new tab
                         presenter?.newTab(
-                            homePageInitializer,
-                            true
+                                homePageInitializer,
+                                true
                         )
                         return true
                     }
@@ -705,8 +727,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             }
             R.id.action_add_to_homescreen -> {
                 if (currentView != null
-                    && currentView.url.isNotBlank()
-                    && !currentView.url.isSpecialUrl()) {
+                        && currentView.url.isNotBlank()
+                        && !currentView.url.isSpecialUrl()) {
                     HistoryEntry(currentView.url, currentView.title).also {
                         Utils.createShortcut(this, it, currentView.favicon ?: webPageBitmap!!)
                         logger.log(TAG, "Creating shortcut: ${it.title} ${it.url}")
@@ -760,6 +782,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 findInPage()
                 return true
             }
+            R.id.quit_app -> {
+                finishAffinity()
+                return true
+            }
             R.id.action_reading_mode -> {
                 if (currentUrl != null) {
                     ReadingActivity.launch(this, currentUrl)
@@ -769,6 +795,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             else -> return super.onOptionsItemSelected(item)
         }
     }
+
 
     // By using a manager, adds a bookmark and notifies third parties about that
     private fun addBookmark(title: String, url: String) {

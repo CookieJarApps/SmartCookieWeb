@@ -404,7 +404,7 @@
     <string name="extensions_store">Eklenti mağazası</string>
     <string name="extensions_list">Eklenti listesi</string>
     <string name="uninstall_extension">Eklentiyi kaldır</string>
-
+    <string name="show_extra">Ekstra menü seçeneklerini göster</string>
 
 
 </resources>
