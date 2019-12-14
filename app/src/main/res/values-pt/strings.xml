@@ -405,5 +405,6 @@
     <string name="extensions_list">Lista de extensões</string>
     <string name="uninstall_extension">Desinstalar extensões</string>
     <string name="uninstall_more">Digite o nome da extensão que deseja desinstalar</string>
+    <string name="show_extra">Mostrar opções extras de menu</string>
     <!-- finish pages -->
 </resources>

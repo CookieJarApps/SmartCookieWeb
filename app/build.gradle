@@ -22,7 +22,7 @@ android {
     defaultConfig {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
-        versionName "6.2.1"
+        versionName "6.2.2"
         vectorDrawables.useSupportLibrary = true
     }
 
@@ -68,7 +68,7 @@ android {
             dimension "capabilities"
             buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
             applicationId "com.cookiegames.smartcookie"
-            versionCode 60
+            versionCode 61
         }
     }
 

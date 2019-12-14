@@ -83,5 +83,9 @@
         android:icon="@drawable/ic_round_settings"
         android:id="@+id/action_settings"
         android:title="@string/settings"/>
+    <item
+        android:icon="@drawable/ic_action_delete"
+        android:id="@+id/quit_app"
+        android:title="@string/dialog_title_close_browser"/>
 
 </menu>

@@ -97,13 +97,13 @@ class BrowserApp : Application() {
                 WebView.setWebContentsDebuggingEnabled(true)
             }
         }
-
         registerActivityLifecycleCallbacks(object : MemoryLeakUtils.LifecycleAdapter() {
             override fun onActivityDestroyed(activity: Activity) {
                 logger.log(TAG, "Cleaning up after the Android framework")
                 MemoryLeakUtils.clearNextServedView(activity, this@BrowserApp)
             }
         })
+
     }
 
     /**

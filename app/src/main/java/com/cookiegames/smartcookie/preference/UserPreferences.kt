@@ -264,6 +264,9 @@ class UserPreferences @Inject constructor(
      */
     var useBlackStatusBar by preferences.booleanPreference(BLACK_STATUS_BAR, false)
 
+    var showExtraOptions by preferences.booleanPreference(EXTRA, false)
+
+
     /**
      * The index of the proxy choice.
      */
@@ -360,3 +363,4 @@ private const val BLOCK_MALWARE = "blockMalware"
 private const val COOKIE_BLOCK = "blockCookieDialogs"
 private const val START_THEME = "startPageTheme"
 private const val FOREGROUND = "tabsToForeground"
+private const val EXTRA = "showExtraOptions"

@@ -3,6 +3,7 @@
  */
 package com.cookiegames.smartcookie.settings.fragment
 
+import android.content.Context
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.di.injector
@@ -19,6 +20,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import javax.inject.Inject
 import android.content.Intent
+import androidx.core.app.ActivityCompat.invalidateOptionsMenu
+import com.cookiegames.smartcookie.BrowserApp
 import com.cookiegames.smartcookie.MainActivity
 
 
@@ -56,7 +59,13 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         checkBoxPreference(
             preference = SETTINGS_FULLSCREEN,
             isChecked = userPreferences.fullScreenEnabled,
-            onCheckChange = { userPreferences.fullScreenEnabled = it }
+            onCheckChange = {userPreferences.fullScreenEnabled = it }
+        )
+
+        checkBoxPreference(
+                preference = SETTINGS_EXTRA,
+                isChecked = userPreferences.showExtraOptions,
+                onCheckChange = { userPreferences.showExtraOptions = it}
         )
 
         checkBoxPreference(
@@ -195,6 +204,8 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_BLACK_STATUS = "black_status_bar"
         private const val SETTINGS_STARTPAGE = "startpage_theme"
         private const val SETTINGS_FOREGROUND = "new_tabs_foreground"
+        private const val SETTINGS_EXTRA = "show_extra"
+
 
         private const val XX_LARGE = 30.0f
         private const val X_LARGE = 26.0f

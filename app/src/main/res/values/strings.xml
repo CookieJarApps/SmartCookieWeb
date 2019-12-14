@@ -405,6 +405,7 @@
     <string name="extensions_list">Extensions list</string>
     <string name="uninstall_extension">Uninstall extension</string>
     <string name="uninstall_more">Enter the name of the extension you want to uninstall</string>
+    <string name="show_extra">Show extra menu options</string>
 
     <!-- finish pages -->
 </resources>

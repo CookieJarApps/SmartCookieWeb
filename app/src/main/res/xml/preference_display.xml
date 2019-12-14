@@ -44,6 +44,10 @@
             android:key="startpage_theme"
             android:title="@string/startpage"/>
         <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="show_extra"
+            android:title="@string/show_extra"/>
+        <CheckBoxPreference
             android:defaultValue="true"
             android:key="new_tabs_foreground"
             android:title="@string/new_tab_foreground"

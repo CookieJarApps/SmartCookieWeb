@@ -9,7 +9,10 @@ import android.webkit.CookieManager
 import android.webkit.CookieSyncManager
 import io.reactivex.Completable
 import android.R.menu
+import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.view.menu.MenuBuilder
+import androidx.core.app.ActivityCompat
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
@@ -32,6 +35,7 @@ class MainActivity : BrowserActivity() {
         if (menu is MenuBuilder) {
             menu.setOptionalIconsVisible(true)
         }
+        menu.findItem(R.id.quit_app).setVisible(userPreferences.showExtraOptions)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -47,6 +51,11 @@ class MainActivity : BrowserActivity() {
         super.onPause()
         saveOpenTabs()
     }
+
+   override fun onResume(){
+       super.onResume()
+       invalidateOptionsMenu()
+   }
 
     override fun updateHistory(title: String?, url: String) = addItemToHistory(title, url)
 
