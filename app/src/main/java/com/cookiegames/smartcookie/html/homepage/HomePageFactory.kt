@@ -8,6 +8,9 @@ import com.cookiegames.smartcookie.html.jsoup.*
 import com.cookiegames.smartcookie.search.SearchEngineProvider
 import android.app.Application
 import com.cookiegames.smartcookie.AppTheme
+import com.cookiegames.smartcookie.BrowserApp
+import com.cookiegames.smartcookie.MainActivity
+import com.cookiegames.smartcookie.browser.activity.BrowserActivity
 import com.cookiegames.smartcookie.preference.UserPreferences
 import dagger.Reusable
 import io.reactivex.Single
@@ -65,7 +68,6 @@ class HomePageFactory @Inject constructor(
                 else{
                     it.write(content)
                 }
-
             }
         }
         .map { (page, _) -> "$FILE$page" }

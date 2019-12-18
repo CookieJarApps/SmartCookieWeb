@@ -4,7 +4,8 @@
         android:fragment="com.cookiegames.smartcookie.settings.fragment.GeneralSettingsFragment"
         android:icon="@drawable/ic_round_settings"
         android:title="@string/settings_general"
-        android:summary="@string/settings_general_explain" />
+        android:summary="@string/settings_general_explain"
+        android:tint="#8e4f00"/>
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.BookmarkSettingsFragment"
         android:icon="@drawable/ic_round_star_settings"
@@ -14,7 +15,8 @@
         android:fragment="com.cookiegames.smartcookie.settings.fragment.DisplaySettingsFragment"
         android:icon="@drawable/ic_round_smartphone"
         android:title="@string/settings_display"
-        android:summary="@string/settings_display_explain" />
+        android:summary="@string/settings_display_explain"
+        android:tint="#8e4f00"/>
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.PrivacySettingsFragment"
         android:icon="@drawable/ic_round_lock"

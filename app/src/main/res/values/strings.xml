@@ -86,7 +86,7 @@
     <string name="hint_url">URL</string>
     <string name="title_edit_bookmark">Edit bookmark</string>
     <string name="action_edit">Edit</string>
-    <string name="action_incognito">New incognito tab</string>
+    <string name="action_incognito">New private tab</string>
     <string name="action_homepage">Default</string>
     <string name="action_back">Back</string>
     <string name="action_find">Find in page</string>
@@ -98,7 +98,7 @@
     <string name="download_no_sdcard_dlg_msg">USB storage is required to download the file.</string>
     <string name="download_sdcard_busy_dlg_title">USB storage unavailable</string>
     <string name="download_sdcard_busy_dlg_msg">The storage is busy. To allow downloads, touch \'Turn Off USB Storage\' in the notification.</string>
-    <string name="incognito_cookies">Enable cookies in incognito mode</string>
+    <string name="incognito_cookies">Enable cookies in private tabs</string>
     <string name="title_flash">Adobe Flash</string>
     <string name="action_manual">Manual</string>
     <string name="action_auto">Auto</string>
@@ -300,11 +300,11 @@
 
     <!-- Notifications -->
     <plurals name="notification_incognito_running_title">
-        <item quantity="one">%1$d incognito tab open</item>
-        <item quantity="other">%1$d incognito tabs open</item>
+        <item quantity="one">%1$d private tab open</item>
+        <item quantity="other">%1$d private tabs open</item>
     </plurals>
     <string name="notification_incognito_running_message">Touch to open</string>
-    <string name="notification_incognito_running_description">Ongoing incognito notification</string>
+    <string name="notification_incognito_running_description">Ongoing private tab notification</string>
 
     <!-- Common actions -->
     <string name="action_message_canceled">Action canceled.</string>
@@ -331,7 +331,7 @@
     <!-- Dialogs -->
     <string name="dialog_open_new_tab">Open in new tab</string>
     <string name="dialog_open_background_tab">Open in background tab</string>
-    <string name="dialog_open_incognito_tab">Open in incognito tab</string>
+    <string name="dialog_open_incognito_tab">Open in private tab</string>
     <string name="dialog_remove_bookmark">Remove bookmark</string>
     <string name="dialog_edit_bookmark">Edit bookmark</string>
     <string name="dialog_remove_from_history">Remove from history</string>
@@ -360,7 +360,7 @@
     <string name="privacy_info">Read the SmartCookieWeb privacy policy</string>
     <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Block malicious sites</string>
-    <string name="block_sites">Custom site block (beta)</string>
+    <string name="block_sites">Custom site block</string>
     <string name="block_sites_title">Custom Site Block (separate sites with a comma)</string>
     <string name="none">None</string>
     <string name="block_info">Enter words to block in URLs (separated with a comma).</string>

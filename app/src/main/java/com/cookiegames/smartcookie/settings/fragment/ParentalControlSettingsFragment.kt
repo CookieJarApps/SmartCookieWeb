@@ -57,10 +57,17 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
         injector.inject(this)
 
         proxyChoices = resources.getStringArray(R.array.blocked_sites)
+        var fullName = ""
+        if(userPreferences.siteBlockChoice.toString().toString() == "BLACKLIST"){
+            fullName = getText(R.string.only_allow_sites).toString()
+        }
+        else{
+            fullName = getText(R.string.block_all_sites).toString()
+        }
 
         clickableDynamicPreference(
                 preference = SETTINGS_SITE_BLOCK,
-                summary = userPreferences.siteBlockChoice.toSummary(),
+                summary = fullName,
                 onClick = ::showSiteBlockPicker
         )
         clickableDynamicPreference(
@@ -139,31 +146,36 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
 
     private fun updateSiteBlockChoice(choice: SiteBlockChoice, activity: Activity, summaryUpdater: SummaryUpdater) {
         if (choice == SiteBlockChoice.WHITELIST || choice == SiteBlockChoice.BLACKLIST) {
-            showManualSiteBlockPicker(activity, summaryUpdater)
+            showManualSiteBlockPicker(activity, summaryUpdater, choice)
         }
 
         userPreferences.siteBlockChoice = choice
         summaryUpdater.updateSummary(choice.toSummary())
     }
 
-    private fun showManualSiteBlockPicker(activity: Activity, summaryUpdater: SummaryUpdater) {
+    private fun showManualSiteBlockPicker(activity: Activity, summaryUpdater: SummaryUpdater, choice: SiteBlockChoice) {
         val v = activity.layoutInflater.inflate(R.layout.site_block, null)
-        val eProxyHost = v.findViewById<TextView>(R.id.siteBlock)
-
+        val blockedSites = v.findViewById<TextView>(R.id.siteBlock)
         // Limit the number of characters since the port needs to be of type int
         // Use input filters to limit the EditText length and determine the max
         // length by using length of integer MAX_VALUE
         val maxCharacters = Integer.MAX_VALUE.toString().length
 
-        eProxyHost.text = userPreferences.siteBlockNames
+        blockedSites.text = userPreferences.siteBlockNames
 
         BrowserDialog.showCustomDialog(activity) {
-            setTitle(R.string.block_sites_title)
+            setTitle(R.string.block_sites)
             setView(v)
             setPositiveButton(R.string.action_ok) { _, _ ->
-                val proxyHost = eProxyHost.text.toString()
+                val proxyHost = blockedSites.text.toString()
                 userPreferences.siteBlockNames = proxyHost
-                summaryUpdater.updateSummary("$proxyHost")
+                if(choice.toString() == "BLACKLIST"){
+                    summaryUpdater.updateSummary(getText(R.string.only_allow_sites).toString())
+                }
+                else{
+                    summaryUpdater.updateSummary(getText(R.string.block_all_sites).toString())
+                }
+
             }
         }
     }
