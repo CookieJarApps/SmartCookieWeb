@@ -57,8 +57,8 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
         injector.inject(this)
 
         proxyChoices = resources.getStringArray(R.array.blocked_sites)
-        var fullName = ""
-        if(userPreferences.siteBlockChoice.toString().toString() == "BLACKLIST"){
+        var fullName: String
+        if(userPreferences.siteBlockChoice.toString() == "BLACKLIST"){
             fullName = getText(R.string.only_allow_sites).toString()
         }
         else{
