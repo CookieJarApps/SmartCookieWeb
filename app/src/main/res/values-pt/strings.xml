@@ -86,7 +86,7 @@
     <string name="hint_url">URL</string>
     <string name="title_edit_bookmark">Editar marcador</string>
     <string name="action_edit">Editar</string>
-    <string name="action_incognito">Separador anónimo</string>
+    <string name="action_incognito">Separador privado</string>
     <string name="action_homepage">Padrão</string>
     <string name="action_back">Recuar</string>
     <string name="action_find">Localizar na página</string>
@@ -98,7 +98,7 @@
     <string name="download_no_sdcard_dlg_msg">Necessita de um cartão SD para guardar o ficheiro.</string>
     <string name="download_sdcard_busy_dlg_title">Armazenamento USB indisponível</string>
     <string name="download_sdcard_busy_dlg_msg">O armazenamento está ocupado. Para continuar, toque em \'Desativar armazenamento USB\' na notificação.</string>
-    <string name="incognito_cookies">Ativar cookies no modo de navegação anónima</string>
+    <string name="incognito_cookies">Ativar cookies no modo de navegação privada</string>
     <string name="title_flash">Adobe Flash</string>
     <string name="action_manual">Manual</string>
     <string name="action_auto">Automático</string>
@@ -300,11 +300,11 @@
 
     <!-- Notifications -->
     <plurals name="notification_incognito_running_title">
-        <item quantity="one">%1$d separador anónimo aberto</item>
-        <item quantity="other">%1$d separadores anónimos abertos</item>
+        <item quantity="one">%1$d separador privado aberto</item>
+        <item quantity="other">%1$d separadores privados abertos</item>
     </plurals>
     <string name="notification_incognito_running_message">Toque para abrir</string>
-    <string name="notification_incognito_running_description">Notificação persistente de modo anónimo</string>
+    <string name="notification_incognito_running_description">Notificação persistente de modo privado</string>
 
     <!-- Common actions -->
     <string name="action_message_canceled">Ação cancelada.</string>
@@ -331,7 +331,7 @@
     <!-- Dialogs -->
     <string name="dialog_open_new_tab">Abrir em novo separador</string>
     <string name="dialog_open_background_tab">Abrir em separador secundário</string>
-    <string name="dialog_open_incognito_tab">Abrir em separador anónimo</string>
+    <string name="dialog_open_incognito_tab">Abrir em separador privado</string>
     <string name="dialog_remove_bookmark">Remover marcador</string>
     <string name="dialog_edit_bookmark">Editar marcador</string>
     <string name="dialog_remove_from_history">Remover do histórico</string>
@@ -360,7 +360,7 @@
     <string name="privacy_info">Ver a política de privacidade do SmartCookieWeb</string>
     <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Bloquear sites maliciosos</string>
-    <string name="block_sites">Bloqueio personalizado por site (beta)</string>
+    <string name="block_sites">Bloqueio personalizado por site</string>
     <string name="block_sites_title">Bloqueio personalizado (separe os sites com vírgulas)</string>
     <string name="none">Nenhum</string>
     <string name="block_info">Introduza as palavras a bloquear nos URL (separadas com vírgulas).</string>
