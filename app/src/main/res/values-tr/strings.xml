@@ -405,6 +405,7 @@
     <string name="extensions_list">Eklenti listesi</string>
     <string name="uninstall_extension">Eklentiyi kaldır</string>
     <string name="show_extra">Ekstra menü seçeneklerini göster</string>
+    <string name="incognito_cookies_new">Özel mod, her oturumdan sonra sıfırlanan ayrı bir pencerede çalışır. Özel mod çerez tercihleri artık normal çerez tercihleri tarafından denetlenir.</string>
 
 
 </resources>

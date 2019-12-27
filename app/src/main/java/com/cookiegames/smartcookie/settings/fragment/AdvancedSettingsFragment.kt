@@ -71,13 +71,13 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
         )
 
         val incognitoCheckboxPreference = checkBoxPreference(
-                preference = SETTINGS_ENABLE_COOKIES,
+                preference = SETTINGS_COOKIES_INCOGNITO,
                 isEnabled = !DeviceCapabilities.FULL_INCOGNITO.isSupported,
                 isChecked = if (DeviceCapabilities.FULL_INCOGNITO.isSupported) {
-            userPreferences.cookiesEnabled
-        } else {
-            userPreferences.incognitoCookiesEnabled
-        },
+                    userPreferences.cookiesEnabled
+                } else {
+                    userPreferences.incognitoCookiesEnabled
+                },
                 summary = if (DeviceCapabilities.FULL_INCOGNITO.isSupported) {
                     getString(R.string.incognito_cookies_new)
                 } else {
@@ -86,18 +86,16 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
                 onCheckChange = { userPreferences.incognitoCookiesEnabled = it }
         )
 
-
         checkBoxPreference(
-                preference = SETTINGS_COOKIES_INCOGNITO,
+                preference = SETTINGS_ENABLE_COOKIES,
                 isChecked = userPreferences.cookiesEnabled,
-                 onCheckChange = {
+                onCheckChange = {
                     userPreferences.cookiesEnabled = it
                     if (DeviceCapabilities.FULL_INCOGNITO.isSupported) {
                         incognitoCheckboxPreference.isChecked = it
                     }
                 }
         )
-
     }
 
     /**
