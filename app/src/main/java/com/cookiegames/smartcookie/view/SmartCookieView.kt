@@ -44,11 +44,11 @@ import java.lang.ref.WeakReference
 import javax.inject.Inject
 
 /**
- * [LightningView] acts as a tab for the browser, handling WebView creation and handling logic, as
+ * [SmartCookieView] acts as a tab for the browser, handling WebView creation and handling logic, as
  * well as properly initialing it. All interactions with the WebView should be made through this
  * class.
  */
-class LightningView(
+class SmartCookieView(
     private val activity: Activity,
     tabInitializer: TabInitializer,
     val isIncognito: Boolean,
@@ -64,11 +64,11 @@ class LightningView(
     val id = View.generateViewId()
 
     /**
-     * Getter for the [LightningViewTitle] of the current LightningView instance.
+     * Getter for the [SmartCookieViewTitle] of the current LightningView instance.
      *
      * @return a NonNull instance of LightningViewTitle
      */
-    val titleInfo: LightningViewTitle
+    val titleInfo: SmartCookieViewTitle
 
     /**
      * Gets the current WebView instance of the tab.
@@ -124,7 +124,7 @@ class LightningView(
     @Inject @field:MainScheduler internal lateinit var mainScheduler: Scheduler
     @Inject lateinit var networkConnectivityModel: NetworkConnectivityModel
 
-    private val lightningWebClient: LightningWebClient
+    private val smartCookieWebClient: SmartCookieWebClient
 
     private val networkDisposable: Disposable
 
@@ -190,14 +190,14 @@ class LightningView(
         activity.injector.inject(this)
         uiController = activity as UIController
 
-        titleInfo = LightningViewTitle(activity)
+        titleInfo = SmartCookieViewTitle(activity)
 
         maxFling = ViewConfiguration.get(activity).scaledMaximumFlingVelocity.toFloat()
-        lightningWebClient = LightningWebClient(activity, this)
+        smartCookieWebClient = SmartCookieWebClient(activity, this)
         gestureDetector = GestureDetector(activity, CustomGestureListener())
 
         val tab = WebView(activity).also { webView = it }.apply {
-            id = this@LightningView.id
+            id = this@SmartCookieView.id
 
             isFocusableInTouchMode = true
             isFocusable = true
@@ -214,8 +214,8 @@ class LightningView(
             isScrollbarFadingEnabled = true
             isSaveEnabled = true
             setNetworkAvailable(true)
-            webChromeClient = LightningChromeClient(activity, this@LightningView)
-            webViewClient = lightningWebClient
+            webChromeClient = SmartCookieChromeClient(activity, this@SmartCookieView)
+            webViewClient = smartCookieWebClient
 
             setDownloadListener(LightningDownloadListener(activity))
             setOnTouchListener(TouchListener())
@@ -230,9 +230,9 @@ class LightningView(
             .subscribe(::setNetworkAvailable)
     }
 
-    fun currentSslState(): SslState = lightningWebClient.sslState
+    fun currentSslState(): SslState = smartCookieWebClient.sslState
 
-    fun sslStateObservable(): Observable<SslState> = lightningWebClient.sslStateObservable()
+    fun sslStateObservable(): Observable<SslState> = smartCookieWebClient.sslStateObservable()
 
     /**
      * This method loads the homepage for the browser. Either it loads the URL stored as the
@@ -268,7 +268,7 @@ class LightningView(
     fun initializePreferences() {
         val settings = webView?.settings ?: return
 
-        lightningWebClient.updatePreferences()
+        smartCookieWebClient.updatePreferences()
 
         val modifiesHeaders = userPreferences.doNotTrackEnabled
             || userPreferences.saveDataEnabled
@@ -875,9 +875,9 @@ class LightningView(
      * reference to the WebView and therefore will not
      * leak it if the WebView is garbage collected.
      */
-    private class WebViewHandler(view: LightningView) : Handler() {
+    private class WebViewHandler(view: SmartCookieView) : Handler() {
 
-        private val reference: WeakReference<LightningView> = WeakReference(view)
+        private val reference: WeakReference<SmartCookieView> = WeakReference(view)
 
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)

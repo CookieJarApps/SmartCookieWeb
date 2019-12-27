@@ -5,15 +5,13 @@ import com.cookiegames.smartcookie.browser.TabsView
 import com.cookiegames.smartcookie.controller.UIController
 import com.cookiegames.smartcookie.extensions.inflater
 import com.cookiegames.smartcookie.list.VerticalItemAnimator
-import com.cookiegames.smartcookie.view.LightningView
+import com.cookiegames.smartcookie.view.SmartCookieView
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cookiegames.smartcookie.AppTheme
-import com.cookiegames.smartcookie.browser.activity.BrowserActivity
 
 /**
  * A view which displays tabs in a vertical [RecyclerView].
@@ -90,7 +88,7 @@ class TabsDrawerView @JvmOverloads constructor(
     }
 
     private fun displayTabs() {
-        tabsAdapter.showTabs(uiController.getTabModel().allTabs.map(LightningView::asTabViewState))
+        tabsAdapter.showTabs(uiController.getTabModel().allTabs.map(SmartCookieView::asTabViewState))
     }
 
     override fun tabsInitialized() {

@@ -1,6 +1,6 @@
 package com.cookiegames.smartcookie.browser.tabs
 
-import com.cookiegames.smartcookie.view.LightningView
+import com.cookiegames.smartcookie.view.SmartCookieView
 import android.graphics.Bitmap
 
 /**
@@ -17,9 +17,9 @@ data class TabViewState(
 )
 
 /**
- * Converts a [LightningView] to a [TabViewState].
+ * Converts a [SmartCookieView] to a [TabViewState].
  */
-fun LightningView.asTabViewState() = TabViewState(
+fun SmartCookieView.asTabViewState() = TabViewState(
     id = id,
     title = title,
     favicon = favicon,

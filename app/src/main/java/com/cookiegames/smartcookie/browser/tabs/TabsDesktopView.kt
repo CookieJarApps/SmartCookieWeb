@@ -6,7 +6,7 @@ import com.cookiegames.smartcookie.list.HorizontalItemAnimator
 import com.cookiegames.smartcookie.controller.UIController
 import com.cookiegames.smartcookie.extensions.color
 import com.cookiegames.smartcookie.extensions.inflater
-import com.cookiegames.smartcookie.view.LightningView
+import com.cookiegames.smartcookie.view.SmartCookieView
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
@@ -77,7 +77,7 @@ class TabsDesktopView @JvmOverloads constructor(
     }
 
     private fun displayTabs() {
-        tabsAdapter.showTabs(uiController.getTabModel().allTabs.map(LightningView::asTabViewState))
+        tabsAdapter.showTabs(uiController.getTabModel().allTabs.map(SmartCookieView::asTabViewState))
     }
 
     override fun tabsInitialized() {

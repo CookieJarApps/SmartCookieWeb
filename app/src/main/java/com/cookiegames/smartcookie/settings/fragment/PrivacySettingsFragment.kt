@@ -9,9 +9,8 @@ import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.dialog.DialogItem
 import com.cookiegames.smartcookie.extensions.snackbar
 import com.cookiegames.smartcookie.preference.UserPreferences
-import com.cookiegames.smartcookie.utils.ApiUtils
 import com.cookiegames.smartcookie.utils.WebUtils
-import com.cookiegames.smartcookie.view.LightningView
+import com.cookiegames.smartcookie.view.SmartCookieView
 import android.os.Bundle
 import android.webkit.WebView
 import com.cookiegames.smartcookie.DeviceCapabilities
@@ -115,7 +114,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
         checkBoxPreference(
             preference = SETTINGS_IDENTIFYINGHEADERS,
             isChecked = userPreferences.removeIdentifyingHeadersEnabled,
-            summary = "${LightningView.HEADER_REQUESTED_WITH}, ${LightningView.HEADER_WAP_PROFILE}",
+            summary = "${SmartCookieView.HEADER_REQUESTED_WITH}, ${SmartCookieView.HEADER_WAP_PROFILE}",
             onCheckChange = { userPreferences.removeIdentifyingHeadersEnabled = it }
         )
 

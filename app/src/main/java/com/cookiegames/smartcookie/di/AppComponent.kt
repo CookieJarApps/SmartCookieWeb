@@ -17,9 +17,9 @@ import com.cookiegames.smartcookie.settings.activity.SettingsActivity
 import com.cookiegames.smartcookie.settings.activity.ThemableSettingsActivity
 import com.cookiegames.smartcookie.settings.fragment.*
 import com.cookiegames.smartcookie.utils.ProxyUtils
-import com.cookiegames.smartcookie.view.LightningChromeClient
-import com.cookiegames.smartcookie.view.LightningView
-import com.cookiegames.smartcookie.view.LightningWebClient
+import com.cookiegames.smartcookie.view.SmartCookieChromeClient
+import com.cookiegames.smartcookie.view.SmartCookieView
+import com.cookiegames.smartcookie.view.SmartCookieWebClient
 import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
@@ -47,7 +47,7 @@ interface AppComponent {
 
     fun inject(builder: LightningDialogBuilder)
 
-    fun inject(lightningView: LightningView)
+    fun inject(smartCookieView: SmartCookieView)
 
     fun inject(activity: ThemableBrowserActivity)
 
@@ -59,7 +59,7 @@ interface AppComponent {
 
     fun inject(activity: ReadingActivity)
 
-    fun inject(webClient: LightningWebClient)
+    fun inject(webClient: SmartCookieWebClient)
 
     fun inject(activity: SettingsActivity)
 
@@ -75,7 +75,7 @@ interface AppComponent {
 
     fun inject(suggestionsAdapter: SuggestionsAdapter)
 
-    fun inject(chromeClient: LightningChromeClient)
+    fun inject(chromeClient: SmartCookieChromeClient)
 
     fun inject(downloadHandler: DownloadHandler)
 

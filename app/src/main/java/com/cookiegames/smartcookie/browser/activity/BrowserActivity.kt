@@ -50,16 +50,13 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.Icon
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.provider.Browser
 import android.provider.MediaStore
-import android.util.Log
 import android.view.*
 import android.view.View.*
 import android.view.ViewGroup.LayoutParams
@@ -85,7 +82,6 @@ import androidx.palette.graphics.Palette
 import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
 import com.cookiegames.smartcookie.MainActivity
-import com.github.chenglei1986.statusbar.StatusBarColorManager
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy
@@ -95,9 +91,7 @@ import kotlinx.android.synthetic.main.search.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.io.IOException
-import java.util.*
 import javax.inject.Inject
-import kotlin.concurrent.schedule
 import kotlin.system.exitProcess
 
 abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIController, OnClickListener {
@@ -933,7 +927,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         drawable?.let { visibility = VISIBLE } ?: run { visibility = GONE }
     }
 
-    override fun tabChanged(tab: LightningView) {
+    override fun tabChanged(tab: SmartCookieView) {
         presenter?.tabChangeOccurred(tab)
     }
 
@@ -1698,14 +1692,14 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     /**
-     * Closes the specified [LightningView]. This implements
+     * Closes the specified [SmartCookieView]. This implements
      * the JavaScript callback that asks the tab to close itself and
      * is especially helpful when a page creates a redirect and does
      * not need the tab to stay open any longer.
      *
      * @param tab the LightningView to close, delete it.
      */
-    override fun onCloseWindow(tab: LightningView) {
+    override fun onCloseWindow(tab: SmartCookieView) {
         presenter?.deleteTab(tabsManager.positionOf(tab))
     }
 

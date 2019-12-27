@@ -19,8 +19,6 @@ import com.cookiegames.smartcookie.utils.*
 import android.annotation.TargetApi
 import android.app.Activity
 import android.content.ActivityNotFoundException
-import android.content.Context
-import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.MailTo
@@ -38,7 +36,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
 import com.cookiegames.smartcookie.AppTheme
-import com.cookiegames.smartcookie.BrowserApp
 import com.cookiegames.smartcookie.browser.SiteBlockChoice
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
@@ -46,17 +43,14 @@ import java.io.*
 import java.net.HttpURLConnection
 import java.net.URISyntaxException
 import java.net.URL
-import java.nio.file.Files.exists
-import java.nio.file.Path
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import kotlin.math.abs
-import kotlin.math.log
 
-class LightningWebClient(
+class SmartCookieWebClient(
     private val activity: Activity,
-    private val lightningView: LightningView
+    private val smartCookieView: SmartCookieView
 ) : WebViewClient() {
 
     private val uiController: UIController
@@ -228,11 +222,11 @@ class LightningWebClient(
         }
 
         if (view.title == null || view.title.isEmpty()) {
-            lightningView.titleInfo.setTitle(activity.getString(R.string.untitled))
+            smartCookieView.titleInfo.setTitle(activity.getString(R.string.untitled))
         } else {
-            lightningView.titleInfo.setTitle(view.title)
+            smartCookieView.titleInfo.setTitle(view.title)
         }
-        if (lightningView.invertPage) {
+        if (smartCookieView.invertPage) {
             view.evaluateJavascript(invertPageJs.provideJs(), null)
         }
         if(userPreferences.cookieBlockEnabled){
@@ -389,7 +383,7 @@ class LightningWebClient(
                         }
                     }
                 }
-                uiController.tabChanged(lightningView)
+                uiController.tabChanged(smartCookieView)
             }
         }
 
@@ -432,11 +426,11 @@ class LightningWebClient(
         else{
             val toast = Toast.makeText(activity, "Extension not installed", Toast.LENGTH_LONG)
             toast.show()
-            lightningView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+            smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
             Handler().postDelayed({
-            lightningView.webView!!.settings.javaScriptEnabled = true
-            lightningView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be uninstalled because it isn\'t installed.';", null)
-            lightningView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+            smartCookieView.webView!!.settings.javaScriptEnabled = true
+            smartCookieView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be uninstalled because it isn\'t installed.';", null)
+            smartCookieView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
             }, 600)
             return
         }
@@ -462,11 +456,11 @@ class LightningWebClient(
         if(inputAsString.contains("/*" + result + "*/")){
             val toast = Toast.makeText(activity, "Extension already installed", Toast.LENGTH_LONG)
             toast.show()
-            lightningView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+            smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
             Handler().postDelayed({
-                lightningView.webView!!.settings.javaScriptEnabled = true
-                lightningView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it is already installed.';", null)
-                lightningView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+                smartCookieView.webView!!.settings.javaScriptEnabled = true
+                smartCookieView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it is already installed.';", null)
+                smartCookieView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
             }, 600)
         }
         else{
@@ -475,16 +469,16 @@ class LightningWebClient(
                 toast.show()
                 file.appendText(text)
                 file.appendText(System.getProperty("line.separator")!!)
-                lightningView.loadUrl("https://extensions.cookiejarapps.com/success.html")
+                smartCookieView.loadUrl("https://extensions.cookiejarapps.com/success.html")
             }
             else{
                 val toast = Toast.makeText(activity, "Extension invalid", Toast.LENGTH_LONG)
                 toast.show()
-                lightningView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+                smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
                 Handler().postDelayed({
-                lightningView.webView!!.settings.javaScriptEnabled = true
-                lightningView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it isn\'t valid.';", null)
-                lightningView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+                smartCookieView.webView!!.settings.javaScriptEnabled = true
+                smartCookieView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it isn\'t valid.';", null)
+                smartCookieView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
             }, 600)
             }
         }
@@ -500,12 +494,12 @@ class LightningWebClient(
             }
         }
 
-        lightningView.titleInfo.setFavicon(null)
-        if (lightningView.isShown) {
+        smartCookieView.titleInfo.setFavicon(null)
+        if (smartCookieView.isShown) {
             uiController.updateUrl(url, true)
             uiController.showActionBar()
         }
-        uiController.tabChanged(lightningView)
+        uiController.tabChanged(smartCookieView)
     }
 
 
@@ -559,7 +553,7 @@ class LightningWebClient(
 
 
     override fun onScaleChanged(view: WebView, oldScale: Float, newScale: Float) {
-        if (view.isShown && lightningView.userPreferences.textReflowEnabled) {
+        if (view.isShown && smartCookieView.userPreferences.textReflowEnabled) {
             if (isRunning)
                 return
             val changeInPercent = abs(100 - 100 / zoomScale * newScale)
@@ -643,9 +637,9 @@ class LightningWebClient(
             return true
         }
 
-        val headers = lightningView.requestHeaders
+        val headers = smartCookieView.requestHeaders
 
-        if (lightningView.isIncognito) {
+        if (smartCookieView.isIncognito) {
             // If we are in incognito, immediately load, we don't want the url to leave the app
             return continueLoadingUrl(view, url, headers)
         }

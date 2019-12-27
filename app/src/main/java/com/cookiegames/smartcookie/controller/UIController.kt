@@ -6,7 +6,7 @@ package com.cookiegames.smartcookie.controller
 import com.cookiegames.smartcookie.browser.TabsManager
 import com.cookiegames.smartcookie.database.Bookmark
 import com.cookiegames.smartcookie.dialog.LightningDialogBuilder
-import com.cookiegames.smartcookie.view.LightningView
+import com.cookiegames.smartcookie.view.SmartCookieView
 import android.content.pm.ActivityInfo
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
@@ -107,7 +107,7 @@ interface UIController {
      * Notify the browser that the website currently being displayed by the [tab] wants to be
      * closed.
      */
-    fun onCloseWindow(tab: LightningView)
+    fun onCloseWindow(tab: SmartCookieView)
 
     /**
      * Hide the search bar from view via animation.
@@ -167,7 +167,7 @@ interface UIController {
     /**
      * Notify the UI that the [tab] should be displayed.
      */
-    fun tabChanged(tab: LightningView)
+    fun tabChanged(tab: SmartCookieView)
 
     /**
      * Notify the browser that the user pressed the back button.

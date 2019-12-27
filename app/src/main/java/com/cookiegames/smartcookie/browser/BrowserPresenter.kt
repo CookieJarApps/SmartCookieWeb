@@ -13,7 +13,7 @@ import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.ssl.SslState
 import com.cookiegames.smartcookie.view.BundleInitializer
-import com.cookiegames.smartcookie.view.LightningView
+import com.cookiegames.smartcookie.view.SmartCookieView
 import com.cookiegames.smartcookie.view.TabInitializer
 import com.cookiegames.smartcookie.view.UrlInitializer
 import com.cookiegames.smartcookie.view.find.FindResults
@@ -40,7 +40,7 @@ class BrowserPresenter(
     private val logger: Logger
 ) {
 
-    private var currentTab: LightningView? = null
+    private var currentTab: SmartCookieView? = null
     private var shouldClose: Boolean = false
     private var sslStateSubscription: Disposable? = null
 
@@ -71,11 +71,11 @@ class BrowserPresenter(
      *
      * @param tab the tab that changed, may be null.
      */
-    fun tabChangeOccurred(tab: LightningView?) = tab?.let {
+    fun tabChangeOccurred(tab: SmartCookieView?) = tab?.let {
         view.notifyTabViewChanged(tabsModel.indexOfTab(it))
     }
 
-    private fun onTabChanged(newTab: LightningView?) {
+    private fun onTabChanged(newTab: SmartCookieView?) {
         logger.log(TAG, "On tab changed")
         view.updateSslState(newTab?.currentSslState() ?: SslState.None)
 

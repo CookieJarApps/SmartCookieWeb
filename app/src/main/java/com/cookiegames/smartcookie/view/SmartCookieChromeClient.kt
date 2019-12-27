@@ -28,9 +28,9 @@ import com.anthonycr.grant.PermissionsResultAction
 import io.reactivex.Scheduler
 import javax.inject.Inject
 
-class LightningChromeClient(
+class SmartCookieChromeClient(
     private val activity: Activity,
-    private val lightningView: LightningView
+    private val smartCookieView: SmartCookieView
 ) : WebChromeClient(), WebRtcPermissionsView {
 
     private val geoLocationPermissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
@@ -46,14 +46,14 @@ class LightningChromeClient(
     }
 
     override fun onProgressChanged(view: WebView, newProgress: Int) {
-        if (lightningView.isShown) {
+        if (smartCookieView.isShown) {
             uiController.updateProgress(newProgress)
         }
     }
 
     override fun onReceivedIcon(view: WebView, icon: Bitmap) {
-        lightningView.titleInfo.setFavicon(icon)
-        uiController.tabChanged(lightningView)
+        smartCookieView.titleInfo.setFavicon(icon)
+        uiController.tabChanged(smartCookieView)
         cacheFavicon(view.url, icon)
     }
 
@@ -75,11 +75,11 @@ class LightningChromeClient(
 
     override fun onReceivedTitle(view: WebView?, title: String?) {
         if (title?.isNotEmpty() == true) {
-            lightningView.titleInfo.setTitle(title)
+            smartCookieView.titleInfo.setTitle(title)
         } else {
-            lightningView.titleInfo.setTitle(activity.getString(R.string.untitled))
+            smartCookieView.titleInfo.setTitle(activity.getString(R.string.untitled))
         }
-        uiController.tabChanged(lightningView)
+        uiController.tabChanged(smartCookieView)
         if (view != null && view.url != null) {
             uiController.updateHistory(title, view.url)
         }
@@ -163,7 +163,7 @@ class LightningChromeClient(
         return true
     }
 
-    override fun onCloseWindow(window: WebView) = uiController.onCloseWindow(lightningView)
+    override fun onCloseWindow(window: WebView) = uiController.onCloseWindow(smartCookieView)
 
     @Suppress("unused", "UNUSED_PARAMETER")
     fun openFileChooser(uploadMsg: ValueCallback<Uri>) = uiController.openFileChooser(uploadMsg)

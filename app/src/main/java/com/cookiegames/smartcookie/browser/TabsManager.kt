@@ -20,7 +20,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 /**
- * A manager singleton that holds all the [LightningView] and tracks the current tab. It handles
+ * A manager singleton that holds all the [SmartCookieView] and tracks the current tab. It handles
  * creation, deletion, restoration, state saving, and switching of tabs.
  */
 class TabsManager @Inject constructor(
@@ -36,14 +36,14 @@ class TabsManager @Inject constructor(
     private val logger: Logger
 ) {
 
-    private val tabList = arrayListOf<LightningView>()
+    private val tabList = arrayListOf<SmartCookieView>()
 
     /**
-     * Return the current [LightningView] or null if no current tab has been set.
+     * Return the current [SmartCookieView] or null if no current tab has been set.
      *
-     * @return a [LightningView] or null if there is no current tab.
+     * @return a [SmartCookieView] or null if there is no current tab.
      */
-    var currentTab: LightningView? = null
+    var currentTab: SmartCookieView? = null
         private set
 
     private var tabNumberListeners = emptySet<(Int) -> Unit>()
@@ -88,7 +88,7 @@ class TabsManager @Inject constructor(
      * new provided [intent] and emit the last tab that should be displayed. By default operates on
      * a background scheduler and emits on the foreground scheduler.
      */
-    fun initializeTabs(activity: Activity, intent: Intent?, incognito: Boolean): Single<LightningView> =
+    fun initializeTabs(activity: Activity, intent: Intent?, incognito: Boolean): Single<SmartCookieView> =
         Single
             .just(Option.fromNullable(
                 if (intent?.action == Intent.ACTION_WEB_SEARCH) {
@@ -189,7 +189,7 @@ class TabsManager @Inject constructor(
      */
     fun pauseAll() {
         currentTab?.pauseTimers()
-        tabList.forEach(LightningView::onPause)
+        tabList.forEach(SmartCookieView::onPause)
     }
 
     /**
@@ -197,16 +197,16 @@ class TabsManager @Inject constructor(
      * range.
      *
      * @param position the index in tabs list
-     * @return the corespondent [LightningView], or null if the index is invalid
+     * @return the corespondent [SmartCookieView], or null if the index is invalid
      */
-    fun getTabAtPosition(position: Int): LightningView? =
+    fun getTabAtPosition(position: Int): SmartCookieView? =
         if (position < 0 || position >= tabList.size) {
             null
         } else {
             tabList[position]
         }
 
-    val allTabs: List<LightningView>
+    val allTabs: List<SmartCookieView>
         get() = tabList
 
     /**
@@ -239,7 +239,7 @@ class TabsManager @Inject constructor(
      *
      * @return the last tab, or null if there are no tabs.
      */
-    fun lastTab(): LightningView? = tabList.lastOrNull()
+    fun lastTab(): SmartCookieView? = tabList.lastOrNull()
 
     /**
      * Create and return a new tab. The tab is automatically added to the tabs list.
@@ -253,9 +253,9 @@ class TabsManager @Inject constructor(
         activity: Activity,
         tabInitializer: TabInitializer,
         isIncognito: Boolean
-    ): LightningView {
+    ): SmartCookieView {
         logger.log(TAG, "New tab")
-        val tab = LightningView(
+        val tab = SmartCookieView(
             activity,
             tabInitializer,
             isIncognito,
@@ -317,7 +317,7 @@ class TabsManager @Inject constructor(
      * @param tab the tab to look for.
      * @return the position of the tab or -1 if the tab is not in the list.
      */
-    fun positionOf(tab: LightningView?): Int = tabList.indexOf(tab)
+    fun positionOf(tab: SmartCookieView?): Int = tabList.indexOf(tab)
 
     /**
      * Saves the state of the current WebViews, to a bundle which is then stored in persistent
@@ -375,15 +375,15 @@ class TabsManager @Inject constructor(
      *
      * @return Return the index of the tab, or -1 if the tab isn't in the list.
      */
-    fun indexOfTab(tab: LightningView): Int = tabList.indexOf(tab)
+    fun indexOfTab(tab: SmartCookieView): Int = tabList.indexOf(tab)
 
     /**
-     * Returns the [LightningView] with the provided hash, or null if there is no tab with the hash.
+     * Returns the [SmartCookieView] with the provided hash, or null if there is no tab with the hash.
      *
      * @param hashCode the hashcode.
      * @return the tab with an identical hash, or null.
      */
-    fun getTabForHashCode(hashCode: Int): LightningView? =
+    fun getTabForHashCode(hashCode: Int): SmartCookieView? =
         tabList.firstOrNull { lightningView -> lightningView.webView?.let { it.hashCode() == hashCode } == true }
 
     /**
@@ -392,7 +392,7 @@ class TabsManager @Inject constructor(
      *
      * @return the selected tab or null if position is out of tabs range.
      */
-    fun switchToTab(position: Int): LightningView? {
+    fun switchToTab(position: Int): SmartCookieView? {
         logger.log(TAG, "switch to tab: $position")
         return if (position < 0 || position >= tabList.size) {
             logger.log(TAG, "Returning a null LightningView requested for position: $position")

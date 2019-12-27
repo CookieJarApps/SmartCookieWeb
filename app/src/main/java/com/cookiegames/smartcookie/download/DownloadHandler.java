@@ -40,7 +40,7 @@ import com.cookiegames.smartcookie.log.Logger;
 import com.cookiegames.smartcookie.preference.UserPreferences;
 import com.cookiegames.smartcookie.utils.FileUtils;
 import com.cookiegames.smartcookie.utils.Utils;
-import com.cookiegames.smartcookie.view.LightningView;
+import com.cookiegames.smartcookie.view.SmartCookieView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -285,7 +285,7 @@ public class DownloadHandler {
 
         // save download in database
         UIController browserActivity = (UIController) context;
-        LightningView view = browserActivity.getTabModel().getCurrentTab();
+        SmartCookieView view = browserActivity.getTabModel().getCurrentTab();
 
         if (view != null && !view.isIncognito()) {
             downloadsRepository.addDownloadIfNotExists(new DownloadEntry(url, filename, contentSize))

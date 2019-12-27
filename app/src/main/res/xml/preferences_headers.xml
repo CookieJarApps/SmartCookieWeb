@@ -2,7 +2,7 @@
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.GeneralSettingsFragment"
-        android:icon="@drawable/ic_round_settings"
+        android:icon="@drawable/ic_round_settings_page"
         android:title="@string/settings_general"
         android:summary="@string/settings_general_explain"
         android:tint="#8e4f00"/>
@@ -13,7 +13,7 @@
         android:summary="@string/settings_bookmark_explain" />
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.DisplaySettingsFragment"
-        android:icon="@drawable/ic_round_smartphone"
+        android:icon="@drawable/ic_round_smartphone_page"
         android:title="@string/settings_display"
         android:summary="@string/settings_display_explain"
         android:tint="#8e4f00"/>
