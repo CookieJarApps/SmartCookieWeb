@@ -84,6 +84,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.palette.graphics.Palette
 import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
+import com.cookiegames.smartcookie.MainActivity
 import com.github.chenglei1986.statusbar.StatusBarColorManager
 import io.reactivex.Completable
 import io.reactivex.Scheduler
@@ -782,8 +783,15 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 findInPage()
                 return true
             }
+            R.id.quit_private -> {
+                val back = Intent(this, MainActivity::class.java)
+                startActivity(back)
+                finish()
+                return true
+            }
             R.id.quit_app -> {
-                finishAffinity()
+                this.finish()
+                System.exit(0)
                 return true
             }
             R.id.action_reading_mode -> {

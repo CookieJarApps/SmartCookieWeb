@@ -14,6 +14,10 @@
         android:icon="@drawable/ic_search"
         android:title="@string/action_find"/>
     <item
+        android:id="@+id/action_copy"
+        android:title="@string/action_copy"
+        android:icon="@drawable/ic_content_copy_black_24dp"/>
+    <item
         android:id="@+id/action_history"
         android:icon="@drawable/ic_history"
         android:title="@string/action_history"/>
@@ -26,5 +30,16 @@
         android:id="@+id/action_reading_mode"
         android:icon="@drawable/ic_action_reading"
         android:title="@string/reading_mode"/>
-
+    <!--<item
+        android:icon="@drawable/ic_round_settings"
+        android:id="@+id/action_settings"
+        android:title="@string/settings"/>-->
+    <item
+        android:icon="@drawable/ic_action_back"
+        android:id="@+id/quit_private"
+        android:title="@string/quit_private"/>
+    <item
+        android:icon="@drawable/ic_action_delete"
+        android:id="@+id/quit_app"
+        android:title="@string/dialog_title_close_browser"/>
 </menu>

@@ -10,6 +10,8 @@ import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.view.RenderingMode
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import com.cookiegames.smartcookie.DeviceCapabilities
+import com.cookiegames.smartcookie.isSupported
 import javax.inject.Inject
 
 /**
@@ -67,6 +69,35 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
             isChecked = userPreferences.restoreLostTabsEnabled,
             onCheckChange = { userPreferences.restoreLostTabsEnabled = it }
         )
+
+        val incognitoCheckboxPreference = checkBoxPreference(
+                preference = SETTINGS_ENABLE_COOKIES,
+                isEnabled = !DeviceCapabilities.FULL_INCOGNITO.isSupported,
+                isChecked = if (DeviceCapabilities.FULL_INCOGNITO.isSupported) {
+            userPreferences.cookiesEnabled
+        } else {
+            userPreferences.incognitoCookiesEnabled
+        },
+                summary = if (DeviceCapabilities.FULL_INCOGNITO.isSupported) {
+                    getString(R.string.incognito_cookies_new)
+                } else {
+                    null
+                },
+                onCheckChange = { userPreferences.incognitoCookiesEnabled = it }
+        )
+
+
+        checkBoxPreference(
+                preference = SETTINGS_COOKIES_INCOGNITO,
+                isChecked = userPreferences.cookiesEnabled,
+                 onCheckChange = {
+                    userPreferences.cookiesEnabled = it
+                    if (DeviceCapabilities.FULL_INCOGNITO.isSupported) {
+                        incognitoCheckboxPreference.isChecked = it
+                    }
+                }
+        )
+
     }
 
     /**

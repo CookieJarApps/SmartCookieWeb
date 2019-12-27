@@ -34,6 +34,8 @@ import android.webkit.WebSettings
 import android.webkit.WebSettings.LayoutAlgorithm
 import android.webkit.WebView
 import androidx.collection.ArrayMap
+import com.cookiegames.smartcookie.DeviceCapabilities
+import com.cookiegames.smartcookie.isSupported
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.Single
@@ -327,12 +329,9 @@ class LightningView(
         }
 
         settings.blockNetworkImage = userPreferences.blockImagesEnabled
-        if (!isIncognito) {
-            // Modifying headers causes SEGFAULTS, so disallow multi window if headers are enabled.
-            settings.setSupportMultipleWindows(userPreferences.popupsEnabled && !modifiesHeaders)
-        } else {
-            settings.setSupportMultipleWindows(false)
-        }
+
+        // Modifying headers causes SEGFAULTS, so disallow multi window if headers are enabled.
+        settings.setSupportMultipleWindows(userPreferences.popupsEnabled && !modifiesHeaders)
 
         settings.useWideViewPort = userPreferences.useWideViewPortEnabled
         settings.loadWithOverviewMode = userPreferences.overviewModeEnabled
@@ -365,14 +364,14 @@ class LightningView(
                 mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
             } else if (API >= Build.VERSION_CODES.LOLLIPOP) {
                 // We're in Incognito mode, reject
-                mixedContentMode = WebSettings.MIXED_CONTENT_NEVER_ALLOW
+                mixedContentMode = WebSettings .MIXED_CONTENT_NEVER_ALLOW
             }
 
-            if (!isIncognito) {
+            if (!isIncognito || DeviceCapabilities.FULL_INCOGNITO.isSupported) {
                 domStorageEnabled = true
                 setAppCacheEnabled(true)
-                cacheMode = WebSettings.LOAD_DEFAULT
                 databaseEnabled = true
+                cacheMode = WebSettings.LOAD_DEFAULT
             } else {
                 domStorageEnabled = false
                 setAppCacheEnabled(false)

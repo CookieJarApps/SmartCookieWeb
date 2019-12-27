@@ -406,6 +406,8 @@
     <string name="uninstall_extension">Uninstall extension</string>
     <string name="uninstall_more">Enter the name of the extension you want to uninstall</string>
     <string name="show_extra">Show extra menu options</string>
+    <string name="incognito_cookies_new">Incognito mode runs in a separate process that is reset after each session. Incognito cookie preferences are now controlled by the regular cookie preferences.</string>
+    <string name="quit_private">Exit Private Mode</string>
 
     <!-- finish pages -->
 </resources>

@@ -14,6 +14,8 @@ import com.cookiegames.smartcookie.utils.WebUtils
 import com.cookiegames.smartcookie.view.LightningView
 import android.os.Bundle
 import android.webkit.WebView
+import com.cookiegames.smartcookie.DeviceCapabilities
+import com.cookiegames.smartcookie.isSupported
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import javax.inject.Inject
@@ -45,7 +47,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
         checkBoxPreference(
             preference = SETTINGS_THIRDPCOOKIES,
             isChecked = userPreferences.blockThirdPartyCookiesEnabled,
-            isEnabled = ApiUtils.doesSupportThirdPartyCookieBlocking(),
+            isEnabled = DeviceCapabilities.THIRD_PARTY_COOKIE_BLOCKING.isSupported,
             onCheckChange = { userPreferences.blockThirdPartyCookiesEnabled = it }
         )
 
@@ -81,15 +83,14 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
 
         checkBoxPreference(
             preference = SETTINGS_DONOTTRACK,
-            isChecked = userPreferences.doNotTrackEnabled && ApiUtils.doesSupportWebViewHeaders(),
-            isEnabled = ApiUtils.doesSupportWebViewHeaders(),
+            isChecked = userPreferences.doNotTrackEnabled,
             onCheckChange = { userPreferences.doNotTrackEnabled = it }
         )
 
         checkBoxPreference(
             preference = SETTINGS_WEBRTC,
-            isChecked = userPreferences.webRtcEnabled && ApiUtils.doesSupportWebRtc(),
-            isEnabled = ApiUtils.doesSupportWebRtc(),
+            isChecked = userPreferences.webRtcEnabled && DeviceCapabilities.WEB_RTC.isSupported,
+            isEnabled = DeviceCapabilities.WEB_RTC.isSupported,
             onCheckChange = { userPreferences.webRtcEnabled = it }
         )
 
@@ -113,8 +114,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
 
         checkBoxPreference(
             preference = SETTINGS_IDENTIFYINGHEADERS,
-            isChecked = userPreferences.removeIdentifyingHeadersEnabled && ApiUtils.doesSupportWebViewHeaders(),
-            isEnabled = ApiUtils.doesSupportWebViewHeaders(),
+            isChecked = userPreferences.removeIdentifyingHeadersEnabled,
             summary = "${LightningView.HEADER_REQUESTED_WITH}, ${LightningView.HEADER_WAP_PROFILE}",
             onCheckChange = { userPreferences.removeIdentifyingHeadersEnabled = it }
         )

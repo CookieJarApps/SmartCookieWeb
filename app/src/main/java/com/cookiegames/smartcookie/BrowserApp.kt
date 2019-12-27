@@ -56,6 +56,12 @@ class BrowserApp : Application() {
                 .build())
         }
 
+        if (Build.VERSION.SDK_INT >= 28) {
+            if (getProcessName() == "$packageName:incognito") {
+                WebView.setDataDirectorySuffix("incognito")
+            }
+        }
+
         val defaultHandler = Thread.getDefaultUncaughtExceptionHandler()
 
         Thread.setDefaultUncaughtExceptionHandler { thread, ex ->
