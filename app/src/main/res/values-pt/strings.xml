@@ -406,6 +406,10 @@
     <string name="uninstall_extension">Desinstalar extensões</string>
     <string name="uninstall_more">Digite o nome da extensão que deseja desinstalar</string>
     <string name="show_extra">Mostrar opções extras de menu</string>
-    <string name="incognito_cookies_new">O modo privado é executado em uma janela separada que é redefinida após cada sessão. As preferências de cookies do modo privado agora são controladas por preferências normais de cookies.</string>
-    <!-- finish pages -->
+    <string name="incognito_cookies_new">O modo privado é executado em uma janela distinta que será reposta ao terminar a sessão. As preferências de cookies no modo privado são agora controladas nas preferências gerais de cookies.</string>
+    <string name="quit_private">Sair do modo privado</string>
+    <string name="ekoru">Ekoru</string>
+    <string name="ecosia">Ecosia</string>
+    
+<!-- finish pages -->
 </resources>
