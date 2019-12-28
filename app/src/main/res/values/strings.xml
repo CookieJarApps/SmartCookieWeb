@@ -31,9 +31,9 @@
     <string name="cookies">Enable cookies</string>
     <string name="importbookmarks">Import bookmarks from browser</string>
     <string name="size">Text size</string>
-    <string name="recommended">Recommended</string>
+    .<string name="recommended">Recommended</string>
     <string name="search">Search engine</string>
-    <string name="search_hint">Search</string>
+    <string name="search_hint">Search or enter web address</string>
     <string name="wideViewPort">Use wide viewport</string>
     <string name="overViewMode">Load pages in overview mode</string>
     <string name="restore">Restore tabs on start</string>
@@ -408,6 +408,8 @@
     <string name="show_extra">Show extra menu options</string>
     <string name="incognito_cookies_new">Private mode runs in a separate window that is reset after each session. Private mode cookie preferences are now controlled by normal cookie preferences.</string>
     <string name="quit_private">Exit Private Mode</string>
+    <string name="ekoru">Ekoru</string>
+    <string name="ecosia">Ecosia</string>
 
     <!-- finish pages -->
 </resources>
