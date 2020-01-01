@@ -11,9 +11,9 @@
     <string name="action_add_bookmark">Lesezeichen hinzufügen</string>
     <string name="action_copy">Link kopieren</string>
     <string name="action_forward">Nach vorne</string>
-    <string name="settings">die Einstellungen</string>
+    <string name="settings">Einstellungen</string>
     <string name="location">Standortzugang</string>
-    <string name="password">Speichern Sie Ihre Passwörter</string>
+    <string name="password">Passwörter speichern</string>
     <string name="agent">User-Agent</string>
     <string name="flash">Aktivieren Sie Adobe Flash</string>
     <string name="home">Startseite</string>
@@ -34,15 +34,15 @@
     <string name="recommended">Empfohlen</string>
     <string name="search">Suchmaschine</string>
     <string name="search_hint">Suche</string>
-    <string name="wideViewPort">Verwenden Sie ein breites Ansichtsfenster</string>
-    <string name="overViewMode">Laden Sie Seiten im Übersichtsmodus</string>
+    <string name="wideViewPort">Breites Ansichtsfenster verwenden</string>
+    <string name="overViewMode">Seiten im Übersichtsmodus laden</string>
     <string name="restore">Stellen Sie verlorene Tabs beim Start wieder her</string>
     <string name="supported_browsers_title">Unterstützte Browser</string>
-    <string name="stock_browser">Aktienbrowser</string>
-    <string name="stock_browser_unavailable">Kein aktueller Browser gefunden</string>
-    <string name="stock_browser_available">Unterstützter Aktienbrowser erkannt</string>
+    <string name="stock_browser">Systembrowser</string>
+    <string name="stock_browser_unavailable">Kein Systembrowser gefunden</string>
+    <string name="stock_browser_available">Unterstützter Systembrowser erkannt</string>
     <string name="fullScreenOption">Statusleiste beim Browsen ausblenden</string>
-    <string name="clear_cookies">Löschen Sie die Browser-Cookies</string>
+    <string name="clear_cookies">Browser-Cookies löschen</string>
     <string name="clear_history">Browserverlauf löschen</string>
     <string name="dialog_image">Was möchten Sie mit diesem Bild machen?</string>
     <string name="action_download">Herunterladen</string>
@@ -56,7 +56,7 @@
     <string name="agent_default">Standard</string>
     <string name="agent_desktop">Desktop</string>
     <string name="agent_mobile">Handy, Mobiltelefon</string>
-    <string name="agent_custom">Brauch</string>
+    <string name="agent_custom">Benutzerdefiniert</string>
     <string name="title_search_engine">Suchmaschine</string>
     <string name="action_ok">okay</string>
     <string name="dialog_download">Möchten Sie diese Datei herunterladen? (%1$s)</string>
@@ -65,17 +65,17 @@
     <string name="title_warning">Warnung</string>
     <string name="dialog_adobe_not_installed">Adobe Flash Player ist nicht installiert. \ NBitte installieren Sie Flash Player.</string>
     <string name="title_user_agent">User-Agent</string>
-    <string name="title_download_location">Speicherort herunterladen</string>
+    <string name="title_download_location">Download Ordner</string>
     <string name="title_custom_homepage">Eigene Homepage</string>
     <string name="action_webpage">Website</string>
     <string name="title_clear_history">Verlauf löschen</string>
-    <string name="title_clear_cookies">Klare Kekse</string>
+    <string name="title_clear_cookies">Cookie löschen</string>
     <string name="dialog_history">Möchten Sie Ihren Browserverlauf löschen?</string>
     <string name="dialog_cookies">Möchten Sie die Cookies Ihres Browsers löschen?</string>
     <string name="action_yes">Ja</string>
     <string name="action_no">Nein</string>
     <string name="title_text_size">Textgröße</string>
-    <string name="size_largest">Größten</string>
+    <string name="size_largest">Am größten</string>
     <string name="size_large">Groß</string>
     <string name="size_normal">Normal</string>
     <string name="size_small">Klein</string>
@@ -107,7 +107,7 @@
     <string name="clear_cache">Cache leeren</string>
     <string name="message_cache_cleared">Cache geleert</string>
     <string name="message_import">Lesezeichen wurden importiert</string>
-    <string name="message_clear_history">Die Geschichte wurde gelöscht</string>
+    <string name="message_clear_history">Der Verlauf wurde gelöscht</string>
     <string name="message_cookies_cleared">Cookies gelöscht</string>
     <string name="max_tabs">Max Tabs erreicht</string>
     <string name="message_text_copied">Text in die Zwischenablage kopiert</string>
@@ -125,7 +125,7 @@
     <string name="message_certificate_untrusted">Zertifikat ist nicht vertrauenswürdig</string>
     <string name="title_form_resubmission">Formularwiedervorlage</string>
     <string name="message_form_resubmission">Möchten Sie die übermittelten Daten erneut senden?</string>
-    <string name="message_location">\ nMöchten Sie Ihren Standort verwenden</string>
+    <string name="message_location">Möchten Sie Ihren Standort verwenden</string>
     <string name="action_allow">ermöglichen</string>
     <string name="action_dont_allow">Nicht erlauben</string>
     <string name="title_sign_in">Anmelden</string>
@@ -154,8 +154,8 @@
     
     <string name="dialog_tools_title">Seitenwerkzeuge</string>
     <string name="dialog_toggle_desktop">Desktop User Agent umschalten</string>
-    <string name="dialog_adblock_enable_for_site">Aktivieren Sie den Anzeigenblock für die Site</string>
-    <string name="dialog_adblock_disable_for_site">Deaktivieren Sie den Anzeigenblock für die Site</string>
+    <string name="dialog_adblock_enable_for_site">Aktivieren Sie den Anzeigenblock für die Seite</string>
+    <string name="dialog_adblock_disable_for_site">Deaktivieren Sie den Anzeigenblock für die Seite</string>
 
     <string name="search_suggestions_off">Keine Suchvorschläge</string>
     <string name="http_proxy">HTTP-Proxy</string>
@@ -182,7 +182,7 @@
     <string name="clear_cookies_exit">Cookies beim Beenden löschen</string>
     <string name="clear_history_exit">Verlauf beim Beenden löschen</string>
     <string name="folder_default">Standard</string>
-    <string name="folder_custom">Brauch</string>
+    <string name="folder_custom">Benutzerdefiniert</string>
     <string name="untitled">Ohne Titel</string>
     <string name="mpl_license">Mozilla Public License 2.0</string>
     <string name="freeware">Freeware</string>
@@ -212,7 +212,7 @@
     <string name="settings_display">Bildschirmeinstellungen</string>
     <string name="settings_display_explain">Vollbildmodus, Textgröße, Themen ...</string>
     <string name="settings_privacy">Datenschutz- und Sicherheitseinstellungen</string>
-    <string name="settings_privacy_explain">Cache, Cookies, Geschichte ...</string>
+    <string name="settings_privacy_explain">Cache, Cookies, Verlauf ...</string>
     <string name="settings_about">Über</string>
     <string name="settings_about_explain">Versionsnummer, Autor und Lizenz…</string>
     <string name="close_tab">Aktuellen Tab schließen</string>
@@ -238,7 +238,7 @@
     <string name="settings_black_status_bar">Schwarze Statusleiste</string>
     <string name="tabs">Tabs</string>
     <string name="theme">App-Thema</string>
-    <string name="light_theme">Lichtthema</string>
+    <string name="light_theme">Helles Thema</string>
     <string name="black_theme">Schwarzes Thema</string>
     <string name="blue_theme">Blaues Thema</string>
     <string name="yellow_theme">Gelbes Thema</string>
@@ -252,12 +252,12 @@
     <string name="clear_web_storage_exit">Löschen Sie den Webspeicher beim Beenden</string>
     <string name="message_web_storage_cleared">Webspeicher gelöscht</string>
     <string name="hosts_source">Quelle für die Blockierung von Hosts-Dateien</string>
-    <string name="settings_adblock">Einstellungen für Inhaltsblöcke</string>
-    <string name="adblock_summary">Anzeigenblock, Cookie-Dialogblock ...</string>
-    <string name="adblock_category">Anzeigenblock</string>
+    <string name="settings_adblock">Einstellungen für Adblocker</string>
+    <string name="adblock_summary">Adblock, Cookie-Dialogblock ...</string>
+    <string name="adblock_category">Adblock</string>
     <string name="cookie_category">Cookie-Dialogblock</string>
     <string name="tabs_in_drawer">Registerkarten in der Navigationsleiste anzeigen</string>
-    <string name="swap_bookmarks_and_tabs">Lesezeichen- und Tab-Schubladen tauschen</string>
+    <string name="swap_bookmarks_and_tabs">Lesezeichen- und Tab-Menue tauschen</string>
     <string name="do_not_track">Anfrage \ "Nicht verfolgen \"</string>
     <string name="remove_identifying_headers">Entfernen Sie identifizierende HTTP-Header</string>
     <string name="action_add_to_homescreen">Zum Startbildschirm hinzufügen</string>
@@ -347,7 +347,7 @@
     
     <string name="search_engine_custom">eigene URL</string>
     <string name="search_engine_google">Google</string>
-    <string name="search_engine_ask">Fragen</string>
+    <string name="search_engine_ask">Ask</string>
     <string name="search_engine_bing">Bing</string>
     <string name="search_engine_yahoo">Yahoo</string>
     <string name="search_engine_startpage" translatable="false">StartPage</string>
@@ -360,7 +360,7 @@
     <string name="privacy">Datenschutzbestimmungen anzeigen</string>
     <string name="privacy_info">Lesen Sie die SmartCookieWeb-Datenschutzbestimmungen</string>
     <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
-    <string name="block_malware">Blockieren Sie bösartige Websites</string>
+    <string name="block_malware">Bösartige Websites blockieren</string>
     <string name="block_sites">Benutzerdefinierter Websiteblock (Beta)</string>
     <string name="block_sites_title">Benutzerdefinierter Site-Block (separate Sites mit einem Komma)</string>
     <string name="none">Keiner</string>
