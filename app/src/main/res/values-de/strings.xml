@@ -4,8 +4,8 @@
 --><!--          https://asrt.gluege.boerde.de            
 -->
     <string name="action_new_tab">Neue Registerkarte</string>
-    <string name="action_share">Aktie</string>
-    <string name="action_history">Geschichte</string>
+    <string name="action_share">Teilen</string>
+    <string name="action_history">Verlauf</string>
     <string name="action_bookmarks">Lesezeichen</string>
     <string name="action_downloads">Downloads</string>
     <string name="action_add_bookmark">Lesezeichen hinzufügen</string>
