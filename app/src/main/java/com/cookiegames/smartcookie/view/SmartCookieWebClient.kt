@@ -152,17 +152,18 @@ class SmartCookieWebClient(
             uiController.setForwardButtonEnabled(view.canGoForward())
             view.postInvalidate()
         }
-        if(url.contains("//extensions.cookiejarapps.com") && Locale.getDefault().getDisplayLanguage() != "English"){
-            view.evaluateJavascript("$('#myModal').modal('show')", null)
+        if(url.contains("//cookiejarapps.com/extensions") && Locale.getDefault().getDisplayLanguage() != "English"){
+            view.evaluateJavascript("\$('#modal1').modal();\n" +
+                    "    \$('#modal1').modal('open'); ", null)
             view.evaluateJavascript("document.getElementById(\"notSupported\").innerHTML = \""+ activity.resources.getString(R.string.language_not_supported) +"\"; document.getElementById(\"notSupportedText\").innerHTML = \"" + activity.resources.getString(R.string.language_not_supported_text) + "\";", null)
 
         }
 
-        if(url.contains("?install_extension=true") && url.contains("//extensions.cookiejarapps.com/")){
+        if(url.contains("?install_extension=true") && url.contains("//cookiejarapps.com/extenstions")){
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Install Extension")
             builder.setMessage("This extension is verified. Do you want to install this extension?")
-            builder.setPositiveButton("Yes"){dialog, which ->
+            builder.setPositiveButton(R.string.yes){dialog, which ->
                 //Toast.makeText(activity,"Extension installed.",Toast.LENGTH_SHORT).show()
 
                 view.evaluateJavascript("""(function() {
@@ -183,7 +184,7 @@ class SmartCookieWebClient(
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Install Extension")
             builder.setMessage("This extension is not verified! Do you still want to install this extension?")
-            builder.setPositiveButton("Yes"){dialog, which ->
+            builder.setPositiveButton(R.string.yes){dialog, which ->
                 view.settings.javaScriptEnabled = true
                 view.evaluateJavascript("""(function() {
                 return document.body.innerText;
@@ -194,7 +195,7 @@ class SmartCookieWebClient(
                 }
                 view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
             }
-            builder.setNegativeButton("No"){dialog,which ->
+            builder.setNegativeButton(R.string.no){dialog,which ->
             }
             val dialog: AlertDialog = builder.create()
             dialog.show()
@@ -203,7 +204,7 @@ class SmartCookieWebClient(
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Unnstall Extension")
             builder.setMessage("Would you like to uninstall this extension?")
-            builder.setPositiveButton("Yes"){dialog, which ->
+            builder.setPositiveButton(R.string.yes){dialog, which ->
                 view.settings.javaScriptEnabled = true
                 view.evaluateJavascript("""(function() {
                 return document.getElementsByTagName('pre')[0].innerHTML;
@@ -214,7 +215,7 @@ class SmartCookieWebClient(
                 }
                 Toast.makeText(activity,"Extension uninstalled.",Toast.LENGTH_SHORT).show()
             }
-            builder.setNegativeButton("No"){dialog,which ->
+            builder.setNegativeButton(R.string.no){dialog,which ->
             }
             val dialog: AlertDialog = builder.create()
             dialog.show()
@@ -232,35 +233,10 @@ class SmartCookieWebClient(
         if(userPreferences.cookieBlockEnabled){
             view.settings.javaScriptEnabled = true
             view.loadUrl(
-                    "javascript:(function() { " +
-                            "var elems = document.querySelectorAll(\".cc-banner, .qc-cmp-ui-content, .bbccookies-banner, .cc_banner-wrapper, .hnf-banner, .m-privacy-consent, .evidon-consent-button, .privacyPolicyBanner, .c-cookie-disclaimer, .important-banner--cookies, .cookie-policy, .cookie-banner-optout, .cookie-banner__wrapper\");\n" +
-                            "\telems.forEach(function(element) {\n" +
-                            "  \telement.parentNode.removeChild(element);\n" +
-                            "\t});\n" +
-                            "\n" +
-                            "var elem1 = document.getElementById(\"cookiescript_injected\");\n" +
-                            "if(elem1 != null){\n" +
-                            "elem1.parentNode.removeChild(elem1);\n" +
-                            "}\n" +
-                            "\n" +
-                            "var elem2 = document.getElementById(\"CybotCookiebotDialog\");\n" +
-                            "\n" +
-                            "if(elem2 != null){\n" +
-                            "elem2.parentNode.removeChild(elem2);\n" +
-                            "}\n" +
-                            "\n" +
-                            "var elem3 = document.getElementById(\"cookie-banner\");\n" +
-                            "\n" +
-                            "if(elem3 != null){\n" +
-                            "elem3.parentNode.removeChild(elem3)\n" +
-                            "}\n" +
-                            "\n" +
-                            "var elem4 = document.getElementById(\"cookieNotificationBannerWrapper\");\n" +
-                            "\n" +
-                            "if(elem4 != null){\n" +
-                            "elem4.parentNode.removeChild(elem4)\n" +
-                            "}" + "if(document.getElementById(\"cmp-container-id\"0 != null){ document.getElementById(\"cmp-container-id\").parentNode.removeChild(document.getElementById(\"cmp-container-id\"));}" +
-                            "})()")
+                    "javascript:(function() { var cookies = document.querySelectorAll('.bbccookies-banner, .butterBar-message, .gl-modal__main-content, .md-cookiesoptinout, .lOPC8 , .cp-overlay, .cp-dialog, .cc-light, .xFNJP, .yAVMkd, .vk_c, .evidon-consent-button, .cookie-warn, .cc-banner, .cc-bottom, .qc-cmp-ui-content, .hnf-banner, .m-privacy-consent, .c-cookie-disclaimer, .important-banner--cookies, .cookie-policy, .cookie-banner-optout, .cookie-banner__wrapper');\n" +
+                            "cookies.forEach(function(element) {\n" +
+                            "    element.parentNode.removeChild(element);\n" +
+                            "}); })()")
             view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
         }
         if (userPreferences.blockMalwareEnabled) {
