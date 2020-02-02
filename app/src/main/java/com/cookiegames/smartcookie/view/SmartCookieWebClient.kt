@@ -367,13 +367,16 @@ class SmartCookieWebClient(
         letDirectory.mkdirs()
         val file = File(letDirectory, "extension_file.txt")
         if(file.exists()){
-            val contents = file.readText() // Read file
+            var contents = file.readText() // Read file
+
+            contents = contents.replace("(\\\\n)+".toRegex(), "")
+
+            contents = contents.replace("(\\\\\")+".toRegex(), "\"")
+
 
             Log.d("extensions", contents)
-
-            //view.loadUrl("javascript:(function() {" + contents + "})()")
             view.settings.javaScriptEnabled = true
-            view.evaluateJavascript(contents, null)
+            view.loadUrl("javascript:(function() {" + contents.toString() + "})()")
             view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
         }
     }
