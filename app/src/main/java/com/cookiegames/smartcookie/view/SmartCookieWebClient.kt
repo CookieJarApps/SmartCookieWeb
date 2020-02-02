@@ -159,7 +159,7 @@ class SmartCookieWebClient(
 
         }
 
-        if(url.contains("?install_extension=true") && url.contains("//cookiejarapps.com/extenstions")){
+        if(url.contains("?install_extension=true") && url.contains("//cookiejarapps.com/extensions")){
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Install Extension")
             builder.setMessage("This extension is verified. Do you want to install this extension?")
