@@ -33,7 +33,7 @@ A secure, open source web browser for Android.
 - [ ] Custom themes
 - [ ] Convert user scripts to extensions
 - [ ] Change from WebView to GeckoView
-- [ ] Web dark theme
+- [x] Web dark theme
 
 # License
 SmartCookieWeb uses the Mozilla Public License 2.0
