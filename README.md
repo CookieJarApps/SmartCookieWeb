@@ -14,7 +14,7 @@
 
 
 
-A secure, open source web browser for Android.
+A secure, free and open source web browser for Android.
 
 # Features
 * Bookmarks
