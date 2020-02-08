@@ -82,6 +82,7 @@ import androidx.palette.graphics.Palette
 import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
 import com.cookiegames.smartcookie.MainActivity
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy

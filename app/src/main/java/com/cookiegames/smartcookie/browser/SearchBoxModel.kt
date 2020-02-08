@@ -39,8 +39,8 @@ class SearchBoxModel @Inject constructor(
             url.isSpecialUrl() -> ""
             isLoading -> url
             else -> when (userPreferences.urlBoxContentChoice) {
-                SearchBoxDisplayChoice.DOMAIN -> safeDomain(url)
                 SearchBoxDisplayChoice.URL -> url
+                SearchBoxDisplayChoice.DOMAIN -> safeDomain(url)
                 SearchBoxDisplayChoice.TITLE ->
                     if (title?.isEmpty() == false) {
                         title

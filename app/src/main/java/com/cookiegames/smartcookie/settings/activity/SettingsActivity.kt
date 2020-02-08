@@ -9,6 +9,7 @@ import com.cookiegames.smartcookie.device.BuildType
 import com.cookiegames.smartcookie.di.injector
 import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceActivity
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -37,7 +38,7 @@ class SettingsActivity : ThemableSettingsActivity() {
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
     }
 
-    override fun onBuildHeaders(target: MutableList<Header>) {
+    override fun onBuildHeaders(target: MutableList<PreferenceActivity.Header>) {
         loadHeadersFromResource(R.xml.preferences_headers, target)
         fragments.clear()
 

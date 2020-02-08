@@ -200,7 +200,7 @@ class UserPreferences @Inject constructor(
      *
      * @see SearchBoxModel
      */
-    var urlBoxContentChoice by preferences.enumPreference(URL_BOX_CONTENTS, SearchBoxDisplayChoice.DOMAIN)
+    var urlBoxContentChoice by preferences.enumPreference(URL_BOX_CONTENTS, SearchBoxDisplayChoice.URL)
 
     /**
      * True if the browser should invert the display colors of the web page content, false

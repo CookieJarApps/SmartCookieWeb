@@ -206,7 +206,7 @@
     <string name="import_bookmark_error">Could not import bookmarks from file</string>
     <string name="title_chooser">Choose a file</string>
     <string name="settings_general">General settings</string>
-    <string name="settings_general_explain">Ad blocker, search engine, homepage&#8230;</string>
+    <string name="settings_general_explain">Search engine, proxy, homepage&#8230;</string>
     <string name="settings_display">Display settings</string>
     <string name="settings_display_explain">Full screen mode, text size, themes&#8230;</string>
     <string name="settings_privacy">Privacy and security settings</string>
@@ -227,8 +227,8 @@
     <string name="url_contents">URL box contents</string>
     <string name="text_encoding">Text encoding</string>
     <string-array name="url_content_array">
-        <item>Domain (default)</item>
         <item>URL</item>
+        <item>Domain</item>
         <item>Title</item>
     </string-array>
     <string name="invert_color">Invert color</string>

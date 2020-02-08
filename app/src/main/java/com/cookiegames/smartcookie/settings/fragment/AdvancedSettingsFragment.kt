@@ -161,8 +161,8 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
     private fun SearchBoxDisplayChoice.toDisplayString(): String {
         val stringArray = resources.getStringArray(R.array.url_content_array)
         return when (this) {
-            SearchBoxDisplayChoice.DOMAIN -> stringArray[0]
-            SearchBoxDisplayChoice.URL -> stringArray[1]
+            SearchBoxDisplayChoice.URL -> stringArray[0]
+            SearchBoxDisplayChoice.DOMAIN -> stringArray[1]
             SearchBoxDisplayChoice.TITLE -> stringArray[2]
         }
     }

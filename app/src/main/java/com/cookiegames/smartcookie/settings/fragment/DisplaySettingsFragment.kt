@@ -23,6 +23,8 @@ import android.content.Intent
 import androidx.core.app.ActivityCompat.invalidateOptionsMenu
 import com.cookiegames.smartcookie.BrowserApp
 import com.cookiegames.smartcookie.MainActivity
+import com.jaredrummler.cyanea.prefs.CyaneaSettingsActivity
+import com.jaredrummler.cyanea.prefs.CyaneaThemePickerActivity
 
 
 class DisplaySettingsFragment : AbstractSettingsFragment() {
@@ -144,7 +146,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun showThemePicker(summaryUpdater: SummaryUpdater) {
-        val currentTheme = userPreferences.useTheme
+        /*val currentTheme = userPreferences.useTheme
         AlertDialog.Builder(activity).apply {
             setTitle(resources.getString(R.string.theme))
             val values = AppTheme.values().map { Pair(it, it.toDisplayString()) }
@@ -164,7 +166,8 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
                     activity.onBackPressed()
                 }
             }
-        }.resizeAndShow()
+        }.resizeAndShow()*/
+        startActivity(Intent(activity, CyaneaSettingsActivity::class.java));
     }
 
     private fun AppTheme.toDisplayString(): String = getString(when (this) {

@@ -55,7 +55,7 @@
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
             android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:theme="@style/Theme.LightTheme"
+            android:theme="@style/Theme.Cyanea.Light"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -147,7 +147,7 @@
             android:launchMode="singleInstance"
             android:process=":incognito"
             android:parentActivityName="com.cookiegames.smartcookie.MainActivity"
-            android:theme="@style/Theme.DarkTheme"
+            android:theme="@style/Theme.Cyanea.Dark"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.INCOGNITO"/>
@@ -160,7 +160,7 @@
             android:colorMode="wideColorGamut"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
             android:label="@string/settings"
-            android:theme="@style/Theme.SettingsTheme">
+            android:theme="@style/Theme.Cyanea.Light">
             <intent-filter>
                 <action android:name="android.intent.action.SETTINGS"/>
 
@@ -172,7 +172,7 @@
             android:colorMode="wideColorGamut"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
             android:label="@string/reading_mode"
-            android:theme="@style/Theme.SettingsTheme">
+            android:theme="@style/Theme.Cyanea.Light">
             <intent-filter>
                 <action android:name="android.intent.action.READING"/>
 

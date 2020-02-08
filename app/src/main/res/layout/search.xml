@@ -48,7 +48,8 @@
         app:layout_constraintEnd_toStartOf="@+id/search_refresh"
         app:layout_constraintStart_toEndOf="@+id/search_ssl_status"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_goneMarginLeft="8dp" />
+        app:layout_goneMarginLeft="8dp"
+        android:textSize="18sp"/>
 
     <ImageView
         android:id="@+id/search_refresh"

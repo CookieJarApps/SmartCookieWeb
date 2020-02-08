@@ -11,6 +11,9 @@
     <color name="secondary_color">#66000000</color>
     <color name="accent_color">#C88C36</color>
 
+    <color name="cyanea_primary_reference">#FFFFFF</color>
+    <color name="cyanea_accent_reference">#C88C36</color>
+
     <color name="color_green">#ACDF87</color>
     <color name="color_yellow">#FEFEBE</color>
     <color name="color_blue">#AEC6CF</color>

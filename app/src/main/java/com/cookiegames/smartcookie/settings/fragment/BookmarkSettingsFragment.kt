@@ -47,10 +47,6 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
         super.onCreate(savedInstanceState)
         injector.inject(this)
 
-        PermissionsManager
-            .getInstance()
-            .requestPermissionsIfNecessaryForResult(activity, REQUIRED_PERMISSIONS, null)
-
         clickablePreference(preference = SETTINGS_EXPORT, onClick = this::exportBookmarks)
         clickablePreference(preference = SETTINGS_IMPORT, onClick = this::importBookmarks)
         clickablePreference(preference = SETTINGS_DELETE_BOOKMARKS, onClick = this::deleteAllBookmarks)

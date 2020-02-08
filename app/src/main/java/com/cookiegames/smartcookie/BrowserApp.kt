@@ -20,6 +20,7 @@ import android.os.Build
 import android.os.StrictMode
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatDelegate
+import com.jaredrummler.cyanea.Cyanea
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.plugins.RxJavaPlugins
@@ -45,17 +46,7 @@ class BrowserApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG) {
-            StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .build())
-            StrictMode.setVmPolicy(StrictMode.VmPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .build())
-        }
-
+        Cyanea.init(this, resources)
         if (Build.VERSION.SDK_INT >= 28) {
             if (getProcessName() == "$packageName:incognito") {
                 WebView.setDataDirectorySuffix("incognito")

@@ -599,6 +599,7 @@
 0.0.0.0 ibeat.indiatimes.com
 0.0.0.0 static.clmbtech.com
 0.0.0.0 api.branch.io
+0.0.0.0 api2.branch.io
 0.0.0.0 camsoda.com
 0.0.0.0 www.camsoda.com
 0.0.0.0 msmetrics.ws.sonos.com
@@ -20714,6 +20715,7 @@
 0.0.0.0 indium.openx.net
 0.0.0.0 display.provenpixel.com
 0.0.0.0 ads.reddit.com
+0.0.0.0 alb.reddit.com
 0.0.0.0 www.reelcentric.com
 0.0.0.0 rivasearchpage.com
 0.0.0.0 tap.rubiconproject.com

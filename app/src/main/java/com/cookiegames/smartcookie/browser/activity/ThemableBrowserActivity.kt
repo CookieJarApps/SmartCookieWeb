@@ -16,9 +16,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.iterator
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity
+import com.jaredrummler.cyanea.prefs.CyaneaTheme
 import javax.inject.Inject
 
-abstract class ThemableBrowserActivity : AppCompatActivity() {
+abstract class ThemableBrowserActivity : CyaneaAppCompatActivity() {
 
     // TODO reduce protected visibility
     @Inject protected lateinit var userPreferences: UserPreferences
@@ -65,8 +67,6 @@ abstract class ThemableBrowserActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (userPreferences.useBlackStatusBar || !userPreferences.showTabsInDrawer) {
                 window.statusBarColor = Color.BLACK
-            } else {
-                window.statusBarColor = ThemeUtils.getStatusBarColor(this)
             }
         }
     }
