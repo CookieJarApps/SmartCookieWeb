@@ -213,6 +213,9 @@ class UserPreferences @Inject constructor(
      */
     var readingTextSize by preferences.intPreference(READING_TEXT_SIZE, 2)
 
+    var bottomBar by preferences.booleanPreference(BOTTOM_BAR, false)
+
+
     /**
      * The index of the theme used by the application.
      */
@@ -364,3 +367,4 @@ private const val COOKIE_BLOCK = "blockCookieDialogs"
 private const val START_THEME = "startPageTheme"
 private const val FOREGROUND = "tabsToForeground"
 private const val EXTRA = "showExtraOptions"
+private const val BOTTOM_BAR = "bottomBar"

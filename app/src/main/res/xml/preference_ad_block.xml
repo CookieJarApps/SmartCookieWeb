@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/adblock_category">
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="cb_block_ads"
             android:title="@string/block_ads"/>
@@ -15,7 +15,7 @@
             android:title="@string/block_ad_refresh_now"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/cookie_category">
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="cb_block_cookies"
             android:title="@string/cookie_category"/>

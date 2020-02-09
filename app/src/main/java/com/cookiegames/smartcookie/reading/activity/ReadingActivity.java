@@ -89,7 +89,7 @@ public class ReadingActivity extends AppCompatActivity {
             color = ThemeUtils.getPrimaryColorDark(this);
             getWindow().setBackgroundDrawable(new ColorDrawable(color));
         } else {
-            setTheme(R.style.Theme_Cyanea_Light);
+            setTheme(R.style.Theme_SettingsTheme);
             color = ThemeUtils.getPrimaryColor(this);
             getWindow().setBackgroundDrawable(new ColorDrawable(color));
         }

@@ -50,12 +50,12 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
 
         injector.inject(this)
 
-        checkBoxPreference(
+        switchPreference(
             preference = "cb_block_ads",
             isChecked = userPreferences.adBlockEnabled,
             onCheckChange = { userPreferences.adBlockEnabled = it }
         )
-        checkBoxPreference(
+        switchPreference(
                 preference = "cb_block_cookies",
                 isChecked = userPreferences.cookieBlockEnabled,
                 onCheckChange = { userPreferences.cookieBlockEnabled = it }

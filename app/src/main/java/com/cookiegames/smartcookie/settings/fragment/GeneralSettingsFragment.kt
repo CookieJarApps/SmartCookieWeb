@@ -84,25 +84,25 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
             onClick = ::showSearchSuggestionsDialog
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_IMAGES,
             isChecked = userPreferences.blockImagesEnabled,
             onCheckChange = { userPreferences.blockImagesEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_SAVEDATA,
             isChecked = userPreferences.saveDataEnabled,
             onCheckChange = { userPreferences.saveDataEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_JAVASCRIPT,
             isChecked = userPreferences.javaScriptEnabled,
             onCheckChange = { userPreferences.javaScriptEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_COLOR_MODE,
             isChecked = userPreferences.colorModeEnabled,
             onCheckChange = { userPreferences.colorModeEnabled = it }

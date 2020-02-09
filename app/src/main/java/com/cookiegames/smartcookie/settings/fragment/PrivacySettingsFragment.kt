@@ -37,81 +37,81 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
         clickablePreference(preference = SETTINGS_CLEARCOOKIES, onClick = this::clearCookiesDialog)
         clickablePreference(preference = SETTINGS_CLEARWEBSTORAGE, onClick = this::clearWebStorage)
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_LOCATION,
             isChecked = userPreferences.locationEnabled,
             onCheckChange = { userPreferences.locationEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_THIRDPCOOKIES,
             isChecked = userPreferences.blockThirdPartyCookiesEnabled,
             isEnabled = DeviceCapabilities.THIRD_PARTY_COOKIE_BLOCKING.isSupported,
             onCheckChange = { userPreferences.blockThirdPartyCookiesEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_SAVEPASSWORD,
             isChecked = userPreferences.savePasswordsEnabled,
             onCheckChange = { userPreferences.savePasswordsEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_CACHEEXIT,
             isChecked = userPreferences.clearCacheExit,
             onCheckChange = { userPreferences.clearCacheExit = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_HISTORYEXIT,
             isChecked = userPreferences.clearHistoryExitEnabled,
             onCheckChange = { userPreferences.clearHistoryExitEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_COOKIEEXIT,
             isChecked = userPreferences.clearCookiesExitEnabled,
             onCheckChange = { userPreferences.clearCookiesExitEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_WEBSTORAGEEXIT,
             isChecked = userPreferences.clearWebStorageExitEnabled,
             onCheckChange = { userPreferences.clearWebStorageExitEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_DONOTTRACK,
             isChecked = userPreferences.doNotTrackEnabled,
             onCheckChange = { userPreferences.doNotTrackEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_WEBRTC,
             isChecked = userPreferences.webRtcEnabled && DeviceCapabilities.WEB_RTC.isSupported,
             isEnabled = DeviceCapabilities.WEB_RTC.isSupported,
             onCheckChange = { userPreferences.webRtcEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
                 preference = SETTINGS_FORCEHTTPS,
                 isChecked = userPreferences.forceHTTPSenabled,
                 onCheckChange = { userPreferences.forceHTTPSenabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
                 preference = SETTINGS_PREFERHTTPS,
                 isChecked = userPreferences.preferHTTPSenabled,
                 onCheckChange = { userPreferences.preferHTTPSenabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
                 preference = SETTINGS_BLOCKMALWARE,
                 isChecked = userPreferences.blockMalwareEnabled,
                 onCheckChange = { userPreferences.blockMalwareEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_IDENTIFYINGHEADERS,
             isChecked = userPreferences.removeIdentifyingHeadersEnabled,
             summary = "${SmartCookieView.HEADER_REQUESTED_WITH}, ${SmartCookieView.HEADER_WAP_PROFILE}",

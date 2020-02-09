@@ -16,11 +16,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.iterator
-import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity
-import com.jaredrummler.cyanea.prefs.CyaneaTheme
 import javax.inject.Inject
 
-abstract class ThemableBrowserActivity : CyaneaAppCompatActivity() {
+abstract class ThemableBrowserActivity : AppCompatActivity() {
 
     // TODO reduce protected visibility
     @Inject protected lateinit var userPreferences: UserPreferences

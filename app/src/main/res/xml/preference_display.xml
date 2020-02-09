@@ -2,52 +2,56 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="@string/settings_display">
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="cb_drawertabs"
             android:title="@string/tabs_in_drawer"/>
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="cb_swapdrawers"
             android:title="@string/swap_bookmarks_and_tabs"/>
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="fullScreenOption"
             android:title="@string/fullScreenOption"/>
-        <CheckBoxPreference
-            android:defaultValue="true"
+        <SwitchPreference
+            android:defaultValue="false"
             android:key="fullscreen"
             android:title="@string/fullscreen"/>
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="black_status_bar"
             android:title="@string/settings_black_status_bar"/>
-        <CheckBoxPreference
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="bottom_bar"
+            android:title="Move navigation bar to bottom (beta)"/>
+        <SwitchPreference
             android:defaultValue="true"
             android:key="wideViewPort"
             android:summary="@string/recommended"
             android:title="@string/wideViewPort"/>
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="overViewMode"
             android:summary="@string/recommended"
             android:title="@string/overViewMode"/>
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="text_reflow"
             android:title="@string/reflow"/>
         <Preference
             android:key="app_theme"
             android:title="@string/theme"/>
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="startpage_theme"
             android:title="@string/startpage"/>
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="show_extra"
             android:title="@string/show_extra"/>
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="new_tabs_foreground"
             android:title="@string/new_tab_foreground"

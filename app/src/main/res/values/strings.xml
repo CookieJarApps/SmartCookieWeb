@@ -410,6 +410,8 @@
     <string name="quit_private">Exit Private Mode</string>
     <string name="ekoru">Ekoru</string>
     <string name="ecosia">Ecosia</string>
+    <string name="experimental_settings">Experimental settings</string>
+    <string name="experimental_settings_desc">Try out new features before they\'re released...</string>
 
     <!-- finish pages -->
 </resources>

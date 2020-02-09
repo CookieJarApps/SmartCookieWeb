@@ -33,13 +33,13 @@ abstract class AbstractSettingsFragment : PreferenceFragment() {
      * @param summary the summary to display. Defaults to null, which results in no summary.
      * @param onCheckChange the function that should be called when the check box is toggled.
      */
-    protected fun checkBoxPreference(
+    protected fun switchPreference(
         preference: String,
         isChecked: Boolean,
         isEnabled: Boolean = true,
         summary: String? = null,
         onCheckChange: (Boolean) -> Unit
-    ): CheckBoxPreference = (findPreference(preference) as CheckBoxPreference).apply {
+    ): SwitchPreference = (findPreference(preference) as SwitchPreference).apply {
         this.isChecked = isChecked
         this.isEnabled = isEnabled
         summary?.let {

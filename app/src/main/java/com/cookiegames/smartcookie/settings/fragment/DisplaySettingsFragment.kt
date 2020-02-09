@@ -1,6 +1,3 @@
-/*
- * Copyright 2014 A.C.R. Development
- */
 package com.cookiegames.smartcookie.settings.fragment
 
 import android.content.Context
@@ -20,11 +17,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import javax.inject.Inject
 import android.content.Intent
+import android.preference.SwitchPreference
 import androidx.core.app.ActivityCompat.invalidateOptionsMenu
 import com.cookiegames.smartcookie.BrowserApp
 import com.cookiegames.smartcookie.MainActivity
-import com.jaredrummler.cyanea.prefs.CyaneaSettingsActivity
-import com.jaredrummler.cyanea.prefs.CyaneaThemePickerActivity
 
 
 class DisplaySettingsFragment : AbstractSettingsFragment() {
@@ -52,70 +48,75 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
             onClick = ::showTextSizePicker
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_HIDESTATUSBAR,
             isChecked = userPreferences.hideStatusBarEnabled,
             onCheckChange = { userPreferences.hideStatusBarEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_FULLSCREEN,
             isChecked = userPreferences.fullScreenEnabled,
             onCheckChange = {userPreferences.fullScreenEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
                 preference = SETTINGS_EXTRA,
                 isChecked = userPreferences.showExtraOptions,
                 onCheckChange = { userPreferences.showExtraOptions = it}
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_VIEWPORT,
             isChecked = userPreferences.useWideViewPortEnabled,
             onCheckChange = { userPreferences.useWideViewPortEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_OVERVIEWMODE,
             isChecked = userPreferences.overviewModeEnabled,
             onCheckChange = { userPreferences.overviewModeEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_REFLOW,
             isChecked = userPreferences.textReflowEnabled,
             onCheckChange = { userPreferences.textReflowEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_BLACK_STATUS,
             isChecked = userPreferences.useBlackStatusBar,
             onCheckChange = { userPreferences.useBlackStatusBar = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_DRAWERTABS,
             isChecked = userPreferences.showTabsInDrawer,
             onCheckChange = { userPreferences.showTabsInDrawer = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_SWAPTABS,
             isChecked = userPreferences.bookmarksAndTabsSwapped,
             onCheckChange = { userPreferences.bookmarksAndTabsSwapped = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
                 preference = SETTINGS_STARTPAGE,
                 isChecked = userPreferences.startPageThemeEnabled,
                 onCheckChange = { userPreferences.startPageThemeEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
                 preference = SETTINGS_FOREGROUND,
                 isChecked = userPreferences.tabsToForegroundEnabled,
                 onCheckChange = { userPreferences.tabsToForegroundEnabled = it }
+        )
+        switchPreference(
+                preference = SETTINGS_BOTTOM_BAR,
+                isChecked = userPreferences.bottomBar,
+                onCheckChange = {userPreferences.bottomBar = it}
         )
     }
 
@@ -146,7 +147,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun showThemePicker(summaryUpdater: SummaryUpdater) {
-        /*val currentTheme = userPreferences.useTheme
+        val currentTheme = userPreferences.useTheme
         AlertDialog.Builder(activity).apply {
             setTitle(resources.getString(R.string.theme))
             val values = AppTheme.values().map { Pair(it, it.toDisplayString()) }
@@ -166,8 +167,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
                     activity.onBackPressed()
                 }
             }
-        }.resizeAndShow()*/
-        startActivity(Intent(activity, CyaneaSettingsActivity::class.java));
+        }.resizeAndShow()
     }
 
     private fun AppTheme.toDisplayString(): String = getString(when (this) {
@@ -208,6 +208,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_STARTPAGE = "startpage_theme"
         private const val SETTINGS_FOREGROUND = "new_tabs_foreground"
         private const val SETTINGS_EXTRA = "show_extra"
+        private const val SETTINGS_BOTTOM_BAR = "bottom_bar"
 
 
         private const val XX_LARGE = 30.0f

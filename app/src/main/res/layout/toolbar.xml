@@ -8,7 +8,8 @@
     android:clipChildren="false"
     android:clipToPadding="false"
     android:elevation="3dp"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    >
 
     <FrameLayout
         android:id="@+id/tabs_toolbar_container"

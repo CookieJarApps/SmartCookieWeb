@@ -46,31 +46,31 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
             onClick = this::showUrlBoxDialogPicker
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_NEW_WINDOW,
             isChecked = userPreferences.popupsEnabled,
             onCheckChange = { userPreferences.popupsEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_ENABLE_COOKIES,
             isChecked = userPreferences.cookiesEnabled,
             onCheckChange = { userPreferences.cookiesEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_COOKIES_INCOGNITO,
             isChecked = userPreferences.incognitoCookiesEnabled,
             onCheckChange = { userPreferences.incognitoCookiesEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
             preference = SETTINGS_RESTORE_TABS,
             isChecked = userPreferences.restoreLostTabsEnabled,
             onCheckChange = { userPreferences.restoreLostTabsEnabled = it }
         )
 
-        val incognitoCheckboxPreference = checkBoxPreference(
+        val incognitoCheckboxPreference = switchPreference(
                 preference = SETTINGS_COOKIES_INCOGNITO,
                 isEnabled = !DeviceCapabilities.FULL_INCOGNITO.isSupported,
                 isChecked = if (DeviceCapabilities.FULL_INCOGNITO.isSupported) {
@@ -86,7 +86,7 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
                 onCheckChange = { userPreferences.incognitoCookiesEnabled = it }
         )
 
-        checkBoxPreference(
+        switchPreference(
                 preference = SETTINGS_ENABLE_COOKIES,
                 isChecked = userPreferences.cookiesEnabled,
                 onCheckChange = {
