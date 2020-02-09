@@ -21,6 +21,9 @@ import android.preference.SwitchPreference
 import androidx.core.app.ActivityCompat.invalidateOptionsMenu
 import com.cookiegames.smartcookie.BrowserApp
 import com.cookiegames.smartcookie.MainActivity
+import com.cookiegames.smartcookie.browser.PasswordChoice
+import com.cookiegames.smartcookie.dialog.BrowserDialog
+import com.cookiegames.smartcookie.html.homepage.HomePageFactory
 
 
 class DisplaySettingsFragment : AbstractSettingsFragment() {
@@ -118,6 +121,27 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
                 isChecked = userPreferences.bottomBar,
                 onCheckChange = {userPreferences.bottomBar = it}
         )
+       /* switchPreference(
+                preference = SETTINGS_WHATSNEW,
+                isChecked = userPreferences.whatsNewEnabled,
+                onCheckChange = {userPreferences.whatsNewEnabled = it}
+        )
+        clickablePreference(
+                preference = SETTINGS_IMAGE_URL,
+                onClick = ::showImageUrlPicker
+        )*/
+    }
+
+    private fun showImageUrlPicker() {
+        activity?.let {
+            BrowserDialog.showEditText(it,
+                    R.string.image_url,
+                    R.string.hint_url,
+                    userPreferences.imageUrlString,
+                    R.string.action_ok) { s ->
+                userPreferences.imageUrlString = s
+            }
+        }
     }
 
     private fun showTextSizePicker() {
@@ -209,6 +233,9 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_FOREGROUND = "new_tabs_foreground"
         private const val SETTINGS_EXTRA = "show_extra"
         private const val SETTINGS_BOTTOM_BAR = "bottom_bar"
+        private const val SETTINGS_WHATSNEW = "show_whats_new"
+        private const val SETTINGS_IMAGE_URL = "image_url"
+
 
 
         private const val XX_LARGE = 30.0f

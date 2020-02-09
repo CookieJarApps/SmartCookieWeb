@@ -43,6 +43,10 @@
             android:title="@string/webrtc_support"/>
         <SwitchPreference
             android:defaultValue="false"
+            android:key="start_incognito"
+            android:title="@string/start_incognito"/>
+        <SwitchPreference
+            android:defaultValue="false"
             android:key="clear_cache_exit"
             android:title="@string/cache"/>
         <SwitchPreference

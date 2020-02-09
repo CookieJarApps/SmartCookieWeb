@@ -45,6 +45,7 @@ import android.app.Activity
 import android.app.NotificationManager
 import android.content.ClipboardManager
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -56,6 +57,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.preference.PreferenceManager
 import android.provider.MediaStore
 import android.util.DisplayMetrics
 import android.view.*
@@ -284,6 +286,27 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         } else {
             TabsDesktopView(this).also(findViewById<FrameLayout>(getTabsContainerId())::addView)
         }
+        var mPrefs = PreferenceManager.getDefaultSharedPreferences(this)
+        var shouldRestoreTabs = mPrefs.getBoolean("shouldRestoreTabs", false);
+
+        if(userPreferences.incognito){
+
+            WebUtils.clearHistory(this, historyModel, databaseScheduler)
+            WebUtils.clearCookies(this)
+
+            if(userPreferences.restoreLostTabsEnabled){
+                var editor = mPrefs.edit();
+                editor.putBoolean("shouldRestoreTabs", true);
+                editor.commit();
+                userPreferences.restoreLostTabsEnabled = false
+            }
+        }
+        else if(shouldRestoreTabs && userPreferences.restoreLostTabsEnabled == false && !userPreferences.incognito){
+            var editor = mPrefs.edit();
+            editor.putBoolean("shouldRestoreTabs", false);
+            editor.commit();
+            userPreferences.restoreLostTabsEnabled = true
+        }
 
         bookmarksView = BookmarksDrawerView(this, this).also(findViewById<FrameLayout>(getBookmarksContainerId())::addView)
 
@@ -370,13 +393,12 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             }
         }
 
-        if(userPreferences.bottomBar){
+        if (userPreferences.bottomBar) {
             val searchEdit = customView.findViewById<SearchView>(R.id.search)
             searchEdit.setOnFocusChangeListener { searchEdit, hasFocus ->
                 if (searchEdit?.hasFocus() == true) {
                     toolbar_layout.translationY = 0f
-                }
-                else{
+                } else {
                     val displayMetrics = DisplayMetrics()
                     windowManager.defaultDisplay.getMetrics(displayMetrics)
                     toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56 * displayMetrics.heightPixels.toFloat() / 1125
@@ -412,8 +434,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             setIntent(null)
             proxyUtils.checkForProxy(this)
         }
-    }
 
+    }
     private fun getBookmarksContainerId(): Int = if (swapBookmarksAndTabs) {
         R.id.left_drawer
     } else {

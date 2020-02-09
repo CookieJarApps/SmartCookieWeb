@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!-- before was  6dp top/bottom -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/search_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="2dp"
-    android:layout_marginTop="6dp"
+    android:layout_marginTop="7dp"
     android:layout_marginRight="2dp"
-    android:layout_marginBottom="6dp"
+    android:layout_marginBottom="7dp"
     android:layout_weight="1"
     android:background="?attr/searchBackground"
     android:clipChildren="false"
@@ -49,7 +49,7 @@
         app:layout_constraintStart_toEndOf="@+id/search_ssl_status"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_goneMarginLeft="8dp"
-        android:textSize="18sp"/>
+        android:textSize="17.5sp"/>
 
     <ImageView
         android:id="@+id/search_refresh"

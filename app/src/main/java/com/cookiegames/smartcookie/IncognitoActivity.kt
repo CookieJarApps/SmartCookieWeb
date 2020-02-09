@@ -18,6 +18,8 @@ import androidx.core.content.ContextCompat.getSystemService
 
 class IncognitoActivity : BrowserActivity() {
 
+    override fun provideThemeOverride(): Int? = R.style.Theme_DarkTheme
+
     @Suppress("DEPRECATION")
     public override fun updateCookiePreference(): Completable = Completable.fromAction {
         val cookieManager = CookieManager.getInstance()

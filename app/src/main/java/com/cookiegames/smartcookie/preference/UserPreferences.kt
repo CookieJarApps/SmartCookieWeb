@@ -168,6 +168,12 @@ class UserPreferences @Inject constructor(
      */
     var userAgentString by preferences.stringPreference(USER_AGENT_STRING, "")
 
+    var imageUrlString by preferences.stringPreference(IMAGE_URL, "")
+
+    var whatsNewEnabled by preferences.booleanPreference(WHATS_NEW, true)
+
+
+
     /**
      * True if the browser should clear the navigation history on app exit, false otherwise.
      */
@@ -214,6 +220,9 @@ class UserPreferences @Inject constructor(
     var readingTextSize by preferences.intPreference(READING_TEXT_SIZE, 2)
 
     var bottomBar by preferences.booleanPreference(BOTTOM_BAR, false)
+
+    var incognito by preferences.booleanPreference(ALWAYS_INCOGNITO, false)
+
 
 
     /**
@@ -368,3 +377,6 @@ private const val START_THEME = "startPageTheme"
 private const val FOREGROUND = "tabsToForeground"
 private const val EXTRA = "showExtraOptions"
 private const val BOTTOM_BAR = "bottomBar"
+private const val IMAGE_URL = "imageUrl"
+private const val WHATS_NEW = "whatsNew"
+private const val ALWAYS_INCOGNITO = "alwaysincognito"

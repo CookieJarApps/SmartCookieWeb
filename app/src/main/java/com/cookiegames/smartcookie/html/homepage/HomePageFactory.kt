@@ -41,9 +41,16 @@ class HomePageFactory @Inject constructor(
                     id("image_url") { attr("src", iconUrl) }
                     tag("script") {
                         html(
-                            html()
-                                .replace("\${BASE_URL}", queryUrl)
-                                .replace("&", "\\u0026")
+                            if(!userPreferences.whatsNewEnabled){
+                                html()
+                                        .replace("What's new", "")
+                            }
+                        else {
+                                html()
+                                        .replace("\${BASE_URL}", queryUrl)
+                                        .replace("&", "\\u0026")
+                            }
+
                         )
                     }
                 }
@@ -63,6 +70,11 @@ class HomePageFactory @Inject constructor(
                 else if(userPreferences.startPageThemeEnabled && userPreferences.useTheme == AppTheme.DARK){
                     it.write(content + "<style>body {\n" +
                             "    background-color: #2a2a2a;\n" +
+                            "}</style>")
+                }
+                else if(userPreferences.imageUrlString != null && userPreferences.imageUrlString != ""){
+                    it.write(content + "<style>body {\n" +
+                            "    background-image: '" + userPreferences.imageUrlString + "';\n" +
                             "}</style>")
                 }
                 else{

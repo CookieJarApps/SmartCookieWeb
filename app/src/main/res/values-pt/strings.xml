@@ -410,6 +410,7 @@
     <string name="quit_private">Sair do modo privado</string>
     <string name="ekoru">Ekoru</string>
     <string name="ecosia">Ecosia</string>
-    
-<!-- finish pages -->
+    <string name="start_incognito">Sempre aja como um modo privado</string>
+
+    <!-- finish pages -->
 </resources>

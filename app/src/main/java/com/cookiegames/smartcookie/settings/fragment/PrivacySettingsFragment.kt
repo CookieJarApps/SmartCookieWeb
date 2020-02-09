@@ -118,6 +118,12 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
             onCheckChange = { userPreferences.removeIdentifyingHeadersEnabled = it }
         )
 
+        switchPreference(
+                preference = SETTINGS_INCOGNITO,
+                isChecked = userPreferences.incognito,
+                onCheckChange = { userPreferences.incognito = it }
+        )
+
     }
 
     private fun clearHistoryDialog() {
@@ -206,6 +212,8 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_FORCEHTTPS = "force_https"
         private const val SETTINGS_PREFERHTTPS = "prefer_https"
         private const val SETTINGS_BLOCKMALWARE = "block_malicious_sites"
+        private const val SETTINGS_INCOGNITO = "start_incognito"
+
     }
 
 }

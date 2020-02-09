@@ -12,18 +12,19 @@ import com.cookiegames.smartcookie.browser.activity.BrowserActivity
  */
 fun Context.createSslDrawableForState(sslState: SslState): Drawable? = when (sslState) {
     is SslState.None -> {
-        val bitmap = DrawableUtils.createImageInsetInRoundedSquare(this, R.drawable.ic_alert)
-        val securedDrawable = BitmapDrawable(resources, bitmap)
-            securedDrawable
-
+        val bitmap = DrawableUtils.createImageInsetInRoundedSquare(this, R.drawable.ic_unsecured)
+        val unsecuredDrawable = BitmapDrawable(resources, bitmap)
+        unsecuredDrawable
     }
-    is SslState.Valid -> {
-        val bitmap = DrawableUtils.createImageInsetInRoundedSquare(this, R.drawable.ic_secured)
+   is SslState.Valid -> {val bitmap = DrawableUtils.createImageInsetInRoundedSquare(this, R.drawable.ic_secured)
         val securedDrawable = BitmapDrawable(resources, bitmap)
         securedDrawable
     }
     is SslState.Invalid -> {
-        val bitmap = DrawableUtils.createImageInsetInRoundedSquare(this, R.drawable.ic_unsecured)
+        /*val bitmap = DrawableUtils.createImageInsetInRoundedSquare(this, R.drawable.ic_alert)
+        val securedDrawable = BitmapDrawable(resources, bitmap)
+        securedDrawable*/
+        val bitmap = DrawableUtils.createImageInsetInRoundedSquare(this, R.drawable.ic_unsecured_severe)
         val unsecuredDrawable = BitmapDrawable(resources, bitmap)
         unsecuredDrawable
     }
