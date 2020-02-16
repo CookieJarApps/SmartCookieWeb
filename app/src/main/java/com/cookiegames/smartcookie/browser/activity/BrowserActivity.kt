@@ -396,12 +396,19 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if (userPreferences.bottomBar) {
             val searchEdit = customView.findViewById<SearchView>(R.id.search)
             searchEdit.setOnFocusChangeListener { searchEdit, hasFocus ->
-                if (searchEdit?.hasFocus() == true) {
+                if (searchEdit?.hasFocus() == true && userPreferences.bottomBar) {
                     toolbar_layout.translationY = 0f
-                } else {
+
+                } else if(userPreferences.bottomBar){
                     val displayMetrics = DisplayMetrics()
                     windowManager.defaultDisplay.getMetrics(displayMetrics)
-                    toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56 * displayMetrics.heightPixels.toFloat() / 1125
+                    if(userPreferences.showTabsInDrawer){
+                        toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56f * 4
+                    }
+                    else{
+                        toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56f * 5
+
+                    }
                 }
             }
         }
@@ -603,7 +610,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         val currentView = tabsManager.currentTab
 
         if(userPreferences.bottomBar){
-            isFullScreen = false
+            isFullScreen = true
         }
         else{
             isFullScreen = userPreferences.fullScreenEnabled
@@ -865,15 +872,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             ui_layout.requestLayout()
         }
 
-        if(userPreferences.bottomBar){
-            val displayMetrics = DisplayMetrics()
-            windowManager.defaultDisplay.getMetrics(displayMetrics)
-            toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56 * displayMetrics.heightPixels.toFloat() / 1125
-            setWebViewTranslation(0f)
-        }
-        else{
-            setWebViewTranslation(0f)
-        }
+        setWebViewTranslation(0f)
     }
 
     private fun overlayToolbarOnWebView() {
@@ -883,23 +882,16 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             content_frame.addView(toolbar_layout)
             content_frame.requestLayout()
         }
+        setWebViewTranslation(toolbar_layout.height.toFloat())
 
-        if(userPreferences.bottomBar){
-            val displayMetrics = DisplayMetrics()
-            windowManager.defaultDisplay.getMetrics(displayMetrics)
-            toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56 * displayMetrics.heightPixels.toFloat() / 1125
-            setWebViewTranslation(toolbar_layout.height.toFloat())
-        }
-        else{
-            setWebViewTranslation(toolbar_layout.height.toFloat())
-        }
 
     }
 
     private fun setWebViewTranslation(translation: Float) =
         if (isFullScreen) {
             currentTabView?.translationY = translation
-        } else {
+        }
+        else {
             currentTabView?.translationY = 0f
         }
 
@@ -1018,7 +1010,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
         content_frame.addView(view, 0, MATCH_PARENT)
 
-        if (isFullScreen) {
+        if (isFullScreen && !userPreferences.bottomBar) {
             view.translationY = toolbar_layout.height + toolbar_layout.translationY
         } else {
             view.translationY = 0f
@@ -1148,8 +1140,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             if(userPreferences.bottomBar){
                 val displayMetrics = DisplayMetrics()
                 windowManager.defaultDisplay.getMetrics(displayMetrics)
-                toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56 * displayMetrics.heightPixels.toFloat() / 1125
-                setWebViewTranslation(toolbar_layout.height.toFloat())
+                toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56f * 6
+                setWebViewTranslation(0f)
             }
             else{
                 setWebViewTranslation(toolbar_layout.height.toFloat())
@@ -1177,7 +1169,13 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 if(userPreferences.bottomBar){
                     val displayMetrics = DisplayMetrics()
                     windowManager.defaultDisplay.getMetrics(displayMetrics)
-                    toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56 * displayMetrics.heightPixels.toFloat() / 1125
+                    if(userPreferences.showTabsInDrawer){
+                        toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56f * 4
+                    }
+                    else{
+                        toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56f * 5
+
+                    }
                     setWebViewTranslation(toolbar_layout.height.toFloat())
                 }
                 else{
@@ -1803,7 +1801,13 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                             val trans = interpolatedTime * height
                             val displayMetrics = DisplayMetrics()
                             windowManager.defaultDisplay.getMetrics(displayMetrics)
-                            toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56 * displayMetrics.heightPixels.toFloat() / 1125
+                            if(userPreferences.showTabsInDrawer){
+                                toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() -  56f * 4
+                            }
+                            else{
+                                toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() -  56f * 5
+                            }
+
                             setWebViewTranslation(height - trans)
                         }
                         else{
@@ -1848,7 +1852,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
                             val displayMetrics = DisplayMetrics()
                             windowManager.defaultDisplay.getMetrics(displayMetrics)
-                            toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56 * displayMetrics.heightPixels.toFloat() / 1125
+                            toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 56f * 4
                             setWebViewTranslation(trans)
                         }
                         else{

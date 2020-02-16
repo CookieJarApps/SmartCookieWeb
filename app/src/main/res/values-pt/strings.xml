@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:ns0="http://schemas.android.com/tools" ns0:ignore="MissingTranslation">
-
-    <string name="app_name" translatable="false">SmartCookieWeb</string>
-    <string name="app_lightning" translatable="false">Lightning</string>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_new_tab">Novo separador</string>
     <string name="action_share">Partilhar</string>
     <string name="action_history">Histórico</string>
@@ -98,12 +95,11 @@
     <string name="download_no_sdcard_dlg_msg">Necessita de um cartão SD para guardar o ficheiro.</string>
     <string name="download_sdcard_busy_dlg_title">Armazenamento USB indisponível</string>
     <string name="download_sdcard_busy_dlg_msg">O armazenamento está ocupado. Para continuar, toque em \'Desativar armazenamento USB\' na notificação.</string>
-    <string name="incognito_cookies">Ativar cookies no modo de navegação privada</string>
+    <string name="incognito_cookies">Ativar cookies em separadores privados</string>
     <string name="title_flash">Adobe Flash</string>
     <string name="action_manual">Manual</string>
     <string name="action_auto">Automático</string>
-    <string name="action_follow_me">Contactos</string>
-	<string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
+    <string name="action_follow_me">Mais info</string>
     <string name="clear_cache">Limpar cache</string>
     <string name="message_cache_cleared">Cache limpa</string>
     <string name="message_import">Marcadores importados</string>
@@ -136,27 +132,20 @@
     <string name="powered_by_duck">DuckDuckGo</string>
     <string name="powered_by_baidu">Baidu</string>
     <string name="powered_by_naver">Naver</string>
-
     <string name="search_engine_naver">Naver</string>
-
-
-    <string name="shortcut_message_failed_to_add">lamentamos mas o seu launcher não permite atalhos.</string>
-
+    <string name="shortcut_message_failed_to_add">Lamentamos mas o seu launcher não permite atalhos.</string>
     <!-- SSL -->
     <string name="ssl_info_issued_by">Emitido por</string>
     <string name="ssl_info_issued_to">Emitido para</string>
     <string name="ssl_info_issued_on">Emitido em</string>
     <string name="ssl_info_expires_on">Expira em</string>
-
     <!-- SSL don't ask again -->
     <string name="ssl_warning_dont_ask_again">Não perguntar de novo para esta sessão.</string>
-
     <!-- Tools dialog -->
     <string name="dialog_tools_title">Ferramentas da página</string>
     <string name="dialog_toggle_desktop">Alternar agente de utilizador</string>
     <string name="dialog_adblock_enable_for_site">Ativar bloqueio de anúncios para este site</string>
     <string name="dialog_adblock_disable_for_site">Desativar bloqueio de anúncios para este site</string>
-
     <string name="search_suggestions_off">Não utilizar sugestões</string>
     <string name="http_proxy">Proxy HTTP</string>
     <string-array name="proxy_choices_array">
@@ -174,7 +163,7 @@
     <string name="port">Porta:</string>
     <string name="use_tor_prompt">Parece que tem Orbot instalado. Deseja utilizar a rede Tor?</string>
     <string name="use_i2p_prompt">Parece que tem I2P instalado. Deseja utilizar a rede I2P?</string>
-    <string name="install_orbot">Instale Orbot para fazer proxy com Tor.spac</string>
+    <string name="install_orbot">Instale Orbot para fazer proxy com Tor.</string>
     <string name="i2p_not_running">I2P não está em execução.</string>
     <string name="i2p_tunnels_not_ready">Os túneis I2P ainda não estão prontos.</string>
     <string name="yes">Sim</string>
@@ -187,7 +176,7 @@
     <string name="mpl_license">Mozilla Public License 2.0</string>
     <string name="freeware">Freeware</string>
     <string name="android_open_source_project">Android Open Source Project</string>
-    <string name="hphosts_ad_server_list">hpHosts Ad Server List</string>
+    <string name="hphosts_ad_server_list">Steven Black\'s Ad Hosts List</string>
     <string name="deleted_tab">Separador antigo aberto</string>
     <string name="rendering_mode">Modo de renderização</string>
     <string name="name_inverted">Invertido</string>
@@ -252,10 +241,10 @@
     <string name="clear_web_storage_exit">Limpar armazenamento web ao sair</string>
     <string name="message_web_storage_cleared">Armazenamento web eliminado</string>
     <string name="hosts_source">Fonte do ficheiro hosts</string>
-	<string name="settings_adblock">Definições de Adblock</string>
-    <string name="adblock_summary">Bloqueio de anúncios, bloqueio de cookies&#8230;</string>    
+    <string name="settings_adblock">Definições de Adblock</string>
+    <string name="adblock_summary">Bloqueio de anúncios, bloqueio de cookies&#8230;</string>
     <string name="adblock_category">Bloqueio de anúncios</string>
-    <string name="cookie_category">Bloqueio de cookies</string>   
+    <string name="cookie_category">Bloqueio de cookies (beta)</string>
     <string name="tabs_in_drawer">Mostrar separadores no menu de navegação</string>
     <string name="swap_bookmarks_and_tabs">Trocar menus de marcadores e separadores</string>
     <string name="do_not_track">Solicitar \'Do Not Track\'</string>
@@ -266,12 +255,9 @@
     <string name="flash_not_supported">O seu dispositivo não tem suporte a Flash Player</string>
     <string name="message_open_download_fail">Este ficheiro já não existe</string>
     <string name="this_project">Este projeto</string>
-
     <string name="scw">Código-fonte</string>
     <string name="action_home">Página web</string>
     <string name="description">Saber mais</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
-
     <string name="faq">FAQ</string>
     <string name="faq_description">Perguntas frequentes</string>
     <string name="block_source_default">Hosts padrão</string>
@@ -279,25 +265,18 @@
     <string name="block_source_local_description">Ficheiro: %1$s</string>
     <string name="block_source_remote">Ficheiro remoto</string>
     <string name="block_source_remote_description">URL: %1$s</string>
-
     <string-array name="block_ad_source_list">
         <item>@string/block_source_default</item>
         <item>@string/block_source_local</item>
         <item>@string/block_source_remote</item>
     </string-array>
-
     <!--Ad block -->
     <string name="ad_block_load_failure">Falha ao carregar o ficheiro hosts tendo por base a origem.</string>
-
     <string name="infinity">âˆž</string>
-
     <string name="reopening_recent_tab">Separador antigo reaberto</string>
-
     <!-- Search in page -->
     <string name="search_in_page_query">\'%1$s\'</string>
-
     <string name="message_bookmark_added">Marcador adicionado</string>
-
     <!-- Notifications -->
     <plurals name="notification_incognito_running_title">
         <item quantity="one">%1$d separador privado aberto</item>
@@ -305,29 +284,22 @@
     </plurals>
     <string name="notification_incognito_running_message">Toque para abrir</string>
     <string name="notification_incognito_running_description">Notificação persistente de modo privado</string>
-
     <!-- Common actions -->
     <string name="action_message_canceled">Ação cancelada.</string>
-
     <string name="upsell_plus_version">Atualize para a versão Lightning Plus para poder remover anúncios</string>
-
     <!-- permissions request -->
     <string name="title_permission_request">Pedido de permissão</string>
     <string name="message_permission_request">%1$s  gostaria de utilizar:  %2$s</string>
-
     <!-- Ad block -->
     <string name="block_ad_source">Origem do ficheiro hosts</string>
     <string name="block_ad_remote_refresh_frequency_description">Para ficheiros remotos</string>
     <string name="block_ad_refresh_now">Recarregar lista agora</string>
-
     <string name="webrtc_support">Suporte WebRTC</string>
     <string name="save_data">Solicitar \'Save-Data\'</string>
-
     <!-- debug strings -->
     <string name="debug_title">Definições de depuração</string>
     <string name="debug_leak_canary">LeakCanary</string>
     <string name="app_restart">Reinicie a aplicação para aplicar as alterações.</string>
-
     <!-- Dialogs -->
     <string name="dialog_open_new_tab">Abrir em novo separador</string>
     <string name="dialog_open_background_tab">Abrir em separador secundário</string>
@@ -342,23 +314,19 @@
     <string name="dialog_title_close_browser">Fechar navegador</string>
     <string name="dialog_delete_download">Apagar descarga</string>
     <string name="dialog_delete_all_downloads">Apagar todas as descargas</string>
-
     <!-- Search Engines -->
     <string name="search_engine_custom">URL personalizado</string>
     <string name="search_engine_google">Google</string>
     <string name="search_engine_ask">Ask</string>
     <string name="search_engine_bing">Bing</string>
     <string name="search_engine_yahoo">Yahoo</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
-
     <string name="privacy">Política de privacidade</string>
     <string name="privacy_info">Ver a política de privacidade do SmartCookieWeb</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Bloquear sites maliciosos</string>
     <string name="block_sites">Bloqueio personalizado por site</string>
     <string name="block_sites_title">Bloqueio personalizado (separe os sites com vírgulas)</string>
@@ -370,21 +338,15 @@
     <string name="preferhttps">Preferir versões HTTPS</string>
     <string name="forcehttpsdesc">Carregar apenas sites HTTPS</string>
     <string name="preferhttpsdesc">Utilizar sempre HTTPS nos sites suportados (pode causar problemas)</string>
-
     <string name="startpagedesc">Utilizar cor do tema na página inicial</string>
     <string name="updatehomepage">Abra um novo separador para ver a página inicial atualizada</string>
-
     <string name="inspect">Injetar JavaScript</string>
     <string name="bookmark">Marcador adicionado</string>
-
     <string name="error_title">&lt;br&gt; Não foi possível carregar o site.</string>
     <string name="error_reload">Recarregar</string>
-
     <string name="https_title">&lt;br&gt; O site não tem suporte a HTTPS e o acesso a sites HTTP está bloqueado nas definições.</string>
-
     <string name="malware_title">&lt;br&gt; Parece que este site tem malware.</string>
     <string name="malware_message">Contacte support@cookiegames.co.uk se achar que isto não está correto.</string>
-
     <string name="blocked_title">&lt;br&gt; Este site está bloqueado nas definições</string>
     <string name="close_app">Fechar navegador</string>
     <string name="enter_password">Introduza a palavra-passe</string>
@@ -396,7 +358,7 @@
     <string name="label_realm">Mensagem do servidor: %s</string>
     <string name="new_tab_foreground">Trazer separadores para primeiro plano</string>
     <string name="new_tab_foreground_summary">Fechar menu de separadores ao fechar/abrir um separador</string>
-    <string name="site_not_secure">Este site não utiliza HTTPS</string>
+    <string name="site_not_secure">A ligação a este site não é segura.</string>
     <string name="language_not_supported">Idioma não suportado</string>
     <string name="language_not_supported_text">Infelizmente, a loja de extensões ainda não está disponível no seu idioma. Utilize o botão abaixo para continuar em inglês.</string>
     <string name="extensions">Extensões</string>
@@ -408,14 +370,7 @@
     <string name="show_extra">Mostrar opções extras de menu</string>
     <string name="incognito_cookies_new">O modo privado é executado em uma janela distinta que será reposta ao terminar a sessão. As preferências de cookies no modo privado são agora controladas nas preferências gerais de cookies.</string>
     <string name="quit_private">Sair do modo privado</string>
-    <string name="ekoru" translatable="false">Ekoru</string>
-    <string name="ecosia" translatable="false">Ecosia</string>
-    <string name="experimental_settings" translatable="false">Experimental settings</string>
-    <string name="experimental_settings_desc" translatable="false">Try out new features before they\'re released...</string>
-    <string name="whats_new" translatable="false">Show \"What\'s New\" on homepage</string>
-    <string name="image_url" translatable="false">Set a homepage background image</string>
-    <string name="start_incognito">Iniciar sempre no modo privado</string>
-    <string name="bottom_navbar">Mostrar barra de navegação na base</string>
-
+    <string name="start_incognito">Iniciar sempre no modo de navegação privada</string>
+    <string name="bottom_navbar">Mover barra de navegação para a base</string>
     <!-- finish pages -->
 </resources>
