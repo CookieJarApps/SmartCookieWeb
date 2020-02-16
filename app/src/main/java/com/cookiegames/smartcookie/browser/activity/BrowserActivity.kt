@@ -1296,6 +1296,11 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         } else {
             putToolbarInRoot()
         }
+
+        if(userPreferences.incognito){
+            WebUtils.clearHistory(this, historyModel, databaseScheduler)
+            WebUtils.clearCookies(this)
+        }
     }
 
     /**
