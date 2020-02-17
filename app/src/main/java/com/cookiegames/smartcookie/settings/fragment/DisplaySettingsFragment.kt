@@ -18,11 +18,13 @@ import androidx.appcompat.app.AlertDialog
 import javax.inject.Inject
 import android.content.Intent
 import android.preference.SwitchPreference
+import android.widget.Toast
 import androidx.core.app.ActivityCompat.invalidateOptionsMenu
 import com.cookiegames.smartcookie.BrowserApp
 import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.browser.PasswordChoice
 import com.cookiegames.smartcookie.dialog.BrowserDialog
+import com.cookiegames.smartcookie.extensions.toast
 import com.cookiegames.smartcookie.html.homepage.HomePageFactory
 
 
@@ -119,7 +121,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         switchPreference(
                 preference = SETTINGS_BOTTOM_BAR,
                 isChecked = userPreferences.bottomBar,
-                onCheckChange = {userPreferences.bottomBar = it}
+                onCheckChange = {userPreferences.bottomBar = it; Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()}
         )
        /* switchPreference(
                 preference = SETTINGS_WHATSNEW,

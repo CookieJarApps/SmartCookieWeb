@@ -416,6 +416,8 @@
     <string name="image_url" translatable="false">Set a homepage background image</string>
     <string name="start_incognito">Always act like private mode</string>
     <string name="bottom_navbar">Move the navbar to the bottom</string>
+    <string name="please_restart">Please restart app to see changes</string>
+
 
     <!-- finish pages -->
 </resources>
