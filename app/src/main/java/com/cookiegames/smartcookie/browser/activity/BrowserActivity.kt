@@ -1192,7 +1192,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                        toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 112f - navigationbarsize
 
                    }
-                    setWebViewTranslation(toolbar_layout.height.toFloat())
+                    setWebViewTranslation(0f)
                 }
                 else{
                     setWebViewTranslation(toolbar_layout.height.toFloat())
@@ -1829,7 +1829,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                                 //toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() -  56f * 5
                             }
 
-                            setWebViewTranslation(height - trans)
+                            setWebViewTranslation(0f)
                         }
                         else{
                             val trans = interpolatedTime * height
@@ -1880,7 +1880,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                                 toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() - 112f - navigationbarsize
 
                             }
-                            setWebViewTranslation(trans)
+                            setWebViewTranslation(0f)
                         }
                         else{
                             val trans = interpolatedTime * totalHeight
