@@ -309,8 +309,6 @@
     <!-- Common actions -->
     <string name="action_message_canceled">Action canceled.</string>
 
-    <string name="upsell_plus_version">Upgrade to Lightning Plus to block ads</string>
-
     <!-- permissions request -->
     <string name="title_permission_request">Permission request</string>
     <string name="message_permission_request">%1$s  would like to use:  %2$s</string>

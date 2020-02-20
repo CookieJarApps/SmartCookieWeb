@@ -403,6 +403,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         }
 
         if (userPreferences.bottomBar) {
+
             val searchEdit = customView.findViewById<SearchView>(R.id.search)
             searchEdit.setOnFocusChangeListener { searchEdit, hasFocus ->
                 if (searchEdit?.hasFocus() == true && userPreferences.bottomBar) {
@@ -1028,6 +1029,12 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         view.requestFocus()
 
         currentTabView = view
+
+        val displayMetrics =  DisplayMetrics()
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        val height = displayMetrics.heightPixels
+
+        currentTabView?.layoutParams?.height = height - 56
 
         showActionBar()
 

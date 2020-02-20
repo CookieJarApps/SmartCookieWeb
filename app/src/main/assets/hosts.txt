@@ -21471,7 +21471,6 @@
 0.0.0.0 tracking.olx-st.com
 0.0.0.0 api.optinmonster.com
 0.0.0.0 t01.proximic.com
-0.0.0.0 go.redirectingat.com
 0.0.0.0 katie.runtnc.net
 0.0.0.0 a.rvttrack.com
 0.0.0.0 b.siftscience.com
@@ -25108,10 +25107,10 @@
 0.0.0.0 ads.syracuse.com
 # [Misc News via Belo Interactive]
 # [Misc News via Gannett Media]
-0.0.0.0 gannett.gcion.com  #[glb.adtechus.com]
+0.0.0.0 gannett.gcion.com
 # [Nforce][AS43350][77.247.177.0 - 77.247.177.127]
 0.0.0.0 bestoffers.activeshopper.com
-0.0.0.0 e-zshopper.activeshopper.com  #[Adware.ActivShop]
+0.0.0.0 e-zshopper.activeshopper.com
 0.0.0.0 mini.activeshopper.com
 0.0.0.0 mobile.activeshopper.com
 0.0.0.0 uk.activeshopper.com

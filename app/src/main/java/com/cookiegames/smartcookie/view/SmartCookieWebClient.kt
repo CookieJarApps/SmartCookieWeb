@@ -363,6 +363,12 @@ class SmartCookieWebClient(
             }
         }
 
+        if(userPreferences.bottomBar){
+            //Hacky fix for bottom navbar issues
+            //TODO: implement proper fix that doesn't cause SigTrap errors and doesn't need JS
+            //view.evaluateJavascript("document.body.innerHTML += \"<style>.SCautoFooter{ position: fixed; left: 0; bottom: 0; width: 100%; background-color: white;  text-align: center; height: 56px;}</style><div class=''SCautoFooter'><p></p></div>\";", null)
+        }
+
         val letDirectory = File(activity.getFilesDir(), "extensions")
         letDirectory.mkdirs()
         val file = File(letDirectory, "extension_file.txt")
@@ -476,6 +482,7 @@ class SmartCookieWebClient(
         smartCookieView.titleInfo.setFavicon(null)
         if (smartCookieView.isShown) {
             uiController.updateUrl(url, true)
+            uiController.showActionBar()
             uiController.showActionBar()
         }
         uiController.tabChanged(smartCookieView)
