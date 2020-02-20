@@ -142,6 +142,12 @@ class SmartCookieWebClient(
             val empty = ByteArrayInputStream(emptyResponseByteArray)
             return WebResourceResponse("text/plain", "utf-8", empty)
         }
+        //workarounds for sites that are broken in WebView.
+        //TODO: move this to it's own file or switch to GeckoView
+        if(url.contains("detectPopBlock.js")){
+            val empty = ByteArrayInputStream(emptyResponseByteArray)
+            return WebResourceResponse("text/plain", "utf-8", empty)
+        }
         return null
     }
 
@@ -470,6 +476,7 @@ class SmartCookieWebClient(
     }
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
         currentUrl = url
+
         // Only set the SSL state if there isn't an error for the current URL.
         if (urlWithSslError != url) {
             sslState = if (URLUtil.isHttpsUrl(url)) {
