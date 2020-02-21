@@ -7,6 +7,6 @@ import com.cookiegames.smartcookie.R
  */
 class AskSearch : BaseSearchEngine(
     "file:///android_asset/ask.png",
-    "http://www.ask.com/web?qsrc=0&o=0&l=dir&qo=LightningBrowser&q=",
+    "http://www.ask.com/web?qsrc=0&o=0&l=dir&qo=SmartCookieWeb&q=",
     R.string.search_engine_ask
 )

@@ -889,7 +889,7 @@ class SmartCookieView(
 
     companion object {
 
-        private const val TAG = "LightningView"
+        private const val TAG = "SmartCookieView"
 
         const val HEADER_REQUESTED_WITH = "X-Requested-With"
         const val HEADER_WAP_PROFILE = "X-Wap-Profile"

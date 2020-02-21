@@ -143,7 +143,7 @@ class SmartCookieWebClient(
             return WebResourceResponse("text/plain", "utf-8", empty)
         }
         //workarounds for sites that are broken in WebView.
-        //TODO: move this to it's own file or switch to GeckoView
+        //TODO: move this to its own file or switch to GeckoView
         if(url.contains("detectPopBlock.js")){
             val empty = ByteArrayInputStream(emptyResponseByteArray)
             return WebResourceResponse("text/plain", "utf-8", empty)
@@ -709,7 +709,7 @@ class SmartCookieWebClient(
                 try {
                     activity.startActivity(intent)
                 } catch (e: Exception) {
-                    println("LightningWebClient: cannot open downloaded file")
+                    println("SmartCookieWebClient: cannot open downloaded file")
                 }
 
             } else {
@@ -747,7 +747,7 @@ class SmartCookieWebClient(
 
     companion object {
 
-        private const val TAG = "LightningWebClient"
+        private const val TAG = "SmartCookieWebClient"
 
     }
 }
