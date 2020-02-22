@@ -650,7 +650,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     public override fun onWindowVisibleToUserAfterResume() {
         super.onWindowVisibleToUserAfterResume()
-        toolbar_layout.translationY = 0f
+        if(!userPreferences.bottomBar){
+            toolbar_layout.translationY = 0f
+        }
         setWebViewTranslation(toolbar_layout.height.toFloat())
     }
 
