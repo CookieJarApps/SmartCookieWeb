@@ -1027,15 +1027,26 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             view.translationY = 0f
         }
 
-        view.requestFocus()
-
-        currentTabView = view
-
         val displayMetrics =  DisplayMetrics()
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         val height = displayMetrics.heightPixels
 
-        currentTabView?.layoutParams?.height = height - 56
+        currentTabView = view
+
+
+        if(userPreferences.bottomBar && userPreferences.showTabsInDrawer){
+            currentTabView?.layoutParams?.height = height - 76
+        }
+        else if(userPreferences.bottomBar){
+            currentTabView?.layoutParams?.height = height - 56
+
+        }
+
+        view.requestFocus()
+
+
+
+
 
         showActionBar()
 
