@@ -650,6 +650,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     public override fun onWindowVisibleToUserAfterResume() {
         super.onWindowVisibleToUserAfterResume()
+        toolbar_layout.translationY = 0f
         setWebViewTranslation(toolbar_layout.height.toFloat())
     }
 
@@ -1819,16 +1820,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
 
                         if(userPreferences.bottomBar){
-                            val trans = interpolatedTime * height
-                            val displayMetrics = DisplayMetrics()
-                            windowManager.defaultDisplay.getMetrics(displayMetrics)
-                            if(userPreferences.showTabsInDrawer){
-                                //toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() -  56f * 4
-                            }
-                            else{
-                                //toolbar_layout.translationY = displayMetrics.heightPixels.toFloat() -  56f * 5
-                            }
-
                             setWebViewTranslation(0f)
                         }
                         else{

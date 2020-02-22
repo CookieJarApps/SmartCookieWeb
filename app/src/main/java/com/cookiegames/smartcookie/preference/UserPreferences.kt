@@ -250,7 +250,7 @@ class UserPreferences @Inject constructor(
      * True if the browser should send a do not track (DNT) header with every GET request, false
      * otherwise.
      */
-    var doNotTrackEnabled by preferences.booleanPreference(DO_NOT_TRACK, true)
+    var doNotTrackEnabled by preferences.booleanPreference(DO_NOT_TRACK, false)
 
     /**
      * True if the browser should save form data, false otherwise.
