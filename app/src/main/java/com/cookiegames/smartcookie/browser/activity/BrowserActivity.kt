@@ -1037,10 +1037,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
 
         if(userPreferences.bottomBar && userPreferences.showTabsInDrawer){
-            currentTabView?.layoutParams?.height = height - 76
+            currentTabView?.layoutParams?.height = height - 78 //76 + 2
         }
         else if(userPreferences.bottomBar){
-            currentTabView?.layoutParams?.height = height - 56
+            currentTabView?.layoutParams?.height = height - 58 //58 + 2
 
         }
 
