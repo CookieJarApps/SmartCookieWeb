@@ -103,7 +103,6 @@
     <string name="action_manual">Manuel</string>
     <string name="action_auto">Otomatik</string>
     <string name="action_follow_me">Daha fazla bilgi</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Önbelleği temizle</string>
     <string name="message_cache_cleared">Önbellek temizlendi</string>
     <string name="message_import">Yer imleri içe aktarıldı</string>
@@ -267,9 +266,7 @@
 
     <string name="scw">SmartCookieWeb Kaynak Kodu</string>
     <string name="action_home">Anasayfa</string>
-    <string name="the_jumpgo_project" translatable="false">Smart Cookie Web</string>
     <string name="description">SmartCookieWeb hakkında bilgi edinin</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">SSS</string>
     <string name="faq_description">Sık Sorulan Sorular</string>
@@ -309,7 +306,6 @@
     
     <string name="action_message_canceled">İşlem iptal edildi.</string>
 
-    <string name="upsell_plus_version">Reklamları engellemek için Lightning Plus\'a yükseltin</string>
 
     
     <string name="title_permission_request">İzin isteği</string>
@@ -349,7 +345,6 @@
     <string name="search_engine_ask">Ask</string>
     <string name="search_engine_bing">Bing</string>
     <string name="search_engine_yahoo">Yahoo</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobil</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
@@ -358,7 +353,6 @@
 
     <string name="privacy">Gizlilik Politikasını Görüntüle</string>
     <string name="privacy_info">SmartCookieWeb gizlilik politikasını okuyun</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Kötü amaçlı siteleri engelle</string>
     <string name="block_sites">Özel site engelleme (beta)</string>
     <string name="block_sites_title">Özel Site Engelleme (virgül içeren ayrı siteler)</string>

@@ -286,7 +286,6 @@
     <string name="notification_incognito_running_description">Notificação persistente de modo privado</string>
     <!-- Common actions -->
     <string name="action_message_canceled">Ação cancelada.</string>
-    <string name="upsell_plus_version">Atualize para a versão Lightning Plus para poder remover anúncios</string>
     <!-- permissions request -->
     <string name="title_permission_request">Pedido de permissão</string>
     <string name="message_permission_request">%1$s  gostaria de utilizar:  %2$s</string>

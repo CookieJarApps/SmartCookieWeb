@@ -103,7 +103,6 @@
     <string name="action_manual">podręcznik</string>
     <string name="action_auto">Automatyczny</string>
     <string name="action_follow_me">Skontaktuj się ze mną</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Wyczyść pamięć podręczną</string>
     <string name="message_cache_cleared">Pamięć podręczna wyczyszczona</string>
     <string name="message_import">Zakładki zostały zaimportowane</string>
@@ -271,7 +270,6 @@
     <string name="scw">Kod źródłowy SmartCookieWeb</string>
     <string name="action_home">Dom</string>
     <string name="description">Dowiedz się więcej o SmartCookieWeb</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">FAQ</string>
     <string name="faq_description">Często Zadawane Pytania</string>
@@ -313,7 +311,6 @@
     
     <string name="action_message_canceled">Działanie anulowane.</string>
 
-    <string name="upsell_plus_version">Przejdź na Lightning Plus, aby blokować reklamy</string>
 
     
     <string name="title_permission_request">Prośba o pozwolenie</string>
@@ -353,7 +350,6 @@
     <string name="search_engine_ask">Zapytać</string>
     <string name="search_engine_bing">Bing</string>
     <string name="search_engine_yahoo">Wieśniak</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
@@ -362,7 +358,6 @@
 
     <string name="privacy">Zobacz politykę prywatności</string>
     <string name="privacy_info">Przeczytaj politykę prywatności SmartCookieWeb</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Blokuj złośliwe strony</string>
     <string name="block_sites">Niestandardowy blok witryny (beta)</string>
     <string name="block_sites_title">Niestandardowy blok witryn (oddzielne witryny przecinkami)</string>

@@ -103,7 +103,6 @@
     <string name="action_manual">Руководство по эксплуатации</string>
     <string name="action_auto">Авто</string>
     <string name="action_follow_me">Свяжитесь со мной</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Очистить кэш</string>
     <string name="message_cache_cleared">Кеш очищен</string>
     <string name="message_import">Закладки были импортированы</string>
@@ -271,7 +270,6 @@
     <string name="scw">SmartCookieWeb Исходный код</string>
     <string name="action_home">Главная</string>
     <string name="description">Узнайте о SmartCookieWeb</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">Вопросы-Ответы</string>
     <string name="faq_description">Часто задаваемые вопросы</string>
@@ -313,7 +311,6 @@
     
     <string name="action_message_canceled">Действие отменено.</string>
 
-    <string name="upsell_plus_version">Обновление до Lightning Plus для блокировки рекламы</string>
 
     
     <string name="title_permission_request">Запрос на разрешение</string>
@@ -353,7 +350,6 @@
     <string name="search_engine_ask">Просить</string>
     <string name="search_engine_bing">Bing</string>
     <string name="search_engine_yahoo">Yahoo</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
@@ -362,7 +358,6 @@
 
     <string name="privacy">Посмотреть политику конфиденциальности</string>
     <string name="privacy_info">Ознакомьтесь с политикой конфиденциальности SmartCookieWeb</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Блокировать вредоносные сайты</string>
     <string name="block_sites">Пользовательский блок сайта (бета)</string>
     <string name="block_sites_title">Пользовательский блок сайта (отдельные сайты с запятой)</string>

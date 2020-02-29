@@ -103,7 +103,6 @@
     <string name="action_manual">Handleiding</string>
     <string name="action_auto">Auto</string>
     <string name="action_follow_me">Neem contact met mij op</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Cache wissen</string>
     <string name="message_cache_cleared">Cache gewist</string>
     <string name="message_import">Bladwijzers zijn geïmporteerd</string>
@@ -271,7 +270,6 @@
     <string name="scw">SmartCookieWeb-broncode</string>
     <string name="action_home">Huis</string>
     <string name="description">Meer informatie over SmartCookieWeb</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">FAQ</string>
     <string name="faq_description">Veel Gestelde Vragen</string>
@@ -311,7 +309,6 @@
     
     <string name="action_message_canceled">Actie geannuleerd.</string>
 
-    <string name="upsell_plus_version">Upgrade naar Lightning Plus om advertenties te blokkeren</string>
 
     
     <string name="title_permission_request">Toestemmingsverzoek</string>
@@ -351,7 +348,6 @@
     <string name="search_engine_ask">Vragen</string>
     <string name="search_engine_bing">Bing</string>
     <string name="search_engine_yahoo">Yahoo</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
@@ -361,7 +357,6 @@
 
     <string name="privacy">Bekijk privacybeleid</string>
     <string name="privacy_info">Lees het SmartCookieWeb privacybeleid</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Blokkeer kwaadaardige sites</string>
     <string name="block_sites">Aangepast siteblok (bèta)</string>
     <string name="block_sites_title">Aangepast siteblok (afzonderlijke sites met een komma)</string>

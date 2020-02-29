@@ -1,5 +1,19 @@
 package com.cookiegames.smartcookie.browser.bookmarks
 
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
+import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.adblock.allowlist.AllowListModel
 import com.cookiegames.smartcookie.animation.AnimationUtils
@@ -21,17 +35,6 @@ import com.cookiegames.smartcookie.extensions.inflater
 import com.cookiegames.smartcookie.favicon.FaviconModel
 import com.cookiegames.smartcookie.reading.activity.ReadingActivity
 import com.cookiegames.smartcookie.utils.isSpecialUrl
-import android.app.Activity
-import android.app.AlertDialog
-import android.content.Context
-import android.util.AttributeSet
-import android.view.*
-import android.widget.*
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.cookiegames.smartcookie.extensions.resizeAndShow
-import com.cookiegames.smartcookie.settings.fragment.DisplaySettingsFragment
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable

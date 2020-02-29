@@ -103,7 +103,6 @@
     <string name="action_manual">Rankinis</string>
     <string name="action_auto">Automatinis</string>
     <string name="action_follow_me">Susisiek su manimi</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Išvalyti talpyklą</string>
     <string name="message_cache_cleared">Talpykla išvalyta</string>
     <string name="message_import">Žymos buvo importuotos</string>
@@ -270,7 +269,6 @@
     <string name="scw">„SmartCookieWeb“ šaltinio kodas</string>
     <string name="action_home">Namai</string>
     <string name="description">Sužinokite apie „SmartCookieWeb“</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">DUK</string>
     <string name="faq_description">Dažnai užduodami klausimai</string>
@@ -311,7 +309,6 @@
     
     <string name="action_message_canceled">Veiksmas atšauktas.</string>
 
-    <string name="upsell_plus_version">Naujovinkite į „Lightning Plus“, kad blokuotumėte skelbimus</string>
 
     
     <string name="title_permission_request">Leidimo prašymas</string>
@@ -351,7 +348,6 @@
     <string name="search_engine_ask">Klauskite</string>
     <string name="search_engine_bing">Bingas</string>
     <string name="search_engine_yahoo">„Yahoo“</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">„StartPage Mobile“</string>
     <string name="search_engine_duckduckgo">„DuckDuckGo“</string>
     <string name="search_engine_duckduckgo_lite">„DuckDuckGo Lite“</string>
@@ -360,7 +356,6 @@
 
     <string name="privacy">Peržiūrėkite Privatumo politiką</string>
     <string name="privacy_info">Perskaitykite „SmartCookieWeb“ privatumo politiką</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Blokuokite kenksmingas svetaines</string>
     <string name="block_sites">Individualizuotos svetainės blokas (beta versija)</string>
     <string name="block_sites_title">Tinkintas svetainių blokas (atskiros svetainės su kableliu)</string>

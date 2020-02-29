@@ -103,7 +103,6 @@
     <string name="action_manual">설명서</string>
     <string name="action_auto">자동</string>
     <string name="action_follow_me">저에게 연락</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">캐시 지우기</string>
     <string name="message_cache_cleared">캐시가 지워졌습니다</string>
     <string name="message_import">북마크를 가져 왔습니다</string>
@@ -270,7 +269,6 @@
     <string name="scw">SmartCookie 웹 소스 코드</string>
     <string name="action_home">집</string>
     <string name="description">SmartCookieWeb에 대해 알아보기</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">자주하는 질문</string>
     <string name="faq_description">자주 묻는 질문</string>
@@ -310,7 +308,6 @@
     
     <string name="action_message_canceled">작업이 취소되었습니다.</string>
 
-    <string name="upsell_plus_version">광고를 차단하려면 Lightning Plus로 업그레이드</string>
 
     
     <string name="title_permission_request">권한 요청</string>
@@ -350,7 +347,6 @@
     <string name="search_engine_ask">물어보기</string>
     <string name="search_engine_bing">빙</string>
     <string name="search_engine_yahoo">야후</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo 라이트</string>
@@ -359,7 +355,6 @@
 
     <string name="privacy">개인 정보 보호 정책보기</string>
     <string name="privacy_info">SmartCookieWeb 개인 정보 보호 정책을 읽으십시오</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">악성 사이트 차단</string>
     <string name="block_sites">맞춤 사이트 차단 (베타)</string>
     <string name="block_sites_title">맞춤 사이트 차단 (쉼표가있는 별도의 사이트)</string>

@@ -103,7 +103,6 @@
     <string name="action_manual">كتيب</string>
     <string name="action_auto">تلقاءي</string>
     <string name="action_follow_me">اتصل بي</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">مسح ذاكرة التخزين المؤقت</string>
     <string name="message_cache_cleared">مسح ذاكرة التخزين المؤقت</string>
     <string name="message_import">تم استيراد الإشارات المرجعية</string>
@@ -270,7 +269,6 @@
     <string name="scw">SmartCookieWeb شفرة المصدر</string>
     <string name="action_home">الصفحة الرئيسية</string>
     <string name="description">تعرف على SmartCookieWeb</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">التعليمات</string>
     <string name="faq_description">أسئلة مكررة</string>
@@ -313,9 +311,6 @@
 
     
     <string name="action_message_canceled">تم إلغاء الإجراء.</string>
-
-    <string name="upsell_plus_version">الترقية إلى Lightning Plus لمنع الإعلانات</string>
-
     
     <string name="title_permission_request">طلب اذن</string>
     <string name="message_permission_request">يرغب٪ 1 $ s \ n \ n في الاستخدام: \ n \ n٪ 2 $ s</string>
@@ -354,7 +349,6 @@
     <string name="search_engine_ask">يطلب</string>
     <string name="search_engine_bing">بنج</string>
     <string name="search_engine_yahoo">ياهو</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">دك دك غو</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo لايت</string>
@@ -363,7 +357,6 @@
 
     <string name="privacy">عرض سياسة الخصوصية</string>
     <string name="privacy_info">اقرأ سياسة خصوصية SmartCookieWeb</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">حظر المواقع الخبيثة</string>
     <string name="block_sites">كتلة موقع مخصص (تجريبي)</string>
     <string name="block_sites_title">موقع مخصص كتلة (مواقع منفصلة مع فاصلة)</string>

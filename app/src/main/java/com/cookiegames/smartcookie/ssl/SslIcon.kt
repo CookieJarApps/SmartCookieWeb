@@ -1,11 +1,10 @@
 package com.cookiegames.smartcookie.ssl
 
-import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.utils.DrawableUtils
 import android.content.Context
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import com.cookiegames.smartcookie.browser.activity.BrowserActivity
+import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.utils.DrawableUtils
 
 /**
  * Creates the proper [Drawable] to represent the [SslState].

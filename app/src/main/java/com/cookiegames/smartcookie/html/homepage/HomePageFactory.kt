@@ -1,17 +1,14 @@
 package com.cookiegames.smartcookie.html.homepage
 
+import android.app.Application
+import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.constant.FILE
 import com.cookiegames.smartcookie.constant.UTF8
 import com.cookiegames.smartcookie.html.HtmlPageFactory
 import com.cookiegames.smartcookie.html.jsoup.*
-import com.cookiegames.smartcookie.search.SearchEngineProvider
-import android.app.Application
-import com.cookiegames.smartcookie.AppTheme
-import com.cookiegames.smartcookie.BrowserApp
-import com.cookiegames.smartcookie.MainActivity
-import com.cookiegames.smartcookie.browser.activity.BrowserActivity
 import com.cookiegames.smartcookie.preference.UserPreferences
+import com.cookiegames.smartcookie.search.SearchEngineProvider
 import dagger.Reusable
 import io.reactivex.Single
 import java.io.File

@@ -1,6 +1,5 @@
 package com.cookiegames.smartcookie
 
-import com.cookiegames.smartcookie.browser.activity.BrowserActivity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -8,12 +7,9 @@ import android.os.Build
 import android.view.Menu
 import android.webkit.CookieManager
 import android.webkit.CookieSyncManager
-import io.reactivex.Completable
-import android.R.menu
 import androidx.appcompat.view.menu.MenuBuilder
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-
+import com.cookiegames.smartcookie.browser.activity.BrowserActivity
+import io.reactivex.Completable
 
 
 class IncognitoActivity : BrowserActivity() {

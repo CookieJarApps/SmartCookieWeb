@@ -103,7 +103,6 @@
     <string name="action_manual">מדריך ל</string>
     <string name="action_auto">אוטומטי</string>
     <string name="action_follow_me">צור איתי קשר</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">נקה מטמון</string>
     <string name="message_cache_cleared">המטמון נקה</string>
     <string name="message_import">יובאו סימניות</string>
@@ -270,7 +269,6 @@
     <string name="scw">קוד המקור של SmartCookieWeb</string>
     <string name="action_home">בית</string>
     <string name="description">למדו על SmartCookieWeb</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">שאלות נפוצות</string>
     <string name="faq_description">שאלות נפוצות</string>
@@ -312,7 +310,6 @@
     
     <string name="action_message_canceled">הפעולה בוטלה.</string>
 
-    <string name="upsell_plus_version">שדרג ל- Lightning Plus כדי לחסום מודעות</string>
 
     
     <string name="title_permission_request">בקשת רשות</string>
@@ -352,7 +349,6 @@
     <string name="search_engine_ask">תשאלו</string>
     <string name="search_engine_bing">בינג</string>
     <string name="search_engine_yahoo">יאהו</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
@@ -361,7 +357,6 @@
 
     <string name="privacy">צפו במדיניות הפרטיות</string>
     <string name="privacy_info">קרא את מדיניות הפרטיות של SmartCookieWeb</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">חסום אתרים זדוניים</string>
     <string name="block_sites">חסימת אתרים מותאמת אישית (בטא)</string>
     <string name="block_sites_title">חסימת אתרים מותאמת אישית (אתרים נפרדים עם פסיק)</string>

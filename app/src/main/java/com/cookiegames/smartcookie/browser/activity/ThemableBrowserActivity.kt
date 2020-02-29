@@ -1,21 +1,19 @@
 package com.cookiegames.smartcookie.browser.activity
 
-import com.cookiegames.smartcookie.AppTheme
-import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.di.injector
-import com.cookiegames.smartcookie.preference.UserPreferences
-import com.cookiegames.smartcookie.utils.ThemeUtils
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
-import android.view.View
 import androidx.annotation.StyleRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.iterator
+import com.cookiegames.smartcookie.AppTheme
+import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.di.injector
+import com.cookiegames.smartcookie.preference.UserPreferences
 import javax.inject.Inject
 
 abstract class ThemableBrowserActivity : AppCompatActivity() {

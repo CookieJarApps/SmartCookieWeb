@@ -1,22 +1,14 @@
 package com.cookiegames.smartcookie
 
-import com.cookiegames.smartcookie.browser.activity.BrowserActivity
 import android.content.Intent
 import android.os.Build
 import android.view.KeyEvent
 import android.view.Menu
 import android.webkit.CookieManager
 import android.webkit.CookieSyncManager
-import io.reactivex.Completable
-import android.R.menu
-import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.view.menu.MenuBuilder
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.graphics.drawable.DrawableCompat
+import com.cookiegames.smartcookie.browser.activity.BrowserActivity
+import io.reactivex.Completable
 
 
 class MainActivity : BrowserActivity() {

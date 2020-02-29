@@ -1,12 +1,6 @@
 package com.cookiegames.smartcookie.settings.fragment
 
-import android.content.Context
-import com.cookiegames.smartcookie.AppTheme
-import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.di.injector
-import com.cookiegames.smartcookie.extensions.resizeAndShow
-import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
-import com.cookiegames.smartcookie.preference.UserPreferences
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
@@ -14,18 +8,17 @@ import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
-import javax.inject.Inject
-import android.content.Intent
-import android.preference.SwitchPreference
 import android.widget.Toast
-import androidx.core.app.ActivityCompat.invalidateOptionsMenu
-import com.cookiegames.smartcookie.BrowserApp
+import androidx.appcompat.app.AlertDialog
+import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.MainActivity
-import com.cookiegames.smartcookie.browser.PasswordChoice
+import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.dialog.BrowserDialog
-import com.cookiegames.smartcookie.extensions.toast
-import com.cookiegames.smartcookie.html.homepage.HomePageFactory
+import com.cookiegames.smartcookie.extensions.resizeAndShow
+import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
+import com.cookiegames.smartcookie.preference.UserPreferences
+import javax.inject.Inject
 
 
 class DisplaySettingsFragment : AbstractSettingsFragment() {

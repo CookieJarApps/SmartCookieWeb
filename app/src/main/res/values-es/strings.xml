@@ -103,7 +103,6 @@
     <string name="action_manual">Manual</string>
     <string name="action_auto">Auto</string>
     <string name="action_follow_me">Contáctame</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Limpiar cache</string>
     <string name="message_cache_cleared">Caché borrado</string>
     <string name="message_import">Los marcadores fueron importados</string>
@@ -270,7 +269,6 @@
     <string name="scw">Código fuente de SmartCookieWeb</string>
     <string name="action_home">Casa</string>
     <string name="description">Aprenda acerca de SmartCookieWeb</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">Preguntas más frecuentes</string>
     <string name="faq_description">Preguntas frecuentes</string>
@@ -310,7 +308,6 @@
     
     <string name="action_message_canceled">Acción cancelada</string>
 
-    <string name="upsell_plus_version">Actualice a Lightning Plus para bloquear anuncios</string>
 
     
     <string name="title_permission_request">Solicitud de permiso</string>
@@ -350,7 +347,6 @@
     <string name="search_engine_ask">Pedir</string>
     <string name="search_engine_bing">Bing</string>
     <string name="search_engine_yahoo">Yahoo</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">Pato Pato a ganar</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
@@ -359,7 +355,6 @@
 
     <string name="privacy">Ver política de privacidad</string>
     <string name="privacy_info">Lea la política de privacidad de SmartCookieWeb</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Bloquear sitios maliciosos</string>
     <string name="block_sites">Bloque de sitio personalizado (beta)</string>
     <string name="block_sites_title">Bloqueo de sitio personalizado (sitios separados con una coma)</string>

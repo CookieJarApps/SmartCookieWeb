@@ -288,7 +288,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             TabsDesktopView(this).also(findViewById<FrameLayout>(getTabsContainerId())::addView)
         }
         var mPrefs = PreferenceManager.getDefaultSharedPreferences(this)
-        var shouldRestoreTabs = mPrefs.getBoolean("shouldRestoreTabs", false);
+        var shouldRestoreTabs = mPrefs.getBoolean("shouldRestoreTabs", false)
 
         if(userPreferences.incognito){
 
@@ -296,16 +296,16 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             WebUtils.clearCookies(this)
 
             if(userPreferences.restoreLostTabsEnabled){
-                var editor = mPrefs.edit();
-                editor.putBoolean("shouldRestoreTabs", true);
-                editor.commit();
+                var editor = mPrefs.edit()
+                editor.putBoolean("shouldRestoreTabs", true)
+                editor.commit()
                 userPreferences.restoreLostTabsEnabled = false
             }
         }
         else if(shouldRestoreTabs && userPreferences.restoreLostTabsEnabled == false && !userPreferences.incognito){
-            var editor = mPrefs.edit();
-            editor.putBoolean("shouldRestoreTabs", false);
-            editor.commit();
+            var editor = mPrefs.edit()
+            editor.putBoolean("shouldRestoreTabs", false)
+            editor.commit()
             userPreferences.restoreLostTabsEnabled = true
         }
 
@@ -394,9 +394,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             }
         }
 
-        var resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+        var resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android")
         if (resourceId > 0) {
-            navigationbarsize =  resources.getDimensionPixelSize(resourceId);
+            navigationbarsize =  resources.getDimensionPixelSize(resourceId)
         }
         else{
             navigationbarsize = 0
@@ -1030,7 +1030,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         }
 
         val displayMetrics =  DisplayMetrics()
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics)
         val height = displayMetrics.heightPixels
 
         currentTabView = view

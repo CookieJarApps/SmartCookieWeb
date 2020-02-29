@@ -103,7 +103,6 @@
     <string name="action_manual">Εγχειρίδιο</string>
     <string name="action_auto">Αυτο</string>
     <string name="action_follow_me">Επικοινώνησε μαζί μου</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Εκκαθάριση προσωρινής μνήμης</string>
     <string name="message_cache_cleared">Η κρυφή μνήμη διαγράφηκε</string>
     <string name="message_import">Οι σελιδοδείκτες εισήχθησαν</string>
@@ -270,7 +269,6 @@
     <string name="scw">Κώδικα προέλευσης SmartCookieWeb</string>
     <string name="action_home">Σπίτι</string>
     <string name="description">Μάθετε σχετικά με το SmartCookieWeb</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">Συχνές ερωτήσεις</string>
     <string name="faq_description">Συχνές ερωτήσεις</string>
@@ -310,7 +308,6 @@
     
     <string name="action_message_canceled">Η ενέργεια ακυρώθηκε.</string>
 
-    <string name="upsell_plus_version">Αναβαθμίστε στο Lightning Plus για να αποκλείσετε διαφημίσεις</string>
 
     
     <string name="title_permission_request">Αίτημα άδειας</string>
@@ -350,7 +347,6 @@
     <string name="search_engine_ask">Παρακαλώ</string>
     <string name="search_engine_bing">Bing</string>
     <string name="search_engine_yahoo">Yahoo</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">Startpage Mobile</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
@@ -359,7 +355,6 @@
 
     <string name="privacy">Προβολή πολιτικής απορρήτου</string>
     <string name="privacy_info">Διαβάστε την πολιτική απορρήτου του SmartCookieWeb</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Αποκλεισμός κακόβουλων τοποθεσιών</string>
     <string name="block_sites">Προσαρμοσμένο ιστοτόπο (beta)</string>
     <string name="block_sites_title">Custom Site Block (ξεχωριστοί ιστότοποι με κόμμα)</string>

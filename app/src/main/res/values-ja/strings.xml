@@ -103,7 +103,6 @@
     <string name="action_manual">マニュアル</string>
     <string name="action_auto">オート</string>
     <string name="action_follow_me">私に連絡して</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">キャッシュの消去</string>
     <string name="message_cache_cleared">キャッシュをクリアしました</string>
     <string name="message_import">ブックマークがインポートされました</string>
@@ -270,7 +269,6 @@
     <string name="scw">SmartCookieWebソースコード</string>
     <string name="action_home">ホーム</string>
     <string name="description">SmartCookieWebについて学ぶ</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">よくある質問</string>
     <string name="faq_description">よくある質問</string>
@@ -310,7 +308,6 @@
     
     <string name="action_message_canceled">アクションがキャンセルされました。</string>
 
-    <string name="upsell_plus_version">Lightning Plusにアップグレードして広告をブロックする</string>
 
     
     <string name="title_permission_request">許可リクエスト</string>
@@ -350,7 +347,6 @@
     <string name="search_engine_ask">頼む</string>
     <string name="search_engine_bing">ビング</string>
     <string name="search_engine_yahoo">ヤフー</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">ダックダックゴー</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
@@ -359,7 +355,6 @@
 
     <string name="privacy">プライバシーポリシーを見る</string>
     <string name="privacy_info">SmartCookieWebプライバシーポリシーを読む</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">悪意のあるサイトをブロックする</string>
     <string name="block_sites">カスタムサイトブロック（ベータ版）</string>
     <string name="block_sites_title">カスタムサイトブロック（コンマで区切られたサイト）</string>

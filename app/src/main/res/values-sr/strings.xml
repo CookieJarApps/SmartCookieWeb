@@ -103,7 +103,6 @@
     <string name="action_manual">Упутство</string>
     <string name="action_auto">Ауто</string>
     <string name="action_follow_me">Контактирај ме</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Избриши кеш меморију</string>
     <string name="message_cache_cleared">Кеш је очишћен</string>
     <string name="message_import">Ознаке су увезене</string>
@@ -271,7 +270,6 @@
     <string name="scw">Изворни код СмартЦоокиеВеб</string>
     <string name="action_home">Кућа</string>
     <string name="description">Сазнајте више о СмартЦоокиеВеб</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">ФАК</string>
     <string name="faq_description">Често постављана питања</string>
@@ -312,7 +310,6 @@
     
     <string name="action_message_canceled">Акција је отказана.</string>
 
-    <string name="upsell_plus_version">Надоградите на Лигхтнинг Плус да бисте блокирали огласе</string>
 
     
     <string name="title_permission_request">Захтев за дозволу</string>
@@ -352,7 +349,6 @@
     <string name="search_engine_ask">Питати</string>
     <string name="search_engine_bing">Бинг</string>
     <string name="search_engine_yahoo">Иахоо</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">СтартПаге Мобиле</string>
     <string name="search_engine_duckduckgo">ДуцкДуцкГо</string>
     <string name="search_engine_duckduckgo_lite">ДуцкДуцкГо Лите</string>
@@ -361,7 +357,6 @@
 
     <string name="privacy">Погледајте Политику приватности</string>
     <string name="privacy_info">Прочитајте политику приватности СмартЦоокиеВеб</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Блокирајте злонамерне сајтове</string>
     <string name="block_sites">Прилагођени блок сајта (бета)</string>
     <string name="block_sites_title">Прилагођени блок страница (одвојена места са зарезом)</string>

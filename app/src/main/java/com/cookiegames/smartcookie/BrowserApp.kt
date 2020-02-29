@@ -1,5 +1,11 @@
 package com.cookiegames.smartcookie
 
+import android.app.Activity
+import android.app.Application
+import android.content.Context
+import android.os.Build
+import android.webkit.WebView
+import androidx.appcompat.app.AppCompatDelegate
 import com.cookiegames.smartcookie.database.bookmark.BookmarkExporter
 import com.cookiegames.smartcookie.database.bookmark.BookmarkRepository
 import com.cookiegames.smartcookie.device.BuildInfo
@@ -13,13 +19,6 @@ import com.cookiegames.smartcookie.preference.DeveloperPreferences
 import com.cookiegames.smartcookie.utils.FileUtils
 import com.cookiegames.smartcookie.utils.MemoryLeakUtils
 import com.cookiegames.smartcookie.utils.installMultiDex
-import android.app.Activity
-import android.app.Application
-import android.content.Context
-import android.os.Build
-import android.os.StrictMode
-import android.webkit.WebView
-import androidx.appcompat.app.AppCompatDelegate
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.plugins.RxJavaPlugins

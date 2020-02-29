@@ -103,7 +103,6 @@
     <string name="action_manual">Handbuch</string>
     <string name="action_auto">Auto</string>
     <string name="action_follow_me">Kontaktiere mich</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Cache leeren</string>
     <string name="message_cache_cleared">Cache geleert</string>
     <string name="message_import">Lesezeichen wurden importiert</string>
@@ -270,7 +269,6 @@
     <string name="scw">SmartCookieWeb-Quellcode</string>
     <string name="action_home">Zuhause</string>
     <string name="description">Erfahren Sie mehr über SmartCookieWeb</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">FAQ</string>
     <string name="faq_description">Häufig gestellte Fragen</string>
@@ -310,7 +308,6 @@
     
     <string name="action_message_canceled">Aktion abgebrochen.</string>
 
-    <string name="upsell_plus_version">Aktualisieren Sie auf Lightning Plus, um Anzeigen zu blockieren</string>
 
     
     <string name="title_permission_request">Erlaubnisanfrage</string>
@@ -350,7 +347,6 @@
     <string name="search_engine_ask">Ask</string>
     <string name="search_engine_bing">Bing</string>
     <string name="search_engine_yahoo">Yahoo</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
@@ -359,7 +355,6 @@
 
     <string name="privacy">Datenschutzbestimmungen anzeigen</string>
     <string name="privacy_info">Lesen Sie die SmartCookieWeb-Datenschutzbestimmungen</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Bösartige Websites blockieren</string>
     <string name="block_sites">Benutzerdefinierter Websiteblock (Beta)</string>
     <string name="block_sites_title">Benutzerdefinierter Site-Block (separate Sites mit einem Komma)</string>

@@ -39,18 +39,4 @@ interface AppBindsModule {
     @Binds
     fun providesAdBlockAllowListModel(adBlockAllowListDatabase: AdBlockAllowListDatabase): AdBlockAllowListRepository
 
-    @Binds
-    fun providesAllowListModel(sessionAllowListModel: SessionAllowListModel): AllowListModel
-
-    @Binds
-    fun providesSslWarningPreferences(sessionSslWarningPreferences: SessionSslWarningPreferences): SslWarningPreferences
-
-    @Binds
-    fun providesHostsDataSource(assetsHostsDataSource: AssetsHostsDataSource): HostsDataSource
-
-    @Binds
-    fun providesHostsRepository(hostsDatabase: HostsDatabase): HostsRepository
-
-    @Binds
-    fun providesHostsDataSourceProvider(preferencesHostsDataSourceProvider: PreferencesHostsDataSourceProvider): HostsDataSourceProvider
 }

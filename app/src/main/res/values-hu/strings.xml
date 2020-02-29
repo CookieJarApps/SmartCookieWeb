@@ -103,7 +103,6 @@
     <string name="action_manual">Kézikönyv</string>
     <string name="action_auto">kocsi</string>
     <string name="action_follow_me">Keress meg</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">Törölje a gyorsítótárat</string>
     <string name="message_cache_cleared">A gyorsítótár törlődik</string>
     <string name="message_import">A könyvjelzők importáltak</string>
@@ -271,7 +270,6 @@
     <string name="scw">SmartCookieWeb forráskód</string>
     <string name="action_home">itthon</string>
     <string name="description">Tudjon meg többet a SmartCookieWebről</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">GYIK</string>
     <string name="faq_description">Gyakran Ismételt Kérdések</string>
@@ -311,7 +309,6 @@
     
     <string name="action_message_canceled">A művelet megszakítva.</string>
 
-    <string name="upsell_plus_version">Frissítsen a Lightning Plus-ra a hirdetések blokkolása érdekében</string>
 
     
     <string name="title_permission_request">Engedély iránti kérelem</string>
@@ -351,7 +348,6 @@
     <string name="search_engine_ask">Kérdez</string>
     <string name="search_engine_bing">Bing</string>
     <string name="search_engine_yahoo">Jehu</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
@@ -360,7 +356,6 @@
 
     <string name="privacy">Tekintse meg az Adatvédelmi irányelveket</string>
     <string name="privacy_info">Olvassa el a SmartCookieWeb adatvédelmi irányelveit</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">Blokkolja a rosszindulatú webhelyeket</string>
     <string name="block_sites">Egyéni webhelyblokk (béta)</string>
     <string name="block_sites_title">Egyéni webhelyek blokkolása (külön webhely vesszővel)</string>

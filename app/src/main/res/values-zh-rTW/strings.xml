@@ -103,7 +103,6 @@
     <string name="action_manual">手冊</string>
     <string name="action_auto">汽車</string>
     <string name="action_follow_me">聯絡我</string>
-    <string name="url_insta" translatable="false">https://www.cookiegames.co.uk</string>
     <string name="clear_cache">清除緩存</string>
     <string name="message_cache_cleared">緩存已清除</string>
     <string name="message_import">書籤已導入</string>
@@ -270,7 +269,6 @@
     <string name="scw">SmartCookieWeb源代碼</string>
     <string name="action_home">家</string>
     <string name="description">了解有關SmartCookieWeb的信息</string>
-    <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
     <string name="faq">常問問題</string>
     <string name="faq_description">經常問的問題</string>
@@ -310,7 +308,6 @@
     
     <string name="action_message_canceled">動作已取消。</string>
 
-    <string name="upsell_plus_version">升級到Lightning Plus以阻止廣告</string>
 
     
     <string name="title_permission_request">權限請求</string>
@@ -350,7 +347,6 @@
     <string name="search_engine_ask">問</string>
     <string name="search_engine_bing">兵</string>
     <string name="search_engine_yahoo">雅虎</string>
-    <string name="search_engine_startpage" translatable="false">StartPage</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">DuckDuckGo</string>
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
@@ -359,7 +355,6 @@
 
     <string name="privacy">查看隱私政策</string>
     <string name="privacy_info">閱讀SmartCookieWeb隱私政策</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
     <string name="block_malware">阻止惡意網站</string>
     <string name="block_sites">自定義網站版塊（測試版）</string>
     <string name="block_sites_title">自定義網站塊（用逗號分隔的網站）</string>

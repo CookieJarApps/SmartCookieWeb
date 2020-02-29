@@ -286,7 +286,6 @@
     <string name="notification_incognito_running_description">Notifica da scheda privata in corso</string>
     <!-- Common actions -->
     <string name="action_message_canceled">Azione annullata.</string>
-    <string name="upsell_plus_version">Esegui l\'upgrade a Lightning Plus per bloccare gli annunci</string>
     <!-- permissions request -->
     <string name="title_permission_request">Richiesta di autorizzazione</string>
     <string name="message_permission_request">%1$s vorrebbe usare: %2$s</string>
