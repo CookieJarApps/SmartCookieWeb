@@ -405,12 +405,13 @@ class SmartCookieWebClient(
         else{
             val toast = Toast.makeText(activity, "Extension not installed", Toast.LENGTH_LONG)
             toast.show()
-            smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+            smartCookieView.loadHomePage()
+            /*smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
             Handler().postDelayed({
             smartCookieView.webView!!.settings.javaScriptEnabled = true
             smartCookieView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be uninstalled because it isn\'t installed.';", null)
             smartCookieView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
-            }, 600)
+            }, 600)*/
             return
         }
 
@@ -435,12 +436,13 @@ class SmartCookieWebClient(
         if(inputAsString.contains("/*" + result + "*/")){
             val toast = Toast.makeText(activity, "Extension already installed", Toast.LENGTH_LONG)
             toast.show()
-            smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+            smartCookieView.loadHomePage()
+           /* smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
             Handler().postDelayed({
                 smartCookieView.webView!!.settings.javaScriptEnabled = true
                 smartCookieView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it is already installed.';", null)
                 smartCookieView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
-            }, 600)
+            }, 600)*/
         }
         else{
             if(text.contains("/*" + result + "*/") && text.contains("/*End " + result + "*/")){
@@ -448,17 +450,18 @@ class SmartCookieWebClient(
                 toast.show()
                 file.appendText(text)
                 file.appendText(System.getProperty("line.separator")!!)
-                smartCookieView.loadUrl("https://extensions.cookiejarapps.com/success.html")
+                smartCookieView.loadHomePage()
             }
             else{
                 val toast = Toast.makeText(activity, "Extension invalid", Toast.LENGTH_LONG)
                 toast.show()
-                smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+                smartCookieView.loadHomePage()
+               /* smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
                 Handler().postDelayed({
                 smartCookieView.webView!!.settings.javaScriptEnabled = true
                 smartCookieView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it isn\'t valid.';", null)
                 smartCookieView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
-            }, 600)
+            }, 600)*/
             }
         }
     }

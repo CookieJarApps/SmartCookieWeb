@@ -2,12 +2,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="Extensions">
         <Preference
-            android:key="extensions_list"
-            android:title="@string/extensions_list"/>
-        <Preference
-            android:key="uninstall_extension"
-            android:title="@string/uninstall_extension"/>
-        <Preference
             android:summary="@string/extensions_description"
             android:title="@string/extensions_store">
             <intent
@@ -18,5 +12,11 @@
                     android:value="SELF" />
             </intent>
         </Preference>
+        <Preference
+            android:key="extensions_list"
+            android:title="@string/extensions_list"/>
+        <Preference
+            android:key="uninstall_extension"
+            android:title="@string/uninstall_extension"/>
     </PreferenceCategory>
 </PreferenceScreen>
