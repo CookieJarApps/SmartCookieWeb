@@ -1,6 +1,3 @@
-/*
- * Copyright 2015 Anthony Restaino
- */
 
 package com.cookiegames.smartcookie.browser.activity
 
