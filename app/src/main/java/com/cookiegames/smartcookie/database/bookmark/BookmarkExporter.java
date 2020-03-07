@@ -27,13 +27,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.WorkerThread;
 import io.reactivex.Completable;
 import io.reactivex.Single;
-
-/**
- * The class responsible for importing and exporting
- * bookmarks in the JSON format.
- * <p>
- * Created by anthonycr on 5/7/17.
- */
 public final class BookmarkExporter {
 
     private static final String TAG = "BookmarkExporter";
@@ -67,12 +60,12 @@ public final class BookmarkExporter {
                     JSONObject object = new JSONObject(line);
                     final String folderTitle = object.getString(KEY_FOLDER);
                     bookmarks.add(
-                        new Bookmark.Entry(
-                            object.getString(KEY_URL),
-                            object.getString(KEY_TITLE),
-                            object.getInt(KEY_ORDER),
-                            WebPageKt.asFolder(folderTitle)
-                        )
+                            new Bookmark.Entry(
+                                    object.getString(KEY_URL),
+                                    object.getString(KEY_TITLE),
+                                    object.getInt(KEY_ORDER),
+                                    WebPageKt.asFolder(folderTitle)
+                            )
                     );
                 } catch (JSONException e) {
                     Log.e(TAG, "Can't parse line " + line, e);
@@ -127,38 +120,34 @@ public final class BookmarkExporter {
      * given file. If the file is not in a
      * supported format, it will fail.
      *
-     * @param file the file to import from.
-     * @return an observable that emits the
-     * imported bookmarks, or an error if the
-     * file cannot be imported.
+     * @param inputStream The stream to import from.
+     * @return A list of bookmarks, or throws an exception if the bookmarks cannot be imported.
      */
     @NonNull
-    public static Single<List<Bookmark.Entry>> importBookmarksFromFile(@NonNull final File file) {
-        return Single.fromCallable(() -> {
-            BufferedReader bookmarksReader = null;
-            try {
-                //noinspection IOResourceOpenedButNotSafelyClosed
-                bookmarksReader = new BufferedReader(new FileReader(file));
-                String line;
+    public static List<Bookmark.Entry> importBookmarksFromFileStream(@NonNull InputStream inputStream) throws Exception {
+        BufferedReader bookmarksReader = null;
+        try {
+            //noinspection IOResourceOpenedButNotSafelyClosed
+            bookmarksReader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
 
-                List<Bookmark.Entry> bookmarks = new ArrayList<>();
-                while ((line = bookmarksReader.readLine()) != null) {
-                    JSONObject object = new JSONObject(line);
-                    final String folderName = object.getString(KEY_FOLDER);
-                    final Bookmark.Entry entry = new Bookmark.Entry(
+            List<Bookmark.Entry> bookmarks = new ArrayList<>();
+            while ((line = bookmarksReader.readLine()) != null) {
+                JSONObject object = new JSONObject(line);
+                final String folderName = object.getString(KEY_FOLDER);
+                final Bookmark.Entry entry = new Bookmark.Entry(
                         object.getString(KEY_TITLE),
                         object.getString(KEY_URL),
                         object.getInt(KEY_ORDER),
                         WebPageKt.asFolder(folderName)
-                    );
-                    bookmarks.add(entry);
-                }
-
-                return bookmarks;
-            } finally {
-                Utils.close(bookmarksReader);
+                );
+                bookmarks.add(entry);
             }
-        });
+
+            return bookmarks;
+        } finally {
+            Utils.close(bookmarksReader);
+        }
     }
 
     /**
@@ -174,14 +163,14 @@ public final class BookmarkExporter {
     @NonNull
     public static File createNewExportFile() {
         File bookmarksExport = new File(
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-            "BookmarksExport.txt");
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+                "BookmarksExport.txt");
         int counter = 0;
         while (bookmarksExport.exists()) {
             counter++;
             bookmarksExport = new File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                "BookmarksExport-" + counter + ".txt");
+                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+                    "BookmarksExport-" + counter + ".txt");
         }
 
         return bookmarksExport;
