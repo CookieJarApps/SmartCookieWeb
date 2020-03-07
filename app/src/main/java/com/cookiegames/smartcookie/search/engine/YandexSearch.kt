@@ -9,7 +9,7 @@ import com.cookiegames.smartcookie.R
  * for the icon.
  */
 class YandexSearch : BaseSearchEngine(
-    "file:///android_asset/yandex.png",
+    "file:///android_asset/yandex.webp",
     "https://yandex.ru/yandsearch?lr=21411&text=",
     R.string.search_engine_yandex
 )

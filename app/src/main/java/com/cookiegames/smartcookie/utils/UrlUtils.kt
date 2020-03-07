@@ -24,6 +24,7 @@ import com.cookiegames.smartcookie.html.history.HistoryPageFactory
 import com.cookiegames.smartcookie.html.homepage.HomePageFactory
 import android.util.Patterns
 import android.webkit.URLUtil
+import java.util.*
 import java.util.regex.Pattern
 
 /**
@@ -44,7 +45,7 @@ fun smartUrlFilter(url: String, canBeSearch: Boolean, searchUrl: String): String
     if (matcher.matches()) {
         // force scheme to lowercase
         val scheme = matcher.group(1)
-        val lcScheme = scheme.toLowerCase()
+        val lcScheme = scheme.toLowerCase(Locale.getDefault())
         if (lcScheme != scheme) {
             inUrl = lcScheme + matcher.group(2)
         }

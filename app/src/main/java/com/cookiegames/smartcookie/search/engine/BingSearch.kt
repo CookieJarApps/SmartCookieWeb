@@ -9,7 +9,7 @@ import com.cookiegames.smartcookie.R
  * for the icon.
  */
 class BingSearch : BaseSearchEngine(
-    "file:///android_asset/bing.png",
+    "file:///android_asset/bing.webp",
     "https://www.bing.com/search?q=",
     R.string.search_engine_bing
 )

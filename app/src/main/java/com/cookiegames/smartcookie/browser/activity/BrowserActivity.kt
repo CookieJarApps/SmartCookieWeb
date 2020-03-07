@@ -355,7 +355,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     val builder = AlertDialog.Builder(context)
                     builder.setTitle(R.string.site_not_secure)
                     builder.setIcon(R.drawable.ic_alert)
-                    builder.setPositiveButton(R.string.action_ok) { dialog, which ->
+                    builder.setPositiveButton(R.string.action_ok) { _, _ ->
                     }
                     builder.show()
                 } else {
@@ -402,7 +402,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if (userPreferences.bottomBar) {
 
             val searchEdit = customView.findViewById<SearchView>(R.id.search)
-            searchEdit.setOnFocusChangeListener { searchEdit, hasFocus ->
+            searchEdit.setOnFocusChangeListener { searchEdit, _ ->
                 if (searchEdit?.hasFocus() == true && userPreferences.bottomBar) {
                     toolbar_layout.translationY = 0f
 

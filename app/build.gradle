@@ -20,8 +20,8 @@ android {
     defaultConfig {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
-        versionName "7.2.4"
-        versionCode 81
+        versionName "7.3.0"
+        versionCode 82
         vectorDrawables.useSupportLibrary = true
     }
 
@@ -92,7 +92,6 @@ dexcount {
 }
 
 dependencies {
-
     // test dependencies
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.assertj:assertj-core:3.13.2'
@@ -129,7 +128,7 @@ dependencies {
     compileOnly 'javax.annotation:jsr250-api:1.0'
 
     // view binding
-    final def butterKnifeVersion = '10.1.0'
+    final def butterKnifeVersion = '10.2.1'
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     kapt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 

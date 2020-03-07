@@ -8,7 +8,7 @@ import com.cookiegames.smartcookie.R
  * See https://duckduckgo.com/assets/logo_homepage.normal.v101.png for the icon.
  */
 class DuckSearch : BaseSearchEngine(
-    "file:///android_asset/duckduckgo.png",
+    "file:///android_asset/duckduckgo.webp",
     "https://duckduckgo.com/?t=lightning&q=",
     R.string.search_engine_duckduckgo
 )

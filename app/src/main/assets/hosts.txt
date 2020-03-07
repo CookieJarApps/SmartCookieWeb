@@ -247,8 +247,6 @@
 0.0.0.0 soperson.com
 0.0.0.0 talk99.cn
 0.0.0.0 www.talk99.cn
-
-# Ads and tracking on Xiaomi devices
 0.0.0.0 api.ad.xiaomi.com
 0.0.0.0 www.api.ad.xiaomi.com
 0.0.0.0 api.admob.xiaomi.com
@@ -329,8 +327,6 @@
 0.0.0.0 www.sgp.o2o.api.xiaomi.com
 0.0.0.0 flash.sec.intl.miui.com
 0.0.0.0 www.flash.sec.intl.miui.com
-
-# Ads
 0.0.0.0 ampmetrics.engadget.com
 0.0.0.0 c.adskeeper.co.uk
 0.0.0.0 datacollect.vmall.com
@@ -631,8 +627,6 @@
 0.0.0.0 click.union.ucweb.com
 0.0.0.0 sg.mmstat.com
 0.0.0.0 woodpecker.uc.cn
-
-# Emotet malware domains @anudeepND
 0.0.0.0 beauty-tea.com
 0.0.0.0 www.beauty-tea.com
 0.0.0.0 zekiatagur.com
@@ -641,35 +635,15 @@
 0.0.0.0 www.arkonziv.com
 0.0.0.0 lecap-services.fr
 0.0.0.0 www.lecap-services.fr
-
-# Windows 10 'Connected User Experience' Telemetry
-# Connected User Experience and Diagnostic component endpoint for use with Windows 10, version 1803
 0.0.0.0 v10.events.data.microsoft.com
-# Connected User Experience and Diagnostic component endpoint for Windows 10, version 1709 or earlier
 0.0.0.0 v10.vortex-win.data.microsoft.com
-# Connected User Experience and Diagnostic component endpoint for operating systems older than Windows 10
-# Connected User Experience and Diagnostic component endpoint for use with Windows versions that have KB4458469 installed (Windows 10 1803 with the september 2018 update and higher)
 0.0.0.0 v10c.events.data.microsoft.com
-
-# Office 2016 'Connected User Experience' Telemetry
-# OneNote Telemetry Service
 0.0.0.0 mobile.pipe.aria.microsoft.com
-# Office Telemetry Upload Reporting – 'Heartbeart' and error events that occur on the client are uploaded to the telemetry service.
 0.0.0.0 nexus.officeapps.live.com
-# Office Rules Telemetry download – Informs the client about what data and events to upload to the telemetry service.
 0.0.0.0 nexusrules.officeapps.live.com
-# Telemetry and Reporting Service for Office apps
 0.0.0.0 telemetry.firstpartyapps.oaspapps.com
-# Telemetry Reporting
 0.0.0.0 browser.pipe.aria.microsoft.com
-
-# Mozilla Firefox telemetry
 0.0.0.0 incoming.telemetry.mozilla.org
-
-# Spam domains
-# If your software is able, the below domains and all subdomains should be blocked
-#*.angiemktg.com
-#*.weconfirmyou.com
 0.0.0.0 cws.conviva.com
 0.0.0.0 www.cws.conviva.com
 #*.cws.conviva.com
@@ -677,24 +651,17 @@
 0.0.0.0 www.vrl.m.conviva.com
 0.0.0.0 zee.cws.conviva.com
 0.0.0.0 www.zee.cws.conviva.com
-
-# These stink-up yahoo finance
 0.0.0.0 beap-bc.yahoo.com
 0.0.0.0 token.rubiconproject.com
 0.0.0.0 fc.yahoo.com
 0.0.0.0 pr-bh.ybp.yahoo.com
-
-# Error tracking and crash reporting
 0.0.0.0 rollbar.com
 0.0.0.0 www.rollbar.com
 0.0.0.0 api.rollbar.com
-
 0.0.0.0 ads.exoclick.com
 0.0.0.0 secure.exoclick.com
 0.0.0.0 syndication-evo.exoclick.com
 0.0.0.0 www.exoclick.com
-
-# ero-advertising
 0.0.0.0 0latfee.ero-advertising.com
 0.0.0.0 www.0latfee.ero-advertising.com
 0.0.0.0 2baners.ero-advertising.com
@@ -3852,73 +3819,13 @@
 0.0.0.0 www.zentastic.com
 0.0.0.0 youaresogay.com
 0.0.0.0 zentastic.com
-#
-
-#
-# As well by specifying the ipaddress of a server, you can gain access
-#   to some of your favourite sites with a single letter, instead of
-#   using the whole domain name
-# It is perhaps a better solution to use Favourites/Bookmarks instead.
-#216.34.181.45   s        # slashdot.org
-#74.125.127.105	g        # google.com
-#
-
-#
-# The sites ads234.com and ads345.com -- These sites hijack internet explorer
-# and redirect all requests through their servers. You may need to use spyware
-# removal programs such as SpyBotS&D, AdAware or HijackThis to remove this
-# nasty parasite. It's possible that blocking these sites using a hosts file
-# may not work, in which case you should remove the following lines from this
-# file and try the tools listed above immediately. Don't forget to reboot
-# after a scan.
 0.0.0.0 ads234.com
 0.0.0.0 ads345.com
 0.0.0.0 www.ads234.com
 0.0.0.0 www.ads345.com
-#
-
-
-#
-# Spyware and user tracking
-# By entering domains here, it will prevent certain companies from
-# gathering information on your surfing habits. These servers do not
-# necessarily serve ads, instead some are used by certain products to
-# "phone home". Others use web cookies to gather statistics on surfing
-# habits. Among other uses, this is a common tactic by spammers, to
-# let them know that you have read your mail.
-# Uncomment (remove the #) the lines that you wish to block, as some
-# may provide you with services you like.
-
-#
-#0.0.0.0 auto.search.msn.com  # Microsoft uses this server to redirect
-                                # mistyped URLs to search engines. They
-                                # log all such errors.
-#0.0.0.0 sitefinder.verisign.com	# Verisign has joined the game
-#0.0.0.0 sitefinder-idn.verisign.com	# of trying to hijack mistyped
-					# URLs to their site.
-					# May break iOS Game Center.
-
-#0.0.0.0 s0.2mdn.net		# This may interfere with some streaming
-				# video on sites such as cbc.ca
-#0.0.0.0 ad.doubleclick.net   # This may interefere with www.sears.com
-				# and potentially other sites.
-0.0.0.0 media.fastclick.net  # Likewise, this may interfere with some
-0.0.0.0 cdn.fastclick.net  # sites.
-#0.0.0.0 ebay.doubleclick.net		# may interfere with ebay
-#0.0.0.0 google-analytics.com			# breaks some sites
-#0.0.0.0 ssl.google-analytics.com
-#0.0.0.0 www.google-analytics.l.google.com
-#0.0.0.0 stat.livejournal.com		# There are reports that this may mess
- 					# up CSS on livejournal
-#0.0.0.0 stats.surfaid.ihost.com	# This has been known cause
-					# problems with NPR.org
-#0.0.0.0 www.google-analytics.com		# breaks some sites
-#0.0.0.0 ads.imeem.com		# Seems to interfere with the functioning of imeem.com
-#
-
 0.0.0.0 006.free-counter.co.uk
 0.0.0.0 006.freecounters.co.uk
-0.0.0.0 06272002-dbase.hitcountz.net  # Web bugs in spam
+0.0.0.0 06272002-dbase.hitcountz.net
 0.0.0.0 0stats.com
 0.0.0.0 123counter.mycomputer.com
 0.0.0.0 123counter.superstats.com
@@ -3945,11 +3852,9 @@
 0.0.0.0 adcounter.globeandmail.com
 0.0.0.0 adcounter.theglobeandmail.com
 0.0.0.0 addfreestats.com
-0.0.0.0 adelogs.adobe.com  #See http://www.theregister.co.uk/2014/10/07/adobe_digital_editions_4_caught_snooping_into_ebook_collections_of_users/
+0.0.0.0 adelogs.adobe.com
 0.0.0.0 ademails.com
-0.0.0.0 adlog.com.com  # Used by Ziff Davis to serve
-  # ads and track users across
-  # the com.com family of sites
+0.0.0.0 adlog.com.com
 0.0.0.0 ad-logics.com
 0.0.0.0 admanmail.com
 0.0.0.0 admin.iesnare.com
@@ -4020,7 +3925,7 @@
 0.0.0.0 belierlaine.com
 0.0.0.0 benchemail.bmetrack.com
 0.0.0.0 be.sitestat.com
-0.0.0.0 best-search.cc  #spyware
+0.0.0.0 best-search.cc
 0.0.0.0 beta.easy-hit-counter.com
 0.0.0.0 beta.easy-hit-counters.com
 0.0.0.0 beta.easyhitcounters.com
@@ -4100,7 +4005,6 @@
 0.0.0.0 cig-arrete.com
 0.0.0.0 ci-mpsnare.iesnare.com
 0.0.0.0 ci-mpsnare.iesnare.co.uk
-#0.0.0.0 ci-mpsnare.iovation.com	# See http://www.codingthewheel.com/archives/online-gambling-privacy-iesnare
 0.0.0.0 ci-snare.iovation.com
 0.0.0.0 citrix.tradedoubler.com
 0.0.0.0 cjt1.net
@@ -4117,7 +4021,7 @@
 0.0.0.0 click.silvercash.com
 0.0.0.0 clicks.m4n.nl
 0.0.0.0 clicks.natwest.com
-0.0.0.0 clickspring.net  #used by a spyware product called PurityScan
+0.0.0.0 clickspring.net
 0.0.0.0 clicks.rbs.co.uk
 0.0.0.0 clickstatsview.chooseonlinecasino.com
 0.0.0.0 clickstatsview.earnmoneycasinos.com
@@ -4286,10 +4190,10 @@
 0.0.0.0 counter.nowlinux.com
 0.0.0.0 counter.pcgames.de
 0.0.0.0 counter.rambler.ru
-0.0.0.0 counters.auctionhelper.com  # comment these
-0.0.0.0 counters.auctionwatch.com  # out to allow
-0.0.0.0 counters.auctiva.com  # tracking by
-0.0.0.0 counters.honesty.com  # ebay users
+0.0.0.0 counters.auctionhelper.com 
+0.0.0.0 counters.auctionwatch.com 
+0.0.0.0 counters.auctiva.com
+0.0.0.0 counters.honesty.com
 0.0.0.0 counter.search.bg
 0.0.0.0 counter.sexhound.nl
 0.0.0.0 counters.gigya.com
@@ -4337,9 +4241,9 @@
 0.0.0.0 detectorcarecenter.in
 0.0.0.0 de.tynt.com
 0.0.0.0 dgit.com
-0.0.0.0 didtheyreadit.com  # email bugs
+0.0.0.0 didtheyreadit.com
 0.0.0.0 digistats.westjet.com
-0.0.0.0 dimeprice.com  # "spam bugs"
+0.0.0.0 dimeprice.com
 0.0.0.0 directads.mcafee.com
 0.0.0.0 diskager.com
 0.0.0.0 dkb01.webtrekk.net
@@ -4506,20 +4410,20 @@
 0.0.0.0 ic.tynt.com
 0.0.0.0 idm.hit.gemius.pl
 0.0.0.0 ieplugin.com
-0.0.0.0 iesnare.com  # See http://www.codingthewheel.com/archives/online-gambling-privacy-iesnare
+0.0.0.0 iesnare.com
 0.0.0.0 iesnare.co.uk
 0.0.0.0 ig.insightgrit.com
 0.0.0.0 ih.constantcontacts.com
-0.0.0.0 i.kissmetrics.com  # http://www.wired.com/epicenter/2011/07/undeletable-cookie/
+0.0.0.0 i.kissmetrics.com
 0.0.0.0 ilead.itrack.it
 0.0.0.0 image.masterstats.com
 0.0.0.0 images1.paycounter.com
 0.0.0.0 images-aud.freshmeat.net
 0.0.0.0 images-aud.slashdot.org
 0.0.0.0 images-aud.sourceforge.net
-0.0.0.0 images.dailydiscounts.com  # "spam bugs"
+0.0.0.0 images.dailydiscounts.com
 0.0.0.0 images.itchydawg.com
-0.0.0.0 impacts.alliancehub.com  # "spam bugs"
+0.0.0.0 impacts.alliancehub.com
 0.0.0.0 impch.tradedoubler.com
 0.0.0.0 imp.clickability.com
 0.0.0.0 impde.tradedoubler.com
@@ -4570,7 +4474,6 @@
 0.0.0.0 link.masterstats.com
 0.0.0.0 linktrack.bravenet.com
 0.0.0.0 livestats.atlanta-airport.com
-#0.0.0.0 ll.a.hulu.com	# Uncomment to block Hulu.
 0.0.0.0 loadus.exelator.com
 0.0.0.0 loc1.hitsprocessor.com
 0.0.0.0 lockerdome.com
@@ -4610,8 +4513,8 @@
 0.0.0.0 lycoscollect.realmedia.com
 0.0.0.0 m1.nedstatbasic.net
 0.0.0.0 m1.webstats4u.com
-0.0.0.0 mailcheckisp.biz  # "spam bugs"
-0.0.0.0 mailfoogae.appspot.com  # Streak email tracker
+0.0.0.0 mailcheckisp.biz
+0.0.0.0 mailfoogae.appspot.com 
 0.0.0.0 mailtrack1313.com
 0.0.0.0 mailtrack.me
 0.0.0.0 mama128.valuehost.ru
@@ -4682,7 +4585,6 @@
 0.0.0.0 metrics.thefrisky.com
 0.0.0.0 metrics.thenation.com
 0.0.0.0 metrics.theweathernetwork.com
-#0.0.0.0 metrics.ticketmaster.com	# interferes with logging in to ticketmaster.com
 0.0.0.0 metrics.tmz.com
 0.0.0.0 metrics.toyota.com
 0.0.0.0 metrics.tulsaworld.com
@@ -4722,7 +4624,6 @@
 0.0.0.0 nexttrk.com
 0.0.0.0 nht-2.extreme-dm.com
 0.0.0.0 nl.nedstatbasic.net
-#0.0.0.0 nl.sitestat.com	# may interfere with duo.nl
 0.0.0.0 noticias.life
 0.0.0.0 notify1.brucelead.com
 0.0.0.0 o.addthis.com
@@ -4774,7 +4675,6 @@
 0.0.0.0 p.reuters.com
 0.0.0.0 printmail.biz
 0.0.0.0 prof.estat.com
-#0.0.0.0 pro.hit.gemius.pl	# May interfere with some video sites
 0.0.0.0 proxycfg.marketscore.com
 0.0.0.0 proxy.ia2.marketscore.com
 0.0.0.0 proxy.ia3.marketscore.com
@@ -4786,7 +4686,6 @@
 0.0.0.0 p.twitter.com
 0.0.0.0 qbittorrent.com
 0.0.0.0 quantcast584928381.s.moatpixel.com
-0.0.0.0 quantserve.com  #: Ad Tracking, JavaScript, etc.
 0.0.0.0 quareclk.com
 0.0.0.0 quicktrck.com
 0.0.0.0 r1-t.trackedlink.net
@@ -4911,7 +4810,6 @@
 0.0.0.0 server9.opentracker.net
 0.0.0.0 service.bfast.com
 0.0.0.0 service.maxymiser.net
-#0.0.0.0 services.krxd.net
 0.0.0.0 servt.playbuzz.co
 0.0.0.0 se.sitestat.com
 0.0.0.0 sexcounter.com
@@ -4966,7 +4864,7 @@
 0.0.0.0 stat.discogs.com
 0.0.0.0 static.audienceinsights.net
 0.0.0.0 static.kibboko.com
-0.0.0.0 static.smni.com  # Santa Monica - popunders
+0.0.0.0 static.smni.com
 0.0.0.0 static.trackedweb.net
 0.0.0.0 statik.topica.com
 0.0.0.0 statique.secureguards.eu
@@ -5008,7 +4906,6 @@
 0.0.0.0 stats.cafepress.com
 0.0.0.0 stats.canalblog.com
 0.0.0.0 stats.cartoonnetwork.com
-#0.0.0.0 stats.channel4.com
 0.0.0.0 stats.clickability.com
 0.0.0.0 stats.concierge.com
 0.0.0.0 stats.cts-bv.nl
@@ -5018,7 +4915,7 @@
 0.0.0.0 stats.dziennik.pl
 0.0.0.0 stats.economist.com
 0.0.0.0 stats.epicurious.com
-0.0.0.0 statse.webtrendslive.com  # Fortune.com among others
+0.0.0.0 statse.webtrendslive.com 
 0.0.0.0 stats.examiner.com
 0.0.0.0 stats.fairmont.com
 0.0.0.0 stats.fastcompany.com
@@ -5081,9 +4978,8 @@
 0.0.0.0 superstats.com
 0.0.0.0 sync.bfmio.com
 0.0.0.0 sync.clickonometrics.pl
-0.0.0.0 s.youtube.com  # Blocking this will interfere with video watching history
+0.0.0.0 s.youtube.com
 0.0.0.0 systweak.com
-#0.0.0.0 t2.hulu.com		# Uncomment to block Hulu.
 0.0.0.0 tag.crsspxl.com
 0.0.0.0 tagging.outrider.com
 0.0.0.0 tags.bkrtx.com
@@ -5091,7 +4987,7 @@
 0.0.0.0 targetnet.com
 0.0.0.0 tates.freestats.com
 0.0.0.0 tcookie.usatoday.com
-0.0.0.0 tcr.tynt.com  # See http://daringfireball.net/2010/05/tynt_copy_paste_jerks
+0.0.0.0 tcr.tynt.com
 0.0.0.0 telecharger-openoffice.fr
 0.0.0.0 testgw.iovation.com
 0.0.0.0 test.iovation.com
@@ -5167,7 +5063,6 @@
 0.0.0.0 track.grmtracking.com
 0.0.0.0 track.homestead.com
 0.0.0.0 track.hotdrugsstore.in
-#0.0.0.0 track.hulu.com	# Uncomment to block Hulu.
 0.0.0.0 track.india-marketing.in
 0.0.0.0 tracking.10e20.com
 0.0.0.0 tracking.3com.com
@@ -5403,7 +5298,7 @@
 0.0.0.0 t.senaldos.com
 0.0.0.0 t.senaluno.com
 0.0.0.0 t.signaletre.com
-0.0.0.0 t.signauxdeux.com  # Another email opentracker from hubspot
+0.0.0.0 t.signauxdeux.com
 0.0.0.0 tu.connect.wunderloop.net
 0.0.0.0 t.yesware.com
 0.0.0.0 tynt.com
@@ -5449,7 +5344,7 @@
 0.0.0.0 vidstat.taboola.com
 0.0.0.0 vip.clickzs.com
 0.0.0.0 virtualbartendertrack.beer.com
-0.0.0.0 visit.theglobeandmail.com  # Visits to theglobeandmail.com
+0.0.0.0 visit.theglobeandmail.com
 0.0.0.0 vis.sexlist.com
 0.0.0.0 voken.eyereturn.com
 0.0.0.0 vs.dmtracker.com
@@ -5464,7 +5359,7 @@
 0.0.0.0 web3.realtracker.com
 0.0.0.0 web4.realtracker.com
 0.0.0.0 webanalytics.globalthoughtz.com
-0.0.0.0 webbug.seatreport.com  # web bugs
+0.0.0.0 webbug.seatreport.com
 0.0.0.0 web-counter.5u.com
 0.0.0.0 webcounter.com
 0.0.0.0 webcounter.goweb.de
@@ -5519,7 +5414,7 @@
 0.0.0.0 www.admin.iesnare.com
 0.0.0.0 www.admin.iesnare.co.uk
 0.0.0.0 www.affiliatesuccess.net
-0.0.0.0 www.bar.ry2002.02-ry014.snpr.hotmx.hair.zaam.net  # In spam
+0.0.0.0 www.bar.ry2002.02-ry014.snpr.hotmx.hair.zaam.net 
 0.0.0.0 www.belstat.nl
 0.0.0.0 www.betcounter.com
 0.0.0.0 www.bigbadted.com
@@ -5530,7 +5425,6 @@
 0.0.0.0 www.ci-mpsnare.iesnare.com
 0.0.0.0 www.ci-mpsnare.iesnare.co.uk
 0.0.0.0 www.clickclick.com
-0.0.0.0 www.clickspring.net  #used by a spyware product called PurityScan
 0.0.0.0 www.clixgalore.com
 0.0.0.0 www.connectionlead.com
 0.0.0.0 www.counter10.sextracker.be
@@ -5570,10 +5464,9 @@
 0.0.0.0 www.fxcounters.com
 0.0.0.0 www.gator.com
 0.0.0.0 www.googkle.com
-#0.0.0.0 www.googletagservices.com		#interferes with techrepublic
 0.0.0.0 www.hitstats.co.uk
 0.0.0.0 www.iccee.com
-0.0.0.0 www.iesnare.com  # See http://www.codingthewheel.com/archives/online-gambling-privacy-iesnare
+0.0.0.0 www.iesnare.com
 0.0.0.0 www.iesnare.co.uk
 0.0.0.0 www.iovation.com
 0.0.0.0 www.iovation.co.uk
@@ -5584,7 +5477,7 @@
 0.0.0.0 www.linkcounter.com
 0.0.0.0 www.marketscore.com
 0.0.0.0 www.megacounter.de
-0.0.0.0 www.metareward.com  # web bugs in spam
+0.0.0.0 www.metareward.com
 0.0.0.0 www.mmstat.com
 0.0.0.0 www.mnbasd77.com
 0.0.0.0 www.mpsnare.iesnare.com
@@ -5594,14 +5487,14 @@
 0.0.0.0 www.nextgenstats.com
 0.0.0.0 www.ntsearch.com
 0.0.0.0 www.onestat.com
-0.0.0.0 www.originalicons.com  # installs IE extension
+0.0.0.0 www.originalicons.com
 0.0.0.0 www.paycounter.com
 0.0.0.0 www.pointclicktrack.com
 0.0.0.0 www.popuptrafic.com
 0.0.0.0 www.precisioncounter.com
 0.0.0.0 www.premiumsmail.net
 0.0.0.0 www.printmail.biz
-0.0.0.0 www.quantserve.com  #: Ad Tracking, JavaScript, etc.
+0.0.0.0 www.quantserve.com 
 0.0.0.0 www.quareclk.com
 0.0.0.0 www.remotrk.com
 0.0.0.0 www.rightmedia.net
@@ -5625,7 +5518,7 @@
 0.0.0.0 www.tradedoubler.com
 0.0.0.0 www.tradedoubler.com.ar
 0.0.0.0 www.tradingtactics.win
-0.0.0.0 www.trafficmagnet.net  # web bugs in spam
+0.0.0.0 www.trafficmagnet.net 
 0.0.0.0 www.trafic.ro
 0.0.0.0 www.trendcounter.com
 0.0.0.0 www.true-counter.com
@@ -5644,15 +5537,11 @@
 0.0.0.0 xyz.freelogs.com
 0.0.0.0 zsisk.com
 0.0.0.0 zz.cqcounter.com
-#
-#
-
-# sites with known trojans, phishing, or other malware
 0.0.0.0 05tz2e9.com
 0.0.0.0 09killspyware.com
 0.0.0.0 0.nextyourcontent.com
 0.0.0.0 11398.onceedge.ru
-0.0.0.0 2006mindfreaklike.blogspot.com  # Facebook trojan
+0.0.0.0 2006mindfreaklike.blogspot.com 
 0.0.0.0 20-yrs-1.info
 0.0.0.0 24newsoft.fetmoredonefasterbysubmiting.download
 0.0.0.0 24upgradecheck.thesteadysystemforupgrades.download
@@ -5681,7 +5570,7 @@
 0.0.0.0 alegratka.eu
 0.0.0.0 ale-gratka.pl
 0.0.0.0 allaskme.com
-0.0.0.0 allhqpics.com  # Facebook trojan
+0.0.0.0 allhqpics.com
 0.0.0.0 alltereg0.ru
 0.0.0.0 alocdn.com
 0.0.0.0 alphabirdnetwork.com
@@ -5764,7 +5653,7 @@
 0.0.0.0 bopstermedia56.com
 0.0.0.0 brightonclick.com
 0.0.0.0 br.phorm.com
-0.0.0.0 brunga.at  # Facebook phishing attempt
+0.0.0.0 brunga.at
 0.0.0.0 btlsurvey.com
 0.0.0.0 bt.phorm.com
 0.0.0.0 bt.webwise.com
@@ -5789,10 +5678,10 @@
 0.0.0.0 cdn.static-cnt.bid
 0.0.0.0 celestia.es
 0.0.0.0 certifiedwinners.today
-0.0.0.0 changduk26.com  # Facebook trojan
+0.0.0.0 changduk26.com
 0.0.0.0 check.goodroundtoupdates.date
 0.0.0.0 checkingfree.thebig-centeralplacecontentprepared.review
-0.0.0.0 chelick.net  # Facebook trojan
+0.0.0.0 chelick.net
 0.0.0.0 ciiycode.com
 0.0.0.0 cioco-froll.com
 0.0.0.0 cira.login.cqr.ssl.igotmyloverback.com
@@ -5912,10 +5801,10 @@
 0.0.0.0 getnewsoft.bestfreesitetocontent.info
 0.0.0.0 getsoftnow.smallandprecise2upgradesnew.review
 0.0.0.0 getsoftnow.smallandprecise2upgradingnew.review
-0.0.0.0 gglcash4u.info  # twitter worm
+0.0.0.0 gglcash4u.info
 0.0.0.0 gigaonclick.com
 0.0.0.0 gimp.es
-0.0.0.0 girlownedbypolicelike.blogspot.com  # Facebook trojan
+0.0.0.0 girlownedbypolicelike.blogspot.com
 0.0.0.0 go.deliverymodo.com
 0.0.0.0 goggle.com
 0.0.0.0 goobbe.com
@@ -5931,7 +5820,7 @@
 0.0.0.0 hallaert.online
 0.0.0.0 handbrake.es
 0.0.0.0 hashing.win
-0.0.0.0 hatrecord.ru  # Facebook trojan
+0.0.0.0 hatrecord.ru
 0.0.0.0 hcg82f2b.com
 0.0.0.0 hellwert.biz
 0.0.0.0 helpmedb.com
@@ -5943,8 +5832,8 @@
 0.0.0.0 howtobuildsoftware.com
 0.0.0.0 how-tosolve.com
 0.0.0.0 howupdateworks.beststubcontentsfrees.xyz
-0.0.0.0 hsb-canada.com  # phishing site for hsbc.ca
-0.0.0.0 hsbconline.ca  # phishing site for hsbc.ca
+0.0.0.0 hsb-canada.com
+0.0.0.0 hsbconline.ca
 0.0.0.0 humption.info
 0.0.0.0 icecars.com
 0.0.0.0 idea21.org
@@ -6405,7 +6294,7 @@
 0.0.0.0 tiku.io
 0.0.0.0 tipsforall.xyz
 0.0.0.0 tivvitter.com
-0.0.0.0 tomorrownewstoday.com  # I'm not sure what it does, but it seems to be associated with a phishing attempt on Facebook
+0.0.0.0 tomorrownewstoday.com
 0.0.0.0 toolbarbest.biz
 0.0.0.0 toolbarbucks.biz
 0.0.0.0 toolbarcool.biz
@@ -6450,7 +6339,7 @@
 0.0.0.0 versionsupport.thebig-centeralplacecontentgreat.date
 0.0.0.0 videoamp.com
 0.0.0.0 videos.dskjkiuw.com
-0.0.0.0 videos.twitter.secure-logins01.com  # twitter worm (http://mashable.com/2009/09/23/twitter-worm-dms/)
+0.0.0.0 videos.twitter.secure-logins01.com
 0.0.0.0 virus-notice.com
 0.0.0.0 voyager1.telesat.com.co
 0.0.0.0 vxiframe.biz
@@ -6525,7 +6414,7 @@
 0.0.0.0 www.afantispy.com
 0.0.0.0 www.airadmins.com
 0.0.0.0 www.akoneplatit.sk
-0.0.0.0 www.allhqpics.com  # Facebook trojan
+0.0.0.0 www.allhqpics.com 
 0.0.0.0 www.alrpost69.com
 0.0.0.0 www.anatol.com
 0.0.0.0 www.apple.com-speed-macbook.live

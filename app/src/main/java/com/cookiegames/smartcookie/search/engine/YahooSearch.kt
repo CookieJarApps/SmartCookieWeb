@@ -9,7 +9,7 @@ import com.cookiegames.smartcookie.R
  * for the icon.
  */
 class YahooSearch : BaseSearchEngine(
-    "file:///android_asset/yahoo.png",
+    "file:///android_asset/yahoo.webp",
     "https://search.yahoo.com/search?p=",
     R.string.search_engine_yahoo
 )

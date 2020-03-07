@@ -9,7 +9,7 @@ import com.cookiegames.smartcookie.R
  * for the icon.
  */
 class EcosiaSearch : BaseSearchEngine(
-    "file:///android_asset/ecosia.png",
+    "file:///android_asset/ecosia.webp",
     "https://www.ecosia.org/search?q=",
     R.string.ecosia
 )
