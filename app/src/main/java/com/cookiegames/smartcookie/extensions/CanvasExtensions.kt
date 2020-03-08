@@ -21,6 +21,8 @@ fun Canvas.drawTrapezoid(backgroundColor: Int, withShadow: Boolean) {
         // isFilterBitmap = true
         isAntiAlias = true
         isDither = true
+        //strokeJoin = Paint.Join.ROUND
+        //pathEffect = CornerPathEffect(10f)
         if (withShadow) {
             shader = LinearGradient(
                 0f, 0.9f * height, 0f, height.toFloat(),

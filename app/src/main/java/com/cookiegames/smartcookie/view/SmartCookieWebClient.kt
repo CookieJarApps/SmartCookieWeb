@@ -137,6 +137,7 @@ class SmartCookieWebClient(
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
         if (shouldRequestBeBlocked(currentUrl, request.url.toString())) {
+            //R.string.site_ad_blocked.toString().replace("..", "$0 ").toByteArray()
             val empty = ByteArrayInputStream(emptyResponseByteArray)
             return WebResourceResponse("text/plain", "utf-8", empty)
         }
@@ -189,7 +190,7 @@ class SmartCookieWebClient(
                 }
 
             }
-            builder.setNegativeButton("No"){dialog,which ->
+            builder.setNegativeButton("No"){_,_ ->
             }
             val dialog: AlertDialog = builder.create()
             dialog.show()
