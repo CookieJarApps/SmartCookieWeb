@@ -416,7 +416,11 @@
     <string name="bottom_navbar">Move the navbar to the bottom</string>
     <string name="please_restart">Please restart app to see changes</string>
     <string name="site_ad_blocked">This site is an ad. To continue anyway, use the \"Disable Ad Block for this Site\" option by clicking on the list icon in the bookmark drawer.</string>
+    <string name="onboarding_reshow">Reshow onboarding</string>
+    <string name="onboarding_reshow_desc">Show the setup again.</string>
 
+    <string name="pick_search">Choose a search engine:</string>
+    <string name="enable_adblock">Enable ad and tracker blocking?</string>
 
     <!-- finish pages -->
 </resources>
