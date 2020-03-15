@@ -134,6 +134,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     private var findResult: FindResults? = null
 
+    private var prefs: SharedPreferences? = null
+
     // The singleton BookmarkManager
     @Inject
     lateinit var bookmarkManager: BookmarkRepository
@@ -252,7 +254,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 RecentTabModel(),
                 logger
         )
-
+        prefs = getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
         initialize(savedInstanceState)
     }
 
@@ -1327,6 +1329,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if(userPreferences.incognito){
             WebUtils.clearHistory(this, historyModel, databaseScheduler)
             WebUtils.clearCookies(this)
+        }
+
+        if (prefs!!.getBoolean("firstrun", true)) {
+            prefs!!.edit().putBoolean("firstrun", false).apply()
         }
     }
 

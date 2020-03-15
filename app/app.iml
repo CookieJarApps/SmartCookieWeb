@@ -70,12 +70,12 @@
     <output-test url="file://$MODULE_DIR$/build/intermediates/javac/scMainDebugUnitTest/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/kapt/scMainDebug" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/ap_generated_sources/scMainDebug/out" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/aidl_source_output_dir/scMainDebug/compileScMainDebugAidl/out" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/scMain/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/renderscript_source_output_dir/scMainDebug/compileScMainDebugRenderscript/out" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/kapt/scMainDebug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/aidl_source_output_dir/scMainDebug/compileScMainDebugAidl/out" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/ap_generated_sources/scMainDebug/out" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/kaptKotlin/scMainDebug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/scMain/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/scMain/debug" type="java-resource" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/scMain/debug" type="java-resource" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/scMainDebug/res" type="java-resource" />
@@ -85,10 +85,10 @@
       <sourceFolder url="file://$MODULE_DIR$/src/scMainDebug/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/scMainDebug/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/scMainDebug/shaders" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/kapt/scMainDebugAndroidTest" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/ap_generated_sources/scMainDebugAndroidTest/out" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/aidl_source_output_dir/scMainDebugAndroidTest/compileScMainDebugAndroidTestAidl/out" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/androidTest/scMain/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/kapt/scMainDebugAndroidTest" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/renderscript_source_output_dir/scMainDebugAndroidTest/compileScMainDebugAndroidTestRenderscript/out" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/androidTest/scMain/debug" type="java-test-resource" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/androidTest/scMain/debug" type="java-test-resource" generated="true" />
@@ -99,8 +99,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestScMainDebug/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestScMainDebug/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestScMainDebug/shaders" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/kapt/scMainDebugUnitTest" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/ap_generated_sources/scMainDebugUnitTest/out" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/kapt/scMainDebugUnitTest" isTestSource="true" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testScMainDebug/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testScMainDebug/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testScMainDebug/assets" type="java-test-resource" />
@@ -178,10 +178,10 @@
     <orderEntry type="module-library">
       <library name="Gradle: kaptGeneratedClasses">
         <CLASSES>
-          <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/scMainDebugAndroidTest" />
-          <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/scMainDebug" />
-          <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/scMainDebugUnitTest" />
           <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/scMainRelease" />
+          <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/scMainDebugUnitTest" />
+          <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/scMainDebug" />
+          <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/scMainDebugAndroidTest" />
           <root url="file://$MODULE_DIR$/build/tmp/kapt3/classes/scMainReleaseUnitTest" />
         </CLASSES>
         <JAVADOC />
