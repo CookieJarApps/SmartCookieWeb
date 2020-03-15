@@ -167,6 +167,16 @@ class SmartCookieWebClient(
             uiController.setForwardButtonEnabled(view.canGoForward())
             view.postInvalidate()
         }
+
+        if(userPreferences.bottomBar && userPreferences.showTabsInDrawer){
+            view.loadUrl(
+                    "javascript:(function() { document.body.style.padding = \"0px 0px 76px 0px\"; })();")
+        }
+        else if(userPreferences.bottomBar){
+            view.loadUrl(
+                    "javascript:(function() { document.body.style.padding = \"0px 0px 52px 0px\"; })();")
+        }
+
         if(url.contains("//cookiejarapps.com/extensions") && Locale.getDefault().getDisplayLanguage() != "English"){
             view.evaluateJavascript("\$('#modal1').modal();\n" +
                     "    \$('#modal1').modal('open'); ", null)
@@ -248,7 +258,7 @@ class SmartCookieWebClient(
         if(userPreferences.cookieBlockEnabled){
             view.settings.javaScriptEnabled = true
             view.loadUrl(
-                    "javascript:(function() { var cookies = document.querySelectorAll('.bbccookies-banner, .butterBar-message, .gl-modal__main-content, .md-cookiesoptinout, .lOPC8 , .cp-overlay, .cp-dialog, .cc-light, .xFNJP, .yAVMkd, .vk_c, .evidon-consent-button, .cookie-warn, .cc-banner, .cc-bottom, .qc-cmp-ui-content, .hnf-banner, .m-privacy-consent, .c-cookie-disclaimer, .important-banner--cookies, .cookie-policy, .cookie-banner-optout, .cookie-banner__wrapper');\n" +
+                    "javascript:(function() { var cookies = document.querySelectorAll('#consent, .bbccookies-banner, .butterBar-message, .gl-modal__main-content, .md-cookiesoptinout, .lOPC8 , .cp-overlay, .cp-dialog, .cc-light, .xFNJP, .yAVMkd, .vk_c, .evidon-consent-button, .cookie-warn, .cc-banner, .cc-bottom, .qc-cmp-ui-content, .hnf-banner, .m-privacy-consent, .c-cookie-disclaimer, .important-banner--cookies, .cookie-policy, .cookie-banner-optout, .cookie-banner__wrapper');\n" +
                             "cookies.forEach(function(element) {\n" +
                             "    element.parentNode.removeChild(element);\n" +
                             "}); })()")
