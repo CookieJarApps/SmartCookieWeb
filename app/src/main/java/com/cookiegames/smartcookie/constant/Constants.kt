@@ -7,7 +7,7 @@ package com.cookiegames.smartcookie.constant
 
 // Hardcoded user agents
 const val DESKTOP_USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
-const val MOBILE_USER_AGENT = "Mozilla/5.0 (Linux; Android 10; Pixel Build/QP1A.190711.019; wv) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Mobile Safari/537.36"
+const val MOBILE_USER_AGENT = "Mozilla/5.0 (Linux; Android 10.0; OnePlus 7 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36"
 
 // URL Schemes
 const val HTTP = "http://"
