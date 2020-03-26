@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/StudioProjects-SmartCookieWeb.iml" filepath="$PROJECT_DIR$/StudioProjects-SmartCookieWeb.iml" group="SmartCookieWeb" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="SmartCookieWeb/app" />
       <module fileurl="file://$PROJECT_DIR$/i2p.android.base/lib/client/client.iml" filepath="$PROJECT_DIR$/i2p.android.base/lib/client/client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cookiejarapps-StudioProjects-SmartCookieWeb.iml" filepath="$PROJECT_DIR$/cookiejarapps-StudioProjects-SmartCookieWeb.iml" group="SmartCookieWeb" />
       <module fileurl="file://$PROJECT_DIR$/i2p.android.base/lib/helper/helper.iml" filepath="$PROJECT_DIR$/i2p.android.base/lib/helper/helper.iml" />
       <module fileurl="file://$PROJECT_DIR$/i2p.android.base/lib/client/lib-client.iml" filepath="$PROJECT_DIR$/i2p.android.base/lib/client/lib-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/i2p.android.base/lib/helper/lib-helper.iml" filepath="$PROJECT_DIR$/i2p.android.base/lib/helper/lib-helper.iml" />
