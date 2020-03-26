@@ -49,19 +49,21 @@ You can also help translate Smart Cookie here: https://translate.cookiejarapps.c
 # How is Smart Cookie different to Lightning?
 SmartCookieWeb is a fork of Lightning Browser (https://github.com/anthonycr/lightning-browser). Here are some of the changes I've made since I started:
 - New, more modern UI
-- Error pages with themes
+- Error pages
 - Custom site block 
 - HTTPS everywhere
-- Block insecure sites
-- Block malicious sites
-- Moved some settings
-- Theme search pages
+- Blocking of insecure sites
+- Blocking of malicious sites
+- Moved some settings to more logical places
+- Theme for homepage and error pages
 - Fixed Travis CI support
 - ~~Enabled Cleartext (HTTP sites now work on Android 9+, whilst the app targets a newer API version unlike Lightning)~~ (fixed in Lightning)
 - Parental controls
-- Bug fixes
-- Inject Javascript
+- Loads of bug fixes
+- Basic JavaScript console
+- Bottom navbar option
 - Extensions
+- Different, better ad hosts list
 
 # Extensions
 SmartCookieWeb supports extensions. The extension store is available here: (https://extensions.cookiejarapps.com) and the source code for the store is available here: (https://github.com/CookieGamesOfficial/SmartCookieWebExtensions).
