@@ -356,7 +356,7 @@
 
     <string name="privacy">View Privacy Policy</string>
     <string name="privacy_info">Read the SmartCookieWeb privacy policy</string>
-    <string name="url_project" translatable="false">https://github.com/CookieGamesOfficial/SmartCookieWeb</string>
+    <string name="url_project" translatable="false">https://github.com/CookieJarApps/SmartCookieWeb</string>
     <string name="block_malware">Block malicious sites</string>
     <string name="block_sites">Custom site block</string>
     <string name="block_sites_title">Custom Site Block (separate sites with a comma)</string>

@@ -8,7 +8,7 @@
             android:title="@string/action_follow_me">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/CookieGamesOfficial/SmartCookieWeb">
+                android:data="https://github.com/CookieJarApps/SmartCookieWeb">
                 <extra
                     android:name="SOURCE"
                     android:value="SELF" />
