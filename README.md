@@ -32,9 +32,8 @@ A secure, free and open source web browser for Android.
 * Proxy support
 
 # 2020 Feature Checklist
-- [ ] Custom themes
 - [ ] Convert user scripts to extensions
-- [ ] Change from WebView to GeckoView
+- [ ] More extensions
 - [x] Web dark theme
 
 # License
