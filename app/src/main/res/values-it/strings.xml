@@ -8,7 +8,7 @@
     <string name="action_add_bookmark">Aggiungi segnalibro</string>
     <string name="action_copy">Copia collegamento</string>
     <string name="action_forward">Inoltra</string>
-    <string name="settings">impostazioni</string>
+    <string name="settings">Impostazioni</string>
     <string name="location">Accesso alla posizione</string>
     <string name="password">Salva le tue password</string>
     <string name="agent">User agent</string>
@@ -202,7 +202,7 @@
     <string name="settings_display_explain">Modalità schermo intero, dimensioni del testo, temi&#8230;</string>
     <string name="settings_privacy">Impostazioni di privacy e sicurezza</string>
     <string name="settings_privacy_explain">Cache, cookie, cronologia&#8230;</string>
-    <string name="settings_about">Circa</string>
+    <string name="settings_about">Al riguardo</string>
     <string name="settings_about_explain">Numero versione, autore e licenze&#8230;</string>
     <string name="close_tab">Chiudi scheda corrente</string>
     <string name="close_all_tabs">Chiudi tutte le schede</string>
@@ -242,9 +242,9 @@
     <string name="message_web_storage_cleared">Archiviazione web svuotata</string>
     <string name="hosts_source">Sorgente blocco pubblicità del file degli host</string>
     <string name="settings_adblock">Impostazioni blocco contenuti</string>
-    <string name="adblock_summary">Blocco pubblicità, blocco finestre di richiesta cookie&#8230;</string>
+    <string name="adblock_summary">Blocco pubblicità, blocco finestre di dialogo cookie&#8230;</string>
     <string name="adblock_category">Blocco pubblicità</string>
-    <string name="cookie_category">Blocco finestre di richiesta cookie (beta)</string>
+    <string name="cookie_category">Blocco finestre di dialogo cookie (beta)</string>
     <string name="tabs_in_drawer">Mostra schede nel pannello di navigazione</string>
     <string name="swap_bookmarks_and_tabs">Scambia segnalibri e pannelli scheda</string>
     <string name="do_not_track">Richiedi \'Do Not Track\'</string>
