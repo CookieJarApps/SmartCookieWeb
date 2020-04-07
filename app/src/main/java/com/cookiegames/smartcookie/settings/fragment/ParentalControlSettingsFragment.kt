@@ -85,7 +85,7 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
                     startActivity(settings)
                 }
                 .setPositiveButton(R.string.action_ok
-                ) { dialog, which ->
+                ) { _, _ ->
                     //listener.onClick(editText.getText().toString());
                     if (editText.text.toString() != userPreferences.passwordText){
                         val duration = Toast.LENGTH_SHORT

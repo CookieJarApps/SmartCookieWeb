@@ -41,6 +41,7 @@ import com.cookiegames.smartcookie.view.find.FindResults
 import android.app.Activity
 import android.app.NotificationManager
 import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
@@ -231,6 +232,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         injector.inject(this)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
+
         if (isIncognito()) {
             incognitoNotification = IncognitoNotification(this, notificationManager)
         }
@@ -256,6 +258,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 logger
         )
         prefs = getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
+
         initialize(savedInstanceState)
     }
 
@@ -444,6 +447,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         }
 
     }
+
     private fun getBookmarksContainerId(): Int = if (swapBookmarksAndTabs) {
         R.id.left_drawer
     } else {
