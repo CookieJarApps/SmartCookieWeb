@@ -26,7 +26,7 @@ class AboutSettingsFragment : AbstractSettingsFragment() {
         pref.setOnPreferenceClickListener {
             val builder = AlertDialog.Builder(activity)
             builder.setTitle("Smart Cookie Secure Web Browser Version " + BuildConfig.VERSION_NAME)
-            builder.setMessage("What's new:\n- Better dark mode\n- Always private mode option added\n- Better homepage\n- Bottom navbar option added\n- Tweaked search bar/toolbar layout slightly\n- Changed colors\n- Changed SSL icons\n- Better translations\n- Domain is now default address bar text")
+            builder.setMessage("What's new:\n- Better UI\n- Bug fixes\n- Better translations")
 
 
             builder.setPositiveButton(resources.getString(R.string.action_ok)){dialogInterface , which ->
