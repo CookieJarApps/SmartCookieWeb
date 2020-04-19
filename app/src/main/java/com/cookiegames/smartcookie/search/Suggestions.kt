@@ -6,20 +6,20 @@ package com.cookiegames.smartcookie.search
  * Created by anthonycr on 2/19/18.
  */
 enum class Suggestions(val index: Int) {
-    NONE(0),
-    GOOGLE(1),
-    DUCK(2),
-    BAIDU(3),
-    NAVER(4);
+    GOOGLE(0),
+    DUCK(1),
+    BAIDU(2),
+    NAVER(3),
+    NONE(4),;
 
     companion object {
         fun from(value: Int): Suggestions {
             return when (value) {
-                0 -> NONE
-                1 -> GOOGLE
-                2 -> DUCK
-                3 -> BAIDU
-                4 -> NAVER
+                0 -> GOOGLE
+                1 -> DUCK
+                2 -> BAIDU
+                3 -> NAVER
+                4 -> NONE
                 else -> GOOGLE
             }
         }

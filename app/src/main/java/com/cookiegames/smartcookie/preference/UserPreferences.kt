@@ -299,7 +299,7 @@ class UserPreferences @Inject constructor(
      *
      * @see SearchEngineProvider
      */
-    var searchSuggestionChoice by preferences.intPreference(SEARCH_SUGGESTIONS, 1)
+    var searchSuggestionChoice by preferences.intPreference(SEARCH_SUGGESTIONS, 0)
 
     /**
      * The index of the ad blocking hosts file source.
