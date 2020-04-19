@@ -4,55 +4,68 @@
     <PreferenceCategory android:title="@string/settings_display">
         <SwitchPreference
             android:defaultValue="true"
+            android:singleLineTitle="false"
             android:key="cb_drawertabs"
             android:title="@string/tabs_in_drawer"/>
         <SwitchPreference
             android:defaultValue="true"
+            android:singleLineTitle="false"
             android:key="cb_swapdrawers"
             android:title="@string/swap_bookmarks_and_tabs"/>
         <SwitchPreference
             android:defaultValue="false"
+            android:singleLineTitle="false"
             android:key="fullScreenOption"
             android:title="@string/fullScreenOption"/>
         <SwitchPreference
             android:defaultValue="false"
+            android:singleLineTitle="false"
             android:key="fullscreen"
             android:title="@string/fullscreen"/>
         <SwitchPreference
             android:defaultValue="false"
+            android:singleLineTitle="false"
             android:key="black_status_bar"
             android:title="@string/settings_black_status_bar"/>
         <SwitchPreference
             android:defaultValue="false"
+            android:singleLineTitle="false"
             android:key="bottom_bar"
             android:title="@string/bottom_navbar"/>
         <SwitchPreference
             android:defaultValue="true"
+            android:singleLineTitle="false"
             android:key="wideViewPort"
             android:summary="@string/recommended"
             android:title="@string/wideViewPort"/>
         <SwitchPreference
             android:defaultValue="true"
+            android:singleLineTitle="false"
             android:key="overViewMode"
             android:summary="@string/recommended"
             android:title="@string/overViewMode"/>
         <SwitchPreference
             android:defaultValue="false"
+            android:singleLineTitle="false"
             android:key="text_reflow"
             android:title="@string/reflow"/>
         <Preference
             android:key="app_theme"
+            android:singleLineTitle="false"
             android:title="@string/theme"/>
         <SwitchPreference
             android:defaultValue="true"
+            android:singleLineTitle="false"
             android:key="startpage_theme"
             android:title="@string/startpage"/>
         <SwitchPreference
             android:defaultValue="false"
+            android:singleLineTitle="false"
             android:key="show_extra"
             android:title="@string/show_extra"/>
         <SwitchPreference
             android:defaultValue="true"
+            android:singleLineTitle="false"
             android:key="new_tabs_foreground"
             android:title="@string/new_tab_foreground"
             android:summary="@string/new_tab_foreground_summary"/>
@@ -65,6 +78,7 @@
             android:title="@string/image_url"/>-->
         <Preference
             android:key="text_size"
+            android:singleLineTitle="false"
             android:title="@string/title_text_size"/>
     </PreferenceCategory>
 </PreferenceScreen>

@@ -5,36 +5,46 @@
         <SwitchPreference
             android:defaultValue="false"
             android:key="cb_images"
+            android:singleLineTitle="false"
             android:title="@string/block"/>
         <SwitchPreference
             android:defaultValue="false"
             android:key="savedata"
+            android:singleLineTitle="false"
             android:title="@string/save_data" />
         <SwitchPreference
             android:defaultValue="true"
             android:key="cb_javascript"
+            android:singleLineTitle="false"
             android:title="@string/java"/>
         <SwitchPreference
             android:defaultValue="false"
             android:key="cb_colormode"
+            android:singleLineTitle="false"
             android:title="@string/color_mode"/>
         <Preference
             android:key="proxy"
+            android:singleLineTitle="false"
             android:title="@string/http_proxy"/>
         <Preference
             android:key="agent"
+            android:singleLineTitle="false"
             android:title="@string/agent"/>
         <Preference
             android:key="download"
+            android:singleLineTitle="false"
             android:title="@string/download"/>
         <Preference
             android:key="home"
+            android:singleLineTitle="false"
             android:title="@string/home"/>
         <Preference
             android:key="search"
+            android:singleLineTitle="false"
             android:title="@string/search"/>
         <Preference
             android:key="suggestions_choice"
+            android:singleLineTitle="false"
             android:title="@string/search_suggestions"/>
     </PreferenceCategory>
 </PreferenceScreen>

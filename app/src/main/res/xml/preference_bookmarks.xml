@@ -4,12 +4,15 @@
     <PreferenceCategory android:title="@string/bookmark_settings">
         <Preference
             android:key="export_bookmark"
+            android:singleLineTitle="false"
             android:title="@string/export_bookmarks"/>
         <Preference
             android:key="import_bookmark"
+            android:singleLineTitle="false"
             android:title="@string/import_backup"/>
         <Preference
             android:key="delete_bookmarks"
+            android:singleLineTitle="false"
             android:title="@string/action_delete_all_bookmarks"/>
     </PreferenceCategory>
 </PreferenceScreen>

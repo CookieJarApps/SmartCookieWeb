@@ -4,20 +4,24 @@
         <SwitchPreference
             android:defaultValue="true"
             android:key="cb_block_ads"
+            android:singleLineTitle="false"
             android:title="@string/block_ads"/>
         <Preference
             android:key="preference_hosts_source"
             android:summary="@string/block_source_default"
+            android:singleLineTitle="false"
             android:title="@string/block_ad_source"/>
         <Preference
             android:key="preference_hosts_refresh_force"
             android:summary="@string/block_ad_remote_refresh_frequency_description"
+            android:singleLineTitle="false"
             android:title="@string/block_ad_refresh_now"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/cookie_category">
         <SwitchPreference
             android:defaultValue="false"
             android:key="cb_block_cookies"
+            android:singleLineTitle="false"
             android:title="@string/cookie_category"/>
     </PreferenceCategory>
 </PreferenceScreen>

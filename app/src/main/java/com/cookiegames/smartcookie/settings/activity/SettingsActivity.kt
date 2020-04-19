@@ -42,10 +42,6 @@ class SettingsActivity : ThemableSettingsActivity() {
         loadHeadersFromResource(R.xml.preferences_headers, target)
         fragments.clear()
 
-        if (buildInfo.buildType == BuildType.RELEASE) {
-            target.removeAll { it.titleRes == R.string.debug_title }
-        }
-
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             // Workaround for bug in the AppCompat support library
             target.forEach { it.iconRes = R.drawable.empty }
