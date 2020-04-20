@@ -14,7 +14,7 @@
     <string name="agent">User agent</string>
     <string name="flash">Abilita Adobe Flash</string>
     <string name="home">Pagina iniziale</string>
-    <string name="fullscreen">Modalità schermo intero</string>
+    <string name="fullscreen">Nascondi la barra degli indirizzi durante lo scorrimento</string>
     <string name="java">Abilita JavaScript</string>
     <string name="download">Percorso di scaricamento</string>
     <string name="settings_advanced">Impostazioni avanzate</string>
@@ -30,7 +30,7 @@
     <string name="size">Dimensione del testo</string>
     <string name="recommended">Consigliati</string>
     <string name="search">Motore di ricerca</string>
-    <string name="search_hint">Ricerca</string>
+    <string name="search_hint">Cerca o inserisci indirizzo web</string>
     <string name="wideViewPort">Utilizza un riquadro di visualizzazione ampio</string>
     <string name="overViewMode">Carica le pagine in modalità panoramica</string>
     <string name="restore">Ripristina le schede perse all\'avvio</string>
@@ -144,8 +144,8 @@
     <!-- Tools dialog -->
     <string name="dialog_tools_title">Strumenti pagina</string>
     <string name="dialog_toggle_desktop">Attiva/disattiva user agent desktop</string>
-    <string name="dialog_adblock_enable_for_site">Abilita blocco pubblicità per il sito</string>
-    <string name="dialog_adblock_disable_for_site">Disabilita blocco pubblicità per il sito</string>
+    <string name="dialog_adblock_enable_for_site">Abilita Blocco Annunci per il sito</string>
+    <string name="dialog_adblock_disable_for_site">Disabilita Blocco Annunci per il sito</string>
     <string name="search_suggestions_off">Nessun suggerimento di ricerca</string>
     <string name="http_proxy">Proxy HTTP</string>
     <string-array name="proxy_choices_array">
@@ -242,8 +242,8 @@
     <string name="message_web_storage_cleared">Archiviazione web svuotata</string>
     <string name="hosts_source">Sorgente blocco pubblicità del file degli host</string>
     <string name="settings_adblock">Impostazioni blocco contenuti</string>
-    <string name="adblock_summary">Blocco pubblicità, blocco finestre di dialogo cookie&#8230;</string>
-    <string name="adblock_category">Blocco pubblicità</string>
+    <string name="adblock_summary">Blocco Annunci, blocco finestre di dialogo cookie...</string>
+    <string name="adblock_category">Blocco Annunci</string>
     <string name="cookie_category">Blocco finestre di dialogo cookie (beta)</string>
     <string name="tabs_in_drawer">Mostra schede nel pannello di navigazione</string>
     <string name="swap_bookmarks_and_tabs">Scambia segnalibri e pannelli scheda</string>
@@ -356,7 +356,7 @@
     <string name="settings_parents">Blocca siti, imposta password&#8230;</string>
     <string name="label_realm">Messaggio del server: %s</string>
     <string name="new_tab_foreground">Porta schede in primo piano</string>
-    <string name="new_tab_foreground_summary">Chiudi il pannello scheda quando una scheda viene chiusa/aperta</string>
+    <string name="new_tab_foreground_summary">Aprire una nuova scheda quando viene creata</string>
     <string name="site_not_secure">La connessione a questo sito non è sicura.</string>
     <string name="language_not_supported">Lingua non supportata</string>
     <string name="language_not_supported_text">Sfortunatamente, il negozio estensioni non è ancora disponibile nella tua lingua. Usa il pulsante sottostante per continuare comunque in inglese.</string>
@@ -371,5 +371,13 @@
     <string name="quit_private">Esci dalla modalità privata</string>
     <string name="start_incognito">Agisci sempre come in modalità privata</string>
     <string name="bottom_navbar">Sposta la barra di navigazione in fondo</string>
+    <string name="please_restart">Si prega di riavviare l\'applicazione per vedere le modifiche</string>
+    <string name="site_ad_blocked">Questo sito è un annuncio. Per continuare comunque, usa l\'opzione \"Disabilita Blocco Annunci per questo sito\" cliccando sull\'icona della lista nel selettore dei segnalibri.</string>
+    <string name="onboarding_reshow">Torna a mostrare l\'onboarding</string>
+    <string name="onboarding_reshow_desc">Mostra di nuovo la configurazione.</string>
+    <string name="pick_search">Scegli un motore di ricerca:</string>
+    <string name="enable_adblock">Abilitare blocco pubblicità e tracker?</string>
+    <string name="contributors">Contributori</string>
+    <string name="translations">Traduzioni</string>
     <!-- finish pages -->
 </resources>
