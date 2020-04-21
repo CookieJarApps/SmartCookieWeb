@@ -424,5 +424,15 @@
 
     <string name="contributors">Contributors</string>
     <string name="translations">Translations</string>
+
+    <string name="import_export">Import and export settings</string>
+    <string name="export_settings">Export settings to backup</string>
+    <string name="import_settings">Import settings from backup</string>
+    <string name="clear_settings">Reset settings</string>
+    <string name="backup_settings">Settings backup</string>
+    <string name="backup_bookmarks">Bookmarks backup</string>
+
+    <string name="reset_settings">Settings reset. App closing... Please reopen.</string>
+
     <!-- finish pages -->
 </resources>

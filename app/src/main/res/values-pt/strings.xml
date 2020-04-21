@@ -373,11 +373,18 @@
     <string name="bottom_navbar">Barra de navegação em baixo</string>
     <string name="please_restart">Reinicie a aplicação para aplicar as alterações</string>
     <string name="site_ad_blocked">Este site é um anúncio. Para continuar, utilize a opção \"Desativar bloqueio de anúncios para este site\" tocando no ícone de lista no menu de marcadores.</string>
-    <string name="onboarding_reshow">Reshow onboarding</string>
+    <string name="onboarding_reshow">Mostrar novamente ecrã de boas vindas</string>
     <string name="onboarding_reshow_desc">Mostrar configuração inicial</string>
     <string name="pick_search">Escolha um motor de pesquisa:</string>
     <string name="enable_adblock">Ativar bloqueio a anúncios e rastreadores?</string>
     <string name="contributors">Colaboradores</string>
     <string name="translations">Traduções</string>
+    <string name="import_export">Importar e exportar definições</string>
+    <string name="export_settings">Exportar definições</string>
+    <string name="import_settings">Importar definições</string>
+    <string name="clear_settings">Repor definições</string>
+    <string name="backup_settings">Backup de definições</string>
+    <string name="backup_bookmarks">Backup de marcadores</string>
+    <string name="reset_settings">Definições repostas. Estamos a fechar a aplicação…</string>
     <!-- finish pages -->
 </resources>

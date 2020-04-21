@@ -9,9 +9,9 @@
         android:tint="#8e4f00"/>
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.BookmarkSettingsFragment"
-        android:icon="@drawable/ic_round_star_settings"
+        android:icon="@drawable/ic_import_export_settings"
         android:singleLineTitle="false"
-        android:title="@string/bookmark_settings"
+        android:title="@string/import_export"
         android:summary="@string/settings_bookmark_explain" />
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.DisplaySettingsFragment"

@@ -3,7 +3,6 @@
  */
 package com.cookiegames.smartcookie.settings.fragment
 
-import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.bookmark.LegacyBookmarkImporter
 import com.cookiegames.smartcookie.bookmark.NetscapeBookmarkFormatImporter
 import com.cookiegames.smartcookie.database.bookmark.BookmarkExporter
@@ -20,6 +19,7 @@ import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.utils.Utils
 import android.Manifest
 import android.app.Application
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.os.Environment
 import androidx.appcompat.app.AlertDialog
@@ -32,6 +32,20 @@ import io.reactivex.rxkotlin.subscribeBy
 import java.io.File
 import java.util.*
 import javax.inject.Inject
+import android.content.Context.ACTIVITY_SERVICE
+import androidx.core.content.ContextCompat.getSystemService
+import android.app.ActivityManager
+import androidx.core.content.ContextCompat.startActivities
+import com.cookiegames.smartcookie.R
+import android.content.Context.ACTIVITY_SERVICE
+import android.os.Handler
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.os.HandlerCompat.postDelayed
+
+
+
+
 
 
 class BookmarkSettingsFragment : AbstractSettingsFragment() {
@@ -60,6 +74,10 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
         clickablePreference(preference = SETTINGS_EXPORT, onClick = this::exportBookmarks)
         clickablePreference(preference = SETTINGS_IMPORT, onClick = this::importBookmarks)
         clickablePreference(preference = SETTINGS_DELETE_BOOKMARKS, onClick = this::deleteAllBookmarks)
+
+        clickablePreference(preference = SETTINGS_SETTINGS_EXPORT, onClick = this::exportBookmarks)
+        clickablePreference(preference = SETTINGS_SETTINGS_IMPORT, onClick = this::importBookmarks)
+        clickablePreference(preference = SETTINGS_DELETE_SETTINGS, onClick = this::clearSettings)
     }
 
     override fun onDestroyView() {
@@ -74,6 +92,17 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
 
         exportSubscription?.dispose()
         importSubscription?.dispose()
+    }
+
+    private fun clearSettings() {
+        Toast.makeText(getActivity(),
+                R.string.reset_settings, Toast.LENGTH_LONG).show()
+
+        val handler = Handler()
+        handler.postDelayed(Runnable {
+            (activity.getSystemService(ACTIVITY_SERVICE) as ActivityManager)
+                    .clearApplicationUserData()
+        }, 500)
     }
 
     private fun exportBookmarks() {
@@ -246,6 +275,9 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_EXPORT = "export_bookmark"
         private const val SETTINGS_IMPORT = "import_bookmark"
         private const val SETTINGS_DELETE_BOOKMARKS = "delete_bookmarks"
+        private const val SETTINGS_SETTINGS_EXPORT = "export_bookmark"
+        private const val SETTINGS_SETTINGS_IMPORT = "import_bookmark"
+        private const val SETTINGS_DELETE_SETTINGS = "clear_settings"
 
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
     }
