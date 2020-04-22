@@ -379,5 +379,12 @@
     <string name="enable_adblock">Abilitare blocco pubblicità e tracker?</string>
     <string name="contributors">Contributori</string>
     <string name="translations">Traduzioni</string>
+    <string name="import_export">Importa/Esporta impostazioni</string>
+    <string name="export_settings">Esporta le impostazioni per il backup</string>
+    <string name="import_settings">Importa le impostazioni da backup</string>
+    <string name="clear_settings">Ripristina impostazioni</string>
+    <string name="backup_settings">Backup delle impostazioni</string>
+    <string name="backup_bookmarks">Backup dei segnalibri</string>
+    <string name="reset_settings">Ripristino impostazioni. Chiusura app... Si prega di riaprirla.</string>
     <!-- finish pages -->
 </resources>
