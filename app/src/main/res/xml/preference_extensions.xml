@@ -3,6 +3,7 @@
     <PreferenceCategory android:title="Extensions">
         <Preference
             android:summary="@string/extensions_description"
+            android:singleLineTitle="false"
             android:title="@string/extensions_store">
             <intent
                 android:action="android.intent.action.VIEW"
@@ -14,9 +15,11 @@
         </Preference>
         <Preference
             android:key="extensions_list"
+            android:singleLineTitle="false"
             android:title="@string/extensions_list"/>
         <Preference
             android:key="uninstall_extension"
+            android:singleLineTitle="false"
             android:title="@string/uninstall_extension"/>
     </PreferenceCategory>
 </PreferenceScreen>

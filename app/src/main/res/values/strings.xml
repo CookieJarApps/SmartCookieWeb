@@ -17,7 +17,7 @@
     <string name="agent">User agent</string>
     <string name="flash">Enable Adobe Flash</string>
     <string name="home">Homepage</string>
-    <string name="fullscreen">Fullscreen mode</string>
+    <string name="fullscreen">Hide URL bar while scrolling</string>
     <string name="java">Enable JavaScript</string>
     <string name="download">Download location</string>
     <string name="settings_advanced">Advanced settings</string>
@@ -393,7 +393,7 @@
     <string name="settings_parents">Block sites, set password...</string>
     <string name="label_realm">Server message: %s</string>
     <string name="new_tab_foreground">Bring tabs to foreground</string>
-    <string name="new_tab_foreground_summary">Close the tab drawer when a tab is closed/opened</string>
+    <string name="new_tab_foreground_summary">Open a new tab when it is created</string>
     <string name="site_not_secure">The connection to this site is not secure.</string>
     <string name="language_not_supported">Language Not Supported</string>
     <string name="language_not_supported_text">Unfortunately, the extensions store is not available in your language yet. Use the button below to continue in English anyway.</string>
@@ -421,6 +421,18 @@
 
     <string name="pick_search">Choose a search engine:</string>
     <string name="enable_adblock">Enable ad and tracker blocking?</string>
+
+    <string name="contributors">Contributors</string>
+    <string name="translations">Translations</string>
+
+    <string name="import_export">Import and export settings</string>
+    <string name="export_settings">Export settings to backup</string>
+    <string name="import_settings">Import settings from backup</string>
+    <string name="clear_settings">Reset settings</string>
+    <string name="backup_settings">Settings backup</string>
+    <string name="backup_bookmarks">Bookmarks backup</string>
+
+    <string name="reset_settings">Settings reset. App closing... Please reopen.</string>
 
     <!-- finish pages -->
 </resources>

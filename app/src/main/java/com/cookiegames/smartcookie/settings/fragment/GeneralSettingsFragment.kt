@@ -407,11 +407,11 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
 
     private fun searchSuggestionChoiceToTitle(choice: Suggestions): String =
         when (choice) {
-            Suggestions.NONE -> getString(R.string.search_suggestions_off)
             Suggestions.GOOGLE -> getString(R.string.powered_by_google)
             Suggestions.DUCK -> getString(R.string.powered_by_duck)
             Suggestions.BAIDU -> getString(R.string.powered_by_baidu)
             Suggestions.NAVER -> getString(R.string.powered_by_naver)
+            Suggestions.NONE -> getString(R.string.search_suggestions_off)
         }
 
     private fun showSearchSuggestionsDialog(summaryUpdater: SummaryUpdater) {
@@ -423,7 +423,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 Suggestions.DUCK -> 1
                 Suggestions.BAIDU -> 2
                 Suggestions.NAVER -> 3
-                Suggestions.NONE -> 3
+                Suggestions.NONE -> 4
             }
 
             setSingleChoiceItems(R.array.suggestions, currentChoice) { _, which ->

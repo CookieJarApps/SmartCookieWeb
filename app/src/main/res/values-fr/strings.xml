@@ -45,13 +45,13 @@
     <string name="fullScreenOption">Masquer la barre d’état pendant la navigation</string>
     <string name="clear_cookies">Effacer les cookies</string>
     <string name="clear_history">Effacer l’historique</string>
-    <string name="dialog_image">Que voulez-vous faire avec cette image ?</string>
+    <string name="dialog_image">Que voulez-vous faire avec cette image ?</string>
     <string name="action_download">Télécharger</string>
     <string name="action_open">Ouvrir</string>
-    <string name="dialog_link">Que voulez-vous faire avec ce lien ?</string>
+    <string name="dialog_link">Que voulez-vous faire avec ce lien ?</string>
     <string name="dialog_title_share">Partager cette page</string>
-    <string name="dialog_history_long_press">Que voulez-vous faire avec cet élément d’historique ?</string>
-    <string name="dialog_bookmark">Que voulez-vous faire avec ce favori ?</string>
+    <string name="dialog_history_long_press">Que voulez-vous faire avec cet élément d’historique ?</string>
+    <string name="dialog_bookmark">Que voulez-vous faire avec ce favori ?</string>
     <string name="action_delete">Effacer</string>
     <string name="action_blank">Page vierge</string>
     <string name="agent_default">Défaut</string>
@@ -60,7 +60,7 @@
     <string name="agent_custom">Personnalisé</string>
     <string name="title_search_engine">Moteur de recherche</string>
     <string name="action_ok">OK</string>
-    <string name="dialog_download">Voulez-vous télécharger ce fichier ? (%1$s)</string>
+    <string name="dialog_download">Voulez-vous télécharger ce fichier ? (%1$s)</string>
     <string name="unknown_size">Taille inconnue</string>
     <string name="action_cancel">Annuler</string>
     <string name="title_warning">Attention</string>
@@ -71,8 +71,8 @@
     <string name="action_webpage">Page web</string>
     <string name="title_clear_history">Effacer l’historique</string>
     <string name="title_clear_cookies">Effacer les cookies</string>
-    <string name="dialog_history">Voulez-vous effacer l’historique ?</string>
-    <string name="dialog_cookies">Voulez-vous effacer les cookies ?</string>
+    <string name="dialog_history">Voulez-vous effacer l’historique ?</string>
+    <string name="dialog_cookies">Voulez-vous effacer les cookies ?</string>
     <string name="action_yes">Oui</string>
     <string name="action_no">Non</string>
     <string name="title_text_size">Taille du texte</string>
@@ -98,8 +98,11 @@
     <string name="download_no_sdcard_dlg_title">Pas de carte SD</string>
     <string name="download_no_sdcard_dlg_msg">Le stockage USB est requis pour télécharger le fichier.</string>
     <string name="download_sdcard_busy_dlg_title">Stockage USB indisponible</string>
-    <string name="download_sdcard_busy_dlg_msg">Le stockage USB est occupé. Pour permettre les téléchargements, appuyez sur « Désactiver le stockage USB » dans la notification.</string>
+
+    <string name="download_sdcard_busy_dlg_msg">Le stockage USB est occupé. Pour permettre les téléchargements, appuyez sur « Désactiver le stockage USB» dans la notification.</string>
     <string name="incognito_cookies">Activer les cookies en mode incognito</string>
+    <string name="download_sdcard_busy_dlg_msg">Le stockage USB est occupé. Pour permettre les téléchargements, appuyez sur « Désactiver le stockage USB » dans la notification.</string>
+    <string name="incognito_cookies">Activer les cookies en mode navigation privée</string>
     <string name="title_flash">Adobe Flash</string>
     <string name="action_manual">Manuel</string>
     <string name="action_auto">Auto</string>
@@ -116,7 +119,10 @@
     <string name="licenses">Licences Open Source</string>
     <string name="suggestion">Rechercher</string>
     <string name="block_ads">Bloquer les publicités et les trackers</string>
-    <string name="message_insecure_connection">La connexion au site %1$s n’est pas sécurisée\nVoulez-vous tout de même y accéder ?</string>
+
+    <string name="message_insecure_connection">La connexion au site %1$s n’est pas sécurisée\nVoulez-vous tout de même y accéder?</string>
+
+    <string name="message_insecure_connection">La connexion à ce site n’est pas sécurisée : %1$s\nVoulez-vous tout de même accéder à ce site ?</string>
     <string name="message_certificate_date_invalid">La date du certificat n’est pas valide</string>
     <string name="message_certificate_expired">Le certificat a expiré</string>
     <string name="message_certificate_domain_mismatch">Le domaine du certificat ne correspond pas au domaine du site</string>
@@ -124,12 +130,12 @@
     <string name="message_certificate_not_yet_valid">Le certificat n’est pas encore valide</string>
     <string name="message_certificate_untrusted">Le certificat n’est pas reconnu</string>
     <string name="title_form_resubmission">Données du formulaire</string>
-    <string name="message_form_resubmission">Voulez-vous renvoyer les données du formulaire ?</string>
+    <string name="message_form_resubmission">Voulez-vous renvoyer les données du formulaire ?</string>
     <string name="message_location">\nvoudrait avoir accès à votre localisation</string>
     <string name="action_allow">Autoriser</string>
     <string name="action_dont_allow">Refuser</string>
     <string name="title_sign_in">Se connecter</string>
-    <string name="label_realm">Message du serveur : %s</string>
+    <string name="label_realm">Message du serveur : %s</string>
     <string name="hint_username">Nom d’utilisateur</string>
     <string name="hint_password">Mot de passe</string>
     <string name="search_suggestions">Suggestions de recherche</string>
@@ -142,16 +148,16 @@
 
     <string name="shortcut_message_failed_to_add">Désolé, votre lanceur ne prend pas en charge les raccourcis.</string>
 
-    
+
     <string name="ssl_info_issued_by">Délivré par</string>
     <string name="ssl_info_issued_to">Délivré à</string>
     <string name="ssl_info_issued_on">Délivré le</string>
     <string name="ssl_info_expires_on">Expire le</string>
 
-    
+
     <string name="ssl_warning_dont_ask_again">Ne plus demander pour cette session de navigation</string>
 
-    
+
     <string name="dialog_tools_title">Outils de page</string>
     <string name="dialog_toggle_desktop">Afficher la version ordinateur</string>
     <string name="dialog_adblock_enable_for_site">Activer le blocage des publicités pour ce site</string>
@@ -170,10 +176,10 @@
         <item>Personnalisé</item>
     </string-array>
     <string name="manual_proxy">Proxy manuel</string>
-    <string name="host">Hôte :</string>
-    <string name="port">Port :</string>
-    <string name="use_tor_prompt">Il semblerait qu’Orbot soit installé. Voulez-vous utiliser Tor ?</string>
-    <string name="use_i2p_prompt">Il semblerait qu’I2P soit installé. Voulez-vous utiliser I2P ?</string>
+    <string name="host">Hôte :</string>
+    <string name="port">Port :</string>
+    <string name="use_tor_prompt">Il semblerait qu’Orbot soit installé. Voulez-vous utiliser Tor ?</string>
+    <string name="use_i2p_prompt">Il semblerait qu’I2P soit installé. Voulez-vous utiliser I2P ?</string>
     <string name="install_orbot">Veuillez installer Orbot pour utiliser un proxy avec Tor.</string>
     <string name="i2p_not_running">I2P n’est pas en cours d’exécution.</string>
     <string name="i2p_tunnels_not_ready">Les tunnels I2P ne sont pas encore prêts.</string>
@@ -202,7 +208,11 @@
     <string name="export_bookmarks">Exporter les favoris</string>
     <string name="import_backup">Importer des favoris</string>
     <string name="bookmark_export_path">Favoris exportés vers</string>
+
     <string name="bookmark_export_failure">Désolé, les favoris n’ont pas pu être exportés.</string>
+
+    <string name="bookmark_export_failure">Désolé, les favoris n’ont pas pu être exportés !</string>
+
     <string name="bookmark_settings">Paramètres de favoris</string>
     <string name="settings_bookmark_explain">Exporter et importer…</string>
     <string name="import_bookmark_error">Les favoris n’ont pas pu être importés depuis le fichier</string>
@@ -224,7 +234,7 @@
     <string name="loading">Chargement…</string>
     <string name="loading_failed">La page n’a pas pu être adaptée en mode lecteur.</string>
     <string name="snacktory">Snacktory</string>
-    <string name="jsoup">jsoup : analyseur HTML Java</string>
+    <string name="jsoup">jsoup : analyseur HTML Java</string>
     <string name="mit_license">Licence MIT</string>
     <string name="url_contents">Contenu de la barre d’adresse</string>
     <string name="text_encoding">Encodage du texte</string>
@@ -247,7 +257,7 @@
     <string name="action_folder">Dossier</string>
     <string name="action_rename">Renommer</string>
     <string name="title_rename_folder">Renommer le dossier</string>
-    <string name="dialog_folder">Que voulez-vous faire avec ce dossier ?</string>
+    <string name="dialog_folder">Que voulez-vous faire avec ce dossier ?</string>
     <string name="clear_web_storage">Vider le stockage web</string>
     <string name="clear_web_storage_exit">Vider le stockage web à la sortie</string>
     <string name="message_web_storage_cleared">Stockage web vidé avec succès</string>
@@ -276,9 +286,9 @@
 
     <string name="block_source_default">Fichier \'hosts\' par défaut</string>
     <string name="block_source_local">Fichier \'hosts\' local</string>
-    <string name="block_source_local_description">Fichier : %1$s</string>
+    <string name="block_source_local_description">Fichier : %1$s</string>
     <string name="block_source_remote">Fichier \'hosts\' distant</string>
-    <string name="block_source_remote_description">URL : %1$s</string>
+    <string name="block_source_remote_description">URL : %1$s</string>
 
     <string-array name="block_ad_source_list">
         <item>@string/block_source_default</item>
@@ -286,19 +296,19 @@
         <item>@string/block_source_remote</item>
     </string-array>
 
-    
+
     <string name="ad_block_load_failure">Échec du chargement du fichier \'hosts\' de blocage des publicités.</string>
 
     <string name="infinity">∞</string>
 
     <string name="reopening_recent_tab">Onglet rouvert</string>
 
-    
+
     <string name="search_in_page_query">\'%1$s\'</string>
 
     <string name="message_bookmark_added">Favori ajouté.</string>
 
-    
+
     <plurals name="notification_incognito_running_title">
         <item quantity="one">%1$d onglet incognito ouvert</item>
         <item quantity="other">%1$d onglets incognito ouverts</item>
@@ -306,15 +316,20 @@
     <string name="notification_incognito_running_message">Appuyez pour ouvrir</string>
     <string name="notification_incognito_running_description">Notification incognito affichée</string>
 
-    
+
     <string name="action_message_canceled">Action annulée.</string>
 
 
+<<<
     
     <string name="title_permission_request">Demande d’autorisation</string>
     <string name="message_permission_request">%1$s demande l’accès à : %2$s</string>
 
-    
+
+    <string name="title_permission_request">Demande de permission</string>
+    <string name="message_permission_request">%1$s voudrait utiliser : %2$s</string>
+
+
     <string name="block_ad_source">Source du fichier \'hosts\'</string>
     <string name="block_ad_remote_refresh_frequency_description">Pour le fichier \'hosts\' distant</string>
     <string name="block_ad_refresh_now">Actualiser le fichier \'hosts\'</string>
@@ -322,12 +337,12 @@
     <string name="webrtc_support">Prise en charge de WebRTC</string>
     <string name="save_data">Envoyer l’en-tête \'Save-Data\'</string>
 
-    
+
     <string name="debug_title">Paramètres de débogage</string>
     <string name="debug_leak_canary">LeakCanary</string>
     <string name="app_restart">Veuillez redémarrer l’application pour que le changement prenne effet.</string>
 
-    
+
     <string name="dialog_open_new_tab">Ouvrir dans un nouvel onglet</string>
     <string name="dialog_open_background_tab">Ouvrir en arrière-plan</string>
     <string name="dialog_open_incognito_tab">Ouvrir dans un onglet incognito</string>
@@ -342,7 +357,7 @@
     <string name="dialog_delete_download">Supprimer le téléchargement</string>
     <string name="dialog_delete_all_downloads">Supprimer tous les téléchargements</string>
 
-    
+
     <string name="search_engine_custom">URL personnalisée</string>
     <string name="search_engine_google">Google</string>
     <string name="search_engine_ask">Ask</string>
@@ -374,7 +389,7 @@
     <string name="inspect">Exécuter du code JavaScript</string>
     <string name="bookmark">Signet ajouté</string>
 
-    <string name="error_title">Miettes alors ! &lt;br&gt; Impossible de charger la page.</string>
+    <string name="error_title">Miettes alors ! &lt;br&gt; Impossible de charger la page.</string>
     <string name="error_reload">Recharger</string>
 
     <string name="https_title">Miettes alors ! &lt;br&gt; Ce site n’a pas de version HTTPS et les sites HTTP sont bloqués.</string>
@@ -382,7 +397,16 @@
     <string name="malware_title">Miettes alors ! &lt;br&gt; Ce site semble être un malware.</string>
     <string name="malware_message">S’il s’agit d’une erreur, veuillez le signaler à support@cookiegames.co.uk (en anglais)</string>
 
-    <string name="blocked_title">Miettes alors ! &lt;br&gt; Ce site a été bloqué dans les paramètres.</string>
+    <string name="error_title">Miettes alors ! &lt;br&gt; Ce site ne peut pas être chargé.</string>
+    <string name="error_reload">Recharger</string>
+
+    <string name="https_title">Miettes alors ! &lt;br&gt; Ce site ne supporte pas HTTPS et les sites HTTP sont bloqués.</string>
+
+    <string name="malware_title">Miettes alors ! &lt;br&gt; Ce site semble être un malware.</string>
+    <string name="malware_message">S’il s’agit d’une erreur, veuillez le signaler à support@cookiegames.co.uk</string>
+
+
+    <string name="blocked_title">Miettes alors ! &lt;br&gt; Ce site a été bloqué dans les paramètres.</string>
     <string name="close_app">Fermer le navigateur</string>
     <string name="enter_password">Entrer le mot de passe</string>
     <string name="wrong_password">Mot de passe incorrect</string>
@@ -409,9 +433,9 @@
     <string name="bottom_navbar">Afficher la barre de navigation en bas de l’écran</string>
     <string name="please_restart">Veuillez redémarrer l’application pour que les changements soient pris en compte</string>
     <string name="uninstall_more">Entrez le nom de l’extension à désinstaller</string>
-    <string name="site_ad_blocked">Ce site est considéré comme une publicité et a donc été bloqué. Pour y accéder, veuillez utiliser l’option « Désactiver le blocage des publicités pour ce site » disponible depuis l’icône en bas à gauche du panneau des favoris.</string>
-    <string name="pick_search">Choisissez votre moteur de recherche :</string>
-    <string name="enable_adblock">Voulez-vous activer le blocage des publicités ?</string>
+    <string name="site_ad_blocked">Ce site est considéré comme une publicité et a donc été bloqué. Pour y accéder, veuillez utiliser l’option « Désactiver le blocage des publicités pour ce site » disponible depuis l’icône en bas à gauche du panneau des favoris.</string>
+    <string name="pick_search">Choisissez votre moteur de recherche :</string>
+    <string name="enable_adblock">Voulez-vous activer le blocage des publicités ?</string>
     <string name="onboarding_reshow_desc">Rejoue la présentation de l’application.</string>
 
     <string name="translations">Traductions</string>

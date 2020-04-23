@@ -4,12 +4,14 @@
     <PreferenceCategory android:title="@string/parental_controls">
         <Preference
             android:key="siteblock"
+            android:singleLineTitle="false"
             android:title="@string/block_sites" />
         <!-- <Preference
             android:key="agent"
             android:title="Time limit" /> -->
         <Preference
             android:key="password"
+            android:singleLineTitle="false"
             android:title="@string/enter_password" />
     </PreferenceCategory>
 </PreferenceScreen>

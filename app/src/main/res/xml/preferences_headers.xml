@@ -4,47 +4,56 @@
         android:fragment="com.cookiegames.smartcookie.settings.fragment.GeneralSettingsFragment"
         android:icon="@drawable/ic_round_settings_page"
         android:title="@string/settings_general"
+        android:singleLineTitle="false"
         android:summary="@string/settings_general_explain"
         android:tint="#8e4f00"/>
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.BookmarkSettingsFragment"
-        android:icon="@drawable/ic_round_star_settings"
-        android:title="@string/bookmark_settings"
+        android:icon="@drawable/ic_import_export_settings"
+        android:singleLineTitle="false"
+        android:title="@string/import_export"
         android:summary="@string/settings_bookmark_explain" />
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.DisplaySettingsFragment"
         android:icon="@drawable/ic_round_smartphone_page"
+        android:singleLineTitle="false"
         android:title="@string/settings_display"
         android:summary="@string/settings_display_explain"
         android:tint="#8e4f00"/>
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.PrivacySettingsFragment"
         android:icon="@drawable/ic_round_lock"
+        android:singleLineTitle="false"
         android:title="@string/settings_privacy"
         android:summary="@string/settings_privacy_explain" />
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.AdvancedSettingsFragment"
         android:icon="@drawable/ic_round_add_settings"
         android:title="@string/settings_advanced"
+        android:singleLineTitle="false"
         android:summary="@string/settings_advanced_explain" />
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.AdBlockSettingsFragment"
         android:icon="@drawable/ic_round_block"
+        android:singleLineTitle="false"
         android:title="@string/settings_adblock"
         android:summary="@string/adblock_summary"/>
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.ParentalControlSettingsFragment"
         android:icon="@drawable/ic_parental_controls"
+        android:singleLineTitle="false"
         android:title="@string/parental_controls"
         android:summary="@string/settings_parents" />
    <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.ExtensionsSettingsFragment"
         android:icon="@drawable/ic_extension"
         android:title="@string/extensions"
-        android:summary="@string/extensions_description" />
+       android:singleLineTitle="false"
+       android:summary="@string/extensions_description" />
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.AboutSettingsFragment"
         android:icon="@drawable/ic_round_person"
+        android:singleLineTitle="false"
         android:summary="@string/settings_about_explain"
         android:title="@string/settings_about"/>
    <!-- <header
@@ -63,6 +72,7 @@
     <header
         android:icon="@drawable/ic_round_question_answer"
         android:summary="@string/faq_description"
+        android:singleLineTitle="false"
         android:title="@string/faq">
         <intent
             android:action="android.intent.action.VIEW"

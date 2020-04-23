@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/bookmark_settings">
+    <PreferenceCategory android:title="@string/backup_bookmarks">
         <Preference
             android:key="export_bookmark"
+            android:singleLineTitle="false"
             android:title="@string/export_bookmarks"/>
         <Preference
             android:key="import_bookmark"
+            android:singleLineTitle="false"
             android:title="@string/import_backup"/>
         <Preference
             android:key="delete_bookmarks"
+            android:singleLineTitle="false"
             android:title="@string/action_delete_all_bookmarks"/>
     </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/backup_settings">
+        <Preference
+            android:key="export_settings"
+            android:singleLineTitle="false"
+            android:title="@string/export_settings"/>
+        <Preference
+            android:key="import_settings"
+            android:singleLineTitle="false"
+            android:title="@string/import_settings"/>
+        <Preference
+            android:key="clear_settings"
+            android:singleLineTitle="false"
+            android:title="@string/clear_settings"/>
+    </PreferenceCategory>
+
 </PreferenceScreen>

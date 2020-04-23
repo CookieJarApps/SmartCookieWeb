@@ -5,29 +5,36 @@
         <SwitchPreference
             android:defaultValue="true"
             android:key="allow_new_window"
+            android:singleLineTitle="false"
             android:summary="@string/recommended"
             android:title="@string/window" />
         <SwitchPreference
             android:defaultValue="true"
             android:key="allow_cookies"
+            android:singleLineTitle="false"
             android:summary="@string/recommended"
             android:title="@string/cookies" />
         <SwitchPreference
             android:defaultValue="false"
             android:key="incognito_cookies"
+            android:singleLineTitle="false"
             android:title="@string/incognito_cookies" />
         <SwitchPreference
             android:defaultValue="true"
             android:key="restore_tabs"
+            android:singleLineTitle="false"
             android:title="@string/restore" />
         <Preference
             android:key="text_encoding"
+            android:singleLineTitle="false"
             android:title="@string/text_encoding" />
         <Preference
             android:key="rendering_mode"
+            android:singleLineTitle="false"
             android:title="@string/rendering_mode" />
         <Preference
             android:key="url_contents"
+            android:singleLineTitle="false"
             android:title="@string/url_contents" />
     </PreferenceCategory>
 </PreferenceScreen>

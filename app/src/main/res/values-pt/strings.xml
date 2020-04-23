@@ -14,7 +14,7 @@
     <string name="agent">Agente de utilizador</string>
     <string name="flash">Ativar Adobe Flash</string>
     <string name="home">Página inicial</string>
-    <string name="fullscreen">Ecrã completo</string>
+    <string name="fullscreen">Ocultar barra de endereço ao deslocar</string>
     <string name="java">Javascript ativado</string>
     <string name="download">Local para descargas</string>
     <string name="settings_advanced">Definições avançadas</string>
@@ -197,7 +197,7 @@
     <string name="import_bookmark_error">Não foi possível importar os marcadores</string>
     <string name="title_chooser">Escolha um ficheiro</string>
     <string name="settings_general">Definições gerais</string>
-    <string name="settings_general_explain">Bloqueador de anúncios, motor de pesquisa, página inicial&#8230;</string>
+    <string name="settings_general_explain">Motor de pesquisa, proxy, página inicial&#8230;</string>
     <string name="settings_display">Definições de exibição</string>
     <string name="settings_display_explain">Ecrã completo, tamanho do texto, temas&#8230;</string>
     <string name="settings_privacy">Definições de privacidade e de segurança</string>
@@ -242,7 +242,7 @@
     <string name="message_web_storage_cleared">Armazenamento web eliminado</string>
     <string name="hosts_source">Fonte do ficheiro hosts</string>
     <string name="settings_adblock">Definições de Adblock</string>
-    <string name="adblock_summary">Bloqueio de anúncios, bloqueio de cookies&#8230;</string>
+    <string name="adblock_summary">Bloqueio de anúncios, bloqueio de cookies...</string>
     <string name="adblock_category">Bloqueio de anúncios</string>
     <string name="cookie_category">Bloqueio de cookies (beta)</string>
     <string name="tabs_in_drawer">Mostrar separadores no menu de navegação</string>
@@ -353,10 +353,10 @@
     <string name="block_all_sites">Bloquear todos os sites listados</string>
     <string name="only_allow_sites">Permitir apenas os sites listados</string>
     <string name="parental_controls">Definições de controlo parental</string>
-    <string name="settings_parents">Bloquear sites, definir palavra-passe&#8230;</string>
+    <string name="settings_parents">Bloquear sites, definir palavra-passe...</string>
     <string name="label_realm">Mensagem do servidor: %s</string>
     <string name="new_tab_foreground">Trazer separadores para primeiro plano</string>
-    <string name="new_tab_foreground_summary">Fechar menu de separadores ao fechar/abrir um separador</string>
+    <string name="new_tab_foreground_summary">Abrir novo separador imediatamente</string>
     <string name="site_not_secure">A ligação a este site não é segura.</string>
     <string name="language_not_supported">Idioma não suportado</string>
     <string name="language_not_supported_text">Infelizmente, a loja de extensões ainda não está disponível no seu idioma. Utilize o botão abaixo para continuar em inglês.</string>
@@ -370,6 +370,21 @@
     <string name="incognito_cookies_new">O modo privado é executado em uma janela distinta que será reposta ao terminar a sessão. As preferências de cookies no modo privado são agora controladas nas preferências gerais de cookies.</string>
     <string name="quit_private">Sair do modo privado</string>
     <string name="start_incognito">Iniciar sempre no modo de navegação privada</string>
-    <string name="bottom_navbar">Mover barra de navegação para a base</string>
+    <string name="bottom_navbar">Barra de navegação em baixo</string>
+    <string name="please_restart">Reinicie a aplicação para aplicar as alterações</string>
+    <string name="site_ad_blocked">Este site é um anúncio. Para continuar, utilize a opção \"Desativar bloqueio de anúncios para este site\" tocando no ícone de lista no menu de marcadores.</string>
+    <string name="onboarding_reshow">Mostrar novamente ecrã de boas vindas</string>
+    <string name="onboarding_reshow_desc">Mostrar configuração inicial</string>
+    <string name="pick_search">Escolha um motor de pesquisa:</string>
+    <string name="enable_adblock">Ativar bloqueio a anúncios e rastreadores?</string>
+    <string name="contributors">Colaboradores</string>
+    <string name="translations">Traduções</string>
+    <string name="import_export">Importar e exportar definições</string>
+    <string name="export_settings">Exportar definições</string>
+    <string name="import_settings">Importar definições</string>
+    <string name="clear_settings">Repor definições</string>
+    <string name="backup_settings">Backup de definições</string>
+    <string name="backup_bookmarks">Backup de marcadores</string>
+    <string name="reset_settings">Definições repostas. Estamos a fechar a aplicação…</string>
     <!-- finish pages -->
 </resources>

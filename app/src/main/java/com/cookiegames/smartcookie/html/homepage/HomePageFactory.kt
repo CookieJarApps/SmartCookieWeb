@@ -35,7 +35,7 @@ class HomePageFactory @Inject constructor(
                 title { title }
                 charset { UTF8 }
                 body {
-                    id("image_url") { attr("src", iconUrl) }
+                    id("search_input") { attr("style", "background: url('" + iconUrl + "') no-repeat scroll 7px 7px;background-size: 22px 22px;") }
                     tag("script") {
                         html(
                             if(!userPreferences.whatsNewEnabled){

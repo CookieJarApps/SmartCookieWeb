@@ -3,7 +3,9 @@ package com.cookiegames.smartcookie.settings.activity
 import com.cookiegames.smartcookie.R
 import android.content.res.Configuration
 import android.os.Bundle
+import android.preference.Preference
 import android.preference.PreferenceActivity
+import android.preference.PreferenceScreen
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
@@ -83,6 +85,7 @@ abstract class AppCompatPreferenceActivity : PreferenceActivity() {
         super.onDestroy()
         delegate.onDestroy()
     }
+
 
     override fun invalidateOptionsMenu() = delegate.invalidateOptionsMenu()
 }

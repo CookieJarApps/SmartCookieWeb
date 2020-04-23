@@ -32,22 +32,22 @@ class MainActivity : BrowserActivity() {
     }
 
     override fun onNewIntent(intent: Intent) =
-        if (intent.action == INTENT_PANIC_TRIGGER) {
-            panicClean()
-        } else {
-            handleNewIntent(intent)
-            super.onNewIntent(intent)
-        }
+            if (intent.action == INTENT_PANIC_TRIGGER) {
+                panicClean()
+            } else {
+                handleNewIntent(intent)
+                super.onNewIntent(intent)
+            }
 
     override fun onPause() {
         super.onPause()
         saveOpenTabs()
     }
 
-   override fun onResume(){
-       super.onResume()
-       invalidateOptionsMenu()
-   }
+    override fun onResume(){
+        super.onResume()
+        invalidateOptionsMenu()
+    }
 
     override fun updateHistory(title: String?, url: String) = addItemToHistory(title, url)
 
