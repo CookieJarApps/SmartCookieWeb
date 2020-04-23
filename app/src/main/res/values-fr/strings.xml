@@ -26,8 +26,8 @@
     <string name="apache">Licence Apache 2.0</string>
     <string name="version">Version de l’application</string>
     <string name="cache">Effacer le cache à la sortie</string>
-    <string name="reflow">Activer la redistribution du texte</string>
-    <string name="block">Bloquer les images</string>
+    <string name="reflow">Redistribuer le texte en largeur</string>
+    <string name="block">Ne pas charger les images</string>
     <string name="window">Autoriser les sites à ouvrir de nouvelles fenêtres</string>
     <string name="cookies">Activer les cookies</string>
     <string name="importbookmarks">Importer les favoris depuis un autre navigateur</string>
@@ -38,7 +38,7 @@
     <string name="wideViewPort">Utiliser un viewport élargi</string>
     <string name="overViewMode">Charger les pages en mode aperçu</string>
     <string name="restore">Restaurer les onglets perdus au démarrage</string>
-    <string name="supported_browsers_title">Navigateurs supportés</string>
+    <string name="supported_browsers_title">Navigateurs pris en charge</string>
     <string name="stock_browser">Navigateur pré-installé</string>
     <string name="stock_browser_unavailable">Aucun navigateur pré-installé n’a été détecté</string>
     <string name="stock_browser_available">Navigateur pré-installé pris en charge détecté</string>
@@ -78,7 +78,7 @@
     <string name="title_text_size">Taille du texte</string>
     <string name="size_largest">Plus grand</string>
     <string name="size_large">Grand</string>
-    <string name="size_normal">Ordinaire</string>
+    <string name="size_normal">Normal</string>
     <string name="size_small">Petit</string>
     <string name="size_smallest">Plus petit</string>
     <string name="title_error">Erreur</string>
@@ -91,13 +91,16 @@
     <string name="action_homepage">Défaut</string>
     <string name="action_back">Retour</string>
     <string name="action_find">Chercher dans la page</string>
-    <string name="download_pending">Démarrer le téléchargement…</string>
-    <string name="cannot_download">Ce navigateur ne peut télécharger que les URLs HTTP ou HTTPS.</string>
+    <string name="download_pending">Téléchargement en cours…</string>
+    <string name="cannot_download">Ce navigateur ne peut télécharger que depuis une URL HTTP ou HTTPS.</string>
     <string name="problem_download">L’URL n’est pas valide, impossible de télécharger le fichier</string>
-    <string name="problem_location_download">Impossible de télécharger le fichier à l’emplacement spécifié</string>
+    <string name="problem_location_download">Impossible de télécharger le fichier dans l’emplacement spécifié</string>
     <string name="download_no_sdcard_dlg_title">Pas de carte SD</string>
     <string name="download_no_sdcard_dlg_msg">Le stockage USB est requis pour télécharger le fichier.</string>
     <string name="download_sdcard_busy_dlg_title">Stockage USB indisponible</string>
+
+    <string name="download_sdcard_busy_dlg_msg">Le stockage USB est occupé. Pour permettre les téléchargements, appuyez sur « Désactiver le stockage USB» dans la notification.</string>
+    <string name="incognito_cookies">Activer les cookies en mode incognito</string>
     <string name="download_sdcard_busy_dlg_msg">Le stockage USB est occupé. Pour permettre les téléchargements, appuyez sur « Désactiver le stockage USB » dans la notification.</string>
     <string name="incognito_cookies">Activer les cookies en mode navigation privée</string>
     <string name="title_flash">Adobe Flash</string>
@@ -116,6 +119,9 @@
     <string name="licenses">Licences Open Source</string>
     <string name="suggestion">Rechercher</string>
     <string name="block_ads">Bloquer les publicités et les trackers</string>
+
+    <string name="message_insecure_connection">La connexion au site %1$s n’est pas sécurisée\nVoulez-vous tout de même y accéder?</string>
+
     <string name="message_insecure_connection">La connexion à ce site n’est pas sécurisée : %1$s\nVoulez-vous tout de même accéder à ce site ?</string>
     <string name="message_certificate_date_invalid">La date du certificat n’est pas valide</string>
     <string name="message_certificate_expired">Le certificat a expiré</string>
@@ -157,7 +163,7 @@
     <string name="dialog_adblock_enable_for_site">Activer le blocage des publicités pour ce site</string>
     <string name="dialog_adblock_disable_for_site">Désactiver le blocage des publicités pour ce site</string>
 
-    <string name="search_suggestions_off">Pas de suggestion de recherche</string>
+    <string name="search_suggestions_off">Pas de suggestions de recherche</string>
     <string name="http_proxy">Proxy HTTP</string>
     <string-array name="proxy_choices_array">
         <item>Aucun</item>
@@ -202,7 +208,11 @@
     <string name="export_bookmarks">Exporter les favoris</string>
     <string name="import_backup">Importer des favoris</string>
     <string name="bookmark_export_path">Favoris exportés vers</string>
+
+    <string name="bookmark_export_failure">Désolé, les favoris n’ont pas pu être exportés.</string>
+
     <string name="bookmark_export_failure">Désolé, les favoris n’ont pas pu être exportés !</string>
+
     <string name="bookmark_settings">Paramètres de favoris</string>
     <string name="settings_bookmark_explain">Exporter et importer…</string>
     <string name="import_bookmark_error">Les favoris n’ont pas pu être importés depuis le fichier</string>
@@ -222,7 +232,7 @@
     <string name="color_mode">Activer le mode couleur</string>
     <string name="reading_mode">Mode lecteur</string>
     <string name="loading">Chargement…</string>
-    <string name="loading_failed">La page n’a pas pu être transformée en mode lecteur.</string>
+    <string name="loading_failed">La page n’a pas pu être adaptée en mode lecteur.</string>
     <string name="snacktory">Snacktory</string>
     <string name="jsoup">jsoup : analyseur HTML Java</string>
     <string name="mit_license">Licence MIT</string>
@@ -263,7 +273,7 @@
     <string name="action_add_to_homescreen">Ajouter à l’écran d’accueil</string>
     <string name="message_added_to_homescreen">Raccourci ajouté à l’écran d’accueil</string>
     <string name="action_delete_all_bookmarks">Supprimer tous les favoris</string>
-    <string name="flash_not_supported">Votre appareil ne supporte pas Flash Player</string>
+    <string name="flash_not_supported">Votre appareil ne peut pas exécuter Flash Player</string>
     <string name="message_open_download_fail">Ce fichier n’existe plus</string>
     <string name="this_project">Ce projet</string>
 
@@ -310,6 +320,11 @@
     <string name="action_message_canceled">Action annulée.</string>
 
 
+<<<
+    
+    <string name="title_permission_request">Demande d’autorisation</string>
+    <string name="message_permission_request">%1$s demande l’accès à : %2$s</string>
+
 
     <string name="title_permission_request">Demande de permission</string>
     <string name="message_permission_request">%1$s voudrait utiliser : %2$s</string>
@@ -319,7 +334,7 @@
     <string name="block_ad_remote_refresh_frequency_description">Pour le fichier \'hosts\' distant</string>
     <string name="block_ad_refresh_now">Actualiser le fichier \'hosts\'</string>
 
-    <string name="webrtc_support">Support WebRTC</string>
+    <string name="webrtc_support">Prise en charge de WebRTC</string>
     <string name="save_data">Envoyer l’en-tête \'Save-Data\'</string>
 
 
@@ -371,8 +386,16 @@
     <string name="startpagedesc">La page d’accueil utilisera la couleur du thème.</string>
     <string name="updatehomepage">Ouvrez un nouvel onglet pour voir la page d’accueil mise à jour</string>
 
-    <string name="inspect">Injecter du code JavaScript</string>
+    <string name="inspect">Exécuter du code JavaScript</string>
     <string name="bookmark">Signet ajouté</string>
+
+    <string name="error_title">Miettes alors ! &lt;br&gt; Impossible de charger la page.</string>
+    <string name="error_reload">Recharger</string>
+
+    <string name="https_title">Miettes alors ! &lt;br&gt; Ce site n’a pas de version HTTPS et les sites HTTP sont bloqués.</string>
+
+    <string name="malware_title">Miettes alors ! &lt;br&gt; Ce site semble être un malware.</string>
+    <string name="malware_message">S’il s’agit d’une erreur, veuillez le signaler à support@cookiegames.co.uk (en anglais)</string>
 
     <string name="error_title">Miettes alors ! &lt;br&gt; Ce site ne peut pas être chargé.</string>
     <string name="error_reload">Recharger</string>
@@ -381,6 +404,7 @@
 
     <string name="malware_title">Miettes alors ! &lt;br&gt; Ce site semble être un malware.</string>
     <string name="malware_message">S’il s’agit d’une erreur, veuillez le signaler à support@cookiegames.co.uk</string>
+
 
     <string name="blocked_title">Miettes alors ! &lt;br&gt; Ce site a été bloqué dans les paramètres.</string>
     <string name="close_app">Fermer le navigateur</string>
@@ -413,4 +437,7 @@
     <string name="pick_search">Choisissez votre moteur de recherche :</string>
     <string name="enable_adblock">Voulez-vous activer le blocage des publicités ?</string>
     <string name="onboarding_reshow_desc">Rejoue la présentation de l’application.</string>
+
+    <string name="translations">Traductions</string>
+    <string name="contributors">Contributeurices</string>
 </resources>
