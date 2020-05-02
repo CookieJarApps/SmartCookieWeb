@@ -45,6 +45,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
+import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Point
@@ -398,6 +399,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         }
 
         if (userPreferences.bottomBar) {
+            setWebViewTranslation(0f)
             val searchEdit = customView.findViewById<SearchView>(R.id.search)
             searchEdit.setOnFocusChangeListener { searchEdit, _ ->
                 if (searchEdit?.hasFocus() == true && userPreferences.bottomBar) {
@@ -896,7 +898,11 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     private fun setWebViewTranslation(translation: Float) =
-        if (isFullScreen) {
+        if(userPreferences.bottomBar){
+            currentTabView?.layoutParams?.height = getScreenSize() - 56
+            currentTabView?.translationY = 0f
+        }
+        else if (isFullScreen) {
             currentTabView?.translationY = translation
         }
         else {
@@ -1157,12 +1163,25 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     fun getScreenSize(): Int{
         var display: Display = getWindowManager().getDefaultDisplay()
         var size: Point = Point()
+        var extra = 0
+        var height = 0
+        var barHeight = 0
         display.getSize(size)
         Log.d("displayMetrics", size.y.toString())
         var resources = getResources()
         var resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android")
-        var extra = size.y / 720 * 56
-        return size.y - extra
+        if (resourceId > 0) {
+                height= resources.getDimensionPixelSize(resourceId)
+        }
+
+        if(userPreferences.showTabsInDrawer){
+            barHeight = 48
+        }
+        else{
+            barHeight = 72
+        }
+
+        return size.y - barHeight - height
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
