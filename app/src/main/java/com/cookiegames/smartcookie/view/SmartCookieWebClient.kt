@@ -170,11 +170,11 @@ class SmartCookieWebClient(
 
         if(userPreferences.bottomBar && userPreferences.showTabsInDrawer){
             view.loadUrl(
-                    "javascript:(function() { document.body.style.padding = \"0px 0px 76px 0px\"; })();")
+                    "javascript:(function() { document.body.style.padding = \"0px 0px 86px 0px\"; })();")
         }
         else if(userPreferences.bottomBar){
             view.loadUrl(
-                    "javascript:(function() { document.body.style.padding = \"0px 0px 52px 0px\"; })();")
+                    "javascript:(function() { document.body.style.padding = \"0px 0px 58px 0px\"; })();")
         }
 
         if(url.contains("//cookiejarapps.com/extensions") && Locale.getDefault().getDisplayLanguage() != "English"){
