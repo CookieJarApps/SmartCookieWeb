@@ -22,6 +22,11 @@
             android:key="cb_colormode"
             android:singleLineTitle="false"
             android:title="@string/color_mode"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="force_zoom"
+            android:singleLineTitle="false"
+            android:title="@string/force_zoom"/>
         <Preference
             android:key="proxy"
             android:singleLineTitle="false"

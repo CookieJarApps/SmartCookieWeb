@@ -224,7 +224,7 @@ class UserPreferences @Inject constructor(
     var incognito by preferences.booleanPreference(ALWAYS_INCOGNITO, false)
 
 
-
+    var forceZoom by preferences.booleanPreference(FORCE_ZOOM, false)
     /**
      * The index of the theme used by the application.
      */
@@ -380,3 +380,4 @@ private const val BOTTOM_BAR = "bottomBar"
 private const val IMAGE_URL = "imageUrl"
 private const val WHATS_NEW = "whatsNew"
 private const val ALWAYS_INCOGNITO = "alwaysincognito"
+private const val FORCE_ZOOM = "forcezoom"

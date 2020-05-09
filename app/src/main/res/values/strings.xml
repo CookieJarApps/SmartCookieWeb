@@ -434,5 +434,8 @@
 
     <string name="reset_settings">Settings reset. App closing... Please reopen.</string>
 
+    <string name="force_zoom">Force zoom</string>
+
+
     <!-- finish pages -->
 </resources>

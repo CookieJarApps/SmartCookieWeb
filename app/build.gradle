@@ -158,6 +158,8 @@ dependencies {
 
     implementation 'androidx.annotation:annotation:1.1.0'
 
+    implementation 'com.mindorks.android:prdownloader:0.6.0'
+
 }
 
 kapt {

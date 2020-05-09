@@ -168,6 +168,12 @@ class SmartCookieWebClient(
             view.postInvalidate()
         }
 
+        if(userPreferences.forceZoom){
+            view.loadUrl(
+                    "javascript:(function() { document.querySelector('meta[name=\"viewport\"]').setAttribute(\"content\",\"width=device-width\"); })();"
+            )
+        }
+
         if(userPreferences.bottomBar && userPreferences.showTabsInDrawer){
             view.loadUrl(
                     "javascript:(function() { document.body.style.margin = \"0px 0px 86px 0px\"; })();")

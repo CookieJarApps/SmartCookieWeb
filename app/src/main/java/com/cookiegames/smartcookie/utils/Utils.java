@@ -66,6 +66,7 @@ public final class Utils {
         intent.putExtra(Intent.EXTRA_CC, cc);
         intent.setType("message/rfc822");
         return intent;
+
     }
 
     /**

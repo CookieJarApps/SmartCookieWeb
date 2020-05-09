@@ -91,6 +91,12 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
         )
 
         switchPreference(
+                preference = SETTINGS_FORCE_ZOOM,
+                isChecked = userPreferences.forceZoom,
+                onCheckChange = { userPreferences.forceZoom = it }
+        )
+
+        switchPreference(
             preference = SETTINGS_SAVEDATA,
             isChecked = userPreferences.saveDataEnabled,
             onCheckChange = { userPreferences.saveDataEnabled = it }
@@ -444,6 +450,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
 
     companion object {
         private const val SETTINGS_PROXY = "proxy"
+        private const val SETTINGS_FORCE_ZOOM = "force_zoom"
         private const val SETTINGS_IMAGES = "cb_images"
         private const val SETTINGS_SAVEDATA = "savedata"
         private const val SETTINGS_JAVASCRIPT = "cb_javascript"
