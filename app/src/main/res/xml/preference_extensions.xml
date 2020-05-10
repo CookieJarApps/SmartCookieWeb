@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Extensions">
-        <Preference
-            android:summary="@string/extensions_description"
+    <PreferenceCategory android:title="@string/extensions_enable">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="dark_mode"
             android:singleLineTitle="false"
-            android:title="@string/extensions_store">
+            android:icon="@drawable/dark_mode"
+            android:title="@string/dark_mode"/>
+
+      <!--  <SwitchPreference
+            android:defaultValue="false"
+            android:key="translate"
+            android:singleLineTitle="false"
+            android:icon="@drawable/translate"
+            android:title="@string/translator"/> -->
+        <Preference android:title="@string/coming_soon"
+            android:key="coming_soon">
+        </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/extensions_settings">
+        <Preference
+            android:summary="@string/submit_link"
+            android:title="@string/submit">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://cookiejarapps.com/extensions/">
+                android:data="https://cookiejarapps.com/extensions/create.html">
                 <extra
                     android:name="SOURCE"
                     android:value="SELF" />
             </intent>
         </Preference>
-        <Preference
-            android:key="extensions_list"
-            android:singleLineTitle="false"
-            android:title="@string/extensions_list"/>
-        <Preference
-            android:key="uninstall_extension"
-            android:singleLineTitle="false"
-            android:title="@string/uninstall_extension"/>
     </PreferenceCategory>
 </PreferenceScreen>

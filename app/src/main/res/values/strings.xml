@@ -337,7 +337,7 @@
     <string name="dialog_copy_link">Copy page link</string>
     <string name="dialog_rename_folder">Rename folder</string>
     <string name="dialog_remove_folder">Remove folder</string>
-    <string name="dialog_title_close_browser">Close browser</string>
+    <string name="dialog_title_close_browser">Close tabs</string>
     <string name="dialog_delete_download">Delete download</string>
     <string name="dialog_delete_all_downloads">Delete all downloads</string>
 
@@ -398,6 +398,10 @@
     <string name="language_not_supported">Language Not Supported</string>
     <string name="language_not_supported_text">Unfortunately, the extensions store is not available in your language yet. Use the button below to continue in English anyway.</string>
     <string name="extensions">Extensions</string>
+    <string name="extensions_enable">Enable extensions</string>
+
+    <string name="extensions_settings">Extensions settings</string>
+
     <string name="extensions_description">Download extensions...</string>
     <string name="extensions_store">Extensions store</string>
     <string name="extensions_list">Extensions list</string>
@@ -436,6 +440,13 @@
 
     <string name="force_zoom">Force zoom</string>
 
+    <string name="dark_mode">Dark mode</string>
+    <string name="submit">Submit extension</string>
+
+    <string translatable="false" name="submit_link">https://cookiejarapps.com/extensions/create.html</string>
+
+    <string name="translator">Translator (beta)</string>
+    <string name="coming_soon">More coming soon...</string>
 
     <!-- finish pages -->
 </resources>

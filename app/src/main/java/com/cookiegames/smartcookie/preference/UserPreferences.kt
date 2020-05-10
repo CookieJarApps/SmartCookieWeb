@@ -257,6 +257,8 @@ class UserPreferences @Inject constructor(
      */
     var saveDataEnabled by preferences.booleanPreference(SAVE_DATA, false)
 
+
+
     /**
      * True if the browser should attempt to remove identifying headers in GET requests, false if
      * the default headers should be left along.
@@ -315,6 +317,13 @@ class UserPreferences @Inject constructor(
      * The remote URL from which ad blocking hosts should be read, depending on the [hostsSource].
      */
     var hostsRemoteFile by preferences.nullableStringPreference(HOSTS_REMOTE_FILE)
+
+
+    //EXTENSIONS
+
+    var darkModeExtension by preferences.booleanPreference(DARK_MODE, false)
+    var translateExtension by preferences.booleanPreference(TRANSLATE, false)
+
 }
 
 private const val WEB_RTC = "webRtc"
@@ -381,3 +390,6 @@ private const val IMAGE_URL = "imageUrl"
 private const val WHATS_NEW = "whatsNew"
 private const val ALWAYS_INCOGNITO = "alwaysincognito"
 private const val FORCE_ZOOM = "forcezoom"
+
+private const val DARK_MODE = "darkmode"
+private const val TRANSLATE = "translate"
