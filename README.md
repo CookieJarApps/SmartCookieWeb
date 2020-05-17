@@ -13,6 +13,9 @@
     height="60">
 </a>
 
+```diff
+- SmartCookieWeb is currently on hold for personal reasons. It will be updated again after the end of May. You can still email me for support and open issues for feature requests but I will not be making any commits or new releases for a short amount of time.
+```
 
 
 
