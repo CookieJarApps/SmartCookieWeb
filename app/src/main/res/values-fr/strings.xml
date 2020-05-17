@@ -422,4 +422,17 @@
 
     <string name="translations">Traductions</string>
     <string name="contributors">Contributeurices</string>
+    <string name="coming_soon">Prochainement</string>
+    <string name="import_export">Paramètres d\'importation et d\'exportation</string>
+    <string name="export_settings">Exporter les paramètres vers la sauvegarde</string>
+    <string name="import_settings">Importer les paramètres à partir de la sauvegarde</string>
+    <string name="clear_settings">Réinitialisation des paramètres</string>
+    <string name="backup_settings">Sauvegarde des paramètres</string>
+    <string name="backup_bookmarks">Sauvegarde des signets</string>
+    <string name="reset_settings">Réinitialisation des paramètres. Fermeture de l\'application... Veuillez rouvrir.</string>
+    <string name="force_zoom">Zoom forcé</string>
+    <string name="dark_mode">Mode sombre</string>
+    <string name="submit">Soumettre une extension</string>
+    <string name="extensions_enable">Activer les extensions</string>
+    <string name="extensions_settings">Paramètres de l\'extension</string>
 </resources>
