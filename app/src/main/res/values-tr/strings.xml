@@ -315,7 +315,7 @@
     <string name="dialog_copy_link">Sayfa bağlantısını kopyala</string>
     <string name="dialog_rename_folder">Klasörü yeniden adlandır</string>
     <string name="dialog_remove_folder">Klasörü kaldır</string>
-    <string name="dialog_title_close_browser">Tarayıcıyı kapat</string>
+    <string name="dialog_title_close_browser">Sekmeleri kapat</string>
     <string name="dialog_delete_download">İndirmeyi sil</string>
     <string name="dialog_delete_all_downloads">Tüm indirilenleri sil</string>
     <!-- Search Engines -->
@@ -366,6 +366,8 @@
     <string name="language_not_supported">Dil Desteklenmiyor</string>
     <string name="language_not_supported_text">Ne yazık ki, eklentiler deposu henüz sizin dilinizde mevcut değil. Yine de İngilizce devam etmek için aşağıdaki düğmeyi kullanın.</string>
     <string name="extensions">Eklentiler</string>
+    <string name="extensions_enable">Eklentileri etkinleştir</string>
+    <string name="extensions_settings">Eklenti ayarları</string>
     <string name="extensions_description">Eklenti indir...</string>
     <string name="extensions_store">Eklenti mağazası</string>
     <string name="extensions_list">Eklenti listesi</string>
@@ -391,5 +393,10 @@
     <string name="backup_settings">Ayarları yedekle</string>
     <string name="backup_bookmarks">Yer imlerini yedekle</string>
     <string name="reset_settings">Ayarları sıfırla. Uygulama kapanıyor... Lütfen tekrar açın.</string>
+    <string name="force_zoom">Yakınlaştırmayı zorla</string>
+    <string name="dark_mode">Karanlık mod</string>
+    <string name="submit">Eklenti gönder</string>
+    <string name="translator">Çevirmen (beta)</string>
+    <string name="coming_soon">Daha fazlası yakında...</string>
     <!-- finish pages -->
 </resources>

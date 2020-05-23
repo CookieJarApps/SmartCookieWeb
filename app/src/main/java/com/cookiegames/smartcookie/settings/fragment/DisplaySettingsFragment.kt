@@ -166,7 +166,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun showThemePicker(summaryUpdater: SummaryUpdater) {
-        val currentTheme = userPreferences.useTheme
+       val currentTheme = userPreferences.useTheme
         AlertDialog.Builder(activity).apply {
             setTitle(resources.getString(R.string.theme))
             val values = AppTheme.values().map { Pair(it, it.toDisplayString()) }
@@ -187,6 +187,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
                 }
             }
         }.resizeAndShow()
+
     }
 
     private fun AppTheme.toDisplayString(): String = getString(when (this) {
