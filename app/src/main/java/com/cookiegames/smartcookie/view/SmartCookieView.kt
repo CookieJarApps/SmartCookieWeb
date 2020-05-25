@@ -350,11 +350,7 @@ class SmartCookieView(
                 !userPreferences.blockThirdPartyCookiesEnabled)
         }
     }
-
-    /**
-     * Initialize the settings of the WebView that are intrinsic to Lightning and cannot be altered
-     * by the user. Distinguish between Incognito and Regular tabs here.
-     */
+    
     @SuppressLint("NewApi")
     private fun WebView.initializeSettings() {
         settings.apply {
