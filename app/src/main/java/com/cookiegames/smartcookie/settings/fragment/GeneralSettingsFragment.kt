@@ -351,11 +351,13 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 R.string.action_ok) { url ->
                 if(url.contains("http")){
                     userPreferences.homepage = url
+                    summaryUpdater.updateSummary(url)
                 }
                 else{
-                    userPreferences.homepage = "http://" + url
+                    userPreferences.homepage = "https://" + url
+                    summaryUpdater.updateSummary("https://" + url)
                 }
-                summaryUpdater.updateSummary(url)
+
             }
         }
     }
