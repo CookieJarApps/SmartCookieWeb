@@ -349,7 +349,12 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 R.string.title_custom_homepage,
                 currentHomepage,
                 R.string.action_ok) { url ->
-                userPreferences.homepage = url
+                if(url.contains("http")){
+                    userPreferences.homepage = url
+                }
+                else{
+                    userPreferences.homepage = "http://" + url
+                }
                 summaryUpdater.updateSummary(url)
             }
         }
