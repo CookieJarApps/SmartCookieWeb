@@ -358,7 +358,6 @@ class SmartCookieWebClient(
 
     }
 
-
     override fun onReceivedHttpAuthRequest(
         view: WebView,
         handler: HttpAuthHandler,

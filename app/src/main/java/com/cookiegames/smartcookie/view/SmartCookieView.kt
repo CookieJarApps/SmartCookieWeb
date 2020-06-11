@@ -665,7 +665,13 @@ class SmartCookieView(
      * in its history to the previous page.
      */
     fun goBack() {
-        webView?.goBack()
+        if(url.contains("about:blank")){
+            webView?.goBack()
+            webView?.goBack()
+        }
+        else{
+            webView?.goBack()
+        }
     }
 
     /**
