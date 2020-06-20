@@ -281,6 +281,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         left_drawer.setLayerType(LAYER_TYPE_NONE, null)
         right_drawer.setLayerType(LAYER_TYPE_NONE, null)
 
+        Log.d("1127", userPreferences.colorNavbar.toString())
+        Log.d("1127", userPreferences.navbarColChoice.toString())
+
         setNavigationDrawerWidth()
         drawer_layout.addDrawerListener(DrawerLocker())
 
@@ -630,6 +633,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 changeToolbarBackground(currentView.favicon ?: webBitmap, null)
             } else if (!isIncognito() && !isDarkTheme) {
                 changeToolbarBackground(webBitmap, null)
+            } else if (userPreferences.navbarColChoice == ChooseNavbarCol.COLOR){
+                changeToolbarColor(null)
             }
         }
 
@@ -1358,6 +1363,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if (prefs!!.getBoolean("firstrun", true)) {
             prefs!!.edit().putBoolean("firstrun", false).apply()
         }
+
+        changeToolbarColor(null)
     }
 
     /**
@@ -1373,6 +1380,21 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if (currentTab != null) {
             currentTab.stopLoading()
             presenter?.loadUrlInCurrentView(smartUrlFilter(query.trim(), true, searchUrl))
+        }
+    }
+
+    override fun changeToolbarColor(tabBackground: Drawable?){
+        if(userPreferences.navbarColChoice == ChooseNavbarCol.COLOR){
+            if(Utils.isColorTooDark(userPreferences.colorNavbar)){
+
+            }
+            tabBackground?.tint(userPreferences.colorNavbar)
+            toolbar_layout.setBackgroundColor(userPreferences.colorNavbar)
+            currentUiColor = userPreferences.colorNavbar
+            searchBackground?.background?.tint(
+                    Utils.mixTwoColors(Color.WHITE, userPreferences.colorNavbar, 0.25f)
+            )
+
         }
     }
 

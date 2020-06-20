@@ -92,14 +92,6 @@ dexcount {
 }
 
 dependencies {
-    // test dependencies
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.assertj:assertj-core:3.15.0'
-    testImplementation 'org.mockito:mockito-core:3.0.0'
-    testImplementation 'com.nhaarman:mockito-kotlin:1.6.0', {
-        exclude group: 'org.jetbrains.kotlin'
-    }
-    testImplementation 'org.robolectric:robolectric:4.3.1'
 
     // support libraries
     implementation "androidx.palette:palette:1.0.0"
@@ -155,6 +147,8 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.2.0'
 
     implementation 'androidx.annotation:annotation:1.1.0'
+
+    implementation 'com.github.QuadFlask:colorpicker:0.0.15'
 }
 
 kapt {

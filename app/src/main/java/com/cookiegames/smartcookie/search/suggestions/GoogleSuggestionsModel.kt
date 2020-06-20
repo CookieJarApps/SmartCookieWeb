@@ -6,6 +6,7 @@ import com.cookiegames.smartcookie.database.SearchSuggestion
 import com.cookiegames.smartcookie.extensions.preferredLocale
 import com.cookiegames.smartcookie.log.Logger
 import android.app.Application
+import android.util.Log
 import io.reactivex.Single
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
@@ -38,7 +39,6 @@ class GoogleSuggestionsModel(
     @Throws(Exception::class)
     override fun parseResults(responseBody: ResponseBody): List<SearchSuggestion> {
         parser.setInput(responseBody.byteStream(), UTF8)
-
         val suggestions = mutableListOf<SearchSuggestion>()
         var eventType = parser.eventType
         while (eventType != XmlPullParser.END_DOCUMENT) {

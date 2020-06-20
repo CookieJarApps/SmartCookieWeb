@@ -26,6 +26,9 @@ class UserPreferences @Inject constructor(
     var siteBlockChoice by preferences.enumPreference(SITE_BLOCK, SiteBlockChoice.NONE)
     var siteBlockNames by preferences.stringPreference(USE_SITE_BLOCK, "")
 
+    var navbarColChoice by preferences.enumPreference(NAVBAR_COL, ChooseNavbarCol.NONE)
+
+
     var passwordChoice by preferences.enumPreference(PASSWORD, PasswordChoice.NONE)
     var passwordText by preferences.stringPreference(USE_PASSWORD, "")
     /**
@@ -324,6 +327,8 @@ class UserPreferences @Inject constructor(
     var darkModeExtension by preferences.booleanPreference(DARK_MODE, false)
     var translateExtension by preferences.booleanPreference(TRANSLATE, false)
 
+    var colorNavbar by preferences.intPreference(NAVBAR_COLOR, 0)
+
 }
 
 private const val WEB_RTC = "webRtc"
@@ -377,6 +382,7 @@ private const val HOSTS_REMOTE_FILE = "hostsRemoteFile"
 private const val PREFER_HTTPS = "preferHTTPS"
 private const val FORCE_HTTPS = "forceHTTPS"
 private const val SITE_BLOCK = "siteBlock"
+private const val NAVBAR_COLOR = "navcol"
 private const val USE_SITE_BLOCK = "useSiteBlock"
 private const val PASSWORD = "password"
 private const val USE_PASSWORD = "usePassword"
@@ -390,6 +396,6 @@ private const val IMAGE_URL = "imageUrl"
 private const val WHATS_NEW = "whatsNew"
 private const val ALWAYS_INCOGNITO = "alwaysincognito"
 private const val FORCE_ZOOM = "forcezoom"
-
+private const val NAVBAR_COL = "navbarcol"
 private const val DARK_MODE = "darkmode"
 private const val TRANSLATE = "translate"

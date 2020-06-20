@@ -13,6 +13,11 @@
         <item>@string/only_allow_sites</item>
     </string-array>
 
+    <string-array name="navbar_col">
+        <item>@string/agent_default</item>
+        <item>@string/color</item>
+    </string-array>
+
     <string-array name="password">
         <item>@string/none</item>
         <item>@string/enter_password</item>

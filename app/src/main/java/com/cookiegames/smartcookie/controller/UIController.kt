@@ -48,6 +48,9 @@ interface UIController {
      */
     fun changeToolbarBackground(favicon: Bitmap?, tabBackground: Drawable?)
 
+    fun changeToolbarColor(tabBackground: Drawable?)
+
+
     /**
      * Updates the current URL of the page.
      *

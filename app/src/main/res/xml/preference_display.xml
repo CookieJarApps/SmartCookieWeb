@@ -49,10 +49,6 @@
             android:singleLineTitle="false"
             android:key="text_reflow"
             android:title="@string/reflow"/>
-        <Preference
-            android:key="app_theme"
-            android:singleLineTitle="false"
-            android:title="@string/theme"/>
         <SwitchPreference
             android:defaultValue="true"
             android:singleLineTitle="false"
@@ -80,5 +76,15 @@
             android:key="text_size"
             android:singleLineTitle="false"
             android:title="@string/title_text_size"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/theme">
+        <Preference
+            android:key="app_theme"
+            android:singleLineTitle="false"
+            android:title="@string/theme"/>
+        <Preference
+            android:key="navbar_col"
+            android:singleLineTitle="false"
+            android:title="@string/navbar_col"/>
     </PreferenceCategory>
 </PreferenceScreen>
