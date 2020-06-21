@@ -53,8 +53,8 @@ class SettingsActivity : ThemableSettingsActivity() {
     override fun isValidFragment(fragmentName: String): Boolean = fragments.contains(fragmentName)
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        finish()
-        return true
+        onBackPressed()
+        return false
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
