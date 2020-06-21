@@ -283,6 +283,7 @@ class UserPreferences @Inject constructor(
 
     var showExtraOptions by preferences.booleanPreference(EXTRA, false)
 
+    var suggestionChoice by preferences.enumPreference(SEARCH_SUGGESTIONS_NUM, SuggestionNumChoice.FIVE)
 
     /**
      * The index of the proxy choice.
@@ -373,6 +374,7 @@ private const val IDENTIFYING_HEADERS = "removeIdentifyingHeaders"
 private const val SWAP_BOOKMARKS_AND_TABS = "swapBookmarksAndTabs"
 private const val BLACK_STATUS_BAR = "blackStatusBar"
 private const val PROXY_CHOICE = "proxyChoice"
+private const val SEARCH_SUGGESTIONS_NUM = "suggNum"
 private const val USE_PROXY_HOST = "useProxyHost"
 private const val USE_PROXY_PORT = "useProxyPort"
 private const val SEARCH_SUGGESTIONS = "searchSuggestionsChoice"

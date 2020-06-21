@@ -27,6 +27,7 @@ import android.webkit.URLUtil
 import android.widget.EditText
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.cookiegames.smartcookie.browser.SuggestionNumChoice
 import javax.inject.Inject
 
 /**
@@ -65,6 +66,12 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
             summary = userPreferences.downloadDirectory,
             onClick = ::showDownloadLocationDialog
         )
+
+      /* clickableDynamicPreference(
+                preference = SETTINGS_SUGGESTIONS_NUM,
+                summary = userPreferences.suggestionChoice.toString(),
+                onClick = ::showSuggestionNumPicker
+        )*/
 
         clickableDynamicPreference(
             preference = SETTINGS_HOME,
@@ -113,6 +120,35 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
             isChecked = userPreferences.colorModeEnabled,
             onCheckChange = { userPreferences.colorModeEnabled = it }
         )
+    }
+
+    private fun showSuggestionNumPicker(summaryUpdater: SummaryUpdater) {
+        BrowserDialog.showCustomDialog(activity) {
+            setTitle(R.string.suggestion)
+            val stringArray = resources.getStringArray(R.array.suggest)
+            val values = SuggestionNumChoice.values().map {
+                Pair(it, when (it) {
+                    SuggestionNumChoice.ONE -> stringArray[0]
+                    SuggestionNumChoice.TWO -> stringArray[1]
+                    SuggestionNumChoice.THREE -> stringArray[2]
+                    SuggestionNumChoice.FOUR -> stringArray[3]
+                    SuggestionNumChoice.FIVE -> stringArray[4]
+                    SuggestionNumChoice.SIX -> stringArray[5]
+                    SuggestionNumChoice.SEVEN -> stringArray[6]
+                    SuggestionNumChoice.EIGHT -> stringArray[7]
+                })
+            }
+            withSingleChoiceItems(values, userPreferences.suggestionChoice) {
+                updateSearchNum(it, activity, summaryUpdater)
+            }
+            setPositiveButton(R.string.action_ok, null)
+        }
+    }
+
+    private fun updateSearchNum(choice: SuggestionNumChoice, activity: Activity, summaryUpdater: SummaryUpdater) {
+
+        userPreferences.suggestionChoice = choice
+        summaryUpdater.updateSummary(choice.toString())
     }
 
     private fun ProxyChoice.toSummary(): String {
@@ -467,5 +503,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_HOME = "home"
         private const val SETTINGS_SEARCH_ENGINE = "search"
         private const val SETTINGS_SUGGESTIONS = "suggestions_choice"
+        private const val SETTINGS_SUGGESTIONS_NUM = "suggestions_number"
+
     }
 }

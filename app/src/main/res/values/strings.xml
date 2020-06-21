@@ -454,6 +454,7 @@
     <string name="looknfeel">Look and Feel Settings</string>
     <string name="customize">Customization Settings</string>
 
+    <string name="suggest">Suggestion amount</string>
 
     <!-- finish pages -->
 </resources>
