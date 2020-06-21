@@ -163,6 +163,7 @@ class SmartCookieWebClient(
     override fun onPageFinished(view: WebView, url: String) {
         if (view.isShown) {
             uiController.updateUrl(url, false)
+
             uiController.setBackButtonEnabled(view.canGoBack())
             uiController.setForwardButtonEnabled(view.canGoForward())
             view.postInvalidate()
@@ -351,6 +352,8 @@ class SmartCookieWebClient(
         smartCookieView.titleInfo.setFavicon(null)
         if (smartCookieView.isShown) {
             uiController.updateUrl(url, true)
+
+
             uiController.showActionBar()
             uiController.showActionBar()
         }
@@ -389,6 +392,7 @@ class SmartCookieWebClient(
     }
 
     override fun onReceivedError(webview: WebView, errorCode: Int, error: String, failingUrl: String) {
+
         if(errorCode != -1) {
             Thread.sleep(500)
             webview.settings.javaScriptEnabled = true
@@ -405,7 +409,9 @@ class SmartCookieWebClient(
             webview.loadUrl("about:blank")
             webview.loadDataWithBaseURL(null, color + start + start1 + title + start2 + error + start3 + reload + end, "text/html", "UTF-8", null)
             webview.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+
         }
+
     }
 
 

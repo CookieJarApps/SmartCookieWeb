@@ -15,9 +15,9 @@
         android:summary="@string/settings_bookmark_explain" />
     <header
         android:fragment="com.cookiegames.smartcookie.settings.fragment.DisplaySettingsFragment"
-        android:icon="@drawable/ic_round_smartphone_page"
+        android:icon="@drawable/ic_palette_black_24dp"
         android:singleLineTitle="false"
-        android:title="@string/settings_display"
+        android:title="@string/customize"
         android:summary="@string/settings_display_explain"
         android:tint="#8e4f00"/>
     <header

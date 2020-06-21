@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <PreferenceCategory android:title="@string/theme">
+        <Preference
+            android:key="app_theme"
+            android:singleLineTitle="false"
+            android:title="@string/theme"/>
+        <Preference
+            android:key="navbar_col"
+            android:singleLineTitle="false"
+            android:title="@string/navbar_col"/>
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/settings_display">
         <SwitchPreference
             android:defaultValue="true"
@@ -77,14 +86,5 @@
             android:singleLineTitle="false"
             android:title="@string/title_text_size"/>
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/theme">
-        <Preference
-            android:key="app_theme"
-            android:singleLineTitle="false"
-            android:title="@string/theme"/>
-        <Preference
-            android:key="navbar_col"
-            android:singleLineTitle="false"
-            android:title="@string/navbar_col"/>
-    </PreferenceCategory>
+
 </PreferenceScreen>

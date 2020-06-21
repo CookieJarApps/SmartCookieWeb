@@ -179,10 +179,14 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun showNavbarColPicker(){
+        var initColor = userPreferences.colorNavbar
+        if(userPreferences.navbarColChoice == ChooseNavbarCol.NONE){
+            initColor = 255
+        }
         ColorPickerDialogBuilder
                 .with(activity)
                 .setTitle("Choose color")
-                .initialColor(userPreferences.colorNavbar)
+                .initialColor(initColor)
                 .wheelType(ColorPickerView.WHEEL_TYPE.FLOWER)
                 .density(12)
                 .setOnColorSelectedListener { /*selectedColor -> activity.toast("onColorSelected: 0x" + Integer.toHexString(selectedColor))*/ }
