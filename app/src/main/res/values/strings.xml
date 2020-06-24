@@ -451,8 +451,8 @@
     <string name="navbar_col">Set navbar color</string>
     <string name="color">Color</string>
 
-    <string name="looknfeel">Look and Feel Settings</string>
-    <string name="customize">Customization Settings</string>
+    <string name="looknfeel">Look and Feel settings</string>
+    <string name="customize">Customization settings</string>
 
     <string name="suggest">Suggestion amount</string>
 
