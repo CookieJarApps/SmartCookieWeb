@@ -281,8 +281,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         left_drawer.setLayerType(LAYER_TYPE_NONE, null)
         right_drawer.setLayerType(LAYER_TYPE_NONE, null)
 
-        Log.d("1127", userPreferences.colorNavbar.toString())
-        Log.d("1127", userPreferences.navbarColChoice.toString())
 
         setNavigationDrawerWidth()
         drawer_layout.addDrawerListener(DrawerLocker())
