@@ -453,7 +453,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             setIntent(null)
             proxyUtils.checkForProxy(this)
         }
-
     }
 
     private fun getBookmarksContainerId(): Int = if (swapBookmarksAndTabs) {
@@ -1362,10 +1361,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if(userPreferences.incognito){
             WebUtils.clearHistory(this, historyModel, databaseScheduler)
             WebUtils.clearCookies(this)
-        }
-
-        if (prefs!!.getBoolean("firstrun", true)) {
-            prefs!!.edit().putBoolean("firstrun", false).apply()
         }
 
         changeToolbarColor(null)

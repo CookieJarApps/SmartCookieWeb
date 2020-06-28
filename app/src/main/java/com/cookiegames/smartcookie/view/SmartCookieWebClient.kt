@@ -168,6 +168,7 @@ class SmartCookieWebClient(
             uiController.setForwardButtonEnabled(view.canGoForward())
             view.postInvalidate()
         }
+
         if(userPreferences.darkModeExtension){
             view.evaluateJavascript(
                     "javascript:(function() { var newSS,styles=\"* {background:black !important; color:grey !important;} :link, :link * {color:#ddddff !important;} :visited, :visited * {color:#ddffdd !important;}\";document.createStyleSheet?document.createStyleSheet(\"javascript:'\"+styles+\"' \"):((newSS=document.createElement(\"link\")).rel=\"stylesheet\",newSS.href=\"data:text/css,\"+escape(styles),document.getElementsByTagName(\"head\")[0].appendChild(newSS)); })();", null
@@ -179,10 +180,6 @@ class SmartCookieWebClient(
                     "javascript:(function() { document.querySelector('meta[name=\"viewport\"]').setAttribute(\"content\",\"width=device-width\"); })();"
             )
         }
-
-
-
-
 
         if(userPreferences.bottomBar && userPreferences.showTabsInDrawer){
             view.loadUrl(
@@ -336,7 +333,14 @@ class SmartCookieWebClient(
 
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
         currentUrl = url
-
+        if(userPreferences.firstLaunch){
+            //view.loadUrl("file:///android_asset/onboarding.html")
+            userPreferences.firstLaunch = false
+        }
+        if(url.contains("https://homepage")){
+            uiController.newTabButtonClicked()
+            uiController.tabCloseClicked(0)
+        }
         // Only set the SSL state if there isn't an error for the current URL.
         if (urlWithSslError != url) {
             sslState = if (URLUtil.isHttpsUrl(url)) {

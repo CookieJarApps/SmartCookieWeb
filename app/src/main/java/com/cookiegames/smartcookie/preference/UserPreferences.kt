@@ -330,8 +330,12 @@ class UserPreferences @Inject constructor(
 
     var colorNavbar by preferences.intPreference(NAVBAR_COLOR, 0)
 
+    var firstLaunch by preferences.booleanPreference(FIRST_LAUNCH, true)
+
+
 }
 
+private const val FIRST_LAUNCH = "firstLaunch"
 private const val WEB_RTC = "webRtc"
 private const val BLOCK_ADS = "AdBlock"
 private const val BLOCK_IMAGES = "blockimages"
