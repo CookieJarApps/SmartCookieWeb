@@ -950,15 +950,16 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if (position < 0) {
             return
         }
-        BrowserDialog.show(this, R.string.dialog_title_close_browser,
-            DialogItem(title = R.string.close_tab) {
+        BrowserDialog.showWithIcons(this, getString(R.string.dialog_title_close_browser),
+            DialogItem(title = R.string.close_tab, icon = drawable(R.drawable.ic_delete_this)) {
                 presenter?.deleteTab(position)
             },
-            DialogItem(title = R.string.close_other_tabs) {
+            DialogItem(title = R.string.close_other_tabs, icon = drawable(R.drawable.ic_delete_other)) {
                 presenter?.closeAllOtherTabs()
             },
-            DialogItem(title = R.string.close_all_tabs, onClick = this::closeBrowser),
-            DialogItem(title = R.string.close_app, onClick = this::closeApp))
+            DialogItem(title = R.string.close_app, icon = drawable(R.drawable.ic_action_delete), onClick = this::closeApp),
+            DialogItem(title = R.string.close_all_tabs, icon = drawable(R.drawable.ic_delete_all), onClick = this::closeBrowser))
+
     }
 
     override fun notifyTabViewRemoved(position: Int) {
