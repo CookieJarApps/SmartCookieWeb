@@ -168,7 +168,9 @@ class SmartCookieWebClient(
             uiController.setForwardButtonEnabled(view.canGoForward())
             view.postInvalidate()
         }
-
+        if(url.contains("android_asset/onboarding.html")){
+            uiController.updateUrl("", false)
+        }
         if(userPreferences.darkModeExtension){
             view.evaluateJavascript(
                     "javascript:(function() { var newSS,styles=\"* {background:black !important; color:grey !important;} :link, :link * {color:#ddddff !important;} :visited, :visited * {color:#ddffdd !important;}\";document.createStyleSheet?document.createStyleSheet(\"javascript:'\"+styles+\"' \"):((newSS=document.createElement(\"link\")).rel=\"stylesheet\",newSS.href=\"data:text/css,\"+escape(styles),document.getElementsByTagName(\"head\")[0].appendChild(newSS)); })();", null
@@ -334,7 +336,11 @@ class SmartCookieWebClient(
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
         currentUrl = url
         if(userPreferences.firstLaunch){
-            //view.loadUrl("file:///android_asset/onboarding.html")
+            if(Locale.getDefault().getLanguage().equals("en")){
+                view.loadUrl("file:///android_asset/onboarding.html")
+                currentUrl = ""
+            }
+
             userPreferences.firstLaunch = false
         }
         if(url.contains("https://homepage")){
