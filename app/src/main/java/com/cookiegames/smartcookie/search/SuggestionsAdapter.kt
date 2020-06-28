@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Filter
 import android.widget.Filterable
+import com.cookiegames.smartcookie.browser.SuggestionNumChoice
 import io.reactivex.*
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
@@ -143,12 +144,22 @@ class SuggestionsAdapter(
     }
 
     private fun getBookmarksForQuery(query: String): Single<List<Bookmark.Entry>> =
-        Single.fromCallable {
+            Single.fromCallable {
+                var choice = 5
+                // TODO: UPDATE HERE TOO!!
+
+                if(userPreferences.suggestionChoice == SuggestionNumChoice.THREE){ choice = 3 }
+                else if(userPreferences.suggestionChoice == SuggestionNumChoice.FOUR){ choice = 4 }
+                else if(userPreferences.suggestionChoice == SuggestionNumChoice.FIVE){ choice = 5 }
+                else if(userPreferences.suggestionChoice == SuggestionNumChoice.SIX){ choice = 6 }
+                else if(userPreferences.suggestionChoice == SuggestionNumChoice.SEVEN){ choice = 7 }
+                else if(userPreferences.suggestionChoice == SuggestionNumChoice.EIGHT){ choice = 8 }
+
             (allBookmarks.filter {
                 it.title.toLowerCase(Locale.getDefault()).startsWith(query)
             } + allBookmarks.filter {
                 it.url.contains(query)
-            }).distinct().take(MAX_SUGGESTIONS)
+            }).distinct().take(choice)
         }
 
     private fun Observable<CharSequence>.results(): Flowable<List<WebPage>> = this
@@ -199,16 +210,21 @@ class SuggestionsAdapter(
                 }
         }
         .map { (bookmarks, history, searches) ->
-            val bookmarkCount = MAX_SUGGESTIONS - 2.coerceAtMost(history.size) - 1.coerceAtMost(searches.size)
-            val historyCount = MAX_SUGGESTIONS - bookmarkCount.coerceAtMost(bookmarks.size) - 1.coerceAtMost(searches.size)
-            val searchCount = MAX_SUGGESTIONS - bookmarkCount.coerceAtMost(bookmarks.size) - historyCount.coerceAtMost(history.size)
+            var choice = 5
+            // TODO: UPDATE HERE TOO!!
+           if(userPreferences.suggestionChoice == SuggestionNumChoice.THREE){ choice = 3 }
+            else if(userPreferences.suggestionChoice == SuggestionNumChoice.FOUR){ choice = 4 }
+            else if(userPreferences.suggestionChoice == SuggestionNumChoice.FIVE){ choice = 5 }
+            else if(userPreferences.suggestionChoice == SuggestionNumChoice.SIX){ choice = 6 }
+            else if(userPreferences.suggestionChoice == SuggestionNumChoice.SEVEN){ choice = 7 }
+            else if(userPreferences.suggestionChoice == SuggestionNumChoice.EIGHT){ choice = 8 }
+            val bookmarkCount = choice - 2.coerceAtMost(history.size) - 1.coerceAtMost(searches.size)
+            val historyCount = choice - bookmarkCount.coerceAtMost(bookmarks.size) - 1.coerceAtMost(searches.size)
+            val searchCount = choice - bookmarkCount.coerceAtMost(bookmarks.size) - historyCount.coerceAtMost(history.size)
 
             bookmarks.take(bookmarkCount) + history.take(historyCount) + searches.take(searchCount)
         }
 
-    companion object {
-        private const val MAX_SUGGESTIONS = 5
-    }
 
     private class SearchFilter(
         private val suggestionsAdapter: SuggestionsAdapter

@@ -67,11 +67,11 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
             onClick = ::showDownloadLocationDialog
         )
 
-      /* clickableDynamicPreference(
+       clickableDynamicPreference(
                 preference = SETTINGS_SUGGESTIONS_NUM,
                 summary = userPreferences.suggestionChoice.toString(),
                 onClick = ::showSuggestionNumPicker
-        )*/
+        )
 
         clickableDynamicPreference(
             preference = SETTINGS_HOME,
@@ -128,14 +128,13 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
             val stringArray = resources.getStringArray(R.array.suggest)
             val values = SuggestionNumChoice.values().map {
                 Pair(it, when (it) {
-                    SuggestionNumChoice.ONE -> stringArray[0]
-                    SuggestionNumChoice.TWO -> stringArray[1]
-                    SuggestionNumChoice.THREE -> stringArray[2]
-                    SuggestionNumChoice.FOUR -> stringArray[3]
-                    SuggestionNumChoice.FIVE -> stringArray[4]
-                    SuggestionNumChoice.SIX -> stringArray[5]
-                    SuggestionNumChoice.SEVEN -> stringArray[6]
-                    SuggestionNumChoice.EIGHT -> stringArray[7]
+                    SuggestionNumChoice.THREE -> stringArray[0]
+                    SuggestionNumChoice.FOUR -> stringArray[1]
+                    SuggestionNumChoice.FIVE -> stringArray[2]
+                    SuggestionNumChoice.SIX -> stringArray[3]
+                    SuggestionNumChoice.SEVEN -> stringArray[4]
+                    SuggestionNumChoice.EIGHT -> stringArray[5]
+                    else -> stringArray[2]
                 })
             }
             withSingleChoiceItems(values, userPreferences.suggestionChoice) {

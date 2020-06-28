@@ -29,12 +29,12 @@ class SearchEngineProvider @Inject constructor(
      */
     fun provideSearchSuggestions(): SuggestionsRepository =
         when (userPreferences.searchSuggestionChoice) {
-            0 -> GoogleSuggestionsModel(okHttpClient, requestFactory, application, logger)
-            1 -> DuckSuggestionsModel(okHttpClient, requestFactory, application, logger)
-            2 -> BaiduSuggestionsModel(okHttpClient, requestFactory, application, logger)
-            3 -> NaverSuggestionsModel(okHttpClient, requestFactory, application, logger)
+            0 -> GoogleSuggestionsModel(okHttpClient, requestFactory, application, logger, userPreferences)
+            1 -> DuckSuggestionsModel(okHttpClient, requestFactory, application, logger, userPreferences)
+            2 -> BaiduSuggestionsModel(okHttpClient, requestFactory, application, logger, userPreferences)
+            3 -> NaverSuggestionsModel(okHttpClient, requestFactory, application, logger, userPreferences)
             4 -> NoOpSuggestionsRepository()
-            else -> GoogleSuggestionsModel(okHttpClient, requestFactory, application, logger)
+            else -> GoogleSuggestionsModel(okHttpClient, requestFactory, application, logger, userPreferences)
         }
 
     /**

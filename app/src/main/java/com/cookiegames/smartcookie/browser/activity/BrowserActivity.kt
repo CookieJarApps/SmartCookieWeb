@@ -44,11 +44,13 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Point
+import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
@@ -79,6 +81,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.graphics.drawable.toDrawable
+import androidx.core.graphics.toColor
 import androidx.core.net.toUri
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -94,6 +98,7 @@ import kotlinx.android.synthetic.main.browser_content.*
 import kotlinx.android.synthetic.main.search.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.video_loading_progress.*
 import java.io.IOException
 import javax.inject.Inject
 import kotlin.system.exitProcess
@@ -1483,6 +1488,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     override fun updateProgress(progress: Int) {
         setIsLoading(progress < 100)
         progress_view.progress = progress
+
+
     }
 
     protected fun addItemToHistory(title: String?, url: String) {

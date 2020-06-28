@@ -1,8 +1,12 @@
 package com.cookiegames.smartcookie.search.suggestions
 
+import android.app.Activity
+import android.util.Log
+import com.cookiegames.smartcookie.browser.SuggestionNumChoice
 import com.cookiegames.smartcookie.database.SearchSuggestion
 import com.cookiegames.smartcookie.extensions.safeUse
 import com.cookiegames.smartcookie.log.Logger
+import com.cookiegames.smartcookie.preference.UserPreferences
 import io.reactivex.Single
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
@@ -22,7 +26,8 @@ abstract class BaseSuggestionsModel internal constructor(
     private val requestFactory: RequestFactory,
     private val encoding: String,
     locale: Locale,
-    private val logger: Logger
+    private val logger: Logger,
+    private val userPreferences: UserPreferences
 ) : SuggestionsRepository {
 
     private val language = locale.language.takeIf(String::isNotEmpty) ?: DEFAULT_LANGUAGE
@@ -54,11 +59,20 @@ abstract class BaseSuggestionsModel internal constructor(
 
                     return@fromCallable emptyList<SearchSuggestion>()
                 }
-
+                var choice = 2
+                // TODO: CONVERT THIS TO INT WHEN I HAVE THE TIME - THIS WORKS FOR NOW
+                if(userPreferences.suggestionChoice == SuggestionNumChoice.THREE){ choice = 3 }
+                else if(userPreferences.suggestionChoice == SuggestionNumChoice.FOUR){ choice = 4 }
+                else if(userPreferences.suggestionChoice == SuggestionNumChoice.FIVE){ choice = 5 }
+                else if(userPreferences.suggestionChoice == SuggestionNumChoice.SIX){ choice = 6 }
+                else if(userPreferences.suggestionChoice == SuggestionNumChoice.SEVEN){ choice = 7 }
+                else if(userPreferences.suggestionChoice == SuggestionNumChoice.EIGHT){ choice = 8 }
+                Log.d("testtag", userPreferences.suggestionChoice.toString())
                 return@fromCallable client.downloadSuggestionsForQuery(query, language)
                     ?.body
                     ?.safeUse(::parseResults)
-                    ?.take(MAX_RESULTS) ?: emptyList()
+                    ?.take(choice) ?: emptyList()
+
             }
         }
 

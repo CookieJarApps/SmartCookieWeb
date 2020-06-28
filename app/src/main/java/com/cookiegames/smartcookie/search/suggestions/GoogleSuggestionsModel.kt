@@ -1,5 +1,6 @@
 package com.cookiegames.smartcookie.search.suggestions
 
+import android.app.Activity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.constant.UTF8
 import com.cookiegames.smartcookie.database.SearchSuggestion
@@ -7,6 +8,7 @@ import com.cookiegames.smartcookie.extensions.preferredLocale
 import com.cookiegames.smartcookie.log.Logger
 import android.app.Application
 import android.util.Log
+import com.cookiegames.smartcookie.preference.UserPreferences
 import io.reactivex.Single
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
@@ -21,8 +23,9 @@ class GoogleSuggestionsModel(
     okHttpClient: Single<OkHttpClient>,
     requestFactory: RequestFactory,
     application: Application,
-    logger: Logger
-) : BaseSuggestionsModel(okHttpClient, requestFactory, UTF8, application.preferredLocale, logger) {
+    logger: Logger,
+    userPreferences: UserPreferences
+) : BaseSuggestionsModel(okHttpClient, requestFactory, UTF8, application.preferredLocale, logger, userPreferences) {
 
     private val searchSubtitle = application.getString(R.string.suggestion)
 

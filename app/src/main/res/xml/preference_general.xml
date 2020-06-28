@@ -51,9 +51,9 @@
             android:key="suggestions_choice"
             android:singleLineTitle="false"
             android:title="@string/search_suggestions"/>
-        <!-- <Preference
+         <Preference
             android:key="suggestions_number"
             android:singleLineTitle="false"
-            android:title="@string/suggest"/> -->
+            android:title="@string/suggest"/>
     </PreferenceCategory>
 </PreferenceScreen>
