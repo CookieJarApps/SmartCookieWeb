@@ -361,6 +361,8 @@
     <string name="language_not_supported">Idioma não suportado</string>
     <string name="language_not_supported_text">Infelizmente, a loja de extensões ainda não está disponível no seu idioma. Utilize o botão abaixo para continuar em inglês.</string>
     <string name="extensions">Extensões</string>
+    <string name="extensions_enable">Ativar extensões</string>
+    <string name="extensions_settings">Definições de extensões</string>
     <string name="extensions_description">Descarregar extensões&#8230;</string>
     <string name="extensions_store">Loja de extensões</string>
     <string name="extensions_list">Lista de extensões</string>
@@ -386,5 +388,14 @@
     <string name="backup_settings">Backup de definições</string>
     <string name="backup_bookmarks">Backup de marcadores</string>
     <string name="reset_settings">Definições repostas. Estamos a fechar a aplicação…</string>
+    <string name="force_zoom">Impor zoom</string>
+    <string name="dark_mode">Modo escuro</string>
+    <string name="submit">Submeter extensão</string>
+    <string name="translator">Tradutor (beta)</string>
+    <string name="coming_soon">Mais algumas a caminho...</string>
+    <string name="navbar_col">Cor da barra de navegação</string>
+    <string name="color">Cor</string>
+    <string name="looknfeel">Definições de aspeto</string>
+    <string name="customize">Definições de personalização</string>
     <!-- finish pages -->
 </resources>
