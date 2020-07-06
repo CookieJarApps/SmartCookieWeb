@@ -10,6 +10,11 @@
     android:orientation="vertical"
     >
 
+    <FrameLayout
+        android:id="@+id/tabs_toolbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -38,10 +43,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:progressColor="?attr/colorAccent" />
     </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/tabs_toolbar_container"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"/>
 
 </LinearLayout>

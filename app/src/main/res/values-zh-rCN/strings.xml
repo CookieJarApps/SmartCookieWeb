@@ -309,7 +309,7 @@
     <string name="dialog_copy_link">复制链接</string>
     <string name="dialog_rename_folder">重命名文件夹</string>
     <string name="dialog_remove_folder">移除文件夹</string>
-    <string name="dialog_title_close_browser">关闭浏览器</string>
+    <string name="dialog_title_close_browser">关闭标签页</string>
     <string name="dialog_delete_download">删除下载</string>
     <string name="dialog_delete_all_downloads">删除所有下载</string>
     <!-- Search Engines -->
@@ -360,6 +360,8 @@
     <string name="language_not_supported">不支持的语言</string>
     <string name="language_not_supported_text">遗憾的是，扩展商店还没有可用您的语言。请使用下面的按钮继续使用英文。</string>
     <string name="extensions">附加组件</string>
+    <string name="extensions_enable">启用扩展</string>
+    <string name="extensions_settings">扩展设置</string>
     <string name="extensions_description">下载附加组件...</string>
     <string name="extensions_store">附加组件商店</string>
     <string name="extensions_list">附加组件列表</string>
@@ -385,5 +387,14 @@
     <string name="backup_settings">设置备份</string>
     <string name="backup_bookmarks">书签备份</string>
     <string name="reset_settings">设置重置。关闭应用... 请重新打开。</string>
+    <string name="force_zoom">强制缩放</string>
+    <string name="dark_mode">深色模式</string>
+    <string name="submit">提交扩展</string>
+    <string name="translator">翻译 (测试版)</string>
+    <string name="coming_soon">敬请期待。</string>
+    <string name="navbar_col">设置导航栏颜色</string>
+    <string name="color">颜色</string>
+    <string name="looknfeel">外观和感觉设置</string>
+    <string name="customize">自定义设置</string>
     <!-- finish pages -->
 </resources>
