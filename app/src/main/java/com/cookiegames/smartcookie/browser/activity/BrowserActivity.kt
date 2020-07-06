@@ -284,6 +284,11 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         shouldShowTabsInDrawer = userPreferences.showTabsInDrawer
         swapBookmarksAndTabs = userPreferences.bookmarksAndTabsSwapped
 
+        if(!userPreferences.bottomBar){
+            isFullScreen = userPreferences.fullScreenEnabled
+        }
+
+
         // initialize background ColorDrawable
         val primaryColor = ThemeUtils.getPrimaryColor(this)
         backgroundDrawable.color = primaryColor
@@ -1297,6 +1302,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         }
         tabsManager.resumeAll()
         initializePreferences()
+
+        if(!userPreferences.bottomBar){
+            isFullScreen = userPreferences.fullScreenEnabled
+        }
 
         if (isFullScreen) {
             overlayToolbarOnWebView()
