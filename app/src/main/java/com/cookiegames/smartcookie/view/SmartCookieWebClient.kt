@@ -183,16 +183,6 @@ class SmartCookieWebClient(
             )
         }
 
-        if(userPreferences.bottomBar && userPreferences.showTabsInDrawer){
-            view.loadUrl(
-                    "javascript:(function() { document.body.style.margin = \"0px 0px 86px 0px\"; })();")
-        }
-        else if(userPreferences.bottomBar){
-            view.loadUrl(
-                    "javascript:(function() { document.body.style.margin = \"0px 0px 58px 0px\"; })();")
-        }
-
-
         if (view.title == null || view.title.isEmpty()) {
             smartCookieView.titleInfo.setTitle(activity.getString(R.string.untitled))
         } else {
