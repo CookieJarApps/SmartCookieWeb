@@ -236,7 +236,13 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injector.inject(this)
-        setContentView(R.layout.activity_main)
+        if(userPreferences.bottomBar){
+            setContentView(R.layout.activity_main_btm)
+        }
+        else{
+            setContentView(R.layout.activity_main)
+        }
+
         ButterKnife.bind(this)
 
         if (isIncognito()) {
@@ -401,27 +407,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 searchView?.setText("")
             } else {
                 refreshOrStop()
-            }
-        }
-
-        if (userPreferences.bottomBar) {
-            setWebViewTranslation(0f)
-            val searchEdit = customView.findViewById<SearchView>(R.id.search)
-            searchEdit.setOnFocusChangeListener { searchEdit, _ ->
-                if (searchEdit?.hasFocus() == true && userPreferences.bottomBar) {
-                    toolbar_layout.translationY = 0f
-
-                } else if(userPreferences.bottomBar){
-                    val displayMetrics = DisplayMetrics()
-                    windowManager.defaultDisplay.getRealMetrics(displayMetrics)
-                    if(userPreferences.showTabsInDrawer){
-                        toolbar_layout.translationY = getScreenSize() - 56f
-                    }
-                    else{
-                        toolbar_layout.translationY = getScreenSize() - 112f
-
-                    }
-                }
             }
         }
 
@@ -621,13 +606,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     private fun initializePreferences() {
         val currentView = tabsManager.currentTab
 
-        if(userPreferences.bottomBar){
-            isFullScreen = true
-        }
-        else{
-            isFullScreen = userPreferences.fullScreenEnabled
-        }
-
         webPageBitmap?.let { webBitmap ->
             if (!isIncognito() && !isColorMode() && !isDarkTheme) {
                 changeToolbarBackground(webBitmap, null)
@@ -654,9 +632,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     public override fun onWindowVisibleToUserAfterResume() {
         super.onWindowVisibleToUserAfterResume()
-        if(!userPreferences.bottomBar){
-            toolbar_layout.translationY = 0f
-        }
+        toolbar_layout.translationY = 0f
         setWebViewTranslation(toolbar_layout.height.toFloat())
     }
 
@@ -872,13 +848,13 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     private fun deleteBookmark(title: String, url: String) {
         bookmarkManager.deleteBookmark(Bookmark.Entry(url, title, 0, Bookmark.Folder.Root))
-            .subscribeOn(databaseScheduler)
-            .observeOn(mainScheduler)
-            .subscribe { boolean ->
-                if (boolean) {
-                    handleBookmarksChange()
+                .subscribeOn(databaseScheduler)
+                .observeOn(mainScheduler)
+                .subscribe { boolean ->
+                    if (boolean) {
+                        handleBookmarksChange()
+                    }
                 }
-            }
     }
 
     private fun putToolbarInRoot() {
@@ -905,26 +881,22 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     private fun setWebViewTranslation(translation: Float) =
-        if(userPreferences.bottomBar){
-            currentTabView?.layoutParams?.height = getScreenSize() - 56
-            currentTabView?.translationY = 0f
-        }
-        else if (isFullScreen) {
-            currentTabView?.translationY = translation
-        }
-        else {
-            currentTabView?.translationY = 0f
-        }
+            if (isFullScreen) {
+                currentTabView?.translationY = translation
+            }
+            else {
+                currentTabView?.translationY = 0f
+            }
 
     /**
      * method that shows a dialog asking what string the user wishes to search
      * for. It highlights the text entered.
      */
     private fun findInPage() = BrowserDialog.showEditText(
-        this,
-        R.string.action_find,
-        R.string.action_find,
-        R.string.action_find
+            this,
+            R.string.action_find,
+            R.string.action_find,
+            R.string.action_find
     ) { text ->
         if (text.isNotEmpty()) {
             findResult = presenter?.findInPage(text)
@@ -950,14 +922,14 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             return
         }
         BrowserDialog.showWithIcons(this, getString(R.string.dialog_title_close_browser),
-            DialogItem(title = R.string.close_tab, icon = drawable(R.drawable.ic_delete_this)) {
-                presenter?.deleteTab(position)
-            },
-            DialogItem(title = R.string.close_other_tabs, icon = drawable(R.drawable.ic_delete_other)) {
-                presenter?.closeAllOtherTabs()
-            },
-            DialogItem(title = R.string.close_app, icon = drawable(R.drawable.ic_action_delete), onClick = this::closeApp),
-            DialogItem(title = R.string.close_all_tabs, icon = drawable(R.drawable.ic_delete_all), onClick = this::closeBrowser))
+                DialogItem(title = R.string.close_tab, icon = drawable(R.drawable.ic_delete_this)) {
+                    presenter?.deleteTab(position)
+                },
+                DialogItem(title = R.string.close_other_tabs, icon = drawable(R.drawable.ic_delete_other)) {
+                    presenter?.closeAllOtherTabs()
+                },
+                DialogItem(title = R.string.close_app, icon = drawable(R.drawable.ic_action_delete), onClick = this::closeApp),
+                DialogItem(title = R.string.close_all_tabs, icon = drawable(R.drawable.ic_delete_all), onClick = this::closeBrowser))
 
     }
 
@@ -988,7 +960,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if(url!!.contains("http://") || url.contains("https://")){
             search_ssl_status.setImageDrawable(createSslDrawableForState(sslState))
         }
-       else{
+        else{
             search_ssl_status.setImageDrawable(null)
         }
 
@@ -1032,9 +1004,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
         content_frame.addView(view, 0, MATCH_PARENT)
 
-        if (isFullScreen && !userPreferences.bottomBar) {
+        if (isFullScreen) {
             view.translationY = toolbar_layout.height + toolbar_layout.translationY
-        } else {
+        }
+        else {
             view.translationY = 0f
         }
 
@@ -1043,15 +1016,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         val height = displayMetrics.heightPixels
 
         currentTabView = view
-
-
-        if(userPreferences.bottomBar && userPreferences.showTabsInDrawer){
-            currentTabView?.layoutParams?.height = height - 78 //76 + 2
-        }
-        else if(userPreferences.bottomBar){
-            currentTabView?.layoutParams?.height = height - 58 //58 + 2
-
-        }
 
         view.requestFocus()
 
@@ -1069,12 +1033,12 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     override fun showBlockedLocalFileDialog(onPositiveClick: Function0<Unit>) {
         AlertDialog.Builder(this)
-            .setCancelable(true)
-            .setTitle(R.string.title_warning)
-            .setMessage(R.string.message_blocked_local)
-            .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.action_open) { _, _ -> onPositiveClick.invoke() }
-            .resizeAndShow()
+                .setCancelable(true)
+                .setTitle(R.string.title_warning)
+                .setMessage(R.string.message_blocked_local)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.action_open) { _, _ -> onPositiveClick.invoke() }
+                .resizeAndShow()
     }
 
     override fun showSnackbar(@StringRes resource: Int) = snackbar(resource)
@@ -1116,15 +1080,15 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
         if (!url.isSpecialUrl()) {
             bookmarkManager.isBookmark(url)
-                .subscribeOn(databaseScheduler)
-                .observeOn(mainScheduler)
-                .subscribe { boolean ->
-                    if (boolean) {
-                        deleteBookmark(title, url)
-                    } else {
-                        addBookmark(title, url)
+                    .subscribeOn(databaseScheduler)
+                    .observeOn(mainScheduler)
+                    .subscribe { boolean ->
+                        if (boolean) {
+                            deleteBookmark(title, url)
+                        } else {
+                            addBookmark(title, url)
+                        }
                     }
-                }
         }
     }
 
@@ -1136,10 +1100,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     override fun handleHistoryChange() {
         historyPageFactory
-            .buildPage()
-            .subscribeOn(databaseScheduler)
-            .observeOn(mainScheduler)
-            .subscribeBy(onSuccess = { tabsManager.currentTab?.reload() })
+                .buildPage()
+                .subscribeOn(databaseScheduler)
+                .observeOn(mainScheduler)
+                .subscribeBy(onSuccess = { tabsManager.currentTab?.reload() })
     }
 
     protected fun handleNewIntent(intent: Intent) {
@@ -1167,7 +1131,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             WebUtils.clearWebStorage()     // We want to make sure incognito mode is secure
         }
     }
-    
+
     fun getScreenSize(): Int{
         var display: Display = getWindowManager().getDefaultDisplay()
         var size: Point = Point()
@@ -1179,7 +1143,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         var resources = getResources()
         var resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android")
         if (resourceId > 0) {
-                height= resources.getDimensionPixelSize(resourceId)
+            height= resources.getDimensionPixelSize(resourceId)
         }
 
         if(userPreferences.showTabsInDrawer){
@@ -1200,13 +1164,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if (isFullScreen) {
             showActionBar()
 
-            if(userPreferences.bottomBar){
-                toolbar_layout.translationY = getScreenSize() - 56f
-                setWebViewTranslation(0f)
-            }
-            else{
-                setWebViewTranslation(toolbar_layout.height.toFloat())
-            }
+            setWebViewTranslation(toolbar_layout.height.toFloat())
 
         }
 
@@ -1215,36 +1173,24 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     private fun initializeToolbarHeight(configuration: Configuration) =
-        ui_layout.doOnLayout {
-            // TODO externalize the dimensions
-            val toolbarSize = if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                R.dimen.toolbar_height_portrait
-            } else {
-                R.dimen.toolbar_height_landscape
-            }
-            toolbar.layoutParams = (toolbar.layoutParams as ConstraintLayout.LayoutParams).apply {
-                height = dimen(toolbarSize)
-            }
-            toolbar.minimumHeight = toolbarSize
-            toolbar.doOnLayout {
-                if(userPreferences.bottomBar){
-                    val displayMetrics = DisplayMetrics()
-                    windowManager.defaultDisplay.getRealMetrics(displayMetrics)
-                   if(userPreferences.showTabsInDrawer){
-                       toolbar_layout.translationY = getScreenSize() - 56f
-                   }
-                   else{
-                       toolbar_layout.translationY = getScreenSize() - 112f
+            ui_layout.doOnLayout {
+                // TODO externalize the dimensions
+                val toolbarSize = if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                    R.dimen.toolbar_height_portrait
+                } else {
+                    R.dimen.toolbar_height_landscape
+                }
 
-                   }
-                    setWebViewTranslation(0f)
+                toolbar.layoutParams = (toolbar.layoutParams as LinearLayout.LayoutParams).apply {
+                    height = dimen(toolbarSize)
                 }
-                else{
+                toolbar.minimumHeight = toolbarSize
+                toolbar.doOnLayout {
                     setWebViewTranslation(toolbar_layout.height.toFloat())
+
                 }
+                toolbar.requestLayout()
             }
-            toolbar.requestLayout()
-        }
 
     override fun closeBrowser() {
         currentTabView.removeFromParent()
@@ -1444,7 +1390,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     currentUiColor = animatedColor
                     toolbar_layout.setBackgroundColor(animatedColor)
                     searchBackground?.background?.tint(
-                        DrawableUtils.mixColor(interpolatedTime, startSearchColor, finalSearchColor)
+                            DrawableUtils.mixColor(interpolatedTime, startSearchColor, finalSearchColor)
                     )
                 }
             }
@@ -1454,11 +1400,11 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     private fun getSearchBarColor(requestedColor: Int, defaultColor: Int): Int =
-        if (requestedColor == defaultColor) {
-            if (isDarkTheme) DrawableUtils.mixColor(0.25f, defaultColor, Color.WHITE) else Color.WHITE
-        } else {
-            DrawableUtils.mixColor(0.25f, requestedColor, Color.WHITE)
-        }
+            if (requestedColor == defaultColor) {
+                if (isDarkTheme) DrawableUtils.mixColor(0.25f, defaultColor, Color.WHITE) else Color.WHITE
+            } else {
+                DrawableUtils.mixColor(0.25f, requestedColor, Color.WHITE)
+            }
 
     @ColorInt
     override fun getUiColor(): Int = currentUiColor
@@ -1494,8 +1440,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         }
 
         historyModel.visitHistoryEntry(url, title)
-            .subscribeOn(databaseScheduler)
-            .subscribe()
+                .subscribeOn(databaseScheduler)
+                .subscribe()
     }
 
     /**
@@ -1525,15 +1471,15 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
      */
     private fun openHistory() {
         presenter?.newTab(
-            historyPageInitializer,
-            true
+                historyPageInitializer,
+                true
         )
     }
 
     private fun openDownloads() {
         presenter?.newTab(
-            downloadPageInitializer,
-            true
+                downloadPageInitializer,
+                true
         )
     }
 
@@ -1647,10 +1593,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             arrayOf(Intent(MediaStore.ACTION_IMAGE_CAPTURE).apply {
                 putExtra("PhotoPath", cameraPhotoPath)
                 putExtra(
-                    MediaStore.EXTRA_OUTPUT,
-                    Uri.fromFile(Utils.createImageFile().also { file ->
-                        cameraPhotoPath = "file:${file.absolutePath}"
-                    })
+                        MediaStore.EXTRA_OUTPUT,
+                        Uri.fromFile(Utils.createImageFile().also { file ->
+                            cameraPhotoPath = "file:${file.absolutePath}"
+                        })
                 )
             })
         } catch (ex: IOException) {
@@ -1826,16 +1772,16 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if (enabled) {
             if (immersive) {
                 decor.systemUiVisibility = (SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    or SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    or SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    or SYSTEM_UI_FLAG_FULLSCREEN
-                    or SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+                        or SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        or SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        or SYSTEM_UI_FLAG_FULLSCREEN
+                        or SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
             } else {
                 decor.systemUiVisibility = SYSTEM_UI_FLAG_VISIBLE
             }
             window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN)
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN)
         } else {
             window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
             decor.systemUiVisibility = SYSTEM_UI_FLAG_VISIBLE
@@ -1882,14 +1828,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 val hideAnimation = object : Animation() {
                     override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
 
-                        if(userPreferences.bottomBar){
-                            setWebViewTranslation(0f)
-                        }
-                        else{
-                            val trans = interpolatedTime * height
-                            toolbar_layout.translationY = -trans
-                            setWebViewTranslation(height - trans)
-                        }
+                        val trans = interpolatedTime * height
+                        toolbar_layout.translationY = -trans
+                        setWebViewTranslation(height - trans)
 
                     }
                 }
@@ -1922,25 +1863,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 val show = object : Animation() {
                     override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
 
-                        if(userPreferences.bottomBar){
-                            val trans = interpolatedTime * totalHeight
-
-                            val displayMetrics = DisplayMetrics()
-                            windowManager.defaultDisplay.getRealMetrics(displayMetrics)
-                            if(userPreferences.showTabsInDrawer){
-                                toolbar_layout.translationY = getScreenSize() - 56f
-                            }
-                            else{
-                                toolbar_layout.translationY = getScreenSize() - 112f
-
-                            }
-                            setWebViewTranslation(0f)
-                        }
-                        else{
-                            val trans = interpolatedTime * totalHeight
-                            toolbar_layout.translationY = trans - totalHeight
-                            setWebViewTranslation(trans)
-                        }
+                        val trans = interpolatedTime * totalHeight
+                        toolbar_layout.translationY = trans - totalHeight
+                        setWebViewTranslation(trans)
 
                     }
                 }
@@ -2068,12 +1993,12 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
      * If the [drawer] is open, close it and return true. Return false otherwise.
      */
     private fun DrawerLayout.closeDrawerIfOpen(drawer: View): Boolean =
-        if (isDrawerOpen(drawer)) {
-            closeDrawer(drawer)
-            true
-        } else {
-            false
-        }
+            if (isDrawerOpen(drawer)) {
+                closeDrawer(drawer)
+                true
+            } else {
+                false
+            }
 
     companion object {
 

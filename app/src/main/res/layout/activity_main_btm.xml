@@ -17,15 +17,17 @@
                 android:id="@+id/ui_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_weight="1">
 
-                    <include layout="@layout/toolbar" />
-
-
-
-                <include layout="@layout/browser_content"/>
+                <include
+                    layout="@layout/browser_content"/>
 
                 <include layout="@layout/search_interface"/>
+
+                <include
+                    layout="@layout/toolbar_btm" />
+
             </LinearLayout>
 
             <FrameLayout

@@ -5,34 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/colorPrimary"
-    android:clipChildren="false"
-    android:clipToPadding="false"
-    android:elevation="3dp"
+    android:elevation="2dp"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     >
-
-    <FrameLayout
-        android:id="@+id/tabs_toolbar_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:paddingBottom="0dp"
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
-        android:paddingBottom="0dp"
+        android:paddingTop="2dp"
         app:contentInsetEnd="0dp"
         app:contentInsetStart="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabs_toolbar_container"
         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/progressBackgroundColor">
 
     <com.anthonycr.progress.AnimatedProgressBar
         android:id="@+id/progress_view"
@@ -44,5 +37,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:progressColor="?attr/colorAccent" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/tabs_toolbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
 
 </LinearLayout>
