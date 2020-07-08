@@ -531,7 +531,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
         override fun onFocusChange(v: View, hasFocus: Boolean) {
             val currentView = tabsManager.currentTab
-            if (!hasFocus && currentView != null) {
+            if(currentView?.url!!.contains("data:text/html;charset=utf-8")){
+
+            }
+            else if (!hasFocus && currentView != null) {
                 setIsLoading(currentView.progress < 100)
                 updateUrl(currentView.url, false)
             } else if (hasFocus && currentView != null) {
@@ -555,7 +558,13 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             val url = currentView.url
             if (!url.isSpecialUrl()) {
                 if (searchView?.hasFocus() == false) {
-                    searchView?.setText(url)
+                    if(url.contains("data:text/html;charset=utf-8")){
+
+                    }
+                    else{
+                        searchView?.setText(url)
+                    }
+
                 }
             }
         }
