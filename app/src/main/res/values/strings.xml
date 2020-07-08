@@ -318,7 +318,7 @@
     <string name="block_ad_remote_refresh_frequency_description">For remote hosts file</string>
     <string name="block_ad_refresh_now">Refresh hosts now</string>
 
-    <string name="webrtc_support">WebRTC Support</string>
+    <string name="webrtc_support">Allow WebRTC permission requests</string>
     <string name="save_data">Request \'Save-Data\'</string>
 
     <!-- debug strings -->
