@@ -149,13 +149,13 @@
     <string name="search_suggestions_off">Nessun suggerimento di ricerca</string>
     <string name="http_proxy">Proxy HTTP</string>
     <string-array name="proxy_choices_array">
-        <item>Nessuna</item>
+        <item>Alcuno</item>
         <item>Orbot</item>
         <item>I2P</item>
         <item>Manuale</item>
     </string-array>
     <string-array name="password_set_array">
-        <item>Nessuna</item>
+        <item>Alcuna</item>
         <item>Personalizzata</item>
     </string-array>
     <string name="manual_proxy">Proxy manuale</string>
@@ -329,7 +329,7 @@
     <string name="block_malware">Blocca siti dannosi</string>
     <string name="block_sites">Blocco siti personalizzato</string>
     <string name="block_sites_title">Blocco siti personalizzato (separa siti con una virgola)</string>
-    <string name="none">Nessuno</string>
+    <string name="none">Alcuno</string>
     <string name="block_info">Inserisci le parole da bloccare negli indirizzi (separate da una virgola).</string>
     <string name="startpage">Applica tema alla pagina iniziale</string>
     <string name="allpage">Applica tema alle pagine web (beta)</string>
@@ -361,13 +361,15 @@
     <string name="language_not_supported">Lingua non supportata</string>
     <string name="language_not_supported_text">Sfortunatamente, il negozio estensioni non è ancora disponibile nella tua lingua. Usa il pulsante sottostante per continuare comunque in inglese.</string>
     <string name="extensions">Estensioni</string>
+    <string name="extensions_enable">Abilita estensioni</string>
+    <string name="extensions_settings">Impostazioni estensioni</string>
     <string name="extensions_description">Scarica estensioni&#8230;</string>
     <string name="extensions_store">Negozio estensioni</string>
     <string name="extensions_list">Lista estensioni</string>
     <string name="uninstall_extension">Disinstalla estensione</string>
     <string name="uninstall_more">Inserisci il nome dell\'estensione che desideri disinstallare</string>
     <string name="show_extra">Mostra opzioni di menu aggiuntive</string>
-    <string name="incognito_cookies_new">La modalità privata viene eseguita in una finestra separata che viene resettata dopo ogni sessione. Le preferenze dei cookie in modalità privata sono ora controllate dalle normali preferenze relative ai cookie.</string>
+    <string name="incognito_cookies_new">La modalità privata viene eseguita in una finestra separata che viene azzerata dopo ogni sessione. Le preferenze dei cookie in modalità privata sono ora controllate dalle normali preferenze relative ai cookie.</string>
     <string name="quit_private">Esci dalla modalità privata</string>
     <string name="start_incognito">Agisci sempre come in modalità privata</string>
     <string name="bottom_navbar">Sposta la barra di navigazione in fondo</string>
@@ -386,5 +388,14 @@
     <string name="backup_settings">Backup delle impostazioni</string>
     <string name="backup_bookmarks">Backup dei segnalibri</string>
     <string name="reset_settings">Ripristino impostazioni. Chiusura app... Si prega di riaprirla.</string>
+    <string name="force_zoom">Forza ingrandimento</string>
+    <string name="dark_mode">Modalità scura</string>
+    <string name="submit">Invia estensione</string>
+    <string name="translator">Traduttore (beta)</string>
+    <string name="coming_soon">A breve altre novità...</string>
+    <string name="navbar_col">Imposta colore della barra di navigazione</string>
+    <string name="color">Colore</string>
+    <string name="looknfeel">Impostazioni aspetto e atmosfera</string>
+    <string name="customize">Impostazioni personalizzazione</string>
     <!-- finish pages -->
 </resources>

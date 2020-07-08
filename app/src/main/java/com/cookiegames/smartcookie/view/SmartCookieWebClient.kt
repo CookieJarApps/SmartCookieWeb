@@ -404,9 +404,10 @@ class SmartCookieWebClient(
             val reload = activity.getString(R.string.error_reload)
             val end = "</button> </div></div></div></body></center></html>"
             webview.loadUrl("about:blank")
-            webview.loadDataWithBaseURL(null, color + start + start1 + title + start2 + error + start3 + reload + end, "text/html", "UTF-8", null)
+            webview.loadDataWithBaseURL(failingUrl, color + start + start1 + title + start2 + error + start3 + reload + end, "text/html", "UTF-8", null)
+            uiController.updateUrl(failingUrl, false)
+            currentUrl = failingUrl
             webview.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
-
         }
 
     }
