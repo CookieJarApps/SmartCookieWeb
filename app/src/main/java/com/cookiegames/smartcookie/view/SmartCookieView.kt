@@ -34,6 +34,8 @@ import android.webkit.WebSettings
 import android.webkit.WebSettings.LayoutAlgorithm
 import android.webkit.WebView
 import androidx.collection.ArrayMap
+import androidx.webkit.WebSettingsCompat
+import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.DeviceCapabilities
 import com.cookiegames.smartcookie.isSupported
 import io.reactivex.Observable
@@ -228,6 +230,10 @@ class SmartCookieView(
         networkDisposable = networkConnectivityModel.connectivity()
             .observeOn(mainScheduler)
             .subscribe(::setNetworkAvailable)
+
+        if(WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK) && userPreferences.darkModeExtension) {
+            WebSettingsCompat.setForceDark(webView!!.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
+        }
     }
 
     fun currentSslState(): SslState = smartCookieWebClient.sslState

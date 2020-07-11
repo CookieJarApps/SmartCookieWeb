@@ -35,8 +35,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
+import androidx.webkit.WebSettingsCompat
+import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.browser.SiteBlockChoice
+import com.cookiegames.smartcookie.js.DarkMode
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import java.io.*
@@ -74,7 +77,7 @@ class SmartCookieWebClient(
     @Inject internal lateinit var logger: Logger
     @Inject internal lateinit var textReflowJs: TextReflow
     @Inject internal lateinit var invertPageJs: InvertPage
-
+    @Inject internal lateinit var darkMode: DarkMode
     private var adBlock: AdBlocker
 
     private var urlWithSslError: String? = null
@@ -171,11 +174,6 @@ class SmartCookieWebClient(
         if(url.contains("android_asset/onboarding.html")){
             uiController.updateUrl("", false)
         }
-        if(userPreferences.darkModeExtension){
-            view.evaluateJavascript(
-                    "javascript:(function() { var newSS,styles=\"* {background:black !important; color:grey !important;} :link, :link * {color:#ddddff !important;} :visited, :visited * {color:#ddffdd !important;}\";document.createStyleSheet?document.createStyleSheet(\"javascript:'\"+styles+\"' \"):((newSS=document.createElement(\"link\")).rel=\"stylesheet\",newSS.href=\"data:text/css,\"+escape(styles),document.getElementsByTagName(\"head\")[0].appendChild(newSS)); })();", null
-            )
-        }
 
         if(userPreferences.forceZoom){
             view.loadUrl(
@@ -190,6 +188,9 @@ class SmartCookieWebClient(
         }
         if (smartCookieView.invertPage) {
             view.evaluateJavascript(invertPageJs.provideJs(), null)
+        }
+        if (userPreferences.darkModeExtension && !WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+            view.evaluateJavascript(darkMode.provideJs(), null)
         }
 
         if(userPreferences.cookieBlockEnabled){

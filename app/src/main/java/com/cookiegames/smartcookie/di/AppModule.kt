@@ -30,6 +30,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.annotation.RequiresApi
 import androidx.core.content.getSystemService
 import com.anthonycr.mezzanine.MezzanineGenerator
+import com.cookiegames.smartcookie.js.DarkMode
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
@@ -201,6 +202,9 @@ class AppModule {
 
     @Provides
     fun providesInvertPage(): InvertPage = MezzanineGenerator.InvertPage()
+
+    @Provides
+    fun providesDarkMode(): DarkMode = MezzanineGenerator.DarkMode()
 
 }
 
