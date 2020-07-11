@@ -36,7 +36,7 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
         switchPreference(
                 preference = DARK_MODE,
                 isChecked = userPreferences.darkModeExtension,
-                onCheckChange = { userPreferences.darkModeExtension = it }
+                onCheckChange = { userPreferences.darkModeExtension = it; Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()}
         )
 
         /*switchPreference(
