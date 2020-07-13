@@ -455,6 +455,7 @@
     <string name="customize">Customization settings</string>
 
     <string name="suggest">Suggestion amount</string>
+    <string name="close_on_last_tab">Close browser with last tab</string>
 
     <!-- finish pages -->
 </resources>

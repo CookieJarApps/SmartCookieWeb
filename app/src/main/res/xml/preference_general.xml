@@ -27,6 +27,11 @@
             android:key="force_zoom"
             android:singleLineTitle="false"
             android:title="@string/force_zoom"/>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="last_tab"
+            android:singleLineTitle="false"
+            android:title="@string/close_on_last_tab"/>
         <Preference
             android:key="proxy"
             android:singleLineTitle="false"

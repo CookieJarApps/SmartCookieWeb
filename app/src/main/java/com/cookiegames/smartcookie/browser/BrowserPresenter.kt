@@ -166,7 +166,12 @@ class BrowserPresenter(
             && currentTab != null
             && URLUtil.isFileUrl(currentTab.url)
             && currentTab.url == mapHomepageToCurrentUrl()) {
-            view.closeActivity()
+            if(userPreferences.closeOnLastTab) {
+                view.closeActivity()
+            }
+            else if(!userPreferences.closeOnLastTab && tabsModel.currentTab == null) {
+                newTab(UrlInitializer(mapHomepageToCurrentUrl()), true)
+            }
             return
         } else {
             if (isShown) {
@@ -182,7 +187,12 @@ class BrowserPresenter(
         view.notifyTabViewRemoved(position)
 
         if (afterTab == null) {
-            view.closeBrowser()
+            if(userPreferences.closeOnLastTab){
+                view.closeBrowser()
+            }
+            else{
+                newTab(UrlInitializer(mapHomepageToCurrentUrl()), true)
+            }
             return
         } else if (afterTab !== currentTab) {
             view.notifyTabViewChanged(tabsModel.indexOfCurrentTab())
@@ -218,6 +228,7 @@ class BrowserPresenter(
             if (URLUtil.isFileUrl(url)) {
                 view.showBlockedLocalFileDialog {
                     newTab(UrlInitializer(url), true)
+                    //TODO: MODIFY THIS TO CHANGE INTENT BEHAVIOUR
                     shouldClose = true
                     tabsModel.lastTab()?.isNewTab = true
                 }

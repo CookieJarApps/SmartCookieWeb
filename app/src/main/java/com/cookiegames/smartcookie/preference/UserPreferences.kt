@@ -332,12 +332,14 @@ class UserPreferences @Inject constructor(
 
     var firstLaunch by preferences.booleanPreference(FIRST_LAUNCH, true)
 
+    var closeOnLastTab by preferences.booleanPreference(LAST_TAB, true)
 
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
 private const val WEB_RTC = "webRtc"
 private const val BLOCK_ADS = "AdBlock"
+private const val LAST_TAB = "lastTab"
 private const val BLOCK_IMAGES = "blockimages"
 private const val CLEAR_CACHE_EXIT = "cache"
 private const val COOKIES = "cookies"

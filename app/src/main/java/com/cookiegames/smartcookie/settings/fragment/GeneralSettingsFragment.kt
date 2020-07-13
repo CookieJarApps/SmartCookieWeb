@@ -120,6 +120,12 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
             isChecked = userPreferences.colorModeEnabled,
             onCheckChange = { userPreferences.colorModeEnabled = it }
         )
+
+        switchPreference(
+                preference = SETTINGS_LAST_TAB,
+                isChecked = userPreferences.closeOnLastTab,
+                onCheckChange = { userPreferences.closeOnLastTab = it }
+        )
     }
 
     private fun showSuggestionNumPicker(summaryUpdater: SummaryUpdater) {
@@ -503,6 +509,6 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_SEARCH_ENGINE = "search"
         private const val SETTINGS_SUGGESTIONS = "suggestions_choice"
         private const val SETTINGS_SUGGESTIONS_NUM = "suggestions_number"
-
+        private const val SETTINGS_LAST_TAB = "last_tab"
     }
 }
