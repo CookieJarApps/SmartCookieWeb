@@ -445,4 +445,5 @@
     <string name="coming_soon">À venir…</string>
 
     <string name="suggest">Nombre de suggestions à afficher</string>
+    <string name="close_on_last_tab">Quitter en fermant dernier onglet</string>
 </resources>

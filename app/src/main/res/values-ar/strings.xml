@@ -401,5 +401,7 @@
     <string name="color">اللون</string>
     <string name="looknfeel">إعدادات الشكل والمظهر</string>
     <string name="customize">إعدادات التخصيص</string>
+    <string name="suggest">مبلغ الاقتراح</string>
+    <string name="close_on_last_tab">إغلاق المتصفح مع آخر تبويب</string>
     <!-- finish pages -->
 </resources>

@@ -397,5 +397,7 @@
     <string name="color">Colore</string>
     <string name="looknfeel">Impostazioni aspetto e atmosfera</string>
     <string name="customize">Impostazioni personalizzazione</string>
+    <string name="suggest">Importo suggerimento</string>
+    <string name="close_on_last_tab">Chiudi browser con l\'ultima scheda</string>
     <!-- finish pages -->
 </resources>

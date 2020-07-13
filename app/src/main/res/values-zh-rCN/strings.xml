@@ -396,5 +396,7 @@
     <string name="color">颜色</string>
     <string name="looknfeel">外观和感觉设置</string>
     <string name="customize">自定义设置</string>
+    <string name="suggest">建议金额</string>
+    <string name="close_on_last_tab">关闭最后一个标签的浏览器</string>
     <!-- finish pages -->
 </resources>
