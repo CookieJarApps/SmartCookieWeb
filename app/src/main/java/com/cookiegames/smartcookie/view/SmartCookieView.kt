@@ -234,6 +234,11 @@ class SmartCookieView(
         if(WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK) && userPreferences.darkModeExtension) {
             WebSettingsCompat.setForceDark(webView!!.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
         }
+
+        if(webView?.settings?.userAgentString!!.contains("; wv")){
+            webView?.settings?.userAgentString = webView?.settings?.userAgentString?.replace("; wv","")
+        }
+
     }
 
     fun currentSslState(): SslState = smartCookieWebClient.sslState
