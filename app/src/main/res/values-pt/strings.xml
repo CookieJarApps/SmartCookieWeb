@@ -397,7 +397,7 @@
     <string name="color">Cor</string>
     <string name="looknfeel">Definições de aspeto</string>
     <string name="customize">Definições de personalização</string>
-    <string name="suggest">Quantias sugeridas</string>
-    <string name="close_on_last_tab">Fechar navegador com a última aba</string>
+    <string name="suggest">Número de sugestões</string>
+    <string name="close_on_last_tab">Fechar navegador ao fechar o último separador</string>
     <!-- finish pages -->
 </resources>
