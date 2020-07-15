@@ -454,7 +454,7 @@
     <string name="looknfeel">Look and Feel settings</string>
     <string name="customize">Customization settings</string>
 
-    <string name="suggest">Suggestion amount</string>
+    <string name="suggest">How many suggestions?</string>
     <string name="close_on_last_tab">Close browser with last tab</string>
 
     <!-- finish pages -->
