@@ -1,8 +1,53 @@
 
 package com.cookiegames.smartcookie.browser.activity
 
+import android.app.Activity
+import android.app.NotificationManager
+import android.content.ClipboardManager
+import android.content.Intent
+import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.Point
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
+import android.media.MediaPlayer
+import android.net.Uri
+import android.os.Build
+import android.os.Bundle
+import android.os.Handler
+import android.os.Message
+import android.preference.PreferenceManager
+import android.provider.MediaStore
+import android.util.DisplayMetrics
+import android.util.Log
+import android.view.*
+import android.view.View.*
+import android.view.ViewGroup.LayoutParams
+import android.view.animation.Animation
+import android.view.animation.Transformation
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.webkit.ValueCallback
+import android.webkit.WebChromeClient.CustomViewCallback
+import android.widget.*
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.TextView.OnEditorActionListener
+import androidx.annotation.ColorInt
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.net.toUri
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.palette.graphics.Palette
+import butterknife.ButterKnife
+import com.anthonycr.grant.PermissionsManager
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.IncognitoActivity
+import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.*
 import com.cookiegames.smartcookie.browser.bookmarks.BookmarksDrawerView
@@ -38,58 +83,6 @@ import com.cookiegames.smartcookie.utils.*
 import com.cookiegames.smartcookie.view.*
 import com.cookiegames.smartcookie.view.SearchView
 import com.cookiegames.smartcookie.view.find.FindResults
-import android.app.Activity
-import android.app.NotificationManager
-import android.content.ClipboardManager
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
-import android.content.res.ColorStateList
-import android.content.res.Configuration
-import android.content.res.Resources
-import android.graphics.Bitmap
-import android.graphics.Color
-import android.graphics.Point
-import android.graphics.PorterDuff
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
-import android.media.MediaPlayer
-import android.net.Uri
-import android.os.Build
-import android.os.Bundle
-import android.os.Handler
-import android.os.Message
-import android.preference.PreferenceManager
-import android.provider.MediaStore
-import android.util.DisplayMetrics
-import android.util.Log
-import android.view.*
-import android.view.View.*
-import android.view.ViewGroup.LayoutParams
-import android.view.animation.Animation
-import android.view.animation.Transformation
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
-import android.webkit.ValueCallback
-import android.webkit.WebChromeClient.CustomViewCallback
-import android.widget.*
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.TextView.OnEditorActionListener
-import androidx.annotation.ColorInt
-import androidx.annotation.StringRes
-import androidx.appcompat.app.AlertDialog
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
-import androidx.core.graphics.drawable.toDrawable
-import androidx.core.graphics.toColor
-import androidx.core.net.toUri
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.palette.graphics.Palette
-import butterknife.ButterKnife
-import com.anthonycr.grant.PermissionsManager
-import com.cookiegames.smartcookie.MainActivity
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy
@@ -98,7 +91,6 @@ import kotlinx.android.synthetic.main.browser_content.*
 import kotlinx.android.synthetic.main.search.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
-import kotlinx.android.synthetic.main.video_loading_progress.*
 import java.io.IOException
 import javax.inject.Inject
 import kotlin.system.exitProcess
@@ -442,6 +434,24 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             presenter?.setupTabs(intent)
             setIntent(null)
             proxyUtils.checkForProxy(this)
+        }
+
+        if(userPreferences.firstLaunch && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle(getString(R.string.no_search_suggestions))
+            builder.setMessage(getString(R.string.search_suggestions_4))
+
+
+            builder.setPositiveButton(resources.getString(R.string.action_ok)){dialogInterface , which ->
+
+            }
+            builder.setNegativeButton(resources.getString(R.string.more)){dialogInterface , which ->
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://blog.smartcookieweb.com/2020/07/search-suggestions-no-longer-available.html"))
+                startActivity(browserIntent)
+            }
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.setCancelable(true)
+            alertDialog.show()
         }
     }
 

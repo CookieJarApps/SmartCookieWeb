@@ -457,5 +457,8 @@
     <string name="suggest">Choose number of search suggestions</string>
     <string name="close_on_last_tab">Close browser with last tab</string>
 
+    <string name="more">More Info</string>
+    <string name="no_search_suggestions">No Search Suggestions</string>
+    <string name="search_suggestions_4">Unfortunately, search suggestions in Smart Cookie are no longer available on devices below Android. Press the button below to find out more.</string>
     <!-- finish pages -->
 </resources>
