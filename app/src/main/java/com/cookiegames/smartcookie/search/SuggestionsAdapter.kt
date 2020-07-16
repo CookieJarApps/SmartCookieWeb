@@ -238,7 +238,10 @@ class SuggestionsAdapter(
             if (constraint?.isBlank() != false) {
                 return FilterResults()
             }
-            publishSubject.onNext(constraint.trim())
+            if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+                publishSubject.onNext(constraint.trim())
+            }
+
 
             return FilterResults().apply { count = 1 }
         }
