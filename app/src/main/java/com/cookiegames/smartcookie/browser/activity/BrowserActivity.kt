@@ -92,6 +92,7 @@ import kotlinx.android.synthetic.main.search.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.io.IOException
+import java.util.*
 import javax.inject.Inject
 import kotlin.system.exitProcess
 
@@ -436,7 +437,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             proxyUtils.checkForProxy(this)
         }
 
-        if(userPreferences.firstLaunch && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+        if(userPreferences.firstLaunch && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP && Locale.getDefault().getLanguage().equals("en")){
             val builder = AlertDialog.Builder(this)
             builder.setTitle(getString(R.string.no_search_suggestions))
             builder.setMessage(getString(R.string.search_suggestions_4))
