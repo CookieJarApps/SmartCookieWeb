@@ -67,7 +67,6 @@ abstract class BaseSuggestionsModel internal constructor(
                 else if(userPreferences.suggestionChoice == SuggestionNumChoice.SIX){ choice = 6 }
                 else if(userPreferences.suggestionChoice == SuggestionNumChoice.SEVEN){ choice = 7 }
                 else if(userPreferences.suggestionChoice == SuggestionNumChoice.EIGHT){ choice = 8 }
-                Log.d("testtag", userPreferences.suggestionChoice.toString())
                 return@fromCallable client.downloadSuggestionsForQuery(query, language)
                     ?.body
                     ?.safeUse(::parseResults)

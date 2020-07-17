@@ -26,6 +26,7 @@ import android.view.LayoutInflater
 import android.webkit.URLUtil
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.cookiegames.smartcookie.browser.SuggestionNumChoice
 import javax.inject.Inject
@@ -491,6 +492,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 }
                 userPreferences.searchSuggestionChoice = suggestionsProvider.index
                 summaryUpdater.updateSummary(searchSuggestionChoiceToTitle(suggestionsProvider))
+                Toast.makeText(context, getText(R.string.please_restart), Toast.LENGTH_LONG)
             }
             setPositiveButton(resources.getString(R.string.action_ok), null)
         }

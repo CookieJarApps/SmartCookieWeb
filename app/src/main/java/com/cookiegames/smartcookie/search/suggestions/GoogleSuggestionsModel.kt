@@ -28,20 +28,19 @@ class GoogleSuggestionsModel(
 ) : BaseSuggestionsModel(okHttpClient, requestFactory, UTF8, application.preferredLocale, logger, userPreferences) {
 
     private val searchSubtitle = application.getString(R.string.suggestion)
-
     // https://suggestqueries.google.com/complete/search?output=toolbar&hl={language}&q={query}
     override fun createQueryUrl(query: String, language: String): HttpUrl = HttpUrl.Builder()
         .scheme("https")
         .host("suggestqueries.google.com")
         .encodedPath("/complete/search")
         .addQueryParameter("output", "toolbar")
-        //.addQueryParameter("hl", language)
+        .addQueryParameter("hl", language)
         .addEncodedQueryParameter("q", query)
         .build()
 
     @Throws(Exception::class)
     override fun parseResults(responseBody: ResponseBody): List<SearchSuggestion> {
-        parser.setInput(responseBody.byteStream(), UTF8)
+        parser.setInput(responseBody.byteStream(), "ISO-8859-1")
         val suggestions = mutableListOf<SearchSuggestion>()
         var eventType = parser.eventType
         while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -51,7 +50,6 @@ class GoogleSuggestionsModel(
             }
             eventType = parser.next()
         }
-
         return suggestions
     }
 
