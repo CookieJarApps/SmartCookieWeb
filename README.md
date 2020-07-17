@@ -1,68 +1,86 @@
+<a href="http://smartcookieweb.com"><img src="https://lh3.googleusercontent.com/rmW1K8WcB7q136n0Kaol0R3bPsC-b-6TUvbbYq59oyWR23L7uXPYJk5ObHBMpWunkkM=s180-rw" title="SmartCookieWeb" alt="SmartCookieWeb"></a>
+
 # SmartCookieWeb
-![Rating](https://img.shields.io/static/v1.svg?label=Rating&message=4.5/5&color=green)
-![License](https://img.shields.io/static/v1.svg?label=License&message=MPLv2.0&color=brightgreen)
-![Downloads](https://img.shields.io/static/v1.svg?label=Downloads&message=150,000&color=brightgreen) 
-[![Build Status](https://travis-ci.org/CookieJarApps/SmartCookieWeb.svg?branch=master)](https://travis-ci.org/CookieJarApps/SmartCookieWeb) 
-[![Crowdin](https://badges.crowdin.net/smartcookieweb/localized.svg)](https://translate.cookiejarapps.com)
-[![GitHub stars](https://img.shields.io/github/stars/CookieGamesOfficial/SmartCookieWeb.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/CookieGamesOfficial/SmartCookieWeb)
+
+![Travis (.org)](https://img.shields.io/travis/cookiejarapps/smartcookieweb)
+![GitHub](https://img.shields.io/github/license/cookiejarapps/smartcookieweb)
+![GitHub issues](https://img.shields.io/github/issues-raw/cookiejarapps/smartcookieweb)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/cookiejarapps/smartcookieweb)
+[![Crowdin](https://badges.crowdin.net/smartcookieweb/localized.svg)](https://crowdin.com/project/smartcookieweb)
+![GitHub stars](https://img.shields.io/github/stars/cookiejarapps/smartcookieweb?style=social)
+
+<a href='https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png' height="50"/></a> <a href='https://f-droid.org/en/packages/com.cookiegames.smartcookie/'><img alt='Get it on F-Droid' src='https://gitlab.com/fdroid/artwork/-/raw/master/badge/get-it-on-en.png' height="50"/></a>
 
 
-<a href="https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="60"></a> <a href="https://f-droid.org/packages/com.cookiegames.smartcookie">
-    <img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-    alt="Get it on F-Droid"
-    height="60">
-</a>
+A secure, free and open source WebView-based web browser for Android.
 
+<img src="http://smartcookieweb.com/images/just-device.jpg" height="300">
 
-A secure, free and open source web browser for Android.
+---
 
-# Features
-* Bookmarks
+## Installation
 
-* History
+- To get started with this project, import it into Android Studio or build from the command line with Gradle:
+ 
+ `gradlew assembleDebug` or `./gradlew assembleDebug`
 
-* Search Suggestions
+---
 
-* Custom Search Engine
+## Features
 
-* Incognito mode
+- Modern, clean UI
+- < 4MB download
+- Tons of settings
+- Blocks ads and trackers
 
-* Proxy support
+---
 
-# 2020 Feature Checklist
-- [ ] Convert user scripts to extensions
-- [ ] More extensions
-- [x] Web dark theme
-- [ ] Custom themes
+## Contributing
 
-# License
-SmartCookieWeb uses the Mozilla Public License 2.0
+Contributions are greatly appreciated. Feel free to open an issue or pull request or help translate at (translate.cookiejarapps.com)
 
-# Contributors
-Contributions are greatly appreciated. Here are some people who have recently contributed:
+---
 
-[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/0)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/0)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/1)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/1)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/2)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/2)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/3)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/3)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/4)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/4)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/5)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/5)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/6)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/6)[![](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/images/7)](https://sourcerer.io/fame/CookieGamesOfficial/CookieGamesOfficial/SmartCookieWeb/links/7)
+## Contributors
 
-You can also help translate Smart Cookie here: https://translate.cookiejarapps.com/
+[![](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/images/0)](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/links/0)[![](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/images/1)](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/links/1)[![](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/images/2)](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/links/2)[![](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/images/3)](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/links/3)[![](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/images/4)](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/links/4)[![](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/images/5)](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/links/5)[![](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/images/6)](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/links/6)[![](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/images/7)](https://sourcerer.io/fame/CookieJarApps/CookieGamesOfficial/SmartCookieWeb/links/7)
 
-# How is Smart Cookie different to Lightning?
-SmartCookieWeb is a fork of Lightning Browser (https://github.com/anthonycr/lightning-browser). Here are some of the changes I've made since I started:
-- New, more modern UI
-- Error pages
-- Custom site block 
-- HTTPS everywhere
-- Blocking of insecure sites
-- Blocking of malicious sites
-- Moved some settings to more logical places
-- Theme for homepage and error pages
-- Fixed Travis CI support
-- ~~Enabled Cleartext (HTTP sites now work on Android 9+, whilst the app targets a newer API version unlike Lightning)~~ (fixed in Lightning)
+---
+
+## FAQ
+
+- See (help.cookiejarapps.com)
+
+---
+
+## Support
+
+Need help? Open an issue here, or:
+
+- Email me at `support@cookiegames.co.uk`
+
+---
+
+## License
+
+- **[MPL-2.0 license](https://www.mozilla.org/en-US/MPL/2.0/)**
+- Copyright 2020 © CookieJarApps.
+
+---
+
+## Lightning Browser
+
+SmartCookieWeb is a fork of Lightning Browser intended to continue development. Here are some of the changes I've made since I started the project:
+
+- New, more modern, UI
 - Parental controls
-- Loads of bug fixes
-- Basic JavaScript console
-- Bottom navbar option
+- Malware blocker
+- Bottom navbar
+- Custom navbar colour
+- Bug fixes
+- 'Force Zoom' option
+- 'Inject JavaScript' option
 - Extensions
-- Different, better ad hosts list
-
-# Extensions
-SmartCookieWeb supports extensions. The extension store is available here: (https://extensions.cookiejarapps.com) and the source code for the store is available here: (https://github.com/CookieGamesOfficial/SmartCookieWebExtensions).
+- 'Force HTTPS' option
+- 'Always incognito' option
+- Cookie dialog blocker
