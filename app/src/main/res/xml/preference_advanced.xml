@@ -9,6 +9,12 @@
             android:summary="@string/recommended"
             android:title="@string/window" />
         <SwitchPreference
+            android:defaultValue="false"
+            android:key="block_intent"
+            android:singleLineTitle="false"
+            android:summary="@string/block_intent_summary"
+            android:title="@string/block_intent" />
+        <SwitchPreference
             android:defaultValue="true"
             android:key="allow_cookies"
             android:singleLineTitle="false"

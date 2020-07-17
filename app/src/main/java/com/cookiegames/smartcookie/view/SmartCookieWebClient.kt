@@ -482,6 +482,7 @@ class SmartCookieWebClient(
                 dontResend.sendToTarget()
             }
         }.resizeAndShow()
+
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -501,7 +502,8 @@ class SmartCookieWebClient(
 
         val headers = smartCookieView.requestHeaders
 
-        if (smartCookieView.isIncognito) {
+        if (smartCookieView.isIncognito || userPreferences.blockIntent) {
+
             // If we are in incognito, immediately load, we don't want the url to leave the app
             return continueLoadingUrl(view, url, headers)
         }

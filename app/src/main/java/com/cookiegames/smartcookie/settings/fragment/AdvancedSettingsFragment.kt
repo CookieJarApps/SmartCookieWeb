@@ -57,6 +57,12 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
             isChecked = userPreferences.cookiesEnabled,
             onCheckChange = { userPreferences.cookiesEnabled = it }
         )
+        switchPreference(
+                preference = SETTINGS_BLOCK_INTENT,
+                isChecked = userPreferences.blockIntent,
+                onCheckChange = { userPreferences.blockIntent = it }
+        )
+
 
         switchPreference(
             preference = SETTINGS_COOKIES_INCOGNITO,
@@ -183,6 +189,7 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_RENDERING_MODE = "rendering_mode"
         private const val SETTINGS_URL_CONTENT = "url_contents"
         private const val SETTINGS_TEXT_ENCODING = "text_encoding"
+        private const val SETTINGS_BLOCK_INTENT = "block_intent"
     }
 
 }

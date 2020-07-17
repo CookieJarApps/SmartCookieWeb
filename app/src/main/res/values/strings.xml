@@ -460,5 +460,9 @@
     <string name="more">More Info</string>
     <string name="no_search_suggestions">No Search Suggestions</string>
     <string name="search_suggestions_4">Unfortunately, search suggestions in Smart Cookie are no longer available on devices below Android. Press the button below to find out more.</string>
+
+    <string name="block_intent">Handle all clicked links within this browser</string>
+    <string name="block_intent_summary">Blocks prompt to open links in external applications</string>
+
     <!-- finish pages -->
 </resources>

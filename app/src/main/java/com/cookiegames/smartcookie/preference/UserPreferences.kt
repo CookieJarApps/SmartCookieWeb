@@ -334,6 +334,8 @@ class UserPreferences @Inject constructor(
 
     var closeOnLastTab by preferences.booleanPreference(LAST_TAB, true)
 
+    var blockIntent by preferences.booleanPreference(INTENT, false)
+
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
@@ -407,3 +409,4 @@ private const val FORCE_ZOOM = "forcezoom"
 private const val NAVBAR_COL = "navbarcol"
 private const val DARK_MODE = "darkmode"
 private const val TRANSLATE = "translate"
+private const val INTENT = "stopIntent"
