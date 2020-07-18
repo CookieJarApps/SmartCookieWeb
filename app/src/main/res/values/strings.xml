@@ -464,5 +464,11 @@
     <string name="block_intent">Handle all clicked links within this browser</string>
     <string name="block_intent_summary">Blocks prompt to open links in external applications</string>
 
+    <string name="block_javascript">Block JavaScript for sites</string>
+    <string name="unlisted_javascript">Block JavaScript for listed sites</string>
+    <string name="listed_javascript">Only allow JavaScript for listed sites</string>
+
+    <string name="confirm">Confirm reset</string>
+    <string name="clear">This will clear all the data stored by SmartCookieWeb on your device</string>
     <!-- finish pages -->
 </resources>

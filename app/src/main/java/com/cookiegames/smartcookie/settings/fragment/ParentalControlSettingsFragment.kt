@@ -60,10 +60,8 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
         val prefs: SharedPreferences = activity.getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
 
         if (prefs.getBoolean("noPassword", true)) {
-            Log.d("TAGGG", "nopassword")
         }
         else {
-            Log.d("TAGGG", userPreferences.passwordText)
             passwordDialog()
         }
     }

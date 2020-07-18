@@ -38,14 +38,16 @@ import android.app.ActivityManager
 import androidx.core.content.ContextCompat.startActivities
 import com.cookiegames.smartcookie.R
 import android.content.Context.ACTIVITY_SERVICE
+import android.content.Intent
+import android.net.Uri
 import android.os.Handler
+import android.view.LayoutInflater
+import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.os.HandlerCompat.postDelayed
-
-
-
-
+import com.cookiegames.smartcookie.dialog.LightningDialogBuilder
+import com.cookiegames.smartcookie.settings.activity.SettingsActivity
 
 
 class BookmarkSettingsFragment : AbstractSettingsFragment() {
@@ -95,14 +97,27 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun clearSettings() {
-        Toast.makeText(getActivity(),
-                R.string.reset_settings, Toast.LENGTH_LONG).show()
+        val builder = AlertDialog.Builder(activity)
+        builder.setTitle(getString(R.string.confirm))
+        builder.setMessage(getString(R.string.clear))
 
-        val handler = Handler()
-        handler.postDelayed(Runnable {
-            (activity.getSystemService(ACTIVITY_SERVICE) as ActivityManager)
-                    .clearApplicationUserData()
-        }, 500)
+
+        builder.setPositiveButton(resources.getString(R.string.action_ok)){dialogInterface , which ->
+            Toast.makeText(getActivity(),
+                    R.string.reset_settings, Toast.LENGTH_LONG).show()
+
+            val handler = Handler()
+            handler.postDelayed(Runnable {
+                (activity.getSystemService(ACTIVITY_SERVICE) as ActivityManager)
+                        .clearApplicationUserData()
+            }, 500)
+        }
+        builder.setNegativeButton(resources.getString(R.string.action_cancel)){dialogInterface , which ->
+
+        }
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.setCancelable(true)
+        alertDialog.show()
     }
 
     private fun exportBookmarks() {

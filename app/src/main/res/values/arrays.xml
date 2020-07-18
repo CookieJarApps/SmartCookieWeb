@@ -13,6 +13,12 @@
         <item>@string/only_allow_sites</item>
     </string-array>
 
+    <string-array name="block_javascript">
+        <item>@string/none</item>
+        <item>@string/listed_javascript</item>
+        <item>@string/unlisted_javascript</item>
+    </string-array>
+
     <string-array name="navbar_col">
         <item>@string/agent_default</item>
         <item>@string/color</item>
