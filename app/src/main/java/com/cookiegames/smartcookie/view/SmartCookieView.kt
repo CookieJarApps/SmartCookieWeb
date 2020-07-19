@@ -235,7 +235,7 @@ class SmartCookieView(
             WebSettingsCompat.setForceDark(webView!!.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
         }
 
-        if(webView?.settings?.userAgentString!!.contains("; wv")){
+        if(webView?.settings?.userAgentString!!.contains("wv")){
             webView?.settings?.userAgentString = webView?.settings?.userAgentString?.replace("; wv","")
         }
 
