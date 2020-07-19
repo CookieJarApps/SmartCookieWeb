@@ -409,6 +409,7 @@ class SmartCookieWebClient(
             webview.loadDataWithBaseURL(failingUrl, color + start + start1 + title + start2 + error + start3 + reload + end, "text/html", "UTF-8", null)
             uiController.updateUrl(failingUrl, false)
             currentUrl = failingUrl
+            urlLoaded = failingUrl
             webview.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
         }
 

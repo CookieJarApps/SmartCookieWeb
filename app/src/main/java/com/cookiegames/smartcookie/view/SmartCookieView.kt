@@ -26,6 +26,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.util.Log
 import android.view.*
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.View.OnTouchListener
@@ -608,7 +609,6 @@ class SmartCookieView(
             // User has been notified
             return
         }
-
         webView?.reload()
     }
 

@@ -68,6 +68,6 @@
     <item
         android:icon="@drawable/ic_action_delete"
         android:id="@+id/quit_app"
-        android:title="@string/dialog_title_close_browser"/>
+        android:title="@string/close_app"/>
 
 </menu>
