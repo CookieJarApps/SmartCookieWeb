@@ -144,8 +144,8 @@
     <!-- Tools dialog -->
     <string name="dialog_tools_title">Seitenwerkzeuge</string>
     <string name="dialog_toggle_desktop">Desktop User Agent umschalten</string>
-    <string name="dialog_adblock_enable_for_site">Werbeblocker für diese Seite aktivieren</string>
-    <string name="dialog_adblock_disable_for_site">Werbeblocker für diese Seite deaktivieren</string>
+    <string name="dialog_adblock_enable_for_site">Werbeblocker für diese Site aktivieren</string>
+    <string name="dialog_adblock_disable_for_site">Werbeblocker für diese Site deaktivieren</string>
     <string name="search_suggestions_off">Keine Suchvorschläge</string>
     <string name="http_proxy">HTTP-Proxy</string>
     <string-array name="proxy_choices_array">
@@ -374,7 +374,7 @@
     <string name="start_incognito">Dauerhaft wie im privaten Modus verhalten</string>
     <string name="bottom_navbar">Navigationsleiste nach unten verschieben</string>
     <string name="please_restart">Bitte starten Sie die App neu, um die Änderung zu sehen</string>
-    <string name="site_ad_blocked">Diese Seite ist Werbung. Um trotzdem fortzufahren, verwenden Sie die Option \"Adblock für diese Seite deaktivieren\" indem Sie auf das Listensymbol im Lesezeichen-Menü klicken.</string>
+    <string name="site_ad_blocked">Diese Seite ist Werbung. Um trotzdem fortzufahren, verwenden Sie die Option \"Werbeblocker für diese Site deaktivieren\" indem Sie auf das Listensymbol im Lesezeichen-Menü klicken.</string>
     <string name="onboarding_reshow">Einführung erneut anzeigen</string>
     <string name="onboarding_reshow_desc">Setup erneut anzeigen.</string>
     <string name="pick_search">Suchmaschine auswählen:</string>
@@ -401,7 +401,7 @@
     <string name="close_on_last_tab">Browser mit letztem Tab schließen</string>
     <string name="more">Mehr Infos</string>
     <string name="no_search_suggestions">Keine Suchvorschläge</string>
-    <string name="search_suggestions_4">Leider sind Suchvorschläge in Smart Cookie auf Geräten mit Android-Versionen älter als 5.0 nicht mehr verfügbar. Mehr Infos erhalten Sie über die Schalftfläche unten.</string>
+    <string name="search_suggestions_4">Leider sind Suchvorschläge in Smart Cookie auf Geräten mit Android-Versionen älter als 5.0 nicht mehr verfügbar. Mehr Infos erhalten Sie über die Schaltfläche unten.</string>
     <string name="block_intent">Alle angeklickten Links in diesem Browser handhaben</string>
     <string name="block_intent_summary">Blockiert die Aufforderung zum Öffnen von Links in externen Anwendungen</string>
     <string name="block_javascript">JavaScript bei Websites blockieren</string>
