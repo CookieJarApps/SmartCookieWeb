@@ -1339,6 +1339,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         }
 
         changeToolbarColor(null)
+
+        handleBookmarksChange()
     }
 
     /**
