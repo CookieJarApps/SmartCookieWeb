@@ -247,7 +247,7 @@
     <string name="cookie_category">Cookie-Dialogblocker (beta)</string>
     <string name="tabs_in_drawer">Tabs in der Navigationsleiste anzeigen</string>
     <string name="swap_bookmarks_and_tabs">Lesezeichen- und Tab-Liste tauschen</string>
-    <string name="do_not_track">\"Nicht verfolgen/tracken\" anfragen</string>
+    <string name="do_not_track">\"Nicht verfolgen/tracken\" anfordern</string>
     <string name="remove_identifying_headers">Identifizierende HTTP-Header entfernen</string>
     <string name="action_add_to_homescreen">Zum Startbildschirm hinzufügen</string>
     <string name="message_added_to_homescreen">Verknüpfung zum Startbildschirm hinzugefügt</string>
@@ -294,7 +294,7 @@
     <string name="block_ad_remote_refresh_frequency_description">Für Remote-Hosts-Datei</string>
     <string name="block_ad_refresh_now">Hosts jetzt aktualisieren</string>
     <string name="webrtc_support">WebRTC Berechtigungsanfragen erlauben</string>
-    <string name="save_data">\"Daten sparen\" verlangen</string>
+    <string name="save_data">\"Daten sparen\" anfordern</string>
     <!-- debug strings -->
     <string name="debug_title">Debug Einstellungen</string>
     <string name="debug_leak_canary">LeakCanary</string>
@@ -409,5 +409,7 @@
     <string name="listed_javascript">JavaScript nur für aufgelistete Sites zulassen</string>
     <string name="confirm">Zurücksetzen bestätigen</string>
     <string name="clear">Hiermit werden alle Daten gelöscht, die SmartCookieWeb auf Ihrem Gerät gespeichert hat</string>
+    <string name="only_clear">Nur am Ende der Browsersitzung löschen</string>
+    <string name="only_clear_summary">Leeren Sie die obigen Optionen nur, wenn alle Browser-Tabs geschlossen wurden, anstatt dass die App beendet wird</string>
     <!-- finish pages -->
 </resources>
