@@ -44,6 +44,12 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
         )
 
         switchPreference(
+                preference = SETTINGS_ONLY_CLOSE,
+                isChecked = userPreferences.onlyForceClose,
+                onCheckChange = { userPreferences.onlyForceClose = it }
+        )
+
+        switchPreference(
             preference = SETTINGS_THIRDPCOOKIES,
             isChecked = userPreferences.blockThirdPartyCookiesEnabled,
             isEnabled = DeviceCapabilities.THIRD_PARTY_COOKIE_BLOCKING.isSupported,
@@ -213,6 +219,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_PREFERHTTPS = "prefer_https"
         private const val SETTINGS_BLOCKMALWARE = "block_malicious_sites"
         private const val SETTINGS_INCOGNITO = "start_incognito"
+        private const val SETTINGS_ONLY_CLOSE = "only_clear"
 
     }
 

@@ -471,7 +471,9 @@
     <string name="confirm">Confirm reset</string>
     <string name="clear">This will clear all the data stored by SmartCookieWeb on your device</string>
 
-    <string name="only_clear">Only clear on force exit</string>
+    <string name="only_clear">Only clear on browser session end</string>
+    <string name="only_clear_summary">Only clear above options when all browser tabs have been closed, instead of whenever the app is exited</string>
+
 
     <!-- finish pages -->
 </resources>
