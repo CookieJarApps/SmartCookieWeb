@@ -399,5 +399,17 @@
     <string name="customize">Definições de personalização</string>
     <string name="suggest">Número de sugestões</string>
     <string name="close_on_last_tab">Fechar navegador ao fechar o último separador</string>
+    <string name="more">Mais informação</string>
+    <string name="no_search_suggestions">Não utilizar sugestões</string>
+    <string name="search_suggestions_4">Infelizmente, as sugestões de pesquisa já não estão disponíveis para versões Android abaixo de 5.0. Prima o botão abaixo para obter mais informações.</string>
+    <string name="block_intent">Manipular ligações dentro do navegador</string>
+    <string name="block_intent_summary">Bloquear pedidos para abrir ligações em aplicações externas</string>
+    <string name="block_javascript">Bloquear JavaScript para sites</string>
+    <string name="unlisted_javascript">Bloquear JavaScript para os sites listados</string>
+    <string name="listed_javascript">Apenas permitir JavaScript nos sites listados</string>
+    <string name="confirm">Confirmação de reposição</string>
+    <string name="clear">Isto irá remover todos os dados armazenados por SmartCookieWeb</string>
+    <string name="only_clear">Só limpar no fim da sessão do navegador</string>
+    <string name="only_clear_summary">Só limpar as opções acima quando todas as abas do navegador forem fechadas, em vez de sempre que o aplicativo for encerrado</string>
     <!-- finish pages -->
 </resources>
