@@ -71,6 +71,11 @@
             android:singleLineTitle="false"
             android:title="@string/clear_cookies_exit"/>
         <SwitchPreference
+            android:defaultValue="true"
+            android:key="only_clear"
+            android:singleLineTitle="false"
+            android:title="@string/only_clear"/>
+        <SwitchPreference
             android:defaultValue="false"
             android:key="clear_webstorage_exit"
             android:singleLineTitle="false"

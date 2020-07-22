@@ -336,10 +336,13 @@ class UserPreferences @Inject constructor(
 
     var blockIntent by preferences.booleanPreference(INTENT, false)
 
+    var onlyForceClose by preferences.booleanPreference(FORCE, true)
+
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
 private const val WEB_RTC = "webRtc"
+private const val FORCE = "force"
 private const val BLOCK_ADS = "AdBlock"
 private const val LAST_TAB = "lastTab"
 private const val BLOCK_IMAGES = "blockimages"

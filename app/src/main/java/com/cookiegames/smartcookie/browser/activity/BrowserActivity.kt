@@ -1274,6 +1274,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if (isIncognito() && isFinishing) {
             overridePendingTransition(R.anim.fade_in_scale, R.anim.slide_down_out)
         }
+
+        if(!isIncognito() && !userPreferences.onlyForceClose){
+            performExitCleanUp()
+        }
     }
 
     protected fun saveOpenTabs() {

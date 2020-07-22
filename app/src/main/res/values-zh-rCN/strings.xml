@@ -398,5 +398,15 @@
     <string name="customize">自定义设置</string>
     <string name="suggest">建议金额</string>
     <string name="close_on_last_tab">关闭最后一个标签的浏览器</string>
+    <string name="more">更多信息</string>
+    <string name="no_search_suggestions">没有搜索建议</string>
+    <string name="search_suggestions_4">不幸的是，Smart Cookie中的搜索建议在Android 5.0以下的设备上不再可用。请按下面的按钮了解更多信息。</string>
+    <string name="block_intent">处理此浏览器中所有点击的链接</string>
+    <string name="block_intent_summary">屏蔽在外部应用程序中打开链接的提示</string>
+    <string name="block_javascript">屏蔽网站JavaScript</string>
+    <string name="unlisted_javascript">阻止列出站点的JavaScript</string>
+    <string name="listed_javascript">只允许列出的站点使用 JavaScript</string>
+    <string name="confirm">确认重置</string>
+    <string name="clear">这将清除SmartCookieWeb存储在您设备上的所有数据</string>
     <!-- finish pages -->
 </resources>

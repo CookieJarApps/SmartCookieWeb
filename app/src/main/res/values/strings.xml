@@ -470,5 +470,8 @@
 
     <string name="confirm">Confirm reset</string>
     <string name="clear">This will clear all the data stored by SmartCookieWeb on your device</string>
+
+    <string name="only_clear">Only clear on force exit</string>
+
     <!-- finish pages -->
 </resources>
