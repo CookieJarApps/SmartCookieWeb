@@ -409,7 +409,7 @@
     <string name="listed_javascript">Apenas permitir JavaScript nos sites listados</string>
     <string name="confirm">Confirmação de reposição</string>
     <string name="clear">Isto irá remover todos os dados armazenados por SmartCookieWeb</string>
-    <string name="only_clear">Só limpar no fim da sessão do navegador</string>
-    <string name="only_clear_summary">Só limpar as opções acima quando todas as abas do navegador forem fechadas, em vez de sempre que o aplicativo for encerrado</string>
+    <string name="only_clear">Limpar ao fechar todos os separadores</string>
+    <string name="only_clear_summary">Apenas limpar os dados acima ao fechar todos os separadores em vez de ser ao fechar a aplicação</string>
     <!-- finish pages -->
 </resources>
