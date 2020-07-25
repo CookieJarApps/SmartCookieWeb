@@ -338,8 +338,8 @@
     <string name="dialog_rename_folder">Rename folder</string>
     <string name="dialog_remove_folder">Remove folder</string>
     <string name="dialog_title_close_browser">Close tabs</string>
-    <string name="dialog_delete_download">Delete download</string>
-    <string name="dialog_delete_all_downloads">Delete all downloads</string>
+    <string name="dialog_delete_download">Remove download from history</string>
+    <string name="dialog_delete_all_downloads">Remove all downloads from history</string>
 
     <!-- Search Engines -->
     <string name="search_engine_custom">Custom URL</string>
