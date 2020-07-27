@@ -39,7 +39,7 @@
     <string name="stock_browser_unavailable">Nessun browser di scorta rilevato</string>
     <string name="stock_browser_available">Rilevato browser di scorta supportato</string>
     <string name="fullScreenOption">Nascondi la barra di stato durante la navigazione</string>
-    <string name="clear_cookies">Cancella cookie del browser</string>
+    <string name="clear_cookies">Sgombra cookie del browser</string>
     <string name="clear_history">Svuota cronologia del browser</string>
     <string name="dialog_image">Cosa vuoi fare con questa immagine?</string>
     <string name="action_download">Scarica</string>
@@ -66,9 +66,9 @@
     <string name="title_custom_homepage">Pagina iniziale personalizzata</string>
     <string name="action_webpage">Pagina web</string>
     <string name="title_clear_history">Svuota cronologia</string>
-    <string name="title_clear_cookies">Cancella cookie</string>
+    <string name="title_clear_cookies">Sgombra cookie</string>
     <string name="dialog_history">Desideri svuotare la cronologia del browser?</string>
-    <string name="dialog_cookies">Desideri cancellare i cookie del browser?</string>
+    <string name="dialog_cookies">Desideri sgombrare i cookie del browser?</string>
     <string name="action_yes">Sì</string>
     <string name="action_no">No</string>
     <string name="title_text_size">Dimensione del testo</string>
@@ -104,7 +104,7 @@
     <string name="message_cache_cleared">Cache svuotata</string>
     <string name="message_import">I segnalibri sono stati importati</string>
     <string name="message_clear_history">Cronologia svuotata</string>
-    <string name="message_cookies_cleared">Cookie cancellati</string>
+    <string name="message_cookies_cleared">Cookie sgombrati</string>
     <string name="max_tabs">Numero massimo di schede raggiunto</string>
     <string name="message_text_copied">Testo copiato negli appunti</string>
     <string name="message_link_copied">Collegamento copiato negli Appunti</string>
@@ -168,7 +168,7 @@
     <string name="i2p_tunnels_not_ready">I tunnel I2P non sono ancora pronti.</string>
     <string name="yes">Sì</string>
     <string name="no">No</string>
-    <string name="clear_cookies_exit">Cancella cookie alla chiusura</string>
+    <string name="clear_cookies_exit">Sgombra cookie alla chiusura</string>
     <string name="clear_history_exit">Svuota cronologia alla chiusura</string>
     <string name="folder_default">Predefinito</string>
     <string name="folder_custom">Personalizzata</string>
@@ -397,7 +397,19 @@
     <string name="color">Colore</string>
     <string name="looknfeel">Impostazioni aspetto e atmosfera</string>
     <string name="customize">Impostazioni personalizzazione</string>
-    <string name="suggest">Importo suggerimento</string>
-    <string name="close_on_last_tab">Chiudi browser con l\'ultima scheda</string>
+    <string name="suggest">Scegliere numero di suggerimenti di ricerca</string>
+    <string name="close_on_last_tab">Chiudi browser alla chiusura dell\'ultima scheda</string>
+    <string name="more">Ulteriori informazioni</string>
+    <string name="no_search_suggestions">Nessun suggerimento di ricerca</string>
+    <string name="search_suggestions_4">Sfortunatamente, i suggerimenti di ricerca in Smart Cookie non sono più disponibili sui dispositivi al di sotto di Android 5.0. Premi il pulsante qui sotto per saperne di più.</string>
+    <string name="block_intent">Gestisci tutti i collegamenti cliccati all\'interno di questo browser</string>
+    <string name="block_intent_summary">Blocca richiesta di aprire il collegamento in applicazioni esterne</string>
+    <string name="block_javascript">Blocca JavaScript per i siti</string>
+    <string name="unlisted_javascript">Blocca JavaScript per siti elencati</string>
+    <string name="listed_javascript">Permetti JavaScript solo per siti elencati</string>
+    <string name="confirm">Conferma ripristino</string>
+    <string name="clear">Ciò sgombrerà tutti i dati memorizzati da Smart Cookie sul tuo dispositivo</string>
+    <string name="only_clear">Pulisci solo a fine sessione</string>
+    <string name="only_clear_summary">Pulisci opzioni di cui sopra solo quando tutte le schede del browser sono state chiuse, invece di ogni volta che si esce dall\'app</string>
     <!-- finish pages -->
 </resources>
