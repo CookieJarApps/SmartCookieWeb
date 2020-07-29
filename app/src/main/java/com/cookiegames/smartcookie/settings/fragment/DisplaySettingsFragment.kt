@@ -135,6 +135,15 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
                 isChecked = userPreferences.bottomBar,
                 onCheckChange = {userPreferences.bottomBar = it; Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()}
         )
+        clickablePreference(
+                preference = SETTINGS_LINES,
+                onClick = ::showTextSizePicker
+        )
+
+        clickablePreference(
+                preference = SETTINGS_SIZE,
+                onClick = ::showColorPicker
+        )
        /* switchPreference(
                 preference = SETTINGS_WHATSNEW,
                 isChecked = userPreferences.whatsNewEnabled,
@@ -232,6 +241,31 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         }.resizeAndShow()
     }
 
+    private fun showDrawerSizePicker(summaryUpdater: SummaryUpdater) {
+        val currentTheme = userPreferences.useTheme
+        AlertDialog.Builder(activity).apply {
+            setTitle(resources.getString(R.string.theme))
+            val values = AppTheme.values().map { Pair(it, it.toDisplayString()) }
+            withSingleChoiceItems(values, userPreferences.useTheme) {
+                userPreferences.useTheme = it
+                summaryUpdater.updateSummary(it.toDisplayString())
+            }
+            setPositiveButton(resources.getString(com.cookiegames.smartcookie.R.string.action_ok)) { _, _ ->
+                if (currentTheme != userPreferences.useTheme) {
+                    //activity.onBackPressed()
+                    val intent = Intent(activity, MainActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            setOnCancelListener {
+                if (currentTheme != userPreferences.useTheme) {
+                    activity.onBackPressed()
+                }
+            }
+        }.resizeAndShow()
+
+    }
+
     private fun showThemePicker(summaryUpdater: SummaryUpdater) {
        val currentTheme = userPreferences.useTheme
         AlertDialog.Builder(activity).apply {
@@ -297,6 +331,8 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_EXTRA = "show_extra"
         private const val SETTINGS_BOTTOM_BAR = "bottom_bar"
         private const val SETTINGS_NAVBAR_COL = "navbar_col"
+        private const val SETTINGS_LINES = "drawer_lines"
+        private const val SETTINGS_SIZE = "drawer_size"
         private const val SETTINGS_WHATSNEW = "show_whats_new"
         private const val SETTINGS_IMAGE_URL = "image_url"
 

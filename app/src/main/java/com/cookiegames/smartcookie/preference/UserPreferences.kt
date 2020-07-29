@@ -338,6 +338,10 @@ class UserPreferences @Inject constructor(
 
     var onlyForceClose by preferences.booleanPreference(FORCE, true)
 
+    var drawerLines by preferences.enumPreference(DRAWER_LINES, DrawerLineChoice.THREE)
+
+    var drawerSize by preferences.enumPreference(DRAWER_SIZE, DrawerSizeChoice.AUTO)
+
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
@@ -413,3 +417,5 @@ private const val NAVBAR_COL = "navbarcol"
 private const val DARK_MODE = "darkmode"
 private const val TRANSLATE = "translate"
 private const val INTENT = "stopIntent"
+private const val DRAWER_LINES = "lines"
+private const val DRAWER_SIZE = "dize"

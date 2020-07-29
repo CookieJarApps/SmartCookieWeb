@@ -477,7 +477,7 @@
     <string name="enable_in_settings">AutoFill needs to be set up in Android settings for this option to take effect</string>
 
     <string name="drawer_lines">Max text lines in drawer</string>
-    <string name="drawer_size">Auto-resize drawer text</string>
+    <string name="drawer_size">Drawer text size</string>
 
     <!-- finish pages -->
 </resources>

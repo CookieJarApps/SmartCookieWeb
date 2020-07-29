@@ -9,6 +9,16 @@
             android:key="navbar_col"
             android:singleLineTitle="false"
             android:title="@string/navbar_col"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:singleLineTitle="false"
+            android:key="black_status_bar"
+            android:title="@string/settings_black_status_bar"/>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:singleLineTitle="false"
+            android:key="startpage_theme"
+            android:title="@string/startpage"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/settings_display">
         <SwitchPreference
@@ -34,11 +44,6 @@
         <SwitchPreference
             android:defaultValue="false"
             android:singleLineTitle="false"
-            android:key="black_status_bar"
-            android:title="@string/settings_black_status_bar"/>
-        <SwitchPreference
-            android:defaultValue="false"
-            android:singleLineTitle="false"
             android:key="bottom_bar"
             android:title="@string/bottom_navbar"/>
         <SwitchPreference
@@ -58,11 +63,6 @@
             android:singleLineTitle="false"
             android:key="text_reflow"
             android:title="@string/reflow"/>
-        <SwitchPreference
-            android:defaultValue="true"
-            android:singleLineTitle="false"
-            android:key="startpage_theme"
-            android:title="@string/startpage"/>
         <SwitchPreference
             android:defaultValue="false"
             android:singleLineTitle="false"
@@ -85,6 +85,14 @@
             android:key="text_size"
             android:singleLineTitle="false"
             android:title="@string/title_text_size"/>
+        <Preference
+            android:key="drawer_lines"
+            android:singleLineTitle="false"
+            android:title="@string/drawer_lines"/>
+        <SwitchPreference
+            android:key="drawer_size"
+            android:singleLineTitle="false"
+            android:title="@string/drawer_size"/>
     </PreferenceCategory>
 
 </PreferenceScreen>
