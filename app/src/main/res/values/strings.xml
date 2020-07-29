@@ -474,6 +474,10 @@
     <string name="only_clear">Only clear on browser session end</string>
     <string name="only_clear_summary">Only clear above options when all browser tabs have been closed, instead of whenever the app is exited</string>
 
+    <string name="enable_in_settings">AutoFill needs to be set up in Android settings for this option to take effect</string>
+
+    <string name="drawer_lines">Max text lines in drawer</string>
+    <string name="drawer_size">Auto-resize drawer text</string>
 
     <!-- finish pages -->
 </resources>

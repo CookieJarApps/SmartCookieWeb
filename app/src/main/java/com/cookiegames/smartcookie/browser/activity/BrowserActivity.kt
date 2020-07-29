@@ -138,6 +138,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     private var prefs: SharedPreferences? = null
 
+    private var lastTouchTime = 0
+    private var currentTouchTime = 0
+
     // The singleton BookmarkManager
     @Inject
     lateinit var bookmarkManager: BookmarkRepository
