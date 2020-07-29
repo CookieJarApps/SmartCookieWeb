@@ -1,0 +1,9 @@
+A web browser with privacy on by default
+
+Features:
+- Open source
+- Modern UI
+- Tracking and ad blocker
+- Customizable
+
+https://github.com/CookieJarApps/SmartCookieWeb
