@@ -16,7 +16,7 @@
             android:defaultValue="true"
             android:key="password"
             android:singleLineTitle="false"
-            android:summary="@string/recommended"
+            android:summary="@string/enable_in_settings"
             android:title="@string/password"/>
         <SwitchPreference
             android:defaultValue="false"
