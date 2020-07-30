@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.cookiegames.smartcookie.preference.UserPreferences
 
 /**
  * The adapter for horizontal desktop style browser tabs.
@@ -23,7 +24,8 @@ import androidx.recyclerview.widget.RecyclerView
 class TabsDesktopAdapter(
     context: Context,
     private val resources: Resources,
-    private val uiController: UIController
+    private val uiController: UIController,
+    private val userPreferences: UserPreferences
 ) : RecyclerView.Adapter<TabViewHolder>() {
 
     private val backgroundTabDrawable: Drawable?
@@ -60,7 +62,7 @@ class TabsDesktopAdapter(
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): TabViewHolder {
         val view = viewGroup.context.inflater.inflate(R.layout.tab_list_item_horizontal, viewGroup, false)
-        return TabViewHolder(view, uiController)
+        return TabViewHolder(view, uiController, userPreferences)
     }
 
     override fun onBindViewHolder(holder: TabViewHolder, position: Int) {

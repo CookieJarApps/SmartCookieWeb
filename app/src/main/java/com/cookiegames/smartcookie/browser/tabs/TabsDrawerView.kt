@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cookiegames.smartcookie.preference.UserPreferences
 
 /**
  * A view which displays tabs in a vertical [RecyclerView].
@@ -19,11 +20,12 @@ import androidx.recyclerview.widget.RecyclerView
 class TabsDrawerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
+    defStyleAttr: Int = 0,
+    userPreferences: UserPreferences
 ) : LinearLayout(context, attrs, defStyleAttr), TabsView {
 
     private val uiController = context as UIController
-    private val tabsAdapter = TabsDrawerAdapter(uiController)
+    private val tabsAdapter = TabsDrawerAdapter(uiController, userPreferences = userPreferences)
     private val tabList: RecyclerView
     private val actionBack: View
     private val actionForward: View

@@ -89,7 +89,7 @@
             android:key="drawer_lines"
             android:singleLineTitle="false"
             android:title="@string/drawer_lines"/>
-        <SwitchPreference
+        <Preference
             android:key="drawer_size"
             android:singleLineTitle="false"
             android:title="@string/drawer_size"/>

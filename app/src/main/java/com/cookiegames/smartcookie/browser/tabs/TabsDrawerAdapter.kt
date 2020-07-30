@@ -10,12 +10,14 @@ import android.view.ViewGroup
 import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.cookiegames.smartcookie.preference.UserPreferences
 
 /**
  * The adapter for vertical mobile style browser tabs.
  */
 class TabsDrawerAdapter(
-    private val uiController: UIController
+    private val uiController: UIController,
+    private val userPreferences: UserPreferences
 ) : RecyclerView.Adapter<TabViewHolder>() {
 
     private var tabList: List<TabViewState> = emptyList()
@@ -29,7 +31,7 @@ class TabsDrawerAdapter(
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): TabViewHolder {
         val view = viewGroup.context.inflater.inflate(R.layout.tab_list_item, viewGroup, false)
         view.background = BackgroundDrawable(view.context)
-        return TabViewHolder(view, uiController)
+        return TabViewHolder(view, uiController, userPreferences = userPreferences)
     }
 
     override fun onBindViewHolder(holder: TabViewHolder, position: Int) {

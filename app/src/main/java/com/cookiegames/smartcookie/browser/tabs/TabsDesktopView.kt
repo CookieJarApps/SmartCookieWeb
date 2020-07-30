@@ -14,6 +14,7 @@ import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cookiegames.smartcookie.preference.UserPreferences
 
 /**
  * A view which displays browser tabs in a horizontal [RecyclerView].
@@ -21,7 +22,8 @@ import androidx.recyclerview.widget.RecyclerView
 class TabsDesktopView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
+    defStyleAttr: Int = 0,
+    userPreferences: UserPreferences
 ) : ConstraintLayout(context, attrs, defStyleAttr), TabsView {
 
     private val uiController = context as UIController
@@ -52,7 +54,7 @@ class TabsDesktopView @JvmOverloads constructor(
             moveDuration = 200
         }
 
-        tabsAdapter = TabsDesktopAdapter(context, context.resources, uiController = uiController)
+        tabsAdapter = TabsDesktopAdapter(context, context.resources, uiController = uiController, userPreferences = userPreferences)
 
         tabList = findViewById<RecyclerView>(R.id.tabs_list).apply {
             setLayerType(View.LAYER_TYPE_NONE, null)

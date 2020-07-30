@@ -20,6 +20,7 @@ import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
 import com.cookiegames.smartcookie.preference.UserPreferences
 import javax.inject.Inject
 import com.cookiegames.smartcookie.browser.ChooseNavbarCol
+import com.cookiegames.smartcookie.browser.DrawerLineChoice
 import com.cookiegames.smartcookie.browser.DrawerSizeChoice
 import com.flask.colorpicker.ColorPickerView
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder
@@ -129,14 +130,14 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         )
         clickablePreference(
                 preference = SETTINGS_LINES,
-                onClick = ::showTextSizePicker
+                onClick = ::showDrawerLines
         )
 
         clickablePreference(
                 preference = SETTINGS_SIZE,
-                onClick = ::showColorPicker
+                onClick = ::showDrawerSize
         )
-       /* switchPreference(
+        /* switchPreference(
                 preference = SETTINGS_WHATSNEW,
                 isChecked = userPreferences.whatsNewEnabled,
                 onCheckChange = {userPreferences.whatsNewEnabled = it}
@@ -187,14 +188,35 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
                 Pair(it, when (it) {
                     DrawerSizeChoice.AUTO -> stringArray[0]
                     DrawerSizeChoice.ONE -> stringArray[1]
-                    DrawerSizeChoice.TWO -> stringArray[1]
-                    DrawerSizeChoice.THREE -> stringArray[1]
+                    DrawerSizeChoice.TWO -> stringArray[2]
+                    DrawerSizeChoice.THREE -> stringArray[3]
                 })
             }
             withSingleChoiceItems(values, userPreferences.drawerSize) {
                 userPreferences.drawerSize = it
             }
             setPositiveButton(R.string.action_ok, null)
+        }
+
+    }
+
+    private fun showDrawerLines() {
+        BrowserDialog.showCustomDialog(activity) {
+            setTitle(R.string.drawer_lines)
+            val stringArray = resources.getStringArray(R.array.drawer_lines)
+            val values = DrawerLineChoice.values().map {
+                Pair(it, when (it) {
+                    DrawerLineChoice.ONE -> stringArray[0]
+                    DrawerLineChoice.TWO -> stringArray[1]
+                    DrawerLineChoice.THREE -> stringArray[2]
+                })
+            }
+            withSingleChoiceItems(values, userPreferences.drawerLines) {
+                userPreferences.drawerLines = it
+            }
+            setPositiveButton(R.string.action_ok){_, _ ->
+                Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()
+            }
         }
 
     }

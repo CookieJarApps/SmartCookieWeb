@@ -300,9 +300,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         webPageBitmap = drawable(R.drawable.ic_webpage).toBitmap()
 
         tabsView = if (shouldShowTabsInDrawer) {
-            TabsDrawerView(this).also(findViewById<FrameLayout>(getTabsContainerId())::addView)
+            TabsDrawerView(this, userPreferences = userPreferences).also(findViewById<FrameLayout>(getTabsContainerId())::addView)
         } else {
-            TabsDesktopView(this).also(findViewById<FrameLayout>(getTabsContainerId())::addView)
+            TabsDesktopView(this, userPreferences = userPreferences).also(findViewById<FrameLayout>(getTabsContainerId())::addView)
         }
         var mPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         var shouldRestoreTabs = mPrefs.getBoolean("shouldRestoreTabs", false)
@@ -457,6 +457,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             alertDialog.setCancelable(true)
             alertDialog.show()
         }
+
     }
 
     private fun getBookmarksContainerId(): Int = if (swapBookmarksAndTabs) {
