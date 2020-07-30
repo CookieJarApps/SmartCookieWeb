@@ -326,7 +326,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             userPreferences.restoreLostTabsEnabled = true
         }
 
-        bookmarksView = BookmarksDrawerView(this, this).also(findViewById<FrameLayout>(getBookmarksContainerId())::addView)
+        bookmarksView = BookmarksDrawerView(this, this, userPreferences = userPreferences).also(findViewById<FrameLayout>(getBookmarksContainerId())::addView)
 
         if (shouldShowTabsInDrawer) {
             tabs_toolbar_container.visibility = GONE

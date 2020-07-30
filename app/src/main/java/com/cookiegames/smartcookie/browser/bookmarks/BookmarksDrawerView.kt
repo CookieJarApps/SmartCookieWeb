@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,14 +19,12 @@ import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.adblock.allowlist.AllowListModel
 import com.cookiegames.smartcookie.animation.AnimationUtils
 import com.cookiegames.smartcookie.browser.BookmarksView
+import com.cookiegames.smartcookie.browser.DrawerSizeChoice
 import com.cookiegames.smartcookie.browser.TabsManager
 import com.cookiegames.smartcookie.controller.UIController
 import com.cookiegames.smartcookie.database.Bookmark
 import com.cookiegames.smartcookie.database.bookmark.BookmarkRepository
-import com.cookiegames.smartcookie.di.DatabaseScheduler
-import com.cookiegames.smartcookie.di.MainScheduler
-import com.cookiegames.smartcookie.di.NetworkScheduler
-import com.cookiegames.smartcookie.di.injector
+import com.cookiegames.smartcookie.di.*
 import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.dialog.DialogItem
 import com.cookiegames.smartcookie.dialog.LightningDialogBuilder
@@ -33,6 +32,7 @@ import com.cookiegames.smartcookie.extensions.color
 import com.cookiegames.smartcookie.extensions.drawable
 import com.cookiegames.smartcookie.extensions.inflater
 import com.cookiegames.smartcookie.favicon.FaviconModel
+import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.reading.activity.ReadingActivity
 import com.cookiegames.smartcookie.utils.isSpecialUrl
 import io.reactivex.Scheduler
@@ -49,7 +49,8 @@ class BookmarksDrawerView @JvmOverloads constructor(
     context: Context,
     private val activity: Activity,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
+    defStyleAttr: Int = 0,
+    userPreferences: UserPreferences
 ) : LinearLayout(context, attrs, defStyleAttr), BookmarksView {
 
     @Inject internal lateinit var bookmarkModel: BookmarkRepository
@@ -61,7 +62,6 @@ class BookmarksDrawerView @JvmOverloads constructor(
     @Inject @field:MainScheduler internal lateinit var mainScheduler: Scheduler
 
     private val uiController: UIController
-
     // Adapter
     private var bookmarkAdapter: BookmarkListAdapter? = null
 
@@ -106,14 +106,14 @@ class BookmarksDrawerView @JvmOverloads constructor(
             networkScheduler,
             mainScheduler,
             ::handleItemLongPress,
-            ::handleItemClick
+            ::handleItemClick,
+            userPreferences
         )
 
         bookmarkRecyclerView?.let {
             it.layoutManager = LinearLayoutManager(context)
             it.adapter = bookmarkAdapter
         }
-
         setBookmarksShown(null, true)
     }
 
@@ -275,7 +275,8 @@ class BookmarksDrawerView @JvmOverloads constructor(
         itemView: View,
         private val adapter: BookmarkListAdapter,
         private val onItemLongClickListener: (Bookmark) -> Boolean,
-        private val onItemClickListener: (Bookmark) -> Unit
+        private val onItemClickListener: (Bookmark) -> Unit,
+        private val userPreferences: UserPreferences
     ) : RecyclerView.ViewHolder(itemView), OnClickListener, OnLongClickListener {
 
         val txtTitle: TextView = itemView.findViewById(R.id.textBookmark)
@@ -284,6 +285,12 @@ class BookmarksDrawerView @JvmOverloads constructor(
         init {
             itemView.setOnLongClickListener(this)
             itemView.setOnClickListener(this)
+
+            txtTitle.maxLines = userPreferences.drawerLines.value + 1
+            if(userPreferences.drawerSize != DrawerSizeChoice.AUTO){
+                TextViewCompat.setAutoSizeTextTypeWithDefaults(txtTitle, TextViewCompat.AUTO_SIZE_TEXT_TYPE_NONE)
+                txtTitle.setTextSize(userPreferences.drawerSize.value.toFloat() * 7)
+            }
         }
 
         override fun onClick(v: View) {
@@ -305,7 +312,8 @@ class BookmarksDrawerView @JvmOverloads constructor(
         private val networkScheduler: Scheduler,
         private val mainScheduler: Scheduler,
         private val onItemLongClickListener: (Bookmark) -> Boolean,
-        private val onItemClickListener: (Bookmark) -> Unit
+        private val onItemClickListener: (Bookmark) -> Unit,
+        private val userPreferences: UserPreferences
     ) : RecyclerView.Adapter<BookmarkViewHolder>() {
 
         private var bookmarks: List<BookmarksViewModel> = listOf()
@@ -349,8 +357,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkViewHolder {
             val inflater = LayoutInflater.from(parent.context)
             val itemView = inflater.inflate(R.layout.bookmark_list_item, parent, false)
-
-            return BookmarkViewHolder(itemView, this, onItemLongClickListener, onItemClickListener)
+            return BookmarkViewHolder(itemView, this, onItemLongClickListener, onItemClickListener, userPreferences = userPreferences)
         }
 
         override fun onBindViewHolder(holder: BookmarkViewHolder, position: Int) {
@@ -358,6 +365,8 @@ class BookmarksDrawerView @JvmOverloads constructor(
 
             val viewModel = bookmarks[position]
             holder.txtTitle.text = viewModel.bookmark.title
+
+
 
             val url = viewModel.bookmark.url
             holder.favicon.tag = url

@@ -195,7 +195,9 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
             withSingleChoiceItems(values, userPreferences.drawerSize) {
                 userPreferences.drawerSize = it
             }
-            setPositiveButton(R.string.action_ok, null)
+            setPositiveButton(R.string.action_ok){_, _ ->
+                Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()
+            }
         }
 
     }
