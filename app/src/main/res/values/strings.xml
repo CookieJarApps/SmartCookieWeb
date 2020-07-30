@@ -261,13 +261,12 @@
     <string name="action_add_to_homescreen">Add to home screen</string>
     <string name="message_added_to_homescreen">Shortcut added to home screen</string>
     <string name="action_delete_all_bookmarks">Delete all bookmarks</string>
-    <string name="flash_not_supported">Your device dosen\'t support Flash Player</string>
+    <string name="flash_not_supported">Your device doesn\'t support Flash Player</string>
     <string name="message_open_download_fail">This file doesn\'t exist anymore</string>
     <string name="this_project">This Project</string>
 
     <string name="scw">SmartCookieWeb Source Code</string>
     <string name="action_home">Home</string>
-    <string name="the_jumpgo_project" translatable="false">Smart Cookie Web</string>
     <string name="description">Learn about SmartCookieWeb</string>
     <string name="url_contact" translatable="false">www.cookiegames.co.uk/</string>
 
