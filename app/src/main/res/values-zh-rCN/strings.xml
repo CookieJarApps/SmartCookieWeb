@@ -410,5 +410,8 @@
     <string name="clear">这将清除SmartCookieWeb存储在您设备上的所有数据</string>
     <string name="only_clear">只在浏览器会话结束时清除</string>
     <string name="only_clear_summary">仅在关闭所有浏览器选项卡时，而不是在退出应用程序时，清除以上选项</string>
+    <string name="enable_in_settings">需要在安卓设置中设置自动填充才能生效</string>
+    <string name="drawer_lines">抽屉里最大文本行</string>
+    <string name="drawer_size">自动调整抽屉文字</string>
     <!-- finish pages -->
 </resources>

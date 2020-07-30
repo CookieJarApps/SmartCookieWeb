@@ -411,5 +411,10 @@
     <string name="listed_javascript">Разрешать JavaScript только на перечисленных сайтах</string>
     <string name="confirm">Подтвердите сброс</string>
     <string name="clear">Это очистит все данные, сохраненные SmartCookieWeb на вашем устройстве</string>
+    <string name="only_clear">Очищать только при окончании сеанса браузера</string>
+    <string name="only_clear_summary">Удалять только вышеприведенные опции, когда все вкладки браузера были закрыты, а не при каждом выходе приложения</string>
+    <string name="enable_in_settings">Автозаполнение должно быть настроено в настройках Android для вступления в силу</string>
+    <string name="drawer_lines">Максимум строк текста в меню</string>
+    <string name="drawer_size">Текст меню автоизменения размера</string>
     <!-- finish pages -->
 </resources>

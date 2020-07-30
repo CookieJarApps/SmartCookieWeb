@@ -1,6 +1,5 @@
 package com.cookiegames.smartcookie.settings.fragment
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
@@ -11,7 +10,6 @@ import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
@@ -21,14 +19,8 @@ import com.cookiegames.smartcookie.extensions.resizeAndShow
 import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
 import com.cookiegames.smartcookie.preference.UserPreferences
 import javax.inject.Inject
-import android.content.DialogInterface
-import android.app.AlertDialog.THEME_DEVICE_DEFAULT_DARK
-import android.graphics.Color
 import com.cookiegames.smartcookie.browser.ChooseNavbarCol
-import com.cookiegames.smartcookie.browser.SiteBlockChoice
-import com.cookiegames.smartcookie.extensions.toast
-import com.flask.colorpicker.builder.ColorPickerClickListener
-import com.flask.colorpicker.OnColorSelectedListener
+import com.cookiegames.smartcookie.browser.DrawerSizeChoice
 import com.flask.colorpicker.ColorPickerView
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder
 
@@ -187,6 +179,26 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
 
     }
 
+    private fun showDrawerSize() {
+        BrowserDialog.showCustomDialog(activity) {
+            setTitle(R.string.drawer_size)
+            val stringArray = resources.getStringArray(R.array.drawer_size)
+            val values = DrawerSizeChoice.values().map {
+                Pair(it, when (it) {
+                    DrawerSizeChoice.AUTO -> stringArray[0]
+                    DrawerSizeChoice.ONE -> stringArray[1]
+                    DrawerSizeChoice.TWO -> stringArray[1]
+                    DrawerSizeChoice.THREE -> stringArray[1]
+                })
+            }
+            withSingleChoiceItems(values, userPreferences.drawerSize) {
+                userPreferences.drawerSize = it
+            }
+            setPositiveButton(R.string.action_ok, null)
+        }
+
+    }
+
     private fun showNavbarColPicker(){
         var initColor = userPreferences.colorNavbar
         if(userPreferences.navbarColChoice == ChooseNavbarCol.NONE){
@@ -241,30 +253,6 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         }.resizeAndShow()
     }
 
-    private fun showDrawerSizePicker(summaryUpdater: SummaryUpdater) {
-        val currentTheme = userPreferences.useTheme
-        AlertDialog.Builder(activity).apply {
-            setTitle(resources.getString(R.string.theme))
-            val values = AppTheme.values().map { Pair(it, it.toDisplayString()) }
-            withSingleChoiceItems(values, userPreferences.useTheme) {
-                userPreferences.useTheme = it
-                summaryUpdater.updateSummary(it.toDisplayString())
-            }
-            setPositiveButton(resources.getString(com.cookiegames.smartcookie.R.string.action_ok)) { _, _ ->
-                if (currentTheme != userPreferences.useTheme) {
-                    //activity.onBackPressed()
-                    val intent = Intent(activity, MainActivity::class.java)
-                    startActivity(intent)
-                }
-            }
-            setOnCancelListener {
-                if (currentTheme != userPreferences.useTheme) {
-                    activity.onBackPressed()
-                }
-            }
-        }.resizeAndShow()
-
-    }
 
     private fun showThemePicker(summaryUpdater: SummaryUpdater) {
        val currentTheme = userPreferences.useTheme

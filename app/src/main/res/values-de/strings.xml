@@ -18,7 +18,7 @@
     <string name="java">Javascript aktivieren</string>
     <string name="download">Ordner für Downloads</string>
     <string name="settings_advanced">Erweiterte Einstellungen</string>
-    <string name="settings_advanced_explain">Inhalt der URL-Box, Darstellungsmodus, Textkodierung …</string>
+    <string name="settings_advanced_explain">Inhalt der URL-Box, Darstellungsmodus, Textkodierung &#8230;</string>
     <string name="apache">Apache License 2.0</string>
     <string name="version">Anwendungsversion</string>
     <string name="cache">Cache beim Beenden leeren</string>
@@ -193,7 +193,7 @@
     <string name="bookmark_export_path">Lesezeichen exportiert nach</string>
     <string name="bookmark_export_failure">Lesezeichen konnten leider nicht exportiert werden!</string>
     <string name="bookmark_settings">Lesezeichen Einstellungen</string>
-    <string name="settings_bookmark_explain">Exportieren und Importieren ...</string>
+    <string name="settings_bookmark_explain">Exportieren und Importieren &#8230;</string>
     <string name="import_bookmark_error">Lesezeichen konnten nicht aus Datei importiert werden</string>
     <string name="title_chooser">Datei wählen</string>
     <string name="settings_general">Allgemeine Einstellungen</string>
@@ -245,8 +245,8 @@
     <string name="adblock_summary">Werbeblocker, Cookie-Dialogblocker ...</string>
     <string name="adblock_category">Werbeblocker</string>
     <string name="cookie_category">Cookie-Dialogblocker (beta)</string>
-    <string name="tabs_in_drawer">Tabs in der Navigationsleiste anzeigen</string>
-    <string name="swap_bookmarks_and_tabs">Lesezeichen- und Tab-Liste tauschen</string>
+    <string name="tabs_in_drawer">Tabs in einer Navigations-Schublade anzeigen</string>
+    <string name="swap_bookmarks_and_tabs">Lesezeichen- und Tab-Schublade tauschen</string>
     <string name="do_not_track">\"Nicht verfolgen/tracken\" anfordern</string>
     <string name="remove_identifying_headers">Identifizierende HTTP-Header entfernen</string>
     <string name="action_add_to_homescreen">Zum Startbildschirm hinzufügen</string>
@@ -311,8 +311,8 @@
     <string name="dialog_rename_folder">Ordner umbenennen</string>
     <string name="dialog_remove_folder">Ordner entfernen</string>
     <string name="dialog_title_close_browser">Tabs schließen</string>
-    <string name="dialog_delete_download">Download löschen</string>
-    <string name="dialog_delete_all_downloads">Alle Downloads löschen</string>
+    <string name="dialog_delete_download">Download aus dem Verlauf entfernen</string>
+    <string name="dialog_delete_all_downloads">Alle Downloads aus dem Verlauf entfernen</string>
     <!-- Search Engines -->
     <string name="search_engine_custom">Benutzerdefinierte URL</string>
     <string name="search_engine_google">Google</string>
@@ -374,7 +374,7 @@
     <string name="start_incognito">Dauerhaft wie im privaten Modus verhalten</string>
     <string name="bottom_navbar">Navigationsleiste nach unten verschieben</string>
     <string name="please_restart">Bitte starten Sie die App neu, um die Änderung zu sehen</string>
-    <string name="site_ad_blocked">Diese Seite ist Werbung. Um trotzdem fortzufahren, verwenden Sie die Option \"Werbeblocker für diese Site deaktivieren\" indem Sie auf das Listensymbol im Lesezeichen-Menü klicken.</string>
+    <string name="site_ad_blocked">Diese Seite ist Werbung. Um trotzdem fortzufahren, verwenden Sie die Option \"Werbeblocker für diese Site deaktivieren\" indem Sie auf das Listensymbol in der Lesezeichen-Schublade klicken.</string>
     <string name="onboarding_reshow">Einführung erneut anzeigen</string>
     <string name="onboarding_reshow_desc">Setup erneut anzeigen.</string>
     <string name="pick_search">Suchmaschine auswählen:</string>
@@ -397,7 +397,7 @@
     <string name="color">Farbe</string>
     <string name="looknfeel">Erscheinungsbild Einstellungen</string>
     <string name="customize">Erscheinungsbild Einstellungen</string>
-    <string name="suggest">Anzahl der Vorschläge</string>
+    <string name="suggest">Anzahl der Suchvorschläge</string>
     <string name="close_on_last_tab">Browser mit letztem Tab schließen</string>
     <string name="more">Mehr Infos</string>
     <string name="no_search_suggestions">Keine Suchvorschläge</string>
@@ -410,6 +410,9 @@
     <string name="confirm">Zurücksetzen bestätigen</string>
     <string name="clear">Hiermit werden alle Daten gelöscht, die SmartCookieWeb auf Ihrem Gerät gespeichert hat</string>
     <string name="only_clear">Nur am Ende der Browsersitzung löschen</string>
-    <string name="only_clear_summary">Leeren Sie die obigen Optionen nur, wenn alle Browser-Tabs geschlossen wurden, anstatt dass die App beendet wird</string>
+    <string name="only_clear_summary">Die obigen Optionen nur löschen, wenn alle Browser-Tabs geschlossen wurden, anstatt immer dann wenn die App verlassen wird</string>
+    <string name="enable_in_settings">AutoFill muss in den Android-Einstellungen eingerichtet sein, damit diese Option wirksam wird</string>
+    <string name="drawer_lines">Maximale Textzeilen in Schubladen</string>
+    <string name="drawer_size">Textgröße in Schubladen</string>
     <!-- finish pages -->
 </resources>
