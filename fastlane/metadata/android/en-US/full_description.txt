@@ -1,4 +1,4 @@
-A web browser with privacy on by default
+A web browser with privacy on by default. A fork of Lightning Browser.
 
 Features:
 - Open source
