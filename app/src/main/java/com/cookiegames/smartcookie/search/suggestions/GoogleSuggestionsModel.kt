@@ -34,13 +34,13 @@ class GoogleSuggestionsModel(
         .host("suggestqueries.google.com")
         .encodedPath("/complete/search")
         .addQueryParameter("output", "toolbar")
-        .addQueryParameter("hl", language)
+        //.addQueryParameter("hl", language)
         .addEncodedQueryParameter("q", query)
         .build()
 
     @Throws(Exception::class)
     override fun parseResults(responseBody: ResponseBody): List<SearchSuggestion> {
-        parser.setInput(responseBody.byteStream(), "ISO-8859-1")
+        parser.setInput(responseBody.byteStream(), encoding)
         val suggestions = mutableListOf<SearchSuggestion>()
         var eventType = parser.eventType
         while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -62,6 +62,8 @@ class GoogleSuggestionsModel(
                 isNamespaceAware = true
             }.newPullParser()
         }
+
+        var encoding = "ISO-8859-1"
 
     }
 }

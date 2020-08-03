@@ -32,6 +32,9 @@ abstract class BaseSuggestionsModel internal constructor(
 
     private val language = locale.language.takeIf(String::isNotEmpty) ?: DEFAULT_LANGUAGE
 
+
+
+
     /**
      * Create a URL for the given query in the given language.
      *
