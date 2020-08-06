@@ -386,8 +386,8 @@
     <string name="close_app">Close browser</string>
     <string name="enter_password">Enter Password</string>
     <string name="wrong_password">Password Incorrect</string>
-    <string name="block_all_sites">Block All Listed Sites</string>
-    <string name="only_allow_sites">Only Allow Listed Sites</string>
+    <string name="block_all_sites">Block all listed Sites</string>
+    <string name="only_allow_sites">Only allow listed sites</string>
     <string name="parental_controls">Parental controls settings</string>
     <string name="settings_parents">Block sites, set password...</string>
     <string name="label_realm">Server message: %s</string>
@@ -463,7 +463,7 @@
     <string name="block_intent">Handle all clicked links within this browser</string>
     <string name="block_intent_summary">Blocks prompt to open links in external applications</string>
 
-    <string name="block_javascript">Block JavaScript for sites</string>
+    <string name="block_javascript">Block JavaScript for site</string>
     <string name="unlisted_javascript">Block JavaScript for listed sites</string>
     <string name="listed_javascript">Only allow JavaScript for listed sites</string>
 
@@ -477,6 +477,8 @@
 
     <string name="drawer_lines">Max text lines in drawer</string>
     <string name="drawer_size">Drawer text size</string>
+
+
 
     <!-- finish pages -->
 </resources>

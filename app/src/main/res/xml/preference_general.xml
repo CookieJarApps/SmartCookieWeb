@@ -60,9 +60,9 @@
             android:key="suggestions_number"
             android:singleLineTitle="false"
             android:title="@string/suggest"/>
-        <!--<Preference
+        <Preference
             android:key="block_javascript"
             android:singleLineTitle="false"
-            android:title="@string/suggest"/>-->
+            android:title="@string/block_javascript"/>
     </PreferenceCategory>
 </PreferenceScreen>

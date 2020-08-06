@@ -26,6 +26,9 @@ class UserPreferences @Inject constructor(
     var siteBlockChoice by preferences.enumPreference(SITE_BLOCK, SiteBlockChoice.NONE)
     var siteBlockNames by preferences.stringPreference(USE_SITE_BLOCK, "")
 
+    var javaScriptChoice by preferences.enumPreference(USE_JS_BLOCK, JavaScriptChoice.NONE)
+    var javaScriptBlocked by preferences.stringPreference(BLOCK_JS, "")
+
     var navbarColChoice by preferences.enumPreference(NAVBAR_COL, ChooseNavbarCol.NONE)
 
 
@@ -401,6 +404,8 @@ private const val FORCE_HTTPS = "forceHTTPS"
 private const val SITE_BLOCK = "siteBlock"
 private const val NAVBAR_COLOR = "navcol"
 private const val USE_SITE_BLOCK = "useSiteBlock"
+private const val USE_JS_BLOCK = "useJSblock"
+private const val BLOCK_JS = "blockJS"
 private const val PASSWORD = "password"
 private const val USE_PASSWORD = "usePassword"
 private const val BLOCK_MALWARE = "blockMalware"

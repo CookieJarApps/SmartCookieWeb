@@ -3,14 +3,12 @@ package com.cookiegames.smartcookie.browser.bookmarks
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
+import android.os.Handler
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,11 +18,15 @@ import com.cookiegames.smartcookie.adblock.allowlist.AllowListModel
 import com.cookiegames.smartcookie.animation.AnimationUtils
 import com.cookiegames.smartcookie.browser.BookmarksView
 import com.cookiegames.smartcookie.browser.DrawerSizeChoice
+import com.cookiegames.smartcookie.browser.JavaScriptChoice
 import com.cookiegames.smartcookie.browser.TabsManager
 import com.cookiegames.smartcookie.controller.UIController
 import com.cookiegames.smartcookie.database.Bookmark
 import com.cookiegames.smartcookie.database.bookmark.BookmarkRepository
-import com.cookiegames.smartcookie.di.*
+import com.cookiegames.smartcookie.di.DatabaseScheduler
+import com.cookiegames.smartcookie.di.MainScheduler
+import com.cookiegames.smartcookie.di.NetworkScheduler
+import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.dialog.DialogItem
 import com.cookiegames.smartcookie.dialog.LightningDialogBuilder
@@ -39,6 +41,7 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
+import java.net.URL
 import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 
@@ -98,7 +101,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
                 ReadingActivity.launch(context, it)
             }
         }
-        findViewById<View>(R.id.action_page_tools).setOnClickListener { showPageToolsDialog(context) }
+        findViewById<View>(R.id.action_page_tools).setOnClickListener { showPageToolsDialog(context, userPreferences) }
 
         bookmarkAdapter = BookmarkListAdapter(
             context,
@@ -205,7 +208,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
     /**
      * Show the page tools dialog.
      */
-    private fun showPageToolsDialog(context: Context) {
+    private fun showPageToolsDialog(context: Context, userPreferences: UserPreferences) {
         val currentTab = getTabsManager().currentTab ?: return
         val isAllowedAds = allowListModel.isUrlAllowedAds(currentTab.url)
         val whitelistString = if (isAllowedAds) {
@@ -252,7 +255,32 @@ class BookmarksDrawerView @JvmOverloads constructor(
                     allowListModel.addUrlToAllowList(currentTab.url)
                 }
                 getTabsManager().currentTab?.reload()
+            }, DialogItem(
+                icon = context.drawable(R.drawable.ic_action_delete),
+                title = R.string.block_javascript,
+                isConditionMet = !currentTab.url.isSpecialUrl()
+        ) {
+            val url = URL(currentTab.url)
+            if(userPreferences.javaScriptChoice != JavaScriptChoice.NONE){
+                if(!userPreferences.javaScriptBlocked.contains(url.host)){
+                    if(userPreferences.javaScriptBlocked.equals("")){
+                        userPreferences.javaScriptBlocked = url.host
+                    }
+                    else{
+                        userPreferences.javaScriptBlocked = userPreferences.javaScriptBlocked + ", " + url.host
+                    }
+
             }
+            }
+            else{
+                userPreferences.javaScriptChoice = JavaScriptChoice.BLACKLIST
+            }
+            getTabsManager().currentTab?.reload()
+            Handler().postDelayed({
+                getTabsManager().currentTab?.reload()
+            }, 250)
+
+        }
         )
     }
 

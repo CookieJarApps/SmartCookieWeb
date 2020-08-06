@@ -38,6 +38,7 @@ import androidx.core.content.FileProvider
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.AppTheme
+import com.cookiegames.smartcookie.browser.JavaScriptChoice
 import com.cookiegames.smartcookie.browser.SiteBlockChoice
 import com.cookiegames.smartcookie.js.DarkMode
 import io.reactivex.Observable
@@ -193,7 +194,55 @@ class SmartCookieWebClient(
         if (userPreferences.darkModeExtension && !WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
             view.evaluateJavascript(darkMode.provideJs(), null)
         }
-
+        if (userPreferences.javaScriptChoice === JavaScriptChoice.WHITELIST) run {
+            if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked != null) {
+                val arrayOfURLs = userPreferences.javaScriptBlocked
+                val strgs: Array<String>
+                if (arrayOfURLs.contains(", ")) {
+                    strgs = arrayOfURLs.split(", ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+                } else {
+                    strgs = arrayOfURLs.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+                }
+                if (stringContainsItemFromList(url, strgs)) {
+                    if (url.contains("file:///android_asset") or url.contains("about:blank")) {
+                        return
+                    } else {
+                        if(userPreferences.useTheme == AppTheme.LIGHT){
+                            color = ""
+                        }
+                        view.settings.javaScriptEnabled = false
+                    }
+                }
+                else{
+                    view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+                }
+            }
+        }
+        else if (userPreferences.javaScriptChoice === JavaScriptChoice.BLACKLIST) {
+            if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked != null) {
+                val arrayOfURLs = userPreferences.javaScriptBlocked
+                val strgs: Array<String>
+                if (arrayOfURLs.contains(", ")) {
+                    strgs = arrayOfURLs.split(", ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+                } else {
+                    strgs = arrayOfURLs.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+                }
+                if (!stringContainsItemFromList(url, strgs)) {
+                    if (url.contains("file:///android_asset") or url.contains("about:blank")) {
+                        return
+                    } else {
+                        if(userPreferences.useTheme == AppTheme.LIGHT){
+                            color = ""
+                        }
+                        view.settings.javaScriptEnabled = false
+                    }
+                }
+                else{
+                    view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+                }
+            }
+            uiController.tabChanged(smartCookieView)
+        }
         if(userPreferences.cookieBlockEnabled){
             view.settings.javaScriptEnabled = true
             view.loadUrl(

@@ -28,6 +28,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.cookiegames.smartcookie.browser.JavaScriptChoice
+import com.cookiegames.smartcookie.browser.SiteBlockChoice
 import com.cookiegames.smartcookie.browser.SuggestionNumChoice
 import javax.inject.Inject
 
@@ -92,6 +94,12 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
             onClick = ::showSearchSuggestionsDialog
         )
 
+        clickableDynamicPreference(
+                preference = SETTINGS_BLOCK_JAVASCRIPT,
+                summary = userPreferences.javaScriptChoice.toSummary(),
+                onClick = ::showJavaScriptPicker
+        )
+
         switchPreference(
             preference = SETTINGS_IMAGES,
             isChecked = userPreferences.blockImagesEnabled,
@@ -127,6 +135,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 isChecked = userPreferences.closeOnLastTab,
                 onCheckChange = { userPreferences.closeOnLastTab = it }
         )
+
     }
 
     private fun showSuggestionNumPicker(summaryUpdater: SummaryUpdater) {
@@ -460,6 +469,69 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
         }
     }
 
+    private fun JavaScriptChoice.toSummary(): String {
+        val stringArray = resources.getStringArray(R.array.blocked_sites)
+        return when (this) {
+            JavaScriptChoice.NONE -> stringArray[0]
+            JavaScriptChoice.WHITELIST -> userPreferences.siteBlockNames
+            JavaScriptChoice.BLACKLIST -> userPreferences.siteBlockNames
+        }
+    }
+
+    private fun showJavaScriptPicker(summaryUpdater: SummaryUpdater) {
+        BrowserDialog.showCustomDialog(activity) {
+            setTitle(R.string.block_javascript)
+            val stringArray = resources.getStringArray(R.array.blocked_sites)
+            val values = JavaScriptChoice.values().map {
+                Pair(it, when (it) {
+                    JavaScriptChoice.NONE -> stringArray[0]
+                    JavaScriptChoice.WHITELIST -> stringArray[1]
+                    JavaScriptChoice.BLACKLIST -> stringArray[2]
+                })
+            }
+            withSingleChoiceItems(values, userPreferences.javaScriptChoice) {
+                updateJavaScriptChoice(it, activity, summaryUpdater)
+            }
+            setPositiveButton(R.string.action_ok, null)
+        }
+    }
+
+    private fun updateJavaScriptChoice(choice: JavaScriptChoice, activity: Activity, summaryUpdater: SummaryUpdater) {
+        if (choice == JavaScriptChoice.WHITELIST || choice == JavaScriptChoice.BLACKLIST) {
+            showManualJavaScriptPicker(activity, summaryUpdater, choice)
+        }
+
+        userPreferences.javaScriptChoice = choice
+        summaryUpdater.updateSummary(choice.toSummary())
+    }
+
+    private fun showManualJavaScriptPicker(activity: Activity, summaryUpdater: SummaryUpdater, choice: JavaScriptChoice) {
+        val v = activity.layoutInflater.inflate(R.layout.site_block, null)
+        val blockedSites = v.findViewById<TextView>(R.id.siteBlock)
+        // Limit the number of characters since the port needs to be of type int
+        // Use input filters to limit the EditText length and determine the max
+        // length by using length of integer MAX_VALUE
+        val maxCharacters = Integer.MAX_VALUE.toString().length
+
+        blockedSites.text = userPreferences.javaScriptBlocked
+
+        BrowserDialog.showCustomDialog(activity) {
+            setTitle(R.string.block_javascript)
+            setView(v)
+            setPositiveButton(R.string.action_ok) { _, _ ->
+                val proxyHost = blockedSites.text.toString()
+                userPreferences.javaScriptBlocked = proxyHost
+                if(choice.toString() == "BLACKLIST"){
+                    summaryUpdater.updateSummary(getText(R.string.only_allow_sites).toString())
+                }
+                else{
+                    summaryUpdater.updateSummary(getText(R.string.block_all_sites).toString())
+                }
+
+            }
+        }
+    }
+
     private fun searchSuggestionChoiceToTitle(choice: Suggestions): String =
         when (choice) {
             Suggestions.GOOGLE -> getString(R.string.powered_by_google)
@@ -504,6 +576,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_IMAGES = "cb_images"
         private const val SETTINGS_SAVEDATA = "savedata"
         private const val SETTINGS_JAVASCRIPT = "cb_javascript"
+        private const val SETTINGS_BLOCK_JAVASCRIPT = "block_javascript"
         private const val SETTINGS_COLOR_MODE = "cb_colormode"
         private const val SETTINGS_USER_AGENT = "agent"
         private const val SETTINGS_DOWNLOAD = "download"
