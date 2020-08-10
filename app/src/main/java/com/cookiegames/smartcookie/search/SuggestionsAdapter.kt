@@ -146,14 +146,7 @@ class SuggestionsAdapter(
     private fun getBookmarksForQuery(query: String): Single<List<Bookmark.Entry>> =
             Single.fromCallable {
                 var choice = 5
-                // TODO: UPDATE HERE TOO!!
-
-                if(userPreferences.suggestionChoice == SuggestionNumChoice.THREE){ choice = 3 }
-                else if(userPreferences.suggestionChoice == SuggestionNumChoice.FOUR){ choice = 4 }
-                else if(userPreferences.suggestionChoice == SuggestionNumChoice.FIVE){ choice = 5 }
-                else if(userPreferences.suggestionChoice == SuggestionNumChoice.SIX){ choice = 6 }
-                else if(userPreferences.suggestionChoice == SuggestionNumChoice.SEVEN){ choice = 7 }
-                else if(userPreferences.suggestionChoice == SuggestionNumChoice.EIGHT){ choice = 8 }
+                choice = userPreferences.suggestionChoice.value + 3
 
             (allBookmarks.filter {
                 it.title.toLowerCase(Locale.getDefault()).startsWith(query)
@@ -211,13 +204,7 @@ class SuggestionsAdapter(
         }
         .map { (bookmarks, history, searches) ->
             var choice = 5
-            // TODO: UPDATE HERE TOO!!
-           if(userPreferences.suggestionChoice == SuggestionNumChoice.THREE){ choice = 3 }
-            else if(userPreferences.suggestionChoice == SuggestionNumChoice.FOUR){ choice = 4 }
-            else if(userPreferences.suggestionChoice == SuggestionNumChoice.FIVE){ choice = 5 }
-            else if(userPreferences.suggestionChoice == SuggestionNumChoice.SIX){ choice = 6 }
-            else if(userPreferences.suggestionChoice == SuggestionNumChoice.SEVEN){ choice = 7 }
-            else if(userPreferences.suggestionChoice == SuggestionNumChoice.EIGHT){ choice = 8 }
+            choice = userPreferences.suggestionChoice.value + 3
             val bookmarkCount = choice - 2.coerceAtMost(history.size) - 1.coerceAtMost(searches.size)
             val historyCount = choice - bookmarkCount.coerceAtMost(bookmarks.size) - 1.coerceAtMost(searches.size)
             val searchCount = choice - bookmarkCount.coerceAtMost(bookmarks.size) - historyCount.coerceAtMost(history.size)

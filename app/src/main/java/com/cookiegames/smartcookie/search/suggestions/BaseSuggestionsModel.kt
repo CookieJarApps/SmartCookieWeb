@@ -62,14 +62,8 @@ abstract class BaseSuggestionsModel internal constructor(
 
                     return@fromCallable emptyList<SearchSuggestion>()
                 }
-                var choice = 2
-                // TODO: CONVERT THIS TO INT WHEN I HAVE THE TIME - THIS WORKS FOR NOW
-                if(userPreferences.suggestionChoice == SuggestionNumChoice.THREE){ choice = 3 }
-                else if(userPreferences.suggestionChoice == SuggestionNumChoice.FOUR){ choice = 4 }
-                else if(userPreferences.suggestionChoice == SuggestionNumChoice.FIVE){ choice = 5 }
-                else if(userPreferences.suggestionChoice == SuggestionNumChoice.SIX){ choice = 6 }
-                else if(userPreferences.suggestionChoice == SuggestionNumChoice.SEVEN){ choice = 7 }
-                else if(userPreferences.suggestionChoice == SuggestionNumChoice.EIGHT){ choice = 8 }
+                var choice = 5
+                choice = userPreferences.suggestionChoice.value + 3
                 return@fromCallable client.downloadSuggestionsForQuery(query, language)
                     ?.body
                     ?.safeUse(::parseResults)
