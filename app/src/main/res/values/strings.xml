@@ -478,7 +478,8 @@
     <string name="drawer_lines">Max text lines in drawer</string>
     <string name="drawer_size">Drawer text size</string>
 
-
+    <string name="privacy_set">Privacy settings</string>
+    <string name="security_set">Security settings</string>
 
     <!-- finish pages -->
 </resources>

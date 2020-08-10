@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/settings_privacy">
+    <PreferenceCategory android:title="@string/privacy_set">
         <SwitchPreference
             android:defaultValue="true"
             android:key="location"
@@ -25,6 +25,24 @@
             android:title="@string/do_not_track"/>
         <SwitchPreference
             android:defaultValue="false"
+            android:singleLineTitle="false"
+            android:key="remove_identifying_headers"
+            android:title="@string/remove_identifying_headers"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:singleLineTitle="false"
+            android:key="webrtc_support"
+            android:title="@string/webrtc_support"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="start_incognito"
+            android:singleLineTitle="false"
+            android:title="@string/start_incognito"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/security_set">
+    </PreferenceCategory>
+        <SwitchPreference
+            android:defaultValue="false"
             android:key="prefer_https"
             android:singleLineTitle="false"
             android:summary="@string/preferhttpsdesc"
@@ -36,25 +54,10 @@
             android:summary="@string/forcehttpsdesc"
             android:title="@string/forcehttps"/>
         <SwitchPreference
-            android:defaultValue="false"
-            android:singleLineTitle="false"
-            android:key="remove_identifying_headers"
-            android:title="@string/remove_identifying_headers"/>
-        <SwitchPreference
             android:defaultValue="true"
             android:singleLineTitle="false"
             android:key="block_malicious_sites"
             android:title="@string/block_malware"/>
-        <SwitchPreference
-            android:defaultValue="false"
-            android:singleLineTitle="false"
-            android:key="webrtc_support"
-            android:title="@string/webrtc_support"/>
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="start_incognito"
-            android:singleLineTitle="false"
-            android:title="@string/start_incognito"/>
         <SwitchPreference
             android:defaultValue="false"
             android:key="clear_cache_exit"
@@ -97,5 +100,5 @@
             android:key="clear_webstorage"
             android:singleLineTitle="false"
             android:title="@string/clear_web_storage"/>
-    </PreferenceCategory>
+
 </PreferenceScreen>
