@@ -2,6 +2,7 @@ package com.cookiegames.smartcookie.extensions
 
 import com.cookiegames.smartcookie.utils.Utils.mixTwoColors
 import android.graphics.*
+import kotlin.math.round
 import kotlin.math.tan
 
 /**
@@ -32,10 +33,36 @@ fun Canvas.drawTrapezoid(backgroundColor: Int, withShadow: Boolean) {
         }
     }
 
+    val roundPaint = Paint().apply {
+        color = backgroundColor
+        style = Paint.Style.FILL
+        // isFilterBitmap = true
+        isAntiAlias = true
+        isDither = true
+        strokeJoin = Paint.Join.ROUND
+        pathEffect = CornerPathEffect(10f)
+        if (withShadow) {
+            shader = LinearGradient(
+                    0f, 0.9f * height, 0f, height.toFloat(),
+                    backgroundColor, shadowColor,
+                    Shader.TileMode.CLAMP
+            )
+        }
+    }
+
     val radians = Math.PI / 3
     val base = (height / tan(radians)).toInt()
 
     val wallPath = Path().apply {
+        reset()
+        moveTo(0f, height.toFloat())
+        lineTo(width.toFloat(), height.toFloat())
+        lineTo((width - base).toFloat(), 4f)
+        lineTo(base.toFloat(), 4f)
+        close()
+    }
+
+    val roundPath = Path().apply {
         reset()
         moveTo(0f, height.toFloat())
         lineTo(width.toFloat(), height.toFloat())
@@ -45,4 +72,5 @@ fun Canvas.drawTrapezoid(backgroundColor: Int, withShadow: Boolean) {
     }
 
     drawPath(wallPath, paint)
+    drawPath(roundPath, roundPaint)
 }
