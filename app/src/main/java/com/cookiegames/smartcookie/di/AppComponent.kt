@@ -55,8 +55,6 @@ interface AppComponent {
 
     fun inject(app: BrowserApp)
 
-    fun inject(proxyUtils: ProxyUtils)
-
     fun inject(activity: ReadingActivity)
 
     fun inject(webClient: SmartCookieWebClient)
@@ -76,8 +74,6 @@ interface AppComponent {
     fun inject(suggestionsAdapter: SuggestionsAdapter)
 
     fun inject(chromeClient: SmartCookieChromeClient)
-
-    fun inject(downloadHandler: DownloadHandler)
 
     fun inject(searchBoxModel: SearchBoxModel)
 

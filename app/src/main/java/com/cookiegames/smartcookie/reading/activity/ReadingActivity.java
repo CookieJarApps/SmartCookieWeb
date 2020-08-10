@@ -20,6 +20,7 @@ import javax.inject.Inject;
 
 import com.cookiegames.smartcookie.BrowserApp;
 import com.cookiegames.smartcookie.R;
+import com.cookiegames.smartcookie.di.Injector;
 import com.cookiegames.smartcookie.di.MainScheduler;
 import com.cookiegames.smartcookie.di.NetworkScheduler;
 import com.cookiegames.smartcookie.dialog.BrowserDialog;
@@ -79,7 +80,7 @@ public class ReadingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        BrowserApp.getAppComponent().inject(this);
+        Injector.getInjector(this).inject(this);
 
         overridePendingTransition(R.anim.slide_in_from_right, R.anim.fade_out_scale);
         mInvert = mUserPreferences.getInvertColors();

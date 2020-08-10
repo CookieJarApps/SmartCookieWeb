@@ -38,9 +38,13 @@ class SettingsActivity : ThemableSettingsActivity() {
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
     }
 
-    override fun onBuildHeaders(target: MutableList<PreferenceActivity.Header>) {
+    override fun onBuildHeaders(target: MutableList<Header>) {
         loadHeadersFromResource(R.xml.preferences_headers, target)
         fragments.clear()
+
+        if (buildInfo.buildType == BuildType.RELEASE) {
+            target.removeAll { it.titleRes == R.string.debug_title }
+        }
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             // Workaround for bug in the AppCompat support library

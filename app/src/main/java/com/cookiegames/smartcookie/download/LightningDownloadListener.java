@@ -21,6 +21,7 @@ import com.cookiegames.smartcookie.R;
 import com.cookiegames.smartcookie.database.downloads.DownloadsRepository;
 import com.cookiegames.smartcookie.dialog.BrowserDialog;
 import com.cookiegames.smartcookie.log.Logger;
+import com.cookiegames.smartcookie.di.Injector;
 import com.cookiegames.smartcookie.preference.UserPreferences;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -37,7 +38,7 @@ public class LightningDownloadListener implements DownloadListener {
     @Inject Logger logger;
 
     public LightningDownloadListener(Activity context) {
-        BrowserApp.getAppComponent().inject(this);
+        Injector.getInjector(context).inject(this);
         mActivity = context;
     }
 
@@ -45,45 +46,45 @@ public class LightningDownloadListener implements DownloadListener {
     public void onDownloadStart(@NonNull final String url, final String userAgent,
                                 final String contentDisposition, final String mimetype, final long contentLength) {
         PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(mActivity,
-            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
-            new PermissionsResultAction() {
-                @Override
-                public void onGranted() {
-                    final String fileName = URLUtil.guessFileName(url, contentDisposition, mimetype);
-                    final String downloadSize;
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                new PermissionsResultAction() {
+                    @Override
+                    public void onGranted() {
+                        final String fileName = URLUtil.guessFileName(url, contentDisposition, mimetype);
+                        final String downloadSize;
 
-                    if (contentLength > 0) {
-                        downloadSize = Formatter.formatFileSize(mActivity, contentLength);
-                    } else {
-                        downloadSize = mActivity.getString(R.string.unknown_size);
+                        if (contentLength > 0) {
+                            downloadSize = Formatter.formatFileSize(mActivity, contentLength);
+                        } else {
+                            downloadSize = mActivity.getString(R.string.unknown_size);
+                        }
+
+                        DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
+                            switch (which) {
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    downloadHandler.onDownloadStart(mActivity, userPreferences, url, userAgent, contentDisposition, mimetype, downloadSize);
+                                    break;
+                                case DialogInterface.BUTTON_NEGATIVE:
+                                    break;
+                            }
+                        };
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity); // dialog
+                        String message = mActivity.getString(R.string.dialog_download, downloadSize);
+                        Dialog dialog = builder.setTitle(fileName)
+                                .setMessage(message)
+                                .setPositiveButton(mActivity.getResources().getString(R.string.action_download),
+                                        dialogClickListener)
+                                .setNegativeButton(mActivity.getResources().getString(R.string.action_cancel),
+                                        dialogClickListener).show();
+                        BrowserDialog.setDialogSize(mActivity, dialog);
+                        logger.log(TAG, "Downloading: " + fileName);
                     }
 
-                    DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
-                        switch (which) {
-                            case DialogInterface.BUTTON_POSITIVE:
-                                downloadHandler.onDownloadStart(mActivity, userPreferences, url, userAgent, contentDisposition, mimetype, downloadSize);
-                                break;
-                            case DialogInterface.BUTTON_NEGATIVE:
-                                break;
-                        }
-                    };
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(mActivity); // dialog
-                    String message = mActivity.getString(R.string.dialog_download, downloadSize);
-                    Dialog dialog = builder.setTitle(fileName)
-                        .setMessage(message)
-                        .setPositiveButton(mActivity.getResources().getString(R.string.action_download),
-                            dialogClickListener)
-                        .setNegativeButton(mActivity.getResources().getString(R.string.action_cancel),
-                            dialogClickListener).show();
-                    BrowserDialog.setDialogSize(mActivity, dialog);
-                    logger.log(TAG, "Downloading: " + fileName);
-                }
-
-                @Override
-                public void onDenied(String permission) {
-                    //TODO show message
-                }
-            });
+                    @Override
+                    public void onDenied(String permission) {
+                        //TODO show message
+                    }
+                });
     }
 }

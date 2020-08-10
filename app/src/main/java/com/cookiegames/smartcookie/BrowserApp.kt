@@ -19,6 +19,7 @@ import com.cookiegames.smartcookie.preference.DeveloperPreferences
 import com.cookiegames.smartcookie.utils.FileUtils
 import com.cookiegames.smartcookie.utils.MemoryLeakUtils
 import com.cookiegames.smartcookie.utils.installMultiDex
+import android.os.StrictMode
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.plugins.RxJavaPlugins
@@ -33,7 +34,7 @@ class BrowserApp : Application() {
     @Inject internal lateinit var logger: Logger
     @Inject internal lateinit var buildInfo: BuildInfo
 
-    val applicationComponent: AppComponent by lazy { appComponent }
+    lateinit var applicationComponent: AppComponent
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
@@ -44,6 +45,17 @@ class BrowserApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        if (BuildConfig.DEBUG) {
+            StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .build())
+            StrictMode.setVmPolicy(StrictMode.VmPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .build())
+        }
+
         if (Build.VERSION.SDK_INT >= 28) {
             if (getProcessName() == "$packageName:incognito") {
                 WebView.setDataDirectorySuffix("incognito")
@@ -71,33 +83,30 @@ class BrowserApp : Application() {
             }
         }
 
-        appComponent = DaggerAppComponent.builder()
-            .application(this)
-            .buildInfo(createBuildInfo())
-            .build()
+        applicationComponent = DaggerAppComponent.builder()
+                .application(this)
+                .buildInfo(createBuildInfo())
+                .build()
         injector.inject(this)
 
         Single.fromCallable(bookmarkModel::count)
-            .filter { it == 0L }
-            .flatMapCompletable {
-                val assetsBookmarks = BookmarkExporter.importBookmarksFromAssets(this@BrowserApp)
-                bookmarkModel.addBookmarkList(assetsBookmarks)
-            }
-            .subscribeOn(databaseScheduler)
-            .subscribe()
-
+                .filter { it == 0L }
+                .flatMapCompletable {
+                    val assetsBookmarks = BookmarkExporter.importBookmarksFromAssets(this@BrowserApp)
+                    bookmarkModel.addBookmarkList(assetsBookmarks)
+                }
+                .subscribeOn(databaseScheduler)
+                .subscribe()
         if (buildInfo.buildType == BuildType.DEBUG) {
-            if(android.os.Build.VERSION.SDK_INT > 19) {
-                WebView.setWebContentsDebuggingEnabled(true)
-            }
+            WebView.setWebContentsDebuggingEnabled(true)
         }
+
         registerActivityLifecycleCallbacks(object : MemoryLeakUtils.LifecycleAdapter() {
             override fun onActivityDestroyed(activity: Activity) {
                 logger.log(TAG, "Cleaning up after the Android framework")
                 MemoryLeakUtils.clearNextServedView(activity, this@BrowserApp)
             }
         })
-
     }
 
     /**
@@ -109,16 +118,11 @@ class BrowserApp : Application() {
     })
 
     companion object {
-
         private const val TAG = "BrowserApp"
 
         init {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT)
         }
-
-        @JvmStatic
-        lateinit var appComponent: AppComponent
-
     }
 
 }

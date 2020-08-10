@@ -238,6 +238,7 @@ public final class Utils {
                                       @NonNull Bitmap favicon) {
         Intent shortcutIntent = new Intent(Intent.ACTION_VIEW);
         shortcutIntent.setData(Uri.parse(historyEntry.getUrl()));
+        shortcutIntent.setPackage("com.cookiegames.smartcookie");
 
         final String title = TextUtils.isEmpty(historyEntry.getTitle()) ? activity.getString(R.string.untitled) : historyEntry.getTitle();
 

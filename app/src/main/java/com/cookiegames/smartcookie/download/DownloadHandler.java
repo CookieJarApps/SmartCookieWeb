@@ -57,16 +57,26 @@ public class DownloadHandler {
 
     private static final String COOKIE_REQUEST_HEADER = "Cookie";
 
-    @Inject DownloadsRepository downloadsRepository;
-    @Inject DownloadManager downloadManager;
-    @Inject @DatabaseScheduler Scheduler databaseScheduler;
-    @Inject @NetworkScheduler Scheduler networkScheduler;
-    @Inject @MainScheduler Scheduler mainScheduler;
-    @Inject Logger logger;
+    private final DownloadsRepository downloadsRepository;
+    private final DownloadManager downloadManager;
+    private final Scheduler databaseScheduler;
+    private final Scheduler networkScheduler;
+    private final Scheduler mainScheduler;
+    private final Logger logger;
 
     @Inject
-    public DownloadHandler() {
-        BrowserApp.getAppComponent().inject(this);
+    public DownloadHandler(DownloadsRepository downloadsRepository,
+                           DownloadManager downloadManager,
+                           @DatabaseScheduler Scheduler databaseScheduler,
+                           @NetworkScheduler Scheduler networkScheduler,
+                           @MainScheduler Scheduler mainScheduler,
+                           Logger logger) {
+        this.downloadsRepository = downloadsRepository;
+        this.downloadManager = downloadManager;
+        this.databaseScheduler = databaseScheduler;
+        this.networkScheduler = networkScheduler;
+        this.mainScheduler = mainScheduler;
+        this.logger = logger;
     }
 
     /**
@@ -77,36 +87,36 @@ public class DownloadHandler {
      * @param url                The full url to the content that should be downloaded
      * @param userAgent          User agent of the downloading application.
      * @param contentDisposition Content-disposition http header, if present.
-     * @param mimetype           The mimetype of the content reported by the server
+     * @param mimeType           The mimeType of the content reported by the server
      * @param contentSize        The size of the content
      */
     public void onDownloadStart(@NonNull Activity context, @NonNull UserPreferences manager, @NonNull String url, String userAgent,
-                                @Nullable String contentDisposition, String mimetype, @NonNull String contentSize) {
+                                @Nullable String contentDisposition, String mimeType, @NonNull String contentSize) {
 
         logger.log(TAG, "DOWNLOAD: Trying to download from URL: " + url);
         logger.log(TAG, "DOWNLOAD: Content disposition: " + contentDisposition);
-        logger.log(TAG, "DOWNLOAD: Mimetype: " + mimetype);
+        logger.log(TAG, "DOWNLOAD: MimeType: " + mimeType);
         logger.log(TAG, "DOWNLOAD: User agent: " + userAgent);
 
         // if we're dealing wih A/V content that's not explicitly marked
         // for download, check if it's streamable.
         if (contentDisposition == null
-            || !contentDisposition.regionMatches(true, 0, "attachment", 0, 10)) {
+                || !contentDisposition.regionMatches(true, 0, "attachment", 0, 10)) {
             // query the package manager to see if there's a registered handler
             // that matches.
             Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(Uri.parse(url), mimetype);
+            intent.setDataAndType(Uri.parse(url), mimeType);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addCategory(Intent.CATEGORY_BROWSABLE);
             intent.setComponent(null);
             intent.setSelector(null);
             ResolveInfo info = context.getPackageManager().resolveActivity(intent,
-                PackageManager.MATCH_DEFAULT_ONLY);
+                    PackageManager.MATCH_DEFAULT_ONLY);
             if (info != null) {
                 // If we resolved to ourselves, we don't want to attempt to
                 // load the url only to try and download it again.
                 if (BuildConfig.APPLICATION_ID.equals(info.activityInfo.packageName)
-                    || MainActivity.class.getName().equals(info.activityInfo.name)) {
+                        || MainActivity.class.getName().equals(info.activityInfo.name)) {
                     // someone (other than us) knows how to handle this mime
                     // type with this scheme, don't download.
                     try {
@@ -119,7 +129,7 @@ public class DownloadHandler {
                 }
             }
         }
-        onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimetype, contentSize);
+        onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
     }
 
     // This is to work around the fact that java.net.URI throws Exceptions
@@ -186,8 +196,8 @@ public class DownloadHandler {
             }
 
             Dialog dialog = new AlertDialog.Builder(context).setTitle(title)
-                .setIcon(android.R.drawable.ic_dialog_alert).setMessage(msg)
-                .setPositiveButton(R.string.action_ok, null).show();
+                    .setIcon(android.R.drawable.ic_dialog_alert).setMessage(msg)
+                    .setPositiveButton(R.string.action_ok, null).show();
             BrowserDialog.setDialogSize(context, dialog);
             return;
         }
@@ -251,22 +261,22 @@ public class DownloadHandler {
             // We must have long pressed on a link or image to download it. We
             // are not sure of the mimetype in this case, so do a head request
             final Disposable disposable = new FetchUrlMimeType(downloadManager, request, addressString, cookies, userAgent)
-                .create()
-                .subscribeOn(networkScheduler)
-                .observeOn(mainScheduler)
-                .subscribe(result -> {
-                    switch (result) {
-                        case FAILURE_ENQUEUE:
-                            ActivityExtensions.snackbar(context, R.string.cannot_download);
-                            break;
-                        case FAILURE_LOCATION:
-                            ActivityExtensions.snackbar(context, R.string.problem_location_download);
-                            break;
-                        case SUCCESS:
-                            ActivityExtensions.snackbar(context, R.string.download_pending);
-                            break;
-                    }
-                });
+                    .create()
+                    .subscribeOn(networkScheduler)
+                    .observeOn(mainScheduler)
+                    .subscribe(result -> {
+                        switch (result) {
+                            case FAILURE_ENQUEUE:
+                                ActivityExtensions.snackbar(context, R.string.cannot_download);
+                                break;
+                            case FAILURE_LOCATION:
+                                ActivityExtensions.snackbar(context, R.string.problem_location_download);
+                                break;
+                            case SUCCESS:
+                                ActivityExtensions.snackbar(context, R.string.download_pending);
+                                break;
+                        }
+                    });
         } else {
             logger.log(TAG, "Valid mimetype, attempting to download");
             try {
@@ -289,17 +299,17 @@ public class DownloadHandler {
 
         if (view != null && !view.isIncognito()) {
             downloadsRepository.addDownloadIfNotExists(new DownloadEntry(url, filename, contentSize))
-                .subscribeOn(databaseScheduler)
-                .subscribe(aBoolean -> {
-                    if (!aBoolean) {
-                        logger.log(TAG, "error saving download to database");
-                    }
-                });
+                    .subscribeOn(databaseScheduler)
+                    .subscribe(aBoolean -> {
+                        if (!aBoolean) {
+                            logger.log(TAG, "error saving download to database");
+                        }
+                    });
         }
     }
 
     private static boolean isWriteAccessAvailable(@NonNull Uri fileUri) {
-        if (fileUri.getPath() == null){
+        if (fileUri.getPath() == null) {
             return false;
         }
         File file = new File(fileUri.getPath());

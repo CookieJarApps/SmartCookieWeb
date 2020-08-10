@@ -59,7 +59,7 @@
     <string name="agent_custom">カスタム</string>
     <string name="title_search_engine">検索エンジン</string>
     <string name="action_ok">OK</string>
-    <string name="dialog_download">このファイルをダウンロードしますか？ （%1$s）</string>
+    <string name="dialog_download">このファイルをダウンロードしますか？ (%1$s)</string>
     <string name="unknown_size">不明なサイズ</string>
     <string name="action_cancel">キャンセル</string>
     <string name="title_warning">警告</string>

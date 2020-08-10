@@ -1,3 +1,5 @@
+@file:JvmName("Injector")
+
 package com.cookiegames.smartcookie.di
 
 import com.cookiegames.smartcookie.BrowserApp
