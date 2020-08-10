@@ -367,6 +367,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         mainHandler.post { drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED, getBookmarkDrawer()) }
 
         customView.findViewById<FrameLayout>(R.id.home_button).setOnClickListener(this)
+        customView.findViewById<FrameLayout>(R.id.home_button).setOnLongClickListener {
+            newTabButtonClicked()
+            true
+        }
 
         // create the search EditText in the ToolBar
         searchView = customView.findViewById<SearchView>(R.id.search).apply {
@@ -2013,6 +2017,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             }
         }
     }
+
 
     /**
      * Handle the callback that permissions requested have been granted or not.
