@@ -646,7 +646,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 changeToolbarBackground(currentView.favicon ?: webBitmap, null)
             } else if (!isIncognito() && !isDarkTheme) {
                 changeToolbarBackground(webBitmap, null)
-            } else if (userPreferences.navbarColChoice == ChooseNavbarCol.COLOR){
+            } else if (userPreferences.navbarColChoice == ChooseNavbarCol.COLOR && !isIncognito()){
                 changeToolbarColor(null)
             }
         }
@@ -1383,6 +1383,24 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     Utils.mixTwoColors(Color.WHITE, userPreferences.colorNavbar, 0.25f)
             )
 
+        } //Reset theme without needing a restart
+        else if(userPreferences.navbarColChoice == ChooseNavbarCol.NONE){
+            var currentColor = Color.WHITE
+            if(userPreferences.useTheme == AppTheme.LIGHT){
+                currentColor = ContextCompat.getColor(this, R.color.primary_color)
+            }
+            else if(userPreferences.useTheme == AppTheme.DARK){
+                currentColor = ContextCompat.getColor(this, R.color.primary_color_dark)
+            }
+            else{
+                currentColor = ContextCompat.getColor(this, R.color.black)
+            }
+            changeToolbarBackground(null, null)
+            tabBackground?.tint(currentColor)
+            toolbar_layout.setBackgroundColor(currentColor)
+            searchBackground?.background?.tint(
+                    Utils.mixTwoColors(Color.WHITE, currentColor, 0.25f)
+            )
         }
     }
 
