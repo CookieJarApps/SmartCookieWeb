@@ -1386,10 +1386,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         } //Reset theme without needing a restart
         else if(userPreferences.navbarColChoice == ChooseNavbarCol.NONE){
             var currentColor = Color.WHITE
-            if(userPreferences.useTheme == AppTheme.LIGHT){
+            if(userPreferences.useTheme == AppTheme.LIGHT && !isIncognito()){
                 currentColor = ContextCompat.getColor(this, R.color.primary_color)
             }
-            else if(userPreferences.useTheme == AppTheme.DARK){
+            else if(userPreferences.useTheme == AppTheme.DARK || isIncognito()){
                 currentColor = ContextCompat.getColor(this, R.color.primary_color_dark)
             }
             else{
