@@ -481,11 +481,11 @@ class SmartCookieWebClient(
     }
 
     override fun onReceivedSslError(webView: WebView, handler: SslErrorHandler, error: SslError) {
-        var urlMatcher = webView.url.replace(Regex("^https?:\\/\\/"), "")
-        if(!error.url.contains(urlMatcher)){
-            handler.proceed()
-            sslWarningPreferences.rememberBehaviorForDomain(webView.url, SslWarningPreferences.Behavior.PROCEED)
-        }
+        /*var urlMatcher = webView.url.replace(Regex("^https?:\\/\\/"), "")
+        if(!error.url.contains(urlMatcher)){*/
+        handler.proceed()
+        sslWarningPreferences.rememberBehaviorForDomain(webView.url, SslWarningPreferences.Behavior.PROCEED)
+
 
         urlWithSslError = webView.url
         sslState = SslState.Invalid(error)
