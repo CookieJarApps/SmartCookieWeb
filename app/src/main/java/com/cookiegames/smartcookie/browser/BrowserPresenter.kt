@@ -287,7 +287,7 @@ class BrowserPresenter(
     }
 
     /**
-     * Open a new tab with the specified URL. You can choose to show the tab or load it in the
++     * Open a new tab with the specified URL. You can choose to show the tab or load it in the
      * background.
      *
      * @param tabInitializer the tab initializer to run after the tab as been created.
@@ -295,11 +295,7 @@ class BrowserPresenter(
      * @return true if we successfully created the tab, false if we have hit max tabs.
      */
     fun newTab(tabInitializer: TabInitializer, show: Boolean): Boolean {
-        // Limit number of tabs for limited version of app
-        if (!BuildConfig.FULL_VERSION && tabsModel.size() >= 10) {
-            view.showSnackbar(R.string.max_tabs)
-            return false
-        }
+
 
         logger.log(TAG, "New tab, show: $show")
 
