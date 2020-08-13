@@ -273,7 +273,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
             }
             }
             else{
-                userPreferences.javaScriptChoice = JavaScriptChoice.BLACKLIST
+                userPreferences.javaScriptChoice = JavaScriptChoice.WHITELIST
             }
             getTabsManager().currentTab?.reload()
             Handler().postDelayed({
