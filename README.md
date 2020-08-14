@@ -14,8 +14,6 @@
 
 A secure, free and open source WebView-based web browser for Android.
 
-<img src="http://smartcookieweb.com/images/just-device.jpg" height="300">
-
 ---
 
 ## Installation
