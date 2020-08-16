@@ -8,6 +8,8 @@ import com.cookiegames.smartcookie.search.suggestions.*
 import android.app.Application
 import dagger.Reusable
 import io.reactivex.Single
+import okhttp3.Cookie
+import okhttp3.CookieJar
 import okhttp3.OkHttpClient
 import javax.inject.Inject
 
@@ -56,6 +58,8 @@ class SearchEngineProvider @Inject constructor(
             11 -> NaverSearch()
             12 -> EcosiaSearch()
             13 -> EkoruSearch()
+            14 -> CookieJarAppsSearch()
+            15 -> SearxSearch()
             else -> GoogleSearch()
         }
 
@@ -78,6 +82,8 @@ class SearchEngineProvider @Inject constructor(
             is NaverSearch -> 11
             is EcosiaSearch -> 12
             is EkoruSearch -> 13
+            is CookieJarAppsSearch -> 14
+            is SearxSearch -> 15
             else -> throw UnsupportedOperationException("Unknown search engine provided: " + searchEngine.javaClass)
         }
 
@@ -98,7 +104,9 @@ class SearchEngineProvider @Inject constructor(
         YandexSearch(),
         NaverSearch(),
         EcosiaSearch(),
-        EkoruSearch()
+        EkoruSearch(),
+        CookieJarAppsSearch(),
+        SearxSearch()
     )
 
 }

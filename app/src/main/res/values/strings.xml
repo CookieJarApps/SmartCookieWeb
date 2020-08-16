@@ -352,6 +352,8 @@
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
+    <string name="search_engine_searx">Searx</string>
+    <string name="search_engine_searx_cookiejarapps">CookieJarApps Searx</string>
 
     <string name="privacy">View Privacy Policy</string>
     <string name="privacy_info">Read the SmartCookieWeb privacy policy</string>
@@ -480,6 +482,7 @@
 
     <string name="privacy_set">Privacy settings</string>
     <string name="security_set">Security settings</string>
+
 
     <!-- finish pages -->
 </resources>
