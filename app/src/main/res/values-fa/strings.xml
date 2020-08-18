@@ -24,16 +24,16 @@
     <string name="cache">Clear cache on exit</string>
     <string name="reflow">Enable text reflow</string>
     <string name="block">بستن عکس‌ها</string>
-    <string name="window">Allow sites to open new windows</string>
+    <string name="window">روا داشتن پایگاه‌ها برای باز کردن پنجره‌های نو</string>
     <string name="cookies">فعال کردن کوکی‌ها</string>
-    <string name="importbookmarks">Import bookmarks from browser</string>
+    <string name="importbookmarks">وارد کردن نشانگاه از مرورگر</string>
     <string name="size">اندازه نوشته</string>
     <string name="recommended">پیشنهاد شده</string>
     <string name="search">Search engine</string>
-    <string name="search_hint">Search or enter web address</string>
+    <string name="search_hint">جستجو کرده یا نشانی وب را وارد کنید</string>
     <string name="wideViewPort">Use wide viewport</string>
     <string name="overViewMode">Load pages in overview mode</string>
-    <string name="restore">Restore tabs on start</string>
+    <string name="restore">بازیابی برگ‌ها هنگام آغاز</string>
     <string name="supported_browsers_title">مرورگرهای پشتیبانی شده</string>
     <string name="stock_browser">Stock browser</string>
     <string name="stock_browser_unavailable">No stock browser detected</string>
@@ -56,19 +56,19 @@
     <string name="agent_custom">دلخواه</string>
     <string name="title_search_engine">Search engine</string>
     <string name="action_ok">خوب</string>
-    <string name="dialog_download">Do you want to download this file? (%1$s)</string>
-    <string name="unknown_size">Unknown size</string>
+    <string name="dialog_download">آیا می‌خواهید این پرونده را بارگیری کنید؟ (%1$s)</string>
+    <string name="unknown_size">اندازه ناشناخته</string>
     <string name="action_cancel">لغو</string>
-    <string name="title_warning">Warning</string>
+    <string name="title_warning">هشدار</string>
     <string name="dialog_adobe_not_installed">Adobe Flash Player is not installed.\nPlease install Flash Player.</string>
     <string name="title_user_agent">نماینده کاربر</string>
     <string name="title_download_location">جایگاه بارگیری</string>
-    <string name="title_custom_homepage">Custom homepage</string>
+    <string name="title_custom_homepage">صفحه خانگی دلخواه</string>
     <string name="action_webpage">صفحه وب</string>
     <string name="title_clear_history">پاک کردن تاریخچه</string>
     <string name="title_clear_cookies">پاک کردن کوکی‌ها</string>
-    <string name="dialog_history">Would you like to clear your browser history?</string>
-    <string name="dialog_cookies">Would you like to clear your browser cookies?</string>
+    <string name="dialog_history">آیا می‌خواهید تاریخچه مرورگرتان را پاک کنید؟</string>
+    <string name="dialog_cookies">آیا می‌خواهید کوکی‌های مرورگرتان را پاک کنید؟</string>
     <string name="action_yes">بله</string>
     <string name="action_no">نه</string>
     <string name="title_text_size">اندازه نوشته</string>
@@ -78,7 +78,7 @@
     <string name="size_small">کوچک</string>
     <string name="size_smallest">کوچکترین</string>
     <string name="title_error">خطا</string>
-    <string name="dialog_import_error">No browser was detected to import bookmarks from.</string>
+    <string name="dialog_import_error">مرورگری برای وارد کردن نشانگاه یافت نشد.</string>
     <string name="hint_title">اسم</string>
     <string name="hint_url">URL</string>
     <string name="title_edit_bookmark">ویرایش نشانگاه</string>
@@ -100,14 +100,14 @@
     <string name="action_manual">دستی</string>
     <string name="action_auto">خودکار</string>
     <string name="action_follow_me">دانستنی بیشتر</string>
-    <string name="clear_cache">Clear cache</string>
-    <string name="message_cache_cleared">Cache cleared</string>
-    <string name="message_import">Bookmarks were imported</string>
+    <string name="clear_cache">پاک کردن نهانگاه</string>
+    <string name="message_cache_cleared">نهانگاه پاک شد</string>
+    <string name="message_import">نشانگاهان وارد شدند</string>
     <string name="message_clear_history">تاریخچه پاک شد</string>
     <string name="message_cookies_cleared">کوکی‌ها پاک شدند</string>
-    <string name="max_tabs">Max tabs reached</string>
-    <string name="message_text_copied">Text copied to clipboard</string>
-    <string name="message_link_copied">Link copied to clipboard</string>
+    <string name="max_tabs">به بیشینه برگ رسیدیم</string>
+    <string name="message_text_copied">نوشته در بریده‌دان رونوشت شد</string>
+    <string name="message_link_copied">پیوند در بریده‌دان رونوشت شد</string>
     <string name="message_blocked_local">Local file has been blocked from loading</string>
     <string name="licenses">گواهینامه‌های منبع باز</string>
     <string name="suggestion">جستجو برای</string>
@@ -124,7 +124,7 @@
     <string name="message_location">\nWould like to use your location</string>
     <string name="action_allow">پذیرش</string>
     <string name="action_dont_allow">اجازه ندادن</string>
-    <string name="title_sign_in">Sign in</string>
+    <string name="title_sign_in">ورود</string>
     <string name="hint_username">نام کاربری</string>
     <string name="hint_password">گذرواژه</string>
     <string name="search_suggestions">پیشنهاد جستجو</string>
@@ -133,7 +133,7 @@
     <string name="powered_by_baidu">بایدو</string>
     <string name="powered_by_naver">Naver</string>
     <string name="search_engine_naver">Naver</string>
-    <string name="shortcut_message_failed_to_add">Sorry, your launcher does not support shortcuts.</string>
+    <string name="shortcut_message_failed_to_add">افسوس، برپاساز شما میانبر را پشتیبانی نمی‌کند.</string>
     <!-- SSL -->
     <string name="ssl_info_issued_by">Issued by</string>
     <string name="ssl_info_issued_to">Issued to</string>
@@ -142,12 +142,12 @@
     <!-- SSL don't ask again -->
     <string name="ssl_warning_dont_ask_again">Don\'t ask again for this browsing session.</string>
     <!-- Tools dialog -->
-    <string name="dialog_tools_title">Page tools</string>
-    <string name="dialog_toggle_desktop">Toggle desktop user agent</string>
+    <string name="dialog_tools_title">ابزار صفحه</string>
+    <string name="dialog_toggle_desktop">دگراندن به نمایه کاربر میز کار</string>
     <string name="dialog_adblock_enable_for_site">Enable ad block for site</string>
     <string name="dialog_adblock_disable_for_site">Disable ad block for site</string>
-    <string name="search_suggestions_off">No search suggestions</string>
-    <string name="http_proxy">HTTP proxy</string>
+    <string name="search_suggestions_off">بدون پیشنهاد جستجو</string>
+    <string name="http_proxy">پراکسی HTTP</string>
     <string-array name="proxy_choices_array">
         <item>None</item>
         <item>Orbot</item>
@@ -156,10 +156,10 @@
     </string-array>
     <string-array name="password_set_array">
         <item>هیچ</item>
-        <item>Custom</item>
+        <item>دلخواه</item>
     </string-array>
-    <string name="manual_proxy">Manual proxy</string>
-    <string name="host">Host:</string>
+    <string name="manual_proxy">پراکسی دستی</string>
+    <string name="host">میزبان:</string>
     <string name="port">Port:</string>
     <string name="use_tor_prompt">It looks like you have Orbot installed. Do you want to use Tor?</string>
     <string name="use_i2p_prompt">It looks like you have I2P installed. Do you want to use I2P?</string>
@@ -172,13 +172,13 @@
     <string name="clear_history_exit">پاک کردن تاریخچه هنگام خروج</string>
     <string name="folder_default">پیش‌گزیده</string>
     <string name="folder_custom">دلخواه</string>
-    <string name="untitled">Untitled</string>
+    <string name="untitled">بی‌نام</string>
     <string name="mpl_license">مجوز همگانی موزیلا ۲.۰</string>
-    <string name="freeware">Freeware</string>
+    <string name="freeware">رایگان‌افزار</string>
     <string name="android_open_source_project">برنامه منبع باز اندروید</string>
     <string name="hphosts_ad_server_list">Steven Black\'s Ad Hosts List</string>
-    <string name="deleted_tab">Reopened old tab</string>
-    <string name="rendering_mode">Rendering mode</string>
+    <string name="deleted_tab">برگ پیشین باز شد</string>
+    <string name="rendering_mode">حالت پردازش</string>
     <string name="name_inverted">Inverted</string>
     <string name="name_grayscale">Grayscale</string>
     <string name="name_inverted_grayscale">Inverted grayscale</string>
@@ -186,15 +186,15 @@
     <string name="name_normal">ساده</string>
     <string name="sync_history">Sync history with Google</string>
     <string name="title_file_chooser">File chooser</string>
-    <string name="library_netcipher">NetCipher</string>
-    <string name="license_gnu">GNU Lesser General Public License</string>
+    <string name="library_netcipher">نت‌سایفر</string>
+    <string name="license_gnu">گواهینامه کمتر فراگیر همگانی گنو</string>
     <string name="export_bookmarks">Export bookmarks to backup</string>
     <string name="import_backup">Import bookmarks from backup</string>
     <string name="bookmark_export_path">Bookmarks exported to</string>
-    <string name="bookmark_export_failure">Sorry, bookmarks could not be exported!</string>
+    <string name="bookmark_export_failure">افسوس، نشانگاهان نمی‌توانند صادر شوند!</string>
     <string name="bookmark_settings">تنظیمات نشانگاه</string>
     <string name="settings_bookmark_explain">Exporting and importing&#8230;</string>
-    <string name="import_bookmark_error">Could not import bookmarks from file</string>
+    <string name="import_bookmark_error">وارد کردن نشانگاه از پرونده شدنی نیست</string>
     <string name="title_chooser">انتخاب فایل</string>
     <string name="settings_general">تنظیمات فراگیر</string>
     <string name="settings_general_explain">Search engine, proxy, homepage&#8230;</string>
@@ -249,8 +249,8 @@
     <string name="swap_bookmarks_and_tabs">Swap bookmark and tab drawers</string>
     <string name="do_not_track">درخواست «ردیابی نکن»</string>
     <string name="remove_identifying_headers">Remove identifying HTTP headers</string>
-    <string name="action_add_to_homescreen">Add to home screen</string>
-    <string name="message_added_to_homescreen">Shortcut added to home screen</string>
+    <string name="action_add_to_homescreen">افزودن به صفحه خانگی</string>
+    <string name="message_added_to_homescreen">میانبر به صفحه خانگی افزوده شد</string>
     <string name="action_delete_all_bookmarks">حذف همه نشانگاه‌ها</string>
     <string name="flash_not_supported">دستگاه شما از ادوبی فلش پشتیبانی نمی‌کند</string>
     <string name="message_open_download_fail">This file doesn\'t exist anymore</string>
@@ -287,7 +287,7 @@
     <!-- Common actions -->
     <string name="action_message_canceled">Action canceled.</string>
     <!-- permissions request -->
-    <string name="title_permission_request">Permission request</string>
+    <string name="title_permission_request">درخواست اجازه</string>
     <string name="message_permission_request">%1$s  would like to use:  %2$s</string>
     <!-- Ad block -->
     <string name="block_ad_source">Hosts file source</string>
@@ -301,7 +301,7 @@
     <string name="app_restart">Please restart the app for the change to take effect.</string>
     <!-- Dialogs -->
     <string name="dialog_open_new_tab">باز کردن در برگ نو</string>
-    <string name="dialog_open_background_tab">Open in background tab</string>
+    <string name="dialog_open_background_tab">باز کردن برگ در پس‌زمینه</string>
     <string name="dialog_open_incognito_tab">باز کردن در برگ خصوصی نو</string>
     <string name="dialog_remove_bookmark">حذف نشانگاه</string>
     <string name="dialog_edit_bookmark">ویرایش نشانگاه</string>
@@ -311,31 +311,31 @@
     <string name="dialog_rename_folder">تغییر نام پوشه</string>
     <string name="dialog_remove_folder">حذف پوشه</string>
     <string name="dialog_title_close_browser">بستن برگ‌ها</string>
-    <string name="dialog_delete_download">Remove download from history</string>
-    <string name="dialog_delete_all_downloads">Remove all downloads from history</string>
+    <string name="dialog_delete_download">حذف بارگیری از تاریخچه</string>
+    <string name="dialog_delete_all_downloads">حذف همه بارگیری‌ها از تاریخچه</string>
     <!-- Search Engines -->
-    <string name="search_engine_custom">Custom URL</string>
+    <string name="search_engine_custom">نشانی دلخواه</string>
     <string name="search_engine_google">گوگل</string>
     <string name="search_engine_ask">Ask</string>
     <string name="search_engine_bing">بینگ</string>
     <string name="search_engine_yahoo">یاهو</string>
     <string name="search_engine_startpage_mobile">StartPage Mobile</string>
     <string name="search_engine_duckduckgo">داک داک گو</string>
-    <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
+    <string name="search_engine_duckduckgo_lite">داک داک گو سبک</string>
     <string name="search_engine_baidu">بایدو</string>
     <string name="search_engine_yandex">یاندکس</string>
     <string name="privacy">View Privacy Policy</string>
-    <string name="privacy_info">Read the SmartCookieWeb privacy policy</string>
+    <string name="privacy_info">خواندن شیوه پوشیدگی کلوچه هوشمند وب</string>
     <string name="block_malware">Block malicious sites</string>
-    <string name="block_sites">Custom site block</string>
+    <string name="block_sites">بستن پایگاه دلخواه</string>
     <string name="block_sites_title">Custom Site Block (separate sites with a comma)</string>
     <string name="none">هیچ</string>
     <string name="block_info">Enter words to block in URLs (separated with a comma).</string>
-    <string name="startpage">Apply theme to homepage</string>
+    <string name="startpage">پیاده‌سازی پوسته در صفحه خانگی</string>
     <string name="allpage">Apply theme to web pages (beta)</string>
-    <string name="forcehttps">Block non-HTTPS sites</string>
+    <string name="forcehttps">بستن پایگاه‌های بیHTTPS</string>
     <string name="preferhttps">Prefer HTTPS site versions</string>
-    <string name="forcehttpsdesc">Only load HTTPS sites</string>
+    <string name="forcehttpsdesc">فقط بارگیری پایگاه‌های HTTPS</string>
     <string name="preferhttpsdesc">Always use HTTPS on supported sites (may cause issues)</string>
     <string name="startpagedesc">Set the color of the default homepage to the one used in the theme.</string>
     <string name="updatehomepage">Open a new tab to see updated homepage</string>
@@ -349,16 +349,16 @@
     <string name="blocked_title">Oh crumbs! &lt;br&gt; That site has been blocked in settings.</string>
     <string name="close_app">بستن مرورگر</string>
     <string name="enter_password">گذرواژه را وارد کنید</string>
-    <string name="wrong_password">Password Incorrect</string>
-    <string name="block_all_sites">Block All Listed Sites</string>
-    <string name="only_allow_sites">Only Allow Listed Sites</string>
+    <string name="wrong_password">گذرواژه نادرست است</string>
+    <string name="block_all_sites">بستن همه پایگاه‌های فهرست شده</string>
+    <string name="only_allow_sites">فقط پذیرش پایگاه‌های فهرست شده</string>
     <string name="parental_controls">Parental controls settings</string>
     <string name="settings_parents">Block sites, set password...</string>
-    <string name="label_realm">Server message: %s</string>
+    <string name="label_realm">پیام کارگزار: %s</string>
     <string name="new_tab_foreground">Bring tabs to foreground</string>
     <string name="new_tab_foreground_summary">Open a new tab when it is created</string>
     <string name="site_not_secure">The connection to this site is not secure.</string>
-    <string name="language_not_supported">Language Not Supported</string>
+    <string name="language_not_supported">زبان پشتیبانی نمی‌شود</string>
     <string name="language_not_supported_text">Unfortunately, the extensions store is not available in your language yet. Use the button below to continue in English anyway.</string>
     <string name="extensions">Extensions</string>
     <string name="extensions_enable">Enable extensions</string>
@@ -379,7 +379,7 @@
     <string name="onboarding_reshow_desc">Show the setup again.</string>
     <string name="pick_search">Choose a search engine:</string>
     <string name="enable_adblock">بستن تبلیغ و ردیاب فعال شود؟</string>
-    <string name="contributors">Contributors</string>
+    <string name="contributors">دست‌اندرکاران</string>
     <string name="translations">ترجمه‌ها</string>
     <string name="import_export">Import and export settings</string>
     <string name="export_settings">Export settings to backup</string>
@@ -389,26 +389,26 @@
     <string name="backup_bookmarks">Bookmarks backup</string>
     <string name="reset_settings">Settings reset. App closing... Please reopen.</string>
     <string name="force_zoom">Force zoom</string>
-    <string name="dark_mode">Dark mode</string>
+    <string name="dark_mode">حالت تیره</string>
     <string name="submit">Submit extension</string>
     <string name="translator">Translator (beta)</string>
     <string name="coming_soon">More coming soon...</string>
     <string name="navbar_col">Set navbar color</string>
-    <string name="color">Color</string>
+    <string name="color">رنگ</string>
     <string name="looknfeel">Look and Feel settings</string>
     <string name="customize">Customization settings</string>
     <string name="suggest">Choose number of search suggestions</string>
     <string name="close_on_last_tab">Close browser with last tab</string>
     <string name="more">دانستنی بیشتر</string>
-    <string name="no_search_suggestions">No Search Suggestions</string>
+    <string name="no_search_suggestions">بدون پیشنهاد جستجو</string>
     <string name="search_suggestions_4">Unfortunately, search suggestions in Smart Cookie are no longer available on devices below Android 5.0. Press the button below to find out more.</string>
     <string name="block_intent">Handle all clicked links within this browser</string>
     <string name="block_intent_summary">Blocks prompt to open links in external applications</string>
     <string name="block_javascript">Block JavaScript for sites</string>
     <string name="unlisted_javascript">Block JavaScript for listed sites</string>
-    <string name="listed_javascript">Only allow JavaScript for listed sites</string>
-    <string name="confirm">Confirm reset</string>
-    <string name="clear">This will clear all the data stored by SmartCookieWeb on your device</string>
+    <string name="listed_javascript">پذیرش جاوا اسکریپت فقط برای پایگاه‌های فهرست شده</string>
+    <string name="confirm">پذیرش بازنشانی</string>
+    <string name="clear">این همه داده‌های ذخیره شده به دست کلوچه هوشمند وب را از دستگاه شما پاک می‌کند</string>
     <string name="only_clear">Only clear on browser session end</string>
     <string name="only_clear_summary">Only clear above options when all browser tabs have been closed, instead of whenever the app is exited</string>
     <string name="enable_in_settings">AutoFill needs to be set up in Android settings for this option to take effect</string>
