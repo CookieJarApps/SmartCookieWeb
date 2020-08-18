@@ -577,7 +577,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             val url = currentView.url
             if (!url.isSpecialUrl()) {
                 if (searchView?.hasFocus() == false) {
-                    if(url.contains("data:text/html;charset=utf-8")){
+                    if(url.contains("data:text/html") || url.equals("about:blank")){
 
                     }
                     else{
