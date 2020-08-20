@@ -168,6 +168,9 @@ class SmartCookieWebClient(
     }
 
     override fun onPageFinished(view: WebView, url: String) {
+        if(userPreferences.cookieBlockEnabled){
+            view.evaluateJavascript(cookieBlock.provideJs(), null)
+        }
         if (view.isShown) {
             uiController.updateUrl(url, false)
 
@@ -320,9 +323,6 @@ class SmartCookieWebClient(
 
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
         currentUrl = url
-        if(userPreferences.cookieBlockEnabled){
-            view.evaluateJavascript(cookieBlock.provideJs(), null)
-        }
         if(userPreferences.firstLaunch){
             if(Locale.getDefault().getLanguage().equals("en")){
                 view.loadUrl("file:///android_asset/onboarding.html")
@@ -330,6 +330,9 @@ class SmartCookieWebClient(
             }
 
             userPreferences.firstLaunch = false
+        }
+        if(userPreferences.cookieBlockEnabled){
+            view.evaluateJavascript(cookieBlock.provideJs(), null)
         }
         if (userPreferences.javaScriptChoice === JavaScriptChoice.WHITELIST) run {
             if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked != null) {
