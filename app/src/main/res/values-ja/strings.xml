@@ -242,7 +242,7 @@
     <string name="message_web_storage_cleared">ウェブストレージをクリアしました</string>
     <string name="hosts_source">ファイル広告のブロック元をホストします</string>
     <string name="settings_adblock">コンテンツブロックの設定</string>
-    <string name="adblock_summary">広告ブロック、Cookieダイアログブロック...</string>
+    <string name="adblock_summary">広告ブロック、Cookieダイアログブロック…</string>
     <string name="adblock_category">広告ブロック</string>
     <string name="cookie_category">Cookieダイアログブロック</string>
     <string name="tabs_in_drawer">ナビゲーションドロワーにタブを表示する</string>

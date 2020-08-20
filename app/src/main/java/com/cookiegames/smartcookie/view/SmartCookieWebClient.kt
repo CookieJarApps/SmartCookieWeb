@@ -40,6 +40,7 @@ import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.browser.JavaScriptChoice
 import com.cookiegames.smartcookie.browser.SiteBlockChoice
+import com.cookiegames.smartcookie.js.CookieBlock
 import com.cookiegames.smartcookie.js.DarkMode
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
@@ -80,6 +81,7 @@ class SmartCookieWebClient(
     @Inject internal lateinit var textReflowJs: TextReflow
     @Inject internal lateinit var invertPageJs: InvertPage
     @Inject internal lateinit var darkMode: DarkMode
+    @Inject internal lateinit var cookieBlock: CookieBlock
     private var adBlock: AdBlocker
 
     private var urlWithSslError: String? = null
@@ -194,16 +196,6 @@ class SmartCookieWebClient(
         if (userPreferences.darkModeExtension && !WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
             view.evaluateJavascript(darkMode.provideJs(), null)
         }
-
-        if(userPreferences.cookieBlockEnabled){
-            view.settings.javaScriptEnabled = true
-            view.loadUrl(
-                    "javascript:(function() { var cookies = document.querySelectorAll('#consent, .bbccookies-banner, .butterBar-message, .gl-modal__main-content, .md-cookiesoptinout, .lOPC8 , .cp-overlay, .cp-dialog, .cc-light, .xFNJP, .yAVMkd, .vk_c, .evidon-consent-button, .cookie-warn, .cc-banner, .cc-bottom, .qc-cmp-ui-content, .hnf-banner, .m-privacy-consent, .c-cookie-disclaimer, .important-banner--cookies, .cookie-policy, .cookie-banner-optout, .cookie-banner__wrapper');\n" +
-                            "cookies.forEach(function(element) {\n" +
-                            "    element.parentNode.removeChild(element);\n" +
-                            "}); })()")
-            view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
-        }
         if (userPreferences.blockMalwareEnabled) {
             val inputStream: InputStream = activity.assets.open("malware.txt")
             val inputString = inputStream.bufferedReader().use { it.readText() }
@@ -314,7 +306,6 @@ class SmartCookieWebClient(
                 uiController.tabChanged(smartCookieView)
             }
         }
-
     }
 
         fun stringContainsItemFromList(inputStr: String, items: Array<String>): Boolean {
@@ -329,6 +320,9 @@ class SmartCookieWebClient(
 
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
         currentUrl = url
+        if(userPreferences.cookieBlockEnabled){
+            view.evaluateJavascript(cookieBlock.provideJs(), null)
+        }
         if(userPreferences.firstLaunch){
             if(Locale.getDefault().getLanguage().equals("en")){
                 view.loadUrl("file:///android_asset/onboarding.html")
@@ -402,7 +396,6 @@ class SmartCookieWebClient(
             uiController.showActionBar()
         }
         uiController.tabChanged(smartCookieView)
-
     }
 
     override fun onReceivedHttpAuthRequest(

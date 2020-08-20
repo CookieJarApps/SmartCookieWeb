@@ -5,9 +5,6 @@ import com.cookiegames.smartcookie.device.BuildType
 import com.cookiegames.smartcookie.html.ListPageReader
 import com.cookiegames.smartcookie.html.bookmark.BookmarkPageReader
 import com.cookiegames.smartcookie.html.homepage.HomePageReader
-import com.cookiegames.smartcookie.js.InvertPage
-import com.cookiegames.smartcookie.js.TextReflow
-import com.cookiegames.smartcookie.js.ThemeColor
 import com.cookiegames.smartcookie.log.AndroidLogger
 import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.log.NoOpLogger
@@ -30,7 +27,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.annotation.RequiresApi
 import androidx.core.content.getSystemService
 import com.anthonycr.mezzanine.MezzanineGenerator
-import com.cookiegames.smartcookie.js.DarkMode
+import com.cookiegames.smartcookie.js.*
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
@@ -205,6 +202,9 @@ class AppModule {
 
     @Provides
     fun providesDarkMode(): DarkMode = MezzanineGenerator.DarkMode()
+
+    @Provides
+    fun providesCookieBlock(): CookieBlock = MezzanineGenerator.CookieBlock()
 
 }
 
