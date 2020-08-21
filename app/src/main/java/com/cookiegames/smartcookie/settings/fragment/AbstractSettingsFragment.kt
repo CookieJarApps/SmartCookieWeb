@@ -1,11 +1,16 @@
 package com.cookiegames.smartcookie.settings.fragment
 
+import android.R
 import android.os.Bundle
 import android.preference.CheckBoxPreference
 import android.preference.Preference
 import android.preference.PreferenceFragment
 import android.preference.SwitchPreference
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.XmlRes
+
 
 /**
  * An abstract settings fragment which performs wiring for an instance of [PreferenceFragment].

@@ -58,7 +58,7 @@
     <string name="action_ok">OK</string>
     <string name="dialog_download">Czy chcesz pobrać ten plik? (%1$s)</string>
     <string name="unknown_size">Nieznany rozmiar</string>
-    <string name="action_cancel">anulować</string>
+    <string name="action_cancel">Anuluj</string>
     <string name="title_warning">Ostrzeżenie</string>
     <string name="dialog_adobe_not_installed">Adobe Flash Player nie jest zainstalowany. \ N Zainstaluj Flash Player.</string>
     <string name="title_user_agent">Agent użytkownika</string>
@@ -84,7 +84,7 @@
     <string name="title_edit_bookmark">Edytuj zakładkę</string>
     <string name="action_edit">Edytować</string>
     <string name="action_incognito">Nowa karta incognito</string>
-    <string name="action_homepage">Domyślna</string>
+    <string name="action_homepage">Domyślnie</string>
     <string name="action_back">Wróć</string>
     <string name="action_find">Znajdź na stronie</string>
     <string name="download_pending">Rozpoczęcie pobierania \ u2026</string>
@@ -145,7 +145,7 @@
     <string name="dialog_tools_title">Narzędzia strony</string>
     <string name="dialog_toggle_desktop">Przełącz agenta użytkownika na pulpicie</string>
     <string name="dialog_adblock_enable_for_site">Włącz blok reklam dla witryny</string>
-    <string name="dialog_adblock_disable_for_site">Wyłącz blok reklam dla witryny</string>
+    <string name="dialog_adblock_disable_for_site">Wyłącz blokowanie reklam dla tej witryny</string>
     <string name="search_suggestions_off">Brak sugestii wyszukiwania</string>
     <string name="http_proxy">Http Proxy</string>
     <string-array name="proxy_choices_array">
@@ -170,7 +170,7 @@
     <string name="no">Nie</string>
     <string name="clear_cookies_exit">Wyczyść pliki cookie przy wyjściu</string>
     <string name="clear_history_exit">Wyczyść historię przy wyjściu</string>
-    <string name="folder_default">Domyślna</string>
+    <string name="folder_default">Domyślnie</string>
     <string name="folder_custom">Zdefiniowane przez użytkownika</string>
     <string name="untitled">Nieuprawny</string>
     <string name="mpl_license">Mozilla Public License 2.0</string>
@@ -205,7 +205,7 @@
     <string name="settings_about">O</string>
     <string name="settings_about_explain">Numer wersji, autor i licencja…</string>
     <string name="close_tab">Zamknij kartę</string>
-    <string name="close_all_tabs">Zamknąć wszystkie zakładki</string>
+    <string name="close_all_tabs">Zamknij wszystkie karty</string>
     <string name="close_other_tabs">Zamknij inne karty</string>
     <string name="third_party">Blokuj pliki cookie innych firm</string>
     <string name="color_mode">Włącz tryb koloru</string>
@@ -223,14 +223,14 @@
         <item>Tytuł</item>
     </string-array>
     <string name="invert_color">Odwróć kolor</string>
-    <string name="dark_theme">ciemny schemat</string>
+    <string name="dark_theme">Ciemny schemat</string>
     <string name="settings_black_status_bar">Czarny pasek stanu</string>
-    <string name="tabs">Zakładki</string>
+    <string name="tabs">Karty</string>
     <string name="theme">Motyw aplikacji</string>
     <string name="light_theme">Lekki motyw</string>
     <string name="black_theme">Czarny motyw</string>
     <string name="blue_theme">Motyw niebieski</string>
-    <string name="yellow_theme">Motyw żółty</string>
+    <string name="yellow_theme">Żółty motyw</string>
     <string name="green_theme">Zielony motyw</string>
     <string name="folder">Nazwa folderu</string>
     <string name="action_folder">Teczka</string>
@@ -245,8 +245,8 @@
     <string name="adblock_summary">Blok reklam, blok okna dialogowego plików cookie ...</string>
     <string name="adblock_category">Blok reklam</string>
     <string name="cookie_category">Blok okna dialogowego plików cookie</string>
-    <string name="tabs_in_drawer">Pokaż zakładki w szufladzie nawigacji</string>
-    <string name="swap_bookmarks_and_tabs">Zamień szuflady na zakładki i zakładki</string>
+    <string name="tabs_in_drawer">Pokaż karty w szufladzie</string>
+    <string name="swap_bookmarks_and_tabs">Zamień stronami szuflady: karty i zakładki</string>
     <string name="do_not_track">Żądanie \ „Nie śledź \”</string>
     <string name="remove_identifying_headers">Usuń identyfikujące nagłówki HTTP</string>
     <string name="action_add_to_homescreen">Dodaj do ekranu głównego</string>
@@ -260,7 +260,7 @@
     <string name="description">Dowiedz się więcej o SmartCookieWeb</string>
     <string name="faq">FAQ</string>
     <string name="faq_description">Często Zadawane Pytania</string>
-    <string name="block_source_default">Domyślni gospodarze</string>
+    <string name="block_source_default">Domyślny host</string>
     <string name="block_source_local">Plik lokalnych hostów</string>
     <string name="block_source_local_description">Plik: %1$s</string>
     <string name="block_source_remote">Plik hostów zdalnych</string>
@@ -339,9 +339,9 @@
     <string name="preferhttps">Preferuj wersje witryny HTTPS</string>
     <string name="forcehttpsdesc">Ładuj tylko witryny HTTPS</string>
     <string name="preferhttpsdesc">Zawsze używaj HTTPS na obsługiwanych stronach (może powodować problemy)</string>
-    <string name="startpagedesc">Ustaw kolor domyślnej strony głównej na tę używaną w motywie.</string>
+    <string name="startpagedesc">Ustaw kolor domyślnej strony domowej na ten używany w szablonie.</string>
     <string name="updatehomepage">Otwórz nową kartę, aby zobaczyć zaktualizowaną stronę główną</string>
-    <string name="inspect">Wstrzyknąć JavaScript</string>
+    <string name="inspect">Włącz JavaScript</string>
     <string name="bookmark">Dodano zakładkę</string>
     <string name="error_title">Och, okruchy! &lt;br&gt; Tej strony nie można załadować.</string>
     <string name="error_reload">Przeładować</string>
@@ -412,7 +412,7 @@
     <string name="confirm">Potwierdź resetowanie</string>
     <string name="clear">To spowoduje wyczyszczenie wszystkich danych przechowywanych przez SmartCookieWeb na Twoim urządzeniu</string>
     <string name="only_clear">Wyczyść tylko po zakończeniu sesji przeglądarki</string>
-    <string name="only_clear_summary">Wyczyść powyższe opcje tylko wtedy, gdy wszystkie karty przeglądarki zostały zamknięte, zamiast zawsze, gdy aplikacja została zamknięta</string>
+    <string name="only_clear_summary">Wyczyść powyższe opcje tylko po zamknięciu wszystkich kart przeglądarki, zamiast zawsze gdy aplikacja zostanie zamknięta</string>
     <string name="enable_in_settings">Automatyczne wypełnianie musi być skonfigurowane w ustawieniach Androida, aby ta opcja stała się skuteczna</string>
     <string name="drawer_lines">Maksymalna liczba wierszy tekstowych na liście</string>
     <string name="drawer_size">Rozmiar tekstu listy</string>

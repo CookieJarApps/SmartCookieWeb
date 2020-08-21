@@ -21,7 +21,7 @@
     <string name="settings_advanced_explain">URL box contents, rendering mode, text encoding&#8230;</string>
     <string name="apache">گواهینامه آپاچی ۲.۰</string>
     <string name="version">نسخه برنامه</string>
-    <string name="cache">Clear cache on exit</string>
+    <string name="cache">پاک کردن نهانگاه هنگام خروج</string>
     <string name="reflow">Enable text reflow</string>
     <string name="block">بستن عکس‌ها</string>
     <string name="window">روا داشتن پایگاه‌ها برای باز کردن پنجره‌های نو</string>
@@ -38,7 +38,7 @@
     <string name="stock_browser">Stock browser</string>
     <string name="stock_browser_unavailable">No stock browser detected</string>
     <string name="stock_browser_available">Supported stock browser detected</string>
-    <string name="fullScreenOption">Hide status bar while browsing</string>
+    <string name="fullScreenOption">پنهان کردن نوار حالت هنگام گردش</string>
     <string name="clear_cookies">پاک کردن کوکی‌های مرورگر</string>
     <string name="clear_history">پاک کردن تاریخچه مرورگر</string>
     <string name="dialog_image">What would you like to do with this image?</string>
@@ -160,7 +160,7 @@
     </string-array>
     <string name="manual_proxy">پراکسی دستی</string>
     <string name="host">میزبان:</string>
-    <string name="port">Port:</string>
+    <string name="port">درگاه:</string>
     <string name="use_tor_prompt">It looks like you have Orbot installed. Do you want to use Tor?</string>
     <string name="use_i2p_prompt">It looks like you have I2P installed. Do you want to use I2P?</string>
     <string name="install_orbot">Install Orbot in order to proxy with Tor.</string>
@@ -285,7 +285,7 @@
     <string name="notification_incognito_running_message">Touch to open</string>
     <string name="notification_incognito_running_description">Ongoing private tab notification</string>
     <!-- Common actions -->
-    <string name="action_message_canceled">Action canceled.</string>
+    <string name="action_message_canceled">کار لغو شد.</string>
     <!-- permissions request -->
     <string name="title_permission_request">درخواست اجازه</string>
     <string name="message_permission_request">%1$s  would like to use:  %2$s</string>
@@ -294,7 +294,7 @@
     <string name="block_ad_remote_refresh_frequency_description">For remote hosts file</string>
     <string name="block_ad_refresh_now">Refresh hosts now</string>
     <string name="webrtc_support">Allow WebRTC permission requests</string>
-    <string name="save_data">Request \'Save-Data\'</string>
+    <string name="save_data">درخواست «ذخیره داده»</string>
     <!-- debug strings -->
     <string name="debug_title">تنظیمات اشکال‌زدایی</string>
     <string name="debug_leak_canary">LeakCanary</string>
@@ -324,7 +324,7 @@
     <string name="search_engine_duckduckgo_lite">داک داک گو سبک</string>
     <string name="search_engine_baidu">بایدو</string>
     <string name="search_engine_yandex">یاندکس</string>
-    <string name="privacy">View Privacy Policy</string>
+    <string name="privacy">دیدن شیوه پوشش</string>
     <string name="privacy_info">خواندن شیوه پوشیدگی کلوچه هوشمند وب</string>
     <string name="block_malware">Block malicious sites</string>
     <string name="block_sites">بستن پایگاه دلخواه</string>
@@ -352,7 +352,7 @@
     <string name="wrong_password">گذرواژه نادرست است</string>
     <string name="block_all_sites">بستن همه پایگاه‌های فهرست شده</string>
     <string name="only_allow_sites">فقط پذیرش پایگاه‌های فهرست شده</string>
-    <string name="parental_controls">Parental controls settings</string>
+    <string name="parental_controls">تنظیمات پایش پدر و مادر</string>
     <string name="settings_parents">Block sites, set password...</string>
     <string name="label_realm">پیام کارگزار: %s</string>
     <string name="new_tab_foreground">Bring tabs to foreground</string>
@@ -391,7 +391,7 @@
     <string name="force_zoom">Force zoom</string>
     <string name="dark_mode">حالت تیره</string>
     <string name="submit">Submit extension</string>
-    <string name="translator">Translator (beta)</string>
+    <string name="translator">مترجم (بتا)</string>
     <string name="coming_soon">More coming soon...</string>
     <string name="navbar_col">Set navbar color</string>
     <string name="color">رنگ</string>
