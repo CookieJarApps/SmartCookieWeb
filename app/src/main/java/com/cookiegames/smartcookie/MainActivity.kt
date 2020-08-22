@@ -56,6 +56,12 @@ class MainActivity : BrowserActivity() {
     override fun closeActivity() = closeDrawers {
         performExitCleanUp()
         moveTaskToBack(true)
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            super.finishAndRemoveTask()
+        }
+        else {
+            super.finish()
+        }
     }
 
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
