@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.os.Handler
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -204,7 +205,14 @@ class BookmarksDrawerView @JvmOverloads constructor(
         is Bookmark.Entry -> uiController.bookmarkItemClicked(bookmark)
     }
 
-
+    fun stringContainsItemFromList(inputStr: String, items: Array<String>): Boolean {
+        for (i in items.indices) {
+            if (inputStr.contains(items[i])) {
+                return true
+            }
+        }
+        return false
+    }
     /**
      * Show the page tools dialog.
      */
@@ -216,6 +224,19 @@ class BookmarksDrawerView @JvmOverloads constructor(
         } else {
             R.string.dialog_adblock_disable_for_site
         }
+        val arrayOfURLs = userPreferences.javaScriptBlocked
+        val strgs: Array<String>
+        if (arrayOfURLs.contains(", ")) {
+            strgs = arrayOfURLs.split(", ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+        } else {
+            strgs = arrayOfURLs.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+        }
+        var jsEnabledString = if(userPreferences.javaScriptChoice == JavaScriptChoice.BLACKLIST && !stringContainsItemFromList(currentTab.url, strgs) || userPreferences.javaScriptChoice == JavaScriptChoice.WHITELIST && stringContainsItemFromList(currentTab.url, strgs)) {
+            R.string.allow_javascript
+        } else{
+            R.string.block_javascript
+        }
+
 
         BrowserDialog.showWithIcons(context, context.getString(R.string.dialog_tools_title),
             DialogItem(
@@ -257,20 +278,27 @@ class BookmarksDrawerView @JvmOverloads constructor(
                 getTabsManager().currentTab?.reload()
             }, DialogItem(
                 icon = context.drawable(R.drawable.ic_action_delete),
-                title = R.string.block_javascript,
+                title = jsEnabledString,
                 isConditionMet = !currentTab.url.isSpecialUrl()
         ) {
             val url = URL(currentTab.url)
             if(userPreferences.javaScriptChoice != JavaScriptChoice.NONE){
-                if(!userPreferences.javaScriptBlocked.contains(url.host)){
+                if(!stringContainsItemFromList(currentTab.url, strgs)){
                     if(userPreferences.javaScriptBlocked.equals("")){
                         userPreferences.javaScriptBlocked = url.host
                     }
                     else{
                         userPreferences.javaScriptBlocked = userPreferences.javaScriptBlocked + ", " + url.host
+                 }
+                }
+                else{
+                    if(!userPreferences.javaScriptBlocked.contains(", " + url.host)) {
+                        userPreferences.javaScriptBlocked = userPreferences.javaScriptBlocked.replace(url.host, "")
                     }
-
-            }
+                    else{
+                        userPreferences.javaScriptBlocked = userPreferences.javaScriptBlocked.replace(", " + url.host, "")
+                    }
+                }
             }
             else{
                 userPreferences.javaScriptChoice = JavaScriptChoice.WHITELIST

@@ -466,6 +466,7 @@
     <string name="block_intent_summary">Blocks prompt to open links in external applications</string>
 
     <string name="block_javascript">Block JavaScript for site</string>
+    <string name="allow_javascript">Allow JavaScript for site</string>
     <string name="unlisted_javascript">Block JavaScript for listed sites</string>
     <string name="listed_javascript">Only allow JavaScript for listed sites</string>
 

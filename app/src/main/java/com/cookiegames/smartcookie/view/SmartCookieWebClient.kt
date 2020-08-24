@@ -329,6 +329,7 @@ class SmartCookieWebClient(
 
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
         currentUrl = url
+        view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
         if(userPreferences.firstLaunch){
             if(Locale.getDefault().getLanguage().equals("en")){
                 view.loadUrl("file:///android_asset/onboarding.html")
@@ -340,29 +341,8 @@ class SmartCookieWebClient(
         if(userPreferences.cookieBlockEnabled){
             view.evaluateJavascript(cookieBlock.provideJs(), null)
         }
-        if (userPreferences.javaScriptChoice === JavaScriptChoice.WHITELIST) run {
-            if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked != null) {
-                val arrayOfURLs = userPreferences.javaScriptBlocked
-                val strgs: Array<String>
-                if (arrayOfURLs.contains(", ")) {
-                    strgs = arrayOfURLs.split(", ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
-                } else {
-                    strgs = arrayOfURLs.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
-                }
-                if (stringContainsItemFromList(url, strgs)) {
-                    if (url.contains("file:///android_asset") or url.contains("about:blank")) {
-                        return
-                    } else {
-                        view.settings.javaScriptEnabled = false
-                    }
-                }
-                else{
-                    view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
-                }
-            }
-        }
-        else if (userPreferences.javaScriptChoice === JavaScriptChoice.BLACKLIST) {
-            if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked != null) {
+        if (userPreferences.javaScriptChoice === JavaScriptChoice.BLACKLIST) {
+            if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked !== " " && userPreferences.javaScriptBlocked != null) {
                 val arrayOfURLs = userPreferences.javaScriptBlocked
                 val strgs: Array<String>
                 if (arrayOfURLs.contains(", ")) {
@@ -378,10 +358,32 @@ class SmartCookieWebClient(
                     }
                 }
                 else{
-                    view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+                    return
                 }
             }
         }
+        else  if (userPreferences.javaScriptChoice === JavaScriptChoice.WHITELIST) run {
+            if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked !== " " && userPreferences.javaScriptBlocked != null) {
+                val arrayOfURLs = userPreferences.javaScriptBlocked
+                val strgs: Array<String>
+                if (arrayOfURLs.contains(", ")) {
+                    strgs = arrayOfURLs.split(", ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+                } else {
+                    strgs = arrayOfURLs.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+                }
+                if (stringContainsItemFromList(url, strgs)) {
+                    if (url.contains("file:///android_asset") or url.contains("about:blank")) {
+                        return
+                    } else {
+                        view.settings.javaScriptEnabled = false
+                    }
+                }
+                else{
+                    return
+                }
+            }
+        }
+
         if(url.contains("https://homepage")){
             uiController.newTabButtonClicked()
             uiController.tabCloseClicked(0)
