@@ -188,6 +188,12 @@ class SmartCookieWebClient(
             )
         }
 
+       /* view.evaluateJavascript("""(function() {
+        return "<html>" + document.getElementsByTagName('html')[0].innerHTML + "</html>";
+        })()""".trimMargin()) {
+            it
+        }*/
+
         if (view.title == null || view.title.isEmpty()) {
             smartCookieView.titleInfo.setTitle(activity.getString(R.string.untitled))
         } else {

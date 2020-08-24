@@ -23,7 +23,13 @@ class MainActivity : BrowserActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main, menu)
+        if(userPreferences.bottomBar){
+            menuInflater.inflate(R.menu.inverted, menu)
+        }
+        else{
+            menuInflater.inflate(R.menu.main, menu)
+        }
+
         if (menu is MenuBuilder) {
             menu.setOptionalIconsVisible(true)
         }
