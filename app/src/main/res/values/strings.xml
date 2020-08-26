@@ -352,7 +352,7 @@
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
-    <string name="search_engine_searx">SearX</string>
+    <string name="search_engine_searx">SearX.be</string>
     <string name="search_engine_searx_cookiejarapps">CookieJarApps SearX</string>
 
     <string name="privacy">View Privacy Policy</string>
@@ -388,7 +388,7 @@
     <string name="close_app">Close browser</string>
     <string name="enter_password">Enter Password</string>
     <string name="wrong_password">Password Incorrect</string>
-    <string name="block_all_sites">Block all listed Sites</string>
+    <string name="block_all_sites">Block all listed sites</string>
     <string name="only_allow_sites">Only allow listed sites</string>
     <string name="parental_controls">Parental controls settings</string>
     <string name="settings_parents">Block sites, set password...</string>
