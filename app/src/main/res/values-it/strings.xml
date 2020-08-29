@@ -111,7 +111,7 @@
     <string name="message_blocked_local">Il caricamento del file locale è stato bloccato</string>
     <string name="licenses">Licenze Open Source</string>
     <string name="suggestion">Ricerca</string>
-    <string name="block_ads">Blocca pubblicità e tracker</string>
+    <string name="block_ads">Blocca pubblicità e traccianti</string>
     <string name="message_insecure_connection">La connessione a questo sito non è sicura: %1$s Visitare comunque?</string>
     <string name="message_certificate_date_invalid">La data del certificato non è valida</string>
     <string name="message_certificate_expired">Il certificato è scaduto</string>
@@ -310,7 +310,7 @@
     <string name="dialog_copy_link">Copia collegamento pagina</string>
     <string name="dialog_rename_folder">Rinomina cartella</string>
     <string name="dialog_remove_folder">Rimuovi cartella</string>
-    <string name="dialog_title_close_browser">Chiudi il browser</string>
+    <string name="dialog_title_close_browser">Chiudi schede</string>
     <string name="dialog_delete_download">Elimina scaricamento</string>
     <string name="dialog_delete_all_downloads">Elimina tutti gli scaricamenti</string>
     <!-- Search Engines -->
@@ -324,6 +324,8 @@
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
+    <string name="search_engine_searx">SearX.be</string>
+    <string name="search_engine_searx_cookiejarapps">CookieJarApps SearX</string>
     <string name="privacy">Visualizza l\'informativa sulla privacy</string>
     <string name="privacy_info">Leggi l\'informativa sulla privacy di SmartCookieWeb</string>
     <string name="block_malware">Blocca siti dannosi</string>
@@ -347,7 +349,7 @@
     <string name="malware_title">Oh rabbia! &lt;br&gt; Quel sito sembra essere un malware.</string>
     <string name="malware_message">Contatta support@cookiegames.co.uk se questo è uno sbaglio.</string>
     <string name="blocked_title">Oh rabbia! &lt;br&gt; Quel sito è stato bloccato nelle impostazioni.</string>
-    <string name="close_app">Chiudi il browser</string>
+    <string name="close_app">Chiudi browser</string>
     <string name="enter_password">Inserire la password</string>
     <string name="wrong_password">Password non corretta</string>
     <string name="block_all_sites">Blocca tutti i siti elencati</string>
@@ -378,7 +380,7 @@
     <string name="onboarding_reshow">Torna a mostrare l\'onboarding</string>
     <string name="onboarding_reshow_desc">Mostra di nuovo la configurazione.</string>
     <string name="pick_search">Scegli un motore di ricerca:</string>
-    <string name="enable_adblock">Abilitare blocco pubblicità e tracker?</string>
+    <string name="enable_adblock">Abilitare blocco pubblicità e monitoraggio?</string>
     <string name="contributors">Contributori</string>
     <string name="translations">Traduzioni</string>
     <string name="import_export">Importa/Esporta impostazioni</string>
@@ -397,19 +399,25 @@
     <string name="color">Colore</string>
     <string name="looknfeel">Impostazioni aspetto e atmosfera</string>
     <string name="customize">Impostazioni personalizzazione</string>
-    <string name="suggest">Scegliere numero di suggerimenti di ricerca</string>
-    <string name="close_on_last_tab">Chiudi browser alla chiusura dell\'ultima scheda</string>
+    <string name="suggest">Scegli quantità di suggerimenti di ricerca</string>
+    <string name="close_on_last_tab">Chiudi browser chiudendo l\'ultima scheda</string>
     <string name="more">Ulteriori informazioni</string>
     <string name="no_search_suggestions">Nessun suggerimento di ricerca</string>
-    <string name="search_suggestions_4">Sfortunatamente, i suggerimenti di ricerca in Smart Cookie non sono più disponibili sui dispositivi al di sotto di Android 5.0. Premi il pulsante qui sotto per saperne di più.</string>
+    <string name="search_suggestions_4">Sfortunatamente, i suggerimenti di ricerca in SmartCookieWeb non sono più disponibili sui dispositivi al di sotto di Android 5.0. Premi il pulsante qui sotto per saperne di più.</string>
     <string name="block_intent">Gestisci tutti i collegamenti cliccati all\'interno di questo browser</string>
     <string name="block_intent_summary">Blocca richiesta di aprire il collegamento in applicazioni esterne</string>
     <string name="block_javascript">Blocca JavaScript per i siti</string>
+    <string name="allow_javascript">Consenti JavaScript per il sito</string>
     <string name="unlisted_javascript">Blocca JavaScript per siti elencati</string>
     <string name="listed_javascript">Permetti JavaScript solo per siti elencati</string>
     <string name="confirm">Conferma ripristino</string>
-    <string name="clear">Ciò sgombrerà tutti i dati memorizzati da Smart Cookie sul tuo dispositivo</string>
+    <string name="clear">Ciò sgombrerà tutti i dati memorizzati da SmartCookieWeb sul tuo dispositivo</string>
     <string name="only_clear">Pulisci solo a fine sessione</string>
-    <string name="only_clear_summary">Pulisci opzioni di cui sopra solo quando tutte le schede del browser sono state chiuse, invece di ogni volta che si esce dall\'app</string>
+    <string name="only_clear_summary">Pulisci opzioni di cui sopra solo quando tutte le schede del browser sono state chiuse, invece di ogni volta che si esce dall\'applicazione</string>
+    <string name="enable_in_settings">La Compilazione automatica deve essere impostata nelle impostazioni di Android affinché questa opzione abbia effetto</string>
+    <string name="drawer_lines">Numero massimo di righe di testo nel Drawer</string>
+    <string name="drawer_size">Dimensione del testo di Drawer</string>
+    <string name="privacy_set">Impostazioni privacy</string>
+    <string name="security_set">Impostazioni sicurezza</string>
     <!-- finish pages -->
 </resources>
