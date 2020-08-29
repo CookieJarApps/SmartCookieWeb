@@ -9,6 +9,8 @@
 [![Crowdin](https://badges.crowdin.net/smartcookieweb/localized.svg)](https://crowdin.com/project/smartcookieweb)
 ![GitHub stars](https://img.shields.io/github/stars/cookiejarapps/smartcookieweb?style=social)
 
+https://smartcookieweb.com/
+
 <a href='https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png' height="50"/></a> <a href='https://f-droid.org/en/packages/com.cookiegames.smartcookie/'><img alt='Get it on F-Droid' src='https://gitlab.com/fdroid/artwork/-/raw/master/badge/get-it-on-en.png' height="50"/></a>
 
 
