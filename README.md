@@ -20,10 +20,6 @@ A secure, free and open source WebView-based web browser for Android.
 
 https://smartcookieweb.com/
 
-or
-
-cookie7t5qevyyrsksnoqyuqiup7fpkez3afsnpxbbtbrqekfhfo2tyd.onion
-
 
 ---
 
