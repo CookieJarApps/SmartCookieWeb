@@ -31,7 +31,8 @@
     <string name="cookies">Enable cookies</string>
     <string name="importbookmarks">Import bookmarks from browser</string>
     <string name="size">Text size</string>
-    .<string name="recommended">Recommended</string>
+    .
+    <string name="recommended">Recommended</string>
     <string name="search">Search engine</string>
     <string name="search_hint">Search or enter web address</string>
     <string name="wideViewPort">Use wide viewport</string>
@@ -360,7 +361,7 @@
     <string name="url_project" translatable="false">https://github.com/CookieJarApps/SmartCookieWeb</string>
     <string name="block_malware">Block malicious sites</string>
     <string name="block_sites">Custom site block</string>
-    <string name="block_sites_title">Custom Site Block (separate sites with a comma)</string>
+    <string name="block_sites_title">Custom site block (separate sites with a comma)</string>
     <string name="none">None</string>
     <string name="block_info">Enter words to block in URLs (separated with a comma).</string>
     <string name="startpage">Apply theme to homepage</string>
@@ -368,7 +369,7 @@
     <string name="forcehttps">Block non-HTTPS sites</string>
     <string name="preferhttps">Prefer HTTPS site versions</string>
     <string name="forcehttpsdesc">Only load HTTPS sites</string>
-    <string name="preferhttpsdesc">Always use HTTPS on supported sites (may cause issues)</string>
+    <string name="preferhttpsdesc">Always use HTTPS on supported sites</string>
 
     <string name="startpagedesc">Set the color of the default homepage to the one used in the theme.</string>
     <string name="updatehomepage">Open a new tab to see updated homepage</string>
@@ -408,7 +409,7 @@
     <string name="extensions_list">Extensions list</string>
     <string name="uninstall_extension">Uninstall extension</string>
     <string name="uninstall_more">Enter the name of the extension you want to uninstall</string>
-    <string name="show_extra">Show extra menu options</string>
+    <string name="show_extra">Show close button in menu</string>
     <string name="incognito_cookies_new">Private mode runs in a separate window that is reset after each session. Private mode cookie preferences are now controlled by normal cookie preferences.</string>
     <string name="quit_private">Exit Private Mode</string>
     <string name="ekoru" translatable="false">Ekoru</string>
@@ -439,12 +440,12 @@
 
     <string name="reset_settings">Settings reset. App closing... Please reopen.</string>
 
-    <string name="force_zoom">Force zoom</string>
+    <string name="force_zoom">Override website zoom block</string>
 
     <string name="dark_mode">Dark mode</string>
     <string name="submit">Submit extension</string>
 
-    <string translatable="false" name="submit_link">https://cookiejarapps.com/extensions/create.html</string>
+    <string name="submit_link" translatable="false">https://cookiejarapps.com/extensions/create.html</string>
 
     <string name="translator">Translator (beta)</string>
     <string name="coming_soon">More coming soon...</string>
@@ -478,11 +479,22 @@
 
     <string name="enable_in_settings">AutoFill needs to be set up in Android settings for this option to take effect</string>
 
+    <string name="webrtc_description">Allow websites to request access to the microphone and camera</string>
+
     <string name="drawer_lines">Max text lines in drawer</string>
     <string name="drawer_size">Drawer text size</string>
 
     <string name="privacy_set">Privacy settings</string>
     <string name="security_set">Security settings</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 
     <!-- finish pages -->

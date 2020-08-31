@@ -1,32 +1,21 @@
 package com.cookiegames.smartcookie.settings.fragment
 
-import android.R
 import android.os.Bundle
 import android.preference.CheckBoxPreference
 import android.preference.Preference
 import android.preference.PreferenceFragment
 import android.preference.SwitchPreference
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.XmlRes
+import androidx.preference.PreferenceFragmentCompat
 
 
 /**
  * An abstract settings fragment which performs wiring for an instance of [PreferenceFragment].
  */
-abstract class AbstractSettingsFragment : PreferenceFragment() {
-
-    /**
-     * Provide the XML resource which holds the preferences.
-     */
-    @XmlRes
-    protected abstract fun providePreferencesXmlResource(): Int
+abstract class AbstractSettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        addPreferencesFromResource(providePreferencesXmlResource())
     }
 
     /**
@@ -44,13 +33,13 @@ abstract class AbstractSettingsFragment : PreferenceFragment() {
         isEnabled: Boolean = true,
         summary: String? = null,
         onCheckChange: (Boolean) -> Unit
-    ): SwitchPreference = (findPreference(preference) as SwitchPreference).apply {
+    ): androidx.preference.SwitchPreference? = (findPreference<androidx.preference.SwitchPreference>(preference))?.apply {
         this.isChecked = isChecked
         this.isEnabled = isEnabled
         summary?.let {
             this.summary = summary
         }
-        onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, any: Any ->
+        onPreferenceChangeListener = androidx.preference.Preference.OnPreferenceChangeListener { _, any: Any ->
             onCheckChange(any as Boolean)
             true
         }
@@ -69,7 +58,7 @@ abstract class AbstractSettingsFragment : PreferenceFragment() {
         isEnabled: Boolean = true,
         summary: String? = null,
         onClick: () -> Unit
-    ): Preference = clickableDynamicPreference(
+    ): androidx.preference.Preference? = clickableDynamicPreference(
         preference = preference,
         isEnabled = isEnabled,
         summary = summary,
@@ -92,13 +81,13 @@ abstract class AbstractSettingsFragment : PreferenceFragment() {
         isEnabled: Boolean = true,
         summary: String? = null,
         onClick: (SummaryUpdater) -> Unit
-    ): Preference = findPreference(preference).apply {
+    ): androidx.preference.Preference? = findPreference<androidx.preference.Preference>(preference)?.apply {
         this.isEnabled = isEnabled
         summary?.let {
             this.summary = summary
         }
         val summaryUpdate = SummaryUpdater(this)
-        onPreferenceClickListener = Preference.OnPreferenceClickListener {
+        onPreferenceClickListener = androidx.preference.Preference.OnPreferenceClickListener {
             onClick(summaryUpdate)
             true
         }
@@ -117,10 +106,10 @@ abstract class AbstractSettingsFragment : PreferenceFragment() {
         isChecked: Boolean,
         isEnabled: Boolean = true,
         onCheckChange: (Boolean) -> Unit
-    ): SwitchPreference = (findPreference(preference) as SwitchPreference).apply {
+    ): androidx.preference.SwitchPreference? = (findPreference<androidx.preference.SwitchPreference>(preference))?.apply {
         this.isChecked = isChecked
         this.isEnabled = isEnabled
-        onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, any: Any ->
+        onPreferenceChangeListener = androidx.preference.Preference.OnPreferenceChangeListener { _, any: Any ->
             onCheckChange(any as Boolean)
             true
         }

@@ -11,8 +11,6 @@ import androidx.appcompat.app.AlertDialog
 
 class AboutSettingsFragment : AbstractSettingsFragment() {
 
-    override fun providePreferencesXmlResource() = R.xml.preference_about
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -22,9 +20,9 @@ class AboutSettingsFragment : AbstractSettingsFragment() {
             onClick = { }
         )
 
-        var pref: Preference = findPreference(SETTINGS_VERSION)
-        pref.setOnPreferenceClickListener {
-            val builder = AlertDialog.Builder(activity)
+        var pref: androidx.preference.Preference? = findPreference(SETTINGS_VERSION)
+        pref!!.setOnPreferenceClickListener {
+            val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("Smart Cookie Secure Web Browser Version " + BuildConfig.VERSION_NAME)
             builder.setMessage("What's new:\n- Better dark mode")
 
@@ -37,6 +35,10 @@ class AboutSettingsFragment : AbstractSettingsFragment() {
             alertDialog.show()
             true
         }
+    }
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preference_about)
     }
 
     companion object {

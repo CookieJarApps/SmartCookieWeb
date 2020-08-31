@@ -21,8 +21,6 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
 
     @Inject internal lateinit var userPreferences: UserPreferences
 
-    override fun providePreferencesXmlResource() = R.xml.preference_advanced
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -98,10 +96,14 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
                 onCheckChange = {
                     userPreferences.cookiesEnabled = it
                     if (DeviceCapabilities.FULL_INCOGNITO.isSupported) {
-                        incognitoCheckboxPreference.isChecked = it
+                        incognitoCheckboxPreference?.isChecked = it
                     }
                 }
         )
+    }
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preference_advanced)
     }
 
     /**

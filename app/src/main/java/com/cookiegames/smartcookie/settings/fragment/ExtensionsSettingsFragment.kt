@@ -26,7 +26,9 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
 
     private lateinit var proxyChoices: Array<String>
 
-    override fun providePreferencesXmlResource() = R.xml.preference_extensions
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preference_extensions)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -18,6 +18,7 @@ import com.cookiegames.smartcookie.extensions.toast
 import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.utils.Utils
 import android.Manifest
+import android.app.Activity
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
@@ -63,8 +64,6 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
     private var importSubscription: Disposable? = null
     private var exportSubscription: Disposable? = null
 
-    override fun providePreferencesXmlResource() = R.xml.preference_bookmarks
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injector.inject(this)
@@ -82,6 +81,10 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
         clickablePreference(preference = SETTINGS_DELETE_SETTINGS, onClick = this::clearSettings)
     }
 
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preference_bookmarks)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
 
@@ -97,7 +100,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun clearSettings() {
-        val builder = AlertDialog.Builder(activity)
+        val builder = AlertDialog.Builder(context as Activity)
         builder.setTitle(getString(R.string.confirm))
         builder.setMessage(getString(R.string.clear))
 
@@ -108,7 +111,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
 
             val handler = Handler()
             handler.postDelayed(Runnable {
-                (activity.getSystemService(ACTIVITY_SERVICE) as ActivityManager)
+                (activity?.getSystemService(ACTIVITY_SERVICE) as ActivityManager)
                         .clearApplicationUserData()
             }, 500)
         }
@@ -185,7 +188,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
 
     private fun showDeleteBookmarksDialog() {
         BrowserDialog.showPositiveNegativeDialog(
-                activity = activity,
+                activity = context as Activity,
                 title = R.string.action_delete,
                 message = R.string.action_delete_all_bookmarks,
                 positiveButton = DialogItem(title = R.string.yes) {
@@ -235,7 +238,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun showImportBookmarkDialog(path: File?) {
-        val builder = AlertDialog.Builder(activity)
+        val builder = AlertDialog.Builder(context as Activity)
 
         val title = getString(R.string.title_chooser)
         builder.setTitle(title + ": " + Environment.getExternalStorageDirectory())

@@ -6,12 +6,12 @@
             android:key="cb_block_ads"
             android:singleLineTitle="false"
             android:title="@string/block_ads"/>
-        <Preference
+        <androidx.preference.Preference
             android:key="preference_hosts_source"
             android:summary="@string/block_source_default"
             android:singleLineTitle="false"
             android:title="@string/block_ad_source"/>
-        <Preference
+        <androidx.preference.Preference
             android:key="preference_hosts_refresh_force"
             android:summary="@string/block_ad_remote_refresh_frequency_description"
             android:singleLineTitle="false"

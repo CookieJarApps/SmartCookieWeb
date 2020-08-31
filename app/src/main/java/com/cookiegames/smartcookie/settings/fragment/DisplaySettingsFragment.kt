@@ -35,7 +35,9 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
 
     @Inject internal lateinit var userPreferences: UserPreferences
 
-    override fun providePreferencesXmlResource() = R.xml.preference_display
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preference_display)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -254,9 +256,9 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
 
     private fun showTextSizePicker() {
         val maxValue = 5
-        AlertDialog.Builder(activity).apply {
-            val layoutInflater = activity.layoutInflater
-            val customView = (layoutInflater.inflate(R.layout.dialog_seek_bar, null) as LinearLayout).apply {
+        AlertDialog.Builder(requireContext()).apply {
+            val layoutInflater = activity?.layoutInflater
+            val customView = (layoutInflater?.inflate(R.layout.dialog_seek_bar, null) as LinearLayout).apply {
                 val text = TextView(activity).apply {
                     setText(R.string.untitled)
                     layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
@@ -281,7 +283,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
 
     private fun showThemePicker(summaryUpdater: SummaryUpdater) {
        val currentTheme = userPreferences.useTheme
-        AlertDialog.Builder(activity).apply {
+        AlertDialog.Builder(requireContext()).apply {
             setTitle(resources.getString(R.string.theme))
             val values = AppTheme.values().map { Pair(it, it.toDisplayString()) }
             withSingleChoiceItems(values, userPreferences.useTheme) {
@@ -297,7 +299,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
             }
             setOnCancelListener {
                 if (currentTheme != userPreferences.useTheme) {
-                    activity.onBackPressed()
+                    activity?.onBackPressed()
                 }
             }
         }.resizeAndShow()

@@ -3,70 +3,32 @@
  */
 package com.cookiegames.smartcookie.settings.activity
 
-import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.device.BuildInfo
-import com.cookiegames.smartcookie.device.BuildType
-import com.cookiegames.smartcookie.di.injector
-import android.os.Build
+import android.app.Activity
 import android.os.Bundle
-import android.preference.PreferenceActivity
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
-import android.widget.LinearLayout
-import com.anthonycr.grant.PermissionsManager
-import javax.inject.Inject
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.settings.fragment.SettingsFragment
 
-class SettingsActivity : ThemableSettingsActivity() {
 
-    @Inject lateinit var buildInfo: BuildInfo
-
+class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        injector.inject(this)
         super.onCreate(savedInstanceState)
-        // this is a workaround for the Toolbar in PreferenceActivity
-        val root = findViewById<ViewGroup>(android.R.id.content)
-        val content = root.getChildAt(0) as LinearLayout
-        val toolbarContainer = View.inflate(this, R.layout.toolbar_settings, null) as LinearLayout
-
-        root.removeAllViews()
-        toolbarContainer.addView(content)
-        root.addView(toolbarContainer)
-
-        // now we can set the Toolbar using AppCompatPreferenceActivity
-        setSupportActionbar(toolbarContainer.findViewById(R.id.toolbar))
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
-    }
-
-    override fun onBuildHeaders(target: MutableList<Header>) {
-        loadHeadersFromResource(R.xml.preferences_headers, target)
-        fragments.clear()
-
-        if (buildInfo.buildType == BuildType.RELEASE) {
-            target.removeAll { it.titleRes == R.string.debug_title }
+        setContentView(R.layout.activity_settings)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        try {
+            setSupportActionBar(toolbar)
+            val actionBar: ActionBar? = getSupportActionBar()
+            if (actionBar != null) {
+                actionBar.setDisplayShowTitleEnabled(false)
+                actionBar.setDisplayHomeAsUpEnabled(true)
+                actionBar.setDisplayShowHomeEnabled(true)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            // Workaround for bug in the AppCompat support library
-            target.forEach { it.iconRes = R.drawable.empty }
-        }
-
-        fragments.addAll(target.map(Header::fragment))
-    }
-
-    override fun isValidFragment(fragmentName: String): Boolean = fragments.contains(fragmentName)
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        onBackPressed()
-        return false
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        PermissionsManager.getInstance().notifyPermissionsChange(permissions, grantResults)
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
-
-    companion object {
-        private val fragments = mutableListOf<String>()
+        toolbar.title = getString(R.string.settings)
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, SettingsFragment()).commit()
     }
 }

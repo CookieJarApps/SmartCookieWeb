@@ -43,7 +43,9 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
 
     private lateinit var proxyChoices: Array<String>
 
-    override fun providePreferencesXmlResource() = R.xml.preference_general
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preference_general)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -154,7 +156,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 })
             }
             withSingleChoiceItems(values, userPreferences.suggestionChoice) {
-                updateSearchNum(it, activity, summaryUpdater)
+                updateSearchNum(it, context as Activity, summaryUpdater)
             }
             setPositiveButton(R.string.action_ok, null)
         }
@@ -189,7 +191,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 })
             }
             withSingleChoiceItems(values, userPreferences.proxyChoice) {
-                updateProxyChoice(it, activity, summaryUpdater)
+                updateProxyChoice(it, context as Activity, summaryUpdater)
             }
             setPositiveButton(R.string.action_ok, null)
         }
@@ -490,7 +492,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 })
             }
             withSingleChoiceItems(values, userPreferences.javaScriptChoice) {
-                updateJavaScriptChoice(it, activity, summaryUpdater)
+                updateJavaScriptChoice(it, context as Activity, summaryUpdater)
             }
             setPositiveButton(R.string.action_ok, null)
         }

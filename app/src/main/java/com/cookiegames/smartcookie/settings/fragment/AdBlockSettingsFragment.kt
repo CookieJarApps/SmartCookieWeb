@@ -17,7 +17,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.preference.Preference
+import androidx.preference.Preference
 import io.reactivex.Maybe
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
@@ -46,8 +46,6 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
     private var recentSummaryUpdater: SummaryUpdater? = null
     private val compositeDisposable = CompositeDisposable()
     private var forceRefreshHostsPreference: Preference? = null
-
-    override fun providePreferencesXmlResource(): Int = R.xml.preference_ad_block
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,6 +90,10 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
         compositeDisposable.clear()
     }
 
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preference_ad_block)
+    }
+
     private fun HostsSourceType.toSummary(): String = when (this) {
         HostsSourceType.Default -> getString(R.string.block_source_default)
         is HostsSourceType.Local -> getString(R.string.block_source_local_description, file.path)
@@ -100,7 +102,7 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
 
     private fun showHostsSourceChooser(summaryUpdater: SummaryUpdater) {
         BrowserDialog.showListChoices(
-            activity,
+            context as Activity,
             R.string.block_ad_source,
             DialogItem(
                 title = R.string.block_source_default,
@@ -140,7 +142,7 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
 
     private fun showUrlChooser(summaryUpdater: SummaryUpdater) {
         BrowserDialog.showEditText(
-            activity,
+            context as Activity,
             title = R.string.block_source_remote,
             hint = R.string.hint_url,
             currentText = userPreferences.hostsRemoteFile,

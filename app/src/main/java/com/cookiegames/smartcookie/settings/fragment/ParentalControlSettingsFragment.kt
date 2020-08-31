@@ -31,7 +31,9 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
 
     private lateinit var proxyChoices: Array<String>
 
-    override fun providePreferencesXmlResource() = R.xml.preference_parents
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preference_parents)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,9 +59,9 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
                 summary = userPreferences.passwordChoice.toSummary(),
                 onClick = ::showPasswordPicker
         )
-        val prefs: SharedPreferences = activity.getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
+        val prefs: SharedPreferences? = activity?.getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
 
-        if (prefs.getBoolean("noPassword", true)) {
+        if (prefs?.getBoolean("noPassword", true)!!) {
         }
         else {
             passwordDialog()
@@ -72,7 +74,7 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
 
         editText.setHint(R.string.enter_password)
 
-        val editorDialog = AlertDialog.Builder(activity)
+        val editorDialog = AlertDialog.Builder(requireContext())
                 .setTitle(R.string.enter_password)
                 .setView(dialogView)
                 .setCancelable(false)
@@ -94,7 +96,7 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
                 }
 
         val dialog = editorDialog.show()
-        setDialogSize(activity, dialog)
+        setDialogSize(requireContext(), dialog)
     }
 
     private fun SiteBlockChoice.toSummary(): String {
@@ -118,7 +120,7 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
                 })
             }
             withSingleChoiceItems(values, userPreferences.siteBlockChoice) {
-                updateSiteBlockChoice(it, activity, summaryUpdater)
+                updateSiteBlockChoice(it, context as Activity, summaryUpdater)
             }
             setPositiveButton(R.string.action_ok, null)
         }
@@ -179,7 +181,7 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
                 })
             }
             withSingleChoiceItems(values, userPreferences.passwordChoice) {
-                updatePasswordChoice(it, activity, summaryUpdater)
+                updatePasswordChoice(it, context as Activity, summaryUpdater)
             }
             setPositiveButton(R.string.action_ok, null)
         }

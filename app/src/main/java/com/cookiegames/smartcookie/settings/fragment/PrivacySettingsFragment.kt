@@ -1,5 +1,6 @@
 package com.cookiegames.smartcookie.settings.fragment
 
+import android.app.Activity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.database.history.HistoryRepository
 import com.cookiegames.smartcookie.di.DatabaseScheduler
@@ -26,7 +27,9 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
     @Inject @field:DatabaseScheduler internal lateinit var databaseScheduler: Scheduler
     @Inject @field:MainScheduler internal lateinit var mainScheduler: Scheduler
 
-    override fun providePreferencesXmlResource() = R.xml.preference_privacy
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.preference_privacy)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -134,7 +137,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
 
     private fun clearHistoryDialog() {
         BrowserDialog.showPositiveNegativeDialog(
-            activity = activity,
+            activity = context as Activity,
             title = R.string.title_clear_history,
             message = R.string.dialog_history,
             positiveButton = DialogItem(title = R.string.action_yes) {
@@ -142,7 +145,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
                     .subscribeOn(databaseScheduler)
                     .observeOn(mainScheduler)
                     .subscribe {
-                        activity.snackbar(R.string.message_clear_history)
+                        activity?.snackbar(R.string.message_clear_history)
                     }
             },
             negativeButton = DialogItem(title = R.string.action_no) {},
@@ -152,7 +155,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
 
     private fun clearCookiesDialog() {
         BrowserDialog.showPositiveNegativeDialog(
-            activity = activity,
+            activity = context as Activity,
             title = R.string.title_clear_cookies,
             message = R.string.dialog_cookies,
             positiveButton = DialogItem(title = R.string.action_yes) {
@@ -160,7 +163,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
                     .subscribeOn(databaseScheduler)
                     .observeOn(mainScheduler)
                     .subscribe {
-                        activity.snackbar(R.string.message_cookies_cleared)
+                        activity?.snackbar(R.string.message_cookies_cleared)
                     }
             },
             negativeButton = DialogItem(title = R.string.action_no) {},
@@ -173,7 +176,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
             clearCache(true)
             destroy()
         }
-        activity.snackbar(R.string.message_cache_cleared)
+        activity?.snackbar(R.string.message_cache_cleared)
     }
 
     private fun clearHistory(): Completable = Completable.fromAction {
@@ -197,7 +200,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
 
     private fun clearWebStorage() {
         WebUtils.clearWebStorage()
-        activity.snackbar(R.string.message_web_storage_cleared)
+        activity?.snackbar(R.string.message_web_storage_cleared)
     }
 
     companion object {

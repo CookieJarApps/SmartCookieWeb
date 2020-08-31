@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory android:title="@string/privacy_set">
         <SwitchPreference
@@ -32,7 +33,8 @@
             android:defaultValue="false"
             android:singleLineTitle="false"
             android:key="webrtc_support"
-            android:title="@string/webrtc_support"/>
+            android:title="@string/webrtc_support"
+            android:summary="@string/webrtc_description"/>
         <SwitchPreference
             android:defaultValue="false"
             android:key="start_incognito"

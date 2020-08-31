@@ -1,11 +1,9 @@
 package com.cookiegames.smartcookie.settings.fragment
 
-import android.preference.Preference
-
 /**
  * A command that updates the summary of a preference.
  */
-class SummaryUpdater(private val preference: Preference) {
+class SummaryUpdater(private val preference: androidx.preference.Preference) {
 
     /**
      * Updates the summary of the preference.
