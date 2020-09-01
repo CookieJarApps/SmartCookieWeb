@@ -3,6 +3,8 @@ package com.cookiegames.smartcookie.browser.bookmarks
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.os.Handler
 import android.util.AttributeSet
 import android.util.Log
@@ -34,6 +36,7 @@ import com.cookiegames.smartcookie.dialog.LightningDialogBuilder
 import com.cookiegames.smartcookie.extensions.color
 import com.cookiegames.smartcookie.extensions.drawable
 import com.cookiegames.smartcookie.extensions.inflater
+import com.cookiegames.smartcookie.extensions.toast
 import com.cookiegames.smartcookie.favicon.FaviconModel
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.reading.activity.ReadingActivity
@@ -50,11 +53,11 @@ import javax.inject.Inject
  * The view that displays bookmarks in a list and some controls.
  */
 class BookmarksDrawerView @JvmOverloads constructor(
-    context: Context,
-    private val activity: Activity,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-    userPreferences: UserPreferences
+        context: Context,
+        private val activity: Activity,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0,
+        userPreferences: UserPreferences
 ) : LinearLayout(context, attrs, defStyleAttr), BookmarksView {
 
     @Inject internal lateinit var bookmarkModel: BookmarkRepository
@@ -105,13 +108,13 @@ class BookmarksDrawerView @JvmOverloads constructor(
         findViewById<View>(R.id.action_page_tools).setOnClickListener { showPageToolsDialog(context, userPreferences) }
 
         bookmarkAdapter = BookmarkListAdapter(
-            context,
-            faviconModel,
-            networkScheduler,
-            mainScheduler,
-            ::handleItemLongPress,
-            ::handleItemClick,
-            userPreferences
+                context,
+                faviconModel,
+                networkScheduler,
+                mainScheduler,
+                ::handleItemLongPress,
+                ::handleItemClick,
+                userPreferences
         )
 
         bookmarkRecyclerView?.let {
@@ -239,68 +242,92 @@ class BookmarksDrawerView @JvmOverloads constructor(
 
 
         BrowserDialog.showWithIcons(context, context.getString(R.string.dialog_tools_title),
-            DialogItem(
-                icon = context.drawable(R.drawable.ic_action_desktop),
-                title = R.string.dialog_toggle_desktop
-            ) {
-                getTabsManager().currentTab?.apply {
-                    toggleDesktopUA()
-                    reload()
-                    // TODO add back drawer closing
-                }
-            },
                 DialogItem(
-                        icon= context.drawable(R.drawable.ic_page_tools),
+                        icon = context.drawable(R.drawable.ic_action_desktop),
+                        title = R.string.dialog_toggle_desktop
+                ) {
+                    getTabsManager().currentTab?.apply {
+                        toggleDesktopUA()
+                        reload()
+                        // TODO add back drawer closing
+                    }
+                },
+                DialogItem(
+                        icon = context.drawable(R.drawable.ic_page_tools),
                         title = R.string.inspect
 
-                ){
+                ) {
                     val builder = AlertDialog.Builder(context)
                     val inflater = activity.layoutInflater
                     builder.setTitle(R.string.inspect)
                     val dialogLayout = inflater.inflate(R.layout.dialog_edit_text, null)
-                    val editText  = dialogLayout.findViewById<EditText>(R.id.dialog_edit_text)
+                    val editText = dialogLayout.findViewById<EditText>(R.id.dialog_edit_text)
                     builder.setView(dialogLayout)
                     builder.setPositiveButton("OK") { dialogInterface, i -> currentTab.loadUrl("javascript:(function() {" + editText.text.toString() + "})()") }
                     builder.show()
 
                 },
-            DialogItem(
-                icon = context.drawable(R.drawable.ic_block),
-                colorTint = context.color(R.color.error_red).takeIf { isAllowedAds },
-                title = whitelistString,
-                isConditionMet = !currentTab.url.isSpecialUrl()
-            ) {
-                if (isAllowedAds) {
-                    allowListModel.removeUrlFromAllowList(currentTab.url)
-                } else {
-                    allowListModel.addUrlToAllowList(currentTab.url)
-                }
-                getTabsManager().currentTab?.reload()
-            }, DialogItem(
+                DialogItem(
+                        icon = context.drawable(R.drawable.ic_baseline_code_24),
+                        title = R.string.page_source
+
+                ) {
+                    val prefs: SharedPreferences = activity.getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
+                    var name: String? = prefs.getString("source", "Source could not be extracted") //"No name defined" is the default value.
+
+                   // Hacky workaround for weird WebView encoding bug
+                    name = name?.replace("\\u003C", "<")
+                    name = name?.replace("\\n", System.getProperty("line.separator").toString())
+                    name = name?.replace("\\t", "")
+                    name = name?.replace("\\\"", "\"")
+                    name = name?.substring(1, name.length - 1);
+                    if(name?.contains("mod_pagespeed")!!){
+                        Toast.makeText(activity, R.string.pagespeed_error,
+                                Toast.LENGTH_LONG).show()
+                    }
+                    val builder = AlertDialog.Builder(context)
+                    val inflater = activity.layoutInflater
+                    builder.setTitle(R.string.inspect)
+                    val dialogLayout = inflater.inflate(R.layout.dialog_multi_line, null)
+                    val editText = dialogLayout.findViewById<EditText>(R.id.dialog_multi_line)
+                    editText.setText(name)
+                    builder.setView(dialogLayout)
+                    builder.setPositiveButton("OK") { dialogInterface, i -> editText.setText(editText.text?.toString()?.replace("\'", "\\\'")); currentTab.loadUrl("javascript:(function() { document.documentElement.innerHTML = '" + editText.text.toString() + "'; })()") }
+                    builder.show()
+                },
+                DialogItem(
+                        icon = context.drawable(R.drawable.ic_block),
+                        colorTint = context.color(R.color.error_red).takeIf { isAllowedAds },
+                        title = whitelistString,
+                        isConditionMet = !currentTab.url.isSpecialUrl()
+                ) {
+                    if (isAllowedAds) {
+                        allowListModel.removeUrlFromAllowList(currentTab.url)
+                    } else {
+                        allowListModel.addUrlToAllowList(currentTab.url)
+                    }
+                    getTabsManager().currentTab?.reload()
+                }, DialogItem(
                 icon = context.drawable(R.drawable.ic_action_delete),
                 title = jsEnabledString,
                 isConditionMet = !currentTab.url.isSpecialUrl()
         ) {
             val url = URL(currentTab.url)
-            if(userPreferences.javaScriptChoice != JavaScriptChoice.NONE){
-                if(!stringContainsItemFromList(currentTab.url, strgs)){
-                    if(userPreferences.javaScriptBlocked.equals("")){
+            if (userPreferences.javaScriptChoice != JavaScriptChoice.NONE) {
+                if (!stringContainsItemFromList(currentTab.url, strgs)) {
+                    if (userPreferences.javaScriptBlocked.equals("")) {
                         userPreferences.javaScriptBlocked = url.host
-                    }
-                    else{
+                    } else {
                         userPreferences.javaScriptBlocked = userPreferences.javaScriptBlocked + ", " + url.host
-                 }
-                }
-                else{
-                    if(!userPreferences.javaScriptBlocked.contains(", " + url.host)) {
-                        userPreferences.javaScriptBlocked = userPreferences.javaScriptBlocked.replace(url.host, "")
                     }
-                    else{
+                } else {
+                    if (!userPreferences.javaScriptBlocked.contains(", " + url.host)) {
+                        userPreferences.javaScriptBlocked = userPreferences.javaScriptBlocked.replace(url.host, "")
+                    } else {
                         userPreferences.javaScriptBlocked = userPreferences.javaScriptBlocked.replace(", " + url.host, "")
                     }
                 }
-            }
-            else{
+            } else {
                 userPreferences.javaScriptChoice = JavaScriptChoice.WHITELIST
             }
             getTabsManager().currentTab?.reload()
@@ -328,11 +355,11 @@ class BookmarksDrawerView @JvmOverloads constructor(
     }
 
     private class BookmarkViewHolder(
-        itemView: View,
-        private val adapter: BookmarkListAdapter,
-        private val onItemLongClickListener: (Bookmark) -> Boolean,
-        private val onItemClickListener: (Bookmark) -> Unit,
-        private val userPreferences: UserPreferences
+            itemView: View,
+            private val adapter: BookmarkListAdapter,
+            private val onItemLongClickListener: (Bookmark) -> Boolean,
+            private val onItemClickListener: (Bookmark) -> Unit,
+            private val userPreferences: UserPreferences
     ) : RecyclerView.ViewHolder(itemView), OnClickListener, OnLongClickListener {
 
         val txtTitle: TextView = itemView.findViewById(R.id.textBookmark)
@@ -363,13 +390,13 @@ class BookmarksDrawerView @JvmOverloads constructor(
     }
 
     private class BookmarkListAdapter(
-        context: Context,
-        private val faviconModel: FaviconModel,
-        private val networkScheduler: Scheduler,
-        private val mainScheduler: Scheduler,
-        private val onItemLongClickListener: (Bookmark) -> Boolean,
-        private val onItemClickListener: (Bookmark) -> Unit,
-        private val userPreferences: UserPreferences
+            context: Context,
+            private val faviconModel: FaviconModel,
+            private val networkScheduler: Scheduler,
+            private val mainScheduler: Scheduler,
+            private val onItemLongClickListener: (Bookmark) -> Boolean,
+            private val onItemClickListener: (Bookmark) -> Unit,
+            private val userPreferences: UserPreferences
     ) : RecyclerView.Adapter<BookmarkViewHolder>() {
 
         private var bookmarks: List<BookmarksViewModel> = listOf()
@@ -394,10 +421,10 @@ class BookmarksDrawerView @JvmOverloads constructor(
                 override fun getNewListSize() = bookmarks.size
 
                 override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-                    oldList[oldItemPosition].bookmark.url == bookmarks[newItemPosition].bookmark.url
+                        oldList[oldItemPosition].bookmark.url == bookmarks[newItemPosition].bookmark.url
 
                 override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-                    oldList[oldItemPosition] == bookmarks[newItemPosition]
+                        oldList[oldItemPosition] == bookmarks[newItemPosition]
             })
 
             diffResult.dispatchUpdatesTo(this)
@@ -437,17 +464,17 @@ class BookmarksDrawerView @JvmOverloads constructor(
                 is Bookmark.Entry -> webpageIcon.also {
                     faviconFetchSubscriptions[url]?.dispose()
                     faviconFetchSubscriptions[url] = faviconModel
-                        .faviconForUrl(url, viewModel.bookmark.title)
-                        .subscribeOn(networkScheduler)
-                        .observeOn(mainScheduler)
-                        .subscribeBy(
-                            onSuccess = { bitmap ->
-                                viewModel.icon = bitmap
-                                if (holder.favicon.tag == url) {
-                                    holder.favicon.setImageBitmap(bitmap)
-                                }
-                            }
-                        )
+                            .faviconForUrl(url, viewModel.bookmark.title)
+                            .subscribeOn(networkScheduler)
+                            .observeOn(mainScheduler)
+                            .subscribeBy(
+                                    onSuccess = { bitmap ->
+                                        viewModel.icon = bitmap
+                                        if (holder.favicon.tag == url) {
+                                            holder.favicon.setImageBitmap(bitmap)
+                                        }
+                                    }
+                            )
                 }
             }
 

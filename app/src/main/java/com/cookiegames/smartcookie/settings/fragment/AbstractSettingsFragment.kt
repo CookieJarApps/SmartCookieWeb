@@ -7,6 +7,7 @@ import android.preference.PreferenceFragment
 import android.preference.SwitchPreference
 import androidx.annotation.XmlRes
 import androidx.preference.PreferenceFragmentCompat
+import com.cookiegames.smartcookie.R
 
 
 /**

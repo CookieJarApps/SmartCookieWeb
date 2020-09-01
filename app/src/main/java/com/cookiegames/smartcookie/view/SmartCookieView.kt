@@ -4,29 +4,16 @@
 
 package com.cookiegames.smartcookie.view
 
-import com.cookiegames.smartcookie.constant.DESKTOP_USER_AGENT
-import com.cookiegames.smartcookie.controller.UIController
-import com.cookiegames.smartcookie.di.DatabaseScheduler
-import com.cookiegames.smartcookie.di.MainScheduler
-import com.cookiegames.smartcookie.di.injector
-import com.cookiegames.smartcookie.dialog.LightningDialogBuilder
-import com.cookiegames.smartcookie.download.LightningDownloadListener
-import com.cookiegames.smartcookie.log.Logger
-import com.cookiegames.smartcookie.network.NetworkConnectivityModel
-import com.cookiegames.smartcookie.preference.UserPreferences
-import com.cookiegames.smartcookie.preference.userAgent
-import com.cookiegames.smartcookie.ssl.SslState
-import com.cookiegames.smartcookie.utils.*
-import com.cookiegames.smartcookie.view.find.FindResults
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.graphics.*
 import android.net.http.SslCertificate
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.util.Log
 import android.view.*
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.View.OnTouchListener
@@ -38,7 +25,21 @@ import androidx.collection.ArrayMap
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.DeviceCapabilities
+import com.cookiegames.smartcookie.constant.DESKTOP_USER_AGENT
+import com.cookiegames.smartcookie.controller.UIController
+import com.cookiegames.smartcookie.di.DatabaseScheduler
+import com.cookiegames.smartcookie.di.MainScheduler
+import com.cookiegames.smartcookie.di.injector
+import com.cookiegames.smartcookie.dialog.LightningDialogBuilder
+import com.cookiegames.smartcookie.download.LightningDownloadListener
 import com.cookiegames.smartcookie.isSupported
+import com.cookiegames.smartcookie.log.Logger
+import com.cookiegames.smartcookie.network.NetworkConnectivityModel
+import com.cookiegames.smartcookie.preference.UserPreferences
+import com.cookiegames.smartcookie.preference.userAgent
+import com.cookiegames.smartcookie.ssl.SslState
+import com.cookiegames.smartcookie.utils.*
+import com.cookiegames.smartcookie.view.find.FindResults
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.Single
@@ -52,13 +53,13 @@ import javax.inject.Inject
  * class.
  */
 class SmartCookieView(
-    private val activity: Activity,
-    tabInitializer: TabInitializer,
-    val isIncognito: Boolean,
-    private val homePageInitializer: HomePageInitializer,
-    private val bookmarkPageInitializer: BookmarkPageInitializer,
-    private val downloadPageInitializer: DownloadPageInitializer,
-    private val logger: Logger
+        private val activity: Activity,
+        tabInitializer: TabInitializer,
+        val isIncognito: Boolean,
+        private val homePageInitializer: HomePageInitializer,
+        private val bookmarkPageInitializer: BookmarkPageInitializer,
+        private val downloadPageInitializer: DownloadPageInitializer,
+        private val logger: Logger
 ) {
 
     /**
@@ -237,9 +238,8 @@ class SmartCookieView(
         }
 
         if(webView?.settings?.userAgentString!!.contains("wv")){
-            webView?.settings?.userAgentString = webView?.settings?.userAgentString?.replace("; wv","")
+            webView?.settings?.userAgentString = webView?.settings?.userAgentString?.replace("wv", "")
         }
-
     }
 
     fun currentSslState(): SslState = smartCookieWebClient.sslState
@@ -359,7 +359,7 @@ class SmartCookieView(
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             CookieManager.getInstance().setAcceptThirdPartyCookies(webView,
-                !userPreferences.blockThirdPartyCookiesEnabled)
+                    !userPreferences.blockThirdPartyCookiesEnabled)
         }
     }
     
@@ -520,7 +520,7 @@ class SmartCookieView(
             }
             RenderingMode.INVERTED -> {
                 val filterInvert = ColorMatrixColorFilter(
-                    negativeColorArray)
+                        negativeColorArray)
                 paint.colorFilter = filterInvert
                 setHardwareRendering()
 
@@ -913,16 +913,16 @@ class SmartCookieView(
         private val SCROLL_UP_THRESHOLD = Utils.dpToPx(10f)
 
         private val negativeColorArray = floatArrayOf(
-            -1.0f, 0f, 0f, 0f, 255f, // red
-            0f, -1.0f, 0f, 0f, 255f, // green
-            0f, 0f, -1.0f, 0f, 255f, // blue
-            0f, 0f, 0f, 1.0f, 0f // alpha
+                -1.0f, 0f, 0f, 0f, 255f, // red
+                0f, -1.0f, 0f, 0f, 255f, // green
+                0f, 0f, -1.0f, 0f, 255f, // blue
+                0f, 0f, 0f, 1.0f, 0f // alpha
         )
         private val increaseContrastColorArray = floatArrayOf(
-            2.0f, 0f, 0f, 0f, -160f, // red
-            0f, 2.0f, 0f, 0f, -160f, // green
-            0f, 0f, 2.0f, 0f, -160f, // blue
-            0f, 0f, 0f, 1.0f, 0f // alpha
+                2.0f, 0f, 0f, 0f, -160f, // red
+                0f, 2.0f, 0f, 0f, -160f, // green
+                0f, 0f, 2.0f, 0f, -160f, // blue
+                0f, 0f, 0f, 1.0f, 0f // alpha
         )
     }
 }

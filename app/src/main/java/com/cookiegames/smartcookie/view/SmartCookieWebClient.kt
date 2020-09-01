@@ -19,7 +19,9 @@ import com.cookiegames.smartcookie.utils.*
 import android.annotation.TargetApi
 import android.app.Activity
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.net.MailTo
 import android.net.http.SslError
@@ -188,11 +190,13 @@ class SmartCookieWebClient(
             )
         }
 
-       /* view.evaluateJavascript("""(function() {
+        view?.evaluateJavascript("""(function() {
         return "<html>" + document.getElementsByTagName('html')[0].innerHTML + "</html>";
         })()""".trimMargin()) {
-            it
-        }*/
+            val editor: SharedPreferences.Editor = activity.getSharedPreferences("com.cookiegames.smartcookie", Context.MODE_PRIVATE).edit()
+            editor.putString("source", it)
+            editor.apply()
+        }
 
         if (view.title == null || view.title.isEmpty()) {
             smartCookieView.titleInfo.setTitle(activity.getString(R.string.untitled))

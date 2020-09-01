@@ -1,7 +1,21 @@
 package com.cookiegames.smartcookie.settings.fragment
 
+import android.app.Activity
+import android.os.Bundle
+import android.os.Environment
+import android.text.Editable
+import android.text.InputFilter
+import android.text.TextWatcher
+import android.view.LayoutInflater
+import android.webkit.URLUtil
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.browser.JavaScriptChoice
 import com.cookiegames.smartcookie.browser.ProxyChoice
+import com.cookiegames.smartcookie.browser.SuggestionNumChoice
 import com.cookiegames.smartcookie.constant.SCHEME_BLANK
 import com.cookiegames.smartcookie.constant.SCHEME_BOOKMARKS
 import com.cookiegames.smartcookie.constant.SCHEME_HOMEPAGE
@@ -16,22 +30,8 @@ import com.cookiegames.smartcookie.search.engine.CustomSearch
 import com.cookiegames.smartcookie.utils.FileUtils
 import com.cookiegames.smartcookie.utils.ProxyUtils
 import com.cookiegames.smartcookie.utils.ThemeUtils
-import android.app.Activity
-import android.os.Bundle
-import android.os.Environment
-import android.text.Editable
-import android.text.InputFilter
-import android.text.TextWatcher
-import android.view.LayoutInflater
-import android.webkit.URLUtil
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-import com.cookiegames.smartcookie.browser.JavaScriptChoice
-import com.cookiegames.smartcookie.browser.SiteBlockChoice
-import com.cookiegames.smartcookie.browser.SuggestionNumChoice
 import javax.inject.Inject
+
 
 /**
  * The general settings of the app.
@@ -54,46 +54,47 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
 
         proxyChoices = resources.getStringArray(R.array.proxy_choices_array)
 
+
         clickableDynamicPreference(
-            preference = SETTINGS_PROXY,
-            summary = userPreferences.proxyChoice.toSummary(),
-            onClick = ::showProxyPicker
+                preference = SETTINGS_PROXY,
+                summary = userPreferences.proxyChoice.toSummary(),
+                onClick = ::showProxyPicker
         )
 
         clickableDynamicPreference(
-            preference = SETTINGS_USER_AGENT,
-            summary = choiceToUserAgent(userPreferences.userAgentChoice),
-            onClick = ::showUserAgentChooserDialog
+                preference = SETTINGS_USER_AGENT,
+                summary = choiceToUserAgent(userPreferences.userAgentChoice),
+                onClick = ::showUserAgentChooserDialog
         )
 
         clickableDynamicPreference(
-            preference = SETTINGS_DOWNLOAD,
-            summary = userPreferences.downloadDirectory,
-            onClick = ::showDownloadLocationDialog
+                preference = SETTINGS_DOWNLOAD,
+                summary = userPreferences.downloadDirectory,
+                onClick = ::showDownloadLocationDialog
         )
 
        clickableDynamicPreference(
-                preference = SETTINGS_SUGGESTIONS_NUM,
-                summary = userPreferences.suggestionChoice.toString(),
-                onClick = ::showSuggestionNumPicker
+               preference = SETTINGS_SUGGESTIONS_NUM,
+               summary = userPreferences.suggestionChoice.toString(),
+               onClick = ::showSuggestionNumPicker
+       )
+
+        clickableDynamicPreference(
+                preference = SETTINGS_HOME,
+                summary = homePageUrlToDisplayTitle(userPreferences.homepage),
+                onClick = ::showHomePageDialog
         )
 
         clickableDynamicPreference(
-            preference = SETTINGS_HOME,
-            summary = homePageUrlToDisplayTitle(userPreferences.homepage),
-            onClick = ::showHomePageDialog
+                preference = SETTINGS_SEARCH_ENGINE,
+                summary = getSearchEngineSummary(searchEngineProvider.provideSearchEngine()),
+                onClick = ::showSearchProviderDialog
         )
 
         clickableDynamicPreference(
-            preference = SETTINGS_SEARCH_ENGINE,
-            summary = getSearchEngineSummary(searchEngineProvider.provideSearchEngine()),
-            onClick = ::showSearchProviderDialog
-        )
-
-        clickableDynamicPreference(
-            preference = SETTINGS_SUGGESTIONS,
-            summary = searchSuggestionChoiceToTitle(Suggestions.from(userPreferences.searchSuggestionChoice)),
-            onClick = ::showSearchSuggestionsDialog
+                preference = SETTINGS_SUGGESTIONS,
+                summary = searchSuggestionChoiceToTitle(Suggestions.from(userPreferences.searchSuggestionChoice)),
+                onClick = ::showSearchSuggestionsDialog
         )
 
         clickableDynamicPreference(
@@ -103,9 +104,9 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
         )
 
         switchPreference(
-            preference = SETTINGS_IMAGES,
-            isChecked = userPreferences.blockImagesEnabled,
-            onCheckChange = { userPreferences.blockImagesEnabled = it }
+                preference = SETTINGS_IMAGES,
+                isChecked = userPreferences.blockImagesEnabled,
+                onCheckChange = { userPreferences.blockImagesEnabled = it }
         )
 
         switchPreference(
@@ -115,21 +116,21 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
         )
 
         switchPreference(
-            preference = SETTINGS_SAVEDATA,
-            isChecked = userPreferences.saveDataEnabled,
-            onCheckChange = { userPreferences.saveDataEnabled = it }
+                preference = SETTINGS_SAVEDATA,
+                isChecked = userPreferences.saveDataEnabled,
+                onCheckChange = { userPreferences.saveDataEnabled = it }
         )
 
         switchPreference(
-            preference = SETTINGS_JAVASCRIPT,
-            isChecked = userPreferences.javaScriptEnabled,
-            onCheckChange = { userPreferences.javaScriptEnabled = it }
+                preference = SETTINGS_JAVASCRIPT,
+                isChecked = userPreferences.javaScriptEnabled,
+                onCheckChange = { userPreferences.javaScriptEnabled = it }
         )
 
         switchPreference(
-            preference = SETTINGS_COLOR_MODE,
-            isChecked = userPreferences.colorModeEnabled,
-            onCheckChange = { userPreferences.colorModeEnabled = it }
+                preference = SETTINGS_COLOR_MODE,
+                isChecked = userPreferences.colorModeEnabled,
+                onCheckChange = { userPreferences.colorModeEnabled = it }
         )
 
         switchPreference(
@@ -270,10 +271,10 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
     private fun showCustomUserAgentPicker(summaryUpdater: SummaryUpdater) {
         activity?.let {
             BrowserDialog.showEditText(it,
-                R.string.title_user_agent,
-                R.string.title_user_agent,
-                userPreferences.userAgentString,
-                R.string.action_ok) { s ->
+                    R.string.title_user_agent,
+                    R.string.title_user_agent,
+                    userPreferences.userAgentString,
+                    R.string.action_ok) { s ->
                 userPreferences.userAgentString = s
                 summaryUpdater.updateSummary(it.getString(R.string.agent_custom))
             }
@@ -310,8 +311,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
             val dialogView = LayoutInflater.from(activity).inflate(R.layout.dialog_edit_text, null)
             val getDownload = dialogView.findViewById<EditText>(R.id.dialog_edit_text)
 
-            val errorColor = ContextCompat.getColor(activity
-                , R.color.error_red)
+            val errorColor = ContextCompat.getColor(activity, R.color.error_red)
             val regularColor = ThemeUtils.getTextColor(activity)
             getDownload.setTextColor(regularColor)
             getDownload.addTextChangedListener(DownloadLocationTextWatcher(getDownload, errorColor, regularColor))
@@ -331,9 +331,9 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
     }
 
     private class DownloadLocationTextWatcher(
-        private val getDownload: EditText,
-        private val errorColor: Int,
-        private val regularColor: Int
+            private val getDownload: EditText,
+            private val errorColor: Int,
+            private val regularColor: Int
     ) : TextWatcher {
 
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -398,10 +398,10 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
 
         activity?.let {
             BrowserDialog.showEditText(it,
-                R.string.title_custom_homepage,
-                R.string.title_custom_homepage,
-                currentHomepage,
-                R.string.action_ok) { url ->
+                    R.string.title_custom_homepage,
+                    R.string.title_custom_homepage,
+                    currentHomepage,
+                    R.string.action_ok) { url ->
                 if(url.contains("http")){
                     userPreferences.homepage = url
                     summaryUpdater.updateSummary(url)
@@ -458,11 +458,11 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
     private fun showCustomSearchDialog(customSearch: CustomSearch, summaryUpdater: SummaryUpdater) {
         activity?.let {
             BrowserDialog.showEditText(
-                it,
-                R.string.search_engine_custom,
-                R.string.search_engine_custom,
-                userPreferences.searchUrl,
-                R.string.action_ok
+                    it,
+                    R.string.search_engine_custom,
+                    R.string.search_engine_custom,
+                    userPreferences.searchUrl,
+                    R.string.action_ok
             ) { searchUrl ->
                 userPreferences.searchUrl = searchUrl
                 summaryUpdater.updateSummary(getSearchEngineSummary(customSearch))
