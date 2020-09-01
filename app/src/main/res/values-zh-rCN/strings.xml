@@ -56,7 +56,7 @@
     <string name="agent_custom">自定义</string>
     <string name="title_search_engine">搜索引擎</string>
     <string name="action_ok">好</string>
-    <string name="dialog_download">您要下载此文件吗？ (%1$s)</string>
+    <string name="dialog_download">您要下载此文件吗？ （%1$s）</string>
     <string name="unknown_size">未知大小</string>
     <string name="action_cancel">取消</string>
     <string name="title_warning">警告</string>
@@ -323,6 +323,8 @@
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
     <string name="search_engine_baidu">百度</string>
     <string name="search_engine_yandex">Yandex</string>
+    <string name="search_engine_searx">SearX.be</string>
+    <string name="search_engine_searx_cookiejarapps">CookieJarApps SearX</string>
     <string name="privacy">查看隐私政策</string>
     <string name="privacy_info">阅读SmartCookieWeb隐私政策</string>
     <string name="block_malware">屏蔽恶意站点</string>
@@ -404,6 +406,7 @@
     <string name="block_intent">处理此浏览器中所有点击的链接</string>
     <string name="block_intent_summary">屏蔽在外部应用程序中打开链接的提示</string>
     <string name="block_javascript">屏蔽网站JavaScript</string>
+    <string name="allow_javascript">允许网站使用JavaScript</string>
     <string name="unlisted_javascript">阻止列出站点的JavaScript</string>
     <string name="listed_javascript">只允许列出的站点使用 JavaScript</string>
     <string name="confirm">确认重置</string>
@@ -411,7 +414,11 @@
     <string name="only_clear">只在浏览器会话结束时清除</string>
     <string name="only_clear_summary">仅在关闭所有浏览器选项卡时，而不是在退出应用程序时，清除以上选项</string>
     <string name="enable_in_settings">需要在安卓设置中设置自动填充才能生效</string>
+    <string name="webrtc_description">Allow websites to request access to the microphone and camera</string>
     <string name="drawer_lines">抽屉里最大文本行</string>
     <string name="drawer_size">自动调整抽屉文字</string>
+    <string name="privacy_set">隐私设置</string>
+    <string name="security_set">安全设置</string>
+    <string name="title_activity_settings">SettingsActivity</string>
     <!-- finish pages -->
 </resources>
