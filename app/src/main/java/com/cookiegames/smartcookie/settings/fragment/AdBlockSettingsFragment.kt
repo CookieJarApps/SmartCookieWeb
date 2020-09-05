@@ -102,7 +102,7 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
 
     private fun showHostsSourceChooser(summaryUpdater: SummaryUpdater) {
         BrowserDialog.showListChoices(
-            context as Activity,
+                activity as Activity,
             R.string.block_ad_source,
             DialogItem(
                 title = R.string.block_source_default,
@@ -142,7 +142,7 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
 
     private fun showUrlChooser(summaryUpdater: SummaryUpdater) {
         BrowserDialog.showEditText(
-            context as Activity,
+                activity as Activity,
             title = R.string.block_source_remote,
             hint = R.string.hint_url,
             currentText = userPreferences.hostsRemoteFile,

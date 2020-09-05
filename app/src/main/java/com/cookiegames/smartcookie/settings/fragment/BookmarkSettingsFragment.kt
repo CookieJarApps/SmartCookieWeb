@@ -100,7 +100,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun clearSettings() {
-        val builder = AlertDialog.Builder(context as Activity)
+        val builder = AlertDialog.Builder(activity as Activity)
         builder.setTitle(getString(R.string.confirm))
         builder.setMessage(getString(R.string.clear))
 
@@ -188,7 +188,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
 
     private fun showDeleteBookmarksDialog() {
         BrowserDialog.showPositiveNegativeDialog(
-                activity = context as Activity,
+                activity = activity as Activity,
                 title = R.string.action_delete,
                 message = R.string.action_delete_all_bookmarks,
                 positiveButton = DialogItem(title = R.string.yes) {
@@ -238,7 +238,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun showImportBookmarkDialog(path: File?) {
-        val builder = AlertDialog.Builder(context as Activity)
+        val builder = AlertDialog.Builder(activity as Activity)
 
         val title = getString(R.string.title_chooser)
         builder.setTitle(title + ": " + Environment.getExternalStorageDirectory())

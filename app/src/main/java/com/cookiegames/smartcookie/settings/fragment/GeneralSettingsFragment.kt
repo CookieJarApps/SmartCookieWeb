@@ -157,7 +157,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 })
             }
             withSingleChoiceItems(values, userPreferences.suggestionChoice) {
-                updateSearchNum(it, context as Activity, summaryUpdater)
+                updateSearchNum(it, activity as Activity, summaryUpdater)
             }
             setPositiveButton(R.string.action_ok, null)
         }
@@ -192,7 +192,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 })
             }
             withSingleChoiceItems(values, userPreferences.proxyChoice) {
-                updateProxyChoice(it, context as Activity, summaryUpdater)
+                updateProxyChoice(it, activity as Activity, summaryUpdater)
             }
             setPositiveButton(R.string.action_ok, null)
         }
@@ -492,7 +492,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 })
             }
             withSingleChoiceItems(values, userPreferences.javaScriptChoice) {
-                updateJavaScriptChoice(it, context as Activity, summaryUpdater)
+                updateJavaScriptChoice(it, activity as Activity, summaryUpdater)
             }
             setPositiveButton(R.string.action_ok, null)
         }

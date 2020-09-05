@@ -5,7 +5,6 @@ import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.TextView
@@ -120,7 +119,7 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
                 })
             }
             withSingleChoiceItems(values, userPreferences.siteBlockChoice) {
-                updateSiteBlockChoice(it, context as Activity, summaryUpdater)
+                updateSiteBlockChoice(it, activity as Activity, summaryUpdater)
             }
             setPositiveButton(R.string.action_ok, null)
         }
@@ -181,7 +180,7 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
                 })
             }
             withSingleChoiceItems(values, userPreferences.passwordChoice) {
-                updatePasswordChoice(it, context as Activity, summaryUpdater)
+                updatePasswordChoice(it, activity as Activity, summaryUpdater)
             }
             setPositiveButton(R.string.action_ok, null)
         }
