@@ -41,11 +41,11 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
                 onCheckChange = { userPreferences.darkModeExtension = it; Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()}
         )
 
-        /*switchPreference(
+        /* switchPreference(
                 preference = TRANSLATE,
-                isChecked = userPreferences.darkModeExtension,
-                onCheckChange = { userPreferences.darkModeExtension = it }
-        )*/
+                isChecked = userPreferences.translateExtension,
+                onCheckChange = { userPreferences.translateExtension = it }
+        ) */
 
     }
 

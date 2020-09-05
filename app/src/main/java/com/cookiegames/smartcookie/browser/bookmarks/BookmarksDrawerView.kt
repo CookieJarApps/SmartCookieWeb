@@ -287,7 +287,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
                     }
                     val builder = AlertDialog.Builder(context)
                     val inflater = activity.layoutInflater
-                    builder.setTitle(R.string.inspect)
+                    builder.setTitle(R.string.page_source)
                     val dialogLayout = inflater.inflate(R.layout.dialog_multi_line, null)
                     val editText = dialogLayout.findViewById<EditText>(R.id.dialog_multi_line)
                     editText.setText(name)

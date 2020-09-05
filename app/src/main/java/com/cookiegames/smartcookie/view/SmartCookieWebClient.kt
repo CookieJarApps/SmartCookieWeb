@@ -9,8 +9,6 @@ import com.cookiegames.smartcookie.controller.UIController
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.extensions.resizeAndShow
 import com.cookiegames.smartcookie.extensions.snackbar
-import com.cookiegames.smartcookie.js.InvertPage
-import com.cookiegames.smartcookie.js.TextReflow
 import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.ssl.SslState
@@ -42,8 +40,7 @@ import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.browser.JavaScriptChoice
 import com.cookiegames.smartcookie.browser.SiteBlockChoice
-import com.cookiegames.smartcookie.js.CookieBlock
-import com.cookiegames.smartcookie.js.DarkMode
+import com.cookiegames.smartcookie.js.*
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import java.io.*
@@ -83,6 +80,7 @@ class SmartCookieWebClient(
     @Inject internal lateinit var textReflowJs: TextReflow
     @Inject internal lateinit var invertPageJs: InvertPage
     @Inject internal lateinit var darkMode: DarkMode
+    @Inject internal lateinit var translate: Translate
     @Inject internal lateinit var cookieBlock: CookieBlock
     private var adBlock: AdBlocker
 
@@ -344,8 +342,13 @@ class SmartCookieWebClient(
 
             userPreferences.firstLaunch = false
         }
+
         if(userPreferences.cookieBlockEnabled){
             view.evaluateJavascript(cookieBlock.provideJs(), null)
+        }
+
+        if(userPreferences.translateExtension){
+            view.evaluateJavascript(translate.provideJs(), null)
         }
         if (userPreferences.javaScriptChoice === JavaScriptChoice.BLACKLIST) {
             if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked !== " " && userPreferences.javaScriptBlocked != null) {

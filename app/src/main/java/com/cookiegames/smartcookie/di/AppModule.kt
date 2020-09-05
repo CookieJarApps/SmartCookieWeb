@@ -204,6 +204,9 @@ class AppModule {
     fun providesDarkMode(): DarkMode = MezzanineGenerator.DarkMode()
 
     @Provides
+    fun providesTranslate(): Translate = MezzanineGenerator.Translate()
+
+    @Provides
     fun providesCookieBlock(): CookieBlock = MezzanineGenerator.CookieBlock()
 
 }

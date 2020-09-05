@@ -8,7 +8,7 @@
             android:icon="@drawable/dark_mode"
             android:title="@string/dark_mode"/>
 
-      <!--  <SwitchPreference
+       <!-- <SwitchPreference
             android:defaultValue="false"
             android:key="translate"
             android:singleLineTitle="false"
