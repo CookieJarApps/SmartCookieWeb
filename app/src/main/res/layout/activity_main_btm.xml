@@ -1,4 +1,4 @@
-<!-- Copyright 2020 CookieJarApps - Modified from code by ACR Development -->
+<!-- Copyright 2020 CookieJarApps - Modified from code Copyright 2014 ACR Development -->
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     android:id="@+id/coordinator_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
