@@ -275,7 +275,9 @@ class SmartCookieWebClient(
                     val strgs: Array<String>
                     if (arrayOfURLs.contains(", ")) {
                         strgs = arrayOfURLs.split(", ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
-                    } else {
+                    } else if (arrayOfURLs.contains("," + System.getProperty("line.separator").toString())){
+                        strgs = arrayOfURLs.split("," + System.getProperty("line.separator").toString().toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+                    }  else{
                         strgs = arrayOfURLs.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
                     }
                     if (stringContainsItemFromList(url, strgs)) {
