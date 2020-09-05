@@ -23,8 +23,8 @@ class AboutSettingsFragment : AbstractSettingsFragment() {
         var pref: androidx.preference.Preference? = findPreference(SETTINGS_VERSION)
         pref!!.setOnPreferenceClickListener {
             val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("Smart Cookie Secure Web Browser Version " + BuildConfig.VERSION_NAME)
-            builder.setMessage("What's new:\n- Better dark mode")
+            builder.setTitle("SCW v" + BuildConfig.VERSION_NAME)
+            builder.setMessage("What's new:\n- New settings page")
 
 
             builder.setPositiveButton(resources.getString(R.string.action_ok)){dialogInterface , which ->

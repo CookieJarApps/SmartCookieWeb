@@ -347,9 +347,9 @@ class SmartCookieWebClient(
             view.evaluateJavascript(cookieBlock.provideJs(), null)
         }
 
-        if(userPreferences.translateExtension){
+        /* if(userPreferences.translateExtension){
             view.evaluateJavascript(translate.provideJs(), null)
-        }
+        }*/
         if (userPreferences.javaScriptChoice === JavaScriptChoice.BLACKLIST) {
             if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked !== " " && userPreferences.javaScriptBlocked != null) {
                 val arrayOfURLs = userPreferences.javaScriptBlocked
