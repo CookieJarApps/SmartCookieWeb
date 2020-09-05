@@ -96,6 +96,7 @@
                     android:value="SELF" />
             </intent>
         </Preference>
+
     </PreferenceCategory>
 
 </PreferenceScreen>

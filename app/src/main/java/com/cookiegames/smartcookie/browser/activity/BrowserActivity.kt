@@ -1372,7 +1372,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     override fun changeToolbarColor(tabBackground: Drawable?){
-        if(userPreferences.navbarColChoice == ChooseNavbarCol.COLOR){
+        if(userPreferences.navbarColChoice == ChooseNavbarCol.COLOR && !isIncognito()){
             if(Utils.isColorTooDark(userPreferences.colorNavbar)){
 
             }
