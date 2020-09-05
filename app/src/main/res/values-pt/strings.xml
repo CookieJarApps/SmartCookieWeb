@@ -324,6 +324,8 @@
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
+    <string name="search_engine_searx">SearX.be</string>
+    <string name="search_engine_searx_cookiejarapps">CookieJarApps SearX</string>
     <string name="privacy">Política de privacidade</string>
     <string name="privacy_info">Ver a política de privacidade do SmartCookieWeb</string>
     <string name="block_malware">Bloquear sites maliciosos</string>
@@ -405,6 +407,7 @@
     <string name="block_intent">Manipular ligações dentro do navegador</string>
     <string name="block_intent_summary">Bloquear pedidos para abrir ligações em aplicações externas</string>
     <string name="block_javascript">Bloquear JavaScript para sites</string>
+    <string name="allow_javascript">Permitir JavaScript para sites</string>
     <string name="unlisted_javascript">Bloquear JavaScript para os sites listados</string>
     <string name="listed_javascript">Apenas permitir JavaScript nos sites listados</string>
     <string name="confirm">Confirmação de reposição</string>
@@ -412,7 +415,15 @@
     <string name="only_clear">Limpar ao fechar todos os separadores</string>
     <string name="only_clear_summary">Apenas limpar os dados acima ao fechar todos os separadores em vez de ser ao fechar a aplicação</string>
     <string name="enable_in_settings">Tem que ativar o preenchimento automático nas definições Android para aplicar</string>
+    <string name="webrtc_description">Permitir que os sites solicitem acesso ao microfone e à câmara</string>
     <string name="drawer_lines">Máximo de linhas de texto no menu</string>
     <string name="drawer_size">Tamanho do texto no menu</string>
+    <string name="privacy_set">Definições de privacidade</string>
+    <string name="security_set">Definições de segurança</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="next">Seguinte</string>
+    <string name="previous">Anterior</string>
+    <string name="page_source">Ver código-fonte da página</string>
+    <string name="pagespeed_error">Este site usa PageSpeed. A edição de código-fonte pode não funcionar como esperado.</string>
     <!-- finish pages -->
 </resources>

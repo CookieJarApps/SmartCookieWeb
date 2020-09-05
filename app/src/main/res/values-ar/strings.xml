@@ -328,6 +328,8 @@
     <string name="search_engine_duckduckgo_lite">DuckDuckGo لايت</string>
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
+    <string name="search_engine_searx">SearX.be</string>
+    <string name="search_engine_searx_cookiejarapps">CookieJarApps SearX</string>
     <string name="privacy">عرض سياسة الخصوصية</string>
     <string name="privacy_info">اقرأ سياسة خصوصية SmartCookieWeb</string>
     <string name="block_malware">حظر المواقع الخبيثة</string>
@@ -403,5 +405,21 @@
     <string name="customize">إعدادات التخصيص</string>
     <string name="suggest">مبلغ الاقتراح</string>
     <string name="close_on_last_tab">إغلاق المتصفح مع آخر تبويب</string>
-    <!-- finish pages -->
+    <string name="more">المزيد من المعلومات</string>
+    <string name="no_search_suggestions">لا توجد اقتراحات للبحث</string>
+    <string name="search_suggestions_4">للأسف، لم تعد اقتراحات البحث في ملفات تعريف الارتباط الذكي متاحة على الأجهزة أسفل أندرويد 5.0. اضغط على الزر أدناه لمعرفة المزيد.</string>
+    <string name="block_intent">التعامل مع جميع الروابط النقر عليها داخل هذا المتصفح</string>
+    <string name="block_intent_summary">الكتل البرمجية تدعو إلى فتح الروابط في التطبيقات الخارجية</string>
+    <string name="block_javascript">حظر جافا سكريبت للمواقع</string>
+    <string name="allow_javascript">Allow JavaScript for site</string>
+    <string name="unlisted_javascript">حظر جافا سكريبت للمواقع المدرجة</string>
+    <string name="listed_javascript">السماح فقط بجافا سكريبت للمواقع المدرجة</string>
+    <string name="confirm">تأكيد إعادة التعيين</string>
+    <string name="clear">سيؤدي هذا إلى مسح جميع البيانات المخزنة من قبل SmartCookieWeb على جهازك</string>
+    <string name="only_clear">مسح فقط في نهاية جلسة المتصفح</string>
+    <string name="only_clear_summary">إزالة الخيارات أعلاه فقط عندما يتم إغلاق جميع علامات التبويب المتصفح، بدلاً من كل مرة يتم فيها الخروج من التطبيق</string>
+    <string name="enable_in_settings">يجب إعداد التعبئة التلقائية في إعدادات Android لكي يصبح هذا الخيار نافذ المفعول</string>
+    <string name="webrtc_description">Allow websites to request access to the microphone and camera</string>
+    <string name="drawer_lines">سطر النص الأقصى في القائمة</string>
+    <string name="drawer_size">نص درج التغيير التلقائي</string>
 </resources>
