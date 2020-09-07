@@ -69,6 +69,12 @@ Need help? Open an issue here, or:
 ## License
 
 - **[MPL-2.0 license](https://www.mozilla.org/en-US/MPL/2.0/)**
+
+License in short:
+
+- Keep credit in app to both SmartCookieWeb and Lightning
+- Derivative project must use MPL
+
 - Copyright 2020 © CookieJarApps.
 
 ---
