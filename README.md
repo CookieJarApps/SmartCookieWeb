@@ -75,6 +75,7 @@ License in short:
 - Keep credit in app to both SmartCookieWeb and Lightning
 - Derivative project must use MPL
 
+
 - Copyright 2020 © CookieJarApps.
 
 ---
