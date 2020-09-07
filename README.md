@@ -76,7 +76,7 @@ License in short:
 - Derivative project must use MPL
 
 
-- Copyright 2020 © CookieJarApps.
+Copyright 2020 © CookieJarApps.
 
 ---
 
