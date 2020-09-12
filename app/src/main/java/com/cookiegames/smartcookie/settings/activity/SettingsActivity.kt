@@ -3,21 +3,56 @@
  */
 package com.cookiegames.smartcookie.settings.activity
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import com.cookiegames.smartcookie.preference.UserPreferences
 import androidx.appcompat.widget.Toolbar
+import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.settings.fragment.SettingsFragment
+import com.cookiegames.smartcookie.utils.ThemeUtils
+import javax.inject.Inject
 
 
 class SettingsActivity : AppCompatActivity() {
 
+    private var themeId: AppTheme = AppTheme.LIGHT
+    @Inject
+    internal lateinit var userPreferences: UserPreferences
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        injector.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+        themeId = userPreferences.useTheme
+
         val toolbar: Toolbar = findViewById(R.id.toolbar)
+
+        // set the theme
+        when (themeId) {
+            AppTheme.LIGHT -> {
+                setTheme(R.style.Theme_SettingsTheme)
+                window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColor(this)))
+                toolbar.setBackgroundColor(ThemeUtils.getPrimaryColor(this))
+            }
+            AppTheme.DARK -> {
+                setTheme(R.style.Theme_SettingsTheme_Dark)
+                window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColorDark(this)))
+                toolbar.setBackgroundColor(ThemeUtils.getPrimaryColorDark(this))
+            }
+            AppTheme.BLACK -> {
+                setTheme(R.style.Theme_SettingsTheme_Black)
+                window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColorDark(this)))
+                toolbar.setBackgroundColor(ThemeUtils.getPrimaryColorDark(this))
+            }
+        }
+
+
         try {
             setSupportActionBar(toolbar)
             val actionBar: ActionBar? = getSupportActionBar()

@@ -1379,9 +1379,14 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             tabBackground?.tint(userPreferences.colorNavbar)
             toolbar_layout.setBackgroundColor(userPreferences.colorNavbar)
             currentUiColor = userPreferences.colorNavbar
+
             searchBackground?.background?.tint(
                     Utils.mixTwoColors(Color.WHITE, userPreferences.colorNavbar, 0.25f)
             )
+
+            backgroundDrawable.color = userPreferences.colorNavbar
+
+            window.setBackgroundDrawable(backgroundDrawable)
 
         } //Reset theme without needing a restart
         else if(userPreferences.navbarColChoice == ChooseNavbarCol.NONE){
