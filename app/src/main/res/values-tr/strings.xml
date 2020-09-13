@@ -247,7 +247,7 @@
         <string name="message_web_storage_cleared">Web depolama alanı temizlendi</string>
         <string name="hosts_source">Ana bilgisayar dosya reklam engelleme kaynağı</string>
         <string name="settings_adblock">İçerik engelleme ayarları</string>
-        <string name="adblock_summary">Reklam engelleme, çerez iletişim penceresi engelleme...</string>
+        <string name="adblock_summary">Reklam engelleme...</string>
         <string name="adblock_category">Ad block</string>
         <string name="cookie_category">Çerez iletişim bloğu (beta)</string>
         <string name="tabs_in_drawer">Gezinme çekmecesinde sekmeleri göster</string>

@@ -242,7 +242,7 @@
     <string name="message_web_storage_cleared">Stockage web vidé avec succès</string>
     <string name="hosts_source">Source du fichier \'hosts\' pour le blocage des publicités</string>
     <string name="settings_adblock">Paramètres de blocage de contenu</string>
-    <string name="adblock_summary">Blocage des publicités et des popups de cookies</string>
+    <string name="adblock_summary">Blocage des publicités</string>
     <string name="adblock_category">Blocage des publicités</string>
     <string name="cookie_category">Cacher les popups demandant d’accepter les cookies (beta)</string>
     <string name="tabs_in_drawer">Afficher les onglets dans le panneau de navigation</string>

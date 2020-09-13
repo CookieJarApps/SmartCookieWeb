@@ -242,7 +242,7 @@
     <string name="message_web_storage_cleared">Almacenamiento web despejado</string>
     <string name="hosts_source">Fuente de bloqueo de anuncios de archivos de host</string>
     <string name="settings_adblock">Configuración de bloque de contenido</string>
-    <string name="adblock_summary">Bloque de anuncios, bloque de diálogo de cookies ...</string>
+    <string name="adblock_summary">Bloque de anuncios...</string>
     <string name="adblock_category">Bloque de anuncios</string>
     <string name="cookie_category">Bloque de diálogo de cookies</string>
     <string name="tabs_in_drawer">Mostrar pestañas en el cajón de navegación</string>

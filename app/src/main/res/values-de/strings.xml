@@ -242,7 +242,7 @@
     <string name="message_web_storage_cleared">Webspeicher gelöscht</string>
     <string name="hosts_source">Quelle der Hosts-Datei für den Werbeblocker</string>
     <string name="settings_adblock">Inhaltsblocker Einstellungen</string>
-    <string name="adblock_summary">Werbeblocker, Cookie-Dialogblocker ...</string>
+    <string name="adblock_summary">Werbeblocker...</string>
     <string name="adblock_category">Werbeblocker</string>
     <string name="cookie_category">Cookie-Dialogblocker (beta)</string>
     <string name="tabs_in_drawer">Tabs in einer Navigations-Schublade anzeigen</string>

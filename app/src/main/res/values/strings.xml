@@ -252,7 +252,7 @@
     <string name="message_web_storage_cleared">Web storage cleared</string>
     <string name="hosts_source">Hosts file ad blocking source</string>
     <string name="settings_adblock">Content block settings</string>
-    <string name="adblock_summary">Ad block, cookie dialog block...</string>
+    <string name="adblock_summary">Ad block...</string>
     <string name="adblock_category">Ad block</string>
     <string name="cookie_category">Cookie dialog block</string>
     <string name="tabs_in_drawer">Show tabs in drawer</string>

@@ -242,7 +242,7 @@
     <string name="message_web_storage_cleared">Веб-хранилище очищено</string>
     <string name="hosts_source">Источник файла хоста для блокировки рекламы</string>
     <string name="settings_adblock">Настройки блокируемого контента</string>
-    <string name="adblock_summary">Блокировка рекламы, блокировка диалогового окна cookie...</string>
+    <string name="adblock_summary">Блокировка рекламы...</string>
     <string name="adblock_category">Блокировка рекламы</string>
     <string name="cookie_category">Блокировка диалогового окна cookie (бета)</string>
     <string name="tabs_in_drawer">Показывать вкладки в панели навигации</string>

@@ -252,7 +252,7 @@
     <string name="message_web_storage_cleared">Αποθηκεύθηκε το αποθηκευτικό χώρο στο Web</string>
     <string name="hosts_source">Υποστηρίζει πηγή αποκλεισμού διαφημίσεων αρχείων</string>
     <string name="settings_adblock">Ρυθμίσεις ομάδας περιεχομένου</string>
-    <string name="adblock_summary">Το μπλοκ διαφήμισης, το μπλοκ διαλόγου cookie ...</string>
+    <string name="adblock_summary">Το μπλοκ διαφήμισης...</string>
     <string name="adblock_category">Το μπλοκ διαφημίσεων</string>
     <string name="cookie_category">Μπλοκ διαλόγου cookie</string>
     <string name="tabs_in_drawer">Εμφάνιση καρτελών στο συρτάρι πλοήγησης</string>

@@ -253,7 +253,7 @@
     <string name="message_web_storage_cleared">Веб складиштење је очишћено</string>
     <string name="hosts_source">Домаћин извор датотеке за блокирање огласа</string>
     <string name="settings_adblock">Подешавања блока садржаја</string>
-    <string name="adblock_summary">Огласни блок, дијалошки блок колачића ...</string>
+    <string name="adblock_summary">Огласни блок...</string>
     <string name="adblock_category">Блок огласа</string>
     <string name="cookie_category">Блок дијалога колачића</string>
     <string name="tabs_in_drawer">Прикажите картице у навигацијској ладици</string>

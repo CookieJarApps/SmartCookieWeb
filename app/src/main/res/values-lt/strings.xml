@@ -242,7 +242,7 @@
     <string name="message_web_storage_cleared">Žiniatinklio saugykla išvalyta</string>
     <string name="hosts_source">Patalpinta failų skelbimų blokavimo šaltinis</string>
     <string name="settings_adblock">Turinio bloko nustatymai</string>
-    <string name="adblock_summary">Skelbimų blokas, slapukų dialogo langas ...</string>
+    <string name="adblock_summary">Skelbimų blokas...</string>
     <string name="adblock_category">Skelbimų blokas</string>
     <string name="cookie_category">Slapukų dialogo langas</string>
     <string name="tabs_in_drawer">Rodyti skirtukus naršymo stalčiuje</string>

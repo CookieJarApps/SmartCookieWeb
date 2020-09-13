@@ -242,7 +242,7 @@
     <string name="message_web_storage_cleared">Webopslag gewist</string>
     <string name="hosts_source">Hosts bestandsadvertentieblokkeringsbron</string>
     <string name="settings_adblock">Instellingen voor inhoudsblokken</string>
-    <string name="adblock_summary">Advertentieblok, cookiedialoogblok ...</string>
+    <string name="adblock_summary">Advertentieblok...</string>
     <string name="adblock_category">Advertentieblok</string>
     <string name="cookie_category">Cookie-dialoogblok</string>
     <string name="tabs_in_drawer">Toon tabbladen in navigatielade</string>

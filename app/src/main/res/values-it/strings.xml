@@ -242,7 +242,7 @@
     <string name="message_web_storage_cleared">Archiviazione web svuotata</string>
     <string name="hosts_source">Sorgente blocco pubblicità del file degli host</string>
     <string name="settings_adblock">Impostazioni blocco contenuti</string>
-    <string name="adblock_summary">Blocco Annunci, blocco finestre di dialogo cookie...</string>
+    <string name="adblock_summary">Blocco Annunci...</string>
     <string name="adblock_category">Blocco Annunci</string>
     <string name="cookie_category">Blocco finestre di dialogo cookie (beta)</string>
     <string name="tabs_in_drawer">Mostra schede nel pannello di navigazione</string>
