@@ -57,11 +57,6 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
             isChecked = userPreferences.adBlockEnabled,
             onCheckChange = { userPreferences.adBlockEnabled = it }
         )
-        switchPreference(
-                preference = "cb_block_cookies",
-                isChecked = userPreferences.cookieBlockEnabled,
-                onCheckChange = { userPreferences.cookieBlockEnabled = it }
-        )
 
         clickableDynamicPreference(
             preference = "preference_hosts_source",

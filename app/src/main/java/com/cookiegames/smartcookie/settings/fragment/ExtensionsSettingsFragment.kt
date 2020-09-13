@@ -41,6 +41,11 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
                 onCheckChange = { userPreferences.darkModeExtension = it; Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()}
         )
 
+        switchPreference(
+                preference = "block_cookies",
+                isChecked = userPreferences.cookieBlockEnabled,
+                onCheckChange = { userPreferences.cookieBlockEnabled = it }
+        )
         /* switchPreference(
                 preference = TRANSLATE,
                 isChecked = userPreferences.translateExtension,

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/SmartCookieWeb.iml" filepath="$PROJECT_DIR$/.idea/SmartCookieWeb.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartCookieWeb.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartCookieWeb.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SmartCookieWeb.iml" filepath="$PROJECT_DIR$/.idea/SmartCookieWeb.iml" group="SmartCookieWeb" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="SmartCookieWeb/app" />
     </modules>
   </component>
 </project>

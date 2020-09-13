@@ -144,48 +144,68 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     // The singleton BookmarkManager
     @Inject
     lateinit var bookmarkManager: BookmarkRepository
+
     @Inject
     lateinit var historyModel: HistoryRepository
+
     @Inject
     lateinit var searchBoxModel: SearchBoxModel
+
     @Inject
     lateinit var searchEngineProvider: SearchEngineProvider
+
     @Inject
     lateinit var inputMethodManager: InputMethodManager
+
     @Inject
     lateinit var clipboardManager: ClipboardManager
+
     @Inject
     lateinit var notificationManager: NotificationManager
+
     @Inject
     @field:DiskScheduler
     lateinit var diskScheduler: Scheduler
+
     @Inject
     @field:DatabaseScheduler
     lateinit var databaseScheduler: Scheduler
+
     @Inject
     @field:MainScheduler
     lateinit var mainScheduler: Scheduler
+
     @Inject
     lateinit var tabsManager: TabsManager
+
     @Inject
     lateinit var homePageFactory: HomePageFactory
+
     @Inject
     lateinit var bookmarkPageFactory: BookmarkPageFactory
+
     @Inject
     lateinit var historyPageFactory: HistoryPageFactory
+
     @Inject
     lateinit var historyPageInitializer: HistoryPageInitializer
+
     @Inject
     lateinit var downloadPageInitializer: DownloadPageInitializer
+
     @Inject
     lateinit var homePageInitializer: HomePageInitializer
+
     @Inject
     @field:MainHandler
     lateinit var mainHandler: Handler
+
     @Inject
     lateinit var proxyUtils: ProxyUtils
+
     @Inject
     lateinit var logger: Logger
+
     @Inject
     lateinit var bookmarksDialogBuilder: LightningDialogBuilder
 
@@ -232,10 +252,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injector.inject(this)
-        if(userPreferences.bottomBar){
+        if (userPreferences.bottomBar) {
             setContentView(R.layout.activity_main_btm)
-        }
-        else{
+        } else {
             setContentView(R.layout.activity_main)
         }
 
@@ -280,7 +299,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         shouldShowTabsInDrawer = userPreferences.showTabsInDrawer
         swapBookmarksAndTabs = userPreferences.bookmarksAndTabsSwapped
 
-        if(!userPreferences.bottomBar){
+        if (!userPreferences.bottomBar) {
             isFullScreen = userPreferences.fullScreenEnabled
         }
 
@@ -307,19 +326,18 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         var mPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         var shouldRestoreTabs = mPrefs.getBoolean("shouldRestoreTabs", false)
 
-        if(userPreferences.incognito){
+        if (userPreferences.incognito) {
 
             WebUtils.clearHistory(this, historyModel, databaseScheduler)
             WebUtils.clearCookies(this)
 
-            if(userPreferences.restoreLostTabsEnabled){
+            if (userPreferences.restoreLostTabsEnabled) {
                 var editor = mPrefs.edit()
                 editor.putBoolean("shouldRestoreTabs", true)
                 editor.commit()
                 userPreferences.restoreLostTabsEnabled = false
             }
-        }
-        else if(shouldRestoreTabs && userPreferences.restoreLostTabsEnabled == false && !userPreferences.incognito){
+        } else if (shouldRestoreTabs && userPreferences.restoreLostTabsEnabled == false && !userPreferences.incognito) {
             var editor = mPrefs.edit()
             editor.putBoolean("shouldRestoreTabs", false)
             editor.commit()
@@ -444,16 +462,16 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             proxyUtils.checkForProxy(this)
         }
 
-        if(userPreferences.firstLaunch && android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.LOLLIPOP && Locale.getDefault().getLanguage().equals("en")){
+        if (userPreferences.firstLaunch && android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.LOLLIPOP && Locale.getDefault().getLanguage().equals("en")) {
             val builder = AlertDialog.Builder(this)
             builder.setTitle(getString(R.string.no_search_suggestions))
             builder.setMessage(getString(R.string.search_suggestions_4))
 
 
-            builder.setPositiveButton(resources.getString(R.string.action_ok)){dialogInterface , which ->
+            builder.setPositiveButton(resources.getString(R.string.action_ok)) { dialogInterface, which ->
 
             }
-            builder.setNegativeButton(resources.getString(R.string.more)){dialogInterface , which ->
+            builder.setNegativeButton(resources.getString(R.string.more)) { dialogInterface, which ->
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://blog.smartcookieweb.com/2020/07/search-suggestions-no-longer-available.html"))
                 startActivity(browserIntent)
             }
@@ -550,10 +568,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
         override fun onFocusChange(v: View, hasFocus: Boolean) {
             val currentView = tabsManager.currentTab
-            if(currentView?.url!!.contains("data:text/html;charset=utf-8")){
+            if (currentView?.url!!.contains("data:text/html;charset=utf-8")) {
 
-            }
-            else if (!hasFocus && currentView != null) {
+            } else if (!hasFocus && currentView != null) {
                 setIsLoading(currentView.progress < 100)
                 updateUrl(currentView.url, false)
             } else if (hasFocus && currentView != null) {
@@ -577,10 +594,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             val url = currentView.url
             if (!url.isSpecialUrl()) {
                 if (searchView?.hasFocus() == false) {
-                    if(url.contains("data:text/html") || url.equals("about:blank")){
+                    if (url.contains("data:text/html") || url.equals("about:blank")) {
 
-                    }
-                    else{
+                    } else {
                         searchView?.setText(url)
                     }
 
@@ -646,7 +662,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 changeToolbarBackground(currentView.favicon ?: webBitmap, null)
             } else if (!isIncognito() && !isDarkTheme) {
                 changeToolbarBackground(webBitmap, null)
-            } else if (userPreferences.navbarColChoice == ChooseNavbarCol.COLOR && !isIncognito()){
+            } else if (userPreferences.navbarColChoice == ChooseNavbarCol.COLOR && !isIncognito()) {
                 changeToolbarColor(null)
             }
         }
@@ -916,10 +932,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     private fun setWebViewTranslation(translation: Float) =
             if (isFullScreen) {
                 currentTabView?.translationY = translation
-            }
-            else {
+            } else {
                 currentTabView?.translationY = 0f
             }
+
 
     /**
      * method that shows a dialog asking what string the user wishes to search
@@ -1037,12 +1053,12 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
         content_frame.addView(view, 0, MATCH_PARENT)
 
-        if (isFullScreen) {
+         if(isFullScreen) {
             view.translationY = toolbar_layout.height + toolbar_layout.translationY
         }
         else {
-            view.translationY = 0f
-        }
+         view.translationY = 0f
+       }
 
         val displayMetrics =  DisplayMetrics()
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics)
@@ -1991,10 +2007,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if (searchView?.hasFocus() == false) {
             search_ssl_status.updateVisibilityForContent()
             search_refresh.setImageResource(if (isLoading) R.drawable.ic_action_delete else
-                if(isDarkTheme) {
+                if (isDarkTheme) {
                     R.drawable.ic_action_refresh_light
-                }
-                else{
+                } else {
                     R.drawable.ic_action_refresh
                 })
         }

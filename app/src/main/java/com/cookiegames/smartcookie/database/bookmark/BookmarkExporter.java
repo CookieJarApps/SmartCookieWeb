@@ -77,7 +77,6 @@ public final class BookmarkExporter {
             Utils.close(bookmarksReader);
             Utils.close(inputStream);
         }
-
         return bookmarks;
     }
 

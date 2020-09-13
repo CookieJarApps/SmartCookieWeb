@@ -254,7 +254,7 @@
     <string name="settings_adblock">Content block settings</string>
     <string name="adblock_summary">Ad block, cookie dialog block...</string>
     <string name="adblock_category">Ad block</string>
-    <string name="cookie_category">Cookie dialog block (beta)</string>
+    <string name="cookie_category">Cookie dialog block</string>
     <string name="tabs_in_drawer">Show tabs in drawer</string>
     <string name="swap_bookmarks_and_tabs">Swap bookmark and tab drawers</string>
     <string name="do_not_track">Request \'Do Not Track\'</string>

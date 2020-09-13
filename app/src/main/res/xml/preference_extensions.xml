@@ -7,6 +7,12 @@
             android:singleLineTitle="false"
             android:icon="@drawable/dark_mode"
             android:title="@string/dark_mode"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="block_cookies"
+            android:singleLineTitle="false"
+            android:icon="@drawable/ic_block"
+            android:title="@string/cookie_category"/>
 
        <!-- <SwitchPreference
             android:defaultValue="false"

@@ -25,32 +25,32 @@ import dagger.Module
  * Dependency injection module used to bind implementations to interfaces.
  */
 @Module
-interface AppBindsModule {
+abstract class AppBindsModule {
 
     @Binds
-    fun provideBookmarkModel(bookmarkDatabase: BookmarkDatabase): BookmarkRepository
+    abstract fun provideBookmarkModel(bookmarkDatabase: BookmarkDatabase): BookmarkRepository
 
     @Binds
-    fun provideDownloadsModel(downloadsDatabase: DownloadsDatabase): DownloadsRepository
+    abstract fun provideDownloadsModel(downloadsDatabase: DownloadsDatabase): DownloadsRepository
 
     @Binds
-    fun providesHistoryModel(historyDatabase: HistoryDatabase): HistoryRepository
+    abstract fun providesHistoryModel(historyDatabase: HistoryDatabase): HistoryRepository
 
     @Binds
-    fun providesAdBlockAllowListModel(adBlockAllowListDatabase: AdBlockAllowListDatabase): AdBlockAllowListRepository
+    abstract fun providesAdBlockAllowListModel(adBlockAllowListDatabase: AdBlockAllowListDatabase): AdBlockAllowListRepository
 
     @Binds
-    fun providesAllowListModel(sessionAllowListModel: SessionAllowListModel): AllowListModel
+    abstract fun providesAllowListModel(sessionAllowListModel: SessionAllowListModel): AllowListModel
 
     @Binds
-    fun providesSslWarningPreferences(sessionSslWarningPreferences: SessionSslWarningPreferences): SslWarningPreferences
+    abstract fun providesSslWarningPreferences(sessionSslWarningPreferences: SessionSslWarningPreferences): SslWarningPreferences
 
     @Binds
-    fun providesHostsDataSource(assetsHostsDataSource: AssetsHostsDataSource): HostsDataSource
+    abstract fun providesHostsDataSource(assetsHostsDataSource: AssetsHostsDataSource): HostsDataSource
 
     @Binds
-    fun providesHostsRepository(hostsDatabase: HostsDatabase): HostsRepository
+    abstract fun providesHostsRepository(hostsDatabase: HostsDatabase): HostsRepository
 
     @Binds
-    fun providesHostsDataSourceProvider(preferencesHostsDataSourceProvider: PreferencesHostsDataSourceProvider): HostsDataSourceProvider
+    abstract fun providesHostsDataSourceProvider(preferencesHostsDataSourceProvider: PreferencesHostsDataSourceProvider): HostsDataSourceProvider
 }
