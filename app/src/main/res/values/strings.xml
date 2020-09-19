@@ -496,6 +496,8 @@
     <string name="page_source">View page source</string>
     <string name="pagespeed_error">This website uses PageSpeed. Source editing may not work as expected.</string>
 
+    <string name="app_lock">Set app password</string>
+
 
     <!-- finish pages -->
 </resources>

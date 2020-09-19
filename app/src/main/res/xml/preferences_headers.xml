@@ -57,19 +57,6 @@
         android:singleLineTitle="false"
         android:summary="@string/settings_about_explain"
         android:title="@string/settings_about"/>
-   <!-- <header
-        android:summary="@string/privacy_info"
-        android:icon="?attr/ic_round_world_lock"
-        android:title="@string/privacy">
-        <intent
-            android:action="android.intent.action.VIEW"
-            android:data="https://files.cookiegames.co.uk/files/privacy.html">
-            <extra
-                android:name="SOURCE"
-                android:value="SELF"/>
-        </intent>
-    </header>-->
-
     <androidx.preference.Preference
         android:icon="@drawable/ic_round_question_answer"
         android:summary="@string/faq_description"

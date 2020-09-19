@@ -34,6 +34,9 @@ class UserPreferences @Inject constructor(
 
     var passwordChoice by preferences.enumPreference(PASSWORD, PasswordChoice.NONE)
     var passwordText by preferences.stringPreference(USE_PASSWORD, "")
+
+    var passwordChoiceLock by preferences.enumPreference(PASSWORD_LOCK, PasswordChoice.NONE)
+    var passwordTextLock by preferences.stringPreference(USE_PASSWORD_LOCK, "")
     /**
      * True if Web RTC is enabled in the browser, false otherwise.
      */
@@ -408,6 +411,8 @@ private const val USE_JS_BLOCK = "useJSblock"
 private const val BLOCK_JS = "blockJS"
 private const val PASSWORD = "password"
 private const val USE_PASSWORD = "usePassword"
+private const val USE_PASSWORD_LOCK = "usePasswordLock"
+private const val PASSWORD_LOCK = "passwordLock"
 private const val BLOCK_MALWARE = "blockMalware"
 private const val COOKIE_BLOCK = "blockCookieDialogs"
 private const val START_THEME = "startPageTheme"

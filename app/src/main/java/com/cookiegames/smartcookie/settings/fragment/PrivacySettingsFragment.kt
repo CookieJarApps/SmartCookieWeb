@@ -1,6 +1,8 @@
 package com.cookiegames.smartcookie.settings.fragment
 
 import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.database.history.HistoryRepository
 import com.cookiegames.smartcookie.di.DatabaseScheduler
@@ -14,7 +16,10 @@ import com.cookiegames.smartcookie.utils.WebUtils
 import com.cookiegames.smartcookie.view.SmartCookieView
 import android.os.Bundle
 import android.webkit.WebView
+import android.widget.TextView
 import com.cookiegames.smartcookie.DeviceCapabilities
+import com.cookiegames.smartcookie.browser.PasswordChoice
+import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
 import com.cookiegames.smartcookie.isSupported
 import io.reactivex.Completable
 import io.reactivex.Scheduler
@@ -34,6 +39,12 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injector.inject(this)
+
+        clickableDynamicPreference(
+                preference = PrivacySettingsFragment.SETTINGS_APP_LOCK,
+                summary = userPreferences.passwordChoiceLock.toSummary(),
+                onClick = ::showPasswordPicker
+        )
 
         clickablePreference(preference = SETTINGS_CLEARCACHE, onClick = this::clearCache)
         clickablePreference(preference = SETTINGS_CLEARHISTORY, onClick = this::clearHistoryDialog)
@@ -135,6 +146,76 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
 
     }
 
+    private fun PasswordChoice.toSummary(): String {
+        val stringArray = resources.getStringArray(R.array.password)
+        return when (this) {
+            PasswordChoice.NONE -> resources.getString(R.string.none)
+            PasswordChoice.CUSTOM -> resources.getString(R.string.agent_custom)
+        }
+    }
+
+    private fun showPasswordPicker(summaryUpdater: SummaryUpdater) {
+        BrowserDialog.showCustomDialog(activity) {
+            setTitle(R.string.enter_password)
+            val stringArray = resources.getStringArray(R.array.password)
+            val values = PasswordChoice.values().map {
+                Pair(it, when (it) {
+                    PasswordChoice.NONE -> stringArray[0]
+                    PasswordChoice.CUSTOM -> stringArray[1]
+                })
+            }
+            withSingleChoiceItems(values, userPreferences.passwordChoiceLock) {
+                updatePasswordChoice(it, activity as Activity, summaryUpdater)
+            }
+            setPositiveButton(R.string.action_ok, null)
+        }
+    }
+
+    private fun updatePasswordChoice(choice: PasswordChoice, activity: Activity, summaryUpdater: SummaryUpdater) {
+        if (choice == PasswordChoice.CUSTOM) {
+            showPasswordTextPicker(activity, summaryUpdater)
+
+            val prefs: SharedPreferences = activity.getSharedPreferences("com.cookiegames.smartcookie", Context.MODE_PRIVATE)
+
+            val editor: SharedPreferences.Editor = prefs.edit()
+            editor.putBoolean("noPassword", false)
+            editor.apply()
+        }
+        else{
+            val prefs: SharedPreferences = activity.getSharedPreferences("com.cookiegames.smartcookie", Context.MODE_PRIVATE)
+
+            val editor: SharedPreferences.Editor = prefs.edit()
+            editor.putBoolean("noPassword", true)
+            editor.apply()
+
+            summaryUpdater.updateSummary(resources.getString(R.string.none))
+        }
+
+        userPreferences.passwordChoiceLock = choice
+        summaryUpdater.updateSummary(choice.toSummary())
+    }
+
+    private fun showPasswordTextPicker(activity: Activity, summaryUpdater: SummaryUpdater) {
+        val v = activity.layoutInflater.inflate(R.layout.password, null)
+        val passwordText = v.findViewById<TextView>(R.id.password)
+
+        // Limit the number of characters since the port needs to be of type int
+        // Use input filters to limit the EditText length and determine the max
+        // length by using length of integer MAX_VALUE
+        val maxCharacters = Integer.MAX_VALUE.toString().length
+
+        passwordText.text = userPreferences.passwordTextLock
+
+        BrowserDialog.showCustomDialog(activity) {
+            setTitle(R.string.enter_password)
+            setView(v)
+            setPositiveButton(R.string.action_ok) { _, _ ->
+                val passwordCode = passwordText.text.toString()
+                userPreferences.passwordTextLock = passwordCode
+            }
+        }
+    }
+
     private fun clearHistoryDialog() {
         BrowserDialog.showPositiveNegativeDialog(
             activity = activity as Activity,
@@ -223,7 +304,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_BLOCKMALWARE = "block_malicious_sites"
         private const val SETTINGS_INCOGNITO = "start_incognito"
         private const val SETTINGS_ONLY_CLOSE = "only_clear"
-
+        private const val SETTINGS_APP_LOCK = "app_lock"
     }
 
 }

@@ -86,6 +86,10 @@
             android:singleLineTitle="false"
             android:title="@string/only_clear"
             android:summary="@string/only_clear_summary"/>
+    <Preference
+        android:key="app_lock"
+        android:singleLineTitle="false"
+        android:title="@string/app_lock"/>
         <Preference
             android:key="clear_cache"
             android:singleLineTitle="false"

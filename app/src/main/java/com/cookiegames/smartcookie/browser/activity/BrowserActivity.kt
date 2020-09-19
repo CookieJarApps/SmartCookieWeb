@@ -37,6 +37,7 @@ import android.widget.TextView.OnEditorActionListener
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
@@ -479,7 +480,37 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             alertDialog.setCancelable(true)
             alertDialog.show()
         }
+        if(userPreferences.passwordChoiceLock == PasswordChoice.CUSTOM){
 
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_edit_text, null)
+        val editText = dialogView.findViewById<EditText>(R.id.dialog_edit_text)
+
+        editText.setHint(R.string.enter_password)
+
+        val editorDialog = AlertDialog.Builder(this)
+                .setTitle(R.string.enter_password)
+                .setView(dialogView)
+                .setCancelable(false)
+                .setNegativeButton(R.string.action_back) { dialog, which ->
+                    //listener.onClick(editText.getText().toString());
+                    val settings = Intent(this, SettingsActivity::class.java)
+                    settings.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(settings)
+                }
+                .setPositiveButton(R.string.action_ok
+                ) { _, _ ->
+                    //listener.onClick(editText.getText().toString());
+                    if (editText.text.toString() != userPreferences.passwordText){
+                        val duration = Toast.LENGTH_SHORT
+                        val toast = Toast.makeText(this, resources.getString(R.string.wrong_password), duration)
+                        toast.show()
+                    }
+                }
+
+        val dialog = editorDialog.show()
+        BrowserDialog.setDialogSize(this, dialog)
+
+        }
     }
 
     private fun getBookmarksContainerId(): Int = if (swapBookmarksAndTabs) {
