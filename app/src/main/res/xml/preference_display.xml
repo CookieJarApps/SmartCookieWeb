@@ -20,6 +20,11 @@
             android:key="startpage_theme"
             android:title="@string/startpage"/>
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/home">
+        <Preference
+            android:key="image_url"
+            android:title="@string/image_url"/>
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/settings_display">
         <SwitchPreference
             android:defaultValue="true"
@@ -77,10 +82,7 @@
        <!-- <SwitchPreference
             android:defaultValue="true"
             android:key="show_whats_new"
-            android:title="@string/whats_new"/>
-        <Preference
-            android:key="image_url"
-            android:title="@string/image_url"/>-->
+            android:title="@string/whats_new"/>-->
         <Preference
             android:key="text_size"
             android:singleLineTitle="false"

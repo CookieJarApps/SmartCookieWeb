@@ -144,11 +144,11 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
                 preference = SETTINGS_WHATSNEW,
                 isChecked = userPreferences.whatsNewEnabled,
                 onCheckChange = {userPreferences.whatsNewEnabled = it}
-        )
+        )*/
         clickablePreference(
                 preference = SETTINGS_IMAGE_URL,
                 onClick = ::showImageUrlPicker
-        )*/
+        )
     }
 
     private fun showImageUrlPicker() {

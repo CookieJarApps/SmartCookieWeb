@@ -35,6 +35,7 @@ class HomePageFactory @Inject constructor(
                 title { title }
                 charset { UTF8 }
                 body {
+                    if(userPreferences.imageUrlString != ""){ tag("body") { attr("style", "background: url('" + userPreferences.imageUrlString + "') no-repeat scroll;") } }
                     id("search_input") { attr("style", "background: url('" + iconUrl + "') no-repeat scroll 7px 7px;background-size: 22px 22px;") }
                     tag("script") {
                         html(
@@ -67,11 +68,6 @@ class HomePageFactory @Inject constructor(
                 else if(userPreferences.startPageThemeEnabled && userPreferences.useTheme == AppTheme.DARK){
                     it.write(content + "<style>body {\n" +
                             "    background-color: #2a2a2a;\n" +
-                            "}</style>")
-                }
-                else if(userPreferences.imageUrlString != null && userPreferences.imageUrlString != ""){
-                    it.write(content + "<style>body {\n" +
-                            "    background-image: '" + userPreferences.imageUrlString + "';\n" +
                             "}</style>")
                 }
                 else{
