@@ -18,6 +18,7 @@
             android:key="pref_version"
             android:title="@string/version" />
     </PreferenceCategory>
+    <!-- Copyright 2020 CookieJarApps. Removing this section is in violation of the open source licenses used. -->
     <PreferenceCategory android:title="@string/licenses">
         <Preference
             android:summary="@string/mpl_license"
