@@ -30,6 +30,12 @@
             android:key="restore_tabs"
             android:singleLineTitle="false"
             android:title="@string/restore" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="show_ssl"
+            android:singleLineTitle="false"
+            android:title="@string/show_ssl"
+            android:summary="@string/warn"/>
         <Preference
             android:key="text_encoding"
             android:singleLineTitle="false"

@@ -498,6 +498,7 @@
 
     <string name="app_lock">Set app password</string>
 
-
+    <string name="show_ssl">Show SSL warning dialogs</string>
+    <string name="warn">Only change this if you know what you\'re doing!</string>
     <!-- finish pages -->
 </resources>

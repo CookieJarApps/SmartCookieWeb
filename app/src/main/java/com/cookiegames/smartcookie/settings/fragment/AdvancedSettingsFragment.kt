@@ -69,6 +69,13 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
         )
 
         switchPreference(
+                preference = SETTINGS_SHOW_SSL,
+                isChecked = userPreferences.ssl,
+                onCheckChange = { userPreferences.ssl = it }
+        )
+
+
+        switchPreference(
             preference = SETTINGS_RESTORE_TABS,
             isChecked = userPreferences.restoreLostTabsEnabled,
             onCheckChange = { userPreferences.restoreLostTabsEnabled = it }
@@ -192,6 +199,7 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_URL_CONTENT = "url_contents"
         private const val SETTINGS_TEXT_ENCODING = "text_encoding"
         private const val SETTINGS_BLOCK_INTENT = "block_intent"
+        private const val SETTINGS_SHOW_SSL = "show_ssl"
     }
 
 }

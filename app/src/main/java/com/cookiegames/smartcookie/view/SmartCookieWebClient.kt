@@ -490,6 +490,7 @@ class SmartCookieWebClient(
     }
 
     override fun onReceivedSslError(webView: WebView, handler: SslErrorHandler, error: SslError) {
+
         urlWithSslError = webView.url
         sslState = SslState.Invalid(error)
 
@@ -506,6 +507,12 @@ class SmartCookieWebClient(
             stringBuilder.append(" - ").append(activity.getString(messageCode)).append('\n')
         }
         val alertMessage = activity.getString(R.string.message_insecure_connection, stringBuilder.toString())
+
+        if(!userPreferences.ssl){
+            handler.proceed()
+            Toast.makeText(activity, errorCodeMessageCodes[0], Toast.LENGTH_SHORT).show()
+            return
+        }
 
         AlertDialog.Builder(activity).apply {
             val view = LayoutInflater.from(activity).inflate(R.layout.dialog_ssl_warning, null)

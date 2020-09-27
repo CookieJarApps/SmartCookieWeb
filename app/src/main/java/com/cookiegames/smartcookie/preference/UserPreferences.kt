@@ -348,6 +348,8 @@ class UserPreferences @Inject constructor(
 
     var drawerSize by preferences.enumPreference(DRAWER_SIZE, DrawerSizeChoice.AUTO)
 
+    var ssl by preferences.booleanPreference(SSL, true)
+
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
@@ -429,3 +431,4 @@ private const val TRANSLATE = "translate"
 private const val INTENT = "stopIntent"
 private const val DRAWER_LINES = "lines"
 private const val DRAWER_SIZE = "dize"
+private const val SSL = "ssl"
