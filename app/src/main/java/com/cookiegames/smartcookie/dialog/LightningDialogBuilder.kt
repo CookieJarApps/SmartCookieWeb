@@ -320,7 +320,7 @@ class LightningDialogBuilder @Inject constructor(
             clipboardManager.copyToClipboard(url)
         },
         DialogItem(title = R.string.dialog_download_image) {
-            downloadHandler.onDownloadStart(activity, userPreferences, url, userAgent, "attachment", null, "")
+            downloadHandler.legacyDownloadStart(activity, userPreferences, url, userAgent, "attachment", null, "")
         })
 
     fun showLongPressLinkDialog(

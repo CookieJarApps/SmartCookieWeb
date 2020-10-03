@@ -488,12 +488,6 @@
 
     <string name="privacy_set">Privacy settings</string>
     <string name="security_set">Security settings</string>
-    <string name="title_activity_settings">SettingsActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
     <string name="page_source">View page source</string>
     <string name="pagespeed_error">This website uses PageSpeed. Source editing may not work as expected.</string>
