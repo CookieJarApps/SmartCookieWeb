@@ -64,7 +64,7 @@
         android:title="@string/faq">
         <intent
             android:action="android.intent.action.VIEW"
-            android:data="https://smartcookieweb.com/help/">
+            android:data="https://vcs.cookiejarapps.com/CookieJarApps/SmartCookieWeb/-/wikis/FAQ">
             <extra
                 android:name="SOURCE"
                 android:value="SELF"/>
