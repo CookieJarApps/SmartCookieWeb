@@ -63,6 +63,8 @@
     <string name="dialog_adobe_not_installed">Adobe Flash Player não está instalado.\nPor favor, instale o Flash Player.</string>
     <string name="title_user_agent">Agente de utilizador</string>
     <string name="title_download_location">Local para descargas</string>
+    <string name="download_failed">Descarga falhou com o erro:</string>
+    <string name="download_successful">Descarga terminada</string>
     <string name="title_custom_homepage">Página personalizada</string>
     <string name="action_webpage">Página web</string>
     <string name="title_clear_history">Limpar histórico</string>
@@ -242,7 +244,7 @@
     <string name="message_web_storage_cleared">Armazenamento web eliminado</string>
     <string name="hosts_source">Fonte do ficheiro hosts</string>
     <string name="settings_adblock">Definições de Adblock</string>
-    <string name="adblock_summary">Bloqueio de anúncios...</string>
+    <string name="adblock_summary">Bloqueio de anúncios, bloqueio de cookies...</string>
     <string name="adblock_category">Bloqueio de anúncios</string>
     <string name="cookie_category">Bloqueio de cookies (beta)</string>
     <string name="tabs_in_drawer">Mostrar separadores no menu de navegação</string>
@@ -421,9 +423,17 @@
     <string name="privacy_set">Definições de privacidade</string>
     <string name="security_set">Definições de segurança</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Primeiro fragmento</string>
+    <string name="second_fragment_label">Segundo fragmento</string>
     <string name="next">Seguinte</string>
     <string name="previous">Anterior</string>
     <string name="page_source">Ver código-fonte da página</string>
     <string name="pagespeed_error">Este site usa PageSpeed. A edição de código-fonte pode não funcionar como esperado.</string>
+    <string name="app_lock">Definir palavra-passe</string>
+    <string name="show_ssl">Mostrar avisos SSL</string>
+    <string name="warn">Apenas deve alterar esta definição se souber o que está a fazer!</string>
+    <string name="download_channel">Descargas</string>
+    <string name="download_description">Informação sobre as descargas em curso</string>
     <!-- finish pages -->
 </resources>

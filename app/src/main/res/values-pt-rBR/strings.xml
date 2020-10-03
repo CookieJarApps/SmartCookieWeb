@@ -63,6 +63,8 @@
     <string name="dialog_adobe_not_installed">Adobe Flash Player não está instalado.\nPor favor, instale o Flash Player.</string>
     <string name="title_user_agent">Agente de usuário</string>
     <string name="title_download_location">Local do download</string>
+    <string name="download_failed">Falha ao baixar por conta do erro:</string>
+    <string name="download_successful">Baixado com sucesso</string>
     <string name="title_custom_homepage">Página inicial personalizada</string>
     <string name="action_webpage">Página da web</string>
     <string name="title_clear_history">Limpar histórico</string>
@@ -431,5 +433,7 @@
     <string name="app_lock">Definir senha do aplicativo</string>
     <string name="show_ssl">Exibir mensagens de aviso SSL</string>
     <string name="warn">Só mude isso se souber o que está fazendo!</string>
+    <string name="download_channel">Downloads</string>
+    <string name="download_description">Informações sobre o progresso do download</string>
     <!-- finish pages -->
 </resources>
