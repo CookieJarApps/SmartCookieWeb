@@ -52,6 +52,7 @@ import javax.inject.Inject
  * well as properly initialing it. All interactions with the WebView should be made through this
  * class.
  */
+
 class SmartCookieView(
         private val activity: Activity,
         tabInitializer: TabInitializer,

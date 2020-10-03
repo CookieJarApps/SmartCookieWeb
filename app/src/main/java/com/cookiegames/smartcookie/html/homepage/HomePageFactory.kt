@@ -1,11 +1,15 @@
 package com.cookiegames.smartcookie.html.homepage
 
 import android.app.Application
+import android.util.Log
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.constant.FILE
 import com.cookiegames.smartcookie.constant.UTF8
+import com.cookiegames.smartcookie.database.history.HistoryDatabase
+import com.cookiegames.smartcookie.database.history.HistoryRepository
 import com.cookiegames.smartcookie.html.HtmlPageFactory
+import com.cookiegames.smartcookie.html.ListPageReader
 import com.cookiegames.smartcookie.html.jsoup.*
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.search.SearchEngineProvider
@@ -20,10 +24,12 @@ import javax.inject.Inject
  */
 @Reusable
 class HomePageFactory @Inject constructor(
-    private val application: Application,
-    private val searchEngineProvider: SearchEngineProvider,
-    private val homePageReader: HomePageReader,
-    private var userPreferences: UserPreferences
+        private val application: Application,
+        private val searchEngineProvider: SearchEngineProvider,
+        private val homePageReader: HomePageReader,
+        private var userPreferences: UserPreferences,
+        private val historyRepository: HistoryRepository,
+        private val listPageReader: ListPageReader
 ) : HtmlPageFactory {
 
     private val title = application.getString(R.string.home)

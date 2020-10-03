@@ -67,6 +67,8 @@
     <string name="dialog_adobe_not_installed">Adobe Flash Player is not installed.\nPlease install Flash Player.</string>
     <string name="title_user_agent">User agent</string>
     <string name="title_download_location">Download location</string>
+    <string name="download_failed">Download failed with error:</string>
+    <string name="download_successful">Download successful</string>
     <string name="title_custom_homepage">Custom homepage</string>
     <string name="action_webpage">Webpage</string>
     <string name="title_clear_history">Clear history</string>
@@ -500,5 +502,9 @@
 
     <string name="show_ssl">Show SSL warning dialogs</string>
     <string name="warn">Only change this if you know what you\'re doing!</string>
+
+
+    <string name="download_channel">Downloads</string>
+    <string name="download_description">Information about download progress</string>
     <!-- finish pages -->
 </resources>

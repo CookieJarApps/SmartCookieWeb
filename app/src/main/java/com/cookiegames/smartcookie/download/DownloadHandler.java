@@ -1,24 +1,33 @@
 /*
  * Copyright 2014 A.C.R. Development
  */
+
+// Copyright (C) 2020 CookieJarApps
+// MPL-2.0
 package com.cookiegames.smartcookie.download;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.DownloadManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.webkit.CookieManager;
 import android.webkit.MimeTypeMap;
 import android.webkit.URLUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -41,9 +50,22 @@ import com.cookiegames.smartcookie.preference.UserPreferences;
 import com.cookiegames.smartcookie.utils.FileUtils;
 import com.cookiegames.smartcookie.utils.Utils;
 import com.cookiegames.smartcookie.view.SmartCookieView;
+import com.downloader.Error;
+import com.downloader.OnCancelListener;
+import com.downloader.OnDownloadListener;
+import com.downloader.OnPauseListener;
+import com.downloader.OnProgressListener;
+import com.downloader.OnStartOrResumeListener;
+import com.downloader.PRDownloader;
+import com.downloader.PRDownloaderConfig;
+import com.downloader.Progress;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import io.reactivex.Scheduler;
 import io.reactivex.disposables.Disposable;
 
@@ -63,7 +85,6 @@ public class DownloadHandler {
     private final Scheduler networkScheduler;
     private final Scheduler mainScheduler;
     private final Logger logger;
-
     @Inject
     public DownloadHandler(DownloadsRepository downloadsRepository,
                            DownloadManager downloadManager,
@@ -77,6 +98,42 @@ public class DownloadHandler {
         this.networkScheduler = networkScheduler;
         this.mainScheduler = mainScheduler;
         this.logger = logger;
+    }
+
+    public static String getFileNameFromURL(String url) {
+        if (url == null) {
+            return "";
+        }
+        try {
+            URL resource = new URL(url);
+            String host = resource.getHost();
+            if (host.length() > 0 && url.endsWith(host)) {
+                // handle ...example.com
+                return "";
+            }
+        }
+        catch(MalformedURLException e) {
+            return "";
+        }
+
+        int startIndex = url.lastIndexOf('/') + 1;
+        int length = url.length();
+
+        // find end index for ?
+        int lastQMPos = url.lastIndexOf('?');
+        if (lastQMPos == -1) {
+            lastQMPos = length;
+        }
+
+        // find end index for #
+        int lastHashPos = url.lastIndexOf('#');
+        if (lastHashPos == -1) {
+            lastHashPos = length;
+        }
+
+        // calculate the end index
+        int endIndex = Math.min(lastQMPos, lastHashPos);
+        return url.substring(startIndex, endIndex);
     }
 
     /**
@@ -97,6 +154,99 @@ public class DownloadHandler {
         logger.log(TAG, "DOWNLOAD: Content disposition: " + contentDisposition);
         logger.log(TAG, "DOWNLOAD: MimeType: " + mimeType);
         logger.log(TAG, "DOWNLOAD: User agent: " + userAgent);
+
+        PRDownloader.initialize(context);
+
+        // Enabling database for resume support even after the application is killed:
+        PRDownloaderConfig config = PRDownloaderConfig.newBuilder()
+                .setDatabaseEnabled(true)
+                .build();
+        PRDownloader.initialize(context, config);
+
+        String location = manager.getDownloadDirectory();
+        location = FileUtils.addNecessarySlashes(location);
+        Uri downloadFolder = Uri.parse(location);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = context.getString(R.string.download_channel);
+            String description = context.getString(R.string.download_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("com.cookiegames.smartcookieweb.downloads", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+        String fileName = getFileNameFromURL(url);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "com.cookiegames.smartcookieweb.downloads");
+
+        int downloadId = PRDownloader.download(url, downloadFolder.toString(), fileName)
+                .build()
+                .setOnStartOrResumeListener(new OnStartOrResumeListener() {
+                    @Override
+                    public void onStartOrResume() {
+                        ActivityExtensions.snackbar(context, R.string.download_pending);
+
+                        builder.setContentTitle(context.getString(R.string.action_download))
+                                .setContentText("Download in progress")
+                                .setSmallIcon(R.drawable.ic_file_download_black_24dp)
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                .setOnlyAlertOnce(true);
+
+                        // Issue the initial notification with zero progress
+                        int PROGRESS_MAX = 100;
+                        int PROGRESS_CURRENT = 0;
+                        builder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false);
+                        notificationManager.notify(1, builder.build());
+                    }
+                })
+                .setOnPauseListener(new OnPauseListener() {
+                    @Override
+                    public void onPause() {
+
+                    }
+                })
+                .setOnCancelListener(new OnCancelListener() {
+                    @Override
+                    public void onCancel() {
+
+                    }
+                })
+                .setOnProgressListener(new OnProgressListener() {
+                    @Override
+                    public void onProgress(Progress progress) {
+                        double perc = ((progress.currentBytes / (double) progress.totalBytes) * 100.0f);
+                         builder.setProgress(100, (int) perc, false);
+                         notificationManager.notify(1, builder.build());
+
+                    }
+                })
+                .start(new OnDownloadListener() {
+                    @Override
+                    public void onDownloadComplete() {
+                        notificationManager.cancel(1);
+                        builder.setContentTitle(context.getString(R.string.download_successful))
+                                .setContentText("")
+                                .setSmallIcon(R.drawable.ic_file_download_black_24dp)
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                .setOnlyAlertOnce(true);
+                        builder.setProgress(0, 0, false);
+                        notificationManager.notify(2, builder.build());
+
+                    }
+
+                    @Override
+                    public void onError(Error error) {
+                        notificationManager.cancel(1);
+                        builder.setContentText("Download error")
+                                .setProgress(0,0,false);
+                        notificationManager.notify(2, builder.build());
+                    }
+                });
+
+
 
         // if we're dealing wih A/V content that's not explicitly marked
         // for download, check if it's streamable.
@@ -129,7 +279,7 @@ public class DownloadHandler {
                 }
             }
         }
-        onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
+       // onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
     }
 
     // This is to work around the fact that java.net.URI throws Exceptions
