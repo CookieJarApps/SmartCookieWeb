@@ -28,6 +28,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -167,6 +170,8 @@ public class DownloadHandler {
         location = FileUtils.addNecessarySlashes(location);
         Uri downloadFolder = Uri.parse(location);
 
+        Date now = new Date();
+        int uniqid = Integer.parseInt(new SimpleDateFormat("ddHHmmss",  Locale.US).format(now));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = context.getString(R.string.download_channel);
@@ -199,7 +204,7 @@ public class DownloadHandler {
                         int PROGRESS_MAX = 100;
                         int PROGRESS_CURRENT = 0;
                         builder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false);
-                        notificationManager.notify(1, builder.build());
+                        notificationManager.notify(uniqid, builder.build());
                     }
                 })
                 .setOnPauseListener(new OnPauseListener() {
@@ -219,30 +224,30 @@ public class DownloadHandler {
                     public void onProgress(Progress progress) {
                         double perc = ((progress.currentBytes / (double) progress.totalBytes) * 100.0f);
                          builder.setProgress(100, (int) perc, false);
-                         notificationManager.notify(1, builder.build());
+                         notificationManager.notify(uniqid, builder.build());
 
                     }
                 })
                 .start(new OnDownloadListener() {
                     @Override
                     public void onDownloadComplete() {
-                        notificationManager.cancel(1);
+                        notificationManager.cancel(uniqid);
                         builder.setContentTitle(context.getString(R.string.download_successful))
                                 .setContentText("")
                                 .setSmallIcon(R.drawable.ic_file_download_black_24dp)
                                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                                 .setOnlyAlertOnce(true);
                         builder.setProgress(0, 0, false);
-                        notificationManager.notify(2, builder.build());
+                        notificationManager.notify(uniqid + 1, builder.build());
 
                     }
 
                     @Override
                     public void onError(Error error) {
-                        notificationManager.cancel(1);
+                        notificationManager.cancel(uniqid);
                         builder.setContentText("Download error")
                                 .setProgress(0,0,false);
-                        notificationManager.notify(2, builder.build());
+                        notificationManager.notify(uniqid + 1, builder.build());
                     }
                 });
 
@@ -313,169 +318,5 @@ public class DownloadHandler {
         return sb.toString();
     }
 
-    /**
-     * Notify the host application a download should be done, even if there is a
-     * streaming viewer available for thise type.
-     *
-     * @param context            The context in which the download is requested.
-     * @param url                The full url to the content that should be downloaded
-     * @param userAgent          User agent of the downloading application.
-     * @param contentDisposition Content-disposition http header, if present.
-     * @param mimetype           The mimetype of the content reported by the server
-     * @param contentSize        The size of the content
-     */
-    /* package */
-    private void onDownloadStartNoStream(@NonNull final Activity context, @NonNull UserPreferences preferences,
-                                         @NonNull String url, String userAgent,
-                                         String contentDisposition, @Nullable String mimetype, @NonNull String contentSize) {
-        final String filename = URLUtil.guessFileName(url, contentDisposition, mimetype);
 
-        // Check to see if we have an SDCard
-        String status = Environment.getExternalStorageState();
-        if (!status.equals(Environment.MEDIA_MOUNTED)) {
-            int title;
-            String msg;
-
-            // Check to see if the SDCard is busy, same as the music app
-            if (status.equals(Environment.MEDIA_SHARED)) {
-                msg = context.getString(R.string.download_sdcard_busy_dlg_msg);
-                title = R.string.download_sdcard_busy_dlg_title;
-            } else {
-                msg = context.getString(R.string.download_no_sdcard_dlg_msg);
-                title = R.string.download_no_sdcard_dlg_title;
-            }
-
-            Dialog dialog = new AlertDialog.Builder(context).setTitle(title)
-                    .setIcon(android.R.drawable.ic_dialog_alert).setMessage(msg)
-                    .setPositiveButton(R.string.action_ok, null).show();
-            BrowserDialog.setDialogSize(context, dialog);
-            return;
-        }
-
-        // java.net.URI is a lot stricter than KURL so we have to encode some
-        // extra characters. Fix for b 2538060 and b 1634719
-        WebAddress webAddress;
-        try {
-            webAddress = new WebAddress(url);
-            webAddress.setPath(encodePath(webAddress.getPath()));
-        } catch (Exception e) {
-            // This only happens for very bad urls, we want to catch the
-            // exception here
-            logger.log(TAG, "Exception while trying to parse url '" + url + '\'', e);
-            ActivityExtensions.snackbar(context, R.string.problem_download);
-            return;
-        }
-
-        String addressString = webAddress.toString();
-        Uri uri = Uri.parse(addressString);
-        final DownloadManager.Request request;
-        try {
-            request = new DownloadManager.Request(uri);
-        } catch (IllegalArgumentException e) {
-            ActivityExtensions.snackbar(context, R.string.cannot_download);
-            return;
-        }
-
-        // set downloaded file destination to /sdcard/Download.
-        // or, should it be set to one of several Environment.DIRECTORY* dirs
-        // depending on mimetype?
-        String location = preferences.getDownloadDirectory();
-        location = FileUtils.addNecessarySlashes(location);
-        Uri downloadFolder = Uri.parse(location);
-
-        if (!isWriteAccessAvailable(downloadFolder)) {
-            ActivityExtensions.snackbar(context, R.string.problem_location_download);
-            return;
-        }
-        String newMimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(Utils.guessFileExtension(filename));
-        logger.log(TAG, "New mimetype: " + newMimeType);
-        request.setMimeType(newMimeType);
-        request.setDestinationUri(Uri.parse(Constants.FILE + location + filename));
-        // let this downloaded file be scanned by MediaScanner - so that it can
-        // show up in Gallery app, for example.
-        request.setVisibleInDownloadsUi(true);
-        request.allowScanningByMediaScanner();
-        request.setDescription(webAddress.getHost());
-        // XXX: Have to use the old url since the cookies were stored using the
-        // old percent-encoded url.
-        String cookies = CookieManager.getInstance().getCookie(url);
-        request.addRequestHeader(COOKIE_REQUEST_HEADER, cookies);
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-
-        //noinspection VariableNotUsedInsideIf
-        if (mimetype == null) {
-            logger.log(TAG, "Mimetype is null");
-            if (TextUtils.isEmpty(addressString)) {
-                return;
-            }
-            // We must have long pressed on a link or image to download it. We
-            // are not sure of the mimetype in this case, so do a head request
-            final Disposable disposable = new FetchUrlMimeType(downloadManager, request, addressString, cookies, userAgent)
-                    .create()
-                    .subscribeOn(networkScheduler)
-                    .observeOn(mainScheduler)
-                    .subscribe(result -> {
-                        switch (result) {
-                            case FAILURE_ENQUEUE:
-                                ActivityExtensions.snackbar(context, R.string.cannot_download);
-                                break;
-                            case FAILURE_LOCATION:
-                                ActivityExtensions.snackbar(context, R.string.problem_location_download);
-                                break;
-                            case SUCCESS:
-                                ActivityExtensions.snackbar(context, R.string.download_pending);
-                                break;
-                        }
-                    });
-        } else {
-            logger.log(TAG, "Valid mimetype, attempting to download");
-            try {
-                downloadManager.enqueue(request);
-            } catch (IllegalArgumentException e) {
-                // Probably got a bad URL or something
-                logger.log(TAG, "Unable to enqueue request", e);
-                ActivityExtensions.snackbar(context, R.string.cannot_download);
-            } catch (SecurityException e) {
-                // TODO write a download utility that downloads files rather than rely on the system
-                // because the system can only handle Environment.getExternal... as a path
-                ActivityExtensions.snackbar(context, R.string.problem_location_download);
-            }
-            ActivityExtensions.snackbar(context, context.getString(R.string.download_pending) + ' ' + filename);
-        }
-
-        // save download in database
-        UIController browserActivity = (UIController) context;
-        SmartCookieView view = browserActivity.getTabModel().getCurrentTab();
-
-        if (view != null && !view.isIncognito()) {
-            downloadsRepository.addDownloadIfNotExists(new DownloadEntry(url, filename, contentSize))
-                    .subscribeOn(databaseScheduler)
-                    .subscribe(aBoolean -> {
-                        if (!aBoolean) {
-                            logger.log(TAG, "error saving download to database");
-                        }
-                    });
-        }
-    }
-
-    private static boolean isWriteAccessAvailable(@NonNull Uri fileUri) {
-        if (fileUri.getPath() == null) {
-            return false;
-        }
-        File file = new File(fileUri.getPath());
-
-        if (!file.isDirectory() && !file.mkdirs()) {
-            return false;
-        }
-
-        try {
-            if (file.createNewFile()) {
-                //noinspection ResultOfMethodCallIgnored
-                file.delete();
-            }
-            return true;
-        } catch (IOException ignored) {
-            return false;
-        }
-    }
 }
