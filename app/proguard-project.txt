@@ -26,8 +26,7 @@
     public static <fields>;
 }
 
--keep class **.R$*
-
+-keep class **.R$* { *; }
 # this will fix a force close in ReadingActivity
 -keep public class org.jsoup.** {
     public *;

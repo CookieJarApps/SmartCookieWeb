@@ -57,15 +57,15 @@ import com.cookiegames.smartcookie.preference.UserPreferences;
 import com.cookiegames.smartcookie.utils.FileUtils;
 import com.cookiegames.smartcookie.utils.Utils;
 import com.cookiegames.smartcookie.view.SmartCookieView;
-import com.tonyodev.fetch2.Download;
-import com.tonyodev.fetch2.Error;
-import com.tonyodev.fetch2.Fetch;
-import com.tonyodev.fetch2.FetchConfiguration;
-import com.tonyodev.fetch2.FetchListener;
-import com.tonyodev.fetch2.NetworkType;
-import com.tonyodev.fetch2.Priority;
-import com.tonyodev.fetch2.Request;
-import com.tonyodev.fetch2core.DownloadBlock;
+import com.downloader.Error;
+import com.downloader.OnCancelListener;
+import com.downloader.OnDownloadListener;
+import com.downloader.OnPauseListener;
+import com.downloader.OnProgressListener;
+import com.downloader.OnStartOrResumeListener;
+import com.downloader.PRDownloader;
+import com.downloader.PRDownloaderConfig;
+import com.downloader.Progress;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -94,7 +94,6 @@ public class DownloadHandler {
     private final Scheduler networkScheduler;
     private final Scheduler mainScheduler;
     private final Logger logger;
-    private Fetch fetch;
 
     @Inject
     public DownloadHandler(DownloadsRepository downloadsRepository,
@@ -189,17 +188,6 @@ public class DownloadHandler {
         onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
     }
 
-    /**
-     * Notify the host application a download should be done, or that the data
-     * should be streamed if a streaming viewer is available.
-     *
-     * @param context            The context in which the download was requested.
-     * @param url                The full url to the content that should be downloaded
-     * @param userAgent          User agent of the downloading application.
-     * @param contentDisposition Content-disposition http header, if present.
-     * @param mimeType           The mimeType of the content reported by the server
-     * @param contentSize        The size of the content
-     */
     public void onDownloadStart(@NonNull Activity context, @NonNull UserPreferences manager, @NonNull String url, String userAgent,
                                 @Nullable String contentDisposition, String mimeType, @NonNull String contentSize) {
 
@@ -207,6 +195,14 @@ public class DownloadHandler {
         logger.log(TAG, "DOWNLOAD: Content disposition: " + contentDisposition);
         logger.log(TAG, "DOWNLOAD: MimeType: " + mimeType);
         logger.log(TAG, "DOWNLOAD: User agent: " + userAgent);
+
+        PRDownloader.initialize(context);
+
+        // Enabling database for resume support even after the application is killed:
+        PRDownloaderConfig config = PRDownloaderConfig.newBuilder()
+                .setDatabaseEnabled(true)
+                .build();
+        PRDownloader.initialize(context, config);
 
         String location = manager.getDownloadDirectory();
         location = FileUtils.addNecessarySlashes(location);
@@ -229,142 +225,70 @@ public class DownloadHandler {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "com.cookiegames.smartcookieweb.downloads");
 
-        FetchConfiguration fetchConfiguration = new FetchConfiguration.Builder(context)
-                .setDownloadConcurrentLimit(3)
-                .enableFileExistChecks(true)
-                .enableRetryOnNetworkGain(true)
-                .build();
+        int downloadId = PRDownloader.download(url, downloadFolder.toString(), fileName)
+                .build()
+                .setOnStartOrResumeListener(new OnStartOrResumeListener() {
+                    @Override
+                    public void onStartOrResume() {
+                        ActivityExtensions.snackbar(context, R.string.download_pending);
 
-        fetch = Fetch.Impl.getInstance(fetchConfiguration);
-        fetch.removeAll();
+                        builder.setContentTitle(context.getString(R.string.action_download))
+                                .setContentText("Download in progress")
+                                .setSmallIcon(R.drawable.ic_file_download_black_24dp)
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                .setOnlyAlertOnce(true);
 
-        final Request request = new Request(url, downloadFolder.toString() + "/" + fileName);
-        request.setPriority(Priority.HIGH);
-        request.setNetworkType(NetworkType.ALL);
-        request.addHeader("clientKey", "SD78DF93_3947&MVNGHE1WONG");
+                        // Issue the initial notification with zero progress
+                        int PROGRESS_MAX = 100;
+                        int PROGRESS_CURRENT = 0;
+                        builder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false);
+                        notificationManager.notify(uniqid, builder.build());
+                    }
+                })
+                .setOnPauseListener(new OnPauseListener() {
+                    @Override
+                    public void onPause() {
 
-        FetchListener fetchListener = new FetchListener() {
-            @Override
-            public void onWaitingNetwork(@NotNull Download download) {
+                    }
+                })
+                .setOnCancelListener(new OnCancelListener() {
+                    @Override
+                    public void onCancel() {
 
-            }
+                    }
+                })
+                .setOnProgressListener(new OnProgressListener() {
+                    @Override
+                    public void onProgress(Progress progress) {
+                        double perc = ((progress.currentBytes / (double) progress.totalBytes) * 100.0f);
+                        builder.setProgress(100, (int) perc, false);
+                        notificationManager.notify(uniqid, builder.build());
 
-            @Override
-            public void onStarted(@NotNull Download download, @NotNull List<? extends DownloadBlock> list, int i) {
-                ActivityExtensions.snackbar(context, R.string.download_pending);
+                    }
+                })
+                .start(new OnDownloadListener() {
+                    @Override
+                    public void onDownloadComplete() {
+                        notificationManager.cancel(uniqid);
+                        builder.setContentTitle(context.getString(R.string.download_successful))
+                                .setContentText("")
+                                .setSmallIcon(R.drawable.ic_file_download_black_24dp)
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                .setOnlyAlertOnce(true);
+                        builder.setProgress(0, 0, false);
+                        notificationManager.notify(uniqid + 1, builder.build());
 
-                builder.setContentTitle(context.getString(R.string.action_download))
-                        .setContentText("Download in progress")
-                        .setSmallIcon(R.drawable.ic_file_download_black_24dp)
-                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                        .setOnlyAlertOnce(true);
+                    }
 
-                // Issue the initial notification with zero progress
-                int PROGRESS_MAX = 100;
-                int PROGRESS_CURRENT = 0;
-                builder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false);
-                notificationManager.notify(uniqid, builder.build());
-            }
+                    @Override
+                    public void onError(Error error) {
+                        notificationManager.cancel(uniqid);
+                        builder.setContentText("Download error")
+                                .setProgress(0,0,false);
+                        notificationManager.notify(uniqid + 1, builder.build());
+                    }
+                });
 
-            @Override
-            public void onError(@NotNull Download download, @NotNull Error error, @org.jetbrains.annotations.Nullable Throwable throwable) {
-                error = download.getError();
-                notificationManager.cancel(uniqid);
-                builder.setContentText("Download error")
-                        .setProgress(0,0,false);
-                notificationManager.notify(uniqid + 1, builder.build());
-            }
-
-            @Override
-            public void onDownloadBlockUpdated(@NotNull Download download, @NotNull DownloadBlock downloadBlock, int i) {
-
-            }
-
-            @Override
-            public void onAdded(@NotNull Download download) {
-
-            }
-
-            @Override
-            public void onQueued(@NotNull Download download, boolean waitingOnNetwork) {
-                if (request.getId() == download.getId()) {
-                    //showDownloadInList(download);
-                }
-            }
-
-            @Override
-            public void onCompleted(@NotNull Download download) {
-                notificationManager.cancel(uniqid);
-                builder.setContentTitle(context.getString(R.string.download_successful))
-                        .setContentText("")
-                        .setSmallIcon(R.drawable.ic_file_download_black_24dp)
-                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                        .setOnlyAlertOnce(true);
-                builder.setProgress(0, 0, false);
-                notificationManager.notify(uniqid + 1, builder.build());
-                fetch.removeListener(this);
-                fetch.close();
-            }
-
-            @Override
-            public void onProgress(@NotNull Download download, long etaInMilliSeconds, long downloadedBytesPerSecond) {
-                if (request.getId() == download.getId()) {
-                    //updateDownload(download, etaInMilliSeconds);
-                }
-                int progress = download.getProgress();
-
-                builder.setProgress(100, progress, false);
-                notificationManager.notify(uniqid, builder.build());
-            }
-
-            @Override
-            public void onPaused(@NotNull Download download) {
-
-            }
-
-            @Override
-            public void onResumed(@NotNull Download download) {
-
-            }
-
-            @Override
-            public void onCancelled(@NotNull Download download) {
-
-            }
-
-            @Override
-            public void onRemoved(@NotNull Download download) {
-
-            }
-
-            @Override
-            public void onDeleted(@NotNull Download download) {
-
-            }
-        };
-
-        fetch.addListener(fetchListener);
-
-        fetch.enqueue(request, updatedRequest -> {
-            Log.d("downloader", "successful");
-
-        }, error -> {
-            Log.d("downloader", "eef");
-        });
-
-        // save download in database
-        UIController browserActivity = (UIController) context;
-        SmartCookieView view = browserActivity.getTabModel().getCurrentTab();
-
-        if (view != null && !view.isIncognito()) {
-            downloadsRepository.addDownloadIfNotExists(new DownloadEntry(url, fileName, contentSize))
-                    .subscribeOn(databaseScheduler)
-                    .subscribe(aBoolean -> {
-                        if (!aBoolean) {
-                            logger.log(TAG, "error saving download to database");
-                        }
-                    });
-        }
 
 
         // if we're dealing wih A/V content that's not explicitly marked
@@ -398,7 +322,7 @@ public class DownloadHandler {
                 }
             }
         }
-       // onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
+        // onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
     }
 
     public class DownloadCancelReceiver extends BroadcastReceiver {
