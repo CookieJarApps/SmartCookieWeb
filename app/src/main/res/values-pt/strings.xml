@@ -422,12 +422,6 @@
     <string name="drawer_size">Tamanho do texto no menu</string>
     <string name="privacy_set">Definições de privacidade</string>
     <string name="security_set">Definições de segurança</string>
-    <string name="title_activity_settings">SettingsActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">Primeiro fragmento</string>
-    <string name="second_fragment_label">Segundo fragmento</string>
-    <string name="next">Seguinte</string>
-    <string name="previous">Anterior</string>
     <string name="page_source">Ver código-fonte da página</string>
     <string name="pagespeed_error">Este site usa PageSpeed. A edição de código-fonte pode não funcionar como esperado.</string>
     <string name="app_lock">Definir palavra-passe</string>

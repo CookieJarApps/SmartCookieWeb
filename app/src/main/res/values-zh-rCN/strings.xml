@@ -63,6 +63,8 @@
     <string name="dialog_adobe_not_installed">未安装Adobe Flash Player。\n请安装Flash Player。</string>
     <string name="title_user_agent">用户代理</string>
     <string name="title_download_location">下载位置</string>
+    <string name="download_failed">下载失败，错误：</string>
+    <string name="download_successful">下载成功</string>
     <string name="title_custom_homepage">自定义首页</string>
     <string name="action_webpage">网页</string>
     <string name="title_clear_history">清除历史记录</string>
@@ -414,11 +416,18 @@
     <string name="only_clear">只在浏览器会话结束时清除</string>
     <string name="only_clear_summary">仅在关闭所有浏览器选项卡时，而不是在退出应用程序时，清除以上选项</string>
     <string name="enable_in_settings">需要在安卓设置中设置自动填充才能生效</string>
-    <string name="webrtc_description">Allow websites to request access to the microphone and camera</string>
+    <string name="webrtc_description">允许网站请求访问麦克风和摄像头</string>
     <string name="drawer_lines">抽屉里最大文本行</string>
     <string name="drawer_size">自动调整抽屉文字</string>
     <string name="privacy_set">隐私设置</string>
     <string name="security_set">安全设置</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string name="page_source">查看页面源代码</string>
+    <string name="pagespeed_error">此网站使用 PageSpeed。源编辑可能不会如预期那样工作。</string>
+    <string name="app_lock">设置应用密码</string>
+    <string name="show_ssl">显示 SSL 警告对话框</string>
+    <string name="warn">只有当你知道自己在做什么时才改变这个！</string>
+    <string name="download_channel">下载</string>
+    <string name="download_description">下载进度信息</string>
     <!-- finish pages -->
 </resources>
