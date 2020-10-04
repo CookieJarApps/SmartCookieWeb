@@ -11,7 +11,10 @@ import android.app.Dialog;
 import android.app.DownloadManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -30,6 +33,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -53,21 +57,23 @@ import com.cookiegames.smartcookie.preference.UserPreferences;
 import com.cookiegames.smartcookie.utils.FileUtils;
 import com.cookiegames.smartcookie.utils.Utils;
 import com.cookiegames.smartcookie.view.SmartCookieView;
-import com.downloader.Error;
-import com.downloader.OnCancelListener;
-import com.downloader.OnDownloadListener;
-import com.downloader.OnPauseListener;
-import com.downloader.OnProgressListener;
-import com.downloader.OnStartOrResumeListener;
-import com.downloader.PRDownloader;
-import com.downloader.PRDownloaderConfig;
-import com.downloader.Progress;
+import com.tonyodev.fetch2.Download;
+import com.tonyodev.fetch2.Error;
+import com.tonyodev.fetch2.Fetch;
+import com.tonyodev.fetch2.FetchConfiguration;
+import com.tonyodev.fetch2.FetchListener;
+import com.tonyodev.fetch2.NetworkType;
+import com.tonyodev.fetch2.Priority;
+import com.tonyodev.fetch2.Request;
+import com.tonyodev.fetch2core.DownloadBlock;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+
+import org.jetbrains.annotations.NotNull;
 
 import io.reactivex.Scheduler;
 import io.reactivex.disposables.Disposable;
@@ -88,6 +94,8 @@ public class DownloadHandler {
     private final Scheduler networkScheduler;
     private final Scheduler mainScheduler;
     private final Logger logger;
+    private Fetch fetch;
+
     @Inject
     public DownloadHandler(DownloadsRepository downloadsRepository,
                            DownloadManager downloadManager,
@@ -200,14 +208,6 @@ public class DownloadHandler {
         logger.log(TAG, "DOWNLOAD: MimeType: " + mimeType);
         logger.log(TAG, "DOWNLOAD: User agent: " + userAgent);
 
-        PRDownloader.initialize(context);
-
-        // Enabling database for resume support even after the application is killed:
-        PRDownloaderConfig config = PRDownloaderConfig.newBuilder()
-                .setDatabaseEnabled(true)
-                .build();
-        PRDownloader.initialize(context, config);
-
         String location = manager.getDownloadDirectory();
         location = FileUtils.addNecessarySlashes(location);
         Uri downloadFolder = Uri.parse(location);
@@ -229,70 +229,142 @@ public class DownloadHandler {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "com.cookiegames.smartcookieweb.downloads");
 
-        int downloadId = PRDownloader.download(url, downloadFolder.toString(), fileName)
-                .build()
-                .setOnStartOrResumeListener(new OnStartOrResumeListener() {
-                    @Override
-                    public void onStartOrResume() {
-                        ActivityExtensions.snackbar(context, R.string.download_pending);
+        FetchConfiguration fetchConfiguration = new FetchConfiguration.Builder(context)
+                .setDownloadConcurrentLimit(3)
+                .enableFileExistChecks(true)
+                .enableRetryOnNetworkGain(true)
+                .build();
 
-                        builder.setContentTitle(context.getString(R.string.action_download))
-                                .setContentText("Download in progress")
-                                .setSmallIcon(R.drawable.ic_file_download_black_24dp)
-                                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                                .setOnlyAlertOnce(true);
+        fetch = Fetch.Impl.getInstance(fetchConfiguration);
+        fetch.removeAll();
 
-                        // Issue the initial notification with zero progress
-                        int PROGRESS_MAX = 100;
-                        int PROGRESS_CURRENT = 0;
-                        builder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false);
-                        notificationManager.notify(uniqid, builder.build());
-                    }
-                })
-                .setOnPauseListener(new OnPauseListener() {
-                    @Override
-                    public void onPause() {
+        final Request request = new Request(url, downloadFolder.toString() + "/" + fileName);
+        request.setPriority(Priority.HIGH);
+        request.setNetworkType(NetworkType.ALL);
+        request.addHeader("clientKey", "SD78DF93_3947&MVNGHE1WONG");
 
-                    }
-                })
-                .setOnCancelListener(new OnCancelListener() {
-                    @Override
-                    public void onCancel() {
+        FetchListener fetchListener = new FetchListener() {
+            @Override
+            public void onWaitingNetwork(@NotNull Download download) {
 
-                    }
-                })
-                .setOnProgressListener(new OnProgressListener() {
-                    @Override
-                    public void onProgress(Progress progress) {
-                        double perc = ((progress.currentBytes / (double) progress.totalBytes) * 100.0f);
-                         builder.setProgress(100, (int) perc, false);
-                         notificationManager.notify(uniqid, builder.build());
+            }
 
-                    }
-                })
-                .start(new OnDownloadListener() {
-                    @Override
-                    public void onDownloadComplete() {
-                        notificationManager.cancel(uniqid);
-                        builder.setContentTitle(context.getString(R.string.download_successful))
-                                .setContentText("")
-                                .setSmallIcon(R.drawable.ic_file_download_black_24dp)
-                                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                                .setOnlyAlertOnce(true);
-                        builder.setProgress(0, 0, false);
-                        notificationManager.notify(uniqid + 1, builder.build());
+            @Override
+            public void onStarted(@NotNull Download download, @NotNull List<? extends DownloadBlock> list, int i) {
+                ActivityExtensions.snackbar(context, R.string.download_pending);
 
-                    }
+                builder.setContentTitle(context.getString(R.string.action_download))
+                        .setContentText("Download in progress")
+                        .setSmallIcon(R.drawable.ic_file_download_black_24dp)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        .setOnlyAlertOnce(true);
 
-                    @Override
-                    public void onError(Error error) {
-                        notificationManager.cancel(uniqid);
-                        builder.setContentText("Download error")
-                                .setProgress(0,0,false);
-                        notificationManager.notify(uniqid + 1, builder.build());
-                    }
-                });
+                // Issue the initial notification with zero progress
+                int PROGRESS_MAX = 100;
+                int PROGRESS_CURRENT = 0;
+                builder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false);
+                notificationManager.notify(uniqid, builder.build());
+            }
 
+            @Override
+            public void onError(@NotNull Download download, @NotNull Error error, @org.jetbrains.annotations.Nullable Throwable throwable) {
+                error = download.getError();
+                notificationManager.cancel(uniqid);
+                builder.setContentText("Download error")
+                        .setProgress(0,0,false);
+                notificationManager.notify(uniqid + 1, builder.build());
+            }
+
+            @Override
+            public void onDownloadBlockUpdated(@NotNull Download download, @NotNull DownloadBlock downloadBlock, int i) {
+
+            }
+
+            @Override
+            public void onAdded(@NotNull Download download) {
+
+            }
+
+            @Override
+            public void onQueued(@NotNull Download download, boolean waitingOnNetwork) {
+                if (request.getId() == download.getId()) {
+                    //showDownloadInList(download);
+                }
+            }
+
+            @Override
+            public void onCompleted(@NotNull Download download) {
+                notificationManager.cancel(uniqid);
+                builder.setContentTitle(context.getString(R.string.download_successful))
+                        .setContentText("")
+                        .setSmallIcon(R.drawable.ic_file_download_black_24dp)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        .setOnlyAlertOnce(true);
+                builder.setProgress(0, 0, false);
+                notificationManager.notify(uniqid + 1, builder.build());
+                fetch.removeListener(this);
+                fetch.close();
+            }
+
+            @Override
+            public void onProgress(@NotNull Download download, long etaInMilliSeconds, long downloadedBytesPerSecond) {
+                if (request.getId() == download.getId()) {
+                    //updateDownload(download, etaInMilliSeconds);
+                }
+                int progress = download.getProgress();
+
+                builder.setProgress(100, progress, false);
+                notificationManager.notify(uniqid, builder.build());
+            }
+
+            @Override
+            public void onPaused(@NotNull Download download) {
+
+            }
+
+            @Override
+            public void onResumed(@NotNull Download download) {
+
+            }
+
+            @Override
+            public void onCancelled(@NotNull Download download) {
+
+            }
+
+            @Override
+            public void onRemoved(@NotNull Download download) {
+
+            }
+
+            @Override
+            public void onDeleted(@NotNull Download download) {
+
+            }
+        };
+
+        fetch.addListener(fetchListener);
+
+        fetch.enqueue(request, updatedRequest -> {
+            Log.d("downloader", "successful");
+
+        }, error -> {
+            Log.d("downloader", "eef");
+        });
+
+        // save download in database
+        UIController browserActivity = (UIController) context;
+        SmartCookieView view = browserActivity.getTabModel().getCurrentTab();
+
+        if (view != null && !view.isIncognito()) {
+            downloadsRepository.addDownloadIfNotExists(new DownloadEntry(url, fileName, contentSize))
+                    .subscribeOn(databaseScheduler)
+                    .subscribe(aBoolean -> {
+                        if (!aBoolean) {
+                            logger.log(TAG, "error saving download to database");
+                        }
+                    });
+        }
 
 
         // if we're dealing wih A/V content that's not explicitly marked
@@ -327,6 +399,23 @@ public class DownloadHandler {
             }
         }
        // onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
+    }
+
+    public class DownloadCancelReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent != null) {
+                int noti_id = intent.getIntExtra("notificationId", -1);
+
+                if (noti_id > 0) {
+                    NotificationManager notificationManager = (NotificationManager) context
+                            .getSystemService(Context.NOTIFICATION_SERVICE);
+
+                    notificationManager.cancel(noti_id);
+                }
+            }
+        }
     }
 
     /**

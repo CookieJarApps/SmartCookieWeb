@@ -11,7 +11,9 @@
 -keep public class * extends android.content.ContentProvider
 -keep public class * extends android.app.backup.BackupAgentHelper
 -keep public class * extends android.preference.Preference
+-keep public class com.cookiegames.smartcookie.settings.*
 -keep public class com.cookiegames.smartcookie.settings.fragment.*
+-keep public class com.cookiegames.smartcookie.reading.*
 
 -assumenosideeffects class android.util.Log {
     public static *** d(...);
@@ -20,18 +22,23 @@
     public static *** i(...);
 }
 
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
+
+-keep class **.R$*
+
 # this will fix a force close in ReadingActivity
 -keep public class org.jsoup.** {
     public *;
 }
 
 # Without this rule, openFileChooser does not get called on KitKat
--keep class acr.browser.lightning.view.LightningView$LightningChromeClient {
+-keep class com.cookiegames.smartcookie.view.SmartCookieChromeClient {
     void openFileChooser(android.webkit.ValueCallback);
     void openFileChooser(android.webkit.ValueCallback, java.lang.String);
     void openFileChooser(android.webkit.ValueCallback, java.lang.String, java.lang.String);
 }
-
 
 -keepclasseswithmembernames class * {
     native <methods>;
@@ -74,9 +81,9 @@
 # Needed for okhttp
 -dontwarn javax.annotation.Nullable
 -dontwarn javax.annotation.ParametersAreNonnullByDefault
--dontwarn okhttp4.**
+-dontwarn okhttp3.**
 -dontwarn okio.**
 -dontwarn javax.annotation.**
 -dontwarn org.conscrypt.**
 # A resource is loaded with a relative path so the package of this class must be preserved.
--keepnames class okhttp4.internal.publicsuffix.PublicSuffixDatabase
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
