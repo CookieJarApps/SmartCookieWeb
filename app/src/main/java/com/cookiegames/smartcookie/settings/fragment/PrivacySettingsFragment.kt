@@ -3,7 +3,12 @@ package com.cookiegames.smartcookie.settings.fragment
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Bundle
+import android.webkit.WebView
+import android.widget.TextView
+import com.cookiegames.smartcookie.DeviceCapabilities
 import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.browser.PasswordChoice
 import com.cookiegames.smartcookie.database.history.HistoryRepository
 import com.cookiegames.smartcookie.di.DatabaseScheduler
 import com.cookiegames.smartcookie.di.MainScheduler
@@ -11,18 +16,14 @@ import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.dialog.DialogItem
 import com.cookiegames.smartcookie.extensions.snackbar
+import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
+import com.cookiegames.smartcookie.isSupported
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.utils.WebUtils
 import com.cookiegames.smartcookie.view.SmartCookieView
-import android.os.Bundle
-import android.webkit.WebView
-import android.widget.TextView
-import com.cookiegames.smartcookie.DeviceCapabilities
-import com.cookiegames.smartcookie.browser.PasswordChoice
-import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
-import com.cookiegames.smartcookie.isSupported
 import io.reactivex.Completable
 import io.reactivex.Scheduler
+import java.io.File
 import javax.inject.Inject
 
 class PrivacySettingsFragment : AbstractSettingsFragment() {
@@ -257,7 +258,34 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
             clearCache(true)
             destroy()
         }
+        deleteCache(requireContext())
         activity?.snackbar(R.string.message_cache_cleared)
+    }
+
+    fun deleteCache(context: Context) {
+        try {
+            val dir = context.cacheDir
+            deleteDir(dir)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    fun deleteDir(dir: File?): Boolean {
+        return if (dir != null && dir.isDirectory) {
+            val children = dir.list()
+            for (i in children.indices) {
+                val success = deleteDir(File(dir, children[i]))
+                if (!success) {
+                    return false
+                }
+            }
+            dir.delete()
+        } else if (dir != null && dir.isFile) {
+            dir.delete()
+        } else {
+            false
+        }
     }
 
     private fun clearHistory(): Completable = Completable.fromAction {
@@ -305,6 +333,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_INCOGNITO = "start_incognito"
         private const val SETTINGS_ONLY_CLOSE = "only_clear"
         private const val SETTINGS_APP_LOCK = "app_lock"
+        private const val SETTINGS_CLEAR_ALL = "clear_all"
     }
 
 }

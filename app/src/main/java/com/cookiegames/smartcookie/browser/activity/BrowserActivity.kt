@@ -1193,7 +1193,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     protected fun performExitCleanUp() {
         val currentTab = tabsManager.currentTab
         if (userPreferences.clearCacheExit && currentTab != null && !isIncognito()) {
-            WebUtils.clearCache(currentTab.webView)
+            WebUtils.clearCache(currentTab.webView, applicationContext)
             logger.log(TAG, "Cache Cleared")
         }
         if (userPreferences.clearHistoryExitEnabled && !isIncognito()) {
