@@ -7,7 +7,7 @@
 ![GitHub issues](https://img.shields.io/github/issues-raw/cookiejarapps/smartcookieweb)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/cookiejarapps/smartcookieweb)
 [![Crowdin](https://badges.crowdin.net/smartcookieweb/localized.svg)](https://crowdin.com/project/smartcookieweb)
-<img src="https://img.shields.io/liberapay/patrons/CookieJarApps.svg?logo=liberapay">
+![Liberapay patrons](https://img.shields.io/liberapay/patrons/CookieJarApps)
 ![GitHub stars](https://img.shields.io/github/stars/cookiejarapps/smartcookieweb?style=social)
 
 
