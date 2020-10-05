@@ -350,6 +350,11 @@ class UserPreferences @Inject constructor(
 
     var ssl by preferences.booleanPreference(SSL, true)
 
+    var link1 by preferences.stringPreference(LINK1, "https://github.com")
+    var link2 by preferences.stringPreference(LINK2, "https://google.com")
+    var link3 by preferences.stringPreference(LINK3, "https://youtube.com")
+    var link4 by preferences.stringPreference(LINK4, "https://speedtest.cookiejarapps.com")
+
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
@@ -432,3 +437,7 @@ private const val INTENT = "stopIntent"
 private const val DRAWER_LINES = "lines"
 private const val DRAWER_SIZE = "dize"
 private const val SSL = "ssl"
+private const val LINK1 = "link1"
+private const val LINK2 = "link2"
+private const val LINK3 = "link3"
+private const val LINK4 = "link4"

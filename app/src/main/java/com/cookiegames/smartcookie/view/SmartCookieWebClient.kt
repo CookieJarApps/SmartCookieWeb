@@ -1,19 +1,5 @@
 package com.cookiegames.smartcookie.view
 
-import com.cookiegames.smartcookie.BuildConfig
-import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.adblock.AdBlocker
-import com.cookiegames.smartcookie.adblock.allowlist.AllowListModel
-import com.cookiegames.smartcookie.constant.FILE
-import com.cookiegames.smartcookie.controller.UIController
-import com.cookiegames.smartcookie.di.injector
-import com.cookiegames.smartcookie.extensions.resizeAndShow
-import com.cookiegames.smartcookie.extensions.snackbar
-import com.cookiegames.smartcookie.log.Logger
-import com.cookiegames.smartcookie.preference.UserPreferences
-import com.cookiegames.smartcookie.ssl.SslState
-import com.cookiegames.smartcookie.ssl.SslWarningPreferences
-import com.cookiegames.smartcookie.utils.*
 import android.annotation.TargetApi
 import android.app.Activity
 import android.content.ActivityNotFoundException
@@ -25,6 +11,7 @@ import android.net.MailTo
 import android.net.http.SslError
 import android.os.Build
 import android.os.Handler
+import android.os.Looper
 import android.os.Message
 import android.util.Log
 import android.view.LayoutInflater
@@ -35,12 +22,28 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
-import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.AppTheme
+import com.cookiegames.smartcookie.BuildConfig
+import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.adblock.AdBlocker
+import com.cookiegames.smartcookie.adblock.allowlist.AllowListModel
 import com.cookiegames.smartcookie.browser.JavaScriptChoice
 import com.cookiegames.smartcookie.browser.SiteBlockChoice
+import com.cookiegames.smartcookie.constant.FILE
+import com.cookiegames.smartcookie.controller.UIController
+import com.cookiegames.smartcookie.di.injector
+import com.cookiegames.smartcookie.extensions.resizeAndShow
+import com.cookiegames.smartcookie.extensions.snackbar
 import com.cookiegames.smartcookie.js.*
+import com.cookiegames.smartcookie.log.Logger
+import com.cookiegames.smartcookie.preference.UserPreferences
+import com.cookiegames.smartcookie.ssl.SslState
+import com.cookiegames.smartcookie.ssl.SslWarningPreferences
+import com.cookiegames.smartcookie.utils.IntentUtils
+import com.cookiegames.smartcookie.utils.ProxyUtils
+import com.cookiegames.smartcookie.utils.Utils
+import com.cookiegames.smartcookie.utils.isSpecialUrl
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import java.io.*
@@ -170,6 +173,20 @@ class SmartCookieWebClient(
     override fun onPageFinished(view: WebView, url: String) {
         if(userPreferences.cookieBlockEnabled){
             view.evaluateJavascript(cookieBlock.provideJs(), null)
+        }
+        if(url.contains(BuildConfig.APPLICATION_ID + "/files/homepage.html")) {
+            view.evaluateJavascript("javascript:(function() {"
+                    + "link1var = '" + userPreferences.link1  + "';"
+                    + "})();", null)
+            view.evaluateJavascript("javascript:(function() {"
+                    + "link2var = '" + userPreferences.link2 + "';"
+                    + "})();", null)
+            view.evaluateJavascript("javascript:(function() {"
+                    + "link3var = '" + userPreferences.link3 + "';"
+                    + "})();", null)
+            view.evaluateJavascript("javascript:(function() {"
+                    + "link4var = '" + userPreferences.link4  + "';"
+                    + "})();", null)
         }
         if (view.isShown) {
             uiController.updateUrl(url, false)
@@ -505,6 +522,51 @@ class SmartCookieWebClient(
             }
 
             userPreferences.firstLaunch = false
+        }
+
+        if(url.contains(BuildConfig.APPLICATION_ID + "/files/homepage.html")){
+            view?.evaluateJavascript("""(function() {
+        return localStorage.getItem("shouldUpdate");
+        })()""".trimMargin()) {
+                Log.d("itxxa2qw", it)
+                if(it.substring(1, it.length - 1) == "yes"){
+                    view?.evaluateJavascript("""(function() {
+        return localStorage.getItem("link1");
+        })()""".trimMargin()) {
+                        userPreferences.link1 = it.substring(1, it.length - 1)
+                        view?.evaluateJavascript("""(function() {
+        localStorage.setItem("shouldUpdate", "no");
+        })()"""){}
+                    }
+                    view?.evaluateJavascript("""(function() {
+        return localStorage.getItem("link2");
+        })()""".trimMargin()) {
+                        userPreferences.link2 = it.substring(1, it.length - 1)
+                        view?.evaluateJavascript("""(function() {
+        localStorage.setItem("shouldUpdate", "no");
+        })()"""){}
+                    }
+                    view?.evaluateJavascript("""(function() {
+        return localStorage.getItem("link3");
+        })()""".trimMargin()) {
+                        userPreferences.link3 = it.substring(1, it.length - 1)
+                        view?.evaluateJavascript("""(function() {
+        localStorage.setItem("shouldUpdate", "no");
+        })()"""){}
+                    }
+                    view?.evaluateJavascript("""(function() {
+        return localStorage.getItem("link4");
+        })()""".trimMargin()) {
+                        userPreferences.link4 = it.substring(1, it.length - 1)
+                        view?.evaluateJavascript("""(function() {
+        localStorage.setItem("shouldUpdate", "no");
+        })()"""){}
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        uiController.newTabButtonClicked()
+                    }, 100)
+                }
+            }
         }
 
         if(userPreferences.cookieBlockEnabled){

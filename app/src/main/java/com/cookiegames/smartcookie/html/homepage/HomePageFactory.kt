@@ -57,6 +57,16 @@ class HomePageFactory @Inject constructor(
 
                         )
                     }
+                    Log.d("homepgegen", "https://YouTube.com")
+                    Log.d("homepgegen", userPreferences.link1)
+                    id("link1click"){ attr("href", userPreferences.link1)}
+                    id("link2click"){ attr("href", userPreferences.link2)}
+                    id("link3click"){ attr("href", userPreferences.link3)}
+                    id("link4click"){ attr("href", userPreferences.link4)}
+                    id("link1"){ attr("src", userPreferences.link1 + "/favicon.ico")}
+                    id("link2"){ attr("src", userPreferences.link2 + "/favicon.ico")}
+                    id("link3"){ attr("src", userPreferences.link3 + "/favicon.ico")}
+                    id("link4"){ attr("src", userPreferences.link4 + "/favicon.ico")}
                 }
             }
         }

@@ -309,51 +309,14 @@
 </div>
 <script>
   // Copyright (c) 2020 CookieJarApps under MPL 2.0
-  if(localStorage.getItem("link1")){
-    var link1 = localStorage.getItem("link1");
-  }
-  else{
-    var link1 = "https://github.com";
-     localStorage.setItem("link1", "https://github.com");
-  }
-
-if(localStorage.getItem("link2")){
-    var link2 = localStorage.getItem("link2");
-  }
-  else{
-    var link2 = "https://google.com";
-  localStorage.setItem("link2", "https://google.com");
-  }
-
-  if(localStorage.getItem("link3")){
-    var link3 = localStorage.getItem("link3");
-  }
-  else{
-    var link3 = "https://github.com";
-     localStorage.setItem("link3", "https://youtube.com");
-  }
-
-  if(localStorage.getItem("link4")){
-    var link4 = localStorage.getItem("link4");
-  }
-  else{
-    var link4 = "https://speedtest.cookiejarapps.com";
-     localStorage.setItem("link4", "https://speedtest.cookiejarapps.com");
-  }
-
+var link1var = "https://cookiejarapps.com";
+var link2var = "https://cookiejarapps.com";
+var link3var = "https://cookiejarapps.com";
+var link4var = "https://cookiejarapps.com";
 function getDomain(url){
   var domain = url.replace('http://','').replace('https://','').split(/[/?#]/)[0];
   return domain;
 }
-
-document.getElementById('link1click').href = link1;
-document.getElementById("link1").src = "https://" + getDomain(link1) + "/favicon.ico";
-document.getElementById('link2click').href = link2;
-document.getElementById("link2").src = "https://" + getDomain(link2) + "/favicon.ico";
-document.getElementById('link3click').href = link3;
-document.getElementById("link3").src = "https://" + getDomain(link3) + "/favicon.ico";
-document.getElementById('link4click').href = link4;
-document.getElementById("link4").src = "https://" + getDomain(link4) + "/favicon.ico";
 
 var modal = document.getElementById("editModal");
 var container = document.getElementsByClassName("shortcuts")[0];
@@ -364,10 +327,10 @@ var span = document.getElementsByClassName("close")[0];
 
 editbtn.onclick = function() {
   modal.style.display = "block";
-  document.getElementById('link1inp').value = localStorage.getItem("link1");
-  document.getElementById('link2inp').value = localStorage.getItem("link2");
-  document.getElementById('link3inp').value = localStorage.getItem("link3");
-  document.getElementById('link4inp').value = localStorage.getItem("link4");
+  document.getElementById('link1inp').value = link1var;
+  document.getElementById('link2inp').value = link2var;
+  document.getElementById('link3inp').value = link3var;
+  document.getElementById('link4inp').value = link4var;
 }
 
 save.onclick = function() {
@@ -375,6 +338,7 @@ save.onclick = function() {
   localStorage.setItem("link2", document.getElementById('link2inp').value);
   localStorage.setItem("link3", document.getElementById('link3inp').value);
   localStorage.setItem("link4", document.getElementById('link4inp').value);
+  localStorage.setItem("shouldUpdate", "yes");
   document['\x67\x65\x74'+'\x45\x6c\x65'+'\x6d\x65\x6e'+'\x74\x42\x79'+'\x49\x64']('\x6c\x69\x6e'+'\x6b\x31\x69'+'\x6e\x70')['\x76\x61\x6c'+'\x75\x65']=='\x68\x74\x74'+'\x70\x73\x3a'+'\x2f\x2f\x63'+'\x6f\x6f\x6b'+'\x69\x65\x2e'+'\x69\x6e\x66'+'\x6f'&&alert('\x53\x6d\x61'+'\x72\x74\x43'+'\x6f\x6f\x6b'+'\x69\x65\x57'+'\x65\x62\x20'+'\x4d\x50\x4c'+'\x32\x2e\x30'+'\x20\x2d\x20'+'\x28\x63\x29'+'\x20\x43\x6f'+'\x6f\x6b\x69'+'\x65\x4a\x61'+'\x72\x41\x70'+'\x70\x73');modal['\x73\x74\x79'+'\x6c\x65']['\x64\x69\x73'+'\x70\x6c\x61'+'\x79']='\x6e\x6f\x6e'+'\x65',location['\x72\x65\x6c'+'\x6f\x61\x64']();
 }
 
