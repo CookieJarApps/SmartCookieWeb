@@ -201,6 +201,8 @@ public class DownloadHandler {
         // Enabling database for resume support even after the application is killed:
         PRDownloaderConfig config = PRDownloaderConfig.newBuilder()
                 .setDatabaseEnabled(true)
+                .setReadTimeout(30_000)
+                .setConnectTimeout(30_000)
                 .build();
         PRDownloader.initialize(context, config);
 
@@ -261,8 +263,11 @@ public class DownloadHandler {
                     @Override
                     public void onProgress(Progress progress) {
                         double perc = ((progress.currentBytes / (double) progress.totalBytes) * 100.0f);
-                        builder.setProgress(100, (int) perc, false);
-                        notificationManager.notify(uniqid, builder.build());
+
+                        if (String.valueOf((int) perc).contains("0")) {
+                            builder.setProgress(100, (int) perc, false);
+                            notificationManager.notify(uniqid, builder.build());
+                        }
 
                     }
                 })
