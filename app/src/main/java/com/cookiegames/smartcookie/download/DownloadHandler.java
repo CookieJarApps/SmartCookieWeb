@@ -26,6 +26,7 @@ import android.util.Log;
 import android.webkit.CookieManager;
 import android.webkit.MimeTypeMap;
 import android.webkit.URLUtil;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,6 +56,7 @@ import com.cookiegames.smartcookie.extensions.ActivityExtensions;
 import com.cookiegames.smartcookie.log.Logger;
 import com.cookiegames.smartcookie.preference.UserPreferences;
 import com.cookiegames.smartcookie.utils.FileUtils;
+import com.cookiegames.smartcookie.utils.UrlUtils;
 import com.cookiegames.smartcookie.utils.Utils;
 import com.cookiegames.smartcookie.view.SmartCookieView;
 import com.downloader.Error;
@@ -110,44 +112,13 @@ public class DownloadHandler {
         this.logger = logger;
     }
 
-    public static String getFileNameFromURL(String url) {
-        if (url == null) {
-            return "";
-        }
-        try {
-            URL resource = new URL(url);
-            String host = resource.getHost();
-            if (host.length() > 0 && url.endsWith(host)) {
-                // handle ...example.com
-                return "";
-            }
-        }
-        catch(MalformedURLException e) {
-            return "";
-        }
+    public static String getFileNameFromURL(String url, String contentDisposition, String mimeType) {
+       return URLUtil.guessFileName(url, contentDisposition, mimeType);
 
-        int startIndex = url.lastIndexOf('/') + 1;
-        int length = url.length();
-
-        // find end index for ?
-        int lastQMPos = url.lastIndexOf('?');
-        if (lastQMPos == -1) {
-            lastQMPos = length;
-        }
-
-        // find end index for #
-        int lastHashPos = url.lastIndexOf('#');
-        if (lastHashPos == -1) {
-            lastHashPos = length;
-        }
-
-        // calculate the end index
-        int endIndex = Math.min(lastQMPos, lastHashPos);
-        return url.substring(startIndex, endIndex);
     }
 
     public void legacyDownloadStart(@NonNull Activity context, @NonNull UserPreferences manager, @NonNull String url, String userAgent,
-                                @Nullable String contentDisposition, String mimeType, @NonNull String contentSize) {
+                                    @Nullable String contentDisposition, String mimeType, @NonNull String contentSize) {
 
         logger.log(TAG, "DOWNLOAD: Trying to download from URL: " + url);
         logger.log(TAG, "DOWNLOAD: Content disposition: " + contentDisposition);
@@ -188,6 +159,7 @@ public class DownloadHandler {
         onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
     }
 
+
     public void onDownloadStart(@NonNull Activity context, @NonNull UserPreferences manager, @NonNull String url, String userAgent,
                                 @Nullable String contentDisposition, String mimeType, @NonNull String contentSize) {
 
@@ -195,6 +167,12 @@ public class DownloadHandler {
         logger.log(TAG, "DOWNLOAD: Content disposition: " + contentDisposition);
         logger.log(TAG, "DOWNLOAD: MimeType: " + mimeType);
         logger.log(TAG, "DOWNLOAD: User agent: " + userAgent);
+        // Fallback to old download manager on sites with weird download systems
+        // TODO: investigate why the new manager doesn't support these
+        if(url.contains("//drive.google.com") || url.contains("googleusercontent.com/") || url.contains("//mega.nz")){
+            legacyDownloadStart(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
+            return;
+        }
 
         PRDownloader.initialize(context);
 
@@ -223,11 +201,11 @@ public class DownloadHandler {
             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
-        String fileName = getFileNameFromURL(url);
+        String fileName = getFileNameFromURL(url, contentDisposition, mimeType);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "com.cookiegames.smartcookieweb.downloads");
-
-        int downloadId = PRDownloader.download(url, downloadFolder.toString(), fileName)
+        Log.d(TAG, fileName);
+        int downloadId = PRDownloader.download(url, downloadFolder.toString(), URLUtil.guessFileName(url, contentDisposition, mimeType))
                 .build()
                 .setOnStartOrResumeListener(new OnStartOrResumeListener() {
                     @Override
@@ -288,7 +266,8 @@ public class DownloadHandler {
                     @Override
                     public void onError(Error error) {
                         notificationManager.cancel(uniqid);
-                        builder.setContentText("Download error")
+                        builder.setContentText("Download error: " + error)
+                                .setSmallIcon(R.drawable.ic_file_download_black_24dp)
                                 .setProgress(0,0,false);
                         notificationManager.notify(uniqid + 1, builder.build());
                     }
@@ -327,7 +306,19 @@ public class DownloadHandler {
                 }
             }
         }
-        // onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
+        // save download in database
+        UIController browserActivity = (UIController) context;
+        SmartCookieView view = browserActivity.getTabModel().getCurrentTab();
+
+        if (view != null && !view.isIncognito()) {
+            downloadsRepository.addDownloadIfNotExists(new DownloadEntry(url, getFileNameFromURL(url, contentDisposition, mimeType), contentSize))
+                    .subscribeOn(databaseScheduler)
+                    .subscribe(aBoolean -> {
+                        if (!aBoolean) {
+                            logger.log(TAG, "error saving download to database");
+                        }
+                    });
+        }
     }
 
     public class DownloadCancelReceiver extends BroadcastReceiver {
@@ -345,6 +336,58 @@ public class DownloadHandler {
                 }
             }
         }
+    }
+
+    private static boolean isWriteAccessAvailable(@NonNull Uri fileUri) {
+        if (fileUri.getPath() == null) {
+            return false;
+        }
+        File file = new File(fileUri.getPath());
+
+        if (!file.isDirectory() && !file.mkdirs()) {
+            return false;
+        }
+
+        try {
+            if (file.createNewFile()) {
+                //noinspection ResultOfMethodCallIgnored
+                file.delete();
+            }
+            return true;
+        } catch (IOException ignored) {
+            return false;
+        }
+    }
+
+    // This is to work around the fact that java.net.URI throws Exceptions
+    // instead of just encoding URL's properly
+    // Helper method for onDownloadStartNoStream
+    @NonNull
+    private static String encodePath(@NonNull String path) {
+        char[] chars = path.toCharArray();
+
+        boolean needed = false;
+        for (char c : chars) {
+            if (c == '[' || c == ']' || c == '|') {
+                needed = true;
+                break;
+            }
+        }
+        if (!needed) {
+            return path;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (char c : chars) {
+            if (c == '[' || c == ']' || c == '|') {
+                sb.append('%');
+                sb.append(Integer.toHexString(c));
+            } else {
+                sb.append(c);
+            }
+        }
+
+        return sb.toString();
     }
 
     /**
@@ -492,57 +535,6 @@ public class DownloadHandler {
         }
     }
 
-    private static boolean isWriteAccessAvailable(@NonNull Uri fileUri) {
-        if (fileUri.getPath() == null) {
-            return false;
-        }
-        File file = new File(fileUri.getPath());
-
-        if (!file.isDirectory() && !file.mkdirs()) {
-            return false;
-        }
-
-        try {
-            if (file.createNewFile()) {
-                //noinspection ResultOfMethodCallIgnored
-                file.delete();
-            }
-            return true;
-        } catch (IOException ignored) {
-            return false;
-        }
-    }
-
-    // This is to work around the fact that java.net.URI throws Exceptions
-    // instead of just encoding URL's properly
-    // Helper method for onDownloadStartNoStream
-    @NonNull
-    private static String encodePath(@NonNull String path) {
-        char[] chars = path.toCharArray();
-
-        boolean needed = false;
-        for (char c : chars) {
-            if (c == '[' || c == ']' || c == '|') {
-                needed = true;
-                break;
-            }
-        }
-        if (!needed) {
-            return path;
-        }
-
-        StringBuilder sb = new StringBuilder();
-        for (char c : chars) {
-            if (c == '[' || c == ']' || c == '|') {
-                sb.append('%');
-                sb.append(Integer.toHexString(c));
-            } else {
-                sb.append(c);
-            }
-        }
-
-        return sb.toString();
-    }
 
 
 }
