@@ -1,5 +1,6 @@
 package com.cookiegames.smartcookie.settings.fragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.size
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
@@ -25,8 +27,7 @@ import com.cookiegames.smartcookie.browser.DrawerLineChoice
 import com.cookiegames.smartcookie.browser.DrawerSizeChoice
 import com.flask.colorpicker.ColorPickerView
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder
-
-
+import org.w3c.dom.Text
 
 
 class DisplaySettingsFragment : AbstractSettingsFragment() {
@@ -265,11 +266,19 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
                     gravity = Gravity.CENTER_HORIZONTAL
                 }
                 addView(text)
+                val size = TextView(activity).apply {
+                    setText(R.string.untitled)
+                    layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
+                    gravity = Gravity.CENTER_HORIZONTAL
+                }
+                addView(size)
+
                 findViewById<SeekBar>(R.id.text_size_seekbar).apply {
-                    setOnSeekBarChangeListener(TextSeekBarListener(text))
+                    setOnSeekBarChangeListener(TextSeekBarListener(text, size))
                     max = maxValue
                     progress = maxValue - userPreferences.textSize
                 }
+
             }
             setView(customView)
             setTitle(R.string.title_text_size)
@@ -316,11 +325,13 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
     })
 
     private class TextSeekBarListener(
-        private val sampleText: TextView
+        private val sampleText: TextView,
+        private val sizeText: TextView
     ) : SeekBar.OnSeekBarChangeListener {
 
         override fun onProgressChanged(view: SeekBar, size: Int, user: Boolean) {
             this.sampleText.textSize = getTextSize(size)
+            this.sizeText.text = (size * 20 + 60).toString() + "%"
         }
 
         override fun onStartTrackingTouch(arg0: SeekBar) {}
@@ -351,8 +362,8 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_WHATSNEW = "show_whats_new"
         private const val SETTINGS_IMAGE_URL = "image_url"
 
-
-
+        private const val XXXX_LARGE = 38.0f
+        private const val XXX_LARGE = 34.0f
         private const val XX_LARGE = 30.0f
         private const val X_LARGE = 26.0f
         private const val LARGE = 22.0f
@@ -367,6 +378,8 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
             3 -> LARGE
             4 -> X_LARGE
             5 -> XX_LARGE
+            6 -> XXX_LARGE
+            7 -> XXXX_LARGE
             else -> MEDIUM
         }
     }
