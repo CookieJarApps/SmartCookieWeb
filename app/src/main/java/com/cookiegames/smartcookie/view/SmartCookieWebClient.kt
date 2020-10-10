@@ -513,6 +513,9 @@ class SmartCookieWebClient(
     }
 
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
+        if(view.settings?.userAgentString!!.contains("wv")){
+            view.settings?.userAgentString = view.settings?.userAgentString?.replace("wv", "")
+        }
         currentUrl = url
         view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
         if(userPreferences.firstLaunch){

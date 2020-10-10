@@ -14,6 +14,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.util.Log
 import android.view.*
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.View.OnTouchListener
@@ -236,10 +237,6 @@ class SmartCookieView(
 
         if(WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK) && userPreferences.darkModeExtension) {
             WebSettingsCompat.setForceDark(webView!!.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
-        }
-
-        if(webView?.settings?.userAgentString!!.contains("wv")){
-            webView?.settings?.userAgentString = webView?.settings?.userAgentString?.replace("wv", "")
         }
     }
 
