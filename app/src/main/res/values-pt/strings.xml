@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_new_tab">Novo separador</string>
     <string name="action_share">Partilhar</string>
+    <string name="action_print">Imprimir</string>
     <string name="action_history">Histórico</string>
     <string name="action_bookmarks">Marcadores</string>
     <string name="action_downloads">Descargas</string>

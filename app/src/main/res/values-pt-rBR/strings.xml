@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_new_tab">Nova aba</string>
     <string name="action_share">Compartilhar</string>
+    <string name="action_print">Impressão</string>
     <string name="action_history">Histórico</string>
     <string name="action_bookmarks">Favoritos</string>
     <string name="action_downloads">Downloads</string>
@@ -20,7 +21,7 @@
     <string name="settings_advanced">Configurações avançadas</string>
     <string name="settings_advanced_explain">Conteúdo da barra de endereço, modo de renderização, codificação do texto&#8230;</string>
     <string name="apache">Licença Apache 2.0</string>
-    <string name="version">Versão da aplicação</string>
+    <string name="version">Versão do aplicativo</string>
     <string name="cache">Limpar cache ao sair</string>
     <string name="reflow">Ativar ajuste de texto</string>
     <string name="block">Bloquear imagens</string>
@@ -248,7 +249,7 @@
     <string name="adblock_category">Bloqueio de anúncios</string>
     <string name="cookie_category">Bloqueio de cookies (Beta)</string>
     <string name="tabs_in_drawer">Mostrar abas no menu de navegação</string>
-    <string name="swap_bookmarks_and_tabs">Trocar menus de abas e favoritos</string>
+    <string name="swap_bookmarks_and_tabs">Inverter os menus de abas e favoritos</string>
     <string name="do_not_track">Solicitar \'Não Rastrear\'</string>
     <string name="remove_identifying_headers">Remover identificação de cabeçalhos HTTP</string>
     <string name="action_add_to_homescreen">Adicionar à tela inicial</string>
@@ -285,7 +286,7 @@
         <item quantity="other">%1$d abas privadas abertas</item>
     </plurals>
     <string name="notification_incognito_running_message">Toque para abrir</string>
-    <string name="notification_incognito_running_description">Notificação persistente de aba privada</string>
+    <string name="notification_incognito_running_description">Notificação de aba privada aberta</string>
     <!-- Common actions -->
     <string name="action_message_canceled">Ação cancelada.</string>
     <!-- permissions request -->
@@ -407,7 +408,7 @@
     <string name="no_search_suggestions">Nenhuma sugestão</string>
     <string name="search_suggestions_4">Infelizmente, as sugestões de busca no Smart Cookie não estão mais disponíveis em dispositivos abaixo do Android 5.0. Pressione o botão abaixo para saber mais.</string>
     <string name="block_intent">Abrir todos os links neste navegador</string>
-    <string name="block_intent_summary">Bloqueia pedidos para abrir links em aplicações externas</string>
+    <string name="block_intent_summary">Bloqueia pedidos para abrir links em aplicativos externos</string>
     <string name="block_javascript">Bloquear JavaScript em sites</string>
     <string name="allow_javascript">Permitir JavaScript para o site</string>
     <string name="unlisted_javascript">Bloquear JavaScript nos sites listados</string>

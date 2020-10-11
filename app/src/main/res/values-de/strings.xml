@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_new_tab">Neuer Tab</string>
     <string name="action_share">Teilen</string>
+    <string name="action_print">Drucken</string>
     <string name="action_history">Verlauf</string>
     <string name="action_bookmarks">Lesezeichen</string>
     <string name="action_downloads">Downloads</string>
@@ -63,6 +64,8 @@
     <string name="dialog_adobe_not_installed">Adobe Flash Player ist nicht installiert.\nNBitte installieren Sie Flash Player.</string>
     <string name="title_user_agent">User Agent</string>
     <string name="title_download_location">Download Ordner</string>
+    <string name="download_failed">Download fehlgeschlagen mit Fehler:</string>
+    <string name="download_successful">Download erfolgreich</string>
     <string name="title_custom_homepage">Benutzerdefinierte Startseite</string>
     <string name="action_webpage">Webseite</string>
     <string name="title_clear_history">Verlauf löschen</string>
@@ -228,7 +231,7 @@
     <string name="tabs">Tabs</string>
     <string name="theme">App-Thema</string>
     <string name="light_theme">Helles Thema</string>
-    <string name="black_theme">Schwarzes Thema</string>
+    <string name="black_theme">AMOLED Thema</string>
     <string name="blue_theme">Blaues Thema</string>
     <string name="yellow_theme">Gelbes Thema</string>
     <string name="green_theme">Grünes Thema</string>
@@ -242,10 +245,10 @@
     <string name="message_web_storage_cleared">Webspeicher gelöscht</string>
     <string name="hosts_source">Quelle der Hosts-Datei für den Werbeblocker</string>
     <string name="settings_adblock">Inhaltsblocker Einstellungen</string>
-    <string name="adblock_summary">Werbeblocker...</string>
+    <string name="adblock_summary">Werbeblocker, Cookie-Dialogblocker ...</string>
     <string name="adblock_category">Werbeblocker</string>
     <string name="cookie_category">Cookie-Dialogblocker (beta)</string>
-    <string name="tabs_in_drawer">Tabs in einer Navigations-Schublade anzeigen</string>
+    <string name="tabs_in_drawer">Tabs in einer Schublade anzeigen</string>
     <string name="swap_bookmarks_and_tabs">Lesezeichen- und Tab-Schublade tauschen</string>
     <string name="do_not_track">\"Nicht verfolgen/tracken\" anfordern</string>
     <string name="remove_identifying_headers">Identifizierende HTTP-Header entfernen</string>
@@ -324,6 +327,8 @@
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
+    <string name="search_engine_searx">SearX.be</string>
+    <string name="search_engine_searx_cookiejarapps">CookieJarApps SearX</string>
     <string name="privacy">Datenschutzbestimmungen anzeigen</string>
     <string name="privacy_info">Lesen Sie die SmartCookieWeb-Datenschutzbestimmungen</string>
     <string name="block_malware">Bösartige Websites blockieren</string>
@@ -336,7 +341,7 @@
     <string name="forcehttps">Nicht-HTTPS-Sites blockieren</string>
     <string name="preferhttps">HTTPS-Site-Versionen bevorzugen</string>
     <string name="forcehttpsdesc">Nur HTTPS-Sites laden</string>
-    <string name="preferhttpsdesc">Immer HTTPS auf unterstützten Sites verwenden (kann Probleme verursachen)</string>
+    <string name="preferhttpsdesc">Immer HTTPS auf unterstützten Sites verwenden</string>
     <string name="startpagedesc">Farbe der Standard-Startseite auf die im Thema verwendete einstellen.</string>
     <string name="updatehomepage">Öffnen Sie einen neuen Tab, um die aktualisierte Homepage zu sehen</string>
     <string name="inspect">JavaScript injizieren</string>
@@ -368,7 +373,7 @@
     <string name="extensions_list">Liste der Erweiterungen</string>
     <string name="uninstall_extension">Erweiterung deinstallieren</string>
     <string name="uninstall_more">Geben Sie den Namen der Erweiterung ein, die Sie deinstallieren wollen</string>
-    <string name="show_extra">Zusätzliche Menüoptionen anzeigen</string>
+    <string name="show_extra">Schließen-Schaltfläche im Menü anzeigen</string>
     <string name="incognito_cookies_new">Der private Modus wird in einem separaten Fenster ausgeführt, das nach jeder Sitzung zurückgesetzt wird. Die Cookie-Einstellungen im privaten Modus werden jetzt durch die normalen Cookie-Einstellungen gesteuert.</string>
     <string name="quit_private">Privaten Modus beenden</string>
     <string name="start_incognito">Dauerhaft wie im privaten Modus verhalten</string>
@@ -388,7 +393,7 @@
     <string name="backup_settings">Backup der Einstellungen</string>
     <string name="backup_bookmarks">Backup der Lesezeichen</string>
     <string name="reset_settings">Einstellungen zurückgesetzt. App wird geschlossen... Bitte erneut öffnen.</string>
-    <string name="force_zoom">Vergrößerung erzwingen</string>
+    <string name="force_zoom">Zoom-Sperre bei Websites überschreiben</string>
     <string name="dark_mode">Dunkler Modus</string>
     <string name="submit">Erweiterung einreichen</string>
     <string name="translator">Übersetzer (Beta)</string>
@@ -405,6 +410,7 @@
     <string name="block_intent">Alle angeklickten Links in diesem Browser handhaben</string>
     <string name="block_intent_summary">Blockiert die Aufforderung zum Öffnen von Links in externen Anwendungen</string>
     <string name="block_javascript">JavaScript bei Websites blockieren</string>
+    <string name="allow_javascript">JavaScript für die Site erlauben</string>
     <string name="unlisted_javascript">JavaScript für aufgelistete Sites blockieren</string>
     <string name="listed_javascript">JavaScript nur für aufgelistete Sites zulassen</string>
     <string name="confirm">Zurücksetzen bestätigen</string>
@@ -412,7 +418,17 @@
     <string name="only_clear">Nur am Ende der Browsersitzung löschen</string>
     <string name="only_clear_summary">Die obigen Optionen nur löschen, wenn alle Browser-Tabs geschlossen wurden, anstatt immer dann wenn die App verlassen wird</string>
     <string name="enable_in_settings">AutoFill muss in den Android-Einstellungen eingerichtet sein, damit diese Option wirksam wird</string>
+    <string name="webrtc_description">Websites erlauben Zugriff auf Mikrofon und Kamera anzufordern</string>
     <string name="drawer_lines">Maximale Textzeilen in Schubladen</string>
     <string name="drawer_size">Textgröße in Schubladen</string>
+    <string name="privacy_set">Privatsphäre Einstellungen</string>
+    <string name="security_set">Sicherheit Einstellung</string>
+    <string name="page_source">Seitenquelltext anzeigen</string>
+    <string name="pagespeed_error">Diese Website verwendet PageSpeed. Die Bearbeitung des Quelltextes funktioniert möglicherweise nicht wie erwartet.</string>
+    <string name="app_lock">Passwort festlegen</string>
+    <string name="show_ssl">Zeigen SSL Warndialog</string>
+    <string name="warn">Ändern Sie dies nur, wenn Sie wissen, was Sie tun!</string>
+    <string name="download_channel">Downloads</string>
+    <string name="download_description">Informationen zum Download-Fortschritt</string>
     <!-- finish pages -->
 </resources>
