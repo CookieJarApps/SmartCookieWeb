@@ -171,9 +171,6 @@ class SmartCookieWebClient(
     }
 
     override fun onPageFinished(view: WebView, url: String) {
-        if(userPreferences.cookieBlockEnabled){
-            view.evaluateJavascript(cookieBlock.provideJs(), null)
-        }
         if(url.contains(BuildConfig.APPLICATION_ID + "/files/homepage.html")) {
             view.evaluateJavascript("javascript:(function() {"
                     + "link1var = '" + userPreferences.link1  + "';"
@@ -294,22 +291,7 @@ class SmartCookieWebClient(
         if (userPreferences.darkModeExtension && !WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
             view.evaluateJavascript(darkMode.provideJs(), null)
         }
-        val letDirectory = File(activity.getFilesDir(), "extensions")
-        letDirectory.mkdirs()
-        val file = File(letDirectory, "extension_file.txt")
-        if(file.exists()){
-            var contents = file.readText() // Read file
 
-            contents = contents.replace("(\\\\n)+".toRegex(), "")
-
-            contents = contents.replace("(\\\\\")+".toRegex(), "\"")
-
-
-            Log.d("extensions", contents)
-            view.settings.javaScriptEnabled = true
-            view.loadUrl("javascript:(function() {" + contents.toString() + "})()")
-            view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
-        }
         if (userPreferences.blockMalwareEnabled) {
             val inputStream: InputStream = activity.assets.open("malware.txt")
             val inputString = inputStream.bufferedReader().use { it.readText() }
@@ -421,6 +403,9 @@ class SmartCookieWebClient(
                 }
                 uiController.tabChanged(smartCookieView)
             }
+        }
+        if(userPreferences.cookieBlockEnabled){
+            view.evaluateJavascript(cookieBlock.provideJs(), null)
         }
     }
 
