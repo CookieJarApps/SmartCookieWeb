@@ -60,6 +60,10 @@
         android:id="@+id/action_history"
         android:title="@string/action_history"/>
     <item
+        android:icon="@drawable/ic_round_print_24"
+        android:id="@+id/action_print"
+        android:title="@string/action_print"/>
+    <item
         android:icon="@drawable/ic_share_black_24dp"
         android:id="@+id/action_share"
         android:title="@string/action_share"/>
