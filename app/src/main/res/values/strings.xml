@@ -5,6 +5,7 @@
     <string name="app_lightning" translatable="false">Lightning</string>
     <string name="action_new_tab">New tab</string>
     <string name="action_share">Share</string>
+    <string name="action_print">Print</string>
     <string name="action_history">History</string>
     <string name="action_bookmarks">Bookmarks</string>
     <string name="action_downloads">Downloads</string>

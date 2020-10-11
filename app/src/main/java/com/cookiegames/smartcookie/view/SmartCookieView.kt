@@ -4,17 +4,18 @@
 
 package com.cookiegames.smartcookie.view
 
+import android.R
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
+import android.content.Context
 import android.graphics.*
 import android.net.http.SslCertificate
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.util.Log
+import android.print.*
+import android.provider.Settings.Global.getString
 import android.view.*
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.View.OnTouchListener
@@ -22,7 +23,9 @@ import android.webkit.CookieManager
 import android.webkit.WebSettings
 import android.webkit.WebSettings.LayoutAlgorithm
 import android.webkit.WebView
+import android.widget.Toast
 import androidx.collection.ArrayMap
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.DeviceCapabilities
@@ -228,6 +231,7 @@ class SmartCookieView(
             initializeSettings()
         }
         initializePreferences()
+
 
         tabInitializer.initialize(tab, requestHeaders)
 
@@ -696,6 +700,23 @@ class SmartCookieView(
      */
     private fun setNetworkAvailable(isAvailable: Boolean) {
         webView?.setNetworkAvailable(isAvailable)
+    }
+
+    fun createWebPagePrint(webView: WebView) {
+        /*if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
+            return;*/
+        val printManager: PrintManager = activity.getSystemService(Context.PRINT_SERVICE) as PrintManager
+        val printAdapter: PrintDocumentAdapter = webView.createPrintDocumentAdapter()
+        val jobName: String = " Document"
+        val builder: PrintAttributes.Builder = PrintAttributes.Builder()
+        builder.setMediaSize(PrintAttributes.MediaSize.ISO_A5)
+        val printJob: PrintJob = printManager.print(jobName, printAdapter, builder.build())
+        if (printJob.isCompleted()) {
+            Toast.makeText(activity, R.string.yes, Toast.LENGTH_LONG).show()
+        } else if (printJob.isFailed()) {
+            Toast.makeText(activity, R.string.no, Toast.LENGTH_LONG).show()
+        }
+        // Save the job object for later status checking
     }
 
     /**

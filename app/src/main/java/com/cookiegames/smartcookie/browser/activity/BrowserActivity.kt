@@ -865,6 +865,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 IntentUtils(this).shareUrl(currentUrl, currentView?.title)
                 return true
             }
+            R.id.action_print -> {
+                currentView!!.webView?.let { currentView.createWebPagePrint(it) }
+                return true
+            }
             R.id.action_bookmarks -> {
                 openBookmarks()
                 return true
