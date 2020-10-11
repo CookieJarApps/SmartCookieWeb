@@ -2,11 +2,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_new_tab">Nova aba</string>
     <string name="action_share">Compartilhar</string>
-    <string name="action_print">Impressão</string>
+    <string name="action_print">Captura de tela</string>
     <string name="action_history">Histórico</string>
     <string name="action_bookmarks">Favoritos</string>
     <string name="action_downloads">Downloads</string>
-    <string name="action_add_bookmark">Adicionar favorito</string>
+    <string name="action_add_bookmark">Adicionar aos favoritos</string>
     <string name="action_copy">Copiar link</string>
     <string name="action_forward">Avançar</string>
     <string name="settings">Configurações</string>
@@ -40,8 +40,8 @@
     <string name="stock_browser_unavailable">Navegador nativo não detectado</string>
     <string name="stock_browser_available">Navegador nativo detectado</string>
     <string name="fullScreenOption">Ocultar barra de status ao navegar</string>
-    <string name="clear_cookies">Limpar cookies do navegador</string>
-    <string name="clear_history">Limpar o histórico de navegação</string>
+    <string name="clear_cookies">Limpar cookies</string>
+    <string name="clear_history">Limpar histórico</string>
     <string name="dialog_image">O que deseja fazer com esta imagem?</string>
     <string name="action_download">Baixar</string>
     <string name="action_open">Abrir</string>
@@ -49,7 +49,7 @@
     <string name="dialog_title_share">Compartilhar página</string>
     <string name="dialog_history_long_press">O que deseja fazer com este item de histórico?</string>
     <string name="dialog_bookmark">O que deseja fazer com este favorito?</string>
-    <string name="action_delete">Deletar</string>
+    <string name="action_delete">Excluir</string>
     <string name="action_blank">Página em branco</string>
     <string name="agent_default">Padrão</string>
     <string name="agent_desktop">Área de Trabalho</string>
@@ -75,7 +75,7 @@
     <string name="action_yes">Sim</string>
     <string name="action_no">Não</string>
     <string name="title_text_size">Tamanho do texto</string>
-    <string name="size_largest">Enorme</string>
+    <string name="size_largest">Muito grande</string>
     <string name="size_large">Grande</string>
     <string name="size_normal">Normal</string>
     <string name="size_small">Pequeno</string>
@@ -152,13 +152,13 @@
     <string name="search_suggestions_off">Nenhuma sugestão</string>
     <string name="http_proxy">Proxy HTTP</string>
     <string-array name="proxy_choices_array">
-        <item>Nenhuma</item>
+        <item>Nenhum proxy</item>
         <item>Orbot</item>
         <item>I2P</item>
         <item>Manual</item>
     </string-array>
     <string-array name="password_set_array">
-        <item>Nenhuma</item>
+        <item>Nenhuma senha</item>
         <item>Personalizado</item>
     </string-array>
     <string name="manual_proxy">Proxy manual</string>
@@ -197,7 +197,7 @@
     <string name="bookmark_export_failure">Desculpe, os favoritos não puderam ser exportados!</string>
     <string name="bookmark_settings">Configurações de favoritos</string>
     <string name="settings_bookmark_explain">Exportação e importação&#8230;</string>
-    <string name="import_bookmark_error">Não foi possível importar os favoritos do arquivo</string>
+    <string name="import_bookmark_error">Não foi possível importar os favoritos</string>
     <string name="title_chooser">Escolha um arquivo</string>
     <string name="settings_general">Configurações gerais</string>
     <string name="settings_general_explain">Motor de busca, proxy, página inicial&#8230;</string>
@@ -209,7 +209,7 @@
     <string name="settings_about_explain">Número da versão, autor e licenças&#8230;</string>
     <string name="close_tab">Fechar aba atual</string>
     <string name="close_all_tabs">Fechar todas as abas</string>
-    <string name="close_other_tabs">Fechar outras abas</string>
+    <string name="close_other_tabs">Fechar as outras abas</string>
     <string name="third_party">Bloquear cookies de terceiros</string>
     <string name="color_mode">Ativar modo de cor</string>
     <string name="reading_mode">Modo de leitura</string>
@@ -282,7 +282,7 @@
     <string name="message_bookmark_added">Favorito adicionado</string>
     <!-- Notifications -->
     <plurals name="notification_incognito_running_title">
-        <item quantity="one">%1$d guia privada aberta</item>
+        <item quantity="one">%1$d aba privada aberta</item>
         <item quantity="other">%1$d abas privadas abertas</item>
     </plurals>
     <string name="notification_incognito_running_message">Toque para abrir</string>
@@ -334,7 +334,7 @@
     <string name="block_malware">Bloquear sites maliciosos</string>
     <string name="block_sites">Bloqueio personalizado por site</string>
     <string name="block_sites_title">Bloqueio personalizado (separe os sites com vírgulas)</string>
-    <string name="none">Nenhuma</string>
+    <string name="none">Não bloquear</string>
     <string name="block_info">Insira as palavras que serão bloqueadas nos endereços (separadas por vírgula).</string>
     <string name="startpage">Aplicar tema à página inicial</string>
     <string name="allpage">Aplicar tema às páginas web (Beta)</string>
@@ -361,7 +361,7 @@
     <string name="settings_parents">Bloquear sites, definir senha...</string>
     <string name="label_realm">Mensagem do servidor: %s</string>
     <string name="new_tab_foreground">Trazer as abas para o primeiro plano</string>
-    <string name="new_tab_foreground_summary">Abrir uma nova aba quando ela for criada</string>
+    <string name="new_tab_foreground_summary">Abrir a nova aba quando ela for criada</string>
     <string name="site_not_secure">A conexão a este site não é segura.</string>
     <string name="language_not_supported">Idioma não suportado</string>
     <string name="language_not_supported_text">Infelizmente, a loja de extensões ainda não está disponível no seu idioma. Use o botão abaixo para continuar em Inglês.</string>
@@ -391,7 +391,7 @@
     <string name="import_settings">Importar backup de configurações</string>
     <string name="clear_settings">Redefinir configurações</string>
     <string name="backup_settings">Backup de configurações</string>
-    <string name="backup_bookmarks">Backup dos Favoritos</string>
+    <string name="backup_bookmarks">Backup de Favoritos</string>
     <string name="reset_settings">Configurações redefinidas. Fechando aplicativo... Por favor, reabra.</string>
     <string name="force_zoom">Forçar zoom</string>
     <string name="dark_mode">Modo noturno</string>
