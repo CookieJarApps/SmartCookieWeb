@@ -9,6 +9,7 @@
 [![Crowdin](https://badges.crowdin.net/smartcookieweb/localized.svg)](https://crowdin.com/project/smartcookieweb)
 [![Liberapay patrons](https://img.shields.io/liberapay/patrons/CookieJarApps)](https://liberapay.com/CookieJarApps)
 ![GitHub stars](https://img.shields.io/github/stars/cookiejarapps/smartcookieweb?style=social)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb?ref=badge_shield)
 
 
 https://smartcookieweb.com/
@@ -81,6 +82,9 @@ License in short:
 Copyright 2020 © CookieJarApps.
 
 ---
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb?ref=badge_large)
 
 ## Lightning Browser
 
