@@ -162,13 +162,13 @@ public final class BookmarkExporter {
     @NonNull
     public static File createNewExportFile() {
         File bookmarksExport = new File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+                Environment.getExternalStorageDirectory(),
                 "BookmarksExport.txt");
         int counter = 0;
         while (bookmarksExport.exists()) {
             counter++;
             bookmarksExport = new File(
-                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+                    Environment.getExternalStorageDirectory(),
                     "BookmarksExport-" + counter + ".txt");
         }
 
