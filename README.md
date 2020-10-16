@@ -26,6 +26,15 @@ https://smartcookieweb.com/
 
 ---
 
+## Support
+
+Need help? Open an issue here, or:
+
+- Email me at `support@cookiejarapps.com`
+- Join the Matrix chat at https://matrix.to/#/#smartcookieweb:matrix.org
+
+---
+
 ## Installation
 
 - To get started with this project, import it into Android Studio or build from the command line with Gradle:
@@ -61,13 +70,6 @@ Contributions are greatly appreciated. Feel free to open an issue or pull reques
 
 ---
 
-## Support
-
-Need help? Open an issue here, or:
-
-- Email me at `support@cookiegames.co.uk`
-
----
 
 ## License
 
