@@ -44,6 +44,9 @@ import androidx.core.net.toUri
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.palette.graphics.Palette
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.*
+import androidx.recyclerview.widget.RecyclerView
 import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
 import com.cookiegames.smartcookie.AppTheme
@@ -249,6 +252,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
      * An observable which asynchronously updates the user's cookie preferences.
      */
     protected abstract fun updateCookiePreference(): Completable
+
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

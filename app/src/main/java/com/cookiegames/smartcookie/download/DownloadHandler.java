@@ -270,6 +270,7 @@ public class DownloadHandler {
                                 .setSmallIcon(R.drawable.ic_file_download_black_24dp)
                                 .setProgress(0,0,false);
                         notificationManager.notify(uniqid + 1, builder.build());
+                        legacyDownloadStart(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
                     }
                 });
 
