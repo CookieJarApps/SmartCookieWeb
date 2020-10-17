@@ -20,6 +20,8 @@ import android.os.Handler
 import android.os.Message
 import android.preference.PreferenceManager
 import android.provider.MediaStore
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
@@ -92,6 +94,7 @@ import kotlinx.android.synthetic.main.browser_content.*
 import kotlinx.android.synthetic.main.search.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
+import org.w3c.dom.Text
 import java.io.IOException
 import java.util.*
 import javax.inject.Inject
@@ -992,10 +995,27 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     private fun showFindInPageControls(text: String) {
         search_bar.visibility = VISIBLE
 
-        findViewById<TextView>(R.id.search_query).text = resources.getString(R.string.search_in_page_query, text)
+        findViewById<TextView>(R.id.search_query).text = text
         findViewById<ImageButton>(R.id.button_next).setOnClickListener(this)
         findViewById<ImageButton>(R.id.button_back).setOnClickListener(this)
         findViewById<ImageButton>(R.id.button_quit).setOnClickListener(this)
+        findViewById<ImageButton>(R.id.button_search).setOnClickListener(this)
+
+
+        findViewById<TextView>(R.id.search_query).addTextChangedListener(object: TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                Log.d("FIPtag", "Changed")
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Log.d("FIPtag", "Changed")
+            }
+
+        })
     }
 
     override fun isColorMode(): Boolean = userPreferences.colorModeEnabled && !isDarkTheme
@@ -2088,6 +2108,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 findResult?.clearResults()
                 findResult = null
                 search_bar.visibility = GONE
+            }
+            R.id.button_search -> {
+                showFindInPageControls(findViewById<EditText>(R.id.search_query).text.toString())
+                findResult = presenter?.findInPage(findViewById<EditText>(R.id.search_query).text.toString())
             }
         }
     }
