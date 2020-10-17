@@ -9,6 +9,7 @@
 [![Crowdin](https://badges.crowdin.net/smartcookieweb/localized.svg)](https://crowdin.com/project/smartcookieweb)
 [![Liberapay patrons](https://img.shields.io/liberapay/patrons/CookieJarApps)](https://liberapay.com/CookieJarApps)
 ![GitHub stars](https://img.shields.io/github/stars/cookiejarapps/smartcookieweb?style=social)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb?ref=badge_shield)
 
 
 https://smartcookieweb.com/
@@ -22,6 +23,15 @@ A secure, free and open source WebView-based web browser for Android.
 
 https://smartcookieweb.com/
 
+
+---
+
+## Support
+
+Need help? Open an issue here, or:
+
+- Email me at `support@cookiejarapps.com`
+- Join the Matrix chat at https://matrix.to/#/#smartcookieweb:matrix.org
 
 ---
 
@@ -60,13 +70,6 @@ Contributions are greatly appreciated. Feel free to open an issue or pull reques
 
 ---
 
-## Support
-
-Need help? Open an issue here, or:
-
-- Email me at `support@cookiegames.co.uk`
-
----
 
 ## License
 
@@ -81,6 +84,9 @@ License in short:
 Copyright 2020 © CookieJarApps.
 
 ---
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb?ref=badge_large)
 
 ## Lightning Browser
 
