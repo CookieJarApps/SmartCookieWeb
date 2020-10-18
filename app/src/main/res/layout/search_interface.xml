@@ -17,6 +17,7 @@
         android:layout_weight="1"
         android:ellipsize="end"
         android:fontFamily="sans-serif"
+        android:singleLine="true"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/material_grid_margin"
         android:textAppearance="?android:attr/textAppearanceListItem"

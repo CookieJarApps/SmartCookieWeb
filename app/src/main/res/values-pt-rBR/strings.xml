@@ -161,6 +161,14 @@
         <item>Nenhuma senha</item>
         <item>Personalizado</item>
     </string-array>
+    <string-array name="suggestion_name_array">
+        <item>Três</item>
+        <item>Quatro</item>
+        <item>Cinco</item>
+        <item>Seis</item>
+        <item>Sete</item>
+        <item>Oito</item>
+    </string-array>
     <string name="manual_proxy">Proxy manual</string>
     <string name="host">Servidor:</string>
     <string name="port">Porta:</string>
@@ -243,7 +251,7 @@
     <string name="clear_web_storage">Limpar armazenamento web</string>
     <string name="clear_web_storage_exit">Limpar armazenamento web ao sair</string>
     <string name="message_web_storage_cleared">Armazenamento web limpo</string>
-    <string name="hosts_source">Fonte dos Hosts de bloqueio de anúncios</string>
+    <string name="hosts_source">Fonte do arquivo de hosts de bloqueio de anúncios</string>
     <string name="settings_adblock">Configurações de bloqueio de conteúdo</string>
     <string name="adblock_summary">Bloqueio de anúncios...</string>
     <string name="adblock_category">Bloqueio de anúncios</string>
@@ -268,11 +276,6 @@
     <string name="block_source_local_description">Arquivo: %1$s</string>
     <string name="block_source_remote">Arquivo remoto</string>
     <string name="block_source_remote_description">URL: %1$s</string>
-    <string-array name="block_ad_source_list">
-        <item>@string/block_source_default</item>
-        <item>@string/block_source_local</item>
-        <item>@string/block_source_remote</item>
-    </string-array>
     <!--Ad block -->
     <string name="ad_block_load_failure">Falha ao carregar hosts da fonte de bloqueio de anúncios.</string>
     <string name="infinity">∞</string>
@@ -332,13 +335,13 @@
     <string name="privacy">Ver Política de Privacidade</string>
     <string name="privacy_info">Ler política de privacidade do SmartCookieWeb</string>
     <string name="block_malware">Bloquear sites maliciosos</string>
-    <string name="block_sites">Bloqueio personalizado por site</string>
+    <string name="block_sites">Bloqueio de sites personalizado</string>
     <string name="block_sites_title">Bloqueio personalizado (separe os sites com vírgulas)</string>
     <string name="none">Não bloquear</string>
     <string name="block_info">Insira as palavras que serão bloqueadas nos endereços (separadas por vírgula).</string>
     <string name="startpage">Aplicar tema à página inicial</string>
     <string name="allpage">Aplicar tema às páginas web (Beta)</string>
-    <string name="forcehttps">Bloquear sites non-HTTPS</string>
+    <string name="forcehttps">Bloquear sites que não sejam HTTPS</string>
     <string name="preferhttps">Preferir versões HTTPS do site</string>
     <string name="forcehttpsdesc">Carregar apenas sites HTTPS</string>
     <string name="preferhttpsdesc">Sempre usar HTTPS em sites suportados (pode causar problemas)</string>
@@ -348,7 +351,7 @@
     <string name="bookmark">Favorito adicionado</string>
     <string name="error_title">&lt;br&gt; Não foi possível carregar o site.</string>
     <string name="error_reload">Recarregar</string>
-    <string name="https_title">&lt;br&gt; O site não tem suporte a HTTPS e o acesso a sites HTTP está bloqueado nas definições.</string>
+    <string name="https_title">&lt;br&gt; O site não tem suporte a HTTPS e o acesso a sites HTTP está bloqueado.</string>
     <string name="malware_title">&lt;br&gt; Parece que este site tem malware.</string>
     <string name="malware_message">Entre em contato com support@cookiegames.co.uk se isso for um erro.</string>
     <string name="blocked_title">&lt;br&gt; Este site está bloqueado nas configurações.</string>
@@ -409,8 +412,8 @@
     <string name="search_suggestions_4">Infelizmente, as sugestões de busca no Smart Cookie não estão mais disponíveis em dispositivos abaixo do Android 5.0. Pressione o botão abaixo para saber mais.</string>
     <string name="block_intent">Abrir todos os links neste navegador</string>
     <string name="block_intent_summary">Bloqueia pedidos para abrir links em aplicativos externos</string>
-    <string name="block_javascript">Bloquear JavaScript em sites</string>
-    <string name="allow_javascript">Permitir JavaScript para o site</string>
+    <string name="block_javascript">Bloquear JavaScript</string>
+    <string name="allow_javascript">Permitir JavaScript</string>
     <string name="unlisted_javascript">Bloquear JavaScript nos sites listados</string>
     <string name="listed_javascript">Permitir JavaScript apenas nos sites listados</string>
     <string name="confirm">Confirmar redefinição</string>
@@ -430,5 +433,6 @@
     <string name="warn">Só mude isso se souber o que está fazendo!</string>
     <string name="download_channel">Downloads</string>
     <string name="download_description">Informações sobre o progresso do download</string>
+    <string name="download_to_sd">Baixar no cartão SD</string>
     <!-- finish pages -->
 </resources>
