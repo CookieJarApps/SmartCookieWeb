@@ -413,7 +413,7 @@
     <string name="block_intent">Abrir todos os links neste navegador</string>
     <string name="block_intent_summary">Bloqueia pedidos para abrir links em aplicativos externos</string>
     <string name="block_javascript">Bloquear JavaScript</string>
-    <string name="allow_javascript">Permitir JavaScript para o site</string>
+    <string name="allow_javascript">Permitir JavaScript</string>
     <string name="unlisted_javascript">Bloquear JavaScript nos sites listados</string>
     <string name="listed_javascript">Permitir JavaScript apenas nos sites listados</string>
     <string name="confirm">Confirmar redefinição</string>
