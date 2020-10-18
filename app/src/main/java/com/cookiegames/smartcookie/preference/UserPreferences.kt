@@ -355,6 +355,7 @@ class UserPreferences @Inject constructor(
     var link3 by preferences.stringPreference(LINK3, "https://youtube.com")
     var link4 by preferences.stringPreference(LINK4, "https://speedtest.cookiejarapps.com")
 
+
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
@@ -441,3 +442,4 @@ private const val LINK1 = "link1"
 private const val LINK2 = "link2"
 private const val LINK3 = "link3"
 private const val LINK4 = "link4"
+private const val DOWNLOAD_SD = "downloadSD"
