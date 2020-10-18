@@ -72,10 +72,12 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 summary = userPreferences.downloadDirectory,
                 onClick = ::showDownloadLocationDialog
         )
+        val stringArray = resources.getStringArray(R.array.suggestion_name_array)
+
 
        clickableDynamicPreference(
                preference = SETTINGS_SUGGESTIONS_NUM,
-               summary = userPreferences.suggestionChoice.toString(),
+               summary = stringArray[userPreferences.suggestionChoice.value],
                onClick = ::showSuggestionNumPicker
        )
 
@@ -144,7 +146,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
     private fun showSuggestionNumPicker(summaryUpdater: SummaryUpdater) {
         BrowserDialog.showCustomDialog(activity) {
             setTitle(R.string.suggestion)
-            val stringArray = resources.getStringArray(R.array.suggest)
+            val stringArray = resources.getStringArray(R.array.suggestion_name_array)
             val values = SuggestionNumChoice.values().map {
                 Pair(it, when (it) {
                     SuggestionNumChoice.THREE -> stringArray[0]
@@ -164,9 +166,10 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun updateSearchNum(choice: SuggestionNumChoice, activity: Activity, summaryUpdater: SummaryUpdater) {
+        val stringArray = resources.getStringArray(R.array.suggestion_name_array)
 
         userPreferences.suggestionChoice = choice
-        summaryUpdater.updateSummary(choice.toString())
+        summaryUpdater.updateSummary(stringArray[choice.value])
     }
 
     private fun ProxyChoice.toSummary(): String {

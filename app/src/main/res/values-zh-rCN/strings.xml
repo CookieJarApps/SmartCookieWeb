@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_new_tab">新标签</string>
     <string name="action_share">分享</string>
+    <string name="action_print">打印</string>
     <string name="action_history">历史</string>
     <string name="action_bookmarks">书签</string>
     <string name="action_downloads">下载</string>
@@ -421,7 +422,6 @@
     <string name="drawer_size">自动调整抽屉文字</string>
     <string name="privacy_set">隐私设置</string>
     <string name="security_set">安全设置</string>
-
     <string name="page_source">查看页面源代码</string>
     <string name="pagespeed_error">此网站使用 PageSpeed。源编辑可能不会如预期那样工作。</string>
     <string name="app_lock">设置应用密码</string>

@@ -5,6 +5,9 @@
 /.idea/workspace.xml
 /build
 
+# Crowdin
+crowdin.properties
+
 # External tool builders
 .externalToolBuilders/
 
