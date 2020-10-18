@@ -1000,22 +1000,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         findViewById<ImageButton>(R.id.button_back).setOnClickListener(this)
         findViewById<ImageButton>(R.id.button_quit).setOnClickListener(this)
         findViewById<ImageButton>(R.id.button_search).setOnClickListener(this)
-
-
-        findViewById<TextView>(R.id.search_query).addTextChangedListener(object: TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                Log.d("FIPtag", "Changed")
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                Log.d("FIPtag", "Changed")
-            }
-
-        })
     }
 
     override fun isColorMode(): Boolean = userPreferences.colorModeEnabled && !isDarkTheme
