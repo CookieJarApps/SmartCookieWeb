@@ -439,7 +439,8 @@
     <string name="download_channel">İndirilenler</string>
     <string name="download_description">İndirme ilerlemesi hakkında bilgi</string>
     <string name="download_to_sd">SD karta indir</string>
-    <string name="legacy_download_manager">Use integrated download manager</string>
-    <string name="legacy_download_manager_desc">Download files using the SmartCookieWeb download manager, instead of the system one</string>
+    <string name="legacy_download_manager">Entegre indirme yöneticisini kullan</string>
+    <string name="legacy_download_manager_desc">Dosyaları, sistem yerine SmartCookieWeb indirme yöneticisini kullanarak indir</string>
     <!-- finish pages -->
+    <string name="image_url">Ana sayfa arka plan resmi ayarla</string>
 </resources>
