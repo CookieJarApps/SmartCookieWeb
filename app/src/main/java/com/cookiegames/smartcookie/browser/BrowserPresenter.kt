@@ -169,7 +169,7 @@ class BrowserPresenter(
             if(userPreferences.closeOnLastTab) {
                 view.closeActivity()
             }
-            else if(!userPreferences.closeOnLastTab && tabsModel.currentTab == null) {
+            else if(!userPreferences.closeOnLastTab && tabsModel.currentTab == null && !isIncognito) {
                 newTab(UrlInitializer(mapHomepageToCurrentUrl()), true)
             }
             return
