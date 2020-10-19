@@ -161,6 +161,14 @@
         <item>Nenhuma</item>
         <item>Personalizada</item>
     </string-array>
+    <string-array name="suggestion_name_array">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
     <string name="manual_proxy">Proxy manual</string>
     <string name="host">Servidor:</string>
     <string name="port">Porta:</string>
@@ -268,11 +276,6 @@
     <string name="block_source_local_description">Ficheiro: %1$s</string>
     <string name="block_source_remote">Ficheiro remoto</string>
     <string name="block_source_remote_description">URL: %1$s</string>
-    <string-array name="block_ad_source_list">
-        <item>@string/block_source_default</item>
-        <item>@string/block_source_local</item>
-        <item>@string/block_source_remote</item>
-    </string-array>
     <!--Ad block -->
     <string name="ad_block_load_failure">Falha ao carregar o ficheiro hosts tendo por base a origem.</string>
     <string name="infinity">âˆž</string>
@@ -430,5 +433,6 @@
     <string name="warn">Apenas deve alterar esta definição se souber o que está a fazer!</string>
     <string name="download_channel">Descargas</string>
     <string name="download_description">Informação sobre as descargas em curso</string>
+    <string name="download_to_sd">Descarregar para o cartão SD</string>
     <!-- finish pages -->
 </resources>
