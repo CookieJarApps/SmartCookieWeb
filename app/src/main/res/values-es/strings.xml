@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_new_tab">Nueva pestaña</string>
     <string name="action_share">Compartir</string>
+    <string name="action_print">Imprimir</string>
     <string name="action_history">Historia</string>
     <string name="action_bookmarks">Marcadores</string>
     <string name="action_downloads">Descargas</string>
@@ -63,6 +64,8 @@
     <string name="dialog_adobe_not_installed">Adobe Flash Player no está instalado. \ NInstale Flash Player.</string>
     <string name="title_user_agent">Agente de usuario</string>
     <string name="title_download_location">Ubicación de la descarga</string>
+    <string name="download_failed">Descarga fallida, error:</string>
+    <string name="download_successful">Descarga completa</string>
     <string name="title_custom_homepage">Página de inicio personalizada</string>
     <string name="action_webpage">Página web</string>
     <string name="title_clear_history">Limpiar historial</string>
@@ -158,6 +161,14 @@
         <item>Ninguna</item>
         <item>Personalizado</item>
     </string-array>
+    <string-array name="suggestion_name_array">
+        <item>Three</item>
+        <item>Four</item>
+        <item>Five</item>
+        <item>Six</item>
+        <item>Seven</item>
+        <item>Eight</item>
+    </string-array>
     <string name="manual_proxy">Proxy manual</string>
     <string name="host">Anfitrión:</string>
     <string name="port">Puerto:</string>
@@ -242,7 +253,7 @@
     <string name="message_web_storage_cleared">Almacenamiento web despejado</string>
     <string name="hosts_source">Fuente de bloqueo de anuncios de archivos de host</string>
     <string name="settings_adblock">Configuración de bloque de contenido</string>
-    <string name="adblock_summary">Bloque de anuncios...</string>
+    <string name="adblock_summary">Bloque de anuncios, bloque de diálogo de cookies ...</string>
     <string name="adblock_category">Bloque de anuncios</string>
     <string name="cookie_category">Bloque de diálogo de cookies</string>
     <string name="tabs_in_drawer">Mostrar pestañas en el cajón de navegación</string>
@@ -265,11 +276,6 @@
     <string name="block_source_local_description">Archivo: %1$s</string>
     <string name="block_source_remote">Archivo de hosts remotos</string>
     <string name="block_source_remote_description">URL: %1$s</string>
-    <string-array name="block_ad_source_list">
-        <item>@string/block_source_default</item>
-        <item>@string/block_source_local</item>
-        <item>@string/block_source_remote</item>
-    </string-array>
     <!--Ad block -->
     <string name="ad_block_load_failure">Error al cargar hosts desde la fuente de bloqueo de anuncios.</string>
     <string name="infinity">∞</string>
@@ -324,6 +330,8 @@
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
+    <string name="search_engine_searx">SearX.be</string>
+    <string name="search_engine_searx_cookiejarapps">Buscador de CookieJarApps, instancia de SearX</string>
     <string name="privacy">Ver política de privacidad</string>
     <string name="privacy_info">Lea la política de privacidad de SmartCookieWeb</string>
     <string name="block_malware">Bloquear sitios maliciosos</string>
@@ -371,6 +379,7 @@
     <string name="show_extra">Mostrar opciones de menú adicionales</string>
     <string name="incognito_cookies_new">El modo privado se ejecuta en una ventana independiente que se restablece después de cada sesión. Las preferencias de cookies en modo privado ahora están controladas por las preferencias normales de cookies.</string>
     <string name="quit_private">Salir del modo privado</string>
+    <string name="image_url">Set a homepage background image</string>
     <string name="start_incognito">Actúa siempre como un modo privado</string>
     <string name="bottom_navbar">Mover la barra de direcciones a la parte inferior</string>
     <string name="please_restart">Reinicie la aplicación para ver los cambios</string>
@@ -405,6 +414,7 @@
     <string name="block_intent">Manejar todos los enlaces pulsados dentro de este navegador</string>
     <string name="block_intent_summary">Bloquea el aviso para abrir enlaces en aplicaciones externas</string>
     <string name="block_javascript">Bloquear JavaScript de los sitios</string>
+    <string name="allow_javascript">Permitir Javascript para el sitio</string>
     <string name="unlisted_javascript">Bloquear JavaScript para sitios listados</string>
     <string name="listed_javascript">Sólo permitir JavaScript para sitios listados</string>
     <string name="confirm">Confirmar reseteo</string>
@@ -412,7 +422,20 @@
     <string name="only_clear">Sólo limpiar al finalizar la sesión del navegador</string>
     <string name="only_clear_summary">Borrar sólo las opciones anteriores cuando todas las pestañas del navegador hayan sido cerradas, en lugar de cuando la aplicación esté cerrada</string>
     <string name="enable_in_settings">El relleno automático necesita configurarse en los ajustes de Android para que esta opción tenga efecto</string>
+    <string name="webrtc_description">Permitir a los sitios web solicitar acceso al micrófono y a la cámara</string>
     <string name="drawer_lines">Líneas de texto máximas en el cajón</string>
     <string name="drawer_size">Auto-redimensionar texto del cajón</string>
+    <string name="privacy_set">Ajustes de privacidad</string>
+    <string name="security_set">Ajustes de seguridad</string>
+    <string name="page_source">Ver código fuente de la página</string>
+    <string name="pagespeed_error">Este sitio web utiliza PageSpeed. Es posible que la edición de fuentes no funcione como se esperaba.</string>
+    <string name="app_lock">Establecer contraseña para la aplicación</string>
+    <string name="show_ssl">Mostrar diálogos de advertencia SSL</string>
+    <string name="warn">¡Sólo cambia esto si sabes lo que estás haciendo!</string>
+    <string name="download_channel">Descargas</string>
+    <string name="download_description">Información sobre el progreso de la descarga</string>
+    <string name="download_to_sd">Download to SD card</string>
+    <string name="legacy_download_manager">Use integrated download manager</string>
+    <string name="legacy_download_manager_desc">Download files using the SmartCookieWeb download manager, instead of the system one</string>
     <!-- finish pages -->
 </resources>
