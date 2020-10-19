@@ -527,10 +527,10 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 val proxyHost = blockedSites.text.toString()
                 userPreferences.javaScriptBlocked = proxyHost
                 if(choice.toString() == "BLACKLIST"){
-                    summaryUpdater.updateSummary(getText(R.string.only_allow_sites).toString())
+                    summaryUpdater.updateSummary(getText(R.string.listed_javascript).toString())
                 }
                 else{
-                    summaryUpdater.updateSummary(getText(R.string.block_all_sites).toString())
+                    summaryUpdater.updateSummary(getText(R.string.unlisted_javascript).toString())
                 }
 
             }
