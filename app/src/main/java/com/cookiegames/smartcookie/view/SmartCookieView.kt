@@ -757,7 +757,7 @@ class SmartCookieView(
             if (url != null) {
                 if (result != null) {
                     if (result.type == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE || result.type == WebView.HitTestResult.IMAGE_TYPE) {
-                        dialogBuilder.showLongPressImageDialog(activity, uiController, url, userAgent)
+                        dialogBuilder.showLongPressImageDialog(activity, uiController, result.extra!!, userAgent)
                     } else {
                         dialogBuilder.showLongPressLinkDialog(activity, uiController, url)
                     }

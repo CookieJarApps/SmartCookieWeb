@@ -21,7 +21,9 @@ import com.cookiegames.smartcookie.utils.IntentUtils
 import com.cookiegames.smartcookie.utils.isBookmarkUrl
 import android.app.Activity
 import android.content.ClipboardManager
+import android.util.Log
 import android.view.View
+import android.webkit.MimeTypeMap
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.EditText
@@ -320,7 +322,15 @@ class LightningDialogBuilder @Inject constructor(
             clipboardManager.copyToClipboard(url)
         },
         DialogItem(title = R.string.dialog_download_image) {
-            downloadHandler.onDownloadStart(activity, userPreferences, url, userAgent, "attachment", null, "")
+            val mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(url).toLowerCase())
+
+            if(mimeType != null){
+                downloadHandler.onDownloadStart(activity, userPreferences, url, userAgent, "attachment", mimeType, "")
+            }
+            else{
+                downloadHandler.onDownloadStart(activity, userPreferences, url, userAgent, "attachment", "image/png", "")
+            }
+
         })
 
     fun showLongPressLinkDialog(

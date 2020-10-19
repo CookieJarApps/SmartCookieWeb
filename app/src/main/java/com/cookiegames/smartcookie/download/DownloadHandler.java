@@ -205,6 +205,39 @@ public class DownloadHandler {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "com.cookiegames.smartcookieweb.downloads");
         Log.d(TAG, fileName);
+
+
+        // if we're dealing wih A/V content that's not explicitly marked
+        // for download, check if it's streamable.
+        if (contentDisposition == null
+                || !contentDisposition.regionMatches(true, 0, "attachment", 0, 10)) {
+            // query the package manager to see if there's a registered handler
+            // that matches.
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.parse(url), mimeType);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.setComponent(null);
+            intent.setSelector(null);
+            ResolveInfo info = context.getPackageManager().resolveActivity(intent,
+                    PackageManager.MATCH_DEFAULT_ONLY);
+            if (info != null) {
+                // If we resolved to ourselves, we don't want to attempt to
+                // load the url only to try and download it again.
+                if (BuildConfig.APPLICATION_ID.equals(info.activityInfo.packageName)
+                        || MainActivity.class.getName().equals(info.activityInfo.name)) {
+                    // someone (other than us) knows how to handle this mime
+                    // type with this scheme, don't download.
+                    try {
+                        context.startActivity(intent);
+                        return;
+                    } catch (ActivityNotFoundException ex) {
+                        // Best behavior is to fall back to a download in this
+                        // case
+                    }
+                }
+            }
+        }
         int downloadId = PRDownloader.download(url, downloadFolder.toString(), URLUtil.guessFileName(url, contentDisposition, mimeType))
                 .build()
                 .setOnStartOrResumeListener(new OnStartOrResumeListener() {
@@ -266,47 +299,10 @@ public class DownloadHandler {
                     @Override
                     public void onError(Error error) {
                         notificationManager.cancel(uniqid);
-                        builder.setContentText("Download error: " + error)
-                                .setSmallIcon(R.drawable.ic_file_download_black_24dp)
-                                .setProgress(0,0,false);
-                        notificationManager.notify(uniqid + 1, builder.build());
                         legacyDownloadStart(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
                     }
                 });
 
-
-
-        // if we're dealing wih A/V content that's not explicitly marked
-        // for download, check if it's streamable.
-        if (contentDisposition == null
-                || !contentDisposition.regionMatches(true, 0, "attachment", 0, 10)) {
-            // query the package manager to see if there's a registered handler
-            // that matches.
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(Uri.parse(url), mimeType);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addCategory(Intent.CATEGORY_BROWSABLE);
-            intent.setComponent(null);
-            intent.setSelector(null);
-            ResolveInfo info = context.getPackageManager().resolveActivity(intent,
-                    PackageManager.MATCH_DEFAULT_ONLY);
-            if (info != null) {
-                // If we resolved to ourselves, we don't want to attempt to
-                // load the url only to try and download it again.
-                if (BuildConfig.APPLICATION_ID.equals(info.activityInfo.packageName)
-                        || MainActivity.class.getName().equals(info.activityInfo.name)) {
-                    // someone (other than us) knows how to handle this mime
-                    // type with this scheme, don't download.
-                    try {
-                        context.startActivity(intent);
-                        return;
-                    } catch (ActivityNotFoundException ex) {
-                        // Best behavior is to fall back to a download in this
-                        // case
-                    }
-                }
-            }
-        }
         // save download in database
         UIController browserActivity = (UIController) context;
         SmartCookieView view = browserActivity.getTabModel().getCurrentTab();
