@@ -23,7 +23,6 @@ A secure, free and open source WebView-based web browser for Android.
 
 https://smartcookieweb.com/
 
-
 ---
 
 ## Support
