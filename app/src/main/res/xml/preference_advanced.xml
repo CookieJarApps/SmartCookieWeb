@@ -32,6 +32,12 @@
             android:title="@string/restore" />
         <SwitchPreference
             android:defaultValue="true"
+            android:key="downloader"
+            android:singleLineTitle="false"
+            android:title="@string/legacy_download_manager"
+            android:summary="@string/legacy_download_manager_desc"/>
+        <SwitchPreference
+            android:defaultValue="true"
             android:key="show_ssl"
             android:singleLineTitle="false"
             android:title="@string/show_ssl"
@@ -48,5 +54,6 @@
             android:key="url_contents"
             android:singleLineTitle="false"
             android:title="@string/url_contents" />
+
     </PreferenceCategory>
 </PreferenceScreen>

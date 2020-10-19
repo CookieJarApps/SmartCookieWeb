@@ -62,7 +62,12 @@ public class LightningDownloadListener implements DownloadListener {
                         DialogInterface.OnClickListener dialogClickListener = (dialog, which) -> {
                             switch (which) {
                                 case DialogInterface.BUTTON_POSITIVE:
-                                    downloadHandler.onDownloadStart(mActivity, userPreferences, url, userAgent, contentDisposition, mimetype, downloadSize);
+                                    if(userPreferences.getUseNewDownloader()){
+                                        downloadHandler.onDownloadStart(mActivity, userPreferences, url, userAgent, contentDisposition, mimetype, downloadSize);
+                                    }else{
+                                        downloadHandler.legacyDownloadStart(mActivity, userPreferences, url, userAgent, contentDisposition, mimetype, downloadSize);
+                                    }
+
                                     break;
                                 case DialogInterface.BUTTON_NEGATIVE:
                                     break;

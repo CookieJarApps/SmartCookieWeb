@@ -325,10 +325,20 @@ class LightningDialogBuilder @Inject constructor(
             val mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(url).toLowerCase())
 
             if(mimeType != null){
-                downloadHandler.onDownloadStart(activity, userPreferences, url, userAgent, "attachment", mimeType, "")
+                if(userPreferences.useNewDownloader){
+                    downloadHandler.onDownloadStart(activity, userPreferences, url, userAgent, "attachment", mimeType, "")
+                }else{
+                    downloadHandler.legacyDownloadStart(activity, userPreferences, url, userAgent, "attachment", mimeType, "")
+                }
+
             }
             else{
-                downloadHandler.onDownloadStart(activity, userPreferences, url, userAgent, "attachment", "image/png", "")
+                if(userPreferences.useNewDownloader) {
+                    downloadHandler.onDownloadStart(activity, userPreferences, url, userAgent, "attachment", "image/png", "")
+                }
+                else{
+                    downloadHandler.legacyDownloadStart(activity, userPreferences, url, userAgent, "attachment", "image/png", "")
+                }
             }
 
         })

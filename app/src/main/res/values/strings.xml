@@ -511,5 +511,8 @@
     <string name="download_description">Information about download progress</string>
 
     <string name="download_to_sd">Download to SD card</string>
+
+    <string name="legacy_download_manager">Use integrated download manager</string>
+    <string name="legacy_download_manager_desc">Download files using the SmartCookieWeb download manager, instead of the system one</string>
     <!-- finish pages -->
 </resources>

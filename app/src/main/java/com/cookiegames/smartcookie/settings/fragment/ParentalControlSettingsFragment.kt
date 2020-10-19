@@ -164,8 +164,8 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
     private fun PasswordChoice.toSummary(): String {
         val stringArray = resources.getStringArray(R.array.password)
         return when (this) {
-            PasswordChoice.NONE -> resources.getString(R.string.none)
-            PasswordChoice.CUSTOM -> resources.getString(R.string.agent_custom)
+            PasswordChoice.NONE -> stringArray[0]
+            PasswordChoice.CUSTOM -> stringArray[1]
         }
     }
 

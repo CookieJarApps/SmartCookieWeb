@@ -355,7 +355,7 @@ class UserPreferences @Inject constructor(
     var link3 by preferences.stringPreference(LINK3, "https://youtube.com")
     var link4 by preferences.stringPreference(LINK4, "https://speedtest.cookiejarapps.com")
 
-
+    var useNewDownloader by preferences.booleanPreference(LEGACY_DOWNLOADER, false)
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
@@ -443,3 +443,4 @@ private const val LINK2 = "link2"
 private const val LINK3 = "link3"
 private const val LINK4 = "link4"
 private const val DOWNLOAD_SD = "downloadSD"
+private const val LEGACY_DOWNLOADER = "legacyDownloader"

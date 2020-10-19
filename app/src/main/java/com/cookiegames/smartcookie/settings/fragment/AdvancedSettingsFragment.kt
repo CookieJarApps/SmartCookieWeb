@@ -81,6 +81,12 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
             onCheckChange = { userPreferences.restoreLostTabsEnabled = it }
         )
 
+        switchPreference(
+                preference = SETTINGS_LEGACY_DOWNLOADER,
+                isChecked = userPreferences.useNewDownloader,
+                onCheckChange = { userPreferences.useNewDownloader = it }
+        )
+
         val incognitoCheckboxPreference = switchPreference(
                 preference = SETTINGS_COOKIES_INCOGNITO,
                 isEnabled = !DeviceCapabilities.FULL_INCOGNITO.isSupported,
@@ -200,6 +206,7 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_TEXT_ENCODING = "text_encoding"
         private const val SETTINGS_BLOCK_INTENT = "block_intent"
         private const val SETTINGS_SHOW_SSL = "show_ssl"
+        private const val SETTINGS_LEGACY_DOWNLOADER = "downloader"
     }
 
 }
