@@ -428,7 +428,7 @@
     <string name="experimental_settings" translatable="false">Experimental settings</string>
     <string name="experimental_settings_desc" translatable="false">Try out new features before they\'re released...</string>
     <string name="whats_new" translatable="false">Show \"What\'s New\" on homepage</string>
-    <string name="image_url" translatable="false">Set a homepage background image</string>
+    <string name="image_url">Set a homepage background image</string>
     <string name="start_incognito">Always act like private mode</string>
     <string name="bottom_navbar">Move the navbar to the bottom</string>
     <string name="please_restart">Please restart app to see changes</string>
