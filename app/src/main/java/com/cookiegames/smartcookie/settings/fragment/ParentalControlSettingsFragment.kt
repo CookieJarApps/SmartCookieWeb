@@ -162,7 +162,7 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun PasswordChoice.toSummary(): String {
-        val stringArray = resources.getStringArray(R.array.password)
+        val stringArray = resources.getStringArray(R.array.password_set_array)
         return when (this) {
             PasswordChoice.NONE -> stringArray[0]
             PasswordChoice.CUSTOM -> stringArray[1]
@@ -172,7 +172,7 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
     private fun showPasswordPicker(summaryUpdater: SummaryUpdater) {
         BrowserDialog.showCustomDialog(activity) {
             setTitle(R.string.enter_password)
-            val stringArray = resources.getStringArray(R.array.password)
+            val stringArray = resources.getStringArray(R.array.password_set_array)
             val values = PasswordChoice.values().map {
                 Pair(it, when (it) {
                     PasswordChoice.NONE -> stringArray[0]

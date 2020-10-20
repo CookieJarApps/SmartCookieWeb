@@ -384,6 +384,8 @@
 
     <string name="startpagedesc">Set the color of the default homepage to the one used in the theme.</string>
     <string name="updatehomepage">Open a new tab to see updated homepage</string>
+    <string name="edit_shortcuts">Edit shortcuts</string>
+    <string name="apply">Apply</string>
 
     <string name="inspect">Inject JavaScript</string>
     <string name="bookmark">Bookmark added</string>
@@ -514,5 +516,7 @@
 
     <string name="legacy_download_manager">Use integrated download manager</string>
     <string name="legacy_download_manager_desc">Download files using the SmartCookieWeb download manager, instead of the system one</string>
+
+
     <!-- finish pages -->
 </resources>

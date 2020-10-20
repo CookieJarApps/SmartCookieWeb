@@ -72,12 +72,11 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 summary = userPreferences.downloadDirectory,
                 onClick = ::showDownloadLocationDialog
         )
-        val stringArray = resources.getStringArray(R.array.suggestion_name_array)
-
+        val stringArraySuggestions = resources.getStringArray(R.array.suggestion_name_array)
 
        clickableDynamicPreference(
                preference = SETTINGS_SUGGESTIONS_NUM,
-               summary = stringArray[userPreferences.suggestionChoice.value],
+               summary = stringArraySuggestions[userPreferences.suggestionChoice.value],
                onClick = ::showSuggestionNumPicker
        )
 
@@ -475,7 +474,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun JavaScriptChoice.toSummary(): String {
-        val stringArray = resources.getStringArray(R.array.blocked_sites)
+        val stringArray = resources.getStringArray(R.array.block_javascript)
         return when (this) {
             JavaScriptChoice.NONE -> stringArray[0]
             JavaScriptChoice.WHITELIST -> userPreferences.siteBlockNames
@@ -486,7 +485,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
     private fun showJavaScriptPicker(summaryUpdater: SummaryUpdater) {
         BrowserDialog.showCustomDialog(activity) {
             setTitle(R.string.block_javascript)
-            val stringArray = resources.getStringArray(R.array.blocked_sites)
+            val stringArray = resources.getStringArray(R.array.block_javascript)
             val values = JavaScriptChoice.values().map {
                 Pair(it, when (it) {
                     JavaScriptChoice.NONE -> stringArray[0]

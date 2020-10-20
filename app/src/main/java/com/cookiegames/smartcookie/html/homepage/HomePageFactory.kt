@@ -1,6 +1,8 @@
 package com.cookiegames.smartcookie.html.homepage
 
 import android.app.Application
+import android.content.Context
+import android.content.res.Resources
 import android.util.Log
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
@@ -28,6 +30,7 @@ class HomePageFactory @Inject constructor(
         private val searchEngineProvider: SearchEngineProvider,
         private val homePageReader: HomePageReader,
         private var userPreferences: UserPreferences,
+        private var resources: Resources,
         private val historyRepository: HistoryRepository,
         private val listPageReader: ListPageReader
 ) : HtmlPageFactory {
@@ -57,8 +60,8 @@ class HomePageFactory @Inject constructor(
 
                         )
                     }
-                    Log.d("homepgegen", "https://YouTube.com")
-                    Log.d("homepgegen", userPreferences.link1)
+                    id("edit_shortcuts"){ text(resources.getString(R.string.edit_shortcuts)) }
+                    id("apply"){ text(resources.getString(R.string.apply)) }
                     id("link1click"){ attr("href", userPreferences.link1)}
                     id("link2click"){ attr("href", userPreferences.link2)}
                     id("link3click"){ attr("href", userPreferences.link3)}

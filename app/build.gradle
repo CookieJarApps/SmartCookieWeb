@@ -143,6 +143,8 @@ dependencies {
     implementation "info.guardianproject.netcipher:netcipher:$netCipherVersion"
     implementation "info.guardianproject.netcipher:netcipher-webkit:$netCipherVersion"
 
+    implementation 'org.apache.httpcomponents:httpcore:4.4.1'
+
     implementation 'com.anthonycr.progress:animated-progress:1.0'
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
