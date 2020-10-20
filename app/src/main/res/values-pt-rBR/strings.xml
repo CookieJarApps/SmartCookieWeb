@@ -347,6 +347,8 @@
     <string name="preferhttpsdesc">Sempre usar HTTPS em sites suportados (pode causar problemas)</string>
     <string name="startpagedesc">Utilizar cor do tema na página inicial.</string>
     <string name="updatehomepage">Abra uma nova aba para ver a página inicial atualizada</string>
+    <string name="edit_shortcuts">Editar atalhos</string>
+    <string name="apply">Aplicar</string>
     <string name="inspect">Injetar JavaScript</string>
     <string name="bookmark">Favorito adicionado</string>
     <string name="error_title">&lt;br&gt; Não foi possível carregar o site.</string>
@@ -379,6 +381,7 @@
     <string name="show_extra">Mostrar opções extras do menu</string>
     <string name="incognito_cookies_new">O modo privado é executado em uma janela separada que é redefinida após cada sessão. Configurações de cookie no modo privado agora são controladas pelas configurações gerais de cookies.</string>
     <string name="quit_private">Sair do Modo Privado</string>
+    <string name="image_url">Definir imagem de fundo da página inicial</string>
     <string name="start_incognito">Iniciar sempre no modo de navegação privado</string>
     <string name="bottom_navbar">Barra de navegação em baixo</string>
     <string name="please_restart">Reinicie o aplicativo para aplicar as alterações</string>
@@ -437,5 +440,4 @@
     <string name="legacy_download_manager">Usar o gerenciador de downloads integrado</string>
     <string name="legacy_download_manager_desc">Baixar arquivos usando o gerenciador de downloads do SmartCookieWeb ao invés do gerenciador do sistema</string>
     <!-- finish pages -->
-    <string name="image_url">Definir imagem de fundo da página inicial</string>
 </resources>
