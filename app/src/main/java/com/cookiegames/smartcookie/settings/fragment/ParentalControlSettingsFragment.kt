@@ -41,8 +41,11 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
 
         proxyChoices = resources.getStringArray(R.array.blocked_sites)
         var fullName: String
-        if(userPreferences.siteBlockChoice.toString() == "BLACKLIST"){
+        if(userPreferences.siteBlockChoice == SiteBlockChoice.BLACKLIST){
             fullName = getText(R.string.only_allow_sites).toString()
+        }
+        else if(userPreferences.siteBlockChoice == SiteBlockChoice.NONE){
+            fullName = getText(R.string.none).toString()
         }
         else{
             fullName = getText(R.string.block_all_sites).toString()
