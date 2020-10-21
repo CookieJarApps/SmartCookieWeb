@@ -15,8 +15,8 @@
 
     <string-array name="block_javascript">
         <item>@string/none</item>
-        <item>@string/listed_javascript</item>
         <item>@string/unlisted_javascript</item>
+        <item>@string/listed_javascript</item>
     </string-array>
 
     <string-array name="navbar_col">
