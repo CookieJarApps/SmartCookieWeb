@@ -344,8 +344,8 @@ class SmartCookieView(
 
         settings.blockNetworkImage = userPreferences.blockImagesEnabled
 
-        // Modifying headers causes SEGFAULTS, so disallow multi window if headers are enabled.
-        settings.setSupportMultipleWindows(userPreferences.popupsEnabled && !modifiesHeaders)
+        // TODO: see if crashes still apply
+        settings.setSupportMultipleWindows(userPreferences.popupsEnabled)
 
         settings.useWideViewPort = userPreferences.useWideViewPortEnabled
         settings.loadWithOverviewMode = userPreferences.overviewModeEnabled
