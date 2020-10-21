@@ -81,7 +81,7 @@ class SmartCookieChromeClient(
         }
         uiController.tabChanged(smartCookieView)
         if (view != null && view.url != null) {
-            uiController.updateHistory(title, view.url)
+            uiController.updateHistory(title, view.url.orEmpty())
         }
     }
 
