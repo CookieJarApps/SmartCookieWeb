@@ -4,17 +4,6 @@
 
     <PreferenceCategory android:title="@string/settings_about">
         <Preference
-            android:summary="https://vcs.cookiejarapps.com/CookieJarApps/SmartCookieWeb"
-            android:title="@string/scw">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://vcs.cookiejarapps.com/CookieJarApps/SmartCookieWeb">
-                <extra
-                    android:name="SOURCE"
-                    android:value="SELF" />
-            </intent>
-        </Preference>
-        <Preference
             android:summary="@string/url_project"
             android:title="@string/more">
             <intent
