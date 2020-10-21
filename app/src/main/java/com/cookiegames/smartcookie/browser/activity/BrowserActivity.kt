@@ -497,17 +497,18 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 .setCancelable(false)
                 .setNegativeButton(R.string.action_back) { dialog, which ->
                     //listener.onClick(editText.getText().toString());
-                    val settings = Intent(this, SettingsActivity::class.java)
-                    settings.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                    startActivity(settings)
+                    moveTaskToBack(true);
+                    exitProcess(-1)
                 }
                 .setPositiveButton(R.string.action_ok
                 ) { _, _ ->
                     //listener.onClick(editText.getText().toString());
-                    if (editText.text.toString() != userPreferences.passwordText){
+                    if (editText.text.toString() != userPreferences.passwordTextLock){
                         val duration = Toast.LENGTH_SHORT
                         val toast = Toast.makeText(this, resources.getString(R.string.wrong_password), duration)
                         toast.show()
+                        moveTaskToBack(true);
+                        exitProcess(-1)
                     }
                 }
 

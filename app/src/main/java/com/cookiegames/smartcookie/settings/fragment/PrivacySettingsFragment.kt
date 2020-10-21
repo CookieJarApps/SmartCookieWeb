@@ -163,7 +163,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
             val values = PasswordChoice.values().map {
                 Pair(it, when (it) {
                     PasswordChoice.NONE -> stringArray[0]
-                    PasswordChoice.CUSTOM -> stringArray[1]
+                    PasswordChoice.CUSTOM -> resources.getString(R.string.enter_password)
                 })
             }
             withSingleChoiceItems(values, userPreferences.passwordChoiceLock) {
