@@ -63,6 +63,7 @@ class BrowserPresenter(
                     tabChanged(tabsModel.positionOf(it))
                 }
             )
+
     }
 
     /**
@@ -214,11 +215,11 @@ class BrowserPresenter(
      * @param intent the intent to handle, may be null.
      */
     fun onNewIntent(intent: Intent?) = tabsModel.doAfterInitialization {
-        val url = if (intent?.action == Intent.ACTION_WEB_SEARCH) {
-            tabsModel.extractSearchFromIntent(intent)
-        } else {
-            intent?.dataString
-        }
+     val url = if (intent?.action == Intent.ACTION_WEB_SEARCH) {
+        tabsModel.extractSearchFromIntent(intent)
+    } else {
+        intent?.dataString
+    }
 
         val tabHashCode = intent?.extras?.getInt(INTENT_ORIGIN, 0) ?: 0
 
@@ -228,7 +229,7 @@ class BrowserPresenter(
             if (URLUtil.isFileUrl(url)) {
                 view.showBlockedLocalFileDialog {
                     newTab(UrlInitializer(url), true)
-                    //TODO: MODIFY THIS TO CHANGE INTENT BEHAVIOUR
+                    // this is where intents happen
                     shouldClose = true
                     tabsModel.lastTab()?.isNewTab = true
                 }

@@ -40,7 +40,7 @@ class MainActivity : BrowserActivity() {
     override fun onNewIntent(intent: Intent) =
             if (intent.action == INTENT_PANIC_TRIGGER) {
                 // TODO: investigate why this is here and why removing it fixes an intent issue
-                //panicClean()
+                panicClean()
             } else {
                 handleNewIntent(intent)
                 super.onNewIntent(intent)

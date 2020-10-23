@@ -15,6 +15,7 @@ import com.cookiegames.smartcookie.preference.UserPreferences
 import android.app.Activity
 import android.os.Bundle
 import android.os.Message
+import android.util.Log
 import android.webkit.WebView
 import androidx.appcompat.app.AlertDialog
 import dagger.Reusable

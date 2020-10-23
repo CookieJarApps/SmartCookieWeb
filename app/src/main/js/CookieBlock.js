@@ -5,3 +5,9 @@ var styleSheet = document.createElement("style")
 styleSheet.type = "text/css"
 styleSheet.innerText = styles
 document.head.appendChild(styleSheet)
+
+var elems = document.querySelectorAll(".qc-cmp-ui-showing");
+
+[].forEach.call(elems, function(el) {
+    el.classList.remove("qc-cmp-ui-showing");
+});

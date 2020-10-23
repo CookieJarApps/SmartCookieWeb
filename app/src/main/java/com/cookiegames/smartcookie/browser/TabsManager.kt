@@ -12,6 +12,7 @@ import android.app.Application
 import android.app.SearchManager
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.webkit.URLUtil
 import io.reactivex.Maybe
 import io.reactivex.Observable
@@ -78,6 +79,12 @@ class TabsManager @Inject constructor(
 
     private fun finishInitialization() {
         isInitialized = true
+        for (tab in tabList) {
+            if(!tab.isForegroundTab){
+                tab.stopLoading()
+            }
+        }
+
         for (runnable in postInitializationWorkList) {
             runnable()
         }
@@ -400,6 +407,10 @@ class TabsManager @Inject constructor(
         } else {
             tabList[position].also {
                 currentTab = it
+                // TODO: hacky way to check if page is loaded - could be a better way to do this
+                if(it.favicon == null && it.sslCertificate == null && !it.url.contains(":///")){
+                    it.reload()
+                }
             }
         }
     }
