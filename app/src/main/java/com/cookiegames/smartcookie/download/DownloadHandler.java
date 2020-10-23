@@ -159,7 +159,6 @@ public class DownloadHandler {
         onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
     }
 
-
     public void onDownloadStart(@NonNull Activity context, @NonNull UserPreferences manager, @NonNull String url, String userAgent,
                                 @Nullable String contentDisposition, String mimeType, @NonNull String contentSize) {
 
@@ -285,11 +284,19 @@ public class DownloadHandler {
                 .start(new OnDownloadListener() {
                     @Override
                     public void onDownloadComplete() {
+                        Intent intent = new Intent();
+                        intent.setAction(android.content.Intent.ACTION_VIEW);
+                        File file = new File(downloadFolder.toString() + URLUtil.guessFileName(url, contentDisposition, mimeType)); // set your audio path
+                        intent.setDataAndType(Uri.fromFile(file), mimeType);
+
+                        PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent, 0);
+
                         notificationManager.cancel(uniqid);
                         builder.setContentTitle(context.getString(R.string.download_successful))
-                                .setContentText("")
+                                .setContentText(URLUtil.guessFileName(url, contentDisposition, mimeType))
                                 .setSmallIcon(R.drawable.ic_file_download_black_24dp)
                                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                .setContentIntent(pIntent)
                                 .setOnlyAlertOnce(true);
                         builder.setProgress(0, 0, false);
                         notificationManager.notify(uniqid + 1, builder.build());
