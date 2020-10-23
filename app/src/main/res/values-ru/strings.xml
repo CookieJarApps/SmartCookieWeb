@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_new_tab">Новая вкладка</string>
     <string name="action_share">Поделиться</string>
+    <string name="action_print">Печать</string>
     <string name="action_history">История</string>
     <string name="action_bookmarks">Закладки</string>
     <string name="action_downloads">Загрузки</string>
@@ -56,13 +57,15 @@
     <string name="agent_custom">Настраиваемый</string>
     <string name="title_search_engine">Поисковая система</string>
     <string name="action_ok">ОК</string>
-    <string name="dialog_download">Загрузить файл (%1$s)?</string>
+    <string name="dialog_download">Загрузить файл?</string>
     <string name="unknown_size">Неизвестный размер</string>
     <string name="action_cancel">Отменить</string>
     <string name="title_warning">Предупреждение</string>
     <string name="dialog_adobe_not_installed">Adobe Flash Player не установлен.\nПожалуйста, установите Flash Player.</string>
     <string name="title_user_agent">User Agent</string>
     <string name="title_download_location">Сохранить в:</string>
+    <string name="download_failed">Ошибка при загрузке файла:</string>
+    <string name="download_successful">Загрузка завершена</string>
     <string name="title_custom_homepage">Настраиваемая домашняя страница</string>
     <string name="action_webpage">Веб-страница</string>
     <string name="title_clear_history">Очистить история</string>
@@ -158,6 +161,14 @@
         <item>Ничего</item>
         <item>Пользовательский</item>
     </string-array>
+    <string-array name="suggestion_name_array">
+        <item>Три</item>
+        <item>Четыре</item>
+        <item>Пять</item>
+        <item>Шесть</item>
+        <item>Семь</item>
+        <item>Восемь</item>
+    </string-array>
     <string name="manual_proxy">Пользовательский прокси</string>
     <string name="host">Хост:</string>
     <string name="port">Порт:</string>
@@ -242,7 +253,7 @@
     <string name="message_web_storage_cleared">Веб-хранилище очищено</string>
     <string name="hosts_source">Источник файла хоста для блокировки рекламы</string>
     <string name="settings_adblock">Настройки блокируемого контента</string>
-    <string name="adblock_summary">Блокировка рекламы...</string>
+    <string name="adblock_summary">Блокировка рекламы, блокировка диалогового окна cookie...</string>
     <string name="adblock_category">Блокировка рекламы</string>
     <string name="cookie_category">Блокировка диалогового окна cookie (бета)</string>
     <string name="tabs_in_drawer">Показывать вкладки в панели навигации</string>
@@ -265,11 +276,6 @@
     <string name="block_source_local_description">Файл: %1$s</string>
     <string name="block_source_remote">Удалить файл хостов</string>
     <string name="block_source_remote_description">URL: %1$s</string>
-    <string-array name="block_ad_source_list">
-        <item>@string/block_source_default</item>
-        <item>@string/block_source_local</item>
-        <item>@string/block_source_remote</item>
-    </string-array>
     <!--Ad block -->
     <string name="ad_block_load_failure">Не удалось загрузить хосты из источника блокировки рекламы.</string>
     <string name="infinity">∞</string>
@@ -326,6 +332,8 @@
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Яндекс</string>
+    <string name="search_engine_searx">SearX.be</string>
+    <string name="search_engine_searx_cookiejarapps">CookieJarApps SearX</string>
     <string name="privacy">Просмотр политики конфиденциальности</string>
     <string name="privacy_info">Ознакомьтесь с политикой конфиденциальности SmartCookieWeb</string>
     <string name="block_malware">Блокировать вредоносные сайты</string>
@@ -341,6 +349,8 @@
     <string name="preferhttpsdesc">Всегда использовать HTTPS на поддерживаемых сайтах (может вызвать ошибки)</string>
     <string name="startpagedesc">По-умолчанию цвет домашней страницы, используемый в теме.</string>
     <string name="updatehomepage">Откройте новую вкладку, чтобы увидеть обновленную домашнюю страницу</string>
+    <string name="edit_shortcuts">Редактировать ярлыки</string>
+    <string name="apply">Применить</string>
     <string name="inspect">Внедрить JavaScript</string>
     <string name="bookmark">Закладка добавлена</string>
     <string name="error_title">О, нет! &lt;br&gt; Этот сайт не может быть загружен.</string>
@@ -373,6 +383,7 @@
     <string name="show_extra">Показать дополнительные пункты меню</string>
     <string name="incognito_cookies_new">Приватный режим запускается в отдельном окне, который сбрасывается после каждой сессии. Настройки приватных cookies теперь управляются обычными настройками cookie.</string>
     <string name="quit_private">Выйти из приватного режима</string>
+    <string name="image_url">Установить фоновое изображение домашней страницы</string>
     <string name="start_incognito">Всегда запускать в приватном режиме</string>
     <string name="bottom_navbar">Переместить панель навигации вниз</string>
     <string name="please_restart">Перезапустите приложение, чтобы увидеть изменения</string>
@@ -407,6 +418,7 @@
     <string name="block_intent">Обрабатывать все нажатые ссылки в этом браузере</string>
     <string name="block_intent_summary">Блокировать предложения на открытие ссылок в других приложениях</string>
     <string name="block_javascript">Блокировать JavaScript на сайтах</string>
+    <string name="allow_javascript">Разрешить JavaScript на сайте</string>
     <string name="unlisted_javascript">Блокировать JavaScript на перечисленных сайтах</string>
     <string name="listed_javascript">Разрешать JavaScript только на перечисленных сайтах</string>
     <string name="confirm">Подтвердите сброс</string>
@@ -414,7 +426,20 @@
     <string name="only_clear">Очищать только при окончании сеанса браузера</string>
     <string name="only_clear_summary">Удалять только вышеприведенные опции, когда все вкладки браузера были закрыты, а не при каждом выходе приложения</string>
     <string name="enable_in_settings">Автозаполнение должно быть настроено в настройках Android для вступления в силу</string>
+    <string name="webrtc_description">Разрешить сайтам запрашивать доступ к микрофону и камере</string>
     <string name="drawer_lines">Максимум строк текста в меню</string>
     <string name="drawer_size">Текст меню автоизменения размера</string>
+    <string name="privacy_set">Настройка конфиденциальности</string>
+    <string name="security_set">Настройки безопасности</string>
+    <string name="page_source">Исходный код страницы</string>
+    <string name="pagespeed_error">Этот сайт использует PageSpeed. Редактирование исходного кода может не работать.</string>
+    <string name="app_lock">Установить пароль</string>
+    <string name="show_ssl">Показывать предупреждения SSL</string>
+    <string name="warn">Изменяйте это только если вы знаете, что делаете!</string>
+    <string name="download_channel">Загрузки</string>
+    <string name="download_description">Информация о скачивании</string>
+    <string name="download_to_sd">Загрузить на SD-карту</string>
+    <string name="legacy_download_manager">Использовать встроенный менеджер загрузок</string>
+    <string name="legacy_download_manager_desc">Загружать файлы с помощью менеджера загрузок SmartCookieWeb вместо системного</string>
     <!-- finish pages -->
 </resources>
