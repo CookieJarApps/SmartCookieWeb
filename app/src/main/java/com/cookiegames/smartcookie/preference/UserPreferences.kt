@@ -356,6 +356,8 @@ class UserPreferences @Inject constructor(
     var link4 by preferences.stringPreference(LINK4, "https://speedtest.cookiejarapps.com")
 
     var useNewDownloader by preferences.booleanPreference(LEGACY_DOWNLOADER, true)
+
+    var allTabs by preferences.booleanPreference(ALL_TABS, false)
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
@@ -444,3 +446,4 @@ private const val LINK3 = "link3"
 private const val LINK4 = "link4"
 private const val DOWNLOAD_SD = "downloadSD"
 private const val LEGACY_DOWNLOADER = "legacyDownloader"
+private const val ALL_TABS = "allTabs"

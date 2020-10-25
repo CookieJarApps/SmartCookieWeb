@@ -105,6 +105,12 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
         )
 
         switchPreference(
+                preference = SETTINGS_ALL_TABS,
+                isChecked = userPreferences.allTabs,
+                onCheckChange = { userPreferences.allTabs = it }
+        )
+
+        switchPreference(
                 preference = SETTINGS_IMAGES,
                 isChecked = userPreferences.blockImagesEnabled,
                 onCheckChange = { userPreferences.blockImagesEnabled = it }
@@ -589,5 +595,6 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_SUGGESTIONS = "suggestions_choice"
         private const val SETTINGS_SUGGESTIONS_NUM = "suggestions_number"
         private const val SETTINGS_LAST_TAB = "last_tab"
+        private const val SETTINGS_ALL_TABS = "load_tabs"
     }
 }

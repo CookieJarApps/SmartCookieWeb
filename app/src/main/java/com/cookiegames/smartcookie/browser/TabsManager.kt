@@ -14,6 +14,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.webkit.URLUtil
+import com.cookiegames.smartcookie.preference.UserPreferences
 import io.reactivex.Maybe
 import io.reactivex.Observable
 import io.reactivex.Scheduler
@@ -34,7 +35,9 @@ class TabsManager @Inject constructor(
     private val bookmarkPageInitializer: BookmarkPageInitializer,
     private val historyPageInitializer: HistoryPageInitializer,
     private val downloadPageInitializer: DownloadPageInitializer,
-    private val logger: Logger
+    private val onboardingPageInitializer: OnboardingPageInitializer,
+    private val logger: Logger,
+    private val userPreferences: UserPreferences
 ) {
 
     private val tabList = arrayListOf<SmartCookieView>()
@@ -80,7 +83,7 @@ class TabsManager @Inject constructor(
     private fun finishInitialization() {
         isInitialized = true
         for (tab in tabList) {
-            if(!tab.isForegroundTab){
+            if(!tab.isForegroundTab && !userPreferences.allTabs){
                 tab.stopLoading()
             }
         }
@@ -269,6 +272,7 @@ class TabsManager @Inject constructor(
             homePageInitializer,
             bookmarkPageInitializer,
             downloadPageInitializer,
+           onboardingPageInitializer,
             logger
         )
         tabList.add(tab)
@@ -408,7 +412,7 @@ class TabsManager @Inject constructor(
             tabList[position].also {
                 currentTab = it
                 // TODO: hacky way to check if page is loaded - could be a better way to do this
-                if(it.favicon == null && it.sslCertificate == null && !it.url.contains(":///")){
+                if(it.favicon == null && it.sslCertificate == null && !it.url.contains(":///") && !userPreferences.allTabs){
                     it.reload()
                 }
             }

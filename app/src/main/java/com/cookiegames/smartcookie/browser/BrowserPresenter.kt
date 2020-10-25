@@ -2,10 +2,6 @@ package com.cookiegames.smartcookie.browser
 
 import com.cookiegames.smartcookie.BuildConfig
 import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.constant.FILE
-import com.cookiegames.smartcookie.constant.INTENT_ORIGIN
-import com.cookiegames.smartcookie.constant.SCHEME_BOOKMARKS
-import com.cookiegames.smartcookie.constant.SCHEME_HOMEPAGE
 import com.cookiegames.smartcookie.di.MainScheduler
 import com.cookiegames.smartcookie.html.bookmark.BookmarkPageFactory
 import com.cookiegames.smartcookie.html.homepage.HomePageFactory
@@ -20,6 +16,8 @@ import com.cookiegames.smartcookie.view.find.FindResults
 import android.app.Activity
 import android.content.Intent
 import android.webkit.URLUtil
+import com.cookiegames.smartcookie.constant.*
+import com.cookiegames.smartcookie.html.onboarding.OnboardingPageFactory
 import io.reactivex.Scheduler
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -29,15 +27,16 @@ import io.reactivex.rxkotlin.subscribeBy
  * browser.
  */
 class BrowserPresenter(
-    private val view: BrowserView,
-    private val isIncognito: Boolean,
-    private val userPreferences: UserPreferences,
-    private val tabsModel: TabsManager,
-    @MainScheduler private val mainScheduler: Scheduler,
-    private val homePageFactory: HomePageFactory,
-    private val bookmarkPageFactory: BookmarkPageFactory,
-    private val recentTabModel: RecentTabModel,
-    private val logger: Logger
+        private val view: BrowserView,
+        private val isIncognito: Boolean,
+        private val userPreferences: UserPreferences,
+        private val tabsModel: TabsManager,
+        @MainScheduler private val mainScheduler: Scheduler,
+        private val homePageFactory: HomePageFactory,
+        private val onboardingPageFactory: OnboardingPageFactory,
+        private val bookmarkPageFactory: BookmarkPageFactory,
+        private val recentTabModel: RecentTabModel,
+        private val logger: Logger
 ) {
 
     private var currentTab: SmartCookieView? = null
@@ -145,6 +144,7 @@ class BrowserPresenter(
 
     private fun mapHomepageToCurrentUrl(): String = when (val homepage = userPreferences.homepage) {
         SCHEME_HOMEPAGE -> "$FILE${homePageFactory.createHomePage()}"
+        SCHEME_ONBOARDING -> "$FILE${onboardingPageFactory.createOnboarding()}"
         SCHEME_BOOKMARKS -> "$FILE${bookmarkPageFactory.createBookmarkPage(null)}"
         else -> homepage
     }

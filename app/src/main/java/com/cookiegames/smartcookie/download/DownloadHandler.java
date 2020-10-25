@@ -245,7 +245,7 @@ public class DownloadHandler {
                         ActivityExtensions.snackbar(context, R.string.download_pending);
 
                         builder.setContentTitle(context.getString(R.string.action_download))
-                                .setContentText("Download in progress")
+                                .setContentText(fileName)
                                 .setSmallIcon(R.drawable.ic_file_download_black_24dp)
                                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                                 .setOnlyAlertOnce(true);

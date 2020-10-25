@@ -28,6 +28,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.annotation.RequiresApi
 import androidx.core.content.getSystemService
 import com.anthonycr.mezzanine.MezzanineGenerator
+import com.cookiegames.smartcookie.html.onboarding.OnboardingPageReader
 import com.cookiegames.smartcookie.js.*
 import dagger.Module
 import dagger.Provides
@@ -191,6 +192,9 @@ class AppModule {
 
     @Provides
     fun providesHomePageReader(): HomePageReader = MezzanineGenerator.HomePageReader()
+
+    @Provides
+    fun providesOnboardingPageReader(): OnboardingPageReader = MezzanineGenerator.OnboardingPageReader()
 
     @Provides
     fun providesBookmarkPageReader(): BookmarkPageReader = MezzanineGenerator.BookmarkPageReader()

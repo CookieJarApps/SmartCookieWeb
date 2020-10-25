@@ -503,14 +503,7 @@ class SmartCookieWebClient(
         }
         currentUrl = url
         view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
-        if(userPreferences.firstLaunch){
-            if(Locale.getDefault().getLanguage().equals("en")){
-                view.loadUrl("file:///android_asset/onboarding.html")
-                currentUrl = ""
-            }
 
-            userPreferences.firstLaunch = false
-        }
 
         if(url.contains(BuildConfig.APPLICATION_ID + "/files/homepage.html")){
             view?.evaluateJavascript("""(function() {

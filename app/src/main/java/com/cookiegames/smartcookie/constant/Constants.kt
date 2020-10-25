@@ -20,6 +20,7 @@ const val FOLDER = "folder://"
 const val SCHEME_HOMEPAGE = "${ABOUT}home"
 const val SCHEME_BLANK = "${ABOUT}blank"
 const val SCHEME_BOOKMARKS = "${ABOUT}bookmarks"
+const val SCHEME_ONBOARDING = "${ABOUT}onboarding"
 
 const val UTF8 = "UTF-8"
 

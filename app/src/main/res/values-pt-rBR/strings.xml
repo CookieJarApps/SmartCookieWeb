@@ -52,7 +52,7 @@
     <string name="action_delete">Excluir</string>
     <string name="action_blank">Página em branco</string>
     <string name="agent_default">Padrão</string>
-    <string name="agent_desktop">Área de Trabalho</string>
+    <string name="agent_desktop">Computador</string>
     <string name="agent_mobile">Celular</string>
     <string name="agent_custom">Personalizado</string>
     <string name="title_search_engine">Motor de busca</string>
@@ -146,7 +146,7 @@
     <string name="ssl_warning_dont_ask_again">Não perguntar novamente durante esta sessão.</string>
     <!-- Tools dialog -->
     <string name="dialog_tools_title">Ferramentas de página</string>
-    <string name="dialog_toggle_desktop">Ativar/desativar o modo área de trabalho</string>
+    <string name="dialog_toggle_desktop">Mudar o agente de usuário para computador nesse site</string>
     <string name="dialog_adblock_enable_for_site">Ativar bloqueio de anúncios neste site</string>
     <string name="dialog_adblock_disable_for_site">Desativar bloqueio de anúncios neste site</string>
     <string name="search_suggestions_off">Nenhuma sugestão</string>
@@ -439,5 +439,9 @@
     <string name="download_to_sd">Baixar no cartão SD</string>
     <string name="legacy_download_manager">Usar o gerenciador de downloads integrado</string>
     <string name="legacy_download_manager_desc">Baixar arquivos usando o gerenciador de downloads do SmartCookieWeb ao invés do gerenciador do sistema</string>
+    <string name="onboarding_one">Acesse configurações, favoritos (ou puxe a borda direita da tela) e muito mais no menu flutuante.</string>
+    <string name="onboarding_two">Clique no número da aba ou puxe a borda esquerda da tela para abrir o menu de abas.</string>
+    <string name="onboarding_three">Use as ferramentas de página no menu de favoritos para desligar temporariamente o bloqueio de anúncios, abrir o site na versão para computador e muito mais.</string>
+    <string name="load_tabs">Carregar todas as abas quando o navegador for iniciado</string>
     <!-- finish pages -->
 </resources>

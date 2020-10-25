@@ -49,6 +49,7 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import java.lang.ref.WeakReference
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -64,6 +65,7 @@ class SmartCookieView(
         private val homePageInitializer: HomePageInitializer,
         private val bookmarkPageInitializer: BookmarkPageInitializer,
         private val downloadPageInitializer: DownloadPageInitializer,
+        private val onboardingPageInitializer: OnboardingPageInitializer,
         private val logger: Logger
 ) {
 
@@ -242,6 +244,13 @@ class SmartCookieView(
         if(WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK) && userPreferences.darkModeExtension) {
             WebSettingsCompat.setForceDark(webView!!.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
         }
+
+        if(userPreferences.firstLaunch){
+            if(Locale.getDefault().getLanguage().equals("en")){
+               loadOnboardingPage()
+                userPreferences.firstLaunch = false
+            }
+        }
     }
 
     fun currentSslState(): SslState = smartCookieWebClient.sslState
@@ -265,6 +274,13 @@ class SmartCookieView(
      */
     fun loadBookmarkPage() {
         reinitialize(bookmarkPageInitializer)
+    }
+
+    /**
+     * This function loads the onboarding page via the [OnboardingPageInitializer].
+     */
+    fun loadOnboardingPage() {
+        reinitialize(onboardingPageInitializer)
     }
 
     /**

@@ -18,6 +18,7 @@ import android.os.Message
 import android.util.Log
 import android.webkit.WebView
 import androidx.appcompat.app.AlertDialog
+import com.cookiegames.smartcookie.html.onboarding.OnboardingPageFactory
 import dagger.Reusable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy
@@ -68,6 +69,17 @@ class HomePageInitializer @Inject constructor(
     }
 
 }
+
+
+/**
+ * An initializer that displays the onboarding page.
+ */
+@Reusable
+class OnboardingPageInitializer @Inject constructor(
+        onboardingPageFactory: OnboardingPageFactory,
+        @DiskScheduler diskScheduler: Scheduler,
+        @MainScheduler foregroundScheduler: Scheduler
+) : HtmlPageFactoryInitializer(onboardingPageFactory, diskScheduler, foregroundScheduler)
 
 /**
  * An initializer that displays the start page.

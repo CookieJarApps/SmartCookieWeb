@@ -13,6 +13,11 @@
             android:singleLineTitle="false"
             android:title="@string/save_data" />
         <SwitchPreference
+            android:defaultValue="false"
+            android:key="load_tabs"
+            android:singleLineTitle="false"
+            android:title="@string/load_tabs"/>
+        <SwitchPreference
             android:defaultValue="true"
             android:key="cb_javascript"
             android:singleLineTitle="false"

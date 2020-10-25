@@ -71,6 +71,7 @@ import com.cookiegames.smartcookie.extensions.*
 import com.cookiegames.smartcookie.html.bookmark.BookmarkPageFactory
 import com.cookiegames.smartcookie.html.history.HistoryPageFactory
 import com.cookiegames.smartcookie.html.homepage.HomePageFactory
+import com.cookiegames.smartcookie.html.onboarding.OnboardingPageFactory
 import com.cookiegames.smartcookie.icon.TabCountView
 import com.cookiegames.smartcookie.interpolator.BezierDecelerateInterpolator
 import com.cookiegames.smartcookie.log.Logger
@@ -186,6 +187,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     lateinit var homePageFactory: HomePageFactory
 
     @Inject
+    lateinit var onboardingPageFactory: OnboardingPageFactory
+
+    @Inject
     lateinit var bookmarkPageFactory: BookmarkPageFactory
 
     @Inject
@@ -199,6 +203,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     @Inject
     lateinit var homePageInitializer: HomePageInitializer
+
+    @Inject
+    lateinit var onboardingPageInitializer: OnboardingPageInitializer
 
     @Inject
     @field:MainHandler
@@ -286,6 +293,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 tabsManager,
                 mainScheduler,
                 homePageFactory,
+                onboardingPageFactory,
                 bookmarkPageFactory,
                 RecentTabModel(),
                 logger
@@ -395,6 +403,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             newTabButtonClicked()
             true
         }
+        Log.d("firstlaunch", userPreferences.firstLaunch.toString())
 
         // create the search EditText in the ToolBar
         searchView = customView.findViewById<SearchView>(R.id.search).apply {
