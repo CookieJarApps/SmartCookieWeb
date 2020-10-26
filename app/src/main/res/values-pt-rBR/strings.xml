@@ -146,7 +146,7 @@
     <string name="ssl_warning_dont_ask_again">Não perguntar novamente durante esta sessão.</string>
     <!-- Tools dialog -->
     <string name="dialog_tools_title">Ferramentas de página</string>
-    <string name="dialog_toggle_desktop">Mudar o agente de usuário para computador nesse site</string>
+    <string name="dialog_toggle_desktop">Mudar o agente de usuário para computador neste site</string>
     <string name="dialog_adblock_enable_for_site">Ativar bloqueio de anúncios neste site</string>
     <string name="dialog_adblock_disable_for_site">Desativar bloqueio de anúncios neste site</string>
     <string name="search_suggestions_off">Nenhuma sugestão</string>
@@ -443,5 +443,6 @@
     <string name="onboarding_two">Clique no número da aba ou puxe a borda esquerda da tela para abrir o menu de abas.</string>
     <string name="onboarding_three">Use as ferramentas de página no menu de favoritos para desligar temporariamente o bloqueio de anúncios, abrir o site na versão para computador e muito mais.</string>
     <string name="load_tabs">Carregar todas as abas quando o navegador for iniciado</string>
+    <string name="search_homepage">Buscar...</string>
     <!-- finish pages -->
 </resources>
