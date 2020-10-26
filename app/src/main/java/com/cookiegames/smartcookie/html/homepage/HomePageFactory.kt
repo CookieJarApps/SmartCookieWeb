@@ -70,6 +70,7 @@ class HomePageFactory @Inject constructor(
                     id("link2"){ attr("src", userPreferences.link2 + "/favicon.ico")}
                     id("link3"){ attr("src", userPreferences.link3 + "/favicon.ico")}
                     id("link4"){ attr("src", userPreferences.link4 + "/favicon.ico")}
+                    id("search_input"){ attr("placeholder", resources.getString(R.string.search_homepage))}
                 }
             }
         }

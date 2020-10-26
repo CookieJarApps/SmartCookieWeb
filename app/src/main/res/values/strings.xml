@@ -521,5 +521,7 @@
     <string name="onboarding_two">Click the tab number or swipe from the left edge to open the tab drawer.</string>
     <string name="onboarding_three">Use page tools in the bookmark drawer to temporarily turn off ad block, open the desktop version of a site and more.</string>
     <string name="load_tabs">Load all tabs when browser is started</string>
+
+    <string name="search_homepage">Search...</string>
     <!-- finish pages -->
 </resources>
