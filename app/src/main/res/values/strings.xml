@@ -523,5 +523,6 @@
     <string name="load_tabs">Load all tabs when browser is started</string>
 
     <string name="search_homepage">Search...</string>
+    <string name="start">Get started!</string>
     <!-- finish pages -->
 </resources>

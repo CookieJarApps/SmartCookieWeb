@@ -439,9 +439,11 @@
     <string name="download_to_sd">Descarregar para o cartão SD</string>
     <string name="legacy_download_manager">Utilizar gestor de descargas integrado</string>
     <string name="legacy_download_manager_desc">Descarregar ficheiros através do gestor interno do SmartCookieWeb e não do gestor do sistema</string>
-    <string name="onboarding_one">Access settings, bookmarks (or swipe from the right edge) and more in the overflow menu.</string>
-    <string name="onboarding_two">Click the tab number or swipe from the left edge to open the tab drawer.</string>
-    <string name="onboarding_three">Use page tools in the bookmark drawer to temporarily turn off ad block, open the desktop version of a site and more.</string>
-    <string name="load_tabs">Load all tabs when browser is started</string>
+    <string name="onboarding_one">Aceda às definições, marcadores e mais no menu \'overflow\' (ou deslize desde a margem direita).</string>
+    <string name="onboarding_two">Toque no número do separador (ou deslize desde a margem esquerda) para abrir o menu de navegação.</string>
+    <string name="onboarding_three">Utilize as ferramentas no menu de marcadores para desativar o bloqueio de anúncios, abrir a versão \'desktop\' e muito mais.</string>
+    <string name="load_tabs">Carregar todos os separadores ao iniciar</string>
+    <string name="search_homepage">Pesquisar...</string>
+    <string name="start">Get started!</string>
     <!-- finish pages -->
 </resources>

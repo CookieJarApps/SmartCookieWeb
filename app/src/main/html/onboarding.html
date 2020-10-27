@@ -218,18 +218,24 @@
 }
 
     </style>
+    
 </head>
 <body><center>
-    <script src="script.js"></script>
+    <!--<script>
+        function loadLast(){
+            localStorage.setItem("adblock", document.getElementById("adblockCheckbox").checked);
+            document.location.href = "https://finished";
+        }
+    </script>-->
     <h1 id="name">Name</h1>
     <h3>Intro</h3>
     <p><i class="material-icons c1">more_vert</i> <br><br> <span id="1">Access settings, bookmarks (or swipe from the right edge) and more in the overflow menu.</span></p>
     <p><i class="material-icons c2">check_box_outline_blank</i> <br><br> <span id="2">Click the tab number or swipe from the left edge to open the tab drawer.</span></p>
     <p><i class="material-icons c1">post_add</i> <br><br> <span id="3">Use page tools in the bookmark drawer to temporarily turn off ad block, open the desktop version of a site and more.</span></p>
     <br>
-    <h3>Setup</h3>
+    <!--<h3>Setup</h3>
 <label class="pure-material-switch">
-  <input type="checkbox" checked>
+  <input id="adblockCheckbox" type="checkbox" checked>
   <span id="adblock">Ad block</span>
 </label>
 <br><br>
@@ -250,6 +256,8 @@
     <input type="checkbox">
     <span id="intent">Handle all clicked links within this browser</span>
   </label><br><br>
-    <a class="btn btn-default" href="https://homepage">Get started!</a>
+
+    <button class="btn btn-default" onclick="loadLast();">Get started!</button>-->
+    <a class="btn btn-default" id="getstarted" href="https://homepage">Get started!</a>
 </center></body>
 </html>

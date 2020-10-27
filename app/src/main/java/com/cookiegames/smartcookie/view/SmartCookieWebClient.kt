@@ -504,8 +504,17 @@ class SmartCookieWebClient(
         currentUrl = url
         view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
 
+        if(url.contains("//finished")) {
+            view?.evaluateJavascript("""(function() {
+        if(localStorage.getItem("adblock")){ return "checked"; } else{ return "not checked"; }
+        })()""".trimMargin()) {
+                Log.d("itxxa2qw", it)
+            }
 
-        if(url.contains(BuildConfig.APPLICATION_ID + "/files/homepage.html")){
+           // view.loadUrl(BuildConfig.APPLICATION_ID + "/files/homepage.html")
+        }
+
+            if(url.contains(BuildConfig.APPLICATION_ID + "/files/homepage.html")){
             view?.evaluateJavascript("""(function() {
         return localStorage.getItem("shouldUpdate");
         })()""".trimMargin()) {

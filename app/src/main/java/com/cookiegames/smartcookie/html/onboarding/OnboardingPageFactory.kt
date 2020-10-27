@@ -48,10 +48,11 @@ class OnboardingPageFactory @Inject constructor(
                     id("1"){ text(resources.getString(R.string.onboarding_one)) }
                     id("2"){ text(resources.getString(R.string.onboarding_two)) }
                     id("3"){ text(resources.getString(R.string.onboarding_three)) }
-                    id("adblock"){ text(resources.getString(R.string.adblock_category)) }
-                    id("cookieblock"){ text(resources.getString(R.string.cookie_category)) }
-                    id("load"){ text(resources.getString(R.string.load_tabs)) }
-                    id("dark"){ text(resources.getString(R.string.dark_theme)) }
+                    id("getstarted"){ text(resources.getString(R.string.start))}
+                    //id("adblock"){ text(resources.getString(R.string.adblock_category)) }
+                    //id("cookieblock"){ text(resources.getString(R.string.cookie_category)) }
+                    //id("load"){ text(resources.getString(R.string.load_tabs)) }
+                    //id("dark"){ text(resources.getString(R.string.dark_theme)) }
                 }
 
             }
