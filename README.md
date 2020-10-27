@@ -76,7 +76,8 @@ Contributions are greatly appreciated. Feel free to open an issue or pull reques
 
 License in short:
 
-- Keep credit in app to both SmartCookieWeb and Lightning
+- Keep license notices in about page
+- Forks must be open source
 - Derivative project must use MPL
 
 
