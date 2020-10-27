@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_new_tab">Nieuw tabblad</string>
     <string name="action_share">Delen</string>
+    <string name="action_print">Afdrukken</string>
     <string name="action_history">Geschiedenis</string>
     <string name="action_bookmarks">Bladwijzers</string>
     <string name="action_downloads">Downloads</string>
@@ -63,6 +64,8 @@
     <string name="dialog_adobe_not_installed">Adobe Flash Player is niet geïnstalleerd. \ N Installeer Flash Player.</string>
     <string name="title_user_agent">User agent</string>
     <string name="title_download_location">Download locatie</string>
+    <string name="download_failed">Download failed with error:</string>
+    <string name="download_successful">Download successful</string>
     <string name="title_custom_homepage">Aangepaste startpagina</string>
     <string name="action_webpage">Webpagina</string>
     <string name="title_clear_history">Geschiedenis wissen</string>
@@ -158,6 +161,14 @@
         <item>Geen</item>
         <item>gewoonte</item>
     </string-array>
+    <string-array name="suggestion_name_array">
+        <item>Drie</item>
+        <item>Vier</item>
+        <item>Vijf</item>
+        <item>Zes</item>
+        <item>Zeven</item>
+        <item>Acht</item>
+    </string-array>
     <string name="manual_proxy">Handmatige proxy</string>
     <string name="host">Gastheer:</string>
     <string name="port">Haven:</string>
@@ -242,7 +253,7 @@
     <string name="message_web_storage_cleared">Webopslag gewist</string>
     <string name="hosts_source">Hosts bestandsadvertentieblokkeringsbron</string>
     <string name="settings_adblock">Instellingen voor inhoudsblokken</string>
-    <string name="adblock_summary">Advertentieblok...</string>
+    <string name="adblock_summary">Advertentieblok, cookiedialoogblok ...</string>
     <string name="adblock_category">Advertentieblok</string>
     <string name="cookie_category">Cookie-dialoogblok</string>
     <string name="tabs_in_drawer">Toon tabbladen in navigatielade</string>
@@ -265,11 +276,6 @@
     <string name="block_source_local_description">Bestand: %1$s</string>
     <string name="block_source_remote">Extern hosts-bestand</string>
     <string name="block_source_remote_description">URL: %1$s</string>
-    <string-array name="block_ad_source_list">
-        <item>@string/block_source_default</item>
-        <item>@string/block_source_local</item>
-        <item>@string/block_source_remote</item>
-    </string-array>
     <!--Ad block -->
     <string name="ad_block_load_failure">Kan hosts niet laden van bron voor advertentieblokkering.</string>
     <string name="infinity">∞</string>
@@ -324,6 +330,8 @@
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
+    <string name="search_engine_searx">SearX.be</string>
+    <string name="search_engine_searx_cookiejarapps">CookieJarApps SearX</string>
     <string name="privacy">Bekijk privacybeleid</string>
     <string name="privacy_info">Lees het SmartCookieWeb privacybeleid</string>
     <string name="block_malware">Blokkeer kwaadaardige sites</string>
@@ -339,6 +347,8 @@
     <string name="preferhttpsdesc">Gebruik altijd HTTPS op ondersteunde sites (kan problemen veroorzaken)</string>
     <string name="startpagedesc">Stel de kleur van de standaardhomepage in op die u in het thema gebruikt.</string>
     <string name="updatehomepage">Open een nieuw tabblad om de bijgewerkte startpagina te bekijken</string>
+    <string name="edit_shortcuts">Bewerk snelkoppelingen</string>
+    <string name="apply">Toepassen</string>
     <string name="inspect">JavaScript injecteren</string>
     <string name="bookmark">Bladwijzer toegevoegd</string>
     <string name="error_title">Oh kruimels! &lt;br&gt; Die site kan niet worden geladen.</string>
@@ -371,6 +381,7 @@
     <string name="show_extra">Toon extra menu-opties</string>
     <string name="incognito_cookies_new">De privémodus wordt uitgevoerd in een afzonderlijk venster dat na elke sessie opnieuw wordt ingesteld. Cookie voorkeuren in de privémodus worden nu beheerd door normale cookie voorkeuren.</string>
     <string name="quit_private">Privémodus afsluiten</string>
+    <string name="image_url">Set a homepage background image</string>
     <string name="start_incognito">Gedraag </string>
     <string name="bottom_navbar">Verplaats de navigatiebalk naar onderkant</string>
     <string name="please_restart">Herstart de app om wijzigingen te zien</string>
@@ -405,6 +416,7 @@
     <string name="block_intent">Alle geklikte links in deze browser behandelen</string>
     <string name="block_intent_summary">Blokkeert prompt links in externe applicaties te openen</string>
     <string name="block_javascript">Blokkeer JavaScript voor websites</string>
+    <string name="allow_javascript">Allow JavaScript for site</string>
     <string name="unlisted_javascript">JavaScript voor vermelde websites blokkeren</string>
     <string name="listed_javascript">Alleen JavaScript toestaan voor vermelde websites</string>
     <string name="confirm">Opnieuw instellen bevestigen</string>
@@ -412,7 +424,26 @@
     <string name="only_clear">Alleen wissen op browser sessie einde</string>
     <string name="only_clear_summary">Bovenstaande opties alleen wissen als alle tabs van de browser gesloten zijn, in plaats van wanneer de app afgesloten wordt</string>
     <string name="enable_in_settings">AutoFill moet ingesteld worden in de Android-instellingen om deze optie effectief te maken</string>
+    <string name="webrtc_description">Allow websites to request access to the microphone and camera</string>
     <string name="drawer_lines">Max tekstregels in app-overzicht</string>
     <string name="drawer_size">Automatisch aanpassen lade tekst</string>
+    <string name="privacy_set">Privacy instellingen</string>
+    <string name="security_set">Beveiligingsinstellingen</string>
+    <string name="page_source">Paginabron weergeven</string>
+    <string name="pagespeed_error">This website uses PageSpeed. Source editing may not work as expected.</string>
+    <string name="app_lock">Set app password</string>
+    <string name="show_ssl">Show SSL warning dialogs</string>
+    <string name="warn">Only change this if you know what you\'re doing!</string>
+    <string name="download_channel">Downloads</string>
+    <string name="download_description">Information about download progress</string>
+    <string name="download_to_sd">Download naar SD kaart</string>
+    <string name="legacy_download_manager">Gebruik geïntegreerde downloadmanager</string>
+    <string name="legacy_download_manager_desc">Download files using the SmartCookieWeb download manager, instead of the system one</string>
+    <string name="onboarding_one">Access settings, bookmarks (or swipe from the right edge) and more in the overflow menu.</string>
+    <string name="onboarding_two">Click the tab number or swipe from the left edge to open the tab drawer.</string>
+    <string name="onboarding_three">Use page tools in the bookmark drawer to temporarily turn off ad block, open the desktop version of a site and more.</string>
+    <string name="load_tabs">Load all tabs when browser is started</string>
+    <string name="search_homepage">Search...</string>
+    <string name="start">Get started!</string>
     <!-- finish pages -->
 </resources>
