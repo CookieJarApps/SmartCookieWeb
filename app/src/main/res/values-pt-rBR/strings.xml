@@ -444,5 +444,6 @@
     <string name="onboarding_three">Use as ferramentas de página no menu de favoritos para desligar temporariamente o bloqueio de anúncios, abrir o site na versão para computador e muito mais.</string>
     <string name="load_tabs">Carregar todas as abas quando o navegador for iniciado</string>
     <string name="search_homepage">Buscar...</string>
+    <string name="start">Vamos começar!</string>
     <!-- finish pages -->
 </resources>

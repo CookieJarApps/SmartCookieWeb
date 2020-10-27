@@ -256,7 +256,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
 
 
     private fun showTextSizePicker() {
-        val maxValue = 5
+        val maxValue = 7
         AlertDialog.Builder(requireContext()).apply {
             val layoutInflater = activity?.layoutInflater
             val customView = (layoutInflater?.inflate(R.layout.dialog_seek_bar, null) as LinearLayout).apply {
@@ -331,7 +331,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
 
         override fun onProgressChanged(view: SeekBar, size: Int, user: Boolean) {
             this.sampleText.textSize = getTextSize(size)
-            this.sizeText.text = (size * 20 + 60).toString() + "%"
+            this.sizeText.text = (size * 15 + 40).toString() + "%"
         }
 
         override fun onStartTrackingTouch(arg0: SeekBar) {}
@@ -368,8 +368,8 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         private const val X_LARGE = 26.0f
         private const val LARGE = 22.0f
         private const val MEDIUM = 18.0f
-        private const val SMALL = 14.0f
-        private const val X_SMALL = 10.0f
+        private const val SMALL = 16.0f
+        private const val X_SMALL = 14.0f
 
         private fun getTextSize(size: Int): Float = when (size) {
             0 -> X_SMALL
