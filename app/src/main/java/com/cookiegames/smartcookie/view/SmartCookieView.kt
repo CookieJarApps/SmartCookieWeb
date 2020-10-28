@@ -773,7 +773,7 @@ class SmartCookieView(
             if (url != null) {
                 if (result != null) {
                     if (result.type == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE || result.type == WebView.HitTestResult.IMAGE_TYPE) {
-                        dialogBuilder.showLongPressImageDialog(activity, uiController, result.extra!!, userAgent)
+                        dialogBuilder.showLongPressImageDialog(activity, uiController, url, result.extra!!, userAgent)
                     } else {
                         dialogBuilder.showLongPressLinkDialog(activity, uiController, url)
                     }
@@ -782,7 +782,7 @@ class SmartCookieView(
                 }
             } else if (newUrl != null) {
                 if (result.type == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE || result.type == WebView.HitTestResult.IMAGE_TYPE) {
-                    dialogBuilder.showLongPressImageDialog(activity, uiController, newUrl, userAgent)
+                    dialogBuilder.showLongPressImageDialog(activity, uiController, newUrl, result.extra!!, userAgent)
                 } else {
                     dialogBuilder.showLongPressLinkDialog(activity, uiController, newUrl)
                 }

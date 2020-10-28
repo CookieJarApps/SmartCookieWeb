@@ -301,6 +301,7 @@ class LightningDialogBuilder @Inject constructor(
         activity: Activity,
         uiController: UIController,
         url: String,
+        imageUrl: String,
         userAgent: String
     ) = BrowserDialog.show(activity, url.replace(HTTP, ""),
         DialogItem(title = R.string.dialog_open_new_tab) {
@@ -322,22 +323,22 @@ class LightningDialogBuilder @Inject constructor(
             clipboardManager.copyToClipboard(url)
         },
         DialogItem(title = R.string.dialog_download_image) {
-            val mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(url).toLowerCase())
+            val mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(imageUrl).toLowerCase())
 
             if(mimeType != null){
                 if(userPreferences.useNewDownloader){
-                    downloadHandler.onDownloadStart(activity, userPreferences, url, userAgent, "attachment", mimeType, "")
+                    downloadHandler.onDownloadStart(activity, userPreferences, imageUrl, userAgent, "attachment", mimeType, "")
                 }else{
-                    downloadHandler.legacyDownloadStart(activity, userPreferences, url, userAgent, "attachment", mimeType, "")
+                    downloadHandler.legacyDownloadStart(activity, userPreferences, imageUrl, userAgent, "attachment", mimeType, "")
                 }
 
             }
             else{
                 if(userPreferences.useNewDownloader) {
-                    downloadHandler.onDownloadStart(activity, userPreferences, url, userAgent, "attachment", "image/png", "")
+                    downloadHandler.onDownloadStart(activity, userPreferences, imageUrl, userAgent, "attachment", "image/png", "")
                 }
                 else{
-                    downloadHandler.legacyDownloadStart(activity, userPreferences, url, userAgent, "attachment", "image/png", "")
+                    downloadHandler.legacyDownloadStart(activity, userPreferences, imageUrl, userAgent, "attachment", "image/png", "")
                 }
             }
 
