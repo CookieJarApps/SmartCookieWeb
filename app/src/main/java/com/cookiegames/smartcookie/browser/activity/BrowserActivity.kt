@@ -907,6 +907,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 openDownloads()
                 return true
             }
+            R.id.translate -> {
+                currentView?.loadUrl("https://translatetheweb.com/?scw=yes&a=" + currentUrl!!)
+                return true
+            }
             R.id.action_add_bookmark -> {
                 if (currentUrl != null && !currentUrl.isSpecialUrl()) {
                     addBookmark(currentView.title, currentUrl)

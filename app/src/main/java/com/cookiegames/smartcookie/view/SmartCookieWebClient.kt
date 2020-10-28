@@ -85,6 +85,7 @@ class SmartCookieWebClient(
     @Inject internal lateinit var darkMode: DarkMode
     @Inject internal lateinit var translate: Translate
     @Inject internal lateinit var cookieBlock: CookieBlock
+    @Inject internal lateinit var blockAds: BlockAds
     private var adBlock: AdBlocker
 
     private var urlWithSslError: String? = null
@@ -184,6 +185,15 @@ class SmartCookieWebClient(
             view.evaluateJavascript("javascript:(function() {"
                     + "link4var = '" + userPreferences.link4  + "';"
                     + "})();", null)
+        }
+        if(userPreferences.translateExtension && url.contains("translatetheweb.com/?scw=yes")){
+            //Remove useless UI elements and tracking code
+            view.evaluateJavascript(translate.provideJs(), null)
+        }
+        if (BuildConfig.DEBUG) {
+            // Element-based adblock test
+            // TODO: remove this
+            view.evaluateJavascript(blockAds.provideJs(), null)
         }
         if (view.isShown) {
             uiController.updateUrl(url, false)

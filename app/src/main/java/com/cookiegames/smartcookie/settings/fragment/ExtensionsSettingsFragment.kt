@@ -46,11 +46,11 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
                 isChecked = userPreferences.cookieBlockEnabled,
                 onCheckChange = { userPreferences.cookieBlockEnabled = it }
         )
-        /* switchPreference(
+         switchPreference(
                 preference = TRANSLATE,
                 isChecked = userPreferences.translateExtension,
                 onCheckChange = { userPreferences.translateExtension = it }
-        ) */
+        )
 
     }
 

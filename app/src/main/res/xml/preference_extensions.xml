@@ -13,13 +13,12 @@
             android:singleLineTitle="false"
             android:icon="@drawable/ic_block"
             android:title="@string/cookie_category"/>
-
-       <!-- <SwitchPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="translate"
             android:singleLineTitle="false"
             android:icon="@drawable/translate"
-            android:title="@string/translator"/> -->
+            android:title="@string/translator"/>
         <Preference android:title="@string/coming_soon"
             android:key="coming_soon">
         </Preference>

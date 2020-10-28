@@ -217,6 +217,9 @@ class AppModule {
     @Provides
     fun providesCookieBlock(): CookieBlock = MezzanineGenerator.CookieBlock()
 
+    @Provides
+    fun providesAdBlock(): BlockAds = MezzanineGenerator.BlockAds()
+
 }
 
 @Qualifier
