@@ -44,6 +44,10 @@
         android:id="@+id/action_add_to_homescreen"
         android:title="@string/action_add_to_homescreen"/>
     <item
+        android:icon="@drawable/translate"
+        android:id="@+id/translate"
+        android:title="@string/translator"/>
+    <item
         android:icon="@drawable/ic_content_copy_black_24dp"
         android:id="@+id/action_copy"
         android:title="@string/action_copy"/>

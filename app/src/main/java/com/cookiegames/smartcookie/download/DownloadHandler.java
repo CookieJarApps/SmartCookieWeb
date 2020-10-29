@@ -20,6 +20,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
@@ -237,9 +238,11 @@ public class DownloadHandler {
                 }
             }
         }
+
         int downloadId = PRDownloader.download(url, downloadFolder.toString(), URLUtil.guessFileName(url, contentDisposition, mimeType))
                 .build()
                 .setOnStartOrResumeListener(new OnStartOrResumeListener() {
+
                     @Override
                     public void onStartOrResume() {
                         ActivityExtensions.snackbar(context, R.string.download_pending);
@@ -274,7 +277,7 @@ public class DownloadHandler {
                     public void onProgress(Progress progress) {
                         double perc = ((progress.currentBytes / (double) progress.totalBytes) * 100.0f);
 
-                        if (String.valueOf((int) perc).contains("0")) {
+                        if (String.valueOf((int) perc).contains("5") || String.valueOf((int) perc).contains("0")) {
                             builder.setProgress(100, (int) perc, false);
                             notificationManager.notify(uniqid, builder.build());
                         }
@@ -285,7 +288,7 @@ public class DownloadHandler {
                     @Override
                     public void onDownloadComplete() {
                         Intent intent = new Intent();
-                        intent.setAction(android.content.Intent.ACTION_VIEW);
+                        intent.setAction(Intent.ACTION_VIEW);
                         File file = new File(downloadFolder.toString() + URLUtil.guessFileName(url, contentDisposition, mimeType)); // set your audio path
                         intent.setDataAndType(Uri.fromFile(file), mimeType);
 
@@ -300,7 +303,6 @@ public class DownloadHandler {
                                 .setOnlyAlertOnce(true);
                         builder.setProgress(0, 0, false);
                         notificationManager.notify(uniqid + 1, builder.build());
-
                     }
 
                     @Override
@@ -309,6 +311,7 @@ public class DownloadHandler {
                         legacyDownloadStart(context, manager, url, userAgent, contentDisposition, mimeType, contentSize);
                     }
                 });
+
 
         // save download in database
         UIController browserActivity = (UIController) context;
@@ -325,20 +328,15 @@ public class DownloadHandler {
         }
     }
 
-    public class DownloadCancelReceiver extends BroadcastReceiver {
+    public static class DownloadCancelReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent != null) {
-                int noti_id = intent.getIntExtra("notificationId", -1);
-
-                if (noti_id > 0) {
-                    NotificationManager notificationManager = (NotificationManager) context
-                            .getSystemService(Context.NOTIFICATION_SERVICE);
-
-                    notificationManager.cancel(noti_id);
-                }
+                PRDownloader.cancelAll();
+                Log.d("downloader", "cancel");
             }
+            Log.d("downloader", "null");
         }
     }
 
