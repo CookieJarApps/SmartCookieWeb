@@ -37,7 +37,6 @@ class IncognitoActivity : BrowserActivity() {
             menu.setOptionalIconsVisible(true)
         }
         menu.findItem(R.id.quit_app).setVisible(userPreferences.showExtraOptions)
-        menu.findItem(R.id.translate).setVisible(userPreferences.translateExtension)
         return super.onCreateOptionsMenu(menu)
     }
 
