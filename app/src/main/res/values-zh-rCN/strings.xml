@@ -161,6 +161,14 @@
         <item>无</item>
         <item>自定义</item>
     </string-array>
+    <string-array name="suggestion_name_array">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
     <string name="manual_proxy">手动设置代理</string>
     <string name="host">Host:</string>
     <string name="port">Port:</string>
@@ -268,11 +276,6 @@
     <string name="block_source_local_description">文件：%1$s</string>
     <string name="block_source_remote">远程hosts文件</string>
     <string name="block_source_remote_description">网址：%1$s</string>
-    <string-array name="block_ad_source_list">
-        <item>@string/block_source_default</item>
-        <item>@string/block_source_local</item>
-        <item>@string/block_source_remote</item>
-    </string-array>
     <!--Ad block -->
     <string name="ad_block_load_failure">无法从广告拦截源加载hosts。</string>
     <string name="infinity">∞</string>
@@ -343,6 +346,8 @@
     <string name="preferhttpsdesc">始终在支持的网站上使用HTTPS（可能会导致问题）</string>
     <string name="startpagedesc">将默认主页的颜色设置为主题中使用的颜色。</string>
     <string name="updatehomepage">打开一个新标签以查看更新的主页</string>
+    <string name="edit_shortcuts">编辑快捷方式</string>
+    <string name="apply">应用</string>
     <string name="inspect">注入JavaScript</string>
     <string name="bookmark">书签已添加</string>
     <string name="error_title">哎呀！ &lt;br&gt; 无法载入该站点。</string>
@@ -375,6 +380,7 @@
     <string name="show_extra">显示额外的菜单选项</string>
     <string name="incognito_cookies_new">隐私模式在每个会话后重置的窗口中运行。私人模式 cookie 首选项现在由普通的 cookie 首选项控制。</string>
     <string name="quit_private">退出隐私模式</string>
+    <string name="image_url">设置主页背景图像</string>
     <string name="start_incognito">总是像隐私模式一样使用</string>
     <string name="bottom_navbar">移动导航栏到底部</string>
     <string name="please_restart">请重启应用以查看更改</string>
@@ -429,5 +435,14 @@
     <string name="warn">只有当你知道自己在做什么时才改变这个！</string>
     <string name="download_channel">下载</string>
     <string name="download_description">下载进度信息</string>
+    <string name="download_to_sd">下载到 SD 卡</string>
+    <string name="legacy_download_manager">使用集成下载管理器</string>
+    <string name="legacy_download_manager_desc">使用SmartCookieWeb 下载管理器下载文件，而不是系统自带的下载器</string>
+    <string name="onboarding_one">在溢出菜单中访问设置、书签(或从右侧边缘轻扫) 及更多。</string>
+    <string name="onboarding_two">单击标签页编号或从左边缘滑动以打开选项卡抽屉。</string>
+    <string name="onboarding_three">使用书签抽屉中的页面工具暂时关闭广告拦截，打开网站的桌面版本等等。</string>
+    <string name="load_tabs">启动浏览器时加载所有标签</string>
+    <string name="search_homepage">搜索…</string>
+    <string name="start">开始使用！</string>
     <!-- finish pages -->
 </resources>
