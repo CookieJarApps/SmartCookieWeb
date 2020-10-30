@@ -445,5 +445,6 @@
     <string name="load_tabs">Carregar todas as abas quando o navegador for iniciado</string>
     <string name="search_homepage">Buscar...</string>
     <string name="start">Vamos começar!</string>
+    <string name="show_shortcuts">Mostrar atalhos na página inicial</string>
     <!-- finish pages -->
 </resources>
