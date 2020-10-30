@@ -350,6 +350,8 @@ class UserPreferences @Inject constructor(
 
     var ssl by preferences.booleanPreference(SSL, true)
 
+    var showShortcuts by preferences.booleanPreference(SHOW_SHORTCUTS, true)
+
     var link1 by preferences.stringPreference(LINK1, "https://github.com")
     var link2 by preferences.stringPreference(LINK2, "https://google.com")
     var link3 by preferences.stringPreference(LINK3, "https://youtube.com")
@@ -447,3 +449,4 @@ private const val LINK4 = "link4"
 private const val DOWNLOAD_SD = "downloadSD"
 private const val LEGACY_DOWNLOADER = "legacyDownloader"
 private const val ALL_TABS = "allTabs"
+private const val SHOW_SHORTCUTS = "showShortcuts"

@@ -524,5 +524,7 @@
 
     <string name="search_homepage">Search...</string>
     <string name="start">Get started!</string>
+
+    <string name="show_shortcuts">Show shortcuts on homepage</string>
     <!-- finish pages -->
 </resources>

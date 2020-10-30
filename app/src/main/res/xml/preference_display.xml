@@ -24,6 +24,11 @@
         <Preference
             android:key="image_url"
             android:title="@string/image_url"/>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:singleLineTitle="false"
+            android:key="show_shortcuts"
+            android:title="@string/show_shortcuts"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/settings_display">
         <SwitchPreference

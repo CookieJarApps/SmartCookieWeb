@@ -69,6 +69,12 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         )
 
         switchPreference(
+                preference = SETTINGS_SHORTCUTS,
+                isChecked = userPreferences.showShortcuts,
+                onCheckChange = { userPreferences.showShortcuts = it }
+        )
+
+        switchPreference(
             preference = SETTINGS_FULLSCREEN,
             isChecked = userPreferences.fullScreenEnabled,
             onCheckChange = {userPreferences.fullScreenEnabled = it }
@@ -361,6 +367,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_SIZE = "drawer_size"
         private const val SETTINGS_WHATSNEW = "show_whats_new"
         private const val SETTINGS_IMAGE_URL = "image_url"
+        private const val SETTINGS_SHORTCUTS = "show_shortcuts"
 
         private const val XXXX_LARGE = 38.0f
         private const val XXX_LARGE = 34.0f

@@ -60,17 +60,23 @@ class HomePageFactory @Inject constructor(
 
                         )
                     }
-                    id("edit_shortcuts"){ text(resources.getString(R.string.edit_shortcuts)) }
-                    id("apply"){ text(resources.getString(R.string.apply)) }
-                    id("link1click"){ attr("href", userPreferences.link1)}
-                    id("link2click"){ attr("href", userPreferences.link2)}
-                    id("link3click"){ attr("href", userPreferences.link3)}
-                    id("link4click"){ attr("href", userPreferences.link4)}
-                    id("link1"){ attr("src", userPreferences.link1 + "/favicon.ico")}
-                    id("link2"){ attr("src", userPreferences.link2 + "/favicon.ico")}
-                    id("link3"){ attr("src", userPreferences.link3 + "/favicon.ico")}
-                    id("link4"){ attr("src", userPreferences.link4 + "/favicon.ico")}
-                    id("search_input"){ attr("placeholder", resources.getString(R.string.search_homepage))}
+                    if(userPreferences.showShortcuts){
+                        id("edit_shortcuts"){ text(resources.getString(R.string.edit_shortcuts)) }
+                        id("apply"){ text(resources.getString(R.string.apply)) }
+                        id("link1click"){ attr("href", userPreferences.link1)}
+                        id("link2click"){ attr("href", userPreferences.link2)}
+                        id("link3click"){ attr("href", userPreferences.link3)}
+                        id("link4click"){ attr("href", userPreferences.link4)}
+                        id("link1"){ attr("src", userPreferences.link1 + "/favicon.ico")}
+                        id("link2"){ attr("src", userPreferences.link2 + "/favicon.ico")}
+                        id("link3"){ attr("src", userPreferences.link3 + "/favicon.ico")}
+                        id("link4"){ attr("src", userPreferences.link4 + "/favicon.ico")}
+                        id("search_input"){ attr("placeholder", resources.getString(R.string.search_homepage))}
+                    }
+                    else{
+                        id("shortcuts"){ attr("style", "display: none;")}
+                    }
+
                 }
             }
         }
