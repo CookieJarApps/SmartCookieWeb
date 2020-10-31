@@ -374,9 +374,9 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         private const val XX_LARGE = 30.0f
         private const val X_LARGE = 26.0f
         private const val LARGE = 22.0f
-        private const val MEDIUM = 18.0f
-        private const val SMALL = 16.0f
-        private const val X_SMALL = 14.0f
+        private const val MEDIUM = 20.0f
+        private const val SMALL = 18.0f
+        private const val X_SMALL = 16.0f
 
         private fun getTextSize(size: Int): Float = when (size) {
             0 -> X_SMALL

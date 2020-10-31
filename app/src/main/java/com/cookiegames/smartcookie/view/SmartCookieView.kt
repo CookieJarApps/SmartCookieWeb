@@ -372,6 +372,8 @@ class SmartCookieView(
             3 -> 100
             4 -> 75
             5 -> 50
+            6 -> 25
+            7 -> 20
             else -> throw IllegalArgumentException("Unsupported text size")
         }
 
