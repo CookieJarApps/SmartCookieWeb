@@ -444,6 +444,7 @@
     <string name="onboarding_three">Utilize as ferramentas no menu de marcadores para desativar o bloqueio de anúncios, abrir a versão \'desktop\' e muito mais.</string>
     <string name="load_tabs">Carregar todos os separadores ao iniciar</string>
     <string name="search_homepage">Pesquisar...</string>
-    <string name="start">Get started!</string>
+    <string name="start">Iniciar!</string>
+    <string name="show_shortcuts">Mostrar atalhos na página inicial</string>
     <!-- finish pages -->
 </resources>
