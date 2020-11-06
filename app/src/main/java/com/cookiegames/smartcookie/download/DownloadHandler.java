@@ -277,7 +277,7 @@ public class DownloadHandler {
                     public void onProgress(Progress progress) {
                         double perc = ((progress.currentBytes / (double) progress.totalBytes) * 100.0f);
 
-                        if (String.valueOf((int) perc).contains("5") || String.valueOf((int) perc).contains("0")) {
+                        if (String.valueOf((int) perc).contains("0")) {
                             builder.setProgress(100, (int) perc, false);
                             notificationManager.notify(uniqid, builder.build());
                         }
