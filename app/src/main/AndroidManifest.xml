@@ -60,7 +60,6 @@
             android:name="com.cookiegames.smartcookie.MainActivity"
             android:alwaysRetainTaskState="true"
             android:clearTaskOnLaunch="false"
-            android:colorMode="wideColorGamut"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
             android:label="@string/app_name"
             android:launchMode="singleTask"
@@ -177,7 +176,6 @@
         </activity>
         <activity
             android:name="com.cookiegames.smartcookie.reading.activity.ReadingActivity"
-            android:colorMode="wideColorGamut"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
             android:label="@string/reading_mode"
             android:theme="@style/Theme.SettingsTheme">
@@ -190,7 +188,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
+            android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
