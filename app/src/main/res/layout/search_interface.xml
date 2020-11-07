@@ -1,65 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/search_bar"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/material_grid_touch_medium"
-    android:background="?attr/colorPrimary"
-    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/drawerBackground"
+    android:orientation="vertical"
     android:visibility="gone"
-    android:weightSum="1">
+    android:elevation="4dp">
 
-    <EditText
-        android:id="@+id/search_query"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:ellipsize="end"
-        android:fontFamily="sans-serif"
-        android:singleLine="true"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/material_grid_margin"
-        android:textAppearance="?android:attr/textAppearanceListItem"
-        android:textSize="22sp"/>
+    <LinearLayout
+        android:id="@+id/row1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="?attr/drawerBackground"
+        android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/button_search"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="?selectableItemBackgroundBorderless"
-        android:contentDescription="@null"
-        android:tint="?attr/iconColor"
-        app:srcCompat="@drawable/ic_search"/>
+        <EditText
+            android:id="@+id/search_query"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/material_grid_margin"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceListItem"
+            android:textSize="22sp" />
+    </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/button_back"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="?selectableItemBackgroundBorderless"
-        android:contentDescription="@null"
-        android:tint="?attr/iconColor"
-        app:srcCompat="@drawable/ic_action_collapse"/>
+    <LinearLayout
+        android:id="@+id/row2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/row1"
+        android:background="?attr/drawerBackground"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/button_next"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="?selectableItemBackgroundBorderless"
-        android:contentDescription="@null"
-        android:tint="?attr/iconColor"
-        app:srcCompat="@drawable/ic_action_expand"/>
+        <ImageButton
+            android:id="@+id/button_search"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="86dp"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@null"
+            android:tint="?attr/iconColor"
+            app:srcCompat="@drawable/ic_search" />
 
-    <ImageButton
-        android:id="@+id/button_quit"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="?selectableItemBackgroundBorderless"
-        android:contentDescription="@null"
-        android:tint="?attr/iconColor"
-        app:srcCompat="@drawable/ic_action_delete"/>
-</LinearLayout>
+        <ImageButton
+            android:id="@+id/button_back"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="86dp"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@null"
+            android:tint="?attr/iconColor"
+            app:srcCompat="@drawable/ic_action_collapse" />
+
+        <ImageButton
+            android:id="@+id/button_next"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="86dp"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@null"
+            android:tint="?attr/iconColor"
+            app:srcCompat="@drawable/ic_action_expand" />
+
+        <ImageButton
+            android:id="@+id/button_quit"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="86dp"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@null"
+            android:tint="?attr/iconColor"
+            app:srcCompat="@drawable/ic_action_delete" />
+    </LinearLayout>
+</RelativeLayout>

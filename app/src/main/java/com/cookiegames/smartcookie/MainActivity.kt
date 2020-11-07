@@ -23,19 +23,7 @@ class MainActivity : BrowserActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        if(userPreferences.bottomBar){
-            menuInflater.inflate(R.menu.inverted, menu)
-        }
-        else{
-            menuInflater.inflate(R.menu.main, menu)
-        }
-
-        if (menu is MenuBuilder) {
-            menu.setOptionalIconsVisible(true)
-        }
-        menu.findItem(R.id.quit_app).setVisible(userPreferences.showExtraOptions)
-        menu.findItem(R.id.translate).setVisible(userPreferences.translateExtension)
-        return super.onCreateOptionsMenu(menu)
+        return false
     }
 
     override fun onNewIntent(intent: Intent) =

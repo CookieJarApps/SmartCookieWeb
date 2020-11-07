@@ -20,8 +20,8 @@ android {
     defaultConfig {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
-        versionName "9.3.2"
-        versionCode 129
+        versionName "9.3.3"
+        versionCode 130
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
@@ -100,12 +100,14 @@ dependencies {
     implementation "androidx.appcompat:appcompat:1.2.0"
     implementation "com.google.android.material:material:1.2.1"
     implementation "androidx.recyclerview:recyclerview:1.1.0"
-    implementation "androidx.core:core:1.3.1"
-    implementation "androidx.constraintlayout:constraintlayout:2.0.1"
+    implementation "androidx.core:core:1.3.2"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
     implementation "androidx.drawerlayout:drawerlayout:1.1.1"
     implementation "androidx.preference:preference-ktx:1.1.1"
+
     // html parsing for reading mode
     implementation 'org.jsoup:jsoup:1.13.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     androidTestImplementation 'androidx.test:rules:1.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0'
@@ -143,20 +145,21 @@ dependencies {
     implementation "info.guardianproject.netcipher:netcipher:$netCipherVersion"
     implementation "info.guardianproject.netcipher:netcipher-webkit:$netCipherVersion"
 
-    implementation 'org.apache.httpcomponents:httpcore:4.4.1'
+    implementation 'org.apache.httpcomponents:httpcore:4.4.10'
 
     implementation 'com.anthonycr.progress:animated-progress:1.0'
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
-    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.core:core-ktx:1.3.2'
 
     implementation 'androidx.annotation:annotation:1.1.0'
 
     implementation 'com.github.QuadFlask:colorpicker:0.0.15'
 
+    implementation 'net.dankito.readability4j:readability4j:1.0.3'
+
     implementation 'androidx.webkit:webkit:1.3.0'
 
-    implementation 'com.github.kizitonwose.colorpreference:support:1.1.0'
     implementation 'com.mindorks.android:prdownloader:0.6.0'
     // memory leak analysis
     final def leakCanaryVersion = '2.4'

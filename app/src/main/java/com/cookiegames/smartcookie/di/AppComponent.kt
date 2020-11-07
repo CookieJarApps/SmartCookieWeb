@@ -21,6 +21,8 @@ import com.cookiegames.smartcookie.view.SmartCookieChromeClient
 import com.cookiegames.smartcookie.view.SmartCookieView
 import com.cookiegames.smartcookie.view.SmartCookieWebClient
 import android.app.Application
+import com.cookiegames.smartcookie.popup.CustomAdapter
+import com.cookiegames.smartcookie.popup.PopUpClass
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -90,5 +92,7 @@ interface AppComponent {
     fun provideBloomFilterAdBlocker(): BloomFilterAdBlocker
 
     fun provideNoOpAdBlocker(): NoOpAdBlocker
+
+    fun inject(popUpClass: PopUpClass)
 
 }

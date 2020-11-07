@@ -4,6 +4,7 @@ package com.cookiegames.smartcookie.browser.activity
 import android.app.Activity
 import android.app.NotificationManager
 import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
@@ -20,8 +21,6 @@ import android.os.Handler
 import android.os.Message
 import android.preference.PreferenceManager
 import android.provider.MediaStore
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
@@ -45,7 +44,6 @@ import androidx.core.net.toUri
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.palette.graphics.Palette
-import androidx.recyclerview.widget.LinearLayoutManager
 import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
 import com.cookiegames.smartcookie.AppTheme
@@ -76,6 +74,7 @@ import com.cookiegames.smartcookie.icon.TabCountView
 import com.cookiegames.smartcookie.interpolator.BezierDecelerateInterpolator
 import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.notifications.IncognitoNotification
+import com.cookiegames.smartcookie.popup.PopUpClass
 import com.cookiegames.smartcookie.reading.activity.ReadingActivity
 import com.cookiegames.smartcookie.search.SearchEngineProvider
 import com.cookiegames.smartcookie.search.SuggestionsAdapter
@@ -87,6 +86,7 @@ import com.cookiegames.smartcookie.utils.*
 import com.cookiegames.smartcookie.view.*
 import com.cookiegames.smartcookie.view.SearchView
 import com.cookiegames.smartcookie.view.find.FindResults
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy
@@ -95,7 +95,6 @@ import kotlinx.android.synthetic.main.browser_content.*
 import kotlinx.android.synthetic.main.search.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
-import org.w3c.dom.Text
 import java.io.IOException
 import java.util.*
 import javax.inject.Inject
@@ -403,7 +402,42 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             newTabButtonClicked()
             true
         }
+
+        customView.findViewById<FrameLayout>(R.id.more_button).setOnClickListener(this)
+
         Log.d("firstlaunch", userPreferences.firstLaunch.toString())
+        val extraBar = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        if(!userPreferences.navbar){
+            extraBar.visibility = View.GONE
+        }
+        else{
+            extraBar.setOnNavigationItemSelectedListener { item ->
+                when(item.itemId) {
+                    R.id.tabs -> {
+                        drawer_layout.openDrawer(getTabDrawer())
+                        true
+                    }
+                    R.id.bookmarks -> {
+                        drawer_layout.openDrawer(getBookmarkDrawer())
+                        true
+                    }
+                    R.id.forward -> {
+                        tabsManager.currentTab?.goForward()
+                        true
+                    }
+                    R.id.back -> {
+                        tabsManager.currentTab?.goBack()
+                        true
+                    }
+                    R.id.home -> {
+                        tabsManager.currentTab?.loadHomePage()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
+
 
         // create the search EditText in the ToolBar
         searchView = customView.findViewById<SearchView>(R.id.search).apply {
@@ -447,6 +481,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 refreshOrStop()
             }
         }
+
 
         searchBackground = customView.findViewById<View>(R.id.search_container).apply {
             // initialize search background color
@@ -497,6 +532,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if(userPreferences.passwordChoiceLock == PasswordChoice.CUSTOM){
 
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_edit_text, null)
+
+
         val editText = dialogView.findViewById<EditText>(R.id.dialog_edit_text)
 
         editText.setHint(R.string.enter_password)
@@ -995,7 +1032,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
      * method that shows a dialog asking what string the user wishes to search
      * for. It highlights the text entered.
      */
-    private fun findInPage() = BrowserDialog.showEditText(
+    public fun findInPage() = BrowserDialog.showEditText(
             this,
             R.string.action_find,
             R.string.action_find,
@@ -2095,11 +2132,15 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
      */
     override fun onClick(v: View) {
         val currentTab = tabsManager.currentTab ?: return
+        val popUpClass = PopUpClass()
         when (v.id) {
             R.id.home_button -> when {
                 searchView?.hasFocus() == true -> currentTab.requestFocus()
                 shouldShowTabsInDrawer -> drawer_layout.openDrawer(getTabDrawer())
                 else -> currentTab.loadHomePage()
+            }
+            R.id.more_button -> {
+                popUpClass.showPopupWindow(v, this)
             }
             R.id.button_next -> findResult?.nextResult()
             R.id.button_back -> findResult?.previousResult()
@@ -2107,6 +2148,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 findResult?.clearResults()
                 findResult = null
                 search_bar.visibility = GONE
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
             }
             R.id.button_search -> {
                 showFindInPageControls(findViewById<EditText>(R.id.search_query).text.toString())

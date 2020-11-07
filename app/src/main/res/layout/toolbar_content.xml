@@ -33,4 +33,20 @@
 
     <include layout="@layout/search" />
 
+    <FrameLayout
+        android:id="@+id/more_button"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="match_parent"
+        android:background="?attr/actionBarItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center">
+    <ImageView
+        app:srcCompat="@drawable/ic_baseline_more_vert_24"
+        android:id="@+id/overflow_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+    </FrameLayout>
+
 </LinearLayout>

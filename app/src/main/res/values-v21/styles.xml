@@ -3,6 +3,7 @@
 
     <!-- Settings themes -->
     <style name="Theme.SettingsTheme" parent="Theme.LightTheme">
+        <item name="colorPrimary">@color/primary_color</item>
         <item name="android:windowBackground">@null</item>
         <item name="toolbarSettingsBackground">@color/primary_color</item>
     </style>

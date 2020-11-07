@@ -15,8 +15,8 @@
 
 -->
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:icon="@drawable/ic_round_add"
         android:id="@+id/action_new_tab"

@@ -75,6 +75,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.FileProvider;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -290,7 +291,7 @@ public class DownloadHandler {
                         Intent intent = new Intent();
                         intent.setAction(Intent.ACTION_VIEW);
                         File file = new File(downloadFolder.toString() + URLUtil.guessFileName(url, contentDisposition, mimeType)); // set your audio path
-                        intent.setDataAndType(Uri.fromFile(file), mimeType);
+                        intent.setDataAndType(FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", file), mimeType);
 
                         PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent, 0);
 

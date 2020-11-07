@@ -33,6 +33,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 object BrowserDialog {
 
@@ -177,13 +178,13 @@ object BrowserDialog {
         if (currentText != null) {
             editText.setText(currentText)
         }
+        MaterialAlertDialogBuilder(activity)
+                .setTitle(title)
+                .setView(dialogView)
+                .setPositiveButton(action
+                ) { _, _ -> textInputListener(editText.text.toString()) }
+                .resizeAndShow()
 
-        AlertDialog.Builder(activity)
-            .setTitle(title)
-            .setView(dialogView)
-            .setPositiveButton(action
-            ) { _, _ -> textInputListener(editText.text.toString()) }
-            .resizeAndShow()
     }
 
     @JvmStatic

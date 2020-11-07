@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android">
-    <translate
-        android:duration="100"
-        android:fromYDelta="100%p"
-        android:interpolator="@anim/bezier_decelerate"
-        android:toYDelta="0%p" />
-    <!--<alpha-->
-        <!--android:duration="@android:integer/config_mediumAnimTime"-->
-        <!--android:fromAlpha="0.5"-->
-        <!--android:toAlpha="1.0" />-->
+    <scale
+        android:fromYScale="0"
+        android:toYScale="1.0"
+        android:startOffset="0"
+        android:duration="75"
+        android:fromXScale="0"
+        android:toXScale="1.0"
+        android:fillAfter="true"
+        android:pivotX="100%"/>
 </set>

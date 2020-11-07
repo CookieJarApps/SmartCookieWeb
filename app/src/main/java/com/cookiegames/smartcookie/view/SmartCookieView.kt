@@ -66,6 +66,7 @@ class SmartCookieView(
         private val bookmarkPageInitializer: BookmarkPageInitializer,
         private val downloadPageInitializer: DownloadPageInitializer,
         private val onboardingPageInitializer: OnboardingPageInitializer,
+        private val historyPageInitializer: HistoryPageInitializer,
         private val logger: Logger
 ) {
 
@@ -288,6 +289,13 @@ class SmartCookieView(
      */
     fun loadDownloadsPage() {
         reinitialize(downloadPageInitializer)
+    }
+
+    /**
+     * This function loads the history page via the [HistoryPageInitializer].
+     */
+    fun loadHistoryPage() {
+        reinitialize(historyPageInitializer)
     }
 
     /**

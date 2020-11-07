@@ -272,7 +272,8 @@ class TabsManager @Inject constructor(
             homePageInitializer,
             bookmarkPageInitializer,
             downloadPageInitializer,
-           onboardingPageInitializer,
+            onboardingPageInitializer,
+            historyPageInitializer,
             logger
         )
         tabList.add(tab)

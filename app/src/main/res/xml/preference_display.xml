@@ -32,6 +32,11 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/settings_display">
         <SwitchPreference
+            android:defaultValue="false"
+            android:singleLineTitle="false"
+            android:key="second_bar"
+            android:title="@string/show_second_bar" />
+        <SwitchPreference
             android:defaultValue="true"
             android:singleLineTitle="false"
             android:key="cb_drawertabs"

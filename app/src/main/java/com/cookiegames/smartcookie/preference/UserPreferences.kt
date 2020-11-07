@@ -334,24 +334,34 @@ class UserPreferences @Inject constructor(
     var darkModeExtension by preferences.booleanPreference(DARK_MODE, false)
     var translateExtension by preferences.booleanPreference(TRANSLATE, false)
 
+    // The color of the main navbar
     var colorNavbar by preferences.intPreference(NAVBAR_COLOR, 0)
 
+    // If this is the first launch of the browser
     var firstLaunch by preferences.booleanPreference(FIRST_LAUNCH, true)
 
+    // Close browser when the last tab is shut
     var closeOnLastTab by preferences.booleanPreference(LAST_TAB, true)
 
+    // Block opening of links in other apps
     var blockIntent by preferences.booleanPreference(INTENT, false)
 
+    // Only clear history, etc on force close when respective options are on
     var onlyForceClose by preferences.booleanPreference(FORCE, true)
 
+    // Max lines of text in drawer
     var drawerLines by preferences.enumPreference(DRAWER_LINES, DrawerLineChoice.THREE)
 
+    // Size of text in drawers
     var drawerSize by preferences.enumPreference(DRAWER_SIZE, DrawerSizeChoice.AUTO)
 
+    // Show SSL warnings
     var ssl by preferences.booleanPreference(SSL, true)
 
+    // Show homepage shortcuts
     var showShortcuts by preferences.booleanPreference(SHOW_SHORTCUTS, true)
 
+    // Homepage shortcuts
     var link1 by preferences.stringPreference(LINK1, "https://github.com")
     var link2 by preferences.stringPreference(LINK2, "https://google.com")
     var link3 by preferences.stringPreference(LINK3, "https://youtube.com")
@@ -359,6 +369,10 @@ class UserPreferences @Inject constructor(
 
     var useNewDownloader by preferences.booleanPreference(LEGACY_DOWNLOADER, true)
 
+    // Show second navbar at the bottom of the screen
+    var navbar by preferences.booleanPreference(SECOND_BAR, false)
+
+    // Load all tabs on browser start
     var allTabs by preferences.booleanPreference(ALL_TABS, false)
 }
 
@@ -450,3 +464,4 @@ private const val DOWNLOAD_SD = "downloadSD"
 private const val LEGACY_DOWNLOADER = "legacyDownloader"
 private const val ALL_TABS = "allTabs"
 private const val SHOW_SHORTCUTS = "showShortcuts"
+private const val SECOND_BAR = "secondBar"

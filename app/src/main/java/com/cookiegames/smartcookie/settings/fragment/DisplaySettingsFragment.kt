@@ -51,7 +51,6 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
             summary = userPreferences.useTheme.toDisplayString(),
             onClick = ::showThemePicker
         )
-
         clickablePreference(
             preference = SETTINGS_TEXTSIZE,
             onClick = ::showTextSizePicker
@@ -60,6 +59,12 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         clickablePreference(
                 preference = SETTINGS_NAVBAR_COL,
                 onClick = ::showColorPicker
+        )
+
+        switchPreference(
+                preference = SETTINGS_NAVBAR,
+                isChecked = userPreferences.navbar,
+                onCheckChange = { userPreferences.navbar = it; Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show() }
         )
 
         switchPreference(
@@ -368,6 +373,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_WHATSNEW = "show_whats_new"
         private const val SETTINGS_IMAGE_URL = "image_url"
         private const val SETTINGS_SHORTCUTS = "show_shortcuts"
+        private const val SETTINGS_NAVBAR = "second_bar"
 
         private const val XXXX_LARGE = 38.0f
         private const val XXX_LARGE = 34.0f
