@@ -526,5 +526,11 @@
     <string name="start">Get started!</string>
 
     <string name="show_shortcuts">Show shortcuts on homepage</string>
+
+    <string name="reading_mode_image_copyright">Image attributed to</string>
+    <string name="reading_mode_image_caption">Image with caption</string>
+
+    <string name="show_second_bar">Show secondary navigation bar</string>
+
     <!-- finish pages -->
 </resources>

@@ -450,5 +450,9 @@
     <string name="load_tabs">Tarayıcı başladığında tüm sekmeleri yükle</string>
     <string name="search_homepage">Arama...</string>
     <string name="start">Kullanmaya Başlayın!</string>
+    <string name="show_shortcuts">Ana sayfada kısayolları göster</string>
+    <string name="reading_mode_image_copyright">Image attributed to</string>
+    <string name="reading_mode_image_caption">Image with caption</string>
+    <string name="show_second_bar">Show secondary navigation bar</string>
     <!-- finish pages -->
 </resources>
