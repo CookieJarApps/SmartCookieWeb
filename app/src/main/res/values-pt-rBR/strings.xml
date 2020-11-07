@@ -446,5 +446,8 @@
     <string name="search_homepage">Buscar...</string>
     <string name="start">Vamos começar!</string>
     <string name="show_shortcuts">Mostrar atalhos na página inicial</string>
+    <string name="reading_mode_image_copyright">Imagem atribuída a</string>
+    <string name="reading_mode_image_caption">Imagem com legenda</string>
+    <string name="show_second_bar">Mostrar barra de navegação secundária</string>
     <!-- finish pages -->
 </resources>
