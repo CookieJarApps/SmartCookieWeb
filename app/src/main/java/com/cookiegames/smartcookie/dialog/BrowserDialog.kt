@@ -45,7 +45,7 @@ object BrowserDialog {
     ) = show(activity, activity.getString(title), *items)
 
     fun showWithIcons(context: Context, title: String?, vararg items: DialogItem) {
-        val builder = AlertDialog.Builder(context)
+        val builder = MaterialAlertDialogBuilder(context)
 
         val layout = context.inflater.inflate(R.layout.list_dialog, null)
 
@@ -83,7 +83,7 @@ object BrowserDialog {
      * the dialog.
      */
     fun showListChoices(activity: Activity, @StringRes title: Int, vararg items: DialogItem) {
-        AlertDialog.Builder(activity).apply {
+        MaterialAlertDialogBuilder(activity).apply {
             setTitle(title)
 
             val choices = items.map { activity.getString(it.title) }.toTypedArray()
@@ -98,7 +98,7 @@ object BrowserDialog {
 
     @JvmStatic
     fun show(activity: Activity, title: String?, vararg items: DialogItem) {
-        val builder = AlertDialog.Builder(activity)
+        val builder = MaterialAlertDialogBuilder(activity)
 
         val layout = activity.inflater.inflate(R.layout.list_dialog, null)
 
@@ -144,7 +144,7 @@ object BrowserDialog {
         } else {
             activity.getString(message)
         }
-        AlertDialog.Builder(activity).apply {
+        MaterialAlertDialogBuilder(activity).apply {
             setTitle(title)
             setMessage(messageValue)
             setOnCancelListener { onCancel() }
@@ -201,9 +201,9 @@ object BrowserDialog {
     /**
      * Show the custom dialog with the custom builder arguments applied.
      */
-    fun showCustomDialog(activity: Activity?, block: AlertDialog.Builder.(Activity) -> Unit) {
+    fun showCustomDialog(activity: Activity?, block: MaterialAlertDialogBuilder.(Activity) -> Unit) {
         activity?.let {
-            AlertDialog.Builder(activity).apply {
+            MaterialAlertDialogBuilder(activity).apply {
                 block(it)
                 resizeAndShow()
             }

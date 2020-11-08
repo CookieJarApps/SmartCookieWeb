@@ -8,11 +8,11 @@
     <color name="gray_list_bg">#0d000000</color>
 
     <color name="primary_color">#FFFFFF</color>
-    <color name="secondary_color">#66000000</color>
+    <color name="secondary_color">#8d4e00</color>
     <color name="accent_color">#C88C36</color>
 
-    <color name="cyanea_primary_reference">#FFFFFF</color>
-    <color name="cyanea_accent_reference">#C88C36</color>
+    <color name="status_bar">#9C9C9C</color>
+
 
     <color name="color_green">#ACDF87</color>
     <color name="color_yellow">#FEFEBE</color>

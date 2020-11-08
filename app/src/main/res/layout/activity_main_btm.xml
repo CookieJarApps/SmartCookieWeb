@@ -22,8 +22,7 @@
                 android:id="@+id/ui_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:orientation="vertical">
 
                 <include
                     layout="@layout/browser_content"/>
@@ -54,20 +53,23 @@
                 android:weightSum="1"/>
 
         </androidx.drawerlayout.widget.DrawerLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@drawable/toolbar_color"
+        app:itemTextColor="?attr/iconColor"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:outlineAmbientShadowColor="@android:color/transparent"
+        android:outlineSpotShadowColor="@android:color/transparent"
+        android:translationZ="0dp"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_menu"/>
 
-<com.google.android.material.bottomnavigation.BottomNavigationView
-android:background="@color/white"
-android:id="@+id/bottom_navigation"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-app:menu="@menu/bottom_menu"
-app:labelVisibilityMode="labeled"
-android:layout_alignParentBottom="true"
-android:translationZ="0dp"
-android:outlineAmbientShadowColor="@android:color/transparent"
-android:outlineSpotShadowColor="@android:color/transparent"
-    />
 
-    </RelativeLayout>
+
+</RelativeLayout>
+

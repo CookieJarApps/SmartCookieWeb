@@ -46,7 +46,7 @@
     <style name="Theme.BaseLightTheme" parent="Theme.MaterialComponents.Light">
 
         <!-- Theme Colors -->
-        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimary">@color/accent_color</item>
 
         <item name="colorPrimaryDark">@color/transparent</item>
         <item name="colorAccent">@color/accent_color</item>
@@ -70,10 +70,10 @@
 
     </style>
 
-    <style name="Theme.BaseDarkTheme" parent="Theme.AppCompat">
+    <style name="Theme.BaseDarkTheme" parent="Theme.MaterialComponents">
 
         <!-- Theme colors -->
-        <item name="colorPrimary">@color/primary_color_dark</item>
+        <item name="colorPrimary">@color/secondary_color</item>
         <item name="colorPrimaryDark">@color/primary_color_dark</item>
         <item name="colorAccent">@color/accent_color</item>
         <item name="drawerBackground">@color/drawer_background_dark</item>
@@ -96,10 +96,10 @@
 
     </style>
 
-    <style name="Theme.BaseBlackTheme" parent="Theme.AppCompat">
+    <style name="Theme.BaseBlackTheme" parent="Theme.MaterialComponents">
 
         <!-- Theme Colors -->
-        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimary">@color/secondary_color</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/accent_color</item>
         <item name="drawerBackground">@color/black</item>

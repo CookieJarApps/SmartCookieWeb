@@ -19,13 +19,11 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:paddingBottom="0dp"
+        android:layout_marginBottom="0dp"
         android:paddingLeft="0dp"
-        android:paddingRight="0dp"
         android:paddingTop="2dp"
         app:contentInsetEnd="0dp"
-        app:contentInsetStart="0dp"
-        />
+        app:contentInsetStart="0dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

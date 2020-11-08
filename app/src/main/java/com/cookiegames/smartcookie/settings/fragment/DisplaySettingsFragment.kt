@@ -27,6 +27,7 @@ import com.cookiegames.smartcookie.browser.DrawerLineChoice
 import com.cookiegames.smartcookie.browser.DrawerSizeChoice
 import com.flask.colorpicker.ColorPickerView
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.w3c.dom.Text
 
 
@@ -268,7 +269,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
 
     private fun showTextSizePicker() {
         val maxValue = 7
-        AlertDialog.Builder(requireContext()).apply {
+        MaterialAlertDialogBuilder(requireContext()).apply {
             val layoutInflater = activity?.layoutInflater
             val customView = (layoutInflater?.inflate(R.layout.dialog_seek_bar, null) as LinearLayout).apply {
                 val text = TextView(activity).apply {
@@ -303,7 +304,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
 
     private fun showThemePicker(summaryUpdater: SummaryUpdater) {
        val currentTheme = userPreferences.useTheme
-        AlertDialog.Builder(requireContext()).apply {
+        MaterialAlertDialogBuilder(requireContext()).apply {
             setTitle(resources.getString(R.string.theme))
             val values = AppTheme.values().map { Pair(it, it.toDisplayString()) }
             withSingleChoiceItems(values, userPreferences.useTheme) {

@@ -59,16 +59,19 @@
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:background="@color/white"
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:menu="@menu/bottom_menu"
-            app:labelVisibilityMode="labeled"
+            app:itemIconTint="@drawable/toolbar_color"
+            app:itemTextColor="?attr/iconColor"
             android:layout_alignParentBottom="true"
-            android:translationZ="0dp"
+            android:layout_gravity="bottom"
+            android:background="@color/white"
             android:outlineAmbientShadowColor="@android:color/transparent"
             android:outlineSpotShadowColor="@android:color/transparent"
+            android:translationZ="0dp"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_menu"
             />
 
 

@@ -32,12 +32,7 @@ class IncognitoActivity : BrowserActivity() {
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.incognito, menu)
-        if (menu is MenuBuilder) {
-            menu.setOptionalIconsVisible(true)
-        }
-        menu.findItem(R.id.quit_app).setVisible(userPreferences.showExtraOptions)
-        return super.onCreateOptionsMenu(menu)
+        return false
     }
 
     @Suppress("RedundantOverride")

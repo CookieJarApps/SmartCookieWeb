@@ -8,21 +8,32 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.IncognitoActivity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.TabsManager
 import com.cookiegames.smartcookie.browser.activity.BrowserActivity
 import com.cookiegames.smartcookie.controller.UIController
+import com.cookiegames.smartcookie.database.HistoryEntry
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.dialog.BrowserDialog
+import com.cookiegames.smartcookie.extensions.copyToClipboard
+import com.cookiegames.smartcookie.extensions.snackbar
 import com.cookiegames.smartcookie.preference.UserPreferences
+import com.cookiegames.smartcookie.reading.activity.ReadingActivity
 import com.cookiegames.smartcookie.settings.activity.SettingsActivity
+import com.cookiegames.smartcookie.utils.IntentUtils
+import com.cookiegames.smartcookie.utils.Utils
+import com.cookiegames.smartcookie.utils.isSpecialUrl
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.search_interface.*
 import java.util.*
 import javax.inject.Inject
@@ -44,6 +55,7 @@ class PopUpClass {
         val inflater = view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val popupView = inflater.inflate(R.layout.toolbar_menu, null)
         val r = view.context.resources
+
         val px = Math.round(TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 228f, r.displayMetrics))
 
@@ -59,6 +71,16 @@ class PopUpClass {
         val popupWindow = PopupWindow(popupView, px, height, focusable)
         val relView = popupView.findViewById<RelativeLayout>(R.id.toolbar_menu)
 
+        if(activity.isIncognito()){
+            val incognitoHeight = Math.round(TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 628f, r.displayMetrics))
+            popupView.findViewById<ConstraintLayout>(R.id.transparent_container).maxHeight = incognitoHeight
+            popupView.findViewById<ConstraintLayout>(R.id.transparent_container).setBackgroundColor(view.context.resources.getColor(R.color.black))
+        }
+        else if(userPreferences.useTheme == AppTheme.DARK || userPreferences.useTheme == AppTheme.BLACK){
+            popupView.findViewById<ConstraintLayout>(R.id.transparent_container).setBackgroundColor(view.context.resources.getColor(R.color.black))
+        }
+
         //Set the location of the window on the screen
         if (userPreferences!!.bottomBar) {
             popupWindow.animationStyle = R.style.ToolbarAnimReverse
@@ -70,68 +92,85 @@ class PopUpClass {
         }
         popupWindow.setBackgroundDrawable(ColorDrawable(Color.WHITE))
         val resources = view.context.resources
-        val textString = arrayOf(resources.getString(R.string.action_new_tab), resources.getString(R.string.action_incognito), resources.getString(R.string.action_share), resources.getString(R.string.action_print), resources.getString(R.string.action_history), resources.getString(R.string.action_downloads), resources.getString(R.string.action_find), resources.getString(R.string.action_copy), resources.getString(R.string.action_add_to_homescreen), resources.getString(R.string.action_bookmarks), resources.getString(R.string.reading_mode), resources.getString(R.string.settings))
-        val drawableIds = intArrayOf(R.drawable.ic_round_add, R.drawable.incognito_mode, R.drawable.ic_share_black_24dp, R.drawable.ic_round_print_24, R.drawable.ic_history, R.drawable.ic_file_download_black_24dp, R.drawable.ic_search, R.drawable.ic_content_copy_black_24dp, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings)
+        var textString = arrayOf(resources.getString(R.string.action_new_tab), resources.getString(R.string.action_incognito), resources.getString(R.string.action_share), resources.getString(R.string.action_print), resources.getString(R.string.action_history), resources.getString(R.string.action_downloads), resources.getString(R.string.action_find), resources.getString(R.string.action_copy), resources.getString(R.string.action_add_to_homescreen), resources.getString(R.string.action_bookmarks), resources.getString(R.string.reading_mode), resources.getString(R.string.settings))
+        var drawableIds = intArrayOf(R.drawable.ic_round_add, R.drawable.incognito_mode, R.drawable.ic_share_black_24dp, R.drawable.ic_round_print_24, R.drawable.ic_history, R.drawable.ic_file_download_black_24dp, R.drawable.ic_search, R.drawable.ic_content_copy_black_24dp, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings)
+
+        if(activity.isIncognito()){
+            textString = arrayOf(resources.getString(R.string.action_new_tab), resources.getString(R.string.action_print), resources.getString(R.string.action_find), resources.getString(R.string.action_copy), resources.getString(R.string.action_add_to_homescreen), resources.getString(R.string.action_bookmarks), resources.getString(R.string.reading_mode), resources.getString(R.string.settings), resources.getString(R.string.quit_private))
+            drawableIds = intArrayOf(R.drawable.ic_round_add, R.drawable.ic_round_print_24, R.drawable.ic_search, R.drawable.ic_content_copy_black_24dp, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings, R.drawable.ic_action_back)
+        }
+
+
         if (userPreferences!!.bottomBar) {
-            Collections.reverse(Arrays.asList(*textString))
+            textString.reverse()
             for (i in 0 until drawableIds.size / 2) {
                 val temp = drawableIds[i]
                 drawableIds[i] = drawableIds[drawableIds.size - i - 1]
                 drawableIds[drawableIds.size - i - 1] = temp
             }
         }
+
         val adapter = CustomAdapter(view.context, textString, drawableIds)
         list = popupView.findViewById<ListView>(R.id.menuList)
         list?.setAdapter(adapter)
         list?.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
             var positionList = intArrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
-            var currentView = uiController!!.getTabModel().currentTab
-            var currentUrl = uiController!!.getTabModel().currentTab?.url
-            if (userPreferences!!.bottomBar) {
+            if(activity.isIncognito() && !userPreferences.bottomBar){
+                positionList = intArrayOf(0, 3, 6, 7, 8, 9, 10, 11, 12)
+            }
+            else if(activity.isIncognito()){
+                positionList = intArrayOf(12, 11, 10, 9, 8, 7, 6, 3, 0)
+            }
+            else if(userPreferences.bottomBar){
                 positionList = intArrayOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
             }
-            if (position == positionList[0]) {
+            var currentView = activity.tabsManager.currentTab
+            var currentUrl = uiController!!.getTabModel().currentTab?.url
+
+            if (positionList[position] == 0) {
                 uiController!!.newTabButtonClicked()
-            } else if (position == positionList[1]) {
+            } else if (positionList[position] == 1) {
                 val incognito = Intent(view.context, IncognitoActivity::class.java)
                 view.context.startActivity(incognito)
-            } else if (position == positionList[2]) {
-                val shareIntent = Intent(Intent.ACTION_SEND)
-                shareIntent.type = "text/plain"
-                if (currentView?.title != null) {
-                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, currentView.title)
-                }
-                shareIntent.putExtra(Intent.EXTRA_TEXT, currentUrl)
-                view.context.startActivity(Intent.createChooser(shareIntent, view.context.getString(R.string.dialog_title_share)))
-            } else if (position == positionList[3]) {
+            } else if (positionList[position] == 2) {
+                IntentUtils(activity).shareUrl(currentUrl, currentView?.title)
+            } else if (positionList[position] == 3) {
                 currentView!!.webView?.let { currentView.createWebPagePrint(it) }
-            } else if (position == positionList[4]) {
+            } else if (positionList[position] == 4) {
                 currentView?.loadHistoryPage()
-            } else if (position == positionList[5]) {
+            } else if (positionList[position] == 5) {
                 currentView?.loadDownloadsPage()
-            } else if (position == positionList[6]) {
+            } else if (positionList[position] == 6) {
                 activity.findInPage()
-            } else if (position == positionList[7]) {
-                val incognito = Intent(view.context, IncognitoActivity::class.java)
-                view.context.startActivity(incognito)
-            } else if (position == positionList[8]) {
-                val incognito = Intent(view.context, IncognitoActivity::class.java)
-                view.context.startActivity(incognito)
-            } else if (position == positionList[9]) {
-                val incognito = Intent(view.context, IncognitoActivity::class.java)
-                view.context.startActivity(incognito)
-            } else if (position == positionList[10]) {
-                val incognito = Intent(view.context, IncognitoActivity::class.java)
-                view.context.startActivity(incognito)
-            } else if (position == positionList[11]) {
-                val incognito = Intent(view.context, SettingsActivity::class.java)
-                view.context.startActivity(incognito)
+            } else if (positionList[position] == 7) {
+                if (currentUrl != null && !currentUrl.isSpecialUrl()) {
+                    activity.clipboardManager.copyToClipboard(currentUrl)
+                    activity.snackbar(R.string.message_link_copied)
+                }
+            } else if (positionList[position] == 8) {
+                if (currentView != null
+                        && currentView.url.isNotBlank()
+                        && !currentView.url.isSpecialUrl()) {
+                    HistoryEntry(currentView.url, currentView.title).also {
+                        Utils.createShortcut(activity, it, currentView.favicon ?: activity.webPageBitmap!!)
+                    }
+                }
+            } else if (positionList[position] == 9) {
+               activity.drawer_layout.openDrawer(activity.getBookmarkDrawer())
+            } else if (positionList[position] == 10) {
+                if (currentUrl != null) {
+                    ReadingActivity.launch(view.context, currentUrl)
+                }
+            } else if (positionList[position] == 11) {
+                val settings = Intent(view.context, SettingsActivity::class.java)
+                view.context.startActivity(settings)
+            }
+            else if (positionList[position] == 12) {
+                activity.onBackPressed()
+                activity.finish()
             }
             popupWindow.dismiss()
         })
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            popupWindow.elevation = 20f
-        }
 
 
         //Handler for clicking on the inactive zone of the window

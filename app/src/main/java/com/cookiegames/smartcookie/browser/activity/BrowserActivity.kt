@@ -23,6 +23,7 @@ import android.preference.PreferenceManager
 import android.provider.MediaStore
 import android.util.DisplayMetrics
 import android.util.Log
+import android.util.TypedValue
 import android.view.*
 import android.view.View.*
 import android.view.ViewGroup.LayoutParams
@@ -42,13 +43,15 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
 import androidx.core.view.GravityCompat
+import androidx.core.view.marginLeft
+import androidx.core.view.marginRight
+import androidx.core.view.marginTop
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.palette.graphics.Palette
 import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.IncognitoActivity
-import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.*
 import com.cookiegames.smartcookie.browser.bookmarks.BookmarksDrawerView
@@ -75,10 +78,8 @@ import com.cookiegames.smartcookie.interpolator.BezierDecelerateInterpolator
 import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.notifications.IncognitoNotification
 import com.cookiegames.smartcookie.popup.PopUpClass
-import com.cookiegames.smartcookie.reading.activity.ReadingActivity
 import com.cookiegames.smartcookie.search.SearchEngineProvider
 import com.cookiegames.smartcookie.search.SuggestionsAdapter
-import com.cookiegames.smartcookie.settings.activity.SettingsActivity
 import com.cookiegames.smartcookie.ssl.SslState
 import com.cookiegames.smartcookie.ssl.createSslDrawableForState
 import com.cookiegames.smartcookie.ssl.showSslDialog
@@ -98,6 +99,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 import java.io.IOException
 import java.util.*
 import javax.inject.Inject
+import kotlin.math.roundToInt
 import kotlin.system.exitProcess
 
 abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIController, OnClickListener {
@@ -220,7 +222,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     lateinit var bookmarksDialogBuilder: LightningDialogBuilder
 
     // Image
-    private var webPageBitmap: Bitmap? = null
+    var webPageBitmap: Bitmap? = null
     private val backgroundDrawable = ColorDrawable()
     private var incognitoNotification: IncognitoNotification? = null
 
@@ -239,7 +241,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     /**
      * Determines if the current browser instance is in incognito mode or not.
      */
-    protected abstract fun isIncognito(): Boolean
+    abstract fun isIncognito(): Boolean
 
     /**
      * Choose the behavior when the controller closes the view.
@@ -324,6 +326,19 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         // Drawer stutters otherwise
         left_drawer.setLayerType(LAYER_TYPE_NONE, null)
         right_drawer.setLayerType(LAYER_TYPE_NONE, null)
+
+        if(userPreferences.bottomBar && userPreferences.navbar){
+            val sizeInDP = 56f
+
+            val marginInDp = TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, sizeInDP, resources
+                    .displayMetrics)
+
+            val param = toolbar.layoutParams as ViewGroup.MarginLayoutParams
+            param.setMargins(toolbar.marginLeft,toolbar.marginTop,toolbar.marginRight,marginInDp.roundToInt())
+            toolbar.layoutParams = param
+
+        }
 
 
         setNavigationDrawerWidth()
@@ -436,6 +451,11 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     else -> false
                 }
             }
+        }
+
+
+        if(isDarkTheme && userPreferences.navbar){
+            extraBar.setBackgroundColor(resources.getColor(R.color.black))
         }
 
 
@@ -581,7 +601,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         R.id.tabs_toolbar_container
     }
 
-    private fun getBookmarkDrawer(): View = if (swapBookmarksAndTabs) {
+    fun getBookmarkDrawer(): View = if (swapBookmarksAndTabs) {
         left_drawer
     } else {
         right_drawer
@@ -868,115 +888,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             }
         }
         return super.dispatchKeyEvent(event)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val currentView = tabsManager.currentTab
-        val currentUrl = currentView?.url
-        // Handle action buttons
-        when (item.itemId) {
-            android.R.id.home -> {
-                if (drawer_layout.isDrawerOpen(getBookmarkDrawer())) {
-                    drawer_layout.closeDrawer(getBookmarkDrawer())
-                }
-                return true
-            }
-            R.id.action_back -> {
-                if (currentView?.canGoBack() == true) {
-                    currentView.goBack()
-                }
-                return true
-            }
-            R.id.action_forward -> {
-                if (currentView?.canGoForward() == true) {
-                    currentView.goForward()
-                }
-                return true
-            }
-            R.id.action_add_to_homescreen -> {
-                if (currentView != null
-                        && currentView.url.isNotBlank()
-                        && !currentView.url.isSpecialUrl()) {
-                    HistoryEntry(currentView.url, currentView.title).also {
-                        Utils.createShortcut(this, it, currentView.favicon ?: webPageBitmap!!)
-                        logger.log(TAG, "Creating shortcut: ${it.title} ${it.url}")
-                    }
-                }
-                return true
-            }
-            R.id.action_new_tab -> {
-                presenter?.newTab(homePageInitializer, true)
-                return true
-            }
-            R.id.action_incognito -> {
-                startActivity(IncognitoActivity.createIntent(this))
-                overridePendingTransition(R.anim.slide_up_in, R.anim.fade_out_scale)
-                return true
-            }
-            R.id.action_share -> {
-                IntentUtils(this).shareUrl(currentUrl, currentView?.title)
-                return true
-            }
-            R.id.action_print -> {
-                currentView!!.webView?.let { currentView.createWebPagePrint(it) }
-                return true
-            }
-            R.id.action_bookmarks -> {
-                openBookmarks()
-                return true
-            }
-            R.id.action_copy -> {
-                if (currentUrl != null && !currentUrl.isSpecialUrl()) {
-                    clipboardManager.copyToClipboard(currentUrl)
-                    snackbar(R.string.message_link_copied)
-                }
-                return true
-            }
-            R.id.action_settings -> {
-                startActivity(Intent(this, SettingsActivity::class.java))
-                return true
-            }
-            R.id.action_history -> {
-                openHistory()
-                return true
-            }
-            R.id.action_downloads -> {
-                openDownloads()
-                return true
-            }
-            R.id.translate -> {
-                currentView?.loadUrl("https://translatetheweb.com/?scw=yes&a=" + currentUrl!!)
-                return true
-            }
-            R.id.action_add_bookmark -> {
-                if (currentUrl != null && !currentUrl.isSpecialUrl()) {
-                    addBookmark(currentView.title, currentUrl)
-                }
-                return true
-            }
-            R.id.action_find -> {
-                findInPage()
-                return true
-            }
-            R.id.quit_private -> {
-                val back = Intent(this, MainActivity::class.java)
-                startActivity(back)
-                finish()
-                return true
-            }
-            R.id.quit_app -> {
-                this.finish()
-                System.exit(0)
-                return true
-            }
-            R.id.action_reading_mode -> {
-                if (currentUrl != null) {
-                    ReadingActivity.launch(this, currentUrl)
-                }
-                return true
-            }
-            else -> return super.onOptionsItemSelected(item)
-        }
     }
 
 

@@ -71,7 +71,7 @@
                 android:paddingStart="6dp"
                 android:paddingTop="4dp"
                 android:paddingEnd="6dp"
-                app:srcCompat="@drawable/ic_action_refresh" />
+                app:srcCompat="@drawable/ic_action_delete" />
 
 
         </LinearLayout>

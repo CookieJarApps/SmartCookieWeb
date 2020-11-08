@@ -89,11 +89,17 @@ class HomePageFactory @Inject constructor(
                 else if(userPreferences.startPageThemeEnabled && userPreferences.useTheme == AppTheme.BLACK){
                     it.write(content + "<style>body {\n" +
                             "    background-color: #000000;\n" +
+                            "} .text, .edit{" +
+                            "color: #ffffff;" +
+                            "fill: #ffffff;" +
                             "}</style>")
                 }
                 else if(userPreferences.startPageThemeEnabled && userPreferences.useTheme == AppTheme.DARK){
                     it.write(content + "<style>body {\n" +
                             "    background-color: #2a2a2a;\n" +
+                            "} .text, .edit{" +
+                            "color: #ffffff;" +
+                            "fill: #ffffff;" +
                             "}</style>")
                 }
                 else{
