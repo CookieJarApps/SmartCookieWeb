@@ -3,9 +3,33 @@
 
     <!-- Settings themes -->
     <style name="Theme.SettingsTheme" parent="Theme.LightTheme">
-        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimary">@color/white</item>
         <item name="android:windowBackground">@null</item>
         <item name="toolbarSettingsBackground">@color/primary_color</item>
+        <item name="materialAlertDialogTheme">@style/AlertDialogMaterialTheme</item>
+    </style>
+
+
+    <style name="AlertDialogMaterialTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="buttonBarPositiveButtonStyle">@style/Alert.Button.Positive</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Alert.Button.Negative</item>
+    </style>
+
+    <style name="Alert.Button.Positive" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:fillColor">@color/black</item>
+        <item name="android:textColor">@color/accent_color</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="rippleColor">@color/black</item>
+    </style>
+
+    <style name="Alert.Button.Negative" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/black</item>
+        <item name="android:textColor">@color/accent_color</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="rippleColor">@color/black</item>
     </style>
 
     <style name="Theme.SettingsTheme.Dark" parent="Theme.DarkTheme">

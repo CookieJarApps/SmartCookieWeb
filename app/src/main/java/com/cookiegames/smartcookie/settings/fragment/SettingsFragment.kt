@@ -1,11 +1,10 @@
 package com.cookiegames.smartcookie.settings.fragment
 
-import android.R.attr
-import android.R.attr.fragment
+import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.replace
-import androidx.preference.Preference
+import android.widget.TextView
 import androidx.preference.PreferenceFragmentCompat
 import com.cookiegames.smartcookie.R
 

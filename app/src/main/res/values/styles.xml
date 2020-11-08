@@ -3,8 +3,8 @@
 
     <!-- Settings themes -->
     <style name="Theme.SettingsTheme" parent="Theme.LightTheme">
-        <item name="colorPrimary">@color/primary_color</item>
-        <item name="android:windowBackground">@null</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
         <item name="toolbarSettingsBackground">@drawable/toolbar_elevate</item>
     </style>
 
@@ -48,7 +48,7 @@
         <!-- Theme Colors -->
         <item name="colorPrimary">@color/accent_color</item>
 
-        <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="colorPrimaryDark">@color/primary_color</item>
         <item name="colorAccent">@color/accent_color</item>
         <item name="drawerBackground">@color/drawer_background</item>
         <item name="dividerColor">@color/white</item>
@@ -66,8 +66,6 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="actionOverflowButtonStyle">@style/overFlowButtonStyle</item>
         <!-- Alert dialogs -->
-        <item name="alertDialogTheme">@style/AppCompatDialogStyle.Light</item>
-
     </style>
 
     <style name="Theme.BaseDarkTheme" parent="Theme.MaterialComponents">
