@@ -5,4 +5,4 @@ setTimeout(function() {
 }, 1500);
 
 window.hipUrl = null;
-// Copyright 2020 CookieJarApps MPL
+document.querySelector('#ToDDL').value = 
