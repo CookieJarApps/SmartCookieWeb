@@ -72,4 +72,21 @@
         android:paddingStart="@dimen/material_grid_unit"
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
         tools:text="tomorrow" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_grid_margin"
+        android:text="@string/algorithm"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ssl_layout_serial_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_grid_unit"
+        android:paddingStart="@dimen/material_grid_unit"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        tools:text="tomorrow" />=
 </LinearLayout>

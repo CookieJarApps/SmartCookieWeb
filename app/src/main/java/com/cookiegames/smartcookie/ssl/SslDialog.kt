@@ -1,4 +1,4 @@
-package com.cookiegames.smartcookie.ssl
+package com.cookiegames.smartcookie. ssl
 
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.extensions.inflater
@@ -8,6 +8,8 @@ import android.net.http.SslCertificate
 import android.text.format.DateFormat
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import okio.internal.commonToUtf8String
 
 /**
  * Shows an informative dialog with the provided [SslCertificate] information.
@@ -17,6 +19,7 @@ fun Context.showSslDialog(sslCertificate: SslCertificate, sslState: SslState) {
     val to = sslCertificate.issuedTo
     val issueDate = sslCertificate.validNotBeforeDate
     val expireDate = sslCertificate.validNotAfterDate
+    val cert = sslCertificate.x509Certificate
 
     val dateFormat = DateFormat.getDateFormat(applicationContext)
 
@@ -26,11 +29,12 @@ fun Context.showSslDialog(sslCertificate: SslCertificate, sslState: SslState) {
             ?: to.cName
         findViewById<TextView>(R.id.ssl_layout_issue_date).text = dateFormat.format(issueDate)
         findViewById<TextView>(R.id.ssl_layout_expire_date).text = dateFormat.format(expireDate)
+        findViewById<TextView>(R.id.ssl_layout_serial_number).text = cert?.sigAlgName
     }
 
     val icon = createSslDrawableForState(sslState)
 
-    AlertDialog.Builder(this)
+    MaterialAlertDialogBuilder(this)
         .setIcon(icon)
         .setTitle(to.cName)
         .setView(contentView)

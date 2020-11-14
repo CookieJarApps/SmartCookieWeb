@@ -7,6 +7,7 @@ import com.cookiegames.smartcookie.extensions.inflater
 import com.cookiegames.smartcookie.list.VerticalItemAnimator
 import com.cookiegames.smartcookie.view.SmartCookieView
 import android.content.Context
+import android.opengl.Visibility
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
@@ -72,6 +73,17 @@ class TabsDrawerView @JvmOverloads constructor(
         }
         findViewById<View>(R.id.action_home).setOnClickListener {
             uiController.onHomeButtonPressed()
+        }
+
+        if(userPreferences.navbar){
+            findViewById<View>(R.id.action_home).visibility = View.GONE
+            findViewById<View>(R.id.action_forward).visibility = View.GONE
+            findViewById<View>(R.id.action_back).visibility = View.GONE
+            findViewById<View>(R.id.new_tab_button).visibility = View.GONE
+            findViewById<View>(R.id.new_tab).visibility = View.VISIBLE
+            findViewById<View>(R.id.new_tab).setOnClickListener {
+                uiController.newTabButtonClicked()
+            }
         }
     }
 

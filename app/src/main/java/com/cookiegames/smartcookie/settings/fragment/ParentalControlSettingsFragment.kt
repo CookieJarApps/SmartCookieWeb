@@ -19,6 +19,7 @@ import com.cookiegames.smartcookie.dialog.BrowserDialog.setDialogSize
 import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.settings.activity.SettingsActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import javax.inject.Inject
 
 /**
@@ -76,7 +77,7 @@ class ParentalControlSettingsFragment : AbstractSettingsFragment() {
 
         editText.setHint(R.string.enter_password)
 
-        val editorDialog = AlertDialog.Builder(requireContext())
+        val editorDialog = MaterialAlertDialogBuilder(requireContext())
                 .setTitle(R.string.enter_password)
                 .setView(dialogView)
                 .setCancelable(false)

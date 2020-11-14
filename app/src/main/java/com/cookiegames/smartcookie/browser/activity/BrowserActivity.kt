@@ -88,6 +88,7 @@ import com.cookiegames.smartcookie.view.*
 import com.cookiegames.smartcookie.view.SearchView
 import com.cookiegames.smartcookie.view.find.FindResults
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy
@@ -429,10 +430,12 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             extraBar.setOnNavigationItemSelectedListener { item ->
                 when(item.itemId) {
                     R.id.tabs -> {
+                        drawer_layout.closeDrawer(getBookmarkDrawer())
                         drawer_layout.openDrawer(getTabDrawer())
                         true
                     }
                     R.id.bookmarks -> {
+                        drawer_layout.closeDrawer(getTabDrawer())
                         drawer_layout.openDrawer(getBookmarkDrawer())
                         true
                     }
@@ -463,7 +466,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         searchView = customView.findViewById<SearchView>(R.id.search).apply {
             search_ssl_status.setOnClickListener {
                 if (tabsManager.currentTab?.sslCertificate == null) {
-                    val builder = AlertDialog.Builder(context)
+                    val builder = MaterialAlertDialogBuilder(context)
                     builder.setTitle(R.string.site_not_secure)
                     builder.setIcon(R.drawable.ic_alert)
                     builder.setPositiveButton(R.string.action_ok) { _, _ ->
@@ -533,7 +536,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         }
 
         if (userPreferences.firstLaunch && Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP && Locale.getDefault().getLanguage().equals("en")) {
-            val builder = AlertDialog.Builder(this)
+            val builder = MaterialAlertDialogBuilder(this)
             builder.setTitle(getString(R.string.no_search_suggestions))
             builder.setMessage(getString(R.string.search_suggestions_4))
 
@@ -558,7 +561,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
         editText.setHint(R.string.enter_password)
 
-        val editorDialog = AlertDialog.Builder(this)
+        val editorDialog = MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.enter_password)
                 .setView(dialogView)
                 .setCancelable(false)
@@ -980,8 +983,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 DialogItem(title = R.string.close_other_tabs, icon = drawable(R.drawable.ic_delete_other)) {
                     presenter?.closeAllOtherTabs()
                 },
-                DialogItem(title = R.string.close_app, icon = drawable(R.drawable.ic_action_delete), onClick = this::closeApp),
-                DialogItem(title = R.string.close_all_tabs, icon = drawable(R.drawable.ic_delete_all), onClick = this::closeBrowser))
+                DialogItem(title = R.string.close_all_tabs, icon = drawable(R.drawable.ic_delete_all), onClick = this::closeBrowser),
+                DialogItem(title = R.string.close_app, icon = drawable(R.drawable.ic_action_delete), onClick = this::closeApp))
+
 
     }
 
@@ -1084,7 +1088,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     override fun showBlockedLocalFileDialog(onPositiveClick: Function0<Unit>) {
-        AlertDialog.Builder(this)
+        MaterialAlertDialogBuilder(this)
                 .setCancelable(true)
                 .setTitle(R.string.title_warning)
                 .setMessage(R.string.message_blocked_local)

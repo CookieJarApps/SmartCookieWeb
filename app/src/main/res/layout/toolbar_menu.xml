@@ -10,10 +10,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/transparent_container"
         android:layout_width="match_parent"
-        android:layout_height="724dp"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="@drawable/toolbar"
-        android:elevation="8dp"
+        android:elevation="4dp"
         android:padding="12dp"
         android:paddingTop="@dimen/toolbar_height_landscape">
 
@@ -33,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:paddingStart="6dp"
+                android:id="@+id/back_option"
                 android:paddingTop="4dp"
                 android:paddingEnd="6dp"
                 app:srcCompat="@drawable/ic_action_back" />
@@ -44,6 +45,7 @@
                 android:paddingStart="6dp"
                 android:paddingTop="4dp"
                 android:paddingEnd="6dp"
+                android:id="@+id/forward_option"
                 app:srcCompat="@drawable/ic_action_forward" />
 
             <androidx.appcompat.widget.AppCompatImageButton
@@ -53,15 +55,7 @@
                 android:paddingStart="6dp"
                 android:paddingTop="4dp"
                 android:paddingEnd="6dp"
-                app:srcCompat="@drawable/translate" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:paddingStart="6dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="6dp"
+                android:id="@+id/bookmark_option"
                 app:srcCompat="@drawable/ic_action_star" />
 
             <androidx.appcompat.widget.AppCompatImageButton
@@ -71,6 +65,7 @@
                 android:paddingStart="6dp"
                 android:paddingTop="4dp"
                 android:paddingEnd="6dp"
+                android:id="@+id/close_option"
                 app:srcCompat="@drawable/ic_action_delete" />
 
 
@@ -83,6 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 

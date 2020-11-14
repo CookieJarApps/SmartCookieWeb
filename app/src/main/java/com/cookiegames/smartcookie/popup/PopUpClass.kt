@@ -14,6 +14,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import android.widget.AdapterView.GONE
 import android.widget.AdapterView.OnItemClickListener
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.cookiegames.smartcookie.AppTheme
@@ -22,6 +23,7 @@ import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.TabsManager
 import com.cookiegames.smartcookie.browser.activity.BrowserActivity
 import com.cookiegames.smartcookie.controller.UIController
+import com.cookiegames.smartcookie.database.Bookmark
 import com.cookiegames.smartcookie.database.HistoryEntry
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.dialog.BrowserDialog
@@ -60,26 +62,50 @@ class PopUpClass {
                 TypedValue.COMPLEX_UNIT_DIP, 228f, r.displayMetrics))
 
         //Specify the length and width through constants
-        val height = LinearLayout.LayoutParams.MATCH_PARENT
+        val height = LinearLayout.LayoutParams.WRAP_CONTENT
 
         //Make Inactive Items Outside Of PopupWindow
         val focusable = true
         uiController = view.context as UIController
 
+        // TODO: Finish menu scaling, fix translator in bottom navbar mode
 
         //Create a window with our parameters
         val popupWindow = PopupWindow(popupView, px, height, focusable)
         val relView = popupView.findViewById<RelativeLayout>(R.id.toolbar_menu)
 
         if(activity.isIncognito()){
-            val incognitoHeight = Math.round(TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP, 628f, r.displayMetrics))
-            popupView.findViewById<ConstraintLayout>(R.id.transparent_container).maxHeight = incognitoHeight
             popupView.findViewById<ConstraintLayout>(R.id.transparent_container).setBackgroundColor(view.context.resources.getColor(R.color.black))
         }
         else if(userPreferences.useTheme == AppTheme.DARK || userPreferences.useTheme == AppTheme.BLACK){
             popupView.findViewById<ConstraintLayout>(R.id.transparent_container).setBackgroundColor(view.context.resources.getColor(R.color.black))
         }
+
+        var currentView = activity.tabsManager.currentTab
+        var currentUrl = uiController!!.getTabModel().currentTab?.url
+
+        popupView.findViewById<ImageButton>(R.id.back_option).setOnClickListener {
+            currentView?.goBack()
+        }
+        popupView.findViewById<ImageButton>(R.id.forward_option).setOnClickListener {
+            currentView?.goForward()
+        }
+        popupView.findViewById<ImageButton>(R.id.close_option).setOnClickListener {
+            activity.closeApp()
+        }
+        popupView.findViewById<ImageButton>(R.id.bookmark_option).setOnClickListener {
+            val bookmark = Bookmark.Entry(currentUrl!!, currentView!!.title, 0, Bookmark.Folder.Root)
+            activity.bookmarksDialogBuilder.showAddBookmarkDialog(activity, uiController!!, bookmark)
+        }
+        var container =  popupView.findViewById<ConstraintLayout>(R.id.transparent_container)
+        if(userPreferences.navbar){
+            popupView.findViewById<LinearLayout>(R.id.linearLayout).visibility = View.GONE
+            val noTopMenu = Math.round(TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 56f, r.displayMetrics))
+           // container.maxHeight = container.maxHeight - noTopMenu
+           container.setPadding(container.paddingLeft, container.paddingTop - noTopMenu, container.paddingRight, container.paddingBottom)
+        }
+
 
         //Set the location of the window on the screen
         if (userPreferences!!.bottomBar) {
@@ -94,6 +120,12 @@ class PopUpClass {
         val resources = view.context.resources
         var textString = arrayOf(resources.getString(R.string.action_new_tab), resources.getString(R.string.action_incognito), resources.getString(R.string.action_share), resources.getString(R.string.action_print), resources.getString(R.string.action_history), resources.getString(R.string.action_downloads), resources.getString(R.string.action_find), resources.getString(R.string.action_copy), resources.getString(R.string.action_add_to_homescreen), resources.getString(R.string.action_bookmarks), resources.getString(R.string.reading_mode), resources.getString(R.string.settings))
         var drawableIds = intArrayOf(R.drawable.ic_round_add, R.drawable.incognito_mode, R.drawable.ic_share_black_24dp, R.drawable.ic_round_print_24, R.drawable.ic_history, R.drawable.ic_file_download_black_24dp, R.drawable.ic_search, R.drawable.ic_content_copy_black_24dp, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings)
+
+        if(userPreferences.translateExtension){
+            textString = arrayOf(resources.getString(R.string.action_new_tab), resources.getString(R.string.action_incognito), resources.getString(R.string.action_share), resources.getString(R.string.translator), resources.getString(R.string.action_print), resources.getString(R.string.action_history), resources.getString(R.string.action_downloads), resources.getString(R.string.action_find), resources.getString(R.string.action_copy), resources.getString(R.string.action_add_to_homescreen), resources.getString(R.string.action_bookmarks), resources.getString(R.string.reading_mode), resources.getString(R.string.settings))
+            drawableIds = intArrayOf(R.drawable.ic_round_add, R.drawable.incognito_mode, R.drawable.ic_share_black_24dp, R.drawable.translate, R.drawable.ic_round_print_24, R.drawable.ic_history, R.drawable.ic_file_download_black_24dp, R.drawable.ic_search, R.drawable.ic_content_copy_black_24dp, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings)
+
+        }
 
         if(activity.isIncognito()){
             textString = arrayOf(resources.getString(R.string.action_new_tab), resources.getString(R.string.action_print), resources.getString(R.string.action_find), resources.getString(R.string.action_copy), resources.getString(R.string.action_add_to_homescreen), resources.getString(R.string.action_bookmarks), resources.getString(R.string.reading_mode), resources.getString(R.string.settings), resources.getString(R.string.quit_private))
@@ -120,6 +152,9 @@ class PopUpClass {
             }
             else if(activity.isIncognito()){
                 positionList = intArrayOf(12, 11, 10, 9, 8, 7, 6, 3, 0)
+            }
+            else if(userPreferences.translateExtension){
+                positionList = intArrayOf(0, 1, 2, 13, 3, 4, 5, 6, 7, 8, 9, 10, 11)
             }
             else if(userPreferences.bottomBar){
                 positionList = intArrayOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
@@ -169,14 +204,10 @@ class PopUpClass {
                 activity.onBackPressed()
                 activity.finish()
             }
+            else if(positionList[position] == 13){
+                currentView?.loadUrl("https://translatetheweb.com/?scw=yes&a=" + currentUrl!!)
+            }
             popupWindow.dismiss()
         })
-
-
-        //Handler for clicking on the inactive zone of the window
-        popupView.setOnTouchListener { v, event -> //Close the window when clicked
-            popupWindow.dismiss()
-            true
-        }
     }
 }

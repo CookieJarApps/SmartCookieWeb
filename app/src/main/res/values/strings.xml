@@ -534,6 +534,7 @@
 
     <string name="edit_cookies">Edit site cookies</string>
 
-
+    <string name="ssl_size">Key size</string>
+    <string name="algorithm">Algorithm</string>
     <!-- finish pages -->
 </resources>
