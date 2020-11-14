@@ -1,10 +1,8 @@
 // Copyright 2020 CookieJarApps MPL
-var styles = '#titleDiv { visibility: hidden !important; height: 0; }'
-
-var styleSheet = document.createElement("style")
-styleSheet.type = "text/css"
-styleSheet.innerText = styles
-document.head.appendChild(styleSheet)
+setTimeout(function() {
+	document.getElementById("titleDiv").remove();
+	document.getElementById("CookieBannerWrapper").remove();
+}, 1500);
 
 window.hipUrl = null;
 // Copyright 2020 CookieJarApps MPL

@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.CookieManager
 import android.widget.*
 import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.DiffUtil
@@ -41,6 +42,7 @@ import com.cookiegames.smartcookie.favicon.FaviconModel
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.reading.activity.ReadingActivity
 import com.cookiegames.smartcookie.utils.isSpecialUrl
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
@@ -266,6 +268,29 @@ class BookmarksDrawerView @JvmOverloads constructor(
                     builder.setPositiveButton("OK") { dialogInterface, i -> currentTab.loadUrl("javascript:(function() {" + editText.text.toString() + "})()") }
                     builder.show()
 
+                }, DialogItem(
+                        icon = context.drawable(R.drawable.ic_round_storage_24),
+                        title = R.string.edit_cookies
+                ) {
+
+                     val cookieManager = CookieManager.getInstance()
+                     if(cookieManager.getCookie(currentTab.url) != null){
+                         val builder = MaterialAlertDialogBuilder(context)
+                         val inflater = activity.layoutInflater
+                         builder.setTitle(R.string.edit_cookies)
+                         val dialogLayout = inflater.inflate(R.layout.dialog_multi_line, null)
+                         val editText = dialogLayout.findViewById<EditText>(R.id.dialog_multi_line)
+                         editText.setText(cookieManager.getCookie(currentTab.url))
+                         builder.setView(dialogLayout)
+                         builder.setPositiveButton("OK") { dialogInterface, i ->
+                             val cookiesList = editText.text.toString().split(";")
+                             cookiesList.forEach { item ->
+                                 CookieManager.getInstance().setCookie(currentTab.url, item)
+                             }
+                         }
+                         builder.show()
+                     }
+
                 },
                 DialogItem(
                         icon = context.drawable(R.drawable.ic_baseline_code_24),
@@ -285,7 +310,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
                         Toast.makeText(activity, R.string.pagespeed_error,
                                 Toast.LENGTH_LONG).show()
                     }
-                    val builder = AlertDialog.Builder(context)
+                    val builder = MaterialAlertDialogBuilder(context)
                     val inflater = activity.layoutInflater
                     builder.setTitle(R.string.page_source)
                     val dialogLayout = inflater.inflate(R.layout.dialog_multi_line, null)

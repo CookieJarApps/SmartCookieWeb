@@ -532,5 +532,8 @@
 
     <string name="show_second_bar">Show secondary navigation bar</string>
 
+    <string name="edit_cookies">Edit site cookies</string>
+
+
     <!-- finish pages -->
 </resources>
