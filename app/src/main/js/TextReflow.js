@@ -1,5 +1,4 @@
 (function () {
     'use strict';
     
-    document.getElementsByTagName('body')[0].style.width = window.innerWidth + 'px';
-}());
+    document.body.style.width = 
