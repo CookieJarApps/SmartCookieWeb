@@ -445,5 +445,8 @@
     <string name="search_homepage">搜索…</string>
     <string name="start">开始使用！</string>
     <string name="show_shortcuts">在主页上显示快捷方式</string>
+    <string name="reading_mode_image_copyright">图片版权属于</string>
+    <string name="reading_mode_image_caption">带说明的图片</string>
+    <string name="show_second_bar">显示辅助导航栏</string>
     <!-- finish pages -->
 </resources>

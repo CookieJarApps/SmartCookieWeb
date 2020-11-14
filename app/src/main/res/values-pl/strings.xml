@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_new_tab">Nowa karta</string>
     <string name="action_share">Udostępnij</string>
+    <string name="action_print">Drukuj</string>
     <string name="action_history">Historia</string>
     <string name="action_bookmarks">Zakładki</string>
     <string name="action_downloads">Pliki do pobrania</string>
@@ -63,6 +64,8 @@
     <string name="dialog_adobe_not_installed">Adobe Flash Player nie jest zainstalowany. \ N Zainstaluj Flash Player.</string>
     <string name="title_user_agent">Agent użytkownika</string>
     <string name="title_download_location">Miejsce pobierania plików</string>
+    <string name="download_failed">Pobieranie nieudane:</string>
+    <string name="download_successful">Pobieranie zakończone</string>
     <string name="title_custom_homepage">Niestandardowa strona główna</string>
     <string name="action_webpage">Strona internetowa</string>
     <string name="title_clear_history">Czysta historia</string>
@@ -158,6 +161,14 @@
         <item>Brak</item>
         <item>Zwyczaj</item>
     </string-array>
+    <string-array name="suggestion_name_array">
+        <item>Trzy</item>
+        <item>Cztery</item>
+        <item>Pięć</item>
+        <item>Sześć</item>
+        <item>Siedem</item>
+        <item>Osiem</item>
+    </string-array>
     <string name="manual_proxy">Ręczny serwer proxy</string>
     <string name="host">Gospodarz:</string>
     <string name="port">Port:</string>
@@ -242,11 +253,11 @@
     <string name="message_web_storage_cleared">Pamięć internetowa została wyczyszczona</string>
     <string name="hosts_source">Hostuje źródło blokowania reklam plikowych</string>
     <string name="settings_adblock">Ustawienia bloków treści</string>
-    <string name="adblock_summary">Blok reklam...</string>
+    <string name="adblock_summary">Blok reklam, blok okna dialogowego plików cookie ...</string>
     <string name="adblock_category">Blok reklam</string>
     <string name="cookie_category">Blok okna dialogowego plików cookie</string>
     <string name="tabs_in_drawer">Pokaż karty w szufladzie</string>
-    <string name="swap_bookmarks_and_tabs">Zamień stronami szuflady: karty i zakładki</string>
+    <string name="swap_bookmarks_and_tabs">Zamień stronami szuflady: karty i ulubione</string>
     <string name="do_not_track">Żądanie \ „Nie śledź \”</string>
     <string name="remove_identifying_headers">Usuń identyfikujące nagłówki HTTP</string>
     <string name="action_add_to_homescreen">Dodaj do ekranu głównego</string>
@@ -265,11 +276,6 @@
     <string name="block_source_local_description">Plik: %1$s</string>
     <string name="block_source_remote">Plik hostów zdalnych</string>
     <string name="block_source_remote_description">URL: %1$s</string>
-    <string-array name="block_ad_source_list">
-        <item>@string/block_source_default</item>
-        <item>@string/block_source_local</item>
-        <item>@string/block_source_remote</item>
-    </string-array>
     <!--Ad block -->
     <string name="ad_block_load_failure">Nie udało się załadować hostów ze źródła blokującego reklamy.</string>
     <string name="infinity">∞</string>
@@ -326,6 +332,8 @@
     <string name="search_engine_duckduckgo_lite">DuckDuckGo Lite</string>
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
+    <string name="search_engine_searx">SearX.be</string>
+    <string name="search_engine_searx_cookiejarapps">CookieJarApps SearX</string>
     <string name="privacy">Zobacz politykę prywatności</string>
     <string name="privacy_info">Przeczytaj politykę prywatności SmartCookieWeb</string>
     <string name="block_malware">Blokuj złośliwe strony</string>
@@ -341,6 +349,8 @@
     <string name="preferhttpsdesc">Zawsze używaj HTTPS na obsługiwanych stronach (może powodować problemy)</string>
     <string name="startpagedesc">Ustaw kolor domyślnej strony domowej na ten używany w szablonie.</string>
     <string name="updatehomepage">Otwórz nową kartę, aby zobaczyć zaktualizowaną stronę główną</string>
+    <string name="edit_shortcuts">Edytuj skróty</string>
+    <string name="apply">Zastosuj</string>
     <string name="inspect">Włącz JavaScript</string>
     <string name="bookmark">Dodano zakładkę</string>
     <string name="error_title">Och, okruchy! &lt;br&gt; Tej strony nie można załadować.</string>
@@ -373,6 +383,7 @@
     <string name="show_extra">Pokaż dodatkowe opcje menu</string>
     <string name="incognito_cookies_new">Tryb prywatny jest uruchamiany w osobnym oknie, które jest resetowane po każdej sesji. Preferencje plików cookie w trybie prywatnym są teraz kontrolowane przez zwykłe preferencje dotyczące plików cookie.</string>
     <string name="quit_private">Kilépés a privát módból</string>
+    <string name="image_url">Ustaw obraz tła strony startowej</string>
     <string name="start_incognito">Zawsze działaj jak tryb prywatny</string>
     <string name="bottom_navbar">Przenieś pasek nawigacyjny na dół</string>
     <string name="please_restart">Uruchom ponownie aplikację, aby zobaczyć zmiany</string>
@@ -407,6 +418,7 @@
     <string name="block_intent">Przeglądaj wszystkie kliknięte linki w tej przeglądarce</string>
     <string name="block_intent_summary">Bloki proszą o otwarcie linków w zewnętrznych aplikacjach</string>
     <string name="block_javascript">Zablokuj JavaScript na stronach</string>
+    <string name="allow_javascript">Zezwól na JavaScript dla witryny</string>
     <string name="unlisted_javascript">Zablokuj JavaScript dla witryn na liście</string>
     <string name="listed_javascript">Zezwalaj tylko na obsługę JavaScript dla stron wymienionych na liście</string>
     <string name="confirm">Potwierdź resetowanie</string>
@@ -414,7 +426,30 @@
     <string name="only_clear">Wyczyść tylko po zakończeniu sesji przeglądarki</string>
     <string name="only_clear_summary">Wyczyść powyższe opcje tylko po zamknięciu wszystkich kart przeglądarki, zamiast zawsze gdy aplikacja zostanie zamknięta</string>
     <string name="enable_in_settings">Automatyczne wypełnianie musi być skonfigurowane w ustawieniach Androida, aby ta opcja stała się skuteczna</string>
+    <string name="webrtc_description">Zezwalaj witrynom na żądanie dostępu do mikrofonu i aparatu</string>
     <string name="drawer_lines">Maksymalna liczba wierszy tekstowych na liście</string>
     <string name="drawer_size">Rozmiar tekstu listy</string>
+    <string name="privacy_set">Ustawienia prywatności</string>
+    <string name="security_set">Ustawienia zabezpieczeń</string>
+    <string name="page_source">Pokaż źródło strony</string>
+    <string name="pagespeed_error">Ta strona używa strony PageSpeed. Edycja źródła może nie działać zgodnie z oczekiwaniami.</string>
+    <string name="app_lock">Ustaw hasło</string>
+    <string name="show_ssl">Pokaż dialogi ostrzegawcze SSL</string>
+    <string name="warn">Zmień to tylko, jeśli wiesz co robisz!</string>
+    <string name="download_channel">Pobieranie</string>
+    <string name="download_description">Informacje o postępie pobierania</string>
+    <string name="download_to_sd">Pobierz na kartę SD</string>
+    <string name="legacy_download_manager">Używaj domyślnego menadżera pobierania Android</string>
+    <string name="legacy_download_manager_desc">Pobierz pliki za pomocą menedżera pobierania SmartCookieWeb zamiast systemu</string>
+    <string name="onboarding_one">Dostęp do ustawień, zakładek (lub przesuń palcem od prawej krawędzi) i więcej w menu przeciągnięcia.</string>
+    <string name="onboarding_two">Kliknij numer karty lub przesuń palcem od lewej krawędzi aby otworzyć szufladę karty.</string>
+    <string name="onboarding_three">Użyj narzędzi stron w liście zakładek, aby tymczasowo wyłączyć blok reklam, otwórz wersję pulpitową witryny i więcej.</string>
+    <string name="load_tabs">Wczytaj wszystkie karty podczas uruchamiania przeglądarki</string>
+    <string name="search_homepage">Szukaj...</string>
+    <string name="start">Zaczynamy!</string>
+    <string name="show_shortcuts">Pokaż skróty na stronie startowej</string>
+    <string name="reading_mode_image_copyright">Obraz przypisany do</string>
+    <string name="reading_mode_image_caption">Obraz z podpisem</string>
+    <string name="show_second_bar">Pokaż dodatkowy pasek nawigacji</string>
     <!-- finish pages -->
 </resources>
