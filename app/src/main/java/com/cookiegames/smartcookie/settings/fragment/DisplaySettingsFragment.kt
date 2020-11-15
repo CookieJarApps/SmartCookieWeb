@@ -107,11 +107,6 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         switchPreference(
             preference = SETTINGS_REFLOW,
             isChecked = userPreferences.textReflowEnabled,
-            isEnabled = if(!userPreferences.textReflowEnabled){
-                false
-            }else{
-                true
-            },
             onCheckChange = { userPreferences.textReflowEnabled = it }
         )
 

@@ -566,9 +566,12 @@ class SmartCookieWebClient(
                 isRunning = view.postDelayed({
                     zoomScale = newScale
 
-                    val textScale = newScale
-                    view.evaluateJavascript(textReflowJs.provideJs() + "document.body.clientWidth - " + textScale.toString() + " + 'px'; }());") { isRunning = false }
+                        val textScale = 980 / newScale
+                    view.evaluateJavascript(textReflowJs.provideJs() + textScale.toString() + " + 'px'; }());") { isRunning = false }
                 }, 100)
+            }
+            else{
+                view.evaluateJavascript(textReflowJs.provideJs() + "window.document.documentElement.clientWidth + 'px'; }());") { isRunning = false }
             }
         }
     }
