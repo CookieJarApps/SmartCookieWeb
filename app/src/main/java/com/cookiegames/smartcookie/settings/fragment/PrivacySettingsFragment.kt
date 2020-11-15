@@ -105,6 +105,12 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
         switchPreference(
             preference = SETTINGS_DONOTTRACK,
             isChecked = userPreferences.doNotTrackEnabled,
+            summary = (if(userPreferences.popupsEnabled) {
+                resources.getString(R.string.crash_warning)
+            }
+             else{
+                ""
+            }).toString(),
             onCheckChange = { userPreferences.doNotTrackEnabled = it }
         )
 
@@ -136,7 +142,12 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
         switchPreference(
             preference = SETTINGS_IDENTIFYINGHEADERS,
             isChecked = userPreferences.removeIdentifyingHeadersEnabled,
-            summary = "${SmartCookieView.HEADER_REQUESTED_WITH}, ${SmartCookieView.HEADER_WAP_PROFILE}",
+            summary = (if(userPreferences.popupsEnabled) {
+                resources.getString(R.string.crash_warning)
+            }
+            else{
+                "${SmartCookieView.HEADER_REQUESTED_WITH}, ${SmartCookieView.HEADER_WAP_PROFILE}"
+            }).toString(),
             onCheckChange = { userPreferences.removeIdentifyingHeadersEnabled = it }
         )
 

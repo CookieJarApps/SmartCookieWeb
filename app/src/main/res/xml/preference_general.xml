@@ -18,11 +18,6 @@
             android:singleLineTitle="false"
             android:title="@string/load_tabs"/>
         <SwitchPreference
-            android:defaultValue="true"
-            android:key="cb_javascript"
-            android:singleLineTitle="false"
-            android:title="@string/java"/>
-        <SwitchPreference
             android:defaultValue="false"
             android:key="cb_colormode"
             android:singleLineTitle="false"
@@ -37,6 +32,15 @@
             android:key="last_tab"
             android:singleLineTitle="false"
             android:title="@string/close_on_last_tab"/>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="cb_javascript"
+            android:singleLineTitle="false"
+            android:title="@string/java"/>
+        <Preference
+            android:key="block_javascript"
+            android:singleLineTitle="false"
+            android:title="@string/block_javascript"/>
         <Preference
             android:key="proxy"
             android:singleLineTitle="false"
@@ -65,9 +69,5 @@
             android:key="suggestions_number"
             android:singleLineTitle="false"
             android:title="@string/suggest"/>
-        <Preference
-            android:key="block_javascript"
-            android:singleLineTitle="false"
-            android:title="@string/block_javascript"/>
     </PreferenceCategory>
 </PreferenceScreen>

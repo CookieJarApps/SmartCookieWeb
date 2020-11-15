@@ -255,7 +255,7 @@
     <string name="settings_adblock">Configurações de bloqueio de conteúdo</string>
     <string name="adblock_summary">Bloqueio de anúncios...</string>
     <string name="adblock_category">Bloqueio de anúncios</string>
-    <string name="cookie_category">Bloqueio de cookies (Beta)</string>
+    <string name="cookie_category">Bloqueio de mensagens de avisos de cookies</string>
     <string name="tabs_in_drawer">Mostrar abas no menu de navegação</string>
     <string name="swap_bookmarks_and_tabs">Inverter os menus de abas e favoritos</string>
     <string name="do_not_track">Solicitar \'Não Rastrear\'</string>
@@ -386,7 +386,7 @@
     <string name="bottom_navbar">Barra de navegação em baixo</string>
     <string name="please_restart">Reinicie o aplicativo para aplicar as alterações</string>
     <string name="site_ad_blocked">Este site é um anúncio. Para continuar de qualquer forma, use a opção \"Desativar bloqueio de anúncios neste site\" clicando no ícone de lista no menu de favoritos.</string>
-    <string name="onboarding_reshow">Mostrar novamente a tela de boas vindas</string>
+    <string name="onboarding_reshow">Mostrar novamente tela de boas vindas</string>
     <string name="onboarding_reshow_desc">Mostrar a configuração novamente.</string>
     <string name="pick_search">Escolha um motor de busca:</string>
     <string name="enable_adblock">Ativar bloqueio de anúncios e rastreadores?</string>
@@ -432,7 +432,7 @@
     <string name="page_source">Ver código-fonte da página</string>
     <string name="pagespeed_error">Este site usa PageSpeed. A edição de código-fonte pode não funcionar como esperado.</string>
     <string name="app_lock">Definir senha do aplicativo</string>
-    <string name="show_ssl">Exibir mensagens de aviso SSL</string>
+    <string name="show_ssl">Mostrar mensagens de aviso SSL</string>
     <string name="warn">Só mude isso se souber o que está fazendo!</string>
     <string name="download_channel">Downloads</string>
     <string name="download_description">Informações sobre o progresso do download</string>
@@ -449,5 +449,9 @@
     <string name="reading_mode_image_copyright">Imagem atribuída a</string>
     <string name="reading_mode_image_caption">Imagem com legenda</string>
     <string name="show_second_bar">Mostrar barra de navegação secundária</string>
+    <string name="edit_cookies">Editar cookies do site</string>
+    <string name="ssl_size">Tamanho da chave</string>
+    <string name="algorithm">Algoritmo</string>
+    <string name="crash_warning">Enabling this setting with \'Allow sites to open new windows\' on may cause crashes</string>
     <!-- finish pages -->
 </resources>
