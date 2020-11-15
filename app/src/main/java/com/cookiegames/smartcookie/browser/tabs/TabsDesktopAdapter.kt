@@ -33,7 +33,7 @@ class TabsDesktopAdapter(
     private var tabList: List<TabViewState> = emptyList()
 
     init {
-        val backgroundColor = Utils.mixTwoColors(ThemeUtils.getPrimaryColor(context), Color.BLACK, 0.75f)
+        val backgroundColor = Utils.mixTwoColors(ThemeUtils.getPrimaryColor(context), Color.BLACK, 0.85f)
         val backgroundTabBitmap = Bitmap.createBitmap(
             context.dimen(R.dimen.desktop_tab_width),
             context.dimen(R.dimen.desktop_tab_height),
@@ -43,7 +43,7 @@ class TabsDesktopAdapter(
         }
         backgroundTabDrawable = BitmapDrawable(resources, backgroundTabBitmap)
 
-        val foregroundColor = ThemeUtils.getPrimaryColor(context)
+        val foregroundColor = ThemeUtils.getPrimaryColorDark(context)
         foregroundTabBitmap = Bitmap.createBitmap(
             context.dimen(R.dimen.desktop_tab_width),
             context.dimen(R.dimen.desktop_tab_height),

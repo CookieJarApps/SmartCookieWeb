@@ -91,7 +91,7 @@
         <!-- Theme Colors -->
         <item name="colorPrimary">@color/gray_medium</item>
 
-        <item name="colorPrimaryDark">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/accent_color</item>
         <item name="drawerBackground">@color/drawer_background</item>
         <item name="dividerColor">@color/white</item>
@@ -108,7 +108,6 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="actionOverflowButtonStyle">@style/overFlowButtonStyle</item>
-
 
         <item name="materialAlertDialogTheme">@style/AlertDialogMaterialThemeLight</item>
         <!-- Alert dialogs -->
