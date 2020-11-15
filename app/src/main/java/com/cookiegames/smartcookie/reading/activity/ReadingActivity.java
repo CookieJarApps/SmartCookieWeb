@@ -176,28 +176,41 @@ public class ReadingActivity extends AppCompatActivity {
         mProgressDialog.show();
         BrowserDialog.setDialogSize(ReadingActivity.this, mProgressDialog);
 
-        URL google = new URL(mUrl);
-        BufferedReader in = new BufferedReader(new InputStreamReader(google.openStream()));
-        String input;
-        StringBuffer stringBuffer = new StringBuffer();
-        while ((input = in.readLine()) != null)
-        {
-            stringBuffer.append(input);
-        }
-        in.close();
-        String htmlData = stringBuffer.toString();
+        Thread thread = new Thread(new Runnable() {
 
-        Readability4J readability4J = new Readability4J(mUrl, htmlData); // url is just needed to resolve relative urls
-        Article article = readability4J.parse();
+            @Override
+            public void run() {
+                try  {
+                    URL google = new URL(mUrl);
+                    BufferedReader in = new BufferedReader(new InputStreamReader(google.openStream()));
+                    String input;
+                    StringBuffer stringBuffer = new StringBuffer();
+                    while ((input = in.readLine()) != null)
+                    {
+                        stringBuffer.append(input);
+                    }
+                    in.close();
+                    String htmlData = stringBuffer.toString();
 
-        String extractedContentHtml = article.getContent();
-        String extractedContentHtmlWithUtf8Encoding = article.getContentWithUtf8Encoding();
-        String extractedContentPlainText = article.getTextContent();
-        String title = article.getTitle();
-        String byline = article.getByline();
-        String excerpt = article.getExcerpt();
+                    Readability4J readability4J = new Readability4J(mUrl, htmlData); // url is just needed to resolve relative urls
+                    Article article = readability4J.parse();
 
-        setText(title, Html.fromHtml(extractedContentHtml.replaceAll("image copyright", getResources().getString(R.string.reading_mode_image_copyright) + " ").replaceAll("image caption", getResources().getString(R.string.reading_mode_image_caption) + " ").replaceAll("<a", "<span").replaceAll("</a>", "</span>")));
+                    String extractedContentHtml = article.getContent();
+                    String extractedContentHtmlWithUtf8Encoding = article.getContentWithUtf8Encoding();
+                    String extractedContentPlainText = article.getTextContent();
+                    String title = article.getTitle();
+                    String byline = article.getByline();
+                    String excerpt = article.getExcerpt();
+
+                    setText(title, Html.fromHtml(extractedContentHtml.replaceAll("image copyright", getResources().getString(R.string.reading_mode_image_copyright) + " ").replaceAll("image caption", getResources().getString(R.string.reading_mode_image_caption) + " ").replaceAll("<a", "<span").replaceAll("</a>", "</span>")));
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
 
         dismissProgressDialog();
         return true;
