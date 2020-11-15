@@ -153,6 +153,9 @@ class PopUpClass {
             else if(activity.isIncognito()){
                 positionList = intArrayOf(12, 11, 10, 9, 8, 7, 6, 3, 0)
             }
+            else if(userPreferences.translateExtension && userPreferences.bottomBar){
+                positionList = intArrayOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 13, 2, 1, 0)
+            }
             else if(userPreferences.translateExtension){
                 positionList = intArrayOf(0, 1, 2, 13, 3, 4, 5, 6, 7, 8, 9, 10, 11)
             }
