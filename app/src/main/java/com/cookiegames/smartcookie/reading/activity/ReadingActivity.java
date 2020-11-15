@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
@@ -156,6 +157,50 @@ public class ReadingActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    private class loadData extends AsyncTask<Void, Void, Void> {
+        String extractedContentHtml;
+        String extractedContentHtmlWithUtf8Encoding;
+        String extractedContentPlainText;
+        String title;
+        String byline;
+        String excerpt;
+        @Override
+        protected Void doInBackground(Void... voids) {
+            URL url;
+            try {
+                URL google = new URL(mUrl);
+                BufferedReader in = new BufferedReader(new InputStreamReader(google.openStream()));
+                String input;
+                StringBuffer stringBuffer = new StringBuffer();
+                while ((input = in.readLine()) != null)
+                {
+                    stringBuffer.append(input);
+                }
+                in.close();
+                String htmlData = stringBuffer.toString();
+
+                Readability4J readability4J = new Readability4J(mUrl, htmlData); // url is just needed to resolve relative urls
+                Article article = readability4J.parse();
+
+                extractedContentHtml = article.getContent();
+                extractedContentHtmlWithUtf8Encoding = article.getContentWithUtf8Encoding();
+                extractedContentPlainText = article.getTextContent();
+                title = article.getTitle();
+                byline = article.getByline();
+               excerpt = article.getExcerpt();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            setText(title, Html.fromHtml(extractedContentHtml.replaceAll("image copyright", getResources().getString(R.string.reading_mode_image_copyright) + " ").replaceAll("image caption", getResources().getString(R.string.reading_mode_image_caption) + " ").replaceAll("<a", "<span").replaceAll("</a>", "</span>")));
+
+            dismissProgressDialog();
+        }
+    }
+
     private boolean loadPage(@Nullable Intent intent) throws IOException {
         if (intent == null) {
             return false;
@@ -176,43 +221,8 @@ public class ReadingActivity extends AppCompatActivity {
         mProgressDialog.show();
         BrowserDialog.setDialogSize(ReadingActivity.this, mProgressDialog);
 
-        Thread thread = new Thread(new Runnable() {
+        new loadData().execute();
 
-            @Override
-            public void run() {
-                try  {
-                    URL google = new URL(mUrl);
-                    BufferedReader in = new BufferedReader(new InputStreamReader(google.openStream()));
-                    String input;
-                    StringBuffer stringBuffer = new StringBuffer();
-                    while ((input = in.readLine()) != null)
-                    {
-                        stringBuffer.append(input);
-                    }
-                    in.close();
-                    String htmlData = stringBuffer.toString();
-
-                    Readability4J readability4J = new Readability4J(mUrl, htmlData); // url is just needed to resolve relative urls
-                    Article article = readability4J.parse();
-
-                    String extractedContentHtml = article.getContent();
-                    String extractedContentHtmlWithUtf8Encoding = article.getContentWithUtf8Encoding();
-                    String extractedContentPlainText = article.getTextContent();
-                    String title = article.getTitle();
-                    String byline = article.getByline();
-                    String excerpt = article.getExcerpt();
-
-                    setText(title, Html.fromHtml(extractedContentHtml.replaceAll("image copyright", getResources().getString(R.string.reading_mode_image_copyright) + " ").replaceAll("image caption", getResources().getString(R.string.reading_mode_image_caption) + " ").replaceAll("<a", "<span").replaceAll("</a>", "</span>")));
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        thread.start();
-
-        dismissProgressDialog();
         return true;
     }
 
