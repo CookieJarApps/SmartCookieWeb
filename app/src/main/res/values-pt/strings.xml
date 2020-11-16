@@ -446,5 +446,12 @@
     <string name="search_homepage">Pesquisar...</string>
     <string name="start">Iniciar!</string>
     <string name="show_shortcuts">Mostrar atalhos na página inicial</string>
+    <string name="reading_mode_image_copyright">Imagem atribuída a</string>
+    <string name="reading_mode_image_caption">Imagem com legenda</string>
+    <string name="show_second_bar">Mostrar barra de navegação secundária</string>
+    <string name="edit_cookies">Editar cookies do site</string>
+    <string name="ssl_size">Tamanho da chave</string>
+    <string name="algorithm">Algoritmo</string>
+    <string name="crash_warning">Ativar esta definição com a opção \'Permitir aos sites abrir novas janelas\' pode causar erros</string>
     <!-- finish pages -->
 </resources>

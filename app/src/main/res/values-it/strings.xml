@@ -27,7 +27,7 @@
     <string name="block">Blocca immagini</string>
     <string name="window">Consenti ai siti di aprire nuove finestre</string>
     <string name="cookies">Abilita i cookie</string>
-    <string name="importbookmarks">Importa i segnalibri dal browser</string>
+    <string name="importbookmarks">Importa segnalibri da browser</string>
     <string name="size">Dimensione del testo</string>
     <string name="recommended">Consigliati</string>
     <string name="search">Motore di ricerca</string>
@@ -35,13 +35,13 @@
     <string name="wideViewPort">Utilizza inquadratura ampia</string>
     <string name="overViewMode">Carica le pagine in modalità panoramica</string>
     <string name="restore">Ripristina le schede perse all\'avvio</string>
-    <string name="supported_browsers_title">Browser supportati</string>
-    <string name="stock_browser">Browser di scorta</string>
-    <string name="stock_browser_unavailable">Nessun browser di scorta rilevato</string>
-    <string name="stock_browser_available">Rilevato browser di scorta supportato</string>
+    <string name="supported_browsers_title">Navigatori supportati</string>
+    <string name="stock_browser">Navigatore di scorta</string>
+    <string name="stock_browser_unavailable">Nessun navigatore di scorta rilevato</string>
+    <string name="stock_browser_available">Rilevato navigatore di scorta supportato</string>
     <string name="fullScreenOption">Nascondi la barra di stato durante la navigazione</string>
-    <string name="clear_cookies">Sgombra cookie del browser</string>
-    <string name="clear_history">Svuota cronologia del browser</string>
+    <string name="clear_cookies">Sgombra i cookie del navigatore</string>
+    <string name="clear_history">Svuota cronologia del navigatore</string>
     <string name="dialog_image">Cosa vuoi fare con questa immagine?</string>
     <string name="action_download">Scarica</string>
     <string name="action_open">Apri</string>
@@ -70,8 +70,8 @@
     <string name="action_webpage">Pagina web</string>
     <string name="title_clear_history">Svuota cronologia</string>
     <string name="title_clear_cookies">Sgombra cookie</string>
-    <string name="dialog_history">Desideri svuotare la cronologia del browser?</string>
-    <string name="dialog_cookies">Desideri sgombrare i cookie del browser?</string>
+    <string name="dialog_history">Desideri svuotare la cronologia del navigatore?</string>
+    <string name="dialog_cookies">Desideri sgombrare i cookie del navigatore?</string>
     <string name="action_yes">Sì</string>
     <string name="action_no">No</string>
     <string name="title_text_size">Dimensione del testo</string>
@@ -357,7 +357,7 @@
     <string name="malware_title">Oh rabbia! &lt;br&gt; Quel sito sembra essere un malware.</string>
     <string name="malware_message">Contatta support@cookiegames.co.uk se questo è uno sbaglio.</string>
     <string name="blocked_title">Oh rabbia! &lt;br&gt; Quel sito è stato bloccato nelle impostazioni.</string>
-    <string name="close_app">Chiudi browser</string>
+    <string name="close_app">Chiudi navigatore</string>
     <string name="enter_password">Inserire la password</string>
     <string name="wrong_password">Password non corretta</string>
     <string name="block_all_sites">Blocca tutti i siti elencati</string>
@@ -409,7 +409,7 @@
     <string name="looknfeel">Impostazioni aspetto e atmosfera</string>
     <string name="customize">Impostazioni personalizzazione</string>
     <string name="suggest">Scegli quantità di suggerimenti di ricerca</string>
-    <string name="close_on_last_tab">Chiudi browser chiudendo l\'ultima scheda</string>
+    <string name="close_on_last_tab">Chiudi navigatore chiudendo l\'ultima scheda</string>
     <string name="more">Ulteriori informazioni</string>
     <string name="no_search_suggestions">Nessun suggerimento di ricerca</string>
     <string name="search_suggestions_4">Sfortunatamente, i suggerimenti di ricerca in SmartCookieWeb non sono più disponibili sui dispositivi al di sotto di Android 5.0. Premi il pulsante qui sotto per saperne di più.</string>
@@ -421,8 +421,8 @@
     <string name="listed_javascript">Permetti JavaScript solo per siti elencati</string>
     <string name="confirm">Conferma ripristino</string>
     <string name="clear">Ciò sgombrerà tutti i dati memorizzati da SmartCookieWeb sul tuo dispositivo</string>
-    <string name="only_clear">Pulisci solo a fine sessione</string>
-    <string name="only_clear_summary">Pulisci opzioni di cui sopra solo quando tutte le schede del browser sono state chiuse, invece di ogni volta che si esce dall\'applicazione</string>
+    <string name="only_clear">Pulisci solo a fine sessione di navigazione</string>
+    <string name="only_clear_summary">Pulisci opzioni di cui sopra solo quando tutte le schede del navigatore sono state chiuse, invece di ogni volta che si esce dall\'applicazione</string>
     <string name="enable_in_settings">La Compilazione automatica deve essere impostata nelle impostazioni di Android affinché questa opzione abbia effetto</string>
     <string name="webrtc_description">Permetti ai siti web di richiedere l\'accesso a microfono e fotocamera</string>
     <string name="drawer_lines">Numero massimo di righe di testo nel cassetto</string>
@@ -442,12 +442,16 @@
     <string name="onboarding_one">Impostazioni di accesso, segnalibri (o scorri dal bordo destro) e altro nel menù extra.</string>
     <string name="onboarding_two">Cliccare sul numero di scheda o scorrere dal bordo sinistro per aprire il cassetto schede.</string>
     <string name="onboarding_three">Usare gli strumenti di pagina del cassetto segnalibri per disattivare temporaneamente il blocco annunci, aprire la versione desktop di un sito e altro ancora.</string>
-    <string name="load_tabs">Carica tutte le schede quando il browser viene avviato</string>
+    <string name="load_tabs">Carica tutte le schede quando il navigatore viene avviato</string>
     <string name="search_homepage">Cerca...</string>
     <string name="start">Inizia ora!</string>
     <string name="show_shortcuts">Mostra scorciatoie nella pagina iniziale</string>
     <string name="reading_mode_image_copyright">Immagine attribuita a</string>
     <string name="reading_mode_image_caption">Immagine con didascalia</string>
     <string name="show_second_bar">Mostra barra di navigazione secondaria</string>
+    <string name="edit_cookies">Modifica i cookie del sito</string>
+    <string name="ssl_size">Dimensione della chiave</string>
+    <string name="algorithm">Algoritmo</string>
+    <string name="crash_warning">Abilitando questa impostazione con \'Consenti ai siti di aprire nuove finestre\' si possono causare arresti anormali</string>
     <!-- finish pages -->
 </resources>
