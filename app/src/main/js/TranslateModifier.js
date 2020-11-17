@@ -5,4 +5,6 @@ setTimeout(function() {
 }, 1500);
 
 window.hipUrl = null;
-document.querySelector('#ToDDL').value = 
+if(document.querySelector('#ToDDL').value != lang){
+	document.querySelector('#ToDDL').value = lang; BVLangPair.UpdateToLang(); BV.onTranslateButtonClick();
+}

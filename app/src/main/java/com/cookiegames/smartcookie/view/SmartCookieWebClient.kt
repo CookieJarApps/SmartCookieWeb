@@ -210,17 +210,24 @@ class SmartCookieWebClient(
         }
 
         if(userPreferences.translateExtension && url.contains("translatetheweb.com/")){
-            //Remove useless UI elements and tracking code
-            if(Locale.getDefault().getDisplayLanguage() == "pt-BR"){
-                view.evaluateJavascript(translate.provideJs() + "'pt' BVLangPair.UpdateToLang();", null)
+            var lang: String
+            if(Build.VERSION.SDK_INT > 20){
+                lang = Locale.getDefault().toLanguageTag()
+            }
+            else{
+                lang = Locale.getDefault().displayLanguage
+            }
+            // Temp workaround for pt-BR misformatting on translatetheweb.com
+            if(lang == "pt-BR"){
+                view.evaluateJavascript("lang = 'pt'; " + translate.provideJs(), null)
 
             }
-            else if(Locale.getDefault().getDisplayLanguage() == "pt"){
-                view.evaluateJavascript(translate.provideJs() + "'pt-PT' BVLangPair.UpdateToLang();", null)
+            else if(lang == "pt" || lang == "português"){
+                view.evaluateJavascript("lang = 'pt-PT'; " + translate.provideJs(), null)
 
             }
             else{
-                view.evaluateJavascript(translate.provideJs() + "'" + Locale.getDefault().getDisplayLanguage() + "' BVLangPair.UpdateToLang();", null)
+                view.evaluateJavascript("lang = '" + lang + "'; " +translate.provideJs(), null)
 
             }
         }
