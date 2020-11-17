@@ -1559,14 +1559,14 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     /**
      * function that opens the HTML history page in the browser
      */
-    private fun openHistory() {
+    fun openHistory() {
         presenter?.newTab(
                 historyPageInitializer,
                 true
         )
     }
 
-    private fun openDownloads() {
+    fun openDownloads() {
         presenter?.newTab(
                 downloadPageInitializer,
                 true

@@ -68,8 +68,6 @@ class PopUpClass {
         val focusable = true
         uiController = view.context as UIController
 
-        // TODO: Finish menu scaling, fix translator in bottom navbar mode
-
         //Create a window with our parameters
         val popupWindow = PopupWindow(popupView, px, height, focusable)
         val relView = popupView.findViewById<RelativeLayout>(R.id.toolbar_menu)
@@ -175,9 +173,9 @@ class PopUpClass {
             } else if (positionList[position] == 3) {
                 currentView!!.webView?.let { currentView.createWebPagePrint(it) }
             } else if (positionList[position] == 4) {
-                currentView?.loadHistoryPage()
+                activity.openHistory()
             } else if (positionList[position] == 5) {
-                currentView?.loadDownloadsPage()
+                activity.openDownloads()
             } else if (positionList[position] == 6) {
                 activity.findInPage()
             } else if (positionList[position] == 7) {
