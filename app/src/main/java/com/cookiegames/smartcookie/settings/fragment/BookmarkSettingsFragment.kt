@@ -49,6 +49,7 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.os.HandlerCompat.postDelayed
 import com.cookiegames.smartcookie.dialog.LightningDialogBuilder
 import com.cookiegames.smartcookie.settings.activity.SettingsActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
 class BookmarkSettingsFragment : AbstractSettingsFragment() {
@@ -100,7 +101,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun clearSettings() {
-        val builder = AlertDialog.Builder(activity as Activity)
+        val builder = MaterialAlertDialogBuilder(activity as Activity)
         builder.setTitle(getString(R.string.confirm))
         builder.setMessage(getString(R.string.clear))
 
@@ -238,7 +239,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun showImportBookmarkDialog(path: File?) {
-        val builder = AlertDialog.Builder(activity as Activity)
+        val builder = MaterialAlertDialogBuilder(activity as Activity)
 
         val title = getString(R.string.title_chooser)
         builder.setTitle(title + ": " + Environment.getExternalStorageDirectory())

@@ -8,6 +8,7 @@ import com.cookiegames.smartcookie.R
 import android.os.Bundle
 import android.preference.Preference
 import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class AboutSettingsFragment : AbstractSettingsFragment() {
 
@@ -22,7 +23,7 @@ class AboutSettingsFragment : AbstractSettingsFragment() {
 
         var pref: androidx.preference.Preference? = findPreference(SETTINGS_VERSION)
         pref!!.setOnPreferenceClickListener {
-            val builder = AlertDialog.Builder(requireContext())
+            val builder = MaterialAlertDialogBuilder(requireContext())
             builder.setTitle("SCW v" + BuildConfig.VERSION_NAME)
             builder.setMessage("What's new:\n- New settings page")
 

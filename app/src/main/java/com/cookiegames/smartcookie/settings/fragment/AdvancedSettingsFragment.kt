@@ -12,6 +12,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import com.cookiegames.smartcookie.DeviceCapabilities
 import com.cookiegames.smartcookie.isSupported
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import javax.inject.Inject
 
 /**
@@ -125,7 +126,7 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
      * @param summaryUpdater the command which allows the summary to be updated.
      */
     private fun showRenderingDialogPicker(summaryUpdater: SummaryUpdater) {
-        activity?.let { AlertDialog.Builder(it) }?.apply {
+        activity?.let { MaterialAlertDialogBuilder(it) }?.apply {
             setTitle(resources.getString(R.string.rendering_mode))
 
             val values = RenderingMode.values().map { Pair(it, it.toDisplayString()) }
@@ -146,7 +147,7 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
      */
     private fun showTextEncodingDialogPicker(summaryUpdater: SummaryUpdater) {
         activity?.let {
-            AlertDialog.Builder(it).apply {
+            MaterialAlertDialogBuilder(it).apply {
                 setTitle(resources.getString(R.string.text_encoding))
 
                 val currentChoice = TEXT_ENCODINGS.indexOf(userPreferences.textEncoding)
@@ -166,7 +167,7 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
      * @param summaryUpdater the command which allows the summary to be updated.
      */
     private fun showUrlBoxDialogPicker(summaryUpdater: SummaryUpdater) {
-        activity?.let { AlertDialog.Builder(it) }?.apply {
+        activity?.let { MaterialAlertDialogBuilder(it) }?.apply {
             setTitle(resources.getString(R.string.url_contents))
 
             val items = SearchBoxDisplayChoice.values().map { Pair(it, it.toDisplayString()) }
