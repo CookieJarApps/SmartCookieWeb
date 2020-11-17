@@ -23,6 +23,8 @@ import com.cookiegames.smartcookie.dialog.BrowserDialog;
 import com.cookiegames.smartcookie.log.Logger;
 import com.cookiegames.smartcookie.di.Injector;
 import com.cookiegames.smartcookie.preference.UserPreferences;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 
@@ -74,7 +76,7 @@ public class LightningDownloadListener implements DownloadListener {
                             }
                         };
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity); // dialog
+                        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(mActivity); // dialog
                         String message = mActivity.getString(R.string.dialog_download, downloadSize);
                         Dialog dialog = builder.setTitle(fileName)
                                 .setMessage(message)
