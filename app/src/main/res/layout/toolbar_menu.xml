@@ -22,50 +22,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@id/text_options"
-            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/text_options"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toStartOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/back_option"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:paddingStart="6dp"
-                android:id="@+id/back_option"
                 android:paddingTop="4dp"
                 android:paddingEnd="6dp"
                 app:srcCompat="@drawable/ic_action_back" />
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/forward_option"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:paddingStart="6dp"
                 android:paddingTop="4dp"
                 android:paddingEnd="6dp"
-                android:id="@+id/forward_option"
                 app:srcCompat="@drawable/ic_action_forward" />
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/bookmark_option"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:paddingStart="6dp"
                 android:paddingTop="4dp"
                 android:paddingEnd="6dp"
-                android:id="@+id/bookmark_option"
                 app:srcCompat="@drawable/ic_action_star" />
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/close_option"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:paddingStart="6dp"
                 android:paddingTop="4dp"
                 android:paddingEnd="6dp"
-                android:id="@+id/close_option"
                 app:srcCompat="@drawable/ic_action_delete" />
 
 
@@ -78,7 +78,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 

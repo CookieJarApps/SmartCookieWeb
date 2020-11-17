@@ -211,7 +211,18 @@ class SmartCookieWebClient(
 
         if(userPreferences.translateExtension && url.contains("translatetheweb.com/")){
             //Remove useless UI elements and tracking code
-            view.evaluateJavascript(translate.provideJs() + "'" + Locale.getDefault().getDisplayLanguage() + "' BVLangPair.UpdateToLang();", null)
+            if(Locale.getDefault().getDisplayLanguage() == "pt-BR"){
+                view.evaluateJavascript(translate.provideJs() + "'pt' BVLangPair.UpdateToLang();", null)
+
+            }
+            else if(Locale.getDefault().getDisplayLanguage() == "pt"){
+                view.evaluateJavascript(translate.provideJs() + "'pt-PT' BVLangPair.UpdateToLang();", null)
+
+            }
+            else{
+                view.evaluateJavascript(translate.provideJs() + "'" + Locale.getDefault().getDisplayLanguage() + "' BVLangPair.UpdateToLang();", null)
+
+            }
         }
 
         view?.evaluateJavascript("""(function() {
