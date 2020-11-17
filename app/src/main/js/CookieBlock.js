@@ -18,3 +18,7 @@ if(oneTrust != null){
 
 var element = document.getElementsByTagName("html")[0]
   element.classList.remove("sp-message-open");
+
+if(window.location.href.includes("consent-management/")){
+  window.location.href = window.location.origin;
+}
