@@ -451,8 +451,13 @@
     <string name="search_homepage">Arama...</string>
     <string name="start">Kullanmaya Başlayın!</string>
     <string name="show_shortcuts">Ana sayfada kısayolları göster</string>
-    <string name="reading_mode_image_copyright">Image attributed to</string>
-    <string name="reading_mode_image_caption">Image with caption</string>
-    <string name="show_second_bar">Show secondary navigation bar</string>
+    <string name="reading_mode_image_copyright">Resim ile ilişkilendirildi</string>
+    <string name="reading_mode_image_caption">Başlıklı resim</string>
+    <string name="show_second_bar">İkincil gezinme çubuğunu göster</string>
+    <string name="edit_cookies">Site çerezlerini düzenle</string>
+    <string name="ssl_size">Anahtar boyutu</string>
+    <string name="algorithm">Algoritma</string>
+    <string name="crash_warning">Bu ayarın \'Sitelerin yeni pencere açmasına izin ver\' ile etkinleştirilmesi çökmelere neden olabilir</string>
+    <string name="amp_to_html">AMP to HTML</string>
     <!-- finish pages -->
 </resources>

@@ -453,5 +453,6 @@
     <string name="ssl_size">Tamanho da chave</string>
     <string name="algorithm">Algoritmo</string>
     <string name="crash_warning">Ativar esta configuração com \'Permitir que sites abram novas janelas\' ativada pode causar travamentos</string>
+    <string name="amp_to_html">AMP para HTML</string>
     <!-- finish pages -->
 </resources>
