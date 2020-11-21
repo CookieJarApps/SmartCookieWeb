@@ -18,6 +18,14 @@
 
     <PreferenceCategory android:title="@string/backup_settings">
         <Preference
+            android:key="export_settings"
+            android:singleLineTitle="false"
+            android:title="@string/export_settings"/>
+        <!--<Preference
+            android:key="import_bookmark"
+            android:singleLineTitle="false"
+            android:title="@string/import_backup"/>-->
+        <Preference
             android:key="clear_settings"
             android:singleLineTitle="false"
             android:title="@string/clear_settings"/>

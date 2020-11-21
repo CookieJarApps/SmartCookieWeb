@@ -1,6 +1,5 @@
 package com.cookiegames.smartcookie.settings.fragment
 
-import com.cookiegames.smartcookie.BuildConfig
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.adblock.BloomFilterAdBlocker
 import com.cookiegames.smartcookie.adblock.source.HostsSourceType
@@ -60,7 +59,6 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
 
         clickableDynamicPreference(
             preference = "preference_hosts_source",
-            isEnabled = BuildConfig.FULL_VERSION,
             summary =  userPreferences.selectedHostsSource().toSummary(),
             onClick = ::showHostsSourceChooser
         )

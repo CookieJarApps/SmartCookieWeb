@@ -51,6 +51,7 @@ import androidx.palette.graphics.Palette
 import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
 import com.cookiegames.smartcookie.AppTheme
+import com.cookiegames.smartcookie.BuildConfig
 import com.cookiegames.smartcookie.IncognitoActivity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.*
@@ -340,6 +341,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             toolbar.layoutParams = param
 
         }
+
 
 
         setNavigationDrawerWidth()

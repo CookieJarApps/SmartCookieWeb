@@ -3,6 +3,21 @@
  */
 package com.cookiegames.smartcookie.settings.fragment
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.app.ActivityManager
+import android.app.Application
+import android.content.Context.ACTIVITY_SERVICE
+import android.os.Bundle
+import android.os.Environment
+import android.os.Handler
+import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import com.anthonycr.grant.PermissionsManager
+import com.anthonycr.grant.PermissionsResultAction
+import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.bookmark.LegacyBookmarkImporter
 import com.cookiegames.smartcookie.bookmark.NetscapeBookmarkFormatImporter
 import com.cookiegames.smartcookie.database.bookmark.BookmarkExporter
@@ -17,39 +32,17 @@ import com.cookiegames.smartcookie.extensions.snackbar
 import com.cookiegames.smartcookie.extensions.toast
 import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.utils.Utils
-import android.Manifest
-import android.app.Activity
-import android.app.Application
-import android.content.Context.MODE_PRIVATE
-import android.os.Bundle
-import android.os.Environment
-import androidx.appcompat.app.AlertDialog
-import com.anthonycr.grant.PermissionsManager
-import com.anthonycr.grant.PermissionsResultAction
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStreamWriter
 import java.util.*
 import javax.inject.Inject
-import android.content.Context.ACTIVITY_SERVICE
-import androidx.core.content.ContextCompat.getSystemService
-import android.app.ActivityManager
-import androidx.core.content.ContextCompat.startActivities
-import com.cookiegames.smartcookie.R
-import android.content.Context.ACTIVITY_SERVICE
-import android.content.Intent
-import android.net.Uri
-import android.os.Handler
-import android.view.LayoutInflater
-import android.widget.EditText
-import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.os.HandlerCompat.postDelayed
-import com.cookiegames.smartcookie.dialog.LightningDialogBuilder
-import com.cookiegames.smartcookie.settings.activity.SettingsActivity
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
 class BookmarkSettingsFragment : AbstractSettingsFragment() {
@@ -77,7 +70,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
         clickablePreference(preference = SETTINGS_IMPORT, onClick = this::importBookmarks)
         clickablePreference(preference = SETTINGS_DELETE_BOOKMARKS, onClick = this::deleteAllBookmarks)
 
-        clickablePreference(preference = SETTINGS_SETTINGS_EXPORT, onClick = this::exportBookmarks)
+        clickablePreference(preference = SETTINGS_SETTINGS_EXPORT, onClick = this::exportSettings)
         clickablePreference(preference = SETTINGS_SETTINGS_IMPORT, onClick = this::importBookmarks)
         clickablePreference(preference = SETTINGS_DELETE_SETTINGS, onClick = this::clearSettings)
     }
@@ -124,9 +117,56 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
         alertDialog.show()
     }
 
+    private fun exportSettings() {
+        PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(activity, REQUIRED_PERMISSIONS,
+                object : PermissionsResultAction() {
+                    override fun onGranted() {
+                        var bookmarksExport = File(
+                                Environment.getExternalStorageDirectory(),
+                                "SettingsExport.txt")
+                        var counter = 0
+                        while (bookmarksExport.exists()) {
+                            counter++
+                            bookmarksExport = File(
+                                    Environment.getExternalStorageDirectory(),
+                                    "SettingsExport-$counter.txt")
+                        }
+                        val exportFile = bookmarksExport
+
+                        val userPref = application.getSharedPreferences("settings", 0)
+                        val allEntries: Map<String, *> = userPref!!.getAll()
+                        for (entry in allEntries.entries) {
+                        }
+
+                        try {
+                            val datfile = exportFile
+                            Toast.makeText(context, "File is:  $datfile", Toast.LENGTH_LONG).show() //##4
+
+                            val fOut = FileOutputStream(datfile)
+                            val myOutWriter = OutputStreamWriter(fOut)
+                            myOutWriter.append(allEntries.toString())
+                            myOutWriter.close()
+                            fOut.close()
+                        } catch (e: IOException) {
+                            Log.e("Exception", "File write failed: " + e.toString())
+                        }
+                    }
+
+                    override fun onDenied(permission: String) {
+                        val activity = activity
+                        if (activity != null && !activity.isFinishing && isAdded) {
+                            Utils.createInformativeDialog(activity, R.string.title_error, R.string.bookmark_export_failure)
+                        } else {
+                            application.toast(R.string.bookmark_export_failure)
+                        }
+                    }
+                })
+    }
+
     private fun exportBookmarks() {
         PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(activity, REQUIRED_PERMISSIONS,
                 object : PermissionsResultAction() {
+                    @SuppressLint("CheckResult")
                     override fun onGranted() {
                         bookmarkRepository.getAllBookmarksSorted()
                                 .subscribeOn(databaseScheduler)
@@ -294,8 +334,8 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_EXPORT = "export_bookmark"
         private const val SETTINGS_IMPORT = "import_bookmark"
         private const val SETTINGS_DELETE_BOOKMARKS = "delete_bookmarks"
-        private const val SETTINGS_SETTINGS_EXPORT = "export_bookmark"
-        private const val SETTINGS_SETTINGS_IMPORT = "import_bookmark"
+        private const val SETTINGS_SETTINGS_EXPORT = "export_settings"
+        private const val SETTINGS_SETTINGS_IMPORT = "import_settings"
         private const val SETTINGS_DELETE_SETTINGS = "clear_settings"
 
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)

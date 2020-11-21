@@ -60,10 +60,14 @@ android {
     flavorDimensions "capabilities"
 
     productFlavors {
-        scMain {
+        stable {
             dimension "capabilities"
-            buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
             applicationId "com.cookiegames.smartcookie"
+        }
+        beta {
+            dimension 'capabilities'
+            applicationId 'com.cookiejarapps.smartcookiebeta'
+            versionCode 1
         }
     }
 
