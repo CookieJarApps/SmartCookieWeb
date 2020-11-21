@@ -374,6 +374,9 @@ class UserPreferences @Inject constructor(
 
     // Load all tabs on browser start
     var allTabs by preferences.booleanPreference(ALL_TABS, false)
+
+    // Redirect from AMP sites
+    var noAmp by preferences.booleanPreference(NO_AMP, false)
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
@@ -465,3 +468,4 @@ private const val LEGACY_DOWNLOADER = "legacyDownloader"
 private const val ALL_TABS = "allTabs"
 private const val SHOW_SHORTCUTS = "showShortcuts"
 private const val SECOND_BAR = "secondBar"
+private const val NO_AMP = "noAmp"

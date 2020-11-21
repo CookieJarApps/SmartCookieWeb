@@ -220,6 +220,9 @@ class AppModule {
     @Provides
     fun providesAdBlock(): BlockAds = MezzanineGenerator.BlockAds()
 
+    @Provides
+    fun providesAmpBlock(): BlockAMP = MezzanineGenerator.BlockAMP()
+
 }
 
 @Qualifier

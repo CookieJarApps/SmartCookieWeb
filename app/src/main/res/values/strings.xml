@@ -538,5 +538,7 @@
     <string name="algorithm">Algorithm</string>
 
     <string name="crash_warning">Enabling this setting with \'Allow sites to open new windows\' on may cause crashes</string>
+
+    <string name="amp_to_html">AMP to HTML</string>
     <!-- finish pages -->
 </resources>

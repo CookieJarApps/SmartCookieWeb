@@ -51,6 +51,11 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
                 isChecked = userPreferences.translateExtension,
                 onCheckChange = { userPreferences.translateExtension = it }
         )
+        switchPreference(
+                preference = AMP,
+                isChecked = userPreferences.noAmp,
+                onCheckChange = { userPreferences.noAmp = it }
+        )
 
     }
 
@@ -60,5 +65,6 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
     companion object {
         private const val DARK_MODE = "dark_mode"
         private const val TRANSLATE = "translate"
+        private const val AMP = "amp"
     }
 }

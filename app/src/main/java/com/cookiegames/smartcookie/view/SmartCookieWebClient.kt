@@ -85,6 +85,7 @@ class SmartCookieWebClient(
     @Inject internal lateinit var invertPageJs: InvertPage
     @Inject internal lateinit var darkMode: DarkMode
     @Inject internal lateinit var translate: Translate
+    @Inject internal lateinit var noAMP: BlockAMP
     @Inject internal lateinit var cookieBlock: CookieBlock
     @Inject internal lateinit var blockAds: BlockAds
     private var adBlock: AdBlocker
@@ -209,6 +210,10 @@ class SmartCookieWebClient(
             )
         }
 
+        if(userPreferences.noAmp){
+            view.evaluateJavascript(noAMP.provideJs(), null)
+        }
+
         if(userPreferences.translateExtension && url.contains("translatetheweb.com/")){
             var lang: String
             if(Build.VERSION.SDK_INT > 20){
@@ -227,7 +232,7 @@ class SmartCookieWebClient(
 
             }
             else{
-                view.evaluateJavascript("lang = '" + lang + "'; " +translate.provideJs(), null)
+                view.evaluateJavascript("lang = '" + lang + "'; " + translate.provideJs(), null)
 
             }
         }
