@@ -21,10 +21,10 @@
             android:key="export_settings"
             android:singleLineTitle="false"
             android:title="@string/export_settings"/>
-        <!--<Preference
-            android:key="import_bookmark"
+       <Preference
+            android:key="import_settings"
             android:singleLineTitle="false"
-            android:title="@string/import_backup"/>-->
+            android:title="@string/import_settings"/>
         <Preference
             android:key="clear_settings"
             android:singleLineTitle="false"

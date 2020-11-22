@@ -37,10 +37,9 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.io.OutputStreamWriter
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.*
 import java.util.*
 import javax.inject.Inject
 
@@ -71,7 +70,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
         clickablePreference(preference = SETTINGS_DELETE_BOOKMARKS, onClick = this::deleteAllBookmarks)
 
         clickablePreference(preference = SETTINGS_SETTINGS_EXPORT, onClick = this::exportSettings)
-        clickablePreference(preference = SETTINGS_SETTINGS_IMPORT, onClick = this::importBookmarks)
+        clickablePreference(preference = SETTINGS_SETTINGS_IMPORT, onClick = this::importSettings)
         clickablePreference(preference = SETTINGS_DELETE_SETTINGS, onClick = this::clearSettings)
     }
 
@@ -223,6 +222,19 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
                 })
     }
 
+    private fun importSettings() {
+        PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(activity, REQUIRED_PERMISSIONS,
+                object : PermissionsResultAction() {
+                    override fun onGranted() {
+                        showImportSettingsDialog(null)
+                    }
+
+                    override fun onDenied(permission: String) {
+                        //TODO Show message
+                    }
+                })
+    }
+
     private fun deleteAllBookmarks() {
         showDeleteBookmarksDialog()
     }
@@ -276,6 +288,71 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
                 1
             }
         }
+    }
+
+
+    private fun showImportSettingsDialog(path: File?) {
+        val builder = MaterialAlertDialogBuilder(activity as Activity)
+
+        val title = getString(R.string.title_chooser)
+        builder.setTitle(title + ": " + Environment.getExternalStorageDirectory())
+
+        val fileList = loadFileList(path)
+        val fileNames = fileList.map(File::getName).toTypedArray()
+
+        builder.setItems(fileNames) { _, which ->
+            if (fileList[which].isDirectory) {
+                showImportSettingsDialog(fileList[which])
+            } else {
+                Single.fromCallable(fileList[which]::inputStream)
+                        .map {
+                            val reader = BufferedReader(it.reader())
+                            val content = StringBuilder()
+                            try {
+                                var line = reader.readLine()
+                                while (line != null) {
+                                    content.append(line)
+                                    line = reader.readLine()
+                                }
+                            } finally {
+                                reader.close()
+                            }
+
+                            val answer = JSONObject(content.toString())
+                            val keys: JSONArray = answer.names()
+                            val userPref = application.getSharedPreferences("settings", 0)
+
+                            for (i in 0 until keys.length()) {
+                                val key: String = keys.getString(i) // Here's your key
+                                val value: String = answer.getString(key) // Here's your value
+                                with (userPref.edit()) {
+                                    putBoolean(key, value.toBoolean())
+                                    apply()
+                                }
+
+                            }
+                        }
+                        .subscribeOn(databaseScheduler)
+                        .observeOn(mainScheduler)
+                        .subscribeBy(
+                                onSuccess = { count ->
+                                    activity?.apply {
+                                        snackbar("$count ${getString(R.string.message_import)}")
+                                    }
+                                },
+                                onError = {
+                                    logger.log(TAG, "onError: importing bookmarks", it)
+                                    val activity = activity
+                                    if (activity != null && !activity.isFinishing && isAdded) {
+                                        Utils.createInformativeDialog(activity, R.string.title_error, R.string.import_bookmark_error)
+                                    } else {
+                                        application.toast(R.string.import_bookmark_error)
+                                    }
+                                }
+                        )
+            }
+        }
+        builder.resizeAndShow()
     }
 
     private fun showImportBookmarkDialog(path: File?) {
