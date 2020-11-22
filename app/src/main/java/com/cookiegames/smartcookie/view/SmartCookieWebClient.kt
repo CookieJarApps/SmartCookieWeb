@@ -137,7 +137,6 @@ class SmartCookieWebClient(
             if(response == HttpURLConnection.HTTP_OK || response == HttpURLConnection.HTTP_NOT_FOUND || response == HttpURLConnection.HTTP_MOVED_PERM) {
                 return true
             }
-            Log.d("TAGG", response.toString())
             return false
         }
         catch (e: Exception) {
