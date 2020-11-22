@@ -326,7 +326,12 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
                                 val key: String = keys.getString(i) // Here's your key
                                 val value: String = answer.getString(key) // Here's your value
                                 with (userPref.edit()) {
-                                    putBoolean(key, value.toBoolean())
+                                    if(value.equals("true") || value.equals("false")){
+                                        putBoolean(key, value.toBoolean())
+                                    }
+                                    else{
+                                        putString(key, value)
+                                    }
                                     apply()
                                 }
 

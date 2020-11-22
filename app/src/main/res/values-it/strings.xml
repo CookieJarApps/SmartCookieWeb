@@ -453,5 +453,6 @@
     <string name="ssl_size">Dimensione della chiave</string>
     <string name="algorithm">Algoritmo</string>
     <string name="crash_warning">Abilitando questa impostazione con \'Consenti ai siti di aprire nuove finestre\' si possono causare arresti anormali</string>
+    <string name="amp_to_html">Da AMP a HTML</string>
     <!-- finish pages -->
 </resources>
