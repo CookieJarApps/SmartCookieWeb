@@ -40,6 +40,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.*
+import java.lang.Double.parseDouble
 import java.util.*
 import javax.inject.Inject
 
@@ -321,12 +322,14 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
                             val answer = JSONObject(content.toString())
                             val keys: JSONArray = answer.names()
                             val userPref = application.getSharedPreferences("settings", 0)
-
                             for (i in 0 until keys.length()) {
                                 val key: String = keys.getString(i) // Here's your key
                                 val value: String = answer.getString(key) // Here's your value
                                 with (userPref.edit()) {
-                                    if(value.equals("true") || value.equals("false")){
+                                    if(value.matches("-?\\d+".toRegex())){
+                                        putInt(key, value.toInt())
+                                    }
+                                    else if(value.equals("true") || value.equals("false")){
                                         putBoolean(key, value.toBoolean())
                                     }
                                     else{
@@ -342,7 +345,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
                         .subscribeBy(
                                 onSuccess = { count ->
                                     activity?.apply {
-                                        snackbar("$count ${getString(R.string.message_import)}")
+                                        snackbar("${getString(R.string.action_ok)}")
                                     }
                                 },
                                 onError = {
