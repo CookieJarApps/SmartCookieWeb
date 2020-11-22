@@ -345,7 +345,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
                         .subscribeBy(
                                 onSuccess = { count ->
                                     activity?.apply {
-                                        snackbar("${getString(R.string.action_ok)}")
+                                        snackbar(getString(R.string.action_ok))
                                     }
                                 },
                                 onError = {

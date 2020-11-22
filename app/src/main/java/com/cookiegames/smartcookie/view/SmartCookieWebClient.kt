@@ -215,7 +215,7 @@ class SmartCookieWebClient(
         }
 
         if(userPreferences.translateExtension && url.contains("translatetheweb.com/")){
-            var lang: String
+            val lang: String
             if(Build.VERSION.SDK_INT > 20){
                 lang = Locale.getDefault().toLanguageTag()
             }
@@ -237,7 +237,7 @@ class SmartCookieWebClient(
             }
         }
 
-        view?.evaluateJavascript("""(function() {
+        view.evaluateJavascript("""(function() {
         return "<html>" + document.getElementsByTagName('html')[0].innerHTML + "</html>";
         })()""".trimMargin()) {
             val editor: SharedPreferences.Editor = activity.getSharedPreferences("com.cookiegames.smartcookie", Context.MODE_PRIVATE).edit()
@@ -288,7 +288,7 @@ class SmartCookieWebClient(
 
 
             if (userPreferences.siteBlockChoice === SiteBlockChoice.WHITELIST) run {
-                if (userPreferences.siteBlockNames !== "" && userPreferences.siteBlockNames != null) {
+                if (userPreferences.siteBlockNames !== "") {
                     val arrayOfURLs = userPreferences.siteBlockNames
                     val strgs: Array<String>
                     if (arrayOfURLs.contains(", ")) {
@@ -314,7 +314,7 @@ class SmartCookieWebClient(
                 }
             }
             else if (userPreferences.siteBlockChoice === SiteBlockChoice.BLACKLIST) {
-                if (userPreferences.siteBlockNames !== "" && userPreferences.siteBlockNames != null) {
+                if (userPreferences.siteBlockNames !== "") {
                     val arrayOfURLs = userPreferences.siteBlockNames
                     val strgs: Array<String>
                     if (arrayOfURLs.contains(", ")) {
@@ -367,7 +367,7 @@ class SmartCookieWebClient(
                     return
                 } else {
                     view.pauseTimers()
-                    var newUrl = url.replace("http://", "https://")
+                    val newUrl = url.replace("http://", "https://")
                     if (exists(newUrl)) {
                         //Supports HTTPS, but SSL isn't used, so redirect to HTTPS
                         view.resumeTimers()
@@ -397,9 +397,9 @@ class SmartCookieWebClient(
         }
 
         if(url.contains("//finished")) {
-            view?.evaluateJavascript("""(function() {
-        if(localStorage.getItem("adblock")){ return "checked"; } else{ return "not checked"; }
-        })()""".trimMargin()) {
+            view.evaluateJavascript("""(function() {
+            if(localStorage.getItem("adblock")){ return "checked"; } else{ return "not checked"; }
+            })()""".trimMargin()) {
                 Log.d("itxxa2qw", it)
             }
 
@@ -408,55 +408,55 @@ class SmartCookieWebClient(
 
 
             if(url.contains(BuildConfig.APPLICATION_ID + "/files/homepage.html")){
-            view?.evaluateJavascript("""(function() {
-        return localStorage.getItem("shouldUpdate");
-        })()""".trimMargin()) {
-                Log.d("itxxa2qw", it)
-                if(it.substring(1, it.length - 1) == "yes"){
-                    view?.evaluateJavascript("""(function() {
-        return localStorage.getItem("link1");
-        })()""".trimMargin()) {
-                        userPreferences.link1 = it.substring(1, it.length - 1)
-                        view?.evaluateJavascript("""(function() {
-        localStorage.setItem("shouldUpdate", "no");
-        })()"""){}
+                view.evaluateJavascript("""(function() {
+                return localStorage.getItem("shouldUpdate");
+                })()""".trimMargin()) {
+                    Log.d("itxxa2qw", it)
+                    if(it.substring(1, it.length - 1) == "yes"){
+                        view.evaluateJavascript("""(function() {
+                                return localStorage.getItem("link1");
+                                })()""".trimMargin()) {
+                            userPreferences.link1 = it.substring(1, it.length - 1)
+                            view.evaluateJavascript("""(function() {
+                                                    localStorage.setItem("shouldUpdate", "no");
+                                                    })()"""){}
+                        }
+                        view.evaluateJavascript("""(function() {
+                            return localStorage.getItem("link2");
+                            })()""".trimMargin()) {
+                            userPreferences.link2 = it.substring(1, it.length - 1)
+                            view.evaluateJavascript("""(function() {
+                                            localStorage.setItem("shouldUpdate", "no");
+                                            })()"""){}
+                        }
+                        view.evaluateJavascript("""(function() {
+                            return localStorage.getItem("link3");
+                            })()""".trimMargin()) {
+                            userPreferences.link3 = it.substring(1, it.length - 1)
+                            view.evaluateJavascript("""(function() {
+                                            localStorage.setItem("shouldUpdate", "no");
+                                            })()"""){}
+                        }
+                        view.evaluateJavascript("""(function() {
+                            return localStorage.getItem("link4");
+                            })()""".trimMargin()) {
+                            userPreferences.link4 = it.substring(1, it.length - 1)
+                            view.evaluateJavascript("""(function() {
+                                            localStorage.setItem("shouldUpdate", "no");
+                                            })()"""){}
+                        }
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            uiController.newTabButtonClicked()
+                        }, 100)
                     }
-                    view?.evaluateJavascript("""(function() {
-        return localStorage.getItem("link2");
-        })()""".trimMargin()) {
-                        userPreferences.link2 = it.substring(1, it.length - 1)
-                        view?.evaluateJavascript("""(function() {
-        localStorage.setItem("shouldUpdate", "no");
-        })()"""){}
-                    }
-                    view?.evaluateJavascript("""(function() {
-        return localStorage.getItem("link3");
-        })()""".trimMargin()) {
-                        userPreferences.link3 = it.substring(1, it.length - 1)
-                        view?.evaluateJavascript("""(function() {
-        localStorage.setItem("shouldUpdate", "no");
-        })()"""){}
-                    }
-                    view?.evaluateJavascript("""(function() {
-        return localStorage.getItem("link4");
-        })()""".trimMargin()) {
-                        userPreferences.link4 = it.substring(1, it.length - 1)
-                        view?.evaluateJavascript("""(function() {
-        localStorage.setItem("shouldUpdate", "no");
-        })()"""){}
-                    }
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        uiController.newTabButtonClicked()
-                    }, 100)
                 }
-            }
         }
 
         if(userPreferences.cookieBlockEnabled){
             view.evaluateJavascript(cookieBlock.provideJs(), null)
         }
         if (userPreferences.javaScriptChoice === JavaScriptChoice.BLACKLIST) {
-            if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked !== " " && userPreferences.javaScriptBlocked != null) {
+            if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked !== " ") {
                 val arrayOfURLs = userPreferences.javaScriptBlocked
                 val strgs: Array<String>
                 if (arrayOfURLs.contains(", ")) {
@@ -477,7 +477,7 @@ class SmartCookieWebClient(
             }
         }
         else  if (userPreferences.javaScriptChoice === JavaScriptChoice.WHITELIST) run {
-            if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked !== " " && userPreferences.javaScriptBlocked != null) {
+            if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked !== " ") {
                 val arrayOfURLs = userPreferences.javaScriptBlocked
                 val strgs: Array<String>
                 if (arrayOfURLs.contains(", ")) {
@@ -580,7 +580,6 @@ class SmartCookieWebClient(
 
 //TODO: improve
     override fun onScaleChanged(view: WebView, oldScale: Float, newScale: Float) {
-        val width: Int = view.width
         if (view.isShown && smartCookieView.userPreferences.textReflowEnabled) {
             if (isRunning)
                 return
