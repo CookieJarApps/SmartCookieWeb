@@ -209,10 +209,6 @@ class SmartCookieWebClient(
             )
         }
 
-        if(userPreferences.noAmp){
-            view.evaluateJavascript(noAMP.provideJs(), null)
-        }
-
         if(userPreferences.translateExtension && url.contains("translatetheweb.com/")){
             val lang: String
             if(Build.VERSION.SDK_INT > 20){
@@ -341,6 +337,13 @@ class SmartCookieWebClient(
         if(userPreferences.cookieBlockEnabled){
             view.evaluateJavascript(cookieBlock.provideJs(), null)
         }
+
+        if(userPreferences.noAmp){
+            view.evaluateJavascript(noAMP.provideJs(), null)
+            if(url.contains("&ampcf=1")){
+                view.loadUrl(url.replace("&ampcf=1", ""))
+            }
+        }
     }
 
         fun stringContainsItemFromList(inputStr: String, items: Array<String>): Boolean {
@@ -450,7 +453,6 @@ class SmartCookieWebClient(
                     }
                 }
         }
-
         if(userPreferences.cookieBlockEnabled){
             view.evaluateJavascript(cookieBlock.provideJs(), null)
         }
