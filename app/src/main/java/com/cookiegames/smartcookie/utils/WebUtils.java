@@ -54,7 +54,6 @@ public final class WebUtils {
     @RequiresApi(N)
     public static void deleteData(@NonNull Context context) {
         try {
-            Log.d("ddir", String.valueOf(context.getDataDir()));
             File dir = new File(context.getDataDir()  + "/app_webview");
             deleteDir(dir);
         } catch (Exception e) {

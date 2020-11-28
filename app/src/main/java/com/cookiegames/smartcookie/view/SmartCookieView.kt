@@ -247,10 +247,8 @@ class SmartCookieView(
         }
 
         if(userPreferences.firstLaunch){
-            if(Locale.getDefault().getLanguage().equals("en")){
-               loadOnboardingPage()
-                userPreferences.firstLaunch = false
-            }
+            loadOnboardingPage()
+            userPreferences.firstLaunch = false
         }
     }
 
