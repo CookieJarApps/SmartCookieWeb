@@ -340,10 +340,7 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
             clearSslPreferences()
             destroy()
         }
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N){
-            context?.let { deleteData(it) }
-        }
-        WebUtils.clearWebStorage()
+        context?.let { WebUtils.eraseWebStorage(it) }
         activity?.snackbar(R.string.message_web_storage_cleared)
     }
 

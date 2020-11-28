@@ -1184,7 +1184,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             logger.log(TAG, "Cookies Cleared")
         }
         if (userPreferences.clearWebStorageExitEnabled && !isIncognito()) {
-            WebUtils.clearWebStorage()
+            WebUtils.eraseWebStorage(applicationContext)
             logger.log(TAG, "WebStorage Cleared")
         } else if (isIncognito()) {
             WebUtils.clearWebStorage()     // We want to make sure incognito mode is secure

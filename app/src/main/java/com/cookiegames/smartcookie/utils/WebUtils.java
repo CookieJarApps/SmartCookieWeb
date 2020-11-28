@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import android.util.Log;
 import android.webkit.CookieManager;
@@ -19,6 +20,8 @@ import java.io.File;
 import java.util.Map;
 
 import io.reactivex.Scheduler;
+
+import static android.os.Build.VERSION_CODES.N;
 
 /**
  * Copyright 8/4/2015 Anthony Restaino
@@ -39,6 +42,24 @@ public final class WebUtils {
 
     public static void clearWebStorage() {
         WebStorage.getInstance().deleteAllData();
+    }
+    public static void eraseWebStorage(@NonNull Context context) {
+        WebStorage.getInstance().deleteAllData();
+
+        if(Build.VERSION.SDK_INT > N){
+           deleteData(context);
+        }
+    }
+
+    @RequiresApi(N)
+    public static void deleteData(@NonNull Context context) {
+        try {
+            Log.d("ddir", String.valueOf(context.getDataDir()));
+            File dir = new File(context.getDataDir()  + "/app_webview");
+            deleteDir(dir);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void clearHistory(@NonNull Context context,
