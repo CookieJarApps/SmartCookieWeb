@@ -32,9 +32,7 @@ public final class WebUtils {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             c.removeAllCookies(null);
         } else {
-            //noinspection deprecation
             CookieSyncManager.createInstance(context);
-            //noinspection deprecation
             c.removeAllCookie();
         }
     }

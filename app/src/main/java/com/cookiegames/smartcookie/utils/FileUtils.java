@@ -1,11 +1,16 @@
 package com.cookiegames.smartcookie.utils;
 
 import android.app.Application;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcel;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+
+import android.text.format.DateUtils;
 import android.util.Log;
 
 import java.io.File;
@@ -14,6 +19,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Date;
 
 import io.reactivex.Completable;
 

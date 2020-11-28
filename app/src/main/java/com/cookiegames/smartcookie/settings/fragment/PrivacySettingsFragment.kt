@@ -1,14 +1,19 @@
+// Copyright 2020 CookieJarApps MPL
 package com.cookiegames.smartcookie.settings.fragment
 
 import android.app.Activity
+import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.webkit.WebView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import com.cookiegames.smartcookie.DeviceCapabilities
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.PasswordChoice
+import com.cookiegames.smartcookie.browser.TabsManager
 import com.cookiegames.smartcookie.database.history.HistoryRepository
 import com.cookiegames.smartcookie.di.DatabaseScheduler
 import com.cookiegames.smartcookie.di.MainScheduler
@@ -19,6 +24,7 @@ import com.cookiegames.smartcookie.extensions.snackbar
 import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
 import com.cookiegames.smartcookie.isSupported
 import com.cookiegames.smartcookie.preference.UserPreferences
+import com.cookiegames.smartcookie.utils.FileUtils
 import com.cookiegames.smartcookie.utils.WebUtils
 import com.cookiegames.smartcookie.view.SmartCookieView
 import io.reactivex.Completable
@@ -27,7 +33,6 @@ import java.io.File
 import javax.inject.Inject
 
 class PrivacySettingsFragment : AbstractSettingsFragment() {
-
     @Inject internal lateinit var historyRepository: HistoryRepository
     @Inject internal lateinit var userPreferences: UserPreferences
     @Inject @field:DatabaseScheduler internal lateinit var databaseScheduler: Scheduler
@@ -283,6 +288,16 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun deleteData(context: Context) {
+        try {
+            val dir = context.dataDir
+            deleteDir(dir)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
     fun deleteDir(dir: File?): Boolean {
         return if (dir != null && dir.isDirectory) {
             val children = dir.list()
@@ -320,6 +335,14 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun clearWebStorage() {
+        WebView(requireNotNull(activity)).apply {
+            clearFormData()
+            clearSslPreferences()
+            destroy()
+        }
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N){
+            context?.let { deleteData(it) }
+        }
         WebUtils.clearWebStorage()
         activity?.snackbar(R.string.message_web_storage_cleared)
     }

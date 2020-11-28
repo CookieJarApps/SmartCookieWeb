@@ -63,10 +63,12 @@ android {
         stable {
             dimension "capabilities"
             applicationId "com.cookiegames.smartcookie"
+            resValue "string", "app_name", "SmartCookieWeb"
         }
         beta {
             dimension 'capabilities'
             applicationId 'com.cookiejarapps.smartcookiebeta'
+            resValue "string", "app_name", "SmartCookieWeb beta"
             versionCode 1
         }
     }
