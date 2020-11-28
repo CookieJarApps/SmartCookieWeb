@@ -11,6 +11,7 @@ import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Point
+import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
@@ -51,7 +52,6 @@ import androidx.palette.graphics.Palette
 import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
 import com.cookiegames.smartcookie.AppTheme
-import com.cookiegames.smartcookie.BuildConfig
 import com.cookiegames.smartcookie.IncognitoActivity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.*
@@ -104,7 +104,7 @@ import javax.inject.Inject
 import kotlin.math.roundToInt
 import kotlin.system.exitProcess
 
-abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIController, OnClickListener {
+abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIController, OnClickListener, OnKeyboardVisibilityListener {
 
     // Toolbar ViewscreateSslDrawableForState
     private var searchBackground: View? = null
@@ -303,7 +303,43 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         )
         prefs = getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
 
+        setKeyboardVisibilityListener(this)
+
         initialize(savedInstanceState)
+    }
+
+    private fun setKeyboardVisibilityListener(onKeyboardVisibilityListener: OnKeyboardVisibilityListener) {
+        val parentView = (findViewById<View>(android.R.id.content) as ViewGroup).getChildAt(0)
+        parentView.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            private var alreadyOpen = false
+            private val defaultKeyboardHeightDP = 100
+            private val EstimatedKeyboardDP = defaultKeyboardHeightDP + if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) 48 else 0
+            private val rect: Rect = Rect()
+            override fun onGlobalLayout() {
+                val estimatedKeyboardHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, EstimatedKeyboardDP.toFloat(), parentView.resources.displayMetrics).toInt()
+                parentView.getWindowVisibleDisplayFrame(rect)
+                val heightDiff: Int = parentView.rootView.height - (rect.bottom - rect.top)
+                val isShown = heightDiff >= estimatedKeyboardHeight
+                if (isShown == alreadyOpen) {
+                    Log.i("Keyboard state", "Ignoring global layout change...")
+                    return
+                }
+                alreadyOpen = isShown
+                onKeyboardVisibilityListener.onVisibilityChanged(isShown)
+            }
+        })
+    }
+
+    override fun onVisibilityChanged(visible: Boolean) {
+        if(userPreferences.navbar){
+            val extraBar = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+            if(visible){
+                extraBar.visibility = View.GONE
+            }
+            else{
+                extraBar.visibility = View.VISIBLE
+            }
+        }
     }
 
     private fun initialize(savedInstanceState: Bundle?) {
