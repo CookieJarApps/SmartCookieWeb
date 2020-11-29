@@ -340,9 +340,6 @@ class SmartCookieWebClient(
 
         if(userPreferences.noAmp){
             view.evaluateJavascript(noAMP.provideJs(), null)
-            if(url.contains("&ampcf=1")){
-                view.loadUrl(url.replace("&ampcf=1", ""))
-            }
         }
     }
 
@@ -361,6 +358,13 @@ class SmartCookieWebClient(
         }
         currentUrl = url
         view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+
+        if(userPreferences.noAmp){
+            view.evaluateJavascript(noAMP.provideJs(), null)
+            if(url.contains("&ampcf=1")){
+                view.evaluateJavascript("window.location.replace(\"" + url.replace("&ampcf=1", "") + "\");", null)
+            }
+        }
 
         if (userPreferences.forceHTTPSenabled || userPreferences.preferHTTPSenabled) {
             if (url.contains("http://")) {

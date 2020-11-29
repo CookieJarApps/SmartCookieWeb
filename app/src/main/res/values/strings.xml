@@ -538,7 +538,7 @@
 
     <string name="crash_warning">Enabling this setting with \'Allow sites to open new windows\' on may cause crashes</string>
 
-    <string name="amp_to_html">AMP to HTML</string>
+    <string name="amp_to_html">AMP to HTML (beta)</string>
 
     <string name="private_title">Private mode</string>
     <string name="private_desc">Tabs in private mode work like normal tabs, but when they are closed all the data from that tab is erased. Private browsing does NOT make you anonymous, but it can keep what you do online secret from anyone else using this device.</string>

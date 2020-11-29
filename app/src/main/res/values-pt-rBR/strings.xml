@@ -453,7 +453,7 @@
     <string name="ssl_size">Tamanho da chave</string>
     <string name="algorithm">Algoritmo</string>
     <string name="crash_warning">Ativar esta configuração com \'Permitir que sites abram novas janelas\' ativada pode causar travamentos</string>
-    <string name="amp_to_html">AMP para HTML</string>
+    <string name="amp_to_html">AMP para HTML (beta)</string>
     <string name="private_title">Private mode</string>
     <string name="private_desc">Tabs in private mode work like normal tabs, but when they are closed all the data from that tab is erased. Private browsing does NOT make you anonymous, but it can keep what you do online secret from anyone else using this device.</string>
 </resources>

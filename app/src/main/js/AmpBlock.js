@@ -1,7 +1,7 @@
 // Copyright 2020 CookieJarApps MPL
 if (document.querySelector('.amp_r') !== null) {
 var amp = document.getElementsByClassName("amp_r");
-for (var i = 0; i < amp.length; i++) {
+for(var i = 0; i < amp.length; i++){
   amp.item(i).removeAttribute('data-amp');
   amp.item(i).removeAttribute('data-amp-cur');
   amp.item(i).removeAttribute('data-amp-title');
@@ -10,7 +10,6 @@ for (var i = 0; i < amp.length; i++) {
   amp.item(i).removeAttribute('jsaction');
   amp.item(i).removeAttribute('oncontextmenu');
   amp.item(i).classList.remove("amp_r");
-  amp.item(i).getAttribute("href") = amp.item(i).getAttribute("href").replace("&ampcf=1", "")
 }
 }
 
