@@ -444,7 +444,7 @@
     <string name="onboarding_three">Use as ferramentas de página no menu de favoritos para desligar temporariamente o bloqueio de anúncios, abrir o site na versão para computador e muito mais.</string>
     <string name="load_tabs">Carregar todas as abas quando o navegador for iniciado</string>
     <string name="search_homepage">Buscar...</string>
-    <string name="start">Vamos começar!</string>
+    <string name="start">Começar!</string>
     <string name="show_shortcuts">Mostrar atalhos na página inicial</string>
     <string name="reading_mode_image_copyright">Imagem atribuída a</string>
     <string name="reading_mode_image_caption">Imagem com legenda</string>
@@ -454,5 +454,6 @@
     <string name="algorithm">Algoritmo</string>
     <string name="crash_warning">Ativar esta configuração com \'Permitir que sites abram novas janelas\' ativada pode causar travamentos</string>
     <string name="amp_to_html">AMP para HTML</string>
-    <!-- finish pages -->
+    <string name="private_title">Private mode</string>
+    <string name="private_desc">Tabs in private mode work like normal tabs, but when they are closed all the data from that tab is erased. Private browsing does NOT make you anonymous, but it can keep what you do online secret from anyone else using this device.</string>
 </resources>
