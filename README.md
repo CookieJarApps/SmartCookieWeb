@@ -19,6 +19,8 @@ https://smartcookieweb.com/
 
 A secure, free and open source WebView-based web browser for Android.
 
+See https://github.com/CookieJarApps/SmartCookieWeb-beta for beta releases.
+
 ## Website
 
 https://smartcookieweb.com/
