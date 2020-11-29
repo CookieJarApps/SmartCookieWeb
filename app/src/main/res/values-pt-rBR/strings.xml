@@ -439,7 +439,7 @@
     <string name="download_to_sd">Baixar no cartão SD</string>
     <string name="legacy_download_manager">Usar o gerenciador de downloads integrado</string>
     <string name="legacy_download_manager_desc">Baixar arquivos usando o gerenciador de downloads do SmartCookieWeb ao invés do gerenciador do sistema</string>
-    <string name="onboarding_one">Acesse configurações, favoritos (ou puxe a borda direita da tela) e muito mais no menu flutuante.</string>
+    <string name="onboarding_one">Acesse configurações, favoritos (ou puxe a borda direita da tela para acessar os favoritos), veja o histórico de navegação e muito mais no menu flutuante.</string>
     <string name="onboarding_two">Clique no número da aba ou puxe a borda esquerda da tela para abrir o menu de abas.</string>
     <string name="onboarding_three">Use as ferramentas de página no menu de favoritos para desligar temporariamente o bloqueio de anúncios, abrir o site na versão para computador e muito mais.</string>
     <string name="load_tabs">Carregar todas as abas quando o navegador for iniciado</string>
@@ -453,7 +453,8 @@
     <string name="ssl_size">Tamanho da chave</string>
     <string name="algorithm">Algoritmo</string>
     <string name="crash_warning">Ativar esta configuração com \'Permitir que sites abram novas janelas\' ativada pode causar travamentos</string>
-    <string name="amp_to_html">AMP para HTML (beta)</string>
-    <string name="private_title">Private mode</string>
-    <string name="private_desc">Tabs in private mode work like normal tabs, but when they are closed all the data from that tab is erased. Private browsing does NOT make you anonymous, but it can keep what you do online secret from anyone else using this device.</string>
+    <string name="amp_to_html">AMP para HTML</string>
+    <string name="private_title">Modo privado</string>
+    <string name="private_desc">As abas no modo privado funcionam como as abas normais, mas quando são fechadas, todos os dados dessas abas são excluídos. A navegação privada NÃO o torna anônimo, mas pode manter o que você faz online em segredo de qualquer outra pessoa que utilize este dispositivo.</string>
+    <!-- finish pages -->
 </resources>
