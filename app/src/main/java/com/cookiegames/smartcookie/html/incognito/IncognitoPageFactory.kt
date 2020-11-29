@@ -46,9 +46,9 @@ class IncognitoPageFactory @Inject constructor(
                     charset { UTF8 }
                     body {
                         id("search_input") { attr("style", "background: url('" + iconUrl + "') no-repeat scroll 7px 7px;background-size: 22px 22px;") }
-                        html()
+                        /*html()
                          .replace("\${BASE_URL}", queryUrl)
-                         .replace("&", "\\u0026")
+                         .replace("&", "\\u0026")*/
 
                         id("title-pm"){text(resources.getString(R.string.private_title))}
                         id("desc-pm"){text(resources.getString(R.string.private_desc))}
