@@ -73,6 +73,7 @@ import com.cookiegames.smartcookie.extensions.*
 import com.cookiegames.smartcookie.html.bookmark.BookmarkPageFactory
 import com.cookiegames.smartcookie.html.history.HistoryPageFactory
 import com.cookiegames.smartcookie.html.homepage.HomePageFactory
+import com.cookiegames.smartcookie.html.incognito.IncognitoPageFactory
 import com.cookiegames.smartcookie.html.onboarding.OnboardingPageFactory
 import com.cookiegames.smartcookie.icon.TabCountView
 import com.cookiegames.smartcookie.interpolator.BezierDecelerateInterpolator
@@ -190,6 +191,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     lateinit var homePageFactory: HomePageFactory
 
     @Inject
+    lateinit var incognitoPageFactory: IncognitoPageFactory
+
+    @Inject
     lateinit var onboardingPageFactory: OnboardingPageFactory
 
     @Inject
@@ -206,6 +210,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     @Inject
     lateinit var homePageInitializer: HomePageInitializer
+
+    @Inject
+    lateinit var incognitoPageInitializer: IncognitoPageInitializer
 
     @Inject
     lateinit var onboardingPageInitializer: OnboardingPageInitializer
@@ -296,6 +303,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 tabsManager,
                 mainScheduler,
                 homePageFactory,
+                incognitoPageFactory,
                 onboardingPageFactory,
                 bookmarkPageFactory,
                 RecentTabModel(),
@@ -303,7 +311,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         )
         prefs = getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
 
-        setKeyboardVisibilityListener(this)
+
+        if(userPreferences.navbar) {
+            setKeyboardVisibilityListener(this)
+        }
 
         initialize(savedInstanceState)
     }
@@ -321,7 +332,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 val heightDiff: Int = parentView.rootView.height - (rect.bottom - rect.top)
                 val isShown = heightDiff >= estimatedKeyboardHeight
                 if (isShown == alreadyOpen) {
-                    Log.i("Keyboard state", "Ignoring global layout change...")
                     return
                 }
                 alreadyOpen = isShown
@@ -331,15 +341,13 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     override fun onVisibilityChanged(visible: Boolean) {
-        if(userPreferences.navbar){
             val extraBar = findViewById<BottomNavigationView>(R.id.bottom_navigation)
             if(visible){
-                extraBar.visibility = View.GONE
+                extraBar?.visibility = View.GONE
             }
             else{
-                extraBar.visibility = View.VISIBLE
+                extraBar?.visibility = View.VISIBLE
             }
-        }
     }
 
     private fun initialize(savedInstanceState: Bundle?) {
@@ -1148,16 +1156,32 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     override fun newTabButtonClicked() {
         if(userPreferences.tabsToForegroundEnabled){
-            presenter?.newTab(
-                    homePageInitializer,
-                    true
-            )
+            if(isIncognito()){
+                presenter?.newTab(
+                        incognitoPageInitializer,
+                        true
+                )
+            }
+            else{
+                presenter?.newTab(
+                        homePageInitializer,
+                        true
+                )
+            }
         }
         else{
-            presenter?.newTab(
-                    homePageInitializer,
-                    false
-            )
+            if(isIncognito()){
+                presenter?.newTab(
+                        incognitoPageInitializer,
+                        false
+                )
+            }
+            else{
+                presenter?.newTab(
+                        homePageInitializer,
+                        false
+                )
+            }
         }
     }
 

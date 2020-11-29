@@ -18,6 +18,7 @@ import android.os.Message
 import android.util.Log
 import android.webkit.WebView
 import androidx.appcompat.app.AlertDialog
+import com.cookiegames.smartcookie.html.incognito.IncognitoPageFactory
 import com.cookiegames.smartcookie.html.onboarding.OnboardingPageFactory
 import dagger.Reusable
 import io.reactivex.Scheduler
@@ -70,6 +71,28 @@ class HomePageInitializer @Inject constructor(
 
 }
 
+/**
+ * An initializer that displays the page set as the user's incognito homepage preference.
+ */
+@Reusable
+class IncognitoPageInitializer @Inject constructor(
+        private val userPreferences: UserPreferences,
+        private val startIncognitoPageInitializer: StartIncognitoPageInitializer,
+        private val bookmarkPageInitializer: BookmarkPageInitializer
+) : TabInitializer {
+
+    override fun initialize(webView: WebView, headers: Map<String, String>) {
+        val homepage = userPreferences.homepage
+
+        when (homepage) {
+            SCHEME_HOMEPAGE -> startIncognitoPageInitializer
+            SCHEME_BOOKMARKS -> bookmarkPageInitializer
+            else -> UrlInitializer(homepage)
+        }.initialize(webView, headers)
+    }
+
+}
+
 
 /**
  * An initializer that displays the onboarding page.
@@ -90,6 +113,16 @@ class StartPageInitializer @Inject constructor(
     @DiskScheduler diskScheduler: Scheduler,
     @MainScheduler foregroundScheduler: Scheduler
 ) : HtmlPageFactoryInitializer(homePageFactory, diskScheduler, foregroundScheduler)
+
+/**
+ * An initializer that displays the start incognito page.
+ */
+@Reusable
+class StartIncognitoPageInitializer @Inject constructor(
+        incognitoPageFactory: IncognitoPageFactory,
+        @DiskScheduler diskScheduler: Scheduler,
+        @MainScheduler foregroundScheduler: Scheduler
+) : HtmlPageFactoryInitializer(incognitoPageFactory, diskScheduler, foregroundScheduler)
 
 /**
  * An initializer that displays the bookmark page.

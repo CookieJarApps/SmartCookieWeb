@@ -17,6 +17,7 @@ import android.app.Activity
 import android.content.Intent
 import android.webkit.URLUtil
 import com.cookiegames.smartcookie.constant.*
+import com.cookiegames.smartcookie.html.incognito.IncognitoPageFactory
 import com.cookiegames.smartcookie.html.onboarding.OnboardingPageFactory
 import io.reactivex.Scheduler
 import io.reactivex.disposables.Disposable
@@ -33,6 +34,7 @@ class BrowserPresenter(
         private val tabsModel: TabsManager,
         @MainScheduler private val mainScheduler: Scheduler,
         private val homePageFactory: HomePageFactory,
+        private val incognitoPageFactory: IncognitoPageFactory,
         private val onboardingPageFactory: OnboardingPageFactory,
         private val bookmarkPageFactory: BookmarkPageFactory,
         private val recentTabModel: RecentTabModel,
@@ -144,6 +146,7 @@ class BrowserPresenter(
 
     private fun mapHomepageToCurrentUrl(): String = when (val homepage = userPreferences.homepage) {
         SCHEME_HOMEPAGE -> "$FILE${homePageFactory.createHomePage()}"
+        SCHEME_INCOGNITO -> "$FILE${incognitoPageFactory.createIncognitoPage()}"
         SCHEME_ONBOARDING -> "$FILE${onboardingPageFactory.createOnboarding()}"
         SCHEME_BOOKMARKS -> "$FILE${bookmarkPageFactory.createBookmarkPage(null)}"
         else -> homepage

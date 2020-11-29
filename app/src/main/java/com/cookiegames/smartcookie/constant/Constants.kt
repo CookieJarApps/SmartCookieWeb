@@ -18,6 +18,7 @@ const val FOLDER = "folder://"
 
 // Custom local page schemes
 const val SCHEME_HOMEPAGE = "${ABOUT}home"
+const val SCHEME_INCOGNITO = "${ABOUT}incognito"
 const val SCHEME_BLANK = "${ABOUT}blank"
 const val SCHEME_BOOKMARKS = "${ABOUT}bookmarks"
 const val SCHEME_ONBOARDING = "${ABOUT}onboarding"

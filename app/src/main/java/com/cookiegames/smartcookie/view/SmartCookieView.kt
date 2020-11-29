@@ -63,6 +63,7 @@ class SmartCookieView(
         tabInitializer: TabInitializer,
         val isIncognito: Boolean,
         private val homePageInitializer: HomePageInitializer,
+        private val incognitoPageInitializer: IncognitoPageInitializer,
         private val bookmarkPageInitializer: BookmarkPageInitializer,
         private val downloadPageInitializer: DownloadPageInitializer,
         private val onboardingPageInitializer: OnboardingPageInitializer,
@@ -261,7 +262,12 @@ class SmartCookieView(
      * homepage, or loads the startpage or bookmark page if either of those are set as the homepage.
      */
     fun loadHomePage() {
-        reinitialize(homePageInitializer)
+        if(isIncognito){
+            reinitialize(incognitoPageInitializer)
+        }
+        else{
+            reinitialize(homePageInitializer)
+        }
     }
 
     private fun reinitialize(tabInitializer: TabInitializer) {

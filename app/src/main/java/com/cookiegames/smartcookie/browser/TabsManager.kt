@@ -32,6 +32,7 @@ class TabsManager @Inject constructor(
     @DiskScheduler private val diskScheduler: Scheduler,
     @MainScheduler private val mainScheduler: Scheduler,
     private val homePageInitializer: HomePageInitializer,
+    private val incognitoPageInitializer: IncognitoPageInitializer,
     private val bookmarkPageInitializer: BookmarkPageInitializer,
     private val historyPageInitializer: HistoryPageInitializer,
     private val downloadPageInitializer: DownloadPageInitializer,
@@ -127,7 +128,7 @@ class TabsManager @Inject constructor(
      */
     private fun initializeIncognitoMode(initialUrl: String?): Observable<TabInitializer> =
         Observable.fromCallable {
-            return@fromCallable initialUrl?.let(::UrlInitializer) ?: homePageInitializer
+            return@fromCallable initialUrl?.let(::UrlInitializer) ?: incognitoPageInitializer
         }
 
     /**
@@ -270,6 +271,7 @@ class TabsManager @Inject constructor(
             tabInitializer,
             isIncognito,
             homePageInitializer,
+            incognitoPageInitializer,
             bookmarkPageInitializer,
             downloadPageInitializer,
             onboardingPageInitializer,
