@@ -70,6 +70,7 @@ android {
             applicationId 'com.cookiejarapps.smartcookiebeta'
             resValue "string", "app_name", "SmartCookieWeb beta"
             versionCode 1
+            versionName "10.1.0-beta1"
         }
     }
 
