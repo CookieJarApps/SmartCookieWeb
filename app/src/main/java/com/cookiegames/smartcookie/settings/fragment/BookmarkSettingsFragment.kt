@@ -135,8 +135,12 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
 
                         val userPref = application.getSharedPreferences("settings", 0)
                         val allEntries: Map<String, *> = userPref!!.getAll()
+                        var string = "{"
                         for (entry in allEntries.entries) {
+                            string = string + '"' + entry.key + '"' + "=" + '"' + entry.value + '"' + ","
                         }
+
+                        string = string.substring(0, string.length - 1) + "}"
 
                         try {
                             val datfile = exportFile
@@ -144,7 +148,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
 
                             val fOut = FileOutputStream(datfile)
                             val myOutWriter = OutputStreamWriter(fOut)
-                            myOutWriter.append(allEntries.toString())
+                            myOutWriter.append(string)
                             myOutWriter.close()
                             fOut.close()
                         } catch (e: IOException) {
