@@ -34,6 +34,8 @@ import com.cookiegames.smartcookie.constant.Constants;
 import com.cookiegames.smartcookie.database.HistoryEntry;
 import com.cookiegames.smartcookie.dialog.BrowserDialog;
 import com.cookiegames.smartcookie.extensions.ActivityExtensions;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -77,7 +79,7 @@ public final class Utils {
      * @param message  the message of the dialog.
      */
     public static void createInformativeDialog(@NonNull Activity activity, @StringRes int title, @StringRes int message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
         builder.setTitle(title);
         builder.setMessage(message)
             .setCancelable(true)

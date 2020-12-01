@@ -456,5 +456,6 @@
     <string name="amp_to_html">AMP para HTML</string>
     <string name="private_title">Modo privado</string>
     <string name="private_desc">As abas no modo privado funcionam como as abas normais, mas quando são fechadas, todos os dados dessas abas são excluídos. A navegação privada NÃO o torna anônimo, mas pode manter o que você faz online em segredo de qualquer outra pessoa que utilize este dispositivo.</string>
+    <string name="file_is">O arquivo é:</string>
     <!-- finish pages -->
 </resources>

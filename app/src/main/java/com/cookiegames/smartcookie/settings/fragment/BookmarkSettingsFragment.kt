@@ -159,7 +159,7 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
                     override fun onDenied(permission: String) {
                         val activity = activity
                         if (activity != null && !activity.isFinishing && isAdded) {
-                            Utils.createInformativeDialog(activity, R.string.title_error, R.string.bookmark_export_failure)
+                            Utils.createInformativeDialog(activity, R.string.title_error, R.string.import_bookmark_error)
                         } else {
                             application.toast(R.string.bookmark_export_failure)
                         }
