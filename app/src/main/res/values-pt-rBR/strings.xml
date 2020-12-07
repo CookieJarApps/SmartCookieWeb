@@ -112,7 +112,7 @@
     <string name="message_text_copied">Texto copiado para a área de transferência</string>
     <string name="message_link_copied">Link copiado para a área de transferência</string>
     <string name="message_blocked_local">Carregamento de arquivo local bloqueado</string>
-    <string name="licenses">Licenças de código aberto</string>
+    <string name="licenses">Licenças de Código Aberto</string>
     <string name="suggestion">Buscar por</string>
     <string name="block_ads">Bloquear anúncios e rastreadores</string>
     <string name="message_insecure_connection">A conexão a este site não é segura: %1$s Visitar site mesmo assim?</string>
@@ -255,7 +255,7 @@
     <string name="settings_adblock">Configurações de bloqueio de conteúdo</string>
     <string name="adblock_summary">Bloqueio de anúncios...</string>
     <string name="adblock_category">Bloqueio de anúncios</string>
-    <string name="cookie_category">Bloqueio de mensagens de avisos de cookies</string>
+    <string name="cookie_category">Bloqueio de diálogos de cookies</string>
     <string name="tabs_in_drawer">Mostrar abas no menu de navegação</string>
     <string name="swap_bookmarks_and_tabs">Inverter os menus de abas e favoritos</string>
     <string name="do_not_track">Solicitar \'Não Rastrear\'</string>
@@ -432,7 +432,7 @@
     <string name="page_source">Ver código-fonte da página</string>
     <string name="pagespeed_error">Este site usa PageSpeed. A edição de código-fonte pode não funcionar como esperado.</string>
     <string name="app_lock">Definir senha do aplicativo</string>
-    <string name="show_ssl">Mostrar mensagens de aviso SSL</string>
+    <string name="show_ssl">Mostrar diálogos de alerta de SSL</string>
     <string name="warn">Só mude isso se souber o que está fazendo!</string>
     <string name="download_channel">Downloads</string>
     <string name="download_description">Informações sobre o progresso do download</string>
