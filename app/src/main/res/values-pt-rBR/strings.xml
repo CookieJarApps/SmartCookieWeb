@@ -88,7 +88,7 @@
     <string name="action_edit">Editar</string>
     <string name="action_incognito">Nova aba privada</string>
     <string name="action_homepage">Padrão</string>
-    <string name="action_back">Anterior</string>
+    <string name="action_back">Voltar</string>
     <string name="action_find">Localizar na página</string>
     <string name="download_pending">Iniciando o download\u2026</string>
     <string name="cannot_download">Só é possível baixar endereços HTTP ou HTTPS.</string>
@@ -183,7 +183,7 @@
     <string name="clear_history_exit">Limpar histórico ao sair</string>
     <string name="folder_default">Padrão</string>
     <string name="folder_custom">Personalizado</string>
-    <string name="untitled">Sem Título</string>
+    <string name="untitled">Sem título</string>
     <string name="mpl_license">Licença Pública Mozilla 2.0</string>
     <string name="freeware">Freeware</string>
     <string name="android_open_source_project">Projeto Open Source Android</string>
@@ -248,9 +248,9 @@
     <string name="action_rename">Renomear</string>
     <string name="title_rename_folder">Renomear pasta</string>
     <string name="dialog_folder">O que deseja fazer com esta pasta?</string>
-    <string name="clear_web_storage">Limpar armazenamento web</string>
-    <string name="clear_web_storage_exit">Limpar armazenamento web ao sair</string>
-    <string name="message_web_storage_cleared">Armazenamento web limpo</string>
+    <string name="clear_web_storage">Limpar armazenamento na web</string>
+    <string name="clear_web_storage_exit">Limpar armazenamento na web ao sair</string>
+    <string name="message_web_storage_cleared">Armazenamento na web limpo</string>
     <string name="hosts_source">Fonte do arquivo de hosts de bloqueio de anúncios</string>
     <string name="settings_adblock">Configurações de bloqueio de conteúdo</string>
     <string name="adblock_summary">Bloqueio de anúncios...</string>
@@ -262,19 +262,19 @@
     <string name="remove_identifying_headers">Remover identificação de cabeçalhos HTTP</string>
     <string name="action_add_to_homescreen">Adicionar à tela inicial</string>
     <string name="message_added_to_homescreen">Atalho adicionado à tela inicial</string>
-    <string name="action_delete_all_bookmarks">Apagar todos os favoritos</string>
+    <string name="action_delete_all_bookmarks">Excluir todos os favoritos</string>
     <string name="flash_not_supported">Seu dispositivo não suporta Flash Player</string>
     <string name="message_open_download_fail">Este arquivo não existe mais</string>
-    <string name="this_project">Este Projeto</string>
+    <string name="this_project">Este projeto</string>
     <string name="scw">Código Fonte do SmartCookieWeb</string>
     <string name="action_home">Início</string>
-    <string name="description">Saber mais sobre SmartCookieWeb</string>
+    <string name="description">Saiba mais sobre o SmartCookieWeb</string>
     <string name="faq">FAQ</string>
     <string name="faq_description">Perguntas frequentes...</string>
     <string name="block_source_default">Hosts padrão</string>
-    <string name="block_source_local">Arquivo local</string>
+    <string name="block_source_local">Arquivo de hosts local</string>
     <string name="block_source_local_description">Arquivo: %1$s</string>
-    <string name="block_source_remote">Arquivo remoto</string>
+    <string name="block_source_remote">Arquivo de hosts remoto</string>
     <string name="block_source_remote_description">URL: %1$s</string>
     <!--Ad block -->
     <string name="ad_block_load_failure">Falha ao carregar hosts da fonte de bloqueio de anúncios.</string>
@@ -302,7 +302,7 @@
     <string name="webrtc_support">Suporte WebRTC</string>
     <string name="save_data">Solicitar \'Save-Data\'</string>
     <!-- debug strings -->
-    <string name="debug_title">Configurações de Depuração</string>
+    <string name="debug_title">Configurações de depuração</string>
     <string name="debug_leak_canary">LeakCanary</string>
     <string name="app_restart">Reinicie o aplicativo para aplicar as alterações.</string>
     <!-- Dialogs -->
@@ -316,7 +316,7 @@
     <string name="dialog_copy_link">Copiar link da página</string>
     <string name="dialog_rename_folder">Renomear pasta</string>
     <string name="dialog_remove_folder">Remover pasta</string>
-    <string name="dialog_title_close_browser">Fechar Abas</string>
+    <string name="dialog_title_close_browser">Fechar abas</string>
     <string name="dialog_delete_download">Remover download do histórico</string>
     <string name="dialog_delete_all_downloads">Remover todos os downloads do histórico</string>
     <!-- Search Engines -->
@@ -358,7 +358,7 @@
     <string name="malware_message">Entre em contato com support@cookiegames.co.uk se isso for um erro.</string>
     <string name="blocked_title">&lt;br&gt; Este site está bloqueado nas configurações.</string>
     <string name="close_app">Fechar navegador</string>
-    <string name="enter_password">Digite a senha</string>
+    <string name="enter_password">Digitar senha</string>
     <string name="wrong_password">Senha incorreta</string>
     <string name="block_all_sites">Bloquear todos os sites listados</string>
     <string name="only_allow_sites">Permitir apenas os sites listados</string>
@@ -412,7 +412,7 @@
     <string name="close_on_last_tab">Fechar navegador ao fechar a última aba</string>
     <string name="more">Mais informações</string>
     <string name="no_search_suggestions">Nenhuma sugestão</string>
-    <string name="search_suggestions_4">Infelizmente, as sugestões de busca no Smart Cookie não estão mais disponíveis em dispositivos abaixo do Android 5.0. Pressione o botão abaixo para saber mais.</string>
+    <string name="search_suggestions_4">Infelizmente, as sugestões de busca no SmartCookieWeb não estão mais disponíveis em dispositivos abaixo do Android 5.0. Clique no botão abaixo para saber mais.</string>
     <string name="block_intent">Abrir todos os links neste navegador</string>
     <string name="block_intent_summary">Bloqueia pedidos para abrir links em aplicativos externos</string>
     <string name="block_javascript">Bloquear JavaScript</string>
@@ -457,5 +457,7 @@
     <string name="private_title">Modo privado</string>
     <string name="private_desc">As abas no modo privado funcionam como as abas normais, mas quando são fechadas, todos os dados dessas abas são excluídos. A navegação privada NÃO o torna anônimo, mas pode manter o que você faz online em segredo de qualquer outra pessoa que utilize este dispositivo.</string>
     <string name="file_is">O arquivo é:</string>
+    <string name="translate_to">Traduzir para:</string>
+    <string name="new_drag">Os menus de opções de abas e favoritos agora são acessados apertando e segurando o ícone. Apertar e segurar o texto agora permitirá que você os reordene.</string>
     <!-- finish pages -->
 </resources>
