@@ -21,6 +21,8 @@ interface BookmarkRepository {
      */
     fun findBookmarkForUrl(url: String): Maybe<Bookmark.Entry>
 
+    fun moveBookmark(entry: Bookmark.Entry, oldPosition: Int, newPosition: Int): Completable
+
     /**
      * Determines if a URL is associated with a bookmark.
      *

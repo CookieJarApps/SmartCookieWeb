@@ -15,6 +15,7 @@ import android.webkit.CookieManager
 import android.widget.*
 import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookiegames.smartcookie.R
@@ -37,7 +38,6 @@ import com.cookiegames.smartcookie.dialog.LightningDialogBuilder
 import com.cookiegames.smartcookie.extensions.color
 import com.cookiegames.smartcookie.extensions.drawable
 import com.cookiegames.smartcookie.extensions.inflater
-import com.cookiegames.smartcookie.extensions.toast
 import com.cookiegames.smartcookie.favicon.FaviconModel
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.reading.activity.ReadingActivity
@@ -48,12 +48,15 @@ import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import java.net.URL
+import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 
 /**
  * The view that displays bookmarks in a list and some controls.
  */
+
+//TODO: DOESN'T SAVE MOVED BOOKMARKS!
 class BookmarksDrawerView @JvmOverloads constructor(
         context: Context,
         private val activity: Activity,
@@ -86,6 +89,33 @@ class BookmarksDrawerView @JvmOverloads constructor(
     private var backNavigationView: ImageView? = null
     private var addBookmarkView: ImageView? = null
 
+    private val itemTouchHelper by lazy {
+        val simpleItemTouchCallback =
+                object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or
+                        ItemTouchHelper.DOWN or
+                        ItemTouchHelper.START or
+                        ItemTouchHelper.END, 0) {
+
+                    override fun onMove(recyclerView: RecyclerView,
+                                        viewHolder: RecyclerView.ViewHolder,
+                                        target: RecyclerView.ViewHolder): Boolean {
+
+                        val adapter = recyclerView.adapter as BookmarkListAdapter
+                        val from = viewHolder.adapterPosition
+                        val to = target.adapterPosition
+                        adapter.moveItem(recyclerView, viewHolder, from, to)
+                        adapter.notifyItemMoved(from, to)
+
+                        return true
+                    }    override fun onSwiped(viewHolder: RecyclerView.ViewHolder,
+                                               direction: Int) {
+                    }
+                }
+
+        ItemTouchHelper(simpleItemTouchCallback)
+    }
+
+
     init {
         context.inflater.inflate(R.layout.bookmark_drawer, this, true)
         context.injector.inject(this)
@@ -116,13 +146,19 @@ class BookmarksDrawerView @JvmOverloads constructor(
                 mainScheduler,
                 ::handleItemLongPress,
                 ::handleItemClick,
-                userPreferences
+                userPreferences,
+                uiController,
+                bookmarkModel,
+                databaseScheduler
         )
 
         bookmarkRecyclerView?.let {
             it.layoutManager = LinearLayoutManager(context)
             it.adapter = bookmarkAdapter
         }
+
+        itemTouchHelper.attachToRecyclerView(bookmarkRecyclerView)
+
         setBookmarksShown(null, true)
     }
 
@@ -391,7 +427,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
         val favicon: ImageView = itemView.findViewById(R.id.faviconBookmark)
 
         init {
-            itemView.setOnLongClickListener(this)
+            favicon.setOnClickListener(this)
             itemView.setOnClickListener(this)
 
             txtTitle.maxLines = userPreferences.drawerLines.value + 1
@@ -402,17 +438,24 @@ class BookmarksDrawerView @JvmOverloads constructor(
         }
 
         override fun onClick(v: View) {
-            val index = adapterPosition
-            if (index.toLong() != RecyclerView.NO_ID) {
-                onItemClickListener(adapter.itemAt(index).bookmark)
+            if(v == favicon){
+                val index = adapterPosition
+                if(index != RecyclerView.NO_POSITION){
+                    onItemLongClickListener(adapter.itemAt(index).bookmark)
+                }
+            }else{
+                val index = adapterPosition
+                if (index.toLong() != RecyclerView.NO_ID) {
+                    onItemClickListener(adapter.itemAt(index).bookmark)
+                }
             }
         }
 
         override fun onLongClick(v: View): Boolean {
-            val index = adapterPosition
-            return index != RecyclerView.NO_POSITION && onItemLongClickListener(adapter.itemAt(index).bookmark)
+            return true
         }
     }
+
 
     private class BookmarkListAdapter(
             context: Context,
@@ -421,7 +464,10 @@ class BookmarksDrawerView @JvmOverloads constructor(
             private val mainScheduler: Scheduler,
             private val onItemLongClickListener: (Bookmark) -> Boolean,
             private val onItemClickListener: (Bookmark) -> Unit,
-            private val userPreferences: UserPreferences
+            private val userPreferences: UserPreferences,
+            private val uiController: UIController,
+            private val bookmarkManager: BookmarkRepository,
+            private val databaseScheduler: Scheduler
     ) : RecyclerView.Adapter<BookmarkViewHolder>() {
 
         private var bookmarks: List<BookmarksViewModel> = listOf()
@@ -434,6 +480,43 @@ class BookmarksDrawerView @JvmOverloads constructor(
         fun deleteItem(item: BookmarksViewModel) {
             val newList = bookmarks - item
             updateItems(newList)
+        }
+
+        fun moveItem(recyclerView: RecyclerView, viewTarget: RecyclerView.ViewHolder, from: Int, to: Int){
+            if (from < to) {
+                for (i in from until to) {
+                    Collections.swap(bookmarks, i, i + 1)
+                }
+            } else {
+                for (i in from downTo to + 1) {
+                    Collections.swap(bookmarks, i, i - 1)
+                }
+            }
+
+            bookmarkManager.deleteAllBookmarks()
+                    .subscribeOn(databaseScheduler)
+                    .subscribe{}
+
+            for(i in bookmarks){
+                when(i.bookmark){
+                    is Bookmark.Entry ->
+                        bookmarkManager.addBookmarkIfNotExists(i.bookmark)
+                                .subscribeOn(databaseScheduler)
+                                .subscribe()
+                }
+            }
+
+           bookmarkManager.getAllBookmarksSorted()
+                    .subscribeOn(databaseScheduler)
+                    .subscribe { list ->
+                        for(i in list.indices){
+                            bookmarkManager.moveBookmark(list[i], list[i].position, i)
+                                    .subscribeOn(databaseScheduler)
+                                    .observeOn(mainScheduler)
+                                    .subscribe {  }
+                        }
+                    }
+
         }
 
         fun updateItems(newList: List<BookmarksViewModel>) {

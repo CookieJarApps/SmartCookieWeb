@@ -12,6 +12,7 @@ import android.database.Cursor
 import android.database.DatabaseUtils
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import androidx.core.database.getStringOrNull
 import io.reactivex.Completable
 import io.reactivex.Maybe
@@ -146,6 +147,16 @@ class BookmarkDatabase @Inject constructor(
         return@fromCallable id != -1L
     }
 
+    override fun moveBookmark(entry: Bookmark.Entry, oldPosition: Int, newPosition: Int): Completable = Completable.fromAction{
+        //Log.d("teastsegse", entry.title)
+
+        val contentValues = ContentValues(1).apply {
+            put(KEY_POSITION, newPosition)
+        }
+
+        database.update(TABLE_BOOKMARK, contentValues, "$KEY_TITLE=?", arrayOf(entry.title))
+    }
+
     override fun addBookmarkList(bookmarkItems: List<Bookmark.Entry>): Completable = Completable.fromAction {
         database.apply {
             beginTransaction()
@@ -196,7 +207,7 @@ class BookmarkDatabase @Inject constructor(
             null,
             null,
             null,
-            "$KEY_FOLDER, $KEY_POSITION ASC, $KEY_TITLE COLLATE NOCASE ASC, $KEY_URL ASC"
+                KEY_ID
         ).useMap { it.bindToBookmarkEntry() }
     }
 
