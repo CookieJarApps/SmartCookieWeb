@@ -454,5 +454,10 @@
     <string name="algorithm">Algoritmo</string>
     <string name="crash_warning">Abilitando questa impostazione con \'Consenti ai siti di aprire nuove finestre\' si possono causare arresti anormali</string>
     <string name="amp_to_html">Da AMP a HTML</string>
+    <string name="private_title">Modalità privata</string>
+    <string name="private_desc">Le schede in modalità privata funzionano come schede normali, ma quando vengono chiuse, tutti i dati da quella scheda vengono cancellati. La navigazione privata NON ti rende anonimo, ma può tenere segreto quello che fai in linea da chiunque altro usi questo dispositivo.</string>
+    <string name="file_is">Il file è:</string>
+    <string name="translate_to">Traduci in:</string>
+    <string name="new_drag">I menù delle opzioni scheda e segnalibri sono ora accessibili premendo l\'icona. Tenendo premuto sul testo ora ti permetterà di riordinarli.</string>
     <!-- finish pages -->
 </resources>
