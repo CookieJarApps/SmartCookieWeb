@@ -864,6 +864,11 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if (event.action == KeyEvent.ACTION_DOWN) {
             when {
                 event.isCtrlPressed -> when (event.keyCode) {
+                    KeyEvent.KEYCODE_P -> {
+                        // Print
+                        tabsManager.currentTab?.webView?.let { tabsManager.currentTab?.createWebPagePrint(it) }
+                        return true
+                    }
                     KeyEvent.KEYCODE_F -> {
                         // Search in page
                         findInPage()
@@ -887,10 +892,44 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                         closeBrowser()
                         return true
                     }
+                    KeyEvent.KEYCODE_H -> {
+                        // History
+                        tabsManager.currentTab?.loadHistoryPage()
+                        return true
+                    }
+                    KeyEvent.KEYCODE_B -> {
+                        // History
+                        addBookmark(tabsManager.currentTab!!.title, tabsManager.currentTab!!.url)
+                        return true
+                    }
+                    KeyEvent.KEYCODE_S -> {
+                        IntentUtils(this).shareUrl(tabsManager.currentTab?.url, tabsManager.currentTab?.title)
+                        return true
+                    }
                     KeyEvent.KEYCODE_R -> {
                         // Refresh current tab
                         tabsManager.currentTab?.reload()
                         return true
+                    }
+                    KeyEvent.KEYCODE_DPAD_UP -> {
+                        if (drawer_layout.isDrawerOpen(getBookmarkDrawer())) {
+                            drawer_layout.closeDrawers()
+                        }
+                        drawer_layout.openDrawer(getTabDrawer())
+                        return true
+                    }
+                    KeyEvent.KEYCODE_DPAD_DOWN -> {
+                        if (drawer_layout.isDrawerOpen(getTabDrawer())) {
+                            drawer_layout.closeDrawers()
+                        }
+                        drawer_layout.openDrawer(getBookmarkDrawer())
+                        return true
+                    }
+                    KeyEvent.KEYCODE_DPAD_LEFT -> {
+                        tabsManager.currentTab?.goBack()
+                    }
+                    KeyEvent.KEYCODE_DPAD_RIGHT -> {
+                        tabsManager.currentTab?.goForward()
                     }
                     KeyEvent.KEYCODE_TAB -> {
                         tabsManager.let {
@@ -938,7 +977,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         }
         return super.dispatchKeyEvent(event)
     }
-
 
     // By using a manager, adds a bookmark and notifies third parties about that
     private fun addBookmark(title: String, url: String) {
