@@ -290,10 +290,12 @@ public class DownloadHandler {
                 .start(new OnDownloadListener() {
                     @Override
                     public void onDownloadComplete() {
-                        Intent intent = new Intent();
-                        intent.setAction(Intent.ACTION_VIEW);
-                        File file = new File(downloadFolder.toString() + URLUtil.guessFileName(url, contentDisposition, mimeType)); // set your audio path
-                        intent.setDataAndType(FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", file), mimeType);
+
+                        //Intent intent = new Intent();
+                        //intent.setAction(Intent.ACTION_VIEW);
+                        //File file = new File(downloadFolder.toString() + URLUtil.guessFileName(url, contentDisposition, mimeType)); // set your audio path
+                        //intent.setDataAndType(FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", file), mimeType);
+                        Intent intent = new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS);
 
                         PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent, 0);
 
