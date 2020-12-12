@@ -3,15 +3,13 @@
 
     <!-- Settings themes -->
     <style name="Theme.SettingsTheme" parent="Theme.LightTheme">
-        <item name="colorPrimary">@color/white</item>
-        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowBackground">@null</item>
         <item name="toolbarSettingsBackground">@drawable/toolbar_elevate</item>
     </style>
 
     <style name="Theme.SettingsTheme.Dark" parent="Theme.DarkTheme">
         <item name="android:windowBackground">@null</item>
         <item name="toolbarSettingsBackground">@drawable/toolbar_elevate_dark</item>
-
         <!-- Dark settings has a special primary dark -->
         <item name="colorPrimaryDark">@color/secondary_color_settings_dark</item>
     </style>
@@ -211,6 +209,7 @@
 
     <style name="ToolbarAnim">
         <item name="android:windowEnterAnimation">@anim/toolbar_in</item>
+        <item name="android:windowExitAnimation">@anim/toolbar_out</item>
     </style>
 
     <style name="ToolbarAnimReverse">
