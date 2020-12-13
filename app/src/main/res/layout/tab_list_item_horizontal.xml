@@ -34,7 +34,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <FrameLayout
-        android:id="@+id/deleteAction"
+        android:id="@+id/dragAction"
         android:layout_width="@dimen/material_grid_touch_small"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
