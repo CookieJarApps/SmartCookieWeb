@@ -61,14 +61,11 @@ class PopUpClass {
         val px = Math.round(TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 228f, r.displayMetrics))
 
-        //Specify the length and width through constants
         val height = LinearLayout.LayoutParams.WRAP_CONTENT
 
-        //Make Inactive Items Outside Of PopupWindow
         val focusable = true
         uiController = view.context as UIController
 
-        //Create a window with our parameters
         val popupWindow = PopupWindow(popupView, px, height, focusable)
         val relView = popupView.findViewById<RelativeLayout>(R.id.toolbar_menu)
 
@@ -97,7 +94,7 @@ class PopUpClass {
         }
         var container =  popupView.findViewById<ConstraintLayout>(R.id.transparent_container)
         if(userPreferences.navbar){
-            popupView.findViewById<LinearLayout>(R.id.linearLayout).visibility = View.GONE
+            popupView.findViewById<LinearLayout>(R.id.topBar).visibility = View.GONE
             val noTopMenu = Math.round(TypedValue.applyDimension(
                     TypedValue.COMPLEX_UNIT_DIP, 56f, r.displayMetrics))
            // container.maxHeight = container.maxHeight - noTopMenu

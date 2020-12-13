@@ -1,19 +1,25 @@
 package com.cookiegames.smartcookie.browser.tabs
 
+import android.R.attr.button
+import android.content.Context
+import android.util.AttributeSet
+import android.view.MotionEvent
+import android.view.View
+import android.view.View.OnLongClickListener
+import android.widget.FrameLayout
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.TabsView
 import com.cookiegames.smartcookie.controller.UIController
 import com.cookiegames.smartcookie.extensions.inflater
 import com.cookiegames.smartcookie.list.VerticalItemAnimator
-import com.cookiegames.smartcookie.view.SmartCookieView
-import android.content.Context
-import android.opengl.Visibility
-import android.util.AttributeSet
-import android.view.View
-import android.widget.LinearLayout
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.cookiegames.smartcookie.preference.UserPreferences
+import com.cookiegames.smartcookie.view.SmartCookieView
+
 
 /**
  * A view which displays tabs in a vertical [RecyclerView].
@@ -30,6 +36,37 @@ class TabsDrawerView @JvmOverloads constructor(
     private val tabList: RecyclerView
     private val actionBack: View
     private val actionForward: View
+
+    fun startDragging(viewHolder: RecyclerView.ViewHolder) {
+        itemTouchHelper.startDrag(viewHolder)
+    }
+
+    private val itemTouchHelper by lazy {
+        val simpleItemTouchCallback =
+                object : ItemTouchHelper.SimpleCallback(UP or
+                        DOWN or
+                        START or
+                        END, 0) {
+
+                    override fun onMove(recyclerView: RecyclerView,
+                                        viewHolder: RecyclerView.ViewHolder,
+                                        target: RecyclerView.ViewHolder): Boolean {
+
+                        val adapter = recyclerView.adapter as TabsDrawerAdapter
+                        val from = viewHolder.adapterPosition
+                        val to = target.adapterPosition
+                        adapter.moveItem(from, to)
+                        adapter.notifyItemMoved(from, to)
+
+                        return true
+                    }    override fun onSwiped(viewHolder: RecyclerView.ViewHolder,
+                                               direction: Int) {
+
+                    }
+                }
+
+        ItemTouchHelper(simpleItemTouchCallback)
+    }
 
     init {
         orientation = VERTICAL
@@ -52,6 +89,8 @@ class TabsDrawerView @JvmOverloads constructor(
             adapter = tabsAdapter
             setHasFixedSize(true)
         }
+
+        itemTouchHelper.attachToRecyclerView(tabList)
 
         findViewById<View>(R.id.tab_header_button).setOnClickListener {
             uiController.showCloseDialog(uiController.getTabModel().indexOfCurrentTab())

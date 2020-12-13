@@ -11,6 +11,7 @@ import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.cookiegames.smartcookie.preference.UserPreferences
+import com.google.android.material.tabs.TabLayout
 
 /**
  * The adapter for vertical mobile style browser tabs.
@@ -43,6 +44,15 @@ class TabsDrawerAdapter(
         updateViewHolderAppearance(holder, web.favicon, web.isForegroundTab)
         updateViewHolderFavicon(holder, web.favicon, web.isForegroundTab)
         updateViewHolderBackground(holder, web.isForegroundTab)
+    }
+
+    fun moveItem(from: Int, to: Int){
+        val oldTab = tabList.toMutableList().get(from)
+        var oldTabList: MutableList<TabViewState> = tabList as MutableList<TabViewState>
+        oldTabList.removeAt(from)
+        oldTabList.add(to, oldTab)
+        uiController.getTabModel().moveTab(from, to)
+        showTabs(oldTabList)
     }
 
     private fun updateViewHolderFavicon(viewHolder: TabViewHolder, favicon: Bitmap?, isForeground: Boolean) {

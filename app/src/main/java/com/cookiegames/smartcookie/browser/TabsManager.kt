@@ -14,6 +14,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.webkit.URLUtil
+import com.cookiegames.smartcookie.browser.tabs.TabViewState
 import com.cookiegames.smartcookie.preference.UserPreferences
 import io.reactivex.Maybe
 import io.reactivex.Observable
@@ -298,6 +299,13 @@ class TabsManager @Inject constructor(
             currentTab = null
         }
         tab.onDestroy()
+    }
+
+    fun moveTab(from: Int, to: Int){
+        val tab = tabList.get(from)
+        tabList.removeAt(from)
+        tabList.add(to, tab)
+
     }
 
     /**
