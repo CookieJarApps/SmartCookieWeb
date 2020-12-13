@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -30,6 +32,8 @@ import com.cookiegames.smartcookie.dialog.BrowserDialog;
 import com.cookiegames.smartcookie.preference.UserPreferences;
 import com.cookiegames.smartcookie.utils.ThemeUtils;
 import com.cookiegames.smartcookie.utils.Utils;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -39,16 +43,30 @@ import androidx.appcompat.widget.Toolbar;
 import net.dankito.readability4j.Article;
 import net.dankito.readability4j.Readability4J;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.text.BreakIterator;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Scheduler;
-import io.reactivex.Single;
 import io.reactivex.disposables.Disposable;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class ReadingActivity extends AppCompatActivity {
 
@@ -80,6 +98,7 @@ public class ReadingActivity extends AppCompatActivity {
     private int mTextSize;
     @Nullable private ProgressDialog mProgressDialog;
     private Disposable mPageLoaderSubscription;
+    private String originalHtml;
 
     private static final float XXLARGE = 30.0f;
     private static final float XLARGE = 26.0f;
@@ -195,8 +214,16 @@ public class ReadingActivity extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(Void aVoid) {
-            setText(title, Html.fromHtml(extractedContentHtml.replaceAll("image copyright", getResources().getString(R.string.reading_mode_image_copyright) + " ").replaceAll("image caption", getResources().getString(R.string.reading_mode_image_caption) + " ").replaceAll("<a", "<span").replaceAll("</a>", "</span>")));
+            String html = extractedContentHtmlWithUtf8Encoding.replaceAll("image copyright", getResources().getString(R.string.reading_mode_image_copyright) + " ").replaceAll("image caption", getResources().getString(R.string.reading_mode_image_caption) + " ").replaceAll("￼","").replaceAll("<a", "<span").replaceAll("</a>", "</span>");
 
+            Document doc = Jsoup.parse(html);
+
+            for( Element element : doc.select("img") )
+            {
+                element.remove();
+            }
+
+            setText(title, Html.fromHtml(doc.outerHtml()));
             dismissProgressDialog();
         }
     }
@@ -297,6 +324,61 @@ public class ReadingActivity extends AppCompatActivity {
         }
     }
 
+    public void translate(String lang){
+        OkHttpClient client = new OkHttpClient();
+
+        BreakIterator iterator = BreakIterator.getSentenceInstance(Locale.US);
+        String source = mBody.getText().toString();
+        iterator.setText(source);
+
+        int start = iterator.first();
+        for (int end = iterator.next();
+             end != BreakIterator.DONE;
+             start = end, end = iterator.next()) {
+        }
+
+        HttpUrl mySearchUrl = new HttpUrl.Builder()
+                .scheme("https")
+                .host("cookiejarapps.com")
+                .addPathSegment("translate")
+                .addQueryParameter("text", Html.toHtml((Spanned) mBody.getText()).replace("\"", "\\\""))
+                .addQueryParameter("lang", lang)
+                .build();
+        Request request = new Request.Builder()
+                .url(mySearchUrl)
+                .addHeader("Accept", "application/json")
+                .method("GET", null)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+            // TODO: This is... not a good way of doing this...
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                if (!response.isSuccessful()) {
+                    throw new IOException("Unexpected code " + response);
+                } else {
+                    String values = response.body().string();
+                    String jsonData = values;
+                    ReadingActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                JSONObject Jobject = new JSONObject(jsonData);
+                                mBody.setText(Html.fromHtml(Jobject.getString("text")));
+                            } catch(JSONException ignored){
+
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -306,6 +388,27 @@ public class ReadingActivity extends AppCompatActivity {
                     ReadingActivity.launch(this, mUrl);
                     finish();
                 }
+                break;
+            case R.id.translate_item:
+                String lang = "fr";
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(ReadingActivity.this);
+                builderSingle.setTitle(getResources().getString(R.string.translate_to));
+
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(ReadingActivity.this, android.R.layout.select_dialog_singlechoice);
+                arrayAdapter.add("English");
+                arrayAdapter.add("Français");
+                arrayAdapter.add("Português");
+                arrayAdapter.add("Português do Brasil");
+                arrayAdapter.add("Italiano");
+
+                String[] languages = {"en", "fr", "pt-pt", "pt-br", "it"};
+
+                builderSingle.setNegativeButton("cancel", (dialog, which) -> dialog.dismiss());
+
+                builderSingle.setAdapter(arrayAdapter, (dialog, which) -> translate(languages[which]));
+                builderSingle.show();
+
+
                 break;
             case R.id.text_size_item:
 
@@ -330,7 +433,7 @@ public class ReadingActivity extends AppCompatActivity {
                 bar.setMax(5);
                 bar.setProgress(mTextSize);
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this)
                     .setView(view)
                     .setTitle(R.string.size)
                     .setPositiveButton(android.R.string.ok, (dialog, arg1) -> {
