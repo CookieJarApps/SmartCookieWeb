@@ -67,6 +67,8 @@ class PopUpClass {
         uiController = view.context as UIController
 
         val popupWindow = PopupWindow(popupView, px, height, focusable)
+        popupWindow.isOutsideTouchable = true
+        popupWindow.isFocusable = true
         val relView = popupView.findViewById<RelativeLayout>(R.id.toolbar_menu)
 
         if(activity.isIncognito()){
@@ -138,9 +140,9 @@ class PopUpClass {
         }
 
         val adapter = CustomAdapter(view.context, textString, drawableIds)
-        list = popupView.findViewById<ListView>(R.id.menuList)
+        list = popupView.findViewById(R.id.menuList)
         list?.setAdapter(adapter)
-        list?.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+        list?.setOnItemClickListener { parent, view, position, id ->
             var positionList = intArrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
             if(activity.isIncognito() && !userPreferences.bottomBar){
                 positionList = intArrayOf(0, 3, 6, 7, 8, 9, 10, 11, 12)
@@ -189,7 +191,7 @@ class PopUpClass {
                     }
                 }
             } else if (positionList[position] == 9) {
-               activity.drawer_layout.openDrawer(activity.getBookmarkDrawer())
+                activity.drawer_layout.openDrawer(activity.getBookmarkDrawer())
             } else if (positionList[position] == 10) {
                 if (currentUrl != null) {
                     ReadingActivity.launch(view.context, currentUrl)
@@ -206,6 +208,6 @@ class PopUpClass {
                 currentView?.loadUrl("https://translatetheweb.com/?scw=yes&a=" + currentUrl!!)
             }
             popupWindow.dismiss()
-        })
+        }
     }
 }
