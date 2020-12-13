@@ -187,11 +187,6 @@ class SmartCookieWebClient(
                     + "link4var = '" + userPreferences.link4  + "';"
                     + "})();", null)
         }
-        if (BuildConfig.DEBUG) {
-            // Element-based adblock test
-            // TODO: remove this
-            view.evaluateJavascript(blockAds.provideJs(), null)
-        }
         if (view.isShown) {
             uiController.updateUrl(url, false)
 
