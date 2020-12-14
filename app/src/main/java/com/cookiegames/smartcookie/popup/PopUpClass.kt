@@ -69,6 +69,7 @@ class PopUpClass {
         val popupWindow = PopupWindow(popupView, px, height, focusable)
         popupWindow.isOutsideTouchable = true
         popupWindow.isFocusable = true
+        popupWindow.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val relView = popupView.findViewById<RelativeLayout>(R.id.toolbar_menu)
 
         if(activity.isIncognito()){
@@ -207,7 +208,6 @@ class PopUpClass {
             else if(positionList[position] == 13){
                 currentView?.loadUrl("https://translatetheweb.com/?scw=yes&a=" + currentUrl!!)
             }
-            popupWindow.dismiss()
         }
     }
 }
