@@ -77,14 +77,7 @@ Contributions are greatly appreciated. Feel free to open an issue or pull reques
 
 - **[MPL-2.0 license](https://www.mozilla.org/en-US/MPL/2.0/)**
 
-License in short:
-
-- Keep license notices in about page
-- Forks must be open source
-- Derivative project must use MPL
-
-
-Copyright 2020 © CookieJarApps.
+Please read the license before forking.
 
 ---
 
