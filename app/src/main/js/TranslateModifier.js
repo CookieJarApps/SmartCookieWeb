@@ -6,5 +6,5 @@ setTimeout(function() {
 
 window.hipUrl = null;
 if(document.querySelector('#ToDDL').value != lang){
-	document.querySelector('#ToDDL').value = lang; BVLangPair.UpdateToLang(); BV.onTranslateButtonClick();
+	document.querySelector('#ToDDL').value = lang; //BVLangPair.UpdateToLang(); BV.onTranslateButtonClick();
 }
