@@ -74,6 +74,10 @@ class SmartCookieWebClient(
     private val reloadBlocked = activity.getString(R.string.error_reload)
     private val endBlocked = "</button> --> </div></div></div></body></center></html>"
 
+    private var zoomed = false
+    private var first = true
+    private var initScale = 0f
+
     private var color = "<style>body{background-color:#424242 !important;} h1{color:#ffffff !important;} .error-code{color:#e6e6e6 !important;}</style>"
 
     @Inject internal lateinit var proxyUtils: ProxyUtils
@@ -351,6 +355,8 @@ class SmartCookieWebClient(
         if(view.settings?.userAgentString!!.contains("wv")){
             view.settings?.userAgentString = view.settings?.userAgentString?.replace("wv", "")
         }
+        zoomed = false
+        first=true
         currentUrl = url
         view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
 
@@ -578,9 +584,27 @@ class SmartCookieWebClient(
 
     }
 
-//TODO: improve
     override fun onScaleChanged(view: WebView, oldScale: Float, newScale: Float) {
-        if (view.isShown && smartCookieView.userPreferences.textReflowEnabled) {
+        Log.d("gfdgsdg", "from " + oldScale + " to " + newScale)
+        if (first) {
+            initScale = newScale
+            first=false
+            zoomed = false
+        }
+        else {
+            if (newScale>oldScale) {
+                zoomed = true
+                Log.d("gfdgsdg", "zoomed")
+            }
+            else {
+                if (newScale<initScale) {
+                    zoomed = false
+                    Log.d("gfdgsdg", "not zoomed")
+                }
+            }
+        }
+
+      if (view.isShown && smartCookieView.userPreferences.textReflowEnabled) {
             if (isRunning)
                 return
             val changeInPercent = abs(100 - 100 / zoomScale * newScale)
@@ -588,7 +612,7 @@ class SmartCookieWebClient(
                 isRunning = view.postDelayed({
                     zoomScale = newScale
 
-                        val textScale = 980 / newScale
+                    val textScale = (newScale / initScale)
                     view.evaluateJavascript(textReflowJs.provideJs() + textScale.toString() + " + 'px'; }());") { isRunning = false }
                 }, 100)
             }

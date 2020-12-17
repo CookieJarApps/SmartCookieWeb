@@ -161,6 +161,14 @@
         <item>Aucun</item>
         <item>Personnalisé</item>
     </string-array>
+    <string-array name="suggestion_name_array">
+        <item>Trois</item>
+        <item>Quatre</item>
+        <item>Cinq</item>
+        <item>Six</item>
+        <item>Sept</item>
+        <item>Huit</item>
+    </string-array>
     <string name="manual_proxy">Proxy manuel</string>
     <string name="host">Hôte :</string>
     <string name="port">Port :</string>
@@ -268,11 +276,6 @@
     <string name="block_source_local_description">Fichier : %1$s</string>
     <string name="block_source_remote">Fichier \'hosts\' distant</string>
     <string name="block_source_remote_description">URL : %1$s</string>
-    <string-array name="block_ad_source_list">
-        <item>@string/block_source_default</item>
-        <item>@string/block_source_local</item>
-        <item>@string/block_source_remote</item>
-    </string-array>
     <!--Ad block -->
     <string name="ad_block_load_failure">Échec du chargement du fichier \'hosts\' de blocage des publicités.</string>
     <string name="infinity">∞</string>
@@ -344,6 +347,8 @@
     <string name="preferhttpsdesc">Toujours utiliser HTTPS sur les sites pris en charge (peut causer des problèmes)</string>
     <string name="startpagedesc">La page d’accueil utilisera la couleur du thème.</string>
     <string name="updatehomepage">Ouvrez un nouvel onglet pour voir la page d’accueil mise à jour</string>
+    <string name="edit_shortcuts">Modifier les raccourcis</string>
+    <string name="apply">Appliquer</string>
     <string name="inspect">Exécuter du code JavaScript</string>
     <string name="bookmark">Signet ajouté</string>
     <string name="error_title">Miettes alors ! &lt;br&gt; Impossible de charger la page.</string>
@@ -376,6 +381,7 @@
     <string name="show_extra">Afficher les options de menu supplémentaires</string>
     <string name="incognito_cookies_new">Le mode incognito s’exécute dans une fenêtre séparée qui est réinitialisée après chaque session. Les préférences de cookies en mode incognito sont désormais contrôlées par les préférences normales des cookies.</string>
     <string name="quit_private">Sortir du mode incognito</string>
+    <string name="image_url">Définir une image de fond pour la page d\'accueil</string>
     <string name="start_incognito">Toujours agir en mode incognito</string>
     <string name="bottom_navbar">Afficher la barre de navigation en bas de l’écran</string>
     <string name="please_restart">Veuillez redémarrer l’application pour que les changements soient pris en compte</string>
@@ -430,5 +436,28 @@
     <string name="warn">Ne changez cela que si vous savez ce que vous faites!</string>
     <string name="download_channel">Téléchargements</string>
     <string name="download_description">Informations sur la progression du téléchargement</string>
+    <string name="download_to_sd">Télécharger sur la carte SD</string>
+    <string name="legacy_download_manager">Utiliser le gestionnaire de téléchargement intégré</string>
+    <string name="legacy_download_manager_desc">Télécharger des fichiers à l\'aide du gestionnaire de téléchargement SmartCookieWeb, au lieu de celui du système</string>
+    <string name="onboarding_one">Accédez aux paramètres, signets (ou faites glisser depuis le bord droit) et plus encore dans le menu de débordement.</string>
+    <string name="onboarding_two">Cliquez sur le numéro d’onglet ou glissez depuis le bord gauche pour ouvrir le tiroir d’onglets.</string>
+    <string name="onboarding_three">Utilisez les outils de page dans le tiroir de signet pour désactiver temporairement le bloc de publicité, ouvrir la version de bureau d\'un site et plus encore.</string>
+    <string name="load_tabs">Charger tous les onglets au démarrage du navigateur</string>
+    <string name="search_homepage">Rechercher...</string>
+    <string name="start">Commencez!</string>
+    <string name="show_shortcuts">Afficher les raccourcis sur la page d\'accueil</string>
+    <string name="reading_mode_image_copyright">Image attribuée</string>
+    <string name="reading_mode_image_caption">Image avec légende</string>
+    <string name="show_second_bar">Afficher la barre de navigation secondaire</string>
+    <string name="edit_cookies">Modifier les cookies du site</string>
+    <string name="ssl_size">Taille de la clé</string>
+    <string name="algorithm">Algorithme</string>
+    <string name="crash_warning">Activer ce paramètre avec \'Autoriser les sites à ouvrir de nouvelles fenêtres\' peut causer des plantages</string>
+    <string name="amp_to_html">AMP vers HTML (bêta)</string>
+    <string name="private_title">Mode privé</string>
+    <string name="private_desc">Les onglets en mode privé fonctionnent comme des onglets normaux, mais quand ils sont fermés, toutes les données de cet onglet sont effacées. La navigation privée ne vous rend PAS anonyme, mais elle peut garder ce que vous faites en ligne secret à partir de n\'importe qui d\'autre utilisant cet appareil.</string>
+    <string name="file_is">Le fichier est :</string>
+    <string name="translate_to">Traduire en :</string>
+    <string name="new_drag">Les menus des onglets et des signets sont maintenant accessibles en appuyant sur l\'icône. Maintenir le texte vous permettra maintenant de les réorganiser.</string>
     <!-- finish pages -->
 </resources>
