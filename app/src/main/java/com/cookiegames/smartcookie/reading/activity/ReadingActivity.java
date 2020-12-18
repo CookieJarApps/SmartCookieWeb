@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import javax.inject.Inject;
 
+import com.cookiegames.smartcookie.AppTheme;
 import com.cookiegames.smartcookie.R;
 import com.cookiegames.smartcookie.di.Injector;
 import com.cookiegames.smartcookie.di.MainScheduler;
@@ -115,13 +116,30 @@ public class ReadingActivity extends AppCompatActivity {
         mInvert = mUserPreferences.getInvertColors();
         final int color;
         if (mInvert) {
-            setTheme(R.style.Theme_SettingsTheme_Black);
-            color = ThemeUtils.getPrimaryColorDark(this);
-            getWindow().setBackgroundDrawable(new ColorDrawable(color));
-        } else {
-            setTheme(R.style.Theme_SettingsTheme);
-            color = ThemeUtils.getPrimaryColor(this);
-            getWindow().setBackgroundDrawable(new ColorDrawable(color));
+            if(mUserPreferences.getUseTheme() == AppTheme.LIGHT){
+                setTheme(R.style.Theme_SettingsTheme_Black);
+                color = ThemeUtils.getPrimaryColor(this);
+                getWindow().setBackgroundDrawable(new ColorDrawable(color));
+            } else{
+                setTheme(R.style.Theme_SettingsTheme);
+                color = ThemeUtils.getPrimaryColor(this);
+                getWindow().setBackgroundDrawable(new ColorDrawable(color));
+            }
+        }
+        else {
+            if(mUserPreferences.getUseTheme() == AppTheme.LIGHT){
+                setTheme(R.style.Theme_SettingsTheme);
+                color = ThemeUtils.getPrimaryColor(this);
+                getWindow().setBackgroundDrawable(new ColorDrawable(color));
+            } else if(mUserPreferences.getUseTheme() == AppTheme.DARK){
+                setTheme(R.style.Theme_SettingsTheme_Dark);
+                color = ThemeUtils.getPrimaryColor(this);
+                getWindow().setBackgroundDrawable(new ColorDrawable(color));
+            } else{
+                setTheme(R.style.Theme_SettingsTheme_Black);
+                color = ThemeUtils.getPrimaryColor(this);
+                getWindow().setBackgroundDrawable(new ColorDrawable(color));
+            }
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reading_view);
