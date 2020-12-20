@@ -2,7 +2,7 @@
 name: Bug report
 about: Create a report to help us improve SmartCookieWeb
 title: '[Bug]'
-labels: 'P2: Medium priority', 'bug'
+labels: 'P2: Medium priority, bug'
 assignees: ''
 
 ---
