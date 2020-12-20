@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cookiegames.smartcookie.browser.DrawerLineChoice
 import com.cookiegames.smartcookie.browser.DrawerSizeChoice
 import com.cookiegames.smartcookie.preference.UserPreferences
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
  * The [RecyclerView.ViewHolder] for both vertical and horizontal tabs.
@@ -57,7 +58,14 @@ class TabViewHolder(
     }
 
     override fun onLongClick(v: View): Boolean {
-      //  uiController.showCloseDialog(adapterPosition)
+        if(userPreferences.firstLaunch11) {
+            val alert = MaterialAlertDialogBuilder(v.context)
+            alert
+                    .setMessage(v.context.resources.getString(R.string.new_drag))
+                    .setPositiveButton(v.context.resources.getString(R.string.action_ok), null)
+                    .show()
+            userPreferences.firstLaunch11 = false
+        }
         return true
     }
 }

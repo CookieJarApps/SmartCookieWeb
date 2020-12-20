@@ -1081,7 +1081,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     override fun notifyTabViewAdded() {
         logger.log(TAG, "Notify Tab Added")
         tabsView?.tabAdded()
-        saveOpenTabs()
+        if(!isIncognito()){
+            saveOpenTabs()
+        }
     }
 
     override fun notifyTabViewChanged(position: Int) {

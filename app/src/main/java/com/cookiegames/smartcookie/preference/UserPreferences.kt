@@ -377,9 +377,13 @@ class UserPreferences @Inject constructor(
 
     // Redirect from AMP sites
     var noAmp by preferences.booleanPreference(NO_AMP, false)
+
+    // First launch since v11
+    var firstLaunch11 by preferences.booleanPreference(FIRST_LAUNCH11, true)
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
+private const val FIRST_LAUNCH11 = "firstLaunch11"
 private const val WEB_RTC = "webRtc"
 private const val FORCE = "force"
 private const val BLOCK_ADS = "AdBlock"

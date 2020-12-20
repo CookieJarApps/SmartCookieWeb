@@ -157,7 +157,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
             it.adapter = bookmarkAdapter
         }
 
-        itemTouchHelper.attachToRecyclerView(bookmarkRecyclerView)
+        //itemTouchHelper.attachToRecyclerView(bookmarkRecyclerView)
 
         setBookmarksShown(null, true)
     }
@@ -429,6 +429,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
         init {
             favicon.setOnClickListener(this)
             itemView.setOnClickListener(this)
+            itemView.setOnLongClickListener(this)
 
             txtTitle.maxLines = userPreferences.drawerLines.value + 1
             if(userPreferences.drawerSize != DrawerSizeChoice.AUTO){
@@ -452,6 +453,14 @@ class BookmarksDrawerView @JvmOverloads constructor(
         }
 
         override fun onLongClick(v: View): Boolean {
+            if(userPreferences.firstLaunch11) {
+                val alert = MaterialAlertDialogBuilder(v.context)
+                alert
+                        .setMessage(v.context.resources.getString(R.string.new_drag))
+                        .setPositiveButton(v.context.resources.getString(R.string.action_ok), null)
+                        .show()
+                userPreferences.firstLaunch11 = false
+            }
             return true
         }
     }
