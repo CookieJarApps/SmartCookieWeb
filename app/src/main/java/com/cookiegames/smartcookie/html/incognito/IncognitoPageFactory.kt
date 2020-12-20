@@ -45,10 +45,16 @@ class IncognitoPageFactory @Inject constructor(
                     title { title }
                     charset { UTF8 }
                     body {
-                        //id("search_input") { attr("style", "background: url('" + iconUrl + "') no-repeat scroll 7px 7px;background-size: 22px 22px;") }
-                        /*html()
-                         .replace("\${BASE_URL}", queryUrl)
-                         .replace("&", "\\u0026")*/
+                        id("search_input") { attr("style", "background: url('" + iconUrl + "') no-repeat scroll 7px 7px;background-size: 22px 22px;") }
+                        tag("script") {
+                            html(
+                                    html()
+                                                .replace("\${BASE_URL}", queryUrl)
+                                                .replace("&", "\\u0026")
+
+
+                            )
+                        }
 
                         id("title-pm"){text(resources.getString(R.string.private_title))}
                         id("desc-pm"){text(resources.getString(R.string.private_desc))}
@@ -63,7 +69,7 @@ class IncognitoPageFactory @Inject constructor(
                             id("link2"){ attr("src", userPreferences.link2 + "/favicon.ico")}
                             id("link3"){ attr("src", userPreferences.link3 + "/favicon.ico")}
                             id("link4"){ attr("src", userPreferences.link4 + "/favicon.ico")}
-                            //id("search_input"){ attr("placeholder", resources.getString(R.string.search_homepage))}
+                            id("search_input"){ attr("placeholder", resources.getString(R.string.search_homepage))}
                         }
                         else{
                             id("shortcuts"){ attr("style", "display: none;")}
