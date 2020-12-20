@@ -212,6 +212,7 @@ class PopUpClass {
             else if(positionList[position] == 13){
                 currentView?.loadUrl("https://translatetheweb.com/?scw=yes&a=" + currentUrl!!)
             }
+            popupWindow.dismiss()
         }
     }
 }
