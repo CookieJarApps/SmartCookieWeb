@@ -1,8 +1,8 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: [Feature]
-labels: P2: Medium priority, enhancement
+title: '[Feature]'
+labels: 'P2: Medium priority, enhancement'
 assignees: ''
 
 ---
@@ -12,7 +12,6 @@ assignees: ''
 <!-- Please only add more than one topic to the issue if they are directly related. New issues must be created for each different topic. -->
 
 <!-- The comments between these brackets won't show up in the submitted issue (as you can see in the Preview). -->
-
 
 ### Describe the feature you want
 <!-- A clear and concise description of what you wish should happen.
