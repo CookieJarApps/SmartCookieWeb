@@ -1,38 +1,39 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
+about: Create a report to help us improve SmartCookieWeb
+title: '[Bug]'
+labels: 'P2: Medium priority', 'bug'
 assignees: ''
 
 ---
 
-**Describe the bug**
+Right after [Bug] you should add a simple title describing the bug, e.g. [Bug] The app has crashed. 
+
+Please only add more than one topic to the issue if they are directly related. New issues must be created for each different topic.
+
+The comments between these brackets won't show up in the submitted issue (as you can see in the Preview).
+
+
+### Describe the bug
 A clear and concise description of what the bug is.
 
-**To Reproduce**
+### To Reproduce
 Steps to reproduce the behavior:
 1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
+2. Click on '...'
+3. Scroll down to '...'
 4. See error
 
-**Expected behavior**
+### Expected behavior
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+### Screenshots
+If applicable, add screenshots or a screen recording to help explain your problem.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+### Device Info
+ - Device: [e.g. Xiaomi Redmi Note 9]
+ - OS: [e.g. MIUI 12 (Android 10.0)]
+ - App version: [e.g. v10.0.1]
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
-
-**Additional context**
+### Additional context
 Add any other context about the problem here.
