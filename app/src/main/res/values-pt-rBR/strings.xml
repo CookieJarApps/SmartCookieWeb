@@ -105,7 +105,7 @@
     <string name="action_follow_me">Mais informações</string>
     <string name="clear_cache">Limpar cache</string>
     <string name="message_cache_cleared">Cache limpo</string>
-    <string name="message_import">Os favoritos foram importados</string>
+    <string name="message_import">Favoritos importados</string>
     <string name="message_clear_history">Histórico limpo</string>
     <string name="message_cookies_cleared">Cookies limpos</string>
     <string name="max_tabs">Atingiu o nº máximo de abas permitidas</string>
@@ -300,7 +300,7 @@
     <string name="block_ad_remote_refresh_frequency_description">Para arquivos remotos</string>
     <string name="block_ad_refresh_now">Recarregar lista agora</string>
     <string name="webrtc_support">Suporte WebRTC</string>
-    <string name="save_data">Solicitar \'Save-Data\'</string>
+    <string name="save_data">Solicitar \'Salvar Dados\'</string>
     <!-- debug strings -->
     <string name="debug_title">Configurações de depuração</string>
     <string name="debug_leak_canary">LeakCanary</string>
@@ -458,6 +458,6 @@
     <string name="private_desc">As abas no modo privado funcionam como as abas normais, mas quando são fechadas, todos os dados dessas abas são excluídos. A navegação privada NÃO o torna anônimo, mas pode manter o que você faz online em segredo de qualquer outra pessoa que utilize este dispositivo.</string>
     <string name="file_is">O arquivo é:</string>
     <string name="translate_to">Traduzir para:</string>
-    <string name="new_drag">Os menus de opções de abas e favoritos agora são acessados apertando e segurando o ícone. Apertar e segurar o texto agora permitirá que você os reordene.</string>
+    <string name="new_drag">Os menus de opções de abas e favoritos agora são acessados clicando no ícone. Apertar e segurar o texto agora lhe permite reordená-los.</string>
     <!-- finish pages -->
 </resources>
