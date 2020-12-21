@@ -144,7 +144,8 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
 
                         try {
                             val datfile = exportFile
-                            Toast.makeText(context, "File is:  $datfile", Toast.LENGTH_LONG).show() //##4
+                            val fileIs = resources.getString(R.string.file_is)
+                            Toast.makeText(context, "$fileIs  $datfile", Toast.LENGTH_LONG).show() //##4
 
                             val fOut = FileOutputStream(datfile)
                             val myOutWriter = OutputStreamWriter(fOut)
