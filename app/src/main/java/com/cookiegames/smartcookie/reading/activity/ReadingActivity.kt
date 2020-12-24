@@ -220,9 +220,9 @@ class ReadingActivity : AppCompatActivity() {
             mTitle!!.alpha = 0.0f
             mTitle!!.visibility = View.VISIBLE
             mTitle!!.text = title
-            val animator = ObjectAnimator.ofFloat(mTitle, "alpha", 1.0f)
-            animator.duration = 300
-            animator.start()
+            //val animator = ObjectAnimator.ofFloat(mTitle, "alpha", 1.0f)
+            //animator.duration = 300
+            //animator.start()
         } else {
             mTitle!!.text = title
         }
@@ -230,9 +230,9 @@ class ReadingActivity : AppCompatActivity() {
             mBody!!.alpha = 0.0f
             mBody!!.visibility = View.VISIBLE
             mBody!!.text = body
-            val animator = ObjectAnimator.ofFloat(mBody, "alpha", 1.0f)
-            animator.duration = 300
-            animator.start()
+            //val animator = ObjectAnimator.ofFloat(mBody, "alpha", 1.0f)
+            //animator.duration = 300
+            //animator.start()
         } else {
             mBody!!.text = body
         }
