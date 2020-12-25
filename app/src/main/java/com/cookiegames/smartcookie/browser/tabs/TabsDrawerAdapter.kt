@@ -1,17 +1,17 @@
 package com.cookiegames.smartcookie.browser.tabs
 
-import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.controller.UIController
-import com.cookiegames.smartcookie.extensions.desaturate
-import com.cookiegames.smartcookie.extensions.inflater
-import com.cookiegames.smartcookie.view.BackgroundDrawable
 import android.graphics.Bitmap
 import android.view.ViewGroup
 import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.controller.UIController
+import com.cookiegames.smartcookie.extensions.desaturate
+import com.cookiegames.smartcookie.extensions.inflater
 import com.cookiegames.smartcookie.preference.UserPreferences
-import com.google.android.material.tabs.TabLayout
+import com.cookiegames.smartcookie.view.BackgroundDrawable
+import java.util.*
 
 /**
  * The adapter for vertical mobile style browser tabs.
@@ -47,12 +47,18 @@ class TabsDrawerAdapter(
     }
 
     fun moveItem(from: Int, to: Int){
-        val oldTab = tabList.toMutableList().get(from)
-        var oldTabList: MutableList<TabViewState> = tabList as MutableList<TabViewState>
-        oldTabList.removeAt(from)
-        oldTabList.add(to, oldTab)
+        if (from < to) {
+            for (i in from until to) {
+                Collections.swap(tabList, i, i + 1)
+            }
+        } else {
+            for (i in from downTo to + 1) {
+                Collections.swap(tabList, i, i - 1)
+            }
+        }
         uiController.getTabModel().moveTab(from, to)
-        showTabs(oldTabList)
+        showTabs(tabList)
+        notifyItemMoved(from, to)
     }
 
     private fun updateViewHolderFavicon(viewHolder: TabViewHolder, favicon: Bitmap?, isForeground: Boolean) {

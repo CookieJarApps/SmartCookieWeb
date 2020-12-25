@@ -37,10 +37,6 @@ class TabsDrawerView @JvmOverloads constructor(
     private val actionBack: View
     private val actionForward: View
 
-    fun startDragging(viewHolder: RecyclerView.ViewHolder) {
-        itemTouchHelper.startDrag(viewHolder)
-    }
-
     private val itemTouchHelper by lazy {
         val simpleItemTouchCallback =
                 object : ItemTouchHelper.SimpleCallback(UP or
@@ -56,7 +52,6 @@ class TabsDrawerView @JvmOverloads constructor(
                         val from = viewHolder.adapterPosition
                         val to = target.adapterPosition
                         adapter.moveItem(from, to)
-                        adapter.notifyItemMoved(from, to)
 
                         return true
                     }    override fun onSwiped(viewHolder: RecyclerView.ViewHolder,
