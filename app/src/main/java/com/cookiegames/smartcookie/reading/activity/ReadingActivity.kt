@@ -12,6 +12,7 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.text.Html
 import android.text.Spanned
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -159,13 +160,13 @@ class ReadingActivity : AppCompatActivity() {
             var url: URL
             try {
                 val google = URL(mUrl)
-                val `in` = BufferedReader(InputStreamReader(google.openStream()))
+                val line = BufferedReader(InputStreamReader(google.openStream()))
                 var input: String?
                 val stringBuffer = StringBuffer()
-                while (`in`.readLine().also { input = it } != null) {
+                while (line.readLine().also { input = it } != null) {
                     stringBuffer.append(input)
                 }
-                `in`.close()
+                line.close()
                 val htmlData = stringBuffer.toString()
                 val readability4J = Readability4J(mUrl!!, htmlData) // url is just needed to resolve relative urls
                 val article = readability4J.parse()
@@ -217,22 +218,16 @@ class ReadingActivity : AppCompatActivity() {
     private fun setText(title: String?, body: Spanned) {
         if (mTitle == null || mBody == null) return
         if (mTitle!!.visibility == View.INVISIBLE) {
-            mTitle!!.alpha = 0.0f
+            mTitle!!.alpha = 1.0f
             mTitle!!.visibility = View.VISIBLE
             mTitle!!.text = title
-            //val animator = ObjectAnimator.ofFloat(mTitle, "alpha", 1.0f)
-            //animator.duration = 300
-            //animator.start()
         } else {
             mTitle!!.text = title
         }
         if (mBody!!.visibility == View.INVISIBLE) {
-            mBody!!.alpha = 0.0f
+            mBody!!.alpha = 1.0f
             mBody!!.visibility = View.VISIBLE
             mBody!!.text = body
-            //val animator = ObjectAnimator.ofFloat(mBody, "alpha", 1.0f)
-            //animator.duration = 300
-            //animator.start()
         } else {
             mBody!!.text = body
         }
