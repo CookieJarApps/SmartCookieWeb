@@ -47,17 +47,18 @@ class TabsDrawerAdapter(
     }
 
     fun moveItem(from: Int, to: Int){
+        val oldList = tabList
         if (from < to) {
             for (i in from until to) {
-                Collections.swap(tabList, i, i + 1)
+                Collections.swap(oldList, i, i + 1)
             }
         } else {
             for (i in from downTo to + 1) {
-                Collections.swap(tabList, i, i - 1)
+                Collections.swap(oldList, i, i - 1)
             }
         }
         uiController.getTabModel().moveTab(from, to)
-        showTabs(tabList)
+        showTabs(oldList)
         notifyItemMoved(from, to)
     }
 
