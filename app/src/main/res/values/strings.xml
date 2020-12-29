@@ -547,5 +547,7 @@
     <string name="translate_to">Translate to:</string>
 
     <string name="new_drag">The tab and bookmark option menus are now accessed by pressing the icon. Holding on the text will now allow you to reorder them.</string>
+
+    <string name="last_loaded">Last loaded</string>
     <!-- finish pages -->
 </resources>
