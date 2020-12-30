@@ -459,5 +459,6 @@
     <string name="file_is">O arquivo é:</string>
     <string name="translate_to">Traduzir para:</string>
     <string name="new_drag">Os menus de opções de abas e favoritos agora são acessados clicando no ícone. Apertar e segurar o texto agora lhe permite reordená-los.</string>
+    <string name="last_loaded">Último carregado</string>
     <!-- finish pages -->
 </resources>

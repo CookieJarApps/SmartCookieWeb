@@ -8,17 +8,17 @@
     <string name="action_downloads">Pliki do pobrania</string>
     <string name="action_add_bookmark">Dodaj zakładkę</string>
     <string name="action_copy">Skopiuj link</string>
-    <string name="action_forward">Naprzód</string>
+    <string name="action_forward">Przekaż dalej</string>
     <string name="settings">Ustawienia</string>
     <string name="location">Dostęp do lokalizacji</string>
     <string name="password">Zapisz swoje hasła</string>
-    <string name="agent">Agent użytkownika</string>
+    <string name="agent">User agent</string>
     <string name="flash">Włącz Adobe Flash</string>
     <string name="home">Strona główna</string>
     <string name="fullscreen">Ukryj pasek adresu URL podczas przewijania.</string>
     <string name="java">Włącz JavaScript</string>
     <string name="download">Pobierz lokalizację</string>
-    <string name="settings_advanced">Zaawansowane ustawienia</string>
+    <string name="settings_advanced">Ustawienia zaawansowane</string>
     <string name="settings_advanced_explain">Zawartość pola adresu URL, tryb renderowania, kodowanie tekstu…</string>
     <string name="apache">Licencja Apache 2.0</string>
     <string name="version">Wersja aplikacji</string>
@@ -31,7 +31,7 @@
     <string name="size">Rozmiar czcionki</string>
     <string name="recommended">Zalecane</string>
     <string name="search">Wyszukiwarka</string>
-    <string name="search_hint">Szukaj</string>
+    <string name="search_hint">Szukaj lub wprowadź adres strony</string>
     <string name="wideViewPort">Użyj szerokiego widoku</string>
     <string name="overViewMode">Załaduj strony w trybie przeglądu</string>
     <string name="restore">Przywróć utracone karty na starcie</string>
@@ -43,7 +43,7 @@
     <string name="clear_cookies">Wyczyść ciasteczka</string>
     <string name="clear_history">Wyczyść historię przeglądarki</string>
     <string name="dialog_image">Co chciałbyś zrobić z tym obrazem?</string>
-    <string name="action_download">Pobieranie</string>
+    <string name="action_download">Pobierz</string>
     <string name="action_open">Otwórz</string>
     <string name="dialog_link">Co chcesz zrobić z tym linkiem?</string>
     <string name="dialog_title_share">Udostępnij tą stronę</string>
@@ -62,7 +62,7 @@
     <string name="action_cancel">Anuluj</string>
     <string name="title_warning">Ostrzeżenie</string>
     <string name="dialog_adobe_not_installed">Adobe Flash Player nie jest zainstalowany. \ N Zainstaluj Flash Player.</string>
-    <string name="title_user_agent">Agent użytkownika</string>
+    <string name="title_user_agent">User agent</string>
     <string name="title_download_location">Miejsce pobierania plików</string>
     <string name="download_failed">Pobieranie nieudane:</string>
     <string name="download_successful">Pobieranie zakończone</string>
@@ -72,7 +72,7 @@
     <string name="title_clear_cookies">Usuń pliki cookie</string>
     <string name="dialog_history">Czy chcesz wyczyścić historię przeglądarki?</string>
     <string name="dialog_cookies">Czy chcesz wyczyścić pliki cookie w przeglądarce?</string>
-    <string name="action_yes">tak</string>
+    <string name="action_yes">Tak</string>
     <string name="action_no">Nie</string>
     <string name="title_text_size">Rozmiar czcionki</string>
     <string name="size_largest">Największa</string>
@@ -451,5 +451,16 @@
     <string name="reading_mode_image_copyright">Obraz przypisany do</string>
     <string name="reading_mode_image_caption">Obraz z podpisem</string>
     <string name="show_second_bar">Pokaż dodatkowy pasek nawigacji</string>
+    <string name="edit_cookies">Edytuj pliki cookie witryny</string>
+    <string name="ssl_size">Key size</string>
+    <string name="algorithm">Algorytm</string>
+    <string name="crash_warning">Włączenie tego ustawienia z włączoną opcją \"Pozwól witrynom otwierać nowe okna\" może powodować błędy</string>
+    <string name="amp_to_html">AMP na HTML (beta)</string>
+    <string name="private_title">Tryb prywatny</string>
+    <string name="private_desc">Karty w trybie prywatnym działają jak normalne karty, ale po ich zamknięciu wszystkie dane z tej karty są usuwane. Prywatne przeglądanie NIE czyni cię anonimowym, ale może utrzymać to, co robisz online w tajemnicy przed innymi użytkownikami tego urządzenia.</string>
+    <string name="file_is">Plik jest:</string>
+    <string name="translate_to">Przetłumacz na:</string>
+    <string name="new_drag">Dostęp do menu opcji kart i zakładek można teraz uzyskać przez naciśnięcie ikony. Przytrzymanie tekstu pozwoli teraz na zmianę jego kolejności.</string>
+    <string name="last_loaded">Last loaded</string>
     <!-- finish pages -->
 </resources>

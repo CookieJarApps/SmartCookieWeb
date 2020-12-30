@@ -294,7 +294,7 @@
     <string name="action_message_canceled">Ação cancelada.</string>
     <!-- permissions request -->
     <string name="title_permission_request">Pedido de permissão</string>
-    <string name="message_permission_request">%1$s  gostaria de utilizar:  %2$s</string>
+    <string name="message_permission_request">%1$s pretende utilizar: %2$s</string>
     <!-- Ad block -->
     <string name="block_ad_source">Origem do ficheiro hosts</string>
     <string name="block_ad_remote_refresh_frequency_description">Para ficheiros remotos</string>
@@ -459,5 +459,6 @@
     <string name="file_is">Ficheiro é:</string>
     <string name="translate_to">Traduzir para:</string>
     <string name="new_drag">Os menus Separadores e Marcadores são agora acedidos com um toque no ícone. A pressão no texto permite-lhe agora a reorganização.</string>
+    <string name="last_loaded">Last loaded</string>
     <!-- finish pages -->
 </resources>
