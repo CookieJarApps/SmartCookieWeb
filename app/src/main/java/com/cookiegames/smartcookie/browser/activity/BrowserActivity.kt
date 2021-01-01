@@ -81,6 +81,7 @@ import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.notifications.IncognitoNotification
 import com.cookiegames.smartcookie.popup.PopUpClass
 import com.cookiegames.smartcookie.search.SearchEngineProvider
+import com.cookiegames.smartcookie.search.Suggestions
 import com.cookiegames.smartcookie.search.SuggestionsAdapter
 import com.cookiegames.smartcookie.ssl.SslState
 import com.cookiegames.smartcookie.ssl.createSslDrawableForState
@@ -417,6 +418,11 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             editor.putBoolean("shouldRestoreTabs", false)
             editor.commit()
             userPreferences.restoreLostTabsEnabled = true
+        }
+
+        if(userPreferences.firstLaunch111 && userPreferences.searchSuggestionChoice == 4){
+            userPreferences.searchSuggestionChoice = 5
+            userPreferences.firstLaunch111 = false
         }
 
         bookmarksView = BookmarksDrawerView(this, this, userPreferences = userPreferences).also(findViewById<FrameLayout>(getBookmarksContainerId())::addView)

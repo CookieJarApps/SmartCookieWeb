@@ -548,6 +548,7 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
             Suggestions.DUCK -> getString(R.string.powered_by_duck)
             Suggestions.BAIDU -> getString(R.string.powered_by_baidu)
             Suggestions.NAVER -> getString(R.string.powered_by_naver)
+            Suggestions.COOKIE -> getString(R.string.powered_by_naver)
             Suggestions.NONE -> getString(R.string.search_suggestions_off)
         }
 
@@ -560,7 +561,8 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                 Suggestions.DUCK -> 1
                 Suggestions.BAIDU -> 2
                 Suggestions.NAVER -> 3
-                Suggestions.NONE -> 4
+                Suggestions.COOKIE -> 4
+                Suggestions.NONE -> 5
             }
 
             setSingleChoiceItems(R.array.suggestions, currentChoice) { _, which ->
@@ -569,12 +571,13 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
                     1 -> Suggestions.DUCK
                     2 -> Suggestions.BAIDU
                     3 -> Suggestions.NAVER
-                    4 -> Suggestions.NONE
+                    4 -> Suggestions.COOKIE
+                    5 -> Suggestions.NONE
                     else -> Suggestions.GOOGLE
                 }
                 userPreferences.searchSuggestionChoice = suggestionsProvider.index
                 summaryUpdater.updateSummary(searchSuggestionChoiceToTitle(suggestionsProvider))
-                Toast.makeText(context, getText(R.string.please_restart), Toast.LENGTH_LONG)
+                Toast.makeText(context, getText(R.string.please_restart), Toast.LENGTH_LONG).show()
             }
             setPositiveButton(resources.getString(R.string.action_ok), null)
         }

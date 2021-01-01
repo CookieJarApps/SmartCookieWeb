@@ -380,10 +380,13 @@ class UserPreferences @Inject constructor(
 
     // First launch since v11
     var firstLaunch11 by preferences.booleanPreference(FIRST_LAUNCH11, true)
+    // First launch since v11.1
+    var firstLaunch111 by preferences.booleanPreference(FIRST_LAUNCH111, true)
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
 private const val FIRST_LAUNCH11 = "firstLaunch11"
+private const val FIRST_LAUNCH111 = "firstLaunch111"
 private const val WEB_RTC = "webRtc"
 private const val FORCE = "force"
 private const val BLOCK_ADS = "AdBlock"

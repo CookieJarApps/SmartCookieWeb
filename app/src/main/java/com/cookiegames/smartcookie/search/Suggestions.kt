@@ -5,7 +5,8 @@ enum class Suggestions(val index: Int) {
     DUCK(1),
     BAIDU(2),
     NAVER(3),
-    NONE(4);
+    COOKIE(4),
+    NONE(5);
 
     companion object {
         fun from(value: Int): Suggestions {
@@ -14,7 +15,8 @@ enum class Suggestions(val index: Int) {
                 1 -> DUCK
                 2 -> BAIDU
                 3 -> NAVER
-                4 -> NONE
+                4 -> COOKIE
+                5 -> NONE
                 else -> GOOGLE
             }
         }
