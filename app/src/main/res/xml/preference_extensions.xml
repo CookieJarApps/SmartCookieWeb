@@ -29,18 +29,4 @@
             android:key="coming_soon">
         </Preference>
     </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/extensions_settings">
-        <Preference
-            android:summary="@string/submit_link"
-            android:title="@string/submit">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://cookiejarapps.com/extensions/create.html">
-                <extra
-                    android:name="SOURCE"
-                    android:value="SELF" />
-            </intent>
-        </Preference>
-    </PreferenceCategory>
 </PreferenceScreen>
