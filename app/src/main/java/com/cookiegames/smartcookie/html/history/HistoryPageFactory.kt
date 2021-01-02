@@ -7,11 +7,15 @@ import com.cookiegames.smartcookie.html.HtmlPageFactory
 import com.cookiegames.smartcookie.html.ListPageReader
 import com.cookiegames.smartcookie.html.jsoup.*
 import android.app.Application
+import android.content.res.Resources
 import dagger.Reusable
 import io.reactivex.Completable
 import io.reactivex.Single
 import java.io.File
 import java.io.FileWriter
+import java.text.DateFormat.getDateTimeInstance
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -21,7 +25,8 @@ import javax.inject.Inject
 class HistoryPageFactory @Inject constructor(
     private val listPageReader: ListPageReader,
     private val application: Application,
-    private val historyRepository: HistoryRepository
+    private val historyRepository: HistoryRepository,
+    private var resources: Resources
 ) : HtmlPageFactory {
 
     private val title = application.getString(R.string.action_history)
@@ -39,6 +44,7 @@ class HistoryPageFactory @Inject constructor(
                                 tag("a") { attr("href", it.url) }
                                 id("title") { text(it.title) }
                                 id("url") { text(it.url) }
+                                id("date") { text(resources.getString(R.string.last_loaded) + getDateTime(it.lastTimeVisited)) }
                             })
                         }
                     }
@@ -66,6 +72,16 @@ class HistoryPageFactory @Inject constructor(
     }
 
     private fun createHistoryPage() = File(application.filesDir, FILENAME)
+
+    private fun getDateTime(s: Long): String? {
+        try {
+            val sdf = getDateTimeInstance()
+            val netDate = Date(s)
+            return sdf.format(netDate)
+        } catch (e: Exception) {
+            return e.toString()
+        }
+    }
 
     companion object {
         const val FILENAME = "history.html"
