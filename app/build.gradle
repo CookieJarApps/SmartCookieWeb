@@ -143,7 +143,7 @@ dependencies {
     // proxy support
     implementation 'net.i2p.android:helper:0.9.5'
 
-    //implementation 'com.squareup.okhttp3:okhttp:4.5.0'
+
     //TODO: drop android 4.4 support - no TLS1.2 support on OKhttp3
     implementation ("com.squareup.okhttp3:okhttp:3.12.12"){
         force = true //API 19 support
