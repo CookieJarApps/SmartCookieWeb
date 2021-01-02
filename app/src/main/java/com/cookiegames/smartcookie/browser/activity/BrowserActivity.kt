@@ -81,7 +81,6 @@ import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.notifications.IncognitoNotification
 import com.cookiegames.smartcookie.popup.PopUpClass
 import com.cookiegames.smartcookie.search.SearchEngineProvider
-import com.cookiegames.smartcookie.search.Suggestions
 import com.cookiegames.smartcookie.search.SuggestionsAdapter
 import com.cookiegames.smartcookie.ssl.SslState
 import com.cookiegames.smartcookie.ssl.createSslDrawableForState
@@ -386,8 +385,13 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             toolbar.layoutParams = param
 
         }
+        var x1: Float
+        var x2: Float
+        var MIN_DISTANCE = 150
 
+       // toolbar.setOnTouchListener { v, event ->
 
+        //}
 
         setNavigationDrawerWidth()
         drawer_layout.addDrawerListener(DrawerLocker())
@@ -587,23 +591,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
         }
 
-        if (userPreferences.firstLaunch && Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP && Locale.getDefault().getLanguage().equals("en")) {
-            val builder = MaterialAlertDialogBuilder(this)
-            builder.setTitle(getString(R.string.no_search_suggestions))
-            builder.setMessage(getString(R.string.search_suggestions_4))
-
-
-            builder.setPositiveButton(resources.getString(R.string.action_ok)) { dialogInterface, which ->
-
-            }
-            builder.setNegativeButton(resources.getString(R.string.more)) { dialogInterface, which ->
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://blog.smartcookieweb.com/2020/07/search-suggestions-no-longer-available.html"))
-                startActivity(browserIntent)
-            }
-            val alertDialog: AlertDialog = builder.create()
-            alertDialog.setCancelable(true)
-            alertDialog.show()
-        }
         if(userPreferences.passwordChoiceLock == PasswordChoice.CUSTOM){
 
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_edit_text, null)
