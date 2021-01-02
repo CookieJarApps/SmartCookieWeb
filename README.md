@@ -15,8 +15,8 @@
 </p> 
 <hr>
 
-<p align="center"><a href='https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png' height="50"/></a> <a href='https://f-droid.org/en/packages/com.cookiegames.smartcookie/'><img alt='Get it on F-Droid' src='https://gitlab.com/fdroid/artwork/-/raw/master/badge/get-it-on-en.png' height="50"/></a>
-<p align="center"><a href="https://github.com/CookieJarApps/SmartCookieWeb-beta"><b>Beta Releases</b></a> &bull; <a href="https://smartcookieweb.com"><b>Website</b></a></p>
+<p align="center"><a href='https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png' height="55"/></a> <a href='https://f-droid.org/en/packages/com.cookiegames.smartcookie/'><img alt='Get it on F-Droid' src='https://gitlab.com/fdroid/artwork/-/raw/master/badge/get-it-on-en.png' height="55"/></a>
+<p align="center"><a href="https://github.com/CookieJarApps/SmartCookieWeb-beta"><b>Beta Releases</b></a> &bull; <a href="https://help.cookiejarapps.com"><b>FAQ</b></a> &bull; <a href="https://smartcookieweb.com"><b>Website</b></a></p>
 <h5 align="center">Important note: Google recently announced that embedded browser frameworks, or any browsers that fake their user agent will be banned from Google sign in starting January next year. If you notice any issues signing in to Google apps, even with your user agent set to 'mobile', please open an issue as soon as possible so I can invesigate</h5>
 
 ---
@@ -26,7 +26,7 @@
 Need help? Open an issue here, or:
 
 - Email me at `support@cookiejarapps.com`
-- Join the Matrix chat at https://matrix.to/#/#smartcookieweb:matrix.org
+- Join the [Matrix chat](https://matrix.to/#/#smartcookieweb:matrix.org)
 
 ---
 
@@ -49,7 +49,7 @@ Need help? Open an issue here, or:
 
 ## Contributing
 
-Contributions are greatly appreciated. Feel free to open an issue or pull request or help translate at (translate.cookiejarapps.com)
+Contributions are greatly appreciated. Feel free to open an issue or pull request or [help translate](translate.cookiejarapps.com)
 
 ---
 
@@ -58,13 +58,6 @@ Contributions are greatly appreciated. Feel free to open an issue or pull reques
 [![](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/images/0)](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/links/0)[![](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/images/1)](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/links/1)[![](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/images/2)](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/links/2)[![](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/images/3)](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/links/3)[![](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/images/4)](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/links/4)[![](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/images/5)](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/links/5)[![](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/images/6)](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/links/6)[![](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/images/7)](https://sourcerer.io/fame/CookieJarApps/CookieJarApps/SmartCookieWeb/links/7)
 
 ---
-
-## FAQ
-
-- See (help.cookiejarapps.com)
-
----
-
 
 ## License
 
