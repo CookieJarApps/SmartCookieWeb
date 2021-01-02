@@ -107,12 +107,12 @@ dexcount {
 dependencies {
 
     // support libraries
-    implementation "androidx.palette:palette:1.0.0"
+    implementation "androidx.palette:palette-ktx:1.0.0"
     implementation "androidx.annotation:annotation:1.1.0"
     implementation "androidx.appcompat:appcompat:1.2.0"
     implementation "com.google.android.material:material:1.2.1"
     implementation "androidx.recyclerview:recyclerview:1.1.0"
-    implementation "androidx.core:core:1.3.2"
+    implementation "androidx.core:core-ktx:1.3.2"
     implementation "androidx.constraintlayout:constraintlayout:2.0.4"
     implementation "androidx.drawerlayout:drawerlayout:1.1.1"
     implementation "androidx.preference:preference-ktx:1.1.1"
@@ -143,7 +143,11 @@ dependencies {
     // proxy support
     implementation 'net.i2p.android:helper:0.9.5'
 
-    implementation 'com.squareup.okhttp3:okhttp:4.5.0'
+    //implementation 'com.squareup.okhttp3:okhttp:4.5.0'
+    //TODO: drop android 4.4 support - no TLS1.2 support on OKhttp3
+    implementation ("com.squareup.okhttp3:okhttp:3.12.12"){
+        force = true //API 19 support
+    }
 
     // rx
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
@@ -172,7 +176,7 @@ dependencies {
 
     implementation 'androidx.webkit:webkit:1.4.0'
 
-    implementation 'com.mindorks.android:prdownloader:0.6.0'
+    implementation'com.huxq17.pump:download:1.3.10'
     // memory leak analysis
     final def leakCanaryVersion = '2.4'
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
