@@ -2,7 +2,6 @@ package com.cookiegames.smartcookie.adblock.source
 
 import com.cookiegames.smartcookie.preference.UserPreferences
 import okhttp3.HttpUrl
-import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import java.io.File
 
 
@@ -38,7 +37,7 @@ sealed class HostsSourceType {
 fun UserPreferences.selectedHostsSource(): HostsSourceType {
     val localFile: File? = hostsLocalFile?.let(::File)?.takeIf(File::exists)?.takeIf(File::canRead)
 
-    val remoteUrl: HttpUrl? = hostsRemoteFile?.let { it.toHttpUrlOrNull() }
+    val remoteUrl: HttpUrl? = hostsRemoteFile?.let { HttpUrl.parse(it) }
 
     val source = hostsSource
 

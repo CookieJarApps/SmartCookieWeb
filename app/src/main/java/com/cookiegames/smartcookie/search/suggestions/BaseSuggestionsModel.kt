@@ -65,7 +65,7 @@ abstract class BaseSuggestionsModel internal constructor(
                 var choice = 5
                 choice = userPreferences.suggestionChoice.value + 3
                 return@fromCallable client.downloadSuggestionsForQuery(query, language)
-                    ?.body
+                    ?.body()
                     ?.safeUse(::parseResults)
                     ?.take(choice) ?: emptyList()
 

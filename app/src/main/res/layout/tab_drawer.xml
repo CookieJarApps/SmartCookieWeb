@@ -54,7 +54,7 @@
         android:orientation="horizontal"
         android:weightSum="4">
 
-        <Button
+        <ImageButton
             android:id="@+id/new_tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             android:layout_marginRight="@dimen/material_grid_margin"
             android:background="@android:color/transparent"
             android:clickable="true"
-            android:drawableTop="@drawable/ic_round_add"
+            app:srcCompat="@drawable/ic_round_add"
             android:focusable="true"
             android:fontFamily="sans-serif"
             android:gravity="bottom|center"
