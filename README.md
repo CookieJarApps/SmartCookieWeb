@@ -4,13 +4,13 @@
 
 <p align="center"> 
 <a href="https://github.com/TeamNewPipe/NewPipe/releases" alt="GitHub Release (latest by date)"><img src="https://img.shields.io/github/v/release/CookieJarApps/SmartCookieWeb.svg" ></a> 
-<a href="https://www.mozilla.org/en-US/MPL/2.0/" alt="MPL-2.0 License"><img src="https://img.shields.io/github/license/cookiejarapps/smartcookieweb"></a> 
 <a href="https://github.com/CookieJarApps/SmartCookieWeb/actions" alt="SmartCookieWeb CI"><img src="https://github.com/CookieJarApps/SmartCookieWeb/workflows/SmartCookieWeb%20CI/badge.svg?event=push"></a> 
-<a href="https://crowdin.com/project/smartcookieweb" alt="Crowdin"><img src="https://badges.crowdin.net/smartcookieweb/localized.svg"></a> 
+<a href="https://img.shields.io/github/license/cookiejarapps/smartcookieweb" alt="Travis (.org)"><img src="https://img.shields.io/travis/cookiejarapps/smartcookieweb"></a> 
+<a href="https://www.mozilla.org/en-US/MPL/2.0/" alt="MPL-2.0 License"><img src="https://img.shields.io/github/license/cookiejarapps/smartcookieweb"></a> 
 <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb.svg?type=shield"></a> 
 <a href="https://github.com/CookieJarApps/SmartCookieWeb/stargazers" alt="GitHub Stars"><img src="https://img.shields.io/github/stars/cookiejarapps/smartcookieweb?style=social"></a> 
 <a href="https://github.com/CookieJarApps/SmartCookieWeb/issues" alt="GitHub Issues"><img src="https://img.shields.io/github/issues-raw/cookiejarapps/smartcookieweb"></a> 
-<a href="https://img.shields.io/github/license/cookiejarapps/smartcookieweb" alt="Travis (.org)"><img src="https://img.shields.io/travis/cookiejarapps/smartcookieweb"></a> 
+<a href="https://crowdin.com/project/smartcookieweb" alt="Crowdin"><img src="https://badges.crowdin.net/smartcookieweb/localized.svg"></a> 
 <a href="https://liberapay.com/CookieJarApps" alt="Liberapay Patrons"><img src="https://img.shields.io/liberapay/patrons/CookieJarApps"></a> 
 </p> 
 <hr>
