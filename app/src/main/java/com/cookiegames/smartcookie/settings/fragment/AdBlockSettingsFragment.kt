@@ -24,6 +24,9 @@ import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.rxkotlin.subscribeBy
 import okhttp3.HttpUrl
 import okio.Okio
+import okio.buffer
+import okio.sink
+import okio.source
 import java.io.File
 import java.io.IOException
 import javax.inject.Inject
@@ -185,8 +188,8 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
         try {
             val outputFile = File(externalFilesDir, AD_HOSTS_FILE)
 
-            val input = Okio.source(inputStream)
-            val output = Okio.buffer(Okio.sink(outputFile))
+            val input = inputStream.source()
+            val output = outputFile.sink().buffer()
             output.writeAll(input)
             return@create it.onSuccess(outputFile)
         } catch (exception: IOException) {
