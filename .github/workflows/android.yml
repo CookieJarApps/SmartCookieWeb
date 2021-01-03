@@ -1,4 +1,4 @@
-name: SmartCookieWeb CI
+name: Android CI
 
 on:
   push:
