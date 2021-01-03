@@ -1,7 +1,6 @@
 // Copyright 2020 CookieJarApps MPL
 package com.cookiegames.smartcookie.reading.activity
 
-import android.animation.ObjectAnimator
 import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
@@ -11,8 +10,11 @@ import android.graphics.drawable.ColorDrawable
 import android.os.AsyncTask
 import android.os.Bundle
 import android.text.Html
+import android.text.SpannableStringBuilder
 import android.text.Spanned
-import android.util.Log
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.text.style.URLSpan
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -147,12 +149,12 @@ class ReadingActivity : AppCompatActivity() {
 
 
         override fun onPostExecute(aVoid: Void?) {
-            val html: String? = extractedContentHtmlWithUtf8Encoding?.replace("image copyright".toRegex(), resources.getString(R.string.reading_mode_image_copyright) + " ")?.replace("image caption".toRegex(), resources.getString(R.string.reading_mode_image_caption) + " ")?.replace("￼".toRegex(), "")?.replace("<a".toRegex(), "<span")?.replace("</a>".toRegex(), "</span>")
+            val html: String? = extractedContentHtmlWithUtf8Encoding?.replace("image copyright".toRegex(), resources.getString(R.string.reading_mode_image_copyright) + " ")?.replace("image caption".toRegex(), resources.getString(R.string.reading_mode_image_caption) + " ")?.replace("￼".toRegex(), "")
             val doc = Jsoup.parse(html)
             for (element in doc.select("img")) {
                 element.remove()
             }
-            setText(title, Html.fromHtml(doc.outerHtml()))
+            setText(title, doc.outerHtml())
             dismissProgressDialog()
         }
 
@@ -181,6 +183,33 @@ class ReadingActivity : AppCompatActivity() {
             }
             return null
         }
+    }
+
+    protected fun makeLinkClickable(strBuilder: SpannableStringBuilder, span: URLSpan?) {
+        val start: Int = strBuilder.getSpanStart(span)
+        val end: Int = strBuilder.getSpanEnd(span)
+        val flags: Int = strBuilder.getSpanFlags(span)
+        val clickable: ClickableSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                mTitle!!.text = getString(R.string.untitled)
+                mBody!!.text = getString(R.string.loading)
+                mUrl = span?.url
+                loadData().execute()
+            }
+        }
+        strBuilder.setSpan(clickable, start, end, flags)
+        strBuilder.removeSpan(span)
+    }
+
+    protected fun setTextViewHTML(text: TextView, html: String?) {
+        val sequence: CharSequence = Html.fromHtml(html)
+        val strBuilder = SpannableStringBuilder(sequence)
+        val urls: Array<URLSpan> = strBuilder.getSpans(0, sequence.length, URLSpan::class.java)
+        for (span in urls) {
+            makeLinkClickable(strBuilder, span)
+        }
+        text.setText(strBuilder)
+        text.movementMethod = LinkMovementMethod.getInstance()
     }
 
     @Throws(IOException::class)
@@ -215,21 +244,23 @@ class ReadingActivity : AppCompatActivity() {
 
     private class ReaderInfo internal constructor(val title: String, val body: String)
 
-    private fun setText(title: String?, body: Spanned) {
+    private fun setText(title: String?, body: String?) {
         if (mTitle == null || mBody == null) return
         if (mTitle!!.visibility == View.INVISIBLE) {
             mTitle!!.alpha = 1.0f
             mTitle!!.visibility = View.VISIBLE
-            mTitle!!.text = title
+            setTextViewHTML(mTitle!!, title)
+            //mTitle!!.text = title
         } else {
             mTitle!!.text = title
+            setTextViewHTML(mTitle!!, title)
         }
         if (mBody!!.visibility == View.INVISIBLE) {
             mBody!!.alpha = 1.0f
             mBody!!.visibility = View.VISIBLE
-            mBody!!.text = body
+            setTextViewHTML(mBody!!, body)
         } else {
-            mBody!!.text = body
+            setTextViewHTML(mBody!!, body)
         }
     }
 
@@ -282,7 +313,7 @@ class ReadingActivity : AppCompatActivity() {
                 if (!response.isSuccessful) {
                     throw IOException("Unexpected code $response")
                 } else {
-                    val values = response.body!!.string()
+                    val values = response.body()!!.string()
                     runOnUiThread {
                         try {
                             val Jobject = JSONObject(values)
