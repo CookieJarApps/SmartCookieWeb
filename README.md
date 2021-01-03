@@ -4,7 +4,7 @@
 
 <p align="center"> 
 <a href="https://github.com/CookieJarApps/SmartCookieWeb/releases" alt="GitHub Release (latest by date)"><img src="https://img.shields.io/github/v/release/CookieJarApps/SmartCookieWeb.svg" ></a> 
-<a href="https://github.com/CookieJarApps/SmartCookieWeb/actions" alt="CI Status"><img src="https://github.com/CookieJarApps/SmartCookieWeb/workflows/CI/badge.svg?event=push"></a> 
+<a href="https://github.com/CookieJarApps/SmartCookieWeb/actions" alt="Android CI"><img src="https://github.com/CookieJarApps/SmartCookieWeb/workflows/Android%20CI/badge.svg?event=push"></a> 
 <a href="https://img.shields.io/github/license/cookiejarapps/smartcookieweb" alt="Travis (.org)"><img src="https://img.shields.io/travis/cookiejarapps/smartcookieweb"></a> 
 <a href="https://www.mozilla.org/en-US/MPL/2.0/" alt="MPL-2.0 License"><img src="https://img.shields.io/github/license/cookiejarapps/smartcookieweb"></a> 
 <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb.svg?type=shield"></a> 
@@ -14,7 +14,6 @@
 <a href="https://liberapay.com/CookieJarApps" alt="Liberapay Patrons"><img src="https://img.shields.io/liberapay/patrons/CookieJarApps"></a> 
 </p> 
 <hr>
-
 <p align="center"><a href='https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png' height="50"/></a> <a href='https://f-droid.org/en/packages/com.cookiegames.smartcookie/'><img alt='Get it on F-Droid' src='https://gitlab.com/fdroid/artwork/-/raw/master/badge/get-it-on-en.png' height="50"/></a>
 <p align="center"><a href="https://github.com/CookieJarApps/SmartCookieWeb-beta"><b>Beta Releases</b></a> &bull; <a href="https://help.cookiejarapps.com"><b>FAQ</b></a> &bull; <a href="https://smartcookieweb.com"><b>Website</b></a></p>
 <h5 align="center">Important note: Google recently announced that embedded browser frameworks, or any browsers that fake their user agent will be banned from Google sign in starting January next year. If you notice any issues signing in to Google apps, even with your user agent set to 'mobile', please open an issue as soon as possible so I can invesigate</h5>
