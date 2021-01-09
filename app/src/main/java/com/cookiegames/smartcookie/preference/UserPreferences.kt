@@ -344,7 +344,7 @@ class UserPreferences @Inject constructor(
     var closeOnLastTab by preferences.booleanPreference(LAST_TAB, true)
 
     // Block opening of links in other apps
-    var blockIntent by preferences.booleanPreference(INTENT, false)
+    var blockIntent by preferences.booleanPreference(INTENT, true)
 
     // Only clear history, etc on force close when respective options are on
     var onlyForceClose by preferences.booleanPreference(FORCE, true)
