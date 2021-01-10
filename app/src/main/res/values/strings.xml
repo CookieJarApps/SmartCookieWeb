@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <string name="app_lightning" translatable="false">Lightning</string>
+    <string name="app_desc">A free and open source web browser that blocks ads and trackers</string>
     <string name="action_new_tab">New tab</string>
     <string name="action_share">Share</string>
     <string name="action_print">Print</string>
@@ -31,7 +32,7 @@
     <string name="cookies">Enable cookies</string>
     <string name="importbookmarks">Import bookmarks from browser</string>
     <string name="size">Text size</string>
-    .
+
     <string name="recommended">Recommended</string>
     <string name="search">Search engine</string>
     <string name="search_hint">Search or enter web address</string>
@@ -463,6 +464,7 @@
     <string name="coming_soon">More coming soon...</string>
 
     <string name="navbar_col">Set navbar color</string>
+    <string name="color_filter">Set color filter</string>
     <string name="color">Color</string>
 
     <string name="looknfeel">Look and Feel settings</string>
@@ -521,6 +523,8 @@
     <string name="onboarding_three">Use page tools in the bookmark drawer to temporarily turn off ad block, open the desktop version of a site and more.</string>
     <string name="load_tabs">Load all tabs when browser is started</string>
 
+    <string name="navbar">Navbar</string>
+
     <string name="search_homepage">Search...</string>
     <string name="start">Get started!</string>
 
@@ -549,5 +553,11 @@
     <string name="new_drag">The tab and bookmark option menus are now accessed by pressing the icon. Holding on the text will now allow you to reorder them.</string>
 
     <string name="last_loaded">Last loaded</string>
+
+    <string name="continue_download">Continue</string>
+    <string name="start_download">Start</string>
+    <string name="pausing_download">Pausing</string>
+    <string name="waiting_download">Waiting</string>
+    <string name="pause_download">Pause</string>
     <!-- finish pages -->
 </resources>

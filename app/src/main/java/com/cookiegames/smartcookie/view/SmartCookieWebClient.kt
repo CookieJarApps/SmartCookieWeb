@@ -153,8 +153,12 @@ class SmartCookieWebClient(
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
         if (shouldRequestBeBlocked(currentUrl, request.url.toString())) {
-            //R.string.site_ad_blocked.toString().replace("..", "$0 ").toByteArray()
             val empty = ByteArrayInputStream(emptyResponseByteArray)
+            val string = ByteArrayInputStream(activity.resources.getString(R.string.site_ad_blocked).toByteArray())
+            if(request.isForMainFrame){
+                return WebResourceResponse("text/plain", "utf-8", string)
+            }
+
             return WebResourceResponse("text/plain", "utf-8", empty)
         }
         return super.shouldInterceptRequest(view, request)
@@ -168,7 +172,6 @@ class SmartCookieWebClient(
             return WebResourceResponse("text/plain", "utf-8", empty)
         }
         //workarounds for sites that are broken in WebView.
-        //TODO: move this to its own file or switch to GeckoView
         if(url.contains("detectPopBlock.js")){
             val empty = ByteArrayInputStream(emptyResponseByteArray)
             return WebResourceResponse("text/plain", "utf-8", empty)
@@ -216,7 +219,6 @@ class SmartCookieWebClient(
             else{
                 lang = Locale.getDefault().displayLanguage
             }
-            // Temp workaround for pt-BR misformatting on translatetheweb.com
             if(lang == "pt-BR"){
                 view.evaluateJavascript("lang = 'pt'; " + translate.provideJs(), null)
 
@@ -356,7 +358,7 @@ class SmartCookieWebClient(
             view.settings?.userAgentString = view.settings?.userAgentString?.replace("wv", "")
         }
         zoomed = false
-        first=true
+        first = true
         currentUrl = url
         view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
 
