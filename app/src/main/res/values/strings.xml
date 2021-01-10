@@ -559,5 +559,8 @@
     <string name="pausing_download">Pausing</string>
     <string name="waiting_download">Waiting</string>
     <string name="pause_download">Pause</string>
+
+    <string name="grant_permissions">Grant permissions</string>
+    <string name="grant_permissions_desc">Read/Write External Storage is required for downloads and bookmark/settings backups</string>
     <!-- finish pages -->
 </resources>

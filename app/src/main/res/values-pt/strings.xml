@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_desc">A free and open source web browser that blocks ads and trackers</string>
     <string name="action_new_tab">Novo separador</string>
     <string name="action_share">Partilhar</string>
     <string name="action_print">Imprimir</string>
@@ -405,6 +406,7 @@
     <string name="translator">Tradutor (beta)</string>
     <string name="coming_soon">Mais algumas a caminho...</string>
     <string name="navbar_col">Cor da barra de navegação</string>
+    <string name="color_filter">Set color filter</string>
     <string name="color">Cor</string>
     <string name="looknfeel">Definições de aspeto</string>
     <string name="customize">Definições de personalização</string>
@@ -443,6 +445,7 @@
     <string name="onboarding_two">Toque no número do separador (ou deslize desde a margem esquerda) para abrir o menu de navegação.</string>
     <string name="onboarding_three">Utilize as ferramentas no menu de marcadores para desativar o bloqueio de anúncios, abrir a versão \'desktop\' e muito mais.</string>
     <string name="load_tabs">Carregar todos os separadores ao iniciar</string>
+    <string name="navbar">Navbar</string>
     <string name="search_homepage">Pesquisar...</string>
     <string name="start">Iniciar!</string>
     <string name="show_shortcuts">Mostrar atalhos na página inicial</string>
@@ -459,6 +462,13 @@
     <string name="file_is">Ficheiro é:</string>
     <string name="translate_to">Traduzir para:</string>
     <string name="new_drag">Os menus Separadores e Marcadores são agora acedidos com um toque no ícone. A pressão no texto permite-lhe agora a reorganização.</string>
-    <string name="last_loaded">Last loaded</string>
+    <string name="last_loaded">Vista em</string>
+    <string name="continue_download">Continue</string>
+    <string name="start_download">Start</string>
+    <string name="pausing_download">Pausing</string>
+    <string name="waiting_download">Waiting</string>
+    <string name="pause_download">Pause</string>
+    <string name="grant_permissions">Grant permissions</string>
+    <string name="grant_permissions_desc">Read/Write External Storage is required for downloads and bookmark/settings backups</string>
     <!-- finish pages -->
 </resources>

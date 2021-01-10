@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_desc">A free and open source web browser that blocks ads and trackers</string>
     <string name="action_new_tab">Naujas skirtukas</string>
     <string name="action_share">Dalintis</string>
+    <string name="action_print">Spausdinti</string>
     <string name="action_history">Istorija</string>
     <string name="action_bookmarks">Žymos</string>
-    <string name="action_downloads">Siuntiniai</string>
-    <string name="action_add_bookmark">Pridėti žymą</string>
+    <string name="action_downloads">Atsisiuntimai</string>
+    <string name="action_add_bookmark">Pridėti į adresyną</string>
     <string name="action_copy">Nukopijuoti nuorodą</string>
     <string name="action_forward">Persiųsti</string>
     <string name="settings">Nustatymai</string>
-    <string name="location">Prieiga prie vietos</string>
+    <string name="location">Prieiga prie vietovės</string>
     <string name="password">Išsaugokite savo slaptažodžius</string>
-    <string name="agent">Vartotojo atstovas</string>
+    <string name="agent">Naršymo agentas</string>
     <string name="flash">Įgalinti „Adobe Flash“</string>
     <string name="home">Pradinis puslapis</string>
-    <string name="fullscreen">Hide URL bar while scrolling</string>
+    <string name="fullscreen">Paslėpti „URL“ juostą kai naršote</string>
     <string name="java">Įgalinti „JavaScript“</string>
-    <string name="download">Atsisiųsti vietą</string>
+    <string name="download">Atsisiuntimo vietą</string>
     <string name="settings_advanced">Pažangūs nustatymai</string>
-    <string name="settings_advanced_explain">URL laukelio turinys, pateikimo būdas, teksto kodavimas ...</string>
+    <string name="settings_advanced_explain">„URL“ laukelio turinys, pateikimo būdas, teksto kodavimas&#8230;</string>
     <string name="apache">„Apache“ licencija 2.0</string>
     <string name="version">Programos versija</string>
-    <string name="cache">Išvalę talpyklą</string>
+    <string name="cache">Išvalyti talpyklą išėjus</string>
     <string name="reflow">Įgalinti teksto keitimą</string>
     <string name="block">Blokuoti vaizdus</string>
     <string name="window">Leisti svetainėms atidaryti naujus langus</string>
@@ -29,21 +31,21 @@
     <string name="importbookmarks">Importuokite žymes iš naršyklės</string>
     <string name="size">Teksto dydis</string>
     <string name="recommended">Rekomenduojamas</string>
-    <string name="search">Paieškos variklis</string>
+    <string name="search">Ieškyklė</string>
     <string name="search_hint">Paieška</string>
     <string name="wideViewPort">Naudokite plačią peržiūros sritį</string>
     <string name="overViewMode">Įkelkite puslapius apžvalgos režimu</string>
     <string name="restore">Atkurkite pamestus skirtukus paleidžiant</string>
     <string name="supported_browsers_title">Palaikomos naršyklės</string>
-    <string name="stock_browser">Akcijų naršyklė</string>
-    <string name="stock_browser_unavailable">Neaptikta akcijų naršyklė</string>
-    <string name="stock_browser_available">Aptikta palaikomų akcijų naršyklė</string>
+    <string name="stock_browser">Numatyta naršyklė</string>
+    <string name="stock_browser_unavailable">Neaptikta numatytoji naršyklė</string>
+    <string name="stock_browser_available">Aptikta palaikomų numatyta naršyklė</string>
     <string name="fullScreenOption">Slėpti būsenos juostą naršant</string>
     <string name="clear_cookies">Išvalykite naršyklės slapukus</string>
     <string name="clear_history">Išvalyti naršyklės istoriją</string>
-    <string name="dialog_image">Ką norėtumėte padaryti su šiuo įvaizdžiu?</string>
-    <string name="action_download">parsisiųsti</string>
-    <string name="action_open">Atviras</string>
+    <string name="dialog_image">Ką norėtumėte padaryti su šia nuotrauką?</string>
+    <string name="action_download">Atsisiųsti</string>
+    <string name="action_open">Atidaryti</string>
     <string name="dialog_link">Ką norėtumėte padaryti su šia nuoroda?</string>
     <string name="dialog_title_share">Dalinkis šiuo puslapiu</string>
     <string name="dialog_history_long_press">Ką norėtumėte padaryti su šiuo istorijos elementu?</string>
@@ -54,17 +56,19 @@
     <string name="agent_desktop">Stalinis kompiuteris</string>
     <string name="agent_mobile">Mobilus</string>
     <string name="agent_custom">Pasirinktinis</string>
-    <string name="title_search_engine">Paieškos variklis</string>
+    <string name="title_search_engine">Ieškyklė</string>
     <string name="action_ok">Gerai</string>
     <string name="dialog_download">Ar norite atsisiųsti šį failą? (%1$s)</string>
     <string name="unknown_size">Nežinomas dydis</string>
     <string name="action_cancel">Atšaukti</string>
     <string name="title_warning">Įspėjimas</string>
-    <string name="dialog_adobe_not_installed">„Adobe Flash Player“ neįdiegta. \ NPalikite „Flash Player“.</string>
-    <string name="title_user_agent">Vartotojo atstovas</string>
-    <string name="title_download_location">Atsisiųsti vietą</string>
+    <string name="dialog_adobe_not_installed">„Adobe Flash Player“ neįdiegta.\n Prašome įdiegti „Flash Player“.</string>
+    <string name="title_user_agent">Naršymo agentas</string>
+    <string name="title_download_location">Atsisiuntimo vietą</string>
+    <string name="download_failed">Atsisiuntimas nepavyko su klaida:</string>
+    <string name="download_successful">Atsisiuntimas sėkmingas</string>
     <string name="title_custom_homepage">Individualizuotas pagrindinis puslapis</string>
-    <string name="action_webpage">Tinklo puslapis</string>
+    <string name="action_webpage">Tinklapio puslapis</string>
     <string name="title_clear_history">Išvalyti istoriją</string>
     <string name="title_clear_cookies">Išvalykite slapukus</string>
     <string name="dialog_history">Ar norėtumėte išvalyti naršyklės istoriją?</string>
@@ -80,83 +84,91 @@
     <string name="title_error">Klaida</string>
     <string name="dialog_import_error">Neaptikta naršyklės, iš kurios būtų galima importuoti žymes.</string>
     <string name="hint_title">Pavadinimas</string>
-    <string name="hint_url">URL</string>
+    <string name="hint_url">„URL“</string>
     <string name="title_edit_bookmark">Redaguoti žymą</string>
     <string name="action_edit">Redaguoti</string>
-    <string name="action_incognito">Naujas inkognito skirtukas</string>
+    <string name="action_incognito">Naujas privatumo režimo skirtukas</string>
     <string name="action_homepage">Numatytas</string>
     <string name="action_back">Atgal</string>
     <string name="action_find">Rasti puslapyje</string>
-    <string name="download_pending">Pradedama atsisiųsti \ u2026</string>
-    <string name="cannot_download">Galima atsisiųsti tik HTTP arba HTTPS URL.</string>
-    <string name="problem_download">Aptiktas neteisingas URL, jo negalima atsisiųsti</string>
+    <string name="download_pending">Pradedama atsisiųsti\u2026</string>
+    <string name="cannot_download">Galima atsisiųsti tik „HTTP“ arba „HTTPS“ „URL“.</string>
+    <string name="problem_download">Aptiktas neteisingas „URL“, jo negalima atsisiųsti</string>
     <string name="problem_location_download">Neįmanoma atsisiųsti į nurodytą vietą</string>
     <string name="download_no_sdcard_dlg_title">Nėra SD kortelės</string>
-    <string name="download_no_sdcard_dlg_msg">Norint atsisiųsti failą, reikia USB atminties.</string>
-    <string name="download_sdcard_busy_dlg_title">USB atmintinė negalima</string>
-    <string name="download_sdcard_busy_dlg_msg">Saugykla užimta. Norėdami leisti atsisiuntimus, pranešime palieskite „Išjungti USB laikmeną“.</string>
-    <string name="incognito_cookies">Įgalinti slapukus inkognito režimu</string>
+    <string name="download_no_sdcard_dlg_msg">Norint atsisiųsti failą, reikia „USB“ atminties.</string>
+    <string name="download_sdcard_busy_dlg_title">„USB“ atmintinė neprieinama arba nepasiekiama</string>
+    <string name="download_sdcard_busy_dlg_msg">Saugykla užimta. Norėdami leisti atsisiuntimus, paspauskite „Išjungti USB laikmeną“ pranešimų skiltyje.</string>
+    <string name="incognito_cookies">Įgalinti slapukus privačiame režime</string>
     <string name="title_flash">„Adobe Flash“</string>
     <string name="action_manual">Rankinis</string>
     <string name="action_auto">Automatinis</string>
-    <string name="action_follow_me">Susisiek su manimi</string>
+    <string name="action_follow_me">Daugiau informacijos</string>
     <string name="clear_cache">Išvalyti talpyklą</string>
     <string name="message_cache_cleared">Talpykla išvalyta</string>
-    <string name="message_import">Žymos buvo importuotos</string>
+    <string name="message_import">Adresynas buvo importuotas</string>
     <string name="message_clear_history">Istorija išvalyta</string>
     <string name="message_cookies_cleared">Slapukai išvalyti</string>
-    <string name="max_tabs">Pasiektas maks. Skirtukų skaičius</string>
+    <string name="max_tabs">Pasiektas maksimalus skirtukų skaičius</string>
     <string name="message_text_copied">Tekstas nukopijuotas į mainų sritį</string>
     <string name="message_link_copied">Nuoroda nukopijuota į mainų sritį</string>
     <string name="message_blocked_local">Vietinio failo įkėlimas buvo užblokuotas</string>
     <string name="licenses">Atvirojo kodo licencijos</string>
     <string name="suggestion">Ieškoti</string>
-    <string name="block_ads">Blokuokite skelbimus ir stebėjimo priemones</string>
-    <string name="message_insecure_connection">Ryšys su šia svetaine nėra saugus: %1$s vis tiek lankotės svetainėje?</string>
-    <string name="message_certificate_date_invalid">Netinkama pažymėjimo data</string>
+    <string name="block_ads">Blokuoti skelbimus/reklamas ir stebėjimo priemones</string>
+    <string name="message_insecure_connection">Ryšys su šia svetaine nėra saugus: %1$s vis tiek užeiti į svetainė?</string>
+    <string name="message_certificate_date_invalid">Sertifikato galiojimas yra netinkamas/negaliojantis</string>
     <string name="message_certificate_expired">Sertifikato galiojimo laikas pasibaigė</string>
-    <string name="message_certificate_domain_mismatch">Sertifikatas domene neatitinka svetainės domeno</string>
-    <string name="message_certificate_invalid">Sertifikatas negalioja</string>
-    <string name="message_certificate_not_yet_valid">Sertifikatas dar negalioja</string>
+    <string name="message_certificate_domain_mismatch">Sertifikatas šioje svetainė neatitinka su jo „domenu“</string>
+    <string name="message_certificate_invalid">Sertifikatas yra netinkamas</string>
+    <string name="message_certificate_not_yet_valid">Sertifikatas dar nėra galiojantis</string>
     <string name="message_certificate_untrusted">Sertifikatas nėra patikimas</string>
     <string name="title_form_resubmission">Formos pakartotinis pateikimas</string>
     <string name="message_form_resubmission">Ar norėtumėte atsiųsti pateiktus duomenis dar kartą?</string>
-    <string name="message_location">\ nNorėtumėte naudoti savo vietą</string>
+    <string name="message_location">\ nNorėtų naudoti jūsų vietovę</string>
     <string name="action_allow">Leisti</string>
-    <string name="action_dont_allow">Neleisk</string>
+    <string name="action_dont_allow">Neleisti</string>
     <string name="title_sign_in">Prisijungti</string>
-    <string name="hint_username">Vartotojo vardas</string>
+    <string name="hint_username">Slapyvardis</string>
     <string name="hint_password">Slaptažodis</string>
     <string name="search_suggestions">Ieškokite pasiūlymų</string>
     <string name="powered_by_google">„Google“</string>
     <string name="powered_by_duck">„DuckDuckGo“</string>
-    <string name="powered_by_baidu">Baidu</string>
-    <string name="powered_by_naver">Niekada</string>
-    <string name="search_engine_naver">Niekada</string>
-    <string name="shortcut_message_failed_to_add">Deja, paleidimo priemonė nepalaiko sparčiųjų klavišų.</string>
+    <string name="powered_by_baidu">„Baidu“</string>
+    <string name="powered_by_naver">„Naver“</string>
+    <string name="search_engine_naver">„Naver“</string>
+    <string name="shortcut_message_failed_to_add">Deja, jūsų leidiklis nepalaiko nuorodų.</string>
     <!-- SSL -->
-    <string name="ssl_info_issued_by">Išleido</string>
-    <string name="ssl_info_issued_to">Išduota</string>
-    <string name="ssl_info_issued_on">Išleista</string>
-    <string name="ssl_info_expires_on">Baigia galioti</string>
+    <string name="ssl_info_issued_by">Išdavė:</string>
+    <string name="ssl_info_issued_to">Kam išduotas:</string>
+    <string name="ssl_info_issued_on">Išduotas:</string>
+    <string name="ssl_info_expires_on">Baigia galioti:</string>
     <!-- SSL don't ask again -->
     <string name="ssl_warning_dont_ask_again">Nereikalaukite dar kartą šios naršymo sesijos.</string>
     <!-- Tools dialog -->
     <string name="dialog_tools_title">Puslapio įrankiai</string>
-    <string name="dialog_toggle_desktop">Perjungti darbalaukio vartotojo agentą</string>
-    <string name="dialog_adblock_enable_for_site">Įgalinti svetainės skelbimų bloką</string>
-    <string name="dialog_adblock_disable_for_site">Išjungti svetainės skelbimų bloką</string>
+    <string name="dialog_toggle_desktop">Perjungti darbalaukio naršymo agentą</string>
+    <string name="dialog_adblock_enable_for_site">Įgalinti svetainės skelbimų/reklamų blokavimą</string>
+    <string name="dialog_adblock_disable_for_site">Išjungti svetainės skelbimų/reklamų blokavimą</string>
     <string name="search_suggestions_off">Paieškos pasiūlymų nėra</string>
-    <string name="http_proxy">HTTP tarpinis serveris</string>
+    <string name="http_proxy">„HTTP proxy“</string>
     <string-array name="proxy_choices_array">
-        <item>Nė vienas</item>
-        <item>Orbotas</item>
-        <item>I2P</item>
+        <item>Nieko nėra</item>
+        <item>„Orbotas“</item>
+        <item>„I2P“</item>
         <item>Rankinis</item>
     </string-array>
     <string-array name="password_set_array">
-        <item>Nė vienas</item>
+        <item>Nieko nėra</item>
         <item>Pasirinktinis</item>
+    </string-array>
+    <string-array name="suggestion_name_array">
+        <item>Trys</item>
+        <item>Keturi</item>
+        <item>Penki</item>
+        <item>Šeši</item>
+        <item>Septyni</item>
+        <item>Aštuoni</item>
     </string-array>
     <string name="manual_proxy">Rankinis tarpinis serveris</string>
     <string name="host">Pagrindinis kompiuteris:</string>
@@ -242,7 +254,7 @@
     <string name="message_web_storage_cleared">Žiniatinklio saugykla išvalyta</string>
     <string name="hosts_source">Patalpinta failų skelbimų blokavimo šaltinis</string>
     <string name="settings_adblock">Turinio bloko nustatymai</string>
-    <string name="adblock_summary">Skelbimų blokas...</string>
+    <string name="adblock_summary">Skelbimų blokas, slapukų dialogo langas ...</string>
     <string name="adblock_category">Skelbimų blokas</string>
     <string name="cookie_category">Slapukų dialogo langas</string>
     <string name="tabs_in_drawer">Rodyti skirtukus naršymo stalčiuje</string>
@@ -265,11 +277,6 @@
     <string name="block_source_local_description">Failas: %1$s</string>
     <string name="block_source_remote">Nuotolinių kompiuterių failas</string>
     <string name="block_source_remote_description">URL: %1$s</string>
-    <string-array name="block_ad_source_list">
-        <item>@string/block_source_default</item>
-        <item>@string/block_source_local</item>
-        <item>@string/block_source_remote</item>
-    </string-array>
     <!--Ad block -->
     <string name="ad_block_load_failure">Nepavyko įkelti pagrindinių kompiuterių iš skelbimų blokavimo šaltinio.</string>
     <string name="infinity">∞</string>
@@ -295,7 +302,7 @@
     <string name="block_ad_source">Prieglobos failo šaltinis</string>
     <string name="block_ad_remote_refresh_frequency_description">Nuotolinių kompiuterių failas</string>
     <string name="block_ad_refresh_now">Atnaujinkite šeimininkus dabar</string>
-    <string name="webrtc_support">Allow WebRTC permission requests</string>
+    <string name="webrtc_support">Leisti „WebRTC“ leidimų prašymus</string>
     <string name="save_data">Prašyti \'Išsaugoti duomenis \'</string>
     <!-- debug strings -->
     <string name="debug_title">Derinimo nustatymai</string>
@@ -312,9 +319,9 @@
     <string name="dialog_copy_link">Nukopijuoti nuorodą</string>
     <string name="dialog_rename_folder">Pervardyti aplanką</string>
     <string name="dialog_remove_folder">Pašalinti aplanką</string>
-    <string name="dialog_title_close_browser">Close tabs</string>
-    <string name="dialog_delete_download">Remove download from history</string>
-    <string name="dialog_delete_all_downloads">Remove all downloads from history</string>
+    <string name="dialog_title_close_browser">Uždaryti skirtukus</string>
+    <string name="dialog_delete_download">Ištrinti atsisiuntimą iš istorijos</string>
+    <string name="dialog_delete_all_downloads">Ištrinti visus atsisiuntimus iš istorijos</string>
     <!-- Search Engines -->
     <string name="search_engine_custom">Tinkintas URL</string>
     <string name="search_engine_google">„Google“</string>
@@ -326,6 +333,8 @@
     <string name="search_engine_duckduckgo_lite">„DuckDuckGo Lite“</string>
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">„Yandex“</string>
+    <string name="search_engine_searx">„SearX.be“</string>
+    <string name="search_engine_searx_cookiejarapps">„CookieJarApps SearX“</string>
     <string name="privacy">Peržiūrėkite Privatumo politiką</string>
     <string name="privacy_info">Perskaitykite „SmartCookieWeb“ privatumo politiką</string>
     <string name="block_malware">Blokuokite kenksmingas svetaines</string>
@@ -341,6 +350,8 @@
     <string name="preferhttpsdesc">Visada naudokite HTTPS palaikomose svetainėse (gali sukelti problemų)</string>
     <string name="startpagedesc">Numatytojo pagrindinio puslapio spalvą nustatykite tokią, kuri naudojama tema.</string>
     <string name="updatehomepage">Norėdami pamatyti atnaujintą pagrindinį puslapį, atidarykite naują skirtuką</string>
+    <string name="edit_shortcuts">Redaguoti nuorodas</string>
+    <string name="apply">Taikyti</string>
     <string name="inspect">Įšvirkškite „JavaScript“</string>
     <string name="bookmark">Žyma pridėta</string>
     <string name="error_title">O trupiniai! &lt;br&gt; Šios svetainės negalima įkelti.</string>
@@ -358,47 +369,49 @@
     <string name="settings_parents">Blokuoti svetaines, nustatyti slaptažodį ...</string>
     <string name="label_realm">Serverio pranešimas: %s</string>
     <string name="new_tab_foreground">Pristatykite skirtukus į priekinį planą</string>
-    <string name="new_tab_foreground_summary">Open a new tab when it is created</string>
+    <string name="new_tab_foreground_summary">Atidaryti nauja skirtuką, kai jis yra sukurtas</string>
     <string name="site_not_secure">Šioje svetainėje nenaudojamas HTTPS</string>
     <string name="language_not_supported">Kalba nepalaikoma</string>
     <string name="language_not_supported_text">Deja, plėtinių parduotuvė jūsų kalba dar nepasiekiama. Norėdami toliau tęsti anglų kalba, naudokite žemiau esantį mygtuką.</string>
     <string name="extensions">Priedai</string>
-    <string name="extensions_enable">Enable extensions</string>
-    <string name="extensions_settings">Extensions settings</string>
+    <string name="extensions_enable">Leisti plėtinius/priedus</string>
+    <string name="extensions_settings">Priedų/Plėtinių nustatymai</string>
     <string name="extensions_description">Atsisiųsti priedus ...</string>
     <string name="extensions_store">Priedų parduotuvė</string>
     <string name="extensions_list">Plėtinių sąrašas</string>
     <string name="uninstall_extension">Pašalinkite priedą</string>
-    <string name="uninstall_more">Enter the name of the extension you want to uninstall</string>
+    <string name="uninstall_more">Įrašykite pavadinimą priedo/plėtinio kurį norite ištrinti</string>
     <string name="show_extra">Rodyti papildomas meniu parinktis</string>
     <string name="incognito_cookies_new">Asmeninis režimas veikia atskirame lange, kuris iš naujo po kiekvieno seanso. Asmeninio režimo slapukų parinktys dabar yra kontroliuojamos pagal įprastą slapukų nustatymus.</string>
     <string name="quit_private">Išeiti iš asmeninio režimo</string>
+    <string name="image_url">Nustatyti pagrindinio puslapio fono nuotrauką</string>
     <string name="start_incognito">Visada veikti kaip asmeninis režimas</string>
-    <string name="bottom_navbar">Move the navbar to the bottom</string>
-    <string name="please_restart">Please restart app to see changes</string>
-    <string name="site_ad_blocked">This site is an ad. To continue anyway, use the \"Disable Ad Block for this Site\" option by clicking on the list icon in the bookmark drawer.</string>
-    <string name="onboarding_reshow">Reshow onboarding</string>
-    <string name="onboarding_reshow_desc">Show the setup again.</string>
-    <string name="pick_search">Choose a search engine:</string>
-    <string name="enable_adblock">Enable ad and tracker blocking?</string>
-    <string name="contributors">Contributors</string>
-    <string name="translations">Translations</string>
-    <string name="import_export">Import and export settings</string>
-    <string name="export_settings">Export settings to backup</string>
-    <string name="import_settings">Import settings from backup</string>
-    <string name="clear_settings">Reset settings</string>
-    <string name="backup_settings">Settings backup</string>
-    <string name="backup_bookmarks">Bookmarks backup</string>
-    <string name="reset_settings">Settings reset. App closing... Please reopen.</string>
-    <string name="force_zoom">Force zoom</string>
-    <string name="dark_mode">Dark mode</string>
-    <string name="submit">Submit extension</string>
-    <string name="translator">Translator (beta)</string>
-    <string name="coming_soon">More coming soon...</string>
-    <string name="navbar_col">Set navbar color</string>
-    <string name="color">Color</string>
-    <string name="looknfeel">Look and Feel settings</string>
-    <string name="customize">Customization settings</string>
+    <string name="bottom_navbar">Perkelti navigacijos juostą į apačia</string>
+    <string name="please_restart">Prašome paleisti programą iš naujo, kad matytumėte pasikeitimus</string>
+    <string name="site_ad_blocked">Šitas tinklapis yra reklama. Kad tęstumėte vis tiek, naudokite „Išjungti reklamų turinio blokatorių šiam tinklapiui“ pasirinkimą, paspaudę ant rodymo piktogramos adresyno pasirinkime.</string>
+    <string name="onboarding_reshow">Per rodyti įlaipinimą</string>
+    <string name="onboarding_reshow_desc">Rodyti sąranką dar kartą.</string>
+    <string name="pick_search">Pasirinkite ieškyklė:</string>
+    <string name="enable_adblock">Įgalinti reklamų ir sekimo blokavimą?</string>
+    <string name="contributors">Pagalbininkai</string>
+    <string name="translations">Vertimai</string>
+    <string name="import_export">Importuoti ir eksportuoti nustatymus</string>
+    <string name="export_settings">Eksportuoti nustatymus į atsarginė kopiją</string>
+    <string name="import_settings">Importuoti nustatymus iš atsarginės kopijos</string>
+    <string name="clear_settings">Atstatyti nustatymus</string>
+    <string name="backup_settings">Nustatymų išsaugojimas</string>
+    <string name="backup_bookmarks">Adresyno išsaugojimas</string>
+    <string name="reset_settings">Nustatymai atstatyti. Programa uždaroma... Prašome vėl atidaryti.</string>
+    <string name="force_zoom">Perrašyti (Priverstinai) tinklapio didinimo blokavimą</string>
+    <string name="dark_mode">Tamsus rėžimas</string>
+    <string name="submit">Pateikti plėtinį</string>
+    <string name="translator">Vertėjas (beta)</string>
+    <string name="coming_soon">Daugiau – jau greitai...</string>
+    <string name="navbar_col">Nustatyti navigacijos juostos spalvą</string>
+    <string name="color_filter">Nustatyti spalvos filtrą</string>
+    <string name="color">Spalva</string>
+    <string name="looknfeel">Išvaizda ir Jausmo nustatymai</string>
+    <string name="customize">Konfigūracijos nustatymai</string>
     <string name="suggest">Choose number of search suggestions</string>
     <string name="close_on_last_tab">Close browser with last tab</string>
     <string name="more">More Info</string>
@@ -406,7 +419,8 @@
     <string name="search_suggestions_4">Unfortunately, search suggestions in Smart Cookie are no longer available on devices below Android 5.0. Press the button below to find out more.</string>
     <string name="block_intent">Handle all clicked links within this browser</string>
     <string name="block_intent_summary">Blocks prompt to open links in external applications</string>
-    <string name="block_javascript">Block JavaScript for sites</string>
+    <string name="block_javascript">Block JavaScript for site</string>
+    <string name="allow_javascript">Allow JavaScript for site</string>
     <string name="unlisted_javascript">Block JavaScript for listed sites</string>
     <string name="listed_javascript">Only allow JavaScript for listed sites</string>
     <string name="confirm">Confirm reset</string>
@@ -414,7 +428,49 @@
     <string name="only_clear">Only clear on browser session end</string>
     <string name="only_clear_summary">Only clear above options when all browser tabs have been closed, instead of whenever the app is exited</string>
     <string name="enable_in_settings">AutoFill needs to be set up in Android settings for this option to take effect</string>
+    <string name="webrtc_description">Allow websites to request access to the microphone and camera</string>
     <string name="drawer_lines">Max text lines in drawer</string>
     <string name="drawer_size">Drawer text size</string>
+    <string name="privacy_set">Privacy settings</string>
+    <string name="security_set">Security settings</string>
+    <string name="page_source">View page source</string>
+    <string name="pagespeed_error">This website uses PageSpeed. Source editing may not work as expected.</string>
+    <string name="app_lock">Set app password</string>
+    <string name="show_ssl">Show SSL warning dialogs</string>
+    <string name="warn">Only change this if you know what you\'re doing!</string>
+    <string name="download_channel">Downloads</string>
+    <string name="download_description">Information about download progress</string>
+    <string name="download_to_sd">Download to SD card</string>
+    <string name="legacy_download_manager">Use integrated download manager</string>
+    <string name="legacy_download_manager_desc">Download files using the SmartCookieWeb download manager, instead of the system one</string>
+    <string name="onboarding_one">Access settings, bookmarks (or swipe from the right edge) and more in the overflow menu.</string>
+    <string name="onboarding_two">Click the tab number or swipe from the left edge to open the tab drawer.</string>
+    <string name="onboarding_three">Use page tools in the bookmark drawer to temporarily turn off ad block, open the desktop version of a site and more.</string>
+    <string name="load_tabs">Load all tabs when browser is started</string>
+    <string name="navbar">Navbar</string>
+    <string name="search_homepage">Search...</string>
+    <string name="start">Get started!</string>
+    <string name="show_shortcuts">Show shortcuts on homepage</string>
+    <string name="reading_mode_image_copyright">Image attributed to</string>
+    <string name="reading_mode_image_caption">Image with caption</string>
+    <string name="show_second_bar">Show secondary navigation bar</string>
+    <string name="edit_cookies">Edit site cookies</string>
+    <string name="ssl_size">Key size</string>
+    <string name="algorithm">Algorithm</string>
+    <string name="crash_warning">Enabling this setting with \'Allow sites to open new windows\' on may cause crashes</string>
+    <string name="amp_to_html">AMP to HTML (beta)</string>
+    <string name="private_title">Private mode</string>
+    <string name="private_desc">Tabs in private mode work like normal tabs, but when they are closed all the data from that tab is erased. Private browsing does NOT make you anonymous, but it can keep what you do online secret from anyone else using this device.</string>
+    <string name="file_is">File is:</string>
+    <string name="translate_to">Translate to:</string>
+    <string name="new_drag">Šitas skirtukas ir adresyno pasirinkimo menių yra prieinami paspaudus piktograma. Laikydami ant teksto leis juos perrinkti.</string>
+    <string name="last_loaded">Paskutinis pakrautas</string>
+    <string name="continue_download">Tęsti</string>
+    <string name="start_download">Pradėti</string>
+    <string name="pausing_download">Stabdoma</string>
+    <string name="waiting_download">Laukiama</string>
+    <string name="pause_download">Pristabdyti</string>
+    <string name="grant_permissions">Grant permissions</string>
+    <string name="grant_permissions_desc">Read/Write External Storage is required for downloads and bookmark/settings backups</string>
     <!-- finish pages -->
 </resources>

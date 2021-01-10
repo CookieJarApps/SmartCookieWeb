@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_desc">Um navegador gratuito e de código aberto que bloqueia anúncios e rastreadores</string>
     <string name="action_new_tab">Nova aba</string>
     <string name="action_share">Compartilhar</string>
     <string name="action_print">Captura de tela</string>
@@ -405,6 +406,7 @@
     <string name="translator">Tradutor (Beta)</string>
     <string name="coming_soon">Mais em breve...</string>
     <string name="navbar_col">Definir cor da barra de navegação</string>
+    <string name="color_filter">Definir filtro de cor</string>
     <string name="color">Cor</string>
     <string name="looknfeel">Configurações de aparência e funcionamento</string>
     <string name="customize">Configurações de personalização</string>
@@ -443,6 +445,7 @@
     <string name="onboarding_two">Clique no número da aba ou puxe a borda esquerda da tela para abrir o menu de abas.</string>
     <string name="onboarding_three">Use as ferramentas de página no menu de favoritos para desligar temporariamente o bloqueio de anúncios, abrir o site na versão para computador e muito mais.</string>
     <string name="load_tabs">Carregar todas as abas quando o navegador for iniciado</string>
+    <string name="navbar">Barra de navegação</string>
     <string name="search_homepage">Buscar...</string>
     <string name="start">Começar!</string>
     <string name="show_shortcuts">Mostrar atalhos na página inicial</string>
@@ -459,6 +462,13 @@
     <string name="file_is">O arquivo é:</string>
     <string name="translate_to">Traduzir para:</string>
     <string name="new_drag">Os menus de opções de abas e favoritos agora são acessados clicando no ícone. Apertar e segurar o texto agora lhe permite reordená-los.</string>
-    <string name="last_loaded">Último carregado</string>
+    <string name="last_loaded">Última vista em</string>
+    <string name="continue_download">Continuar</string>
+    <string name="start_download">Começar</string>
+    <string name="pausing_download">Pausando</string>
+    <string name="waiting_download">Aguardando</string>
+    <string name="pause_download">Pausar</string>
+    <string name="grant_permissions">Conceder permissões</string>
+    <string name="grant_permissions_desc">Ler/Gravar Armazenamento Externo é necessário para fazer downloads e criar/restaurar backups de favoritos/configurações</string>
     <!-- finish pages -->
 </resources>
