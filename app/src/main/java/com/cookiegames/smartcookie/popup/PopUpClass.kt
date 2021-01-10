@@ -197,7 +197,7 @@ class PopUpClass {
                 9 -> activity.drawer_layout.openDrawer(activity.getBookmarkDrawer()) // 9 - Bookmarks
                 10 -> {
                     if (currentUrl != null) { // 10 - Reading mode
-                        ReadingActivity.launch(view.context, currentUrl, false)
+                        ReadingActivity.launch(view.context, currentUrl)
                     }
                 }
                 11 -> {
