@@ -34,6 +34,7 @@ import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.download.DownloadActivity
 import com.cookiegames.smartcookie.extensions.copyToClipboard
 import com.cookiegames.smartcookie.extensions.snackbar
+import com.cookiegames.smartcookie.history.HistoryActivity
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.reading.activity.ReadingActivity
 import com.cookiegames.smartcookie.settings.activity.SettingsActivity
@@ -176,7 +177,7 @@ class PopUpClass {
                 1 -> view.context.startActivity(Intent(view.context, IncognitoActivity::class.java)) // 1 - New incognito tab
                 2 -> IntentUtils(activity).shareUrl(currentUrl, currentView?.title) // 2 - Share
                 3 -> currentView!!.webView?.let { currentView.createWebPagePrint(it) } // 3 - Print
-                4 -> activity.openHistory() // 4 - History
+                4 -> view.context.startActivity(Intent(view.context, HistoryActivity::class.java)) // 4 - History
                 5 -> view.context.startActivity(Intent(view.context, DownloadActivity::class.java)) // 5 - Download
                 6 -> activity.findInPage() // 6 - Find in Page
                 7 -> {
@@ -197,7 +198,7 @@ class PopUpClass {
                 9 -> activity.drawer_layout.openDrawer(activity.getBookmarkDrawer()) // 9 - Bookmarks
                 10 -> {
                     if (currentUrl != null) { // 10 - Reading mode
-                        ReadingActivity.launch(view.context, currentUrl)
+                        ReadingActivity.launch(view.context, currentUrl, false)
                     }
                 }
                 11 -> {

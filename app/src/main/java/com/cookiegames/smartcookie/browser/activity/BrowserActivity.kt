@@ -53,6 +53,7 @@ import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.IncognitoActivity
+import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.*
 import com.cookiegames.smartcookie.browser.bookmarks.BookmarksDrawerView
@@ -79,6 +80,7 @@ import com.cookiegames.smartcookie.icon.TabCountView
 import com.cookiegames.smartcookie.interpolator.BezierDecelerateInterpolator
 import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.notifications.IncognitoNotification
+import com.cookiegames.smartcookie.onboarding.Onboarding
 import com.cookiegames.smartcookie.popup.PopUpClass
 import com.cookiegames.smartcookie.search.SearchEngineProvider
 import com.cookiegames.smartcookie.search.SuggestionsAdapter
@@ -354,6 +356,12 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         initializeToolbarHeight(resources.configuration)
         setSupportActionBar(toolbar)
         val actionBar = requireNotNull(supportActionBar)
+
+        if(userPreferences.firstLaunch){
+            startActivity(Intent(this, Onboarding::class.java))
+            userPreferences.firstLaunch = false
+            finish()
+        }
 
         //TODO make sure dark theme flag gets set correctly
         isDarkTheme = userPreferences.useTheme == AppTheme.DARK || userPreferences.useTheme == AppTheme.BLACK || isIncognito()

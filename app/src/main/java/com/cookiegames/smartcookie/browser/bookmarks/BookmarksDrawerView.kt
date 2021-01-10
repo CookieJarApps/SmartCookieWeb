@@ -134,7 +134,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
         addBookmarkView?.setOnClickListener { uiController.bookmarkButtonClicked() }
         findViewById<View>(R.id.action_reading).setOnClickListener {
             getTabsManager().currentTab?.url?.let {
-                ReadingActivity.launch(context, it)
+                ReadingActivity.launch(context, it, false)
             }
         }
         findViewById<View>(R.id.action_page_tools).setOnClickListener { showPageToolsDialog(context, userPreferences) }

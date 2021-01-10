@@ -117,7 +117,7 @@ class SmartCookieView(
      */
     var invertPage = false
         private set
-    private var toggleDesktop = false
+    var toggleDesktop = false
     private val webViewHandler = WebViewHandler(this)
 
     /**

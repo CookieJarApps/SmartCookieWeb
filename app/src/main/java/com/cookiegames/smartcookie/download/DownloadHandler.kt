@@ -6,6 +6,7 @@
 // MPL-2.0
 package com.cookiegames.smartcookie.download
 
+import android.Manifest
 import android.app.*
 import android.content.ActivityNotFoundException
 import android.content.BroadcastReceiver
@@ -22,6 +23,8 @@ import android.webkit.MimeTypeMap
 import android.webkit.URLUtil
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.anthonycr.grant.PermissionsManager
+import com.anthonycr.grant.PermissionsResultAction
 import com.cookiegames.smartcookie.BuildConfig
 import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
@@ -36,6 +39,7 @@ import com.cookiegames.smartcookie.dialog.BrowserDialog.setDialogSize
 import com.cookiegames.smartcookie.extensions.snackbar
 import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.preference.UserPreferences
+import com.cookiegames.smartcookie.settings.fragment.BookmarkSettingsFragment
 import com.cookiegames.smartcookie.utils.FileUtils
 import com.cookiegames.smartcookie.utils.Utils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -106,12 +110,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
         logger.log(TAG, "DOWNLOAD: Content disposition: $contentDisposition")
         logger.log(TAG, "DOWNLOAD: MimeType: $mimeType")
         logger.log(TAG, "DOWNLOAD: User agent: $userAgent")
-        // Fallback to old download manager on sites with weird download systems
-        // TODO: investigate why the new manager doesn't support these
-        if (url.contains("//drive.google.com") || url.contains("googleusercontent.com/") || url.contains("//mega.nz")) {
-            legacyDownloadStart(context, manager, url, userAgent, contentDisposition, mimeType, contentSize)
-            return
-        }
+
         var location
                 = manager.downloadDirectory
         location = FileUtils.addNecessarySlashes(location)
@@ -170,7 +169,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
                         notificationManager.notify(uniqid + 1, builder.build());
                     }
                     override fun onFailed() {
-                        notificationManager.cancel(uniqid);
+                        notificationManager.cancel(uniqid)
                     }
                     override fun onProgress(progress: Int) {
                         val downloadInfo: DownloadInfo = getDownloadInfo()
@@ -221,19 +220,6 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
             }
         }
 
-
-        // save download in database
-        val browserActivity = context as UIController
-        val view = browserActivity.getTabModel().currentTab
-        if (view != null && !view.isIncognito) {
-            downloadsRepository.addDownloadIfNotExists(DownloadEntry(url, getFileNameFromURL(url, contentDisposition, mimeType), contentSize))
-                    .subscribeOn(databaseScheduler)
-                    .subscribe { aBoolean: Boolean? ->
-                        if (!aBoolean!!) {
-                            logger.log(TAG, "error saving download to database")
-                        }
-                    }
-        }
     }
 
     class DownloadCancelReceiver : BroadcastReceiver() {
@@ -382,6 +368,8 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
     companion object {
         private const val TAG = "DownloadHandler"
         private const val COOKIE_REQUEST_HEADER = "Cookie"
+        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
         fun getFileNameFromURL(url: String?, contentDisposition: String?, mimeType: String?): String {
             return URLUtil.guessFileName(url, contentDisposition, mimeType)
         }

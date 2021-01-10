@@ -41,10 +41,13 @@
         android:usesCleartextTraffic="true">
         <activity
             android:theme="@style/Theme.SettingsTheme"
-            android:name=".download.DownloadActivity"></activity>
+            android:name=".download.DownloadActivity" />
+        <activity
+            android:theme="@style/Theme.SettingsTheme"
+            android:name=".history.HistoryActivity" />
         <activity
             android:theme="@style/Theme.LightTheme"
-            android:name=".onboarding.Onboarding"></activity>
+            android:name=".onboarding.Onboarding" />
         <!--
          <receiver android:name=".widget.SearchWidget" >
             <intent-filter>

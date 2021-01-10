@@ -1,6 +1,7 @@
 // Copyright 2020 CookieJarApps MPL
 package com.cookiegames.smartcookie.reading.activity
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
@@ -15,6 +16,7 @@ import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.URLSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -25,6 +27,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.appcompat.widget.Toolbar
 import butterknife.BindView
 import butterknife.ButterKnife
@@ -46,9 +49,7 @@ import okhttp3.*
 import org.json.JSONException
 import org.json.JSONObject
 import org.jsoup.Jsoup
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStreamReader
+import java.io.*
 import java.net.URL
 import java.text.BreakIterator
 import java.util.*
@@ -78,6 +79,7 @@ class ReadingActivity : AppCompatActivity() {
     var mMainScheduler: Scheduler? = null
     private var mInvert = false
     private var mUrl: String? = null
+    private var file: Boolean = false
     private var mTextSize = 0
     private var mProgressDialog: ProgressDialog? = null
     private val mPageLoaderSubscription: Disposable? = null
@@ -134,8 +136,15 @@ class ReadingActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.reading, menu)
+
+        if (menu is MenuBuilder) {
+            val m: MenuBuilder = menu
+            m.setOptionalIconsVisible(true)
+        }
+
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -218,9 +227,14 @@ class ReadingActivity : AppCompatActivity() {
             return false
         }
         mUrl = intent.getStringExtra(LOAD_READING_URL)
+        file = intent.getBooleanExtra(LOAD_FILE, false)
         if (mUrl == null) {
             return false
         }
+        else if (file){
+                setText(mUrl, loadFile(this, mUrl))
+                return false
+            }
         if (supportActionBar != null) {
             supportActionBar!!.title = Utils.getDomainName(mUrl)
         }
@@ -331,7 +345,7 @@ class ReadingActivity : AppCompatActivity() {
             R.id.invert_item -> {
                 mUserPreferences!!.invertColors = !mInvert
                 if (mUrl != null) {
-                    launch(this, mUrl!!)
+                    launch(this, mUrl!!, file)
                     finish()
                 }
             }
@@ -374,13 +388,60 @@ class ReadingActivity : AppCompatActivity() {
                 val dialog: Dialog = builder.show()
                 setDialogSize(this, dialog)
             }
+            R.id.download -> {
+                saveFile(this, Html.toHtml(mBody!!.text as Spanned), mTitle?.text.toString())
+            }
+            R.id.open -> {
+                val builderSingle = MaterialAlertDialogBuilder(this@ReadingActivity)
+                builderSingle.setTitle(resources.getString(R.string.action_open) + ":")
+                val arrayAdapter = ArrayAdapter<String>(this@ReadingActivity, android.R.layout.select_dialog_singlechoice)
+
+                val arr: Array<String> = filesDir.list()
+                val l = ArrayList<String>()
+                for (i in arr) {
+                    if (i.endsWith(".txt")) {
+                        l.add(i.replaceFirst("....$".toRegex(),""))
+                        arrayAdapter.add(i.replaceFirst("....$".toRegex(),""))
+                    }
+                }
+
+                builderSingle.setNegativeButton("cancel") { dialog: DialogInterface, which: Int -> dialog.dismiss() }
+                builderSingle.setAdapter(arrayAdapter) { dialog: DialogInterface?, which: Int -> setTextViewHTML(mBody!!, loadFile(this, l[which])); mTitle?.text = l[which]; file = true; mUrl = l[which] }
+                builderSingle.show()
+            }
+            // PRESSING INVERT CLEARS LOADED FILE
             else -> finish()
         }
         return super.onOptionsItemSelected(item)
     }
 
+    fun saveFile(context: Context, text: String?, name: String?): Boolean {
+        return try {
+            val fos: FileOutputStream = context.openFileOutput(name + ".txt", Context.MODE_PRIVATE)
+            val out: Writer = OutputStreamWriter(fos)
+            out.write(text)
+            out.close()
+            true
+        } catch (e: IOException) {
+            e.printStackTrace()
+            false
+        }
+    }
+
+    fun loadFile(context: Context, name: String?): String? {
+        return try {
+            val fis: FileInputStream = context.openFileInput(name + ".txt")
+
+            fis.bufferedReader().use { it.readText() }
+        } catch (e: IOException) {
+            e.printStackTrace()
+            null
+        }
+    }
+
     companion object {
         private const val LOAD_READING_URL = "ReadingUrl"
+        private const val LOAD_FILE = "FileUrl"
 
         /**
          * Launches this activity with the necessary URL argument.
@@ -388,9 +449,10 @@ class ReadingActivity : AppCompatActivity() {
          * @param context The context needed to launch the activity.
          * @param url     The URL that will be loaded into reading mode.
          */
-        fun launch(context: Context, url: String) {
+        fun launch(context: Context, url: String, file: Boolean) {
             val intent = Intent(context, ReadingActivity::class.java)
             intent.putExtra(LOAD_READING_URL, url)
+            intent.putExtra(LOAD_FILE, file)
             context.startActivity(intent)
         }
 

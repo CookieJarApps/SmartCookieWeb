@@ -5,14 +5,20 @@
 
 package com.cookiegames.smartcookie.download
 
+import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.text.Html
+import android.text.Spanned
 import android.util.Log
 import android.view.*
 import android.webkit.MimeTypeMap
+import android.widget.ArrayAdapter
 import android.widget.Filter
+import android.widget.SeekBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -25,7 +31,9 @@ import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.BuildConfig
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.di.injector
+import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.preference.UserPreferences
+import com.cookiegames.smartcookie.reading.activity.ReadingActivity
 import com.cookiegames.smartcookie.utils.ThemeUtils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.huxq17.download.Pump
@@ -102,6 +110,14 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         //downloadAdapter!!.notifyDataSetChanged()
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            else -> finish()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -230,7 +246,7 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             intent.action = Intent.ACTION_VIEW
             val fileURI = filePath.toUri()
             if(getFileExtension(filePath) != "apk"){
-                intent.setDataAndType(fileURI, "")
+                intent.setDataAndType(fileURI, MimeTypeMap.getSingleton().getMimeTypeFromExtension(getFileExtension(filePath)))
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                 v.context.startActivity(intent)
             }
