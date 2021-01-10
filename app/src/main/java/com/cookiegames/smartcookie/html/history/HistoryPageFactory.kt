@@ -44,7 +44,7 @@ class HistoryPageFactory @Inject constructor(
                                 tag("a") { attr("href", it.url) }
                                 id("title") { text(it.title) }
                                 id("url") { text(it.url) }
-                                id("date") { text(resources.getString(R.string.last_loaded) + getDateTime(it.lastTimeVisited)) }
+                                id("date") { text(resources.getString(R.string.last_loaded) + " " + getDateTime(it.lastTimeVisited)) }
                             })
                         }
                     }
