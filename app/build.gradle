@@ -181,7 +181,10 @@ dependencies {
     implementation 'androidx.webkit:webkit:1.4.0'
 
     // downloader
-    implementation 'com.mindorks.android:prdownloader:0.6.0'
+    implementation'com.huxq17.pump:download:1.3.10'
+
+    // onboarding
+    implementation 'com.github.AppIntro:AppIntro:6.0.0'
 
     // memory leak analysis
     final def leakCanaryVersion = '2.4'
