@@ -227,6 +227,8 @@ class AppModule {
     @Provides
     fun providesAmpBlock(): BlockAMP = MezzanineGenerator.BlockAMP()
 
+    @Provides
+    fun providesWidenViewport(): SetWidenViewport = MezzanineGenerator.SetWidenViewport()
 }
 
 @Qualifier

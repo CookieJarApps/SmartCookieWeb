@@ -92,6 +92,7 @@ class SmartCookieWebClient(
     @Inject internal lateinit var noAMP: BlockAMP
     @Inject internal lateinit var cookieBlock: CookieBlock
     @Inject internal lateinit var blockAds: BlockAds
+    @Inject internal lateinit var setWidenView: SetWidenViewport
     private var adBlock: AdBlocker
 
     private var urlWithSslError: String? = null
@@ -353,6 +354,14 @@ class SmartCookieWebClient(
             return false
         }
 
+    override fun onLoadResource(view: WebView?, url: String?) {
+        //TODO: explore whether this fixes patchy js load on cached reload
+        if(smartCookieView.toggleDesktop){
+            view?.evaluateJavascript(setWidenView.provideJs(), null)
+        }
+        super.onLoadResource(view, url)
+    }
+
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
         if(view.settings?.userAgentString!!.contains("wv")){
             view.settings?.userAgentString = view.settings?.userAgentString?.replace("wv", "")
@@ -587,7 +596,6 @@ class SmartCookieWebClient(
     }
 
     override fun onScaleChanged(view: WebView, oldScale: Float, newScale: Float) {
-        Log.d("gfdgsdg", "from " + oldScale + " to " + newScale)
         if (first) {
             initScale = newScale
             first=false
@@ -596,12 +604,10 @@ class SmartCookieWebClient(
         else {
             if (newScale>oldScale) {
                 zoomed = true
-                Log.d("gfdgsdg", "zoomed")
             }
             else {
                 if (newScale<initScale) {
                     zoomed = false
-                    Log.d("gfdgsdg", "not zoomed")
                 }
             }
         }
