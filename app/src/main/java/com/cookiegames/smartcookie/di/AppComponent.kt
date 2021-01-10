@@ -22,10 +22,6 @@ import com.cookiegames.smartcookie.view.SmartCookieView
 import com.cookiegames.smartcookie.view.SmartCookieWebClient
 import android.app.Application
 import com.cookiegames.smartcookie.download.DownloadActivity
-import com.cookiegames.smartcookie.onboarding.NavbarChoiceFragment
-import com.cookiegames.smartcookie.onboarding.Onboarding
-import com.cookiegames.smartcookie.onboarding.SearchEngineFragment
-import com.cookiegames.smartcookie.onboarding.ThemeChoiceFragment
 import com.cookiegames.smartcookie.popup.CustomAdapter
 import com.cookiegames.smartcookie.popup.PopUpClass
 import dagger.BindsInstance
