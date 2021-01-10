@@ -101,5 +101,4 @@ interface AppComponent {
     fun provideNoOpAdBlocker(): NoOpAdBlocker
 
     fun inject(popUpClass: PopUpClass)
-
 }
