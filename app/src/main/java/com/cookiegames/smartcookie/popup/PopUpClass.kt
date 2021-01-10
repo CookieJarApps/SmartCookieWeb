@@ -31,6 +31,7 @@ import com.cookiegames.smartcookie.database.Bookmark
 import com.cookiegames.smartcookie.database.HistoryEntry
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.dialog.BrowserDialog
+import com.cookiegames.smartcookie.download.DownloadActivity
 import com.cookiegames.smartcookie.extensions.copyToClipboard
 import com.cookiegames.smartcookie.extensions.snackbar
 import com.cookiegames.smartcookie.preference.UserPreferences
@@ -77,10 +78,13 @@ class PopUpClass {
         val relView = popupView.findViewById<RelativeLayout>(R.id.toolbar_menu)
 
         if(activity.isIncognito()){
-            popupView.findViewById<ConstraintLayout>(R.id.transparent_container).setBackgroundColor(view.context.resources.getColor(R.color.black))
+            popupView.findViewById<ConstraintLayout>(R.id.transparent_container).setBackgroundResource(R.drawable.toolbar_dark)
         }
-        else if(userPreferences.useTheme == AppTheme.DARK || userPreferences.useTheme == AppTheme.BLACK){
-            popupView.findViewById<ConstraintLayout>(R.id.transparent_container).setBackgroundColor(view.context.resources.getColor(R.color.black))
+        else{
+            when(userPreferences.useTheme){
+                AppTheme.DARK -> popupView.findViewById<ConstraintLayout>(R.id.transparent_container).setBackgroundResource(R.drawable.toolbar_dark)
+                AppTheme.BLACK -> popupView.findViewById<ConstraintLayout>(R.id.transparent_container).setBackgroundResource(R.drawable.toolbar_black)
+            }
         }
 
         var currentView = activity.tabsManager.currentTab
@@ -167,50 +171,46 @@ class PopUpClass {
             var currentView = activity.tabsManager.currentTab
             var currentUrl = uiController!!.getTabModel().currentTab?.url
 
-            if (positionList[position] == 0) {
-                uiController!!.newTabButtonClicked()
-            } else if (positionList[position] == 1) {
-                val incognito = Intent(view.context, IncognitoActivity::class.java)
-                view.context.startActivity(incognito)
-            } else if (positionList[position] == 2) {
-                IntentUtils(activity).shareUrl(currentUrl, currentView?.title)
-            } else if (positionList[position] == 3) {
-                currentView!!.webView?.let { currentView.createWebPagePrint(it) }
-            } else if (positionList[position] == 4) {
-                activity.openHistory()
-            } else if (positionList[position] == 5) {
-                activity.openDownloads()
-            } else if (positionList[position] == 6) {
-                activity.findInPage()
-            } else if (positionList[position] == 7) {
-                if (currentUrl != null && !currentUrl.isSpecialUrl()) {
-                    activity.clipboardManager.copyToClipboard(currentUrl)
-                    activity.snackbar(R.string.message_link_copied)
-                }
-            } else if (positionList[position] == 8) {
-                if (currentView != null
-                        && currentView.url.isNotBlank()
-                        && !currentView.url.isSpecialUrl()) {
-                    HistoryEntry(currentView.url, currentView.title).also {
-                        Utils.createShortcut(activity, it, currentView.favicon ?: activity.webPageBitmap!!)
+            when(positionList[position]){
+                0 -> uiController!!.newTabButtonClicked() // 0 - New tab
+                1 -> view.context.startActivity(Intent(view.context, IncognitoActivity::class.java)) // 1 - New incognito tab
+                2 -> IntentUtils(activity).shareUrl(currentUrl, currentView?.title) // 2 - Share
+                3 -> currentView!!.webView?.let { currentView.createWebPagePrint(it) } // 3 - Print
+                4 -> activity.openHistory() // 4 - History
+                5 -> view.context.startActivity(Intent(view.context, DownloadActivity::class.java)) // 5 - Download
+                6 -> activity.findInPage() // 6 - Find in Page
+                7 -> {
+                    if (currentUrl != null && !currentUrl.isSpecialUrl()) { // 7 - Copy link
+                        activity.clipboardManager.copyToClipboard(currentUrl)
+                        activity.snackbar(R.string.message_link_copied)
                     }
                 }
-            } else if (positionList[position] == 9) {
-                activity.drawer_layout.openDrawer(activity.getBookmarkDrawer())
-            } else if (positionList[position] == 10) {
-                if (currentUrl != null) {
-                    ReadingActivity.launch(view.context, currentUrl)
+                8 -> {
+                    if (currentView != null
+                            && currentView.url.isNotBlank()
+                            && !currentView.url.isSpecialUrl()) { // 8 - Add to Homepage
+                        HistoryEntry(currentView.url, currentView.title).also {
+                            Utils.createShortcut(activity, it, currentView.favicon ?: activity.webPageBitmap!!)
+                        }
+                    }
                 }
-            } else if (positionList[position] == 11) {
-                val settings = Intent(view.context, SettingsActivity::class.java)
-                view.context.startActivity(settings)
-            }
-            else if (positionList[position] == 12) {
-                activity.onBackPressed()
-                activity.finish()
-            }
-            else if(positionList[position] == 13){
-                currentView?.loadUrl("https://translatetheweb.com/?scw=yes&a=" + currentUrl!!)
+                9 -> activity.drawer_layout.openDrawer(activity.getBookmarkDrawer()) // 9 - Bookmarks
+                10 -> {
+                    if (currentUrl != null) { // 10 - Reading mode
+                        ReadingActivity.launch(view.context, currentUrl, false)
+                    }
+                }
+                11 -> {
+                    val settings = Intent(view.context, SettingsActivity::class.java) // 11 - Settings
+                    view.context.startActivity(settings)
+                }
+                12 -> {
+                    activity.onBackPressed() // 12 - Quit
+                    activity.finish()
+                }
+                13 -> {
+                    currentView?.loadUrl("https://translatetheweb.com/?scw=yes&a=" + currentUrl!!) // 13 - Translate
+                }
             }
             popupWindow.dismiss()
         }
