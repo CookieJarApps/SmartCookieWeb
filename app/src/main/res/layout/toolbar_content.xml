@@ -25,7 +25,7 @@
             android:layout_width="@dimen/material_grid_small_icon"
             android:layout_height="@dimen/material_grid_small_icon"
             android:layout_gravity="center"
-            app:tabIconBorderRadius="2dp"
+            app:tabIconBorderRadius="3dp"
             app:tabIconBorderWidth="3dp"
             app:tabIconColor="?attr/iconColor"
             app:tabIconTextSize="14dp" />
