@@ -74,15 +74,8 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         this.injector.inject(this)
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_download)
-        ButterKnife.bind(this)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        if (supportActionBar != null) supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         val color: Int
-
         if (mUserPreferences!!.useTheme === AppTheme.LIGHT) {
             setTheme(R.style.Theme_SettingsTheme)
             color = ThemeUtils.getPrimaryColor(this)
@@ -96,6 +89,13 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             color = ThemeUtils.getPrimaryColor(this)
             window.setBackgroundDrawable(ColorDrawable(color))
         }
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_download)
+        ButterKnife.bind(this)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        if (supportActionBar != null) supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         val downloadInfoList  = Pump.getAllDownloadList()
         val list = findViewById<RecyclerView>(R.id.downloads)

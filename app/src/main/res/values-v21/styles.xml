@@ -6,7 +6,6 @@
         <item name="colorPrimary">@color/white</item>
         <item name="android:windowBackground">@null</item>
         <item name="toolbarSettingsBackground">@color/primary_color</item>
-        <item name="materialAlertDialogTheme">@style/AlertDialogMaterialThemeLight</item>
     </style>
 
 
@@ -18,15 +17,11 @@
 
         <!-- Dark settings has a special primary dark color-->
         <item name="colorPrimaryDark">@color/secondary_color_settings_dark</item>
-
-        <item name="materialAlertDialogTheme">@style/AlertDialogMaterialTheme</item>
     </style>
 
     <style name="Theme.SettingsTheme.Black" parent="Theme.BlackTheme">
         <item name="android:windowBackground">@null</item>
         <item name="toolbarSettingsBackground">@color/black</item>
-
-        <item name="materialAlertDialogTheme">@style/AlertDialogMaterialTheme</item>
     </style>
 
     <!-- Regular themes -->
