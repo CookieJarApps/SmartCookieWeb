@@ -20,7 +20,11 @@ import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.utils.IntentUtils
 import com.cookiegames.smartcookie.utils.isBookmarkUrl
 import android.app.Activity
+import android.app.backup.BackupManager.dataChanged
 import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.View
 import android.webkit.MimeTypeMap
@@ -28,8 +32,11 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.net.toUri
+import com.cookiegames.smartcookie.history.HistoryActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.huxq17.download.DownloadProvider
 import dagger.Reusable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy
@@ -268,21 +275,20 @@ class LightningDialogBuilder @Inject constructor(
     }
 
     fun showLongPressedHistoryLinkDialog(
-        activity: Activity,
-        uiController: UIController,
+        activity: HistoryActivity,
         url: String
     ) = BrowserDialog.show(activity, R.string.action_history,
         DialogItem(title = R.string.dialog_open_new_tab) {
-            uiController.handleNewTab(NewTab.FOREGROUND, url)
-        },
-        DialogItem(title = R.string.dialog_open_background_tab) {
-            uiController.handleNewTab(NewTab.BACKGROUND, url)
+            val i = Intent(Intent.ACTION_VIEW, url.toUri())
+            i.setData(Uri.parse(url))
+            i.setPackage(DownloadProvider.context!!.packageName)
+            startActivity(activity as Context, i, null)
         },
         DialogItem(
             title = R.string.dialog_open_incognito_tab,
-            isConditionMet = activity is MainActivity
+            isConditionMet = activity is HistoryActivity
         ) {
-            uiController.handleNewTab(NewTab.INCOGNITO, url)
+            //uiController.handleNewTab(NewTab.INCOGNITO, url)
         },
         DialogItem(title = R.string.action_share) {
             IntentUtils(activity).shareUrl(url, null)
@@ -294,7 +300,8 @@ class LightningDialogBuilder @Inject constructor(
             historyModel.deleteHistoryEntry(url)
                 .subscribeOn(databaseScheduler)
                 .observeOn(mainScheduler)
-                .subscribe(uiController::handleHistoryChange)
+                .subscribe()
+            activity.dataChanged()
         })
 
     // TODO There should be a way in which we do not need an activity reference to dowload a file

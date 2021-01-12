@@ -764,13 +764,7 @@ class SmartCookieView(
         val newUrl = result?.extra
 
         if (currentUrl != null && currentUrl.isSpecialUrl()) {
-            if (currentUrl.isHistoryUrl()) {
-                if (url != null) {
-                    dialogBuilder.showLongPressedHistoryLinkDialog(activity, uiController, url)
-                } else if (newUrl != null) {
-                    dialogBuilder.showLongPressedHistoryLinkDialog(activity, uiController, newUrl)
-                }
-            } else if (currentUrl.isBookmarkUrl()) {
+            if (currentUrl.isBookmarkUrl()) {
                 if (url != null) {
                     dialogBuilder.showLongPressedDialogForBookmarkUrl(activity, uiController, url)
                 } else if (newUrl != null) {

@@ -11,14 +11,16 @@ import android.content.Intent.ACTION_VIEW
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat.startActivity
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import butterknife.ButterKnife
@@ -27,16 +29,29 @@ import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.database.HistoryEntry
 import com.cookiegames.smartcookie.database.history.HistoryRepository
 import com.cookiegames.smartcookie.di.injector
+import com.cookiegames.smartcookie.dialog.LightningDialogBuilder
 import com.cookiegames.smartcookie.preference.UserPreferences
+import com.cookiegames.smartcookie.utils.RecyclerItemClickListener
 import com.cookiegames.smartcookie.utils.ThemeUtils
+import com.huxq17.download.DownloadProvider.context
 import java.text.DateFormat
 import java.util.*
 import javax.inject.Inject
+
 
 class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     @JvmField
     @Inject
     var mUserPreferences: UserPreferences? = null
+
+    @JvmField
+    @Inject
+    var dialogBuilder: LightningDialogBuilder? = null
+
+    lateinit var list: RecyclerView
+    lateinit var arrayAdapter: CustomAdapter
+    lateinit var historyList: List<HistoryEntry>
+
 
     @Inject internal lateinit var historyRepository: HistoryRepository
 
@@ -65,10 +80,8 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         setSupportActionBar(toolbar)
         if (supportActionBar != null) supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        val list = findViewById<RecyclerView>(R.id.history)
+        list = findViewById<RecyclerView>(R.id.history)
         val linearLayoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
-
-        var historyList: List<HistoryEntry> = listOf(HistoryEntry("test", "test"))
 
         historyRepository
                 .lastHundredVisitedHistoryEntries()
@@ -77,9 +90,24 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 }
 
         //val downloadAdapter = HistoryAdapter(map, downloadInfoList)
-        val arrayAdapter = CustomAdapter(historyList)
+        arrayAdapter = CustomAdapter(historyList)
         list.layoutManager = linearLayoutManager
         list?.adapter = arrayAdapter
+
+        list.addOnItemTouchListener(
+                RecyclerItemClickListener(context, list, object : RecyclerItemClickListener.OnItemClickListener {
+                    override fun onItemClick(view: View?, position: Int) {
+                        val i = Intent(ACTION_VIEW, historyList[position].url.toUri())
+                        i.setData(Uri.parse(historyList[position].url))
+                        i.setPackage(context!!.packageName)
+                        startActivity(i, null)
+                    }
+
+                    override fun onLongItemClick(view: View?, position: Int) {
+                        dialogBuilder!!.showLongPressedHistoryLinkDialog(this@HistoryActivity, historyList[position].url)
+                    }
+                })
+        )
 
         /*//Sort download list if need.
         Collections.sort(downloadInfoList) { o1, o2 -> (o1.createTime - o2.createTime).toInt() }
@@ -91,6 +119,24 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         //downloadAdapter!!.notifyDataSetChanged()
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            else -> finish()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun dataChanged() {
+        historyRepository
+                .lastHundredVisitedHistoryEntries()
+                .subscribe { list ->
+                    historyList = list
+                }
+        arrayAdapter = CustomAdapter(historyList)
+        list?.adapter = arrayAdapter
+        arrayAdapter.notifyDataSetChanged()
+    }
+
     class CustomAdapter(private val dataSet: List<HistoryEntry>) :
             RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
@@ -99,7 +145,7 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
          * Provide a reference to the type of views that you are using
          * (custom ViewHolder).
          */
-        class ViewHolder(view: View, private val dataSet: List<HistoryEntry>) : RecyclerView.ViewHolder(view), View.OnClickListener {
+        class ViewHolder(view: View, private val dataSet: List<HistoryEntry>) : RecyclerView.ViewHolder(view) {
             val textView: TextView
             val historyUrl: TextView
             val historyDate: TextView
@@ -109,15 +155,14 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 textView = view.findViewById(R.id.historyTitle)
                 historyUrl = view.findViewById(R.id.historyUrl)
                 historyDate = view.findViewById(R.id.historyTime)
-                view.setOnClickListener(this)
             }
 
-            override fun onClick(v: View?) {
+           /*override fun onClick(v: View?) {
                 val i = Intent(ACTION_VIEW, dataSet[layoutPosition].url.toUri())
                 i.setData(Uri.parse(dataSet[adapterPosition].url))
                 i.setPackage(v!!.context!!.packageName)
                 startActivity(v.context, i, null)
-            }
+            }*/
         }
 
         // Create new views (invoked by the layout manager)
