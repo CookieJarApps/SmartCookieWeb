@@ -12,11 +12,9 @@ import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ArrayAdapter
+import android.widget.Filter
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -34,6 +32,7 @@ import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.utils.RecyclerItemClickListener
 import com.cookiegames.smartcookie.utils.ThemeUtils
 import com.huxq17.download.DownloadProvider.context
+import com.huxq17.download.core.DownloadInfo
 import java.text.DateFormat
 import java.util.*
 import javax.inject.Inject
@@ -137,9 +136,42 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         arrayAdapter.notifyDataSetChanged()
     }
 
-    class CustomAdapter(private val dataSet: List<HistoryEntry>) :
+    class CustomAdapter(private var dataSet: List<HistoryEntry>) :
             RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
+        lateinit var filtered: MutableList<HistoryEntry>
+        lateinit var oldList: MutableList<HistoryEntry>
+
+        fun getFilter(): Filter? {
+            return object : Filter() {
+                override fun performFiltering(charSequence: CharSequence): FilterResults? {
+                    val charString = charSequence.toString()
+                    if (charString.isEmpty()) {
+                        filtered = oldList
+                    } else {
+                        val filteredList: MutableList<HistoryEntry> = ArrayList()
+                        for (row in oldList) {
+                            if (row.title.toLowerCase().contains(charString.toLowerCase())) {
+                                filteredList.add(row)
+                            }
+                            else if(row.url.toLowerCase().contains(charString.toLowerCase())){
+                                filteredList.add(row)
+                            }
+                        }
+                        filtered = filteredList
+                    }
+                    val filterResults = FilterResults()
+                    filterResults.values = filtered
+                    return filterResults
+                }
+
+                override fun publishResults(charSequence: CharSequence?, filterResults: FilterResults) {
+                    dataSet = filterResults.values as MutableList<HistoryEntry>
+
+                    notifyDataSetChanged()
+                }
+            }
+        }
 
         /**
          * Provide a reference to the type of views that you are using
@@ -170,7 +202,7 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             // Create a new view, which defines the UI of the list item
             val view = LayoutInflater.from(viewGroup.context)
                     .inflate(R.layout.history_row, viewGroup, false)
-
+            oldList = dataSet.toMutableList()
             return ViewHolder(view, dataSet)
         }
 
@@ -199,14 +231,23 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.history, menu)
 
+        val searchItem: MenuItem = menu.findItem(R.id.action_search)
+        val searchView: SearchView = searchItem.getActionView() as SearchView
+        searchView.setOnQueryTextListener(this)
 
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        TODO("Not yet implemented")
+        return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onQueryTextChange(newText: String?): Boolean {
-        TODO("Not yet implemented")
+    override fun onQueryTextChange(query: String?): Boolean {
+        arrayAdapter?.getFilter()?.filter(query)
+        return false
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return false
     }
 
 }
