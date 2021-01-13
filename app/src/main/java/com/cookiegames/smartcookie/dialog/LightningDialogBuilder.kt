@@ -1,5 +1,18 @@
 package com.cookiegames.smartcookie.dialog
 
+import android.app.Activity
+import android.content.ClipboardManager
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.view.View
+import android.webkit.MimeTypeMap
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.EditText
+import androidx.core.content.ContextCompat.startActivity
+import androidx.core.net.toUri
 import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.constant.HTTP
@@ -15,32 +28,18 @@ import com.cookiegames.smartcookie.download.DownloadHandler
 import com.cookiegames.smartcookie.extensions.copyToClipboard
 import com.cookiegames.smartcookie.extensions.resizeAndShow
 import com.cookiegames.smartcookie.extensions.toast
+import com.cookiegames.smartcookie.history.HistoryActivity
 import com.cookiegames.smartcookie.html.bookmark.BookmarkPageFactory
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.utils.IntentUtils
 import com.cookiegames.smartcookie.utils.isBookmarkUrl
-import android.app.Activity
-import android.app.backup.BackupManager.dataChanged
-import android.content.ClipboardManager
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.util.Log
-import android.view.View
-import android.webkit.MimeTypeMap
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.EditText
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.net.toUri
-import com.cookiegames.smartcookie.history.HistoryActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.huxq17.download.DownloadProvider
 import dagger.Reusable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
+
 
 /**
  * A builder of various dialogs.
@@ -283,12 +282,6 @@ class LightningDialogBuilder @Inject constructor(
             i.setData(Uri.parse(url))
             i.setPackage(DownloadProvider.context!!.packageName)
             startActivity(activity as Context, i, null)
-        },
-        DialogItem(
-            title = R.string.dialog_open_incognito_tab,
-            isConditionMet = activity is HistoryActivity
-        ) {
-            //uiController.handleNewTab(NewTab.INCOGNITO, url)
         },
         DialogItem(title = R.string.action_share) {
             IntentUtils(activity).shareUrl(url, null)

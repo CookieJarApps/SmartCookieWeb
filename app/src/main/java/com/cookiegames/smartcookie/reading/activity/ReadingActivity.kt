@@ -16,7 +16,6 @@ import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.URLSpan
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -405,7 +404,8 @@ class ReadingActivity : AppCompatActivity() {
                     }
                 }
 
-                builderSingle.setNegativeButton("cancel") { dialog: DialogInterface, which: Int -> dialog.dismiss() }
+                builderSingle.setPositiveButton(resources.getString(R.string.action_cancel)) { dialog: DialogInterface, which: Int -> dialog.dismiss() }
+                builderSingle.setNegativeButton(resources.getString(R.string.action_delete)) { dialog: DialogInterface, which: Int -> dialog.dismiss(); deleteDialog() }
                 builderSingle.setAdapter(arrayAdapter) { dialog: DialogInterface?, which: Int -> setTextViewHTML(mBody!!, loadFile(this, l[which])); mTitle?.text = l[which]; file = true; mUrl = l[which] }
                 builderSingle.show()
             }
@@ -413,6 +413,27 @@ class ReadingActivity : AppCompatActivity() {
             else -> finish()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun deleteDialog(){
+        val builderSingle = MaterialAlertDialogBuilder(this@ReadingActivity)
+        builderSingle.setTitle(resources.getString(R.string.action_delete) + ":")
+        val arrayAdapter = ArrayAdapter<String>(this@ReadingActivity, android.R.layout.select_dialog_singlechoice)
+        var deletingFile: String
+
+        val arr: Array<String> = filesDir.list()
+        val l = ArrayList<String>()
+        for (i in arr) {
+            if (i.endsWith(".txt")) {
+                l.add(i.replaceFirst("....$".toRegex(),""))
+                arrayAdapter.add(i.replaceFirst("....$".toRegex(),""))
+            }
+        }
+
+        builderSingle.setAdapter(arrayAdapter) { dialog: DialogInterface?, which: Int ->  delete(l[which]) }
+
+        builderSingle.setPositiveButton(resources.getString(R.string.action_cancel)) { dialog: DialogInterface, which: Int -> dialog.dismiss() }
+        builderSingle.show()
     }
 
     fun saveFile(context: Context, text: String?, name: String?): Boolean {
@@ -426,6 +447,13 @@ class ReadingActivity : AppCompatActivity() {
             e.printStackTrace()
             false
         }
+    }
+
+    fun delete(name: String?): Boolean{
+        val dir = filesDir
+        val file = File(dir, name + ".txt")
+        val deleted = file.delete()
+        return deleted
     }
 
     fun loadFile(context: Context, name: String?): String? {
