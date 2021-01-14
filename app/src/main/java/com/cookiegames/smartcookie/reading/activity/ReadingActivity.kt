@@ -49,6 +49,7 @@ import org.json.JSONException
 import org.json.JSONObject
 import org.jsoup.Jsoup
 import java.io.*
+import java.lang.Exception
 import java.net.URL
 import java.text.BreakIterator
 import java.util.*
@@ -158,16 +159,23 @@ class ReadingActivity : AppCompatActivity() {
 
         override fun onPostExecute(aVoid: Void?) {
             val html: String? = extractedContentHtmlWithUtf8Encoding?.replace("image copyright".toRegex(), resources.getString(R.string.reading_mode_image_copyright) + " ")?.replace("image caption".toRegex(), resources.getString(R.string.reading_mode_image_caption) + " ")?.replace("￼".toRegex(), "")
-            val doc = Jsoup.parse(html)
-            for (element in doc.select("img")) {
-                element.remove()
+            try {
+                val doc = Jsoup.parse(html)
+                for (element in doc.select("img")) {
+                    element.remove()
+                }
+                setText(title, doc.outerHtml())
+                dismissProgressDialog()
             }
-            setText(title, doc.outerHtml())
-            dismissProgressDialog()
+            catch(e: Exception){
+                mTitle!!.alpha = 1.0f
+                mTitle!!.visibility = View.VISIBLE
+                mTitle?.text = resources.getString(R.string.title_error)
+                dismissProgressDialog()
+            }
         }
 
         override fun doInBackground(vararg params: Void?): Void? {
-            var url: URL
             try {
                 val google = URL(mUrl)
                 val line = BufferedReader(InputStreamReader(google.openStream()))
@@ -255,8 +263,6 @@ class ReadingActivity : AppCompatActivity() {
         }
     }
 
-    private class ReaderInfo internal constructor(val title: String, val body: String)
-
     private fun setText(title: String?, body: String?) {
         if (mTitle == null || mBody == null) return
         if (mTitle!!.visibility == View.INVISIBLE) {
@@ -297,13 +303,11 @@ class ReadingActivity : AppCompatActivity() {
         val iterator = BreakIterator.getSentenceInstance(Locale.US)
         val source = mBody!!.text.toString()
         iterator.setText(source)
-        var start = iterator.first()
         var end = iterator.next()
         while (end != BreakIterator.DONE) {
-            start = end
             end = iterator.next()
         }
-        val mySearchUrl = HttpUrl.Builder()
+        val translateUrl = HttpUrl.Builder()
                 .scheme("https")
                 .host("cookiejarapps.com")
                 .addPathSegment("translate")
@@ -311,7 +315,7 @@ class ReadingActivity : AppCompatActivity() {
                 .addQueryParameter("lang", lang)
                 .build()
         val request = Request.Builder()
-                .url(mySearchUrl)
+                .url(translateUrl)
                 .addHeader("Accept", "application/json")
                 .method("GET", null)
                 .build()
@@ -349,15 +353,10 @@ class ReadingActivity : AppCompatActivity() {
                 }
             }
             R.id.translate_item -> {
-                val lang = "fr"
                 val builderSingle = AlertDialog.Builder(this@ReadingActivity)
                 builderSingle.setTitle(resources.getString(R.string.translate_to))
                 val arrayAdapter = ArrayAdapter<String>(this@ReadingActivity, android.R.layout.select_dialog_singlechoice)
-                arrayAdapter.add("English")
-                arrayAdapter.add("Français")
-                arrayAdapter.add("Português")
-                arrayAdapter.add("Português do Brasil")
-                arrayAdapter.add("Italiano")
+                arrayAdapter.addAll("English", "Français", "Português", "Português do Brasil", "Italiano")
                 val languages = arrayOf("en", "fr", "pt-pt", "pt-br", "it")
                 builderSingle.setNegativeButton("cancel") { dialog: DialogInterface, which: Int -> dialog.dismiss() }
                 builderSingle.setAdapter(arrayAdapter) { dialog: DialogInterface?, which: Int -> translate(languages[which]) }

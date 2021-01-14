@@ -66,6 +66,9 @@ class SmartCookieWebClient(
     private val emptyResponseByteArray: ByteArray = byteArrayOf()
     private var urlLoaded = ""
 
+    private var badsslList: MutableList<String> = ArrayList<String>()
+    private var badsslErrors: MutableList<SslError> = ArrayList<SslError>()
+
     private val startBlocked = "<html><head><script language=\"javascript\"> function reload(){setTimeout(function(){window.history.back();}, 500);"
     private val start1Blocked = "};</script><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><style>html{-webkit-text-size-adjust: 100%;font-size: 125%;}body{background-color:#f7f7f7; color: #646464; font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 75%;}div{display:block;}h1{margin-top: 0; color: #333; font-size: 1.6em; font-weight: normal; line-height: 1.25em; margin-bottom: 16px;}button{-webkit-user-select: none; background: rgb(76, 142, 250); border: 0; border-radius: 2px; box-sizing: border-box; color: #fff; cursor: pointer; font-size: .875em; margin: 0; padding: 10px 24px; transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);}button:hover{box-shadow: 0 1px 2px rgba(1, 1, 1, 0.5);}.error-code{color: #777; display: inline; font-size: .86667em; margin-top: 15px; opacity: .5; text-transform: uppercase;}.interstitial-wrapper{box-sizing: border-box;font-size: 1em;margin: 100px auto 0;max-width: 600px;width: 100%;}.offline .interstitial-wrapper{color: #2b2b2b;font-size: 1em;line-height: 1.55;margin: 0 auto;max-width: 600px;padding-top: 100px;width: 100%;}.hidden{display: none;}.nav-wrapper{margin-top: 51px; display:inline-block;}#buttons::after{clear: both; content: ''; display: block; width: 100%;}.nav-wrapper::after{clear: both; content: ''; display: table; width: 100%;}.small-link{color: #696969; font-size: .875em;}@media (max-width: 640px), (max-height: 640px){h1{margin: 0 0 15px;}button{width: 100%;}}.reload{border: none; padding: 12px 16px; font-size: 16px; cursor: pointer;}.reload:before{content: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0V0z'/%3E%3Cpath d='M17.65 6.35c-1.63-1.63-3.94-2.57-6.48-2.31-3.67.37-6.69 3.35-7.1 7.02C3.52 15.91 7.27 20 12 20c3.19 0 5.93-1.87 7.21-4.56.32-.67-.16-1.44-.9-1.44-.37 0-.72.2-.88.53-1.13 2.43-3.84 3.97-6.8 3.31-2.22-.49-4.01-2.3-4.48-4.52C5.31 9.44 8.26 6 12 6c1.66 0 3.14.69 4.22 1.78l-1.51 1.51c-.63.63-.19 1.71.7 1.71H19c.55 0 1-.45 1-1V6.41c0-.89-1.08-1.34-1.71-.71l-.64.65z'/%3E%3C/svg%3E\"); filter: invert(1); width: 20px; float: left; margin-right: 5px; margin-top: -2px;}</style></head><center><body class=\"offline\">\n" + "<div class=\"interstitial-wrapper\"><div id=\"main-content\"><img src=\"file:///android_asset/warning.webp\" height=\"52\" width=\"52\"><br><br><div class=\"icon icon-offline\"></div><div id=\"main-message\"><h1>"
     private val titleBlocked = activity.getString(R.string.blocked_title)
@@ -94,8 +97,6 @@ class SmartCookieWebClient(
     @Inject internal lateinit var blockAds: BlockAds
     @Inject internal lateinit var setWidenView: SetWidenViewport
     private var adBlock: AdBlocker
-
-    private var urlWithSslError: String? = null
 
     @Volatile private var isRunning = false
     private var zoomScale = 0.0f
@@ -521,12 +522,14 @@ class SmartCookieWebClient(
         }
 
         // Only set the SSL state if there isn't an error for the current URL.
-        if (urlWithSslError != url) {
+        if (!badsslList.contains(url)) {
             sslState = if (URLUtil.isHttpsUrl(url)) {
                 SslState.Valid
             } else {
                 SslState.None
             }
+        } else{
+            sslState = SslState.Invalid(badsslErrors[badsslList.indexOf(url)])
         }
 
         smartCookieView.titleInfo.setFavicon(null)
@@ -632,7 +635,9 @@ class SmartCookieWebClient(
 
     override fun onReceivedSslError(webView: WebView, handler: SslErrorHandler, error: SslError) {
 
-        urlWithSslError = webView.url
+        badsslList.add(error.url)
+        badsslErrors.add(error)
+
         sslState = SslState.Invalid(error)
 
         when (sslWarningPreferences.recallBehaviorForDomain(webView.url)) {
@@ -668,6 +673,7 @@ class SmartCookieWebClient(
                     sslWarningPreferences.rememberBehaviorForDomain(webView.url.orEmpty(), SslWarningPreferences.Behavior.PROCEED)
                 }
                 handler.proceed()
+                webView.clearSslPreferences()
             }
             setNegativeButton(activity.getString(R.string.action_no)) { _, _ ->
                 if (dontAskAgain.isChecked) {
