@@ -5,19 +5,23 @@
 
 package com.cookiegames.smartcookie.popup
 
-import android.content.ContentValues.TAG
+import android.content.ActivityNotFoundException
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
-import android.util.Log
+import android.os.Build
+import android.os.Parcelable
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import androidx.annotation.NonNull
+import androidx.annotation.Nullable
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat.startActivity
 import com.cookiegames.smartcookie.AppTheme
@@ -101,16 +105,18 @@ class PopUpClass {
         val uri = Uri.parse(currentUrl)
         val intent = Intent(Intent.ACTION_VIEW, uri)
         val packageManager: PackageManager = activity.getPackageManager()
-        if (intent.resolveActivity(packageManager) == null || intent.resolveActivity(packageManager).packageName == activity.applicationContext.packageName) {
-            popupView.findViewById<ImageButton>(R.id.open_in_app).visibility = View.GONE
-        }
-        if(currentUrl.isSpecialUrl()){
+        if (intent.resolveActivity(packageManager) == null || intent.resolveActivity(packageManager).packageName == activity.applicationContext.packageName || currentUrl.isSpecialUrl()) {
             popupView.findViewById<ImageButton>(R.id.open_in_app).visibility = View.GONE
         }
 
         popupView.findViewById<ImageButton>(R.id.open_in_app).setOnClickListener {
-            activity.startActivity(intent)
+            val components = arrayOf(ComponentName(activity, BrowserActivity::class.java))
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                activity.startActivity(Intent.createChooser(intent, null).putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS,components))
+            else activity.startActivity(intent)
+            popupWindow.dismiss()
         }
+
         popupView.findViewById<ImageButton>(R.id.bookmark_option).setOnClickListener {
             val bookmark = Bookmark.Entry(currentUrl!!, currentView!!.title, 0, Bookmark.Folder.Root)
             activity.bookmarksDialogBuilder.showAddBookmarkDialog(activity, uiController!!, bookmark)
