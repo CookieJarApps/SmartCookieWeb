@@ -57,7 +57,7 @@
     <string name="agent_custom">Настраиваемый</string>
     <string name="title_search_engine">Поисковая система</string>
     <string name="action_ok">ОК</string>
-    <string name="dialog_download">Загрузить файл?</string>
+    <string name="dialog_download">Загрузить файл? (%1$s)</string>
     <string name="unknown_size">Неизвестный размер</string>
     <string name="action_cancel">Отменить</string>
     <string name="title_warning">Предупреждение</string>
