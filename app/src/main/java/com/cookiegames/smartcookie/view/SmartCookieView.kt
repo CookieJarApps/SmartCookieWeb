@@ -253,6 +253,10 @@ class SmartCookieView(
         }
     }
 
+    fun setWhitelistIntent(a: Boolean) {
+        smartCookieWebClient.setWhitelist(a)
+    }
+
     fun currentSslState(): SslState = smartCookieWebClient.sslState
 
     fun sslStateObservable(): Observable<SslState> = smartCookieWebClient.sslStateObservable()

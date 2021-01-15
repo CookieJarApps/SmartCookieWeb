@@ -44,6 +44,16 @@
                 app:srcCompat="@drawable/ic_action_forward" />
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/open_in_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:paddingStart="6dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="6dp"
+                app:srcCompat="@drawable/ic_round_open_in_new_24" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/bookmark_option"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

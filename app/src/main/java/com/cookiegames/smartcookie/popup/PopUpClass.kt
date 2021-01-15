@@ -5,22 +5,21 @@
 
 package com.cookiegames.smartcookie.popup
 
-import android.app.Activity
-import android.app.PendingIntent.getActivity
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
+import android.net.Uri
 import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
-import android.widget.AdapterView.GONE
-import android.widget.AdapterView.OnItemClickListener
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.startActivity
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.IncognitoActivity
 import com.cookiegames.smartcookie.R
@@ -30,7 +29,6 @@ import com.cookiegames.smartcookie.controller.UIController
 import com.cookiegames.smartcookie.database.Bookmark
 import com.cookiegames.smartcookie.database.HistoryEntry
 import com.cookiegames.smartcookie.di.injector
-import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.download.DownloadActivity
 import com.cookiegames.smartcookie.extensions.copyToClipboard
 import com.cookiegames.smartcookie.extensions.snackbar
@@ -42,9 +40,8 @@ import com.cookiegames.smartcookie.utils.IntentUtils
 import com.cookiegames.smartcookie.utils.Utils
 import com.cookiegames.smartcookie.utils.isSpecialUrl
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.search_interface.*
-import java.util.*
 import javax.inject.Inject
+
 
 class PopUpClass {
     private var list: ListView? = null
@@ -99,6 +96,20 @@ class PopUpClass {
         }
         popupView.findViewById<ImageButton>(R.id.close_option).setOnClickListener {
             activity.closeApp()
+        }
+
+        val uri = Uri.parse(currentUrl)
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        val packageManager: PackageManager = activity.getPackageManager()
+        if (intent.resolveActivity(packageManager) == null || intent.resolveActivity(packageManager).packageName == activity.applicationContext.packageName) {
+            popupView.findViewById<ImageButton>(R.id.open_in_app).visibility = View.GONE
+        }
+        if(currentUrl.isSpecialUrl()){
+            popupView.findViewById<ImageButton>(R.id.open_in_app).visibility = View.GONE
+        }
+
+        popupView.findViewById<ImageButton>(R.id.open_in_app).setOnClickListener {
+            activity.startActivity(intent)
         }
         popupView.findViewById<ImageButton>(R.id.bookmark_option).setOnClickListener {
             val bookmark = Bookmark.Entry(currentUrl!!, currentView!!.title, 0, Bookmark.Folder.Root)

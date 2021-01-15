@@ -563,5 +563,7 @@
 
     <string name="grant_permissions">Grant permissions</string>
     <string name="grant_permissions_desc">Read/Write External Storage is required for downloads and bookmark/settings backups</string>
+
+    <string name="open_in_app">Open in app</string>
     <!-- finish pages -->
 </resources>

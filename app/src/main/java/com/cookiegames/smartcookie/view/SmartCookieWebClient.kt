@@ -109,6 +109,8 @@ class SmartCookieWebClient(
             field = value
         }
 
+    private var whitelistIntent = false
+
     private val sslStateSubject: PublishSubject<SslState> = PublishSubject.create()
 
     init {
@@ -121,6 +123,10 @@ class SmartCookieWebClient(
 
     fun updatePreferences() {
         adBlock = chooseAdBlocker()
+    }
+
+    fun setWhitelist(a: Boolean){
+        whitelistIntent = a
     }
 
     private fun chooseAdBlocker(): AdBlocker = if (userPreferences.adBlockEnabled) {
@@ -708,7 +714,6 @@ class SmartCookieWebClient(
         shouldOverrideLoading(view, url) || super.shouldOverrideUrlLoading(view, url)
 
     private fun shouldOverrideLoading(view: WebView, url: String): Boolean {
-
         // Check if configured proxy is available
         if (!proxyUtils.isProxyReady(activity)) {
             // User has been notified
@@ -717,7 +722,7 @@ class SmartCookieWebClient(
 
         val headers = smartCookieView.requestHeaders
 
-        if (smartCookieView.isIncognito || userPreferences.blockIntent) {
+        if (smartCookieView.isIncognito || userPreferences.blockIntent && !whitelistIntent) {
 
             // If we are in incognito, immediately load, we don't want the url to leave the app
             return continueLoadingUrl(view, url, headers)
