@@ -722,7 +722,7 @@ class SmartCookieWebClient(
 
         val headers = smartCookieView.requestHeaders
 
-        if (smartCookieView.isIncognito || userPreferences.blockIntent && !whitelistIntent) {
+        if (smartCookieView.isIncognito || userPreferences.blockIntent && !url.contains("oauth")) {
 
             // If we are in incognito, immediately load, we don't want the url to leave the app
             return continueLoadingUrl(view, url, headers)
