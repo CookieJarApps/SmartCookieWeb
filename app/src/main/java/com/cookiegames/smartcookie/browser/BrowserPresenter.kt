@@ -15,6 +15,7 @@ import com.cookiegames.smartcookie.view.UrlInitializer
 import com.cookiegames.smartcookie.view.find.FindResults
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import android.webkit.URLUtil
 import com.cookiegames.smartcookie.constant.*
 import com.cookiegames.smartcookie.html.incognito.IncognitoPageFactory
@@ -157,11 +158,13 @@ class BrowserPresenter(
      *
      * @param position the position at which to delete the tab.
      */
-    fun deleteTab(position: Int) {
+    fun deleteTab(position: Int, back: Boolean = false) {
         logger.log(TAG, "deleting tab...")
         val tabToDelete = tabsModel.getTabAtPosition(position) ?: return
 
         recentTabModel.addClosedTab(tabToDelete.saveState())
+
+        if(!back && tabToDelete.isNewTab) tabToDelete.isNewTab = false
 
         val isShown = tabToDelete.isShown
         val shouldClose = shouldClose && isShown && tabToDelete.isNewTab

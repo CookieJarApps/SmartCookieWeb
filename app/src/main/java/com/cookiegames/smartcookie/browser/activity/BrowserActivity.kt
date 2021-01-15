@@ -1391,7 +1391,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     if (customView != null || customViewCallback != null) {
                         onHideCustomView()
                     } else {
-                        presenter?.deleteTab(tabsManager.positionOf(currentTab))
+                        presenter?.deleteTab(tabsManager.positionOf(currentTab), true)
                     }
                 }
             } else {
@@ -1924,7 +1924,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             if (currentTab?.canGoBack() == true) {
                 currentTab.goBack()
             } else if (currentTab != null) {
-                tabsManager.let { presenter?.deleteTab(it.positionOf(currentTab)) }
+                tabsManager.let { presenter?.deleteTab(it.positionOf(currentTab), true) }
             }
         } else if (drawer_layout.closeDrawerIfOpen(getBookmarkDrawer())) {
             // Don't do anything other than close the bookmarks drawer when the activity is being
