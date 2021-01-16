@@ -171,21 +171,12 @@ class PopUpClass {
         list?.setAdapter(adapter)
         list?.setOnItemClickListener { parent, view, position, id ->
             var positionList = intArrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
-            if(activity.isIncognito() && !userPreferences.bottomBar){
-                positionList = intArrayOf(0, 3, 6, 7, 8, 9, 10, 11, 12)
-            }
-            else if(activity.isIncognito()){
-                positionList = intArrayOf(12, 11, 10, 9, 8, 7, 6, 3, 0)
-            }
-            else if(userPreferences.translateExtension && userPreferences.bottomBar){
-                positionList = intArrayOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 13, 2, 1, 0)
-            }
-            else if(userPreferences.translateExtension){
-                positionList = intArrayOf(0, 1, 2, 13, 3, 4, 5, 6, 7, 8, 9, 10, 11)
-            }
-            else if(userPreferences.bottomBar){
-                positionList = intArrayOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
-            }
+            if(activity.isIncognito() && !userPreferences.bottomBar) positionList = intArrayOf(0, 3, 6, 7, 8, 9, 10, 11, 12)
+            else if(activity.isIncognito()) positionList = intArrayOf(12, 11, 10, 9, 8, 7, 6, 3, 0)
+            else if(userPreferences.translateExtension && userPreferences.bottomBar) positionList = intArrayOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 13, 2, 1, 0)
+            else if(userPreferences.translateExtension) positionList = intArrayOf(0, 1, 2, 13, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+            else if(userPreferences.bottomBar) positionList = intArrayOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
+
             var currentView = activity.tabsManager.currentTab
             var currentUrl = uiController!!.getTabModel().currentTab?.url
 
