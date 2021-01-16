@@ -1242,7 +1242,14 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     .observeOn(mainScheduler)
                     .subscribe { boolean ->
                         if (boolean) {
-                            deleteBookmark(title, url)
+                            MaterialAlertDialogBuilder(this)
+                                    .setCancelable(true)
+                                    .setTitle(R.string.bookmark_delete)
+                                    .setNegativeButton(android.R.string.no, null)
+                                    .setPositiveButton(R.string.yes) { _, _ ->
+                                        deleteBookmark(title, url)
+                                    }
+                                    .resizeAndShow()
                         } else {
                             addBookmark(title, url)
                         }
