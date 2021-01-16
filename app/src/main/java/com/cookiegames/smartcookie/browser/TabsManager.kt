@@ -422,8 +422,7 @@ class TabsManager @Inject constructor(
         } else {
             tabList[position].also {
                 currentTab = it
-                // TODO: hacky way to check if page is loaded - could be a better way to do this
-                if(it.favicon == null && it.sslCertificate == null && !it.url.contains(":///") && !userPreferences.allTabs){
+                if(it.webView?.progress != 0 && !it.url.contains(":///") && !userPreferences.allTabs){
                     it.reload()
                 }
             }
