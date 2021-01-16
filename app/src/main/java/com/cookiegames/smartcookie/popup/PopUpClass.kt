@@ -148,15 +148,15 @@ class PopUpClass {
         if(userPreferences.translateExtension){
             textString = arrayOf(resources.getString(R.string.action_new_tab), resources.getString(R.string.action_incognito), resources.getString(R.string.action_share), resources.getString(R.string.translator), resources.getString(R.string.action_print), resources.getString(R.string.action_history), resources.getString(R.string.action_downloads), resources.getString(R.string.action_find), resources.getString(R.string.action_copy), resources.getString(R.string.action_add_to_homescreen), resources.getString(R.string.action_bookmarks), resources.getString(R.string.reading_mode), resources.getString(R.string.settings))
             drawableIds = intArrayOf(R.drawable.ic_round_add, R.drawable.incognito_mode, R.drawable.ic_share_black_24dp, R.drawable.translate, R.drawable.ic_round_print_24, R.drawable.ic_history, R.drawable.ic_file_download_black_24dp, R.drawable.ic_search, R.drawable.ic_content_copy_black_24dp, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings)
-
         }
-
         if(activity.isIncognito()){
             textString = arrayOf(resources.getString(R.string.action_new_tab), resources.getString(R.string.action_print), resources.getString(R.string.action_find), resources.getString(R.string.action_copy), resources.getString(R.string.action_add_to_homescreen), resources.getString(R.string.action_bookmarks), resources.getString(R.string.reading_mode), resources.getString(R.string.settings), resources.getString(R.string.quit_private))
             drawableIds = intArrayOf(R.drawable.ic_round_add, R.drawable.ic_round_print_24, R.drawable.ic_search, R.drawable.ic_content_copy_black_24dp, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings, R.drawable.ic_action_back)
         }
-
-
+        if (!activity.isIncognito() && intent.resolveActivity(packageManager) != null && intent.resolveActivity(packageManager).packageName != activity.applicationContext.packageName && !currentUrl.isSpecialUrl()) {
+            textString = textString.plus(resources.getString(R.string.open_in_app))
+            drawableIds = drawableIds.plus(R.drawable.ic_round_open_in_new_24)
+        }
         if (userPreferences!!.bottomBar) {
             textString.reverse()
             for (i in 0 until drawableIds.size / 2) {
@@ -170,11 +170,11 @@ class PopUpClass {
         list = popupView.findViewById(R.id.menuList)
         list?.setAdapter(adapter)
         list?.setOnItemClickListener { parent, view, position, id ->
-            var positionList = intArrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+            var positionList = intArrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14)
             if(activity.isIncognito() && !userPreferences.bottomBar) positionList = intArrayOf(0, 3, 6, 7, 8, 9, 10, 11, 12)
             else if(activity.isIncognito()) positionList = intArrayOf(12, 11, 10, 9, 8, 7, 6, 3, 0)
             else if(userPreferences.translateExtension && userPreferences.bottomBar) positionList = intArrayOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 13, 2, 1, 0)
-            else if(userPreferences.translateExtension) positionList = intArrayOf(0, 1, 2, 13, 3, 4, 5, 6, 7, 8, 9, 10, 11)
+            else if(userPreferences.translateExtension) positionList = intArrayOf(0, 1, 2, 13, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14)
             else if(userPreferences.bottomBar) positionList = intArrayOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
 
             var currentView = activity.tabsManager.currentTab
@@ -219,6 +219,13 @@ class PopUpClass {
                 }
                 13 -> {
                     currentView?.loadUrl("https://translatetheweb.com/?scw=yes&a=" + currentUrl!!) // 13 - Translate
+                }
+                14 -> {
+                    val components = arrayOf(ComponentName(activity, BrowserActivity::class.java))
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                        activity.startActivity(Intent.createChooser(intent, null).putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS,components))
+                    else activity.startActivity(intent)
+                    popupWindow.dismiss() // 13 - Open in App
                 }
             }
             popupWindow.dismiss()
