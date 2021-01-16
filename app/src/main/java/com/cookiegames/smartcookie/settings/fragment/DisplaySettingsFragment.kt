@@ -65,7 +65,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         switchPreference(
                 preference = SETTINGS_NAVBAR,
                 isChecked = userPreferences.navbar,
-                onCheckChange = { userPreferences.navbar = it; Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show() }
+                onCheckChange = { userPreferences.navbar = it }
         )
 
         switchPreference(

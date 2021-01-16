@@ -485,46 +485,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
         customView.findViewById<FrameLayout>(R.id.more_button).setOnClickListener(this)
 
-        Log.d("firstlaunch", userPreferences.firstLaunch.toString())
-        val extraBar = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        if(!userPreferences.navbar){
-            extraBar.visibility = View.GONE
-        }
-        else{
-            extraBar.setOnNavigationItemSelectedListener { item ->
-                when(item.itemId) {
-                    R.id.tabs -> {
-                        drawer_layout.closeDrawer(getBookmarkDrawer())
-                        drawer_layout.openDrawer(getTabDrawer())
-                        true
-                    }
-                    R.id.bookmarks -> {
-                        drawer_layout.closeDrawer(getTabDrawer())
-                        drawer_layout.openDrawer(getBookmarkDrawer())
-                        true
-                    }
-                    R.id.forward -> {
-                        tabsManager.currentTab?.goForward()
-                        true
-                    }
-                    R.id.back -> {
-                        tabsManager.currentTab?.goBack()
-                        true
-                    }
-                    R.id.home -> {
-                        tabsManager.currentTab?.loadHomePage()
-                        true
-                    }
-                    else -> false
-                }
-            }
-        }
-
-
-        if(isDarkTheme && userPreferences.navbar){
-            extraBar.setBackgroundColor(resources.getColor(R.color.black))
-        }
-
 
         // create the search EditText in the ToolBar
         searchView = customView.findViewById<SearchView>(R.id.search).apply {
@@ -807,6 +767,11 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     private fun initializePreferences() {
         val currentView = tabsManager.currentTab
+        val extraBar = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
+        if(isDarkTheme && userPreferences.navbar){
+            extraBar.setBackgroundColor(resources.getColor(R.color.black))
+        }
 
         webPageBitmap?.let { webBitmap ->
             if (!isIncognito() && !isColorMode() && !isDarkTheme) {
@@ -830,6 +795,39 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
         updateCookiePreference().subscribeOn(diskScheduler).subscribe()
         proxyUtils.updateProxySettings(this)
+        if(!userPreferences.navbar){
+            extraBar.visibility = GONE
+        }
+        else{
+            extraBar.visibility = VISIBLE
+            extraBar.setOnNavigationItemSelectedListener { item ->
+                when(item.itemId) {
+                    R.id.tabs -> {
+                        drawer_layout.closeDrawer(getBookmarkDrawer())
+                        drawer_layout.openDrawer(getTabDrawer())
+                        true
+                    }
+                    R.id.bookmarks -> {
+                        drawer_layout.closeDrawer(getTabDrawer())
+                        drawer_layout.openDrawer(getBookmarkDrawer())
+                        true
+                    }
+                    R.id.forward -> {
+                        tabsManager.currentTab?.goForward()
+                        true
+                    }
+                    R.id.back -> {
+                        tabsManager.currentTab?.goBack()
+                        true
+                    }
+                    R.id.home -> {
+                        tabsManager.currentTab?.loadHomePage()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
     }
 
     public override fun onWindowVisibleToUserAfterResume() {
