@@ -44,6 +44,7 @@ class BrowserPresenter(
 
     private var currentTab: SmartCookieView? = null
     private var shouldClose: Boolean = false
+    private var intented: Boolean = false
     private var sslStateSubscription: Disposable? = null
 
     init {
@@ -167,7 +168,7 @@ class BrowserPresenter(
         if(!back && tabToDelete.isNewTab) tabToDelete.isNewTab = false
 
         val isShown = tabToDelete.isShown
-        val shouldClose = shouldClose && isShown && tabToDelete.isNewTab
+        val shouldClose = shouldClose && isShown && tabToDelete.isNewTab || back && intented
         val currentTab = tabsModel.currentTab
         if (tabsModel.size() == 1
             && currentTab != null
@@ -226,9 +227,8 @@ class BrowserPresenter(
     } else {
         intent?.dataString
     }
-
         val tabHashCode = intent?.extras?.getInt(INTENT_ORIGIN, 0) ?: 0
-
+        intented = true
         if (tabHashCode != 0 && url != null) {
             tabsModel.getTabForHashCode(tabHashCode)?.loadUrl(url)
         } else if (url != null) {
