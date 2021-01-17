@@ -204,6 +204,7 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             this.downloadInfo = downloadInfo
             this.status = status
             itemView.dl_name.text = downloadInfo.name
+            itemView.dl_name.isSelected = true
             var speed = ""
             val progress = downloadInfo.progress
             itemView.dl_progress.progress = progress
