@@ -14,6 +14,7 @@ import android.util.Log
 import android.view.*
 import android.webkit.MimeTypeMap
 import android.widget.Filter
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -240,10 +241,14 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             intent.action = Intent.ACTION_VIEW
             val fileURI = filePath.toUri()
             if(getFileExtension(filePath) != "apk"){
-                Log.d("gsdgsdgsdg", fileURI.toString())
                 val finalUri = FileProvider.getUriForFile(v.context, v.context.getApplicationContext().getPackageName().toString() + ".provider", File(filePath))
                 intent.setDataAndType(finalUri, MimeTypeMap.getSingleton().getMimeTypeFromExtension(getFileExtension(filePath)))
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                if (intent.resolveActivity(v.context.packageManager) != null) {
+                    v.context.startActivity(intent)
+                } else {
+                    Toast.makeText(v.context, v.context.resources.getString(R.string.title_error), Toast.LENGTH_LONG).show()
+                }
                 v.context.startActivity(intent)
             }
             else{
