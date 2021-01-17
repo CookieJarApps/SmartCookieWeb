@@ -13,6 +13,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -23,8 +24,8 @@ import android.webkit.MimeTypeMap
 import android.webkit.URLUtil
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.anthonycr.grant.PermissionsManager
-import com.anthonycr.grant.PermissionsResultAction
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.net.toUri
 import com.cookiegames.smartcookie.BuildConfig
 import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
@@ -39,7 +40,6 @@ import com.cookiegames.smartcookie.dialog.BrowserDialog.setDialogSize
 import com.cookiegames.smartcookie.extensions.snackbar
 import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.preference.UserPreferences
-import com.cookiegames.smartcookie.settings.fragment.BookmarkSettingsFragment
 import com.cookiegames.smartcookie.utils.FileUtils
 import com.cookiegames.smartcookie.utils.Utils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -48,7 +48,9 @@ import com.huxq17.download.core.DownloadInfo
 import com.huxq17.download.core.DownloadListener
 import io.reactivex.Scheduler
 import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
+import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -104,12 +106,46 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
         onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize)
     }
 
+    fun createAndSaveFileFromBase64Url(url: String, context: Context): String? {
+        val path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+        val filetype = url.substring(url.indexOf("/") + 1, url.indexOf(";"))
+        val filename = System.currentTimeMillis().toString() + "." + filetype
+        val file = File(path, filename)
+        try {
+            if (!path.exists()) path.mkdirs()
+            if (!file.exists()) file.createNewFile()
+            val base64EncodedString = url.substring(url.indexOf(",") + 1)
+            val decodedBytes: ByteArray = android.util.Base64.decode(base64EncodedString, android.util.Base64.DEFAULT)
+            val os: OutputStream = FileOutputStream(file)
+            os.write(decodedBytes)
+            os.close()
+
+            //Tell the media scanner about the new file so that it is immediately available to the user.
+            MediaScannerConnection.scanFile(context, arrayOf(file.toString()), null,
+                    object : MediaScannerConnection.OnScanCompletedListener {
+                        override fun onScanCompleted(path: String, uri: Uri) {
+                            Log.i("ExternalStorage", "Scanned $path:")
+                            Log.i("ExternalStorage", "-> uri=$uri")
+                        }
+                    })
+        } catch (e: IOException) {
+            Log.w("ExternalStorage", "Error writing $file", e)
+            //Toast.makeText(getApplicationContext(), R.string.error_downloading, Toast.LENGTH_LONG).show()
+        }
+        return file.toString()
+    }
+
     fun onDownloadStart(context: Activity, manager: UserPreferences, url: String, userAgent: String,
                         contentDisposition: String?, mimeType: String, contentSize: String) {
         logger.log(TAG, "DOWNLOAD: Trying to download from URL: $url")
         logger.log(TAG, "DOWNLOAD: Content disposition: $contentDisposition")
         logger.log(TAG, "DOWNLOAD: MimeType: $mimeType")
         logger.log(TAG, "DOWNLOAD: User agent: $userAgent")
+
+        if(url.toUri().scheme == "data"){
+            val path = createAndSaveFileFromBase64Url(url, context)
+            return
+        }
 
         var location
                 = manager.downloadDirectory
@@ -158,7 +194,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
         Pump.newRequest(url, downloadFolder.toString() + "/" + URLUtil.guessFileName(url, contentDisposition, mimeType)) //Set id,optionally
                 .listener(object : DownloadListener() {
                     override fun onSuccess() {
-                        notificationManager.cancel(uniqid);
+                        notificationManager.cancel(uniqid)
                         builder.setContentTitle(context.getString(R.string.download_successful))
                                 .setContentText(URLUtil.guessFileName(url, contentDisposition, mimeType))
                                 .setSmallIcon(R.drawable.ic_file_download_black_24dp)
@@ -166,7 +202,18 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
                                 .setContentIntent(rpIntent)
                                 .setOnlyAlertOnce(true)
                         builder.setProgress(0, 0, false);
-                        notificationManager.notify(uniqid + 1, builder.build());
+                        notificationManager.notify(uniqid + 1, builder.build())
+
+                        val file = downloadInfo.filePath
+
+                        MediaScannerConnection.scanFile(context, arrayOf(file.toString()), null,
+                                object : MediaScannerConnection.OnScanCompletedListener {
+                                    override fun onScanCompleted(path: String, uri: Uri) {
+                                        Log.i("ExternalStorage", "Scanned $path:")
+                                        Log.i("ExternalStorage", "-> uri=$uri")
+                                    }
+                                })
+
                     }
                     override fun onFailed() {
                         notificationManager.cancel(uniqid)

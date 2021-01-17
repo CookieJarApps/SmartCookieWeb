@@ -55,6 +55,12 @@ class SuggestionsAdapter(
 
     private val layoutInflater = LayoutInflater.from(context)
 
+    var onInsertClicked: ((WebPage) -> Unit)? = null
+
+    private val onClick = View.OnClickListener {
+        onInsertClicked?.invoke(it.tag as WebPage)
+    }
+
     init {
         context.injector.inject(this)
 
@@ -124,6 +130,9 @@ class SuggestionsAdapter(
             is SearchSuggestion -> searchIcon
             is HistoryEntry -> webPageIcon
         }
+
+        holder.suggestionInsert.tag = webPage
+        holder.suggestionInsert.setOnClickListener(onClick)
 
         holder.imageView.setImageDrawable(image)
 
