@@ -33,8 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- android:ellipsize="marquee"
-    android:marqueeRepeatLimit="marquee_forever"
-        android:textColor="#666666" -->
+    android:marqueeRepeatLimit="marquee_forever" -->
 
     <TextView
         android:id="@+id/dl_name"
@@ -47,6 +46,7 @@
         android:maxLines="1"
         android:scrollHorizontally="true"
         android:text="Name"
+        android:textColor="#666666"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/dl_progress"
         app:layout_constraintLeft_toRightOf="@id/dl_icon"
@@ -83,6 +83,10 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="8sp"
+        app:autoSizeMaxTextSize="12sp"
+        app:autoSizeStepGranularity="2sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
