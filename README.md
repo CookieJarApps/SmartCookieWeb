@@ -54,6 +54,8 @@ Need help? Open an issue here, or:
 
 Contributions are greatly appreciated. Feel free to open an issue or pull request or [help translate](translate.cookiejarapps.com)
 
+See the contributors list [here](https://smartcookieweb.com/contributors.php)
+
 ---
 
 ## Contributors
