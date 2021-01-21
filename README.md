@@ -16,7 +16,10 @@
 <a href="https://matrix.to/#/#smartcookieweb:matrix.org" alt="SmartCookieWeb Matrix"><img src="https://img.shields.io/badge/Chat%20on-Matrix-brightgreen.svg"></a> 
 </p> 
 <hr>
-<p align="center"><a href='https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png' height="50"/></a> <a href='https://f-droid.org/en/packages/com.cookiegames.smartcookie/'><img alt='Get it on F-Droid' src='https://gitlab.com/fdroid/artwork/-/raw/master/badge/get-it-on-en.png' height="50"/></a>
+<p align="center">
+ <a href='https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png' height="50"/></a> 
+ <a href='https://f-droid.org/en/packages/com.cookiegames.smartcookie/'><img alt='Get it on F-Droid' src='https://gitlab.com/fdroid/artwork/-/raw/master/badge/get-it-on-en.png' height="50"/></a>
+ <a href='https://cookiejarapps.com/device/'><img alt='Try this app in your browser' src='https://storeimg.com/uploads/6009aab9069a2.png' height="50"/></a>
 <p align="center"><a href="https://github.com/CookieJarApps/SmartCookieWeb-beta"><b>Beta Releases</b></a> &bull; <a href="https://help.cookiejarapps.com"><b>FAQ</b></a> &bull; <a href="https://smartcookieweb.com"><b>Website</b></a> &bull; <a href="https://smartcookieweb.com/contributors.php"><b>Contributors</b></a></p>
 <h5 align="center">Important note: Google recently announced that embedded browser frameworks, or any browsers that fake their user agent will be banned from Google sign in starting January next year. If you notice any issues signing in to Google apps, even with your user agent set to 'mobile', please open an issue as soon as possible so I can invesigate</h5>
 
