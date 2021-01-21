@@ -5,7 +5,7 @@
 <p align="center"> 
 <a href="https://github.com/CookieJarApps/SmartCookieWeb/releases" alt="GitHub Release (latest by date)"><img src="https://img.shields.io/github/v/release/CookieJarApps/SmartCookieWeb.svg" ></a> 
 <a href="https://github.com/CookieJarApps/SmartCookieWeb/actions" alt="Android CI"><img src="https://github.com/CookieJarApps/SmartCookieWeb/workflows/Android%20CI/badge.svg?event=push"></a> 
-<a href="https://img.shields.io/github/license/cookiejarapps/smartcookieweb" alt="Travis (.org)"><img src="https://img.shields.io/travis/cookiejarapps/smartcookieweb"></a> 
+<a href="https://img.shields.io/travis/cookiejarapps/smartcookieweb" alt="Travis (.org)"><img src="https://img.shields.io/travis/cookiejarapps/smartcookieweb"></a> 
 <a href="https://www.mozilla.org/en-US/MPL/2.0/" alt="MPL-2.0 License"><img src="https://img.shields.io/github/license/cookiejarapps/smartcookieweb"></a> 
 <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FCookieJarApps%2FSmartCookieWeb.svg?type=shield"></a> 
 <a href="https://github.com/CookieJarApps/SmartCookieWeb/stargazers" alt="GitHub Stars"><img src="https://img.shields.io/github/stars/cookiejarapps/smartcookieweb?style=social"></a> 
@@ -21,7 +21,7 @@
  <a href='https://f-droid.org/en/packages/com.cookiegames.smartcookie/'><img alt='Get it on F-Droid' src='https://gitlab.com/fdroid/artwork/-/raw/master/badge/get-it-on-en.png' height="50"/></a>
  <a href='https://cookiejarapps.com/device/'><img alt='Try this app in your browser' src='https://storeimg.com/uploads/6009aab9069a2.png' height="50"/></a>
 <p align="center"><a href="https://github.com/CookieJarApps/SmartCookieWeb-beta"><b>Beta Releases</b></a> &bull; <a href="https://help.cookiejarapps.com"><b>FAQ</b></a> &bull; <a href="https://smartcookieweb.com"><b>Website</b></a> &bull; <a href="https://smartcookieweb.com/contributors.php"><b>Contributors</b></a></p>
-<h5 align="center">Important note: Google recently announced that embedded browser frameworks, or any browsers that fake their user agent will be banned from Google sign in starting January next year. If you notice any issues signing in to Google apps, even with your user agent set to 'mobile', please open an issue as soon as possible so I can invesigate</h5>
+<h4 align="center"><em>Important note: Google recently announced that embedded browser frameworks, or any browsers that fake their user agent will be banned from Google sign in starting January next year. If you notice any issues signing in to Google apps, even with your user agent set to 'mobile', please open an issue as soon as possible so I can invesigate</em></h4>
 
 ---
 
@@ -29,7 +29,7 @@
 
 Need help? Open an issue here, or:
 
-- Visit https://smartcookieweb.com/help
+- Visit the [help page](https://smartcookieweb.com/help)
 - Email me at `support@cookiejarapps.com`
 - Join the [Telegram chat](https://t.me/scwgroup)
 - Join the [Matrix chat](https://matrix.to/#/#smartcookieweb:matrix.org)
