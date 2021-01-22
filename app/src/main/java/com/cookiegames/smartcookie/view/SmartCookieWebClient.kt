@@ -2,6 +2,7 @@ package com.cookiegames.smartcookie.view
 
 import android.annotation.TargetApi
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
@@ -46,9 +47,7 @@ import com.cookiegames.smartcookie.utils.isSpecialUrl
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
-import java.io.ByteArrayInputStream
-import java.io.File
-import java.io.InputStream
+import java.io.*
 import java.net.HttpURLConnection
 import java.net.URISyntaxException
 import java.net.URL
@@ -187,6 +186,85 @@ class SmartCookieWebClient(
         return null
     }
 
+    private fun uninstallExtension(text: String) {
+
+        val path = activity.getFilesDir()
+
+        val letDirectory = File(path, "extensions")
+        letDirectory.mkdirs()
+        val file = File(letDirectory, "extension_file.txt")
+        if(!file.exists()){
+            file.appendText("/* begin extensions file */")
+        }
+        var inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
+        var result: String
+        if(inputAsString.contains("/*") && inputAsString.contains("*/")){
+            result = text.substring(text.indexOf("/*") + 2, text.indexOf("*/"))
+        }
+        else{
+            val toast = Toast.makeText(activity, "Extension not installed", Toast.LENGTH_LONG)
+            toast.show()
+            smartCookieView.loadHomePage()
+            /*smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+            Handler().postDelayed({
+            smartCookieView.webView!!.settings.javaScriptEnabled = true
+            smartCookieView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be uninstalled because it isn\'t installed.';", null)
+            smartCookieView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+            }, 600)*/
+            return
+        }
+
+        var string1 = inputAsString.substring(inputAsString.indexOf("/*" + result + "*/") + 4 + result.length, inputAsString.indexOf("/*End " + result + "*/"))
+        inputAsString = inputAsString.replace(string1, "")
+        inputAsString = inputAsString.replace("/*" + result + "*/", "")
+        inputAsString = inputAsString.replace("/*End " + result + "*/", "")
+        PrintWriter(file).close()
+        file.appendText(inputAsString)
+    }
+    private fun installExtension(text: String){
+        var result = ""
+        val path = activity.getFilesDir()
+        val letDirectory = File(path, "extensions")
+        letDirectory.mkdirs()
+        val file = File(letDirectory, "extension_file.txt")
+        if(!file.exists()){
+            file.appendText("/* begin extensions file */")
+        }
+        val inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
+        result = text.substring(text.indexOf("/*") + 2, text.indexOf("*/"))
+        if(inputAsString.contains("/*" + result + "*/")){
+            val toast = Toast.makeText(activity, "Extension already installed", Toast.LENGTH_LONG)
+            toast.show()
+            smartCookieView.loadHomePage()
+            /* smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+             Handler().postDelayed({
+                 smartCookieView.webView!!.settings.javaScriptEnabled = true
+                 smartCookieView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it is already installed.';", null)
+                 smartCookieView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+             }, 600)*/
+        }
+        else{
+            if(text.contains("/*" + result + "*/") && text.contains("/*End " + result + "*/")){
+                val toast = Toast.makeText(activity, "Extension installed", Toast.LENGTH_LONG)
+                toast.show()
+                file.appendText(text)
+                file.appendText(System.getProperty("line.separator")!!)
+                smartCookieView.loadHomePage()
+            }
+            else{
+                val toast = Toast.makeText(activity, "Extension invalid", Toast.LENGTH_LONG)
+                toast.show()
+                smartCookieView.loadHomePage()
+                /* smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
+                 Handler().postDelayed({
+                 smartCookieView.webView!!.settings.javaScriptEnabled = true
+                 smartCookieView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it isn\'t valid.';", null)
+                 smartCookieView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
+             }, 600)*/
+            }
+        }
+    }
+
     override fun onPageFinished(view: WebView, url: String) {
         if(url.contains(BuildConfig.APPLICATION_ID + "/files/homepage.html")) {
             view.evaluateJavascript("javascript:(function() {"
@@ -202,6 +280,29 @@ class SmartCookieWebClient(
                     + "link4var = '" + userPreferences.link4  + "';"
                     + "})();", null)
         }
+
+        if(url.contains("?install_extension=true") && url.contains("//cookiejarapps.com/extensions")){
+            val builder = MaterialAlertDialogBuilder(activity)
+            builder.setTitle("Install Extension")
+            builder.setMessage("This extension is verified. Do you want to install this extension?")
+            builder.setPositiveButton(R.string.yes){dialog, which ->
+                //Toast.makeText(activity,"Extension installed.",Toast.LENGTH_SHORT).show()
+
+                view.evaluateJavascript("""(function() {
+                return document.body.innerText;
+                })()""".trimMargin()) {
+                    val extensionSource = it.substring(1, it.length-1)
+                    Log.d("PageSource", extensionSource)
+                    installExtension(extensionSource)
+                }
+
+            }
+            builder.setNegativeButton("No"){_,_ ->
+            }
+            val dialog: androidx.appcompat.app.AlertDialog = builder.create()
+            dialog.show()
+        }
+
         if (view.isShown) {
             uiController.updateUrl(url, false)
 
@@ -227,17 +328,10 @@ class SmartCookieWebClient(
             else{
                 lang = Locale.getDefault().displayLanguage
             }
-            if(lang == "pt-BR"){
-                view.evaluateJavascript("lang = 'pt'; " + translate.provideJs(), null)
-
-            }
-            else if(lang == "pt" || lang == "português"){
-                view.evaluateJavascript("lang = 'pt-PT'; " + translate.provideJs(), null)
-
-            }
-            else{
-                view.evaluateJavascript("lang = '" + lang + "'; " + translate.provideJs(), null)
-
+            when(lang){
+                "pt-BR" -> view.evaluateJavascript("lang = 'pt'; " + translate.provideJs(), null)
+                "pt", "português" -> view.evaluateJavascript("lang = 'pt-PT'; " + translate.provideJs(), null)
+                else -> view.evaluateJavascript("lang = '" + lang + "'; " + translate.provideJs(), null)
             }
         }
 
