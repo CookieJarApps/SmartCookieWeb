@@ -2,7 +2,6 @@ package com.cookiegames.smartcookie.view
 
 import android.annotation.TargetApi
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
@@ -32,6 +31,9 @@ import com.cookiegames.smartcookie.browser.JavaScriptChoice
 import com.cookiegames.smartcookie.browser.SiteBlockChoice
 import com.cookiegames.smartcookie.constant.FILE
 import com.cookiegames.smartcookie.controller.UIController
+import com.cookiegames.smartcookie.database.javascript.JavaScriptDatabase
+import com.cookiegames.smartcookie.database.javascript.JavaScriptRepository
+import com.cookiegames.smartcookie.di.DatabaseScheduler
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.extensions.resizeAndShow
 import com.cookiegames.smartcookie.extensions.snackbar
@@ -46,12 +48,15 @@ import com.cookiegames.smartcookie.utils.Utils
 import com.cookiegames.smartcookie.utils.isSpecialUrl
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.Observable
+import io.reactivex.Scheduler
 import io.reactivex.subjects.PublishSubject
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URISyntaxException
 import java.net.URL
 import java.util.*
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 import javax.inject.Inject
 import kotlin.math.abs
 
@@ -95,6 +100,8 @@ class SmartCookieWebClient(
     @Inject internal lateinit var cookieBlock: CookieBlock
     @Inject internal lateinit var blockAds: BlockAds
     @Inject internal lateinit var setWidenView: SetWidenViewport
+    @Inject internal lateinit var javascriptRepository: JavaScriptRepository
+    @Inject @field:DatabaseScheduler internal lateinit var databaseScheduler: Scheduler
     private var adBlock: AdBlocker
 
     @Volatile private var isRunning = false
@@ -178,7 +185,6 @@ class SmartCookieWebClient(
             val empty = ByteArrayInputStream(emptyResponseByteArray)
             return WebResourceResponse("text/plain", "utf-8", empty)
         }
-        //workarounds for sites that are broken in WebView.
         if(url.contains("detectPopBlock.js")){
             val empty = ByteArrayInputStream(emptyResponseByteArray)
             return WebResourceResponse("text/plain", "utf-8", empty)
@@ -222,47 +228,31 @@ class SmartCookieWebClient(
         file.appendText(inputAsString)
     }
     private fun installExtension(text: String){
-        var result = ""
-        val path = activity.getFilesDir()
-        val letDirectory = File(path, "extensions")
-        letDirectory.mkdirs()
-        val file = File(letDirectory, "extension_file.txt")
-        if(!file.exists()){
-            file.appendText("/* begin extensions file */")
+        val metadataRegex: Pattern = Pattern.compile("==UserScript==(.*?)==\\/UserScript==", Pattern.DOTALL)
+        val metadataMatcher: Matcher = metadataRegex.matcher(text)
+        var metadata = ""
+        var code = ""
+        var name = ""
+        if (metadataMatcher.find()) {
+            metadata = metadataMatcher.group(1)
+            code = text.replace(metadataMatcher.group(1), "")
         }
-        val inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
-        result = text.substring(text.indexOf("/*") + 2, text.indexOf("*/"))
-        if(inputAsString.contains("/*" + result + "*/")){
-            val toast = Toast.makeText(activity, "Extension already installed", Toast.LENGTH_LONG)
-            toast.show()
-            smartCookieView.loadHomePage()
-            /* smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
-             Handler().postDelayed({
-                 smartCookieView.webView!!.settings.javaScriptEnabled = true
-                 smartCookieView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it is already installed.';", null)
-                 smartCookieView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
-             }, 600)*/
-        }
-        else{
-            if(text.contains("/*" + result + "*/") && text.contains("/*End " + result + "*/")){
-                val toast = Toast.makeText(activity, "Extension installed", Toast.LENGTH_LONG)
-                toast.show()
-                file.appendText(text)
-                file.appendText(System.getProperty("line.separator")!!)
-                smartCookieView.loadHomePage()
-            }
-            else{
-                val toast = Toast.makeText(activity, "Extension invalid", Toast.LENGTH_LONG)
-                toast.show()
-                smartCookieView.loadHomePage()
-                /* smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
-                 Handler().postDelayed({
-                 smartCookieView.webView!!.settings.javaScriptEnabled = true
-                 smartCookieView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be installed because it isn\'t valid.';", null)
-                 smartCookieView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
-             }, 600)*/
-            }
-        }
+
+        name = text.substringAfter("@name").substringBefore("// ")
+
+        val urls = Regex("@include (.*?)\\n")
+        val matches = urls.findAll(text)
+        val names = matches.map { it.groupValues[1] }.joinToString()
+
+        //@include(.*?).*
+
+        javascriptRepository.addJavaScriptIfNotExists(JavaScriptDatabase.JavaScriptEntry(name, names, code.replace("// ==UserScript====/UserScript==", "")))
+                .subscribeOn(databaseScheduler)
+                .subscribe { aBoolean: Boolean? ->
+                    if (!aBoolean!!) {
+                        logger.log("SmartCookieWebClient", "error saving download to database")
+                    }
+                }
     }
 
     override fun onPageFinished(view: WebView, url: String) {
@@ -281,10 +271,10 @@ class SmartCookieWebClient(
                     + "})();", null)
         }
 
-        if(url.contains("?install_extension=true") && url.contains("//cookiejarapps.com/extensions")){
+        if(url.contains(".user.js")){
             val builder = MaterialAlertDialogBuilder(activity)
-            builder.setTitle("Install Extension")
-            builder.setMessage("This extension is verified. Do you want to install this extension?")
+            builder.setTitle("Install UserScript")
+            builder.setMessage("Do you want to install this UserScript?")
             builder.setPositiveButton(R.string.yes){dialog, which ->
                 //Toast.makeText(activity,"Extension installed.",Toast.LENGTH_SHORT).show()
 
@@ -292,7 +282,6 @@ class SmartCookieWebClient(
                 return document.body.innerText;
                 })()""".trimMargin()) {
                     val extensionSource = it.substring(1, it.length-1)
-                    Log.d("PageSource", extensionSource)
                     installExtension(extensionSource)
                 }
 
@@ -341,13 +330,6 @@ class SmartCookieWebClient(
             val editor: SharedPreferences.Editor = activity.getSharedPreferences("com.cookiegames.smartcookie", Context.MODE_PRIVATE).edit()
             editor.putString("source", it)
             editor.apply()
-        }
-
-        if(url.contains("//cookiejarapps.com/extensions") && Locale.getDefault().getDisplayLanguage() != "English"){
-            view.evaluateJavascript("\$('#modal1').modal();\n" +
-                    "    \$('#modal1').modal('open'); ", null)
-            view.evaluateJavascript("document.getElementById(\"notSupported\").innerHTML = \""+ activity.resources.getString(R.string.language_not_supported) +"\"; document.getElementById(\"notSupportedText\").innerHTML = \"" + activity.resources.getString(R.string.language_not_supported_text) + "\";", null)
-
         }
 
         if (view.title == null || view.title.isNullOrEmpty()) {
@@ -414,11 +396,9 @@ class SmartCookieWebClient(
             else if (userPreferences.siteBlockChoice === SiteBlockChoice.BLACKLIST) {
                 if (userPreferences.siteBlockNames !== "") {
                     val arrayOfURLs = userPreferences.siteBlockNames
-                    val strgs: Array<String>
+                    var strgs: Array<String> = arrayOfURLs.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
                     if (arrayOfURLs.contains(", ")) {
                         strgs = arrayOfURLs.split(", ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
-                    } else {
-                        strgs = arrayOfURLs.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
                     }
                     if (!stringContainsItemFromList(url, strgs)) {
                         if (url.contains("file:///android_asset") or url.contains("about:blank")) {
@@ -443,6 +423,26 @@ class SmartCookieWebClient(
 
         if(userPreferences.noAmp){
             view.evaluateJavascript(noAMP.provideJs(), null)
+        }
+
+        var jsList = emptyList<JavaScriptDatabase.JavaScriptEntry>()
+        javascriptRepository.lastHundredVisitedJavaScriptEntries()
+                .subscribe { list ->
+                    jsList = list
+                }
+
+        for(i in jsList){
+            // view.evaluateJavascript(i.code, null)
+            view.evaluateJavascript(
+                    i.code.replace("""\"""", """"""") // issue here?
+                    .replace("\\n", System.lineSeparator())
+                    .replace("\\t", "")
+                    .replace("\\u003C", "<")
+                    .replace("""/"""", """"""")
+                    .replace("""//"""", """/"""")
+                    .replace("""\\'""", """\'""")
+                     .replace("""\\""""", """\""""")
+                    , null)
         }
     }
 
@@ -515,17 +515,6 @@ class SmartCookieWebClient(
             }
         }
 
-        if(url.contains("//finished")) {
-            view.evaluateJavascript("""(function() {
-            if(localStorage.getItem("adblock")){ return "checked"; } else{ return "not checked"; }
-            })()""".trimMargin()) {
-                Log.d("itxxa2qw", it)
-            }
-
-           // view.loadUrl(BuildConfig.APPLICATION_ID + "/files/homepage.html")
-        }
-
-
             if(url.contains(BuildConfig.APPLICATION_ID + "/files/homepage.html")){
                 view.evaluateJavascript("""(function() {
                 return localStorage.getItem("shouldUpdate");
@@ -576,11 +565,9 @@ class SmartCookieWebClient(
         if (userPreferences.javaScriptChoice === JavaScriptChoice.BLACKLIST) {
             if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked !== " ") {
                 val arrayOfURLs = userPreferences.javaScriptBlocked
-                val strgs: Array<String>
+                var strgs: Array<String> = arrayOfURLs.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
                 if (arrayOfURLs.contains(", ")) {
                     strgs = arrayOfURLs.split(", ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
-                } else {
-                    strgs = arrayOfURLs.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
                 }
                 if (!stringContainsItemFromList(url, strgs)) {
                     if (url.contains("file:///android_asset") or url.contains("about:blank")) {
@@ -589,19 +576,15 @@ class SmartCookieWebClient(
                         view.settings.javaScriptEnabled = false
                     }
                 }
-                else{
-                    return
-                }
+                else{ return }
             }
         }
         else  if (userPreferences.javaScriptChoice === JavaScriptChoice.WHITELIST) run {
             if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked !== " ") {
                 val arrayOfURLs = userPreferences.javaScriptBlocked
-                val strgs: Array<String>
+                var strgs: Array<String> = arrayOfURLs.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
                 if (arrayOfURLs.contains(", ")) {
                     strgs = arrayOfURLs.split(", ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
-                } else {
-                    strgs = arrayOfURLs.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
                 }
                 if (stringContainsItemFromList(url, strgs)) {
                     if (url.contains("file:///android_asset") or url.contains("about:blank")) {
@@ -635,8 +618,6 @@ class SmartCookieWebClient(
         smartCookieView.titleInfo.setFavicon(null)
         if (smartCookieView.isShown) {
             uiController.updateUrl(url, true)
-
-
             uiController.showActionBar()
             uiController.showActionBar()
         }

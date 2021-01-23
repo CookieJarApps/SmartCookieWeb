@@ -148,8 +148,6 @@ class BookmarkDatabase @Inject constructor(
     }
 
     override fun moveBookmark(entry: Bookmark.Entry, oldPosition: Int, newPosition: Int): Completable = Completable.fromAction{
-        //Log.d("teastsegse", entry.title)
-
         val contentValues = ContentValues(1).apply {
             put(KEY_POSITION, newPosition)
         }

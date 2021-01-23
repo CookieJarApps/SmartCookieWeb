@@ -16,6 +16,8 @@ import com.cookiegames.smartcookie.database.downloads.DownloadsDatabase
 import com.cookiegames.smartcookie.database.downloads.DownloadsRepository
 import com.cookiegames.smartcookie.database.history.HistoryDatabase
 import com.cookiegames.smartcookie.database.history.HistoryRepository
+import com.cookiegames.smartcookie.database.javascript.JavaScriptDatabase
+import com.cookiegames.smartcookie.database.javascript.JavaScriptRepository
 import com.cookiegames.smartcookie.ssl.SessionSslWarningPreferences
 import com.cookiegames.smartcookie.ssl.SslWarningPreferences
 import dagger.Binds
@@ -35,6 +37,9 @@ abstract class AppBindsModule {
 
     @Binds
     abstract fun providesHistoryModel(historyDatabase: HistoryDatabase): HistoryRepository
+
+    @Binds
+    abstract fun providesJavaScriptModel(javaScriptDatabase: JavaScriptDatabase): JavaScriptRepository
 
     @Binds
     abstract fun providesAdBlockAllowListModel(adBlockAllowListDatabase: AdBlockAllowListDatabase): AdBlockAllowListRepository

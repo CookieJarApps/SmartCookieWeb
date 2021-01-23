@@ -33,6 +33,7 @@ sealed class Bookmark(
     override val title: String
 ) : WebPage(url, title) {
 
+
     /**
      * A data type that has been bookmarked by the user.
      *
