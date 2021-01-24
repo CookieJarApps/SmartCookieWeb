@@ -469,16 +469,16 @@
     <string name="pausing_download">In pausa</string>
     <string name="waiting_download">In attesa</string>
     <string name="pause_download">Sospendi</string>
-    <string name="confirm_delete">Confirm delete?</string>
+    <string name="confirm_delete">Confermare cancellazione?</string>
     <string name="grant_permissions">Concedi autorizzazioni</string>
     <string name="grant_permissions_desc">La lettura/scrittura di archiviazione esterna è richiesta per i backup di scaricamenti e segnalibri/impostazioni</string>
     <string name="open_in_app">Apri in app</string>
     <string name="bookmark_delete">Sicuri di voler eliminare questo segnalibro?</string>
-    <string name="install_userscript">Install UserScript</string>
-    <string name="install_userscript_description">Do you want to install this UserScript?</string>
-    <string name="remove_userscript">Remove UserScript</string>
-    <string name="remove_userscript_description">Do you want to remove this UserScript?</string>
-    <string name="scripts">UserScripts</string>
-    <string name="scripts_store">UserScripts store</string>
+    <string name="install_userscript">Installa UserScript</string>
+    <string name="install_userscript_description">Si desidera installare questo UserScript?</string>
+    <string name="remove_userscript">Rimuovi UserScript</string>
+    <string name="remove_userscript_description">Si desidera rimuovere questo UserScript?</string>
+    <string name="scripts">UserScript</string>
+    <string name="scripts_store">Negozio per UserScript</string>
     <!-- finish pages -->
 </resources>
