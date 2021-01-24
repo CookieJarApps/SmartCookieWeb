@@ -23,7 +23,7 @@ interface JavaScriptRepository {
      * @param url the URL of the item to delete.
      * @return a valid observable.
      */
-    fun deleteJavaScriptEntry(url: String): Completable
+    fun deleteJavaScriptEntry(name: String): Completable
 
     /**
      * An observable that finds all history items containing the given query. If the query is

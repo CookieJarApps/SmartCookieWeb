@@ -29,4 +29,18 @@
             android:key="coming_soon">
         </Preference>
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/scripts">
+        <Preference android:title="@string/scripts_store"
+            android:key="scripts_store">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://cookiejarapps.com/scripts/">
+            <extra
+                android:name="SOURCE"
+                android:value="SELF" />
+        </intent>
+        </Preference>
+        <Preference android:title="@string/remove_userscript"
+            android:key="remove_userscript"/>
+    </PreferenceCategory>
 </PreferenceScreen>

@@ -63,7 +63,7 @@ class JavaScriptDatabase @Inject constructor(
     }
 
     override fun deleteJavaScriptEntry(url: String): Completable = Completable.fromAction {
-        database.delete(TABLE_JAVASCRIPT, "$KEY_URL_LIST = ?", arrayOf(url))
+        database.delete(TABLE_JAVASCRIPT, "$KEY_NAME = ?", arrayOf(url))
     }
 
     override fun findJavaScriptEntriesContaining(query: String): Single<List<JavaScriptEntry>> =

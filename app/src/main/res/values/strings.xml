@@ -560,6 +560,7 @@
     <string name="pausing_download">Pausing</string>
     <string name="waiting_download">Waiting</string>
     <string name="pause_download">Pause</string>
+    <string name="confirm_delete">Confirm delete?</string>
 
     <string name="grant_permissions">Grant permissions</string>
     <string name="grant_permissions_desc">Read/Write External Storage is required for downloads and bookmark/settings backups</string>
@@ -567,5 +568,14 @@
     <string name="open_in_app">Open in app</string>
 
     <string name="bookmark_delete">Are you sure you want to delete this bookmark?</string>
+
+    <string name="install_userscript">Install UserScript</string>
+    <string name="install_userscript_description">Do you want to install this UserScript?</string>
+
+    <string name="remove_userscript">Remove UserScript</string>
+    <string name="remove_userscript_description">Do you want to remove this UserScript?</string>
+
+    <string name="scripts">UserScripts</string>
+    <string name="scripts_store">UserScripts store</string>
     <!-- finish pages -->
 </resources>

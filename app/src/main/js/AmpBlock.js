@@ -15,7 +15,7 @@ for(var i = 0; i < amp.length; i++){
 
 // Still AMP :(
 var h = document.getElementsByTagName('html');
-if (h[0].getAttribute('amp') != null || h[0].getAttribute('⚡') != null && window.location.href.includes("google.com")){
+if (h[0].getAttribute('amp') != null && window.location.href.includes("amp") || h[0].getAttribute('⚡') != null && window.location.href.includes("amp")){
         eles = document.getElementsByTagName('link');
         for (var i=0; i<eles.length;i++){
             if (eles[i].getAttribute('rel') == 'canonical'){

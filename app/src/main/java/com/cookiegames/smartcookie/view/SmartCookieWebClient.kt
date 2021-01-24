@@ -240,9 +240,10 @@ class SmartCookieWebClient(
 
         name = text.substringAfter("@name").substringBefore("// ")
 
-        val urls = Regex("@include (.*?)\\n")
+        val urls = Regex("@match (.*?)\\\\n")
         val matches = urls.findAll(text)
-        val names = matches.map { it.groupValues[1] }.joinToString()
+        var names = matches.map { it.groupValues[1] }.joinToString()
+        names = names.replace("\\s".toRegex(), "")
 
         //@include(.*?).*
 
@@ -250,7 +251,7 @@ class SmartCookieWebClient(
                 .subscribeOn(databaseScheduler)
                 .subscribe { aBoolean: Boolean? ->
                     if (!aBoolean!!) {
-                        logger.log("SmartCookieWebClient", "error saving download to database")
+                        logger.log("SmartCookieWebClient", "error saving script to database")
                     }
                 }
     }
@@ -273,8 +274,8 @@ class SmartCookieWebClient(
 
         if(url.contains(".user.js")){
             val builder = MaterialAlertDialogBuilder(activity)
-            builder.setTitle("Install UserScript")
-            builder.setMessage("Do you want to install this UserScript?")
+            builder.setTitle(activity.resources.getString(R.string.install_userscript))
+            builder.setMessage(activity.resources.getString(R.string.install_userscript_description))
             builder.setPositiveButton(R.string.yes){dialog, which ->
                 //Toast.makeText(activity,"Extension installed.",Toast.LENGTH_SHORT).show()
 
@@ -432,17 +433,22 @@ class SmartCookieWebClient(
                 }
 
         for(i in jsList){
-            // view.evaluateJavascript(i.code, null)
-            view.evaluateJavascript(
-                    i.code.replace("""\"""", """"""") // issue here?
-                    .replace("\\n", System.lineSeparator())
-                    .replace("\\t", "")
-                    .replace("\\u003C", "<")
-                    .replace("""/"""", """"""")
-                    .replace("""//"""", """/"""")
-                    .replace("""\\'""", """\'""")
-                     .replace("""\\""""", """\""""")
-                    , null)
+            for(x in i.urlList.split(",")){
+                val regex = "\\Q$x\\E".replace("*", "\\E.*\\Q").toRegex()
+                if(view.url.matches(regex)){
+                    view.evaluateJavascript(
+                            i.code.replace("""\"""", """"""")
+                                    .replace("\\n", System.lineSeparator())
+                                    .replace("\\t", "")
+                                    .replace("\\u003C", "<")
+                                    .replace("""/"""", """"""")
+                                    .replace("""//"""", """/"""")
+                                    .replace("""\\'""", """\'""")
+                                    .replace("""\\""""", """\""""")
+                            , null)
+                    break
+                }
+            }
         }
     }
 

@@ -192,12 +192,12 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             itemView.dl_status.setOnClickListener(this)
             itemView.setOnLongClickListener(this)
             dialog = MaterialAlertDialogBuilder(itemView.context)
-                    .setTitle("Confirm delete?")
-                    .setPositiveButton("Yes") { _, _ ->
+                    .setTitle(itemView.context.resources.getString(R.string.confirm_delete))
+                    .setPositiveButton(itemView.context.resources.getString(R.string.yes)) { _, _ ->
                         adapter.delete(this@DownloadViewHolder)
                         Pump.deleteById(downloadInfo.id)
                     }
-                    .setNegativeButton("No") { _, _ -> }
+                    .setNegativeButton(itemView.context.resources.getString(R.string.no)) { _, _ -> }
                     .create()
         }
 
