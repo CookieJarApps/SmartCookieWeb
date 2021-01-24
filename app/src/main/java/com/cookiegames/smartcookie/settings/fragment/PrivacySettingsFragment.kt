@@ -2,29 +2,26 @@
 package com.cookiegames.smartcookie.settings.fragment
 
 import android.app.Activity
-import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.webkit.WebView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.cookiegames.smartcookie.DeviceCapabilities
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.PasswordChoice
-import com.cookiegames.smartcookie.browser.TabsManager
 import com.cookiegames.smartcookie.database.history.HistoryRepository
 import com.cookiegames.smartcookie.di.DatabaseScheduler
 import com.cookiegames.smartcookie.di.MainScheduler
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.dialog.DialogItem
-import com.cookiegames.smartcookie.extensions.snackbar
 import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
 import com.cookiegames.smartcookie.isSupported
 import com.cookiegames.smartcookie.preference.UserPreferences
-import com.cookiegames.smartcookie.utils.FileUtils
 import com.cookiegames.smartcookie.utils.WebUtils
 import com.cookiegames.smartcookie.view.SmartCookieView
 import io.reactivex.Completable
@@ -37,6 +34,8 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
     @Inject internal lateinit var userPreferences: UserPreferences
     @Inject @field:DatabaseScheduler internal lateinit var databaseScheduler: Scheduler
     @Inject @field:MainScheduler internal lateinit var mainScheduler: Scheduler
+
+    var toastMessage: Toast? = null
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preference_privacy)
@@ -243,8 +242,9 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
                 clearHistory()
                     .subscribeOn(databaseScheduler)
                     .observeOn(mainScheduler)
-                    .subscribe {
-                        activity?.snackbar(R.string.message_clear_history)
+                    .subscribe {toastMessage?.cancel()
+                        toastMessage = Toast.makeText(activity, R.string.message_clear_history, Toast.LENGTH_LONG)
+                        toastMessage!!.show()
                     }
             },
             negativeButton = DialogItem(title = R.string.action_no) {},
@@ -262,7 +262,9 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
                     .subscribeOn(databaseScheduler)
                     .observeOn(mainScheduler)
                     .subscribe {
-                        activity?.snackbar(R.string.message_cookies_cleared)
+                        toastMessage?.cancel()
+                        toastMessage = Toast.makeText(activity, R.string.message_cookies_cleared, Toast.LENGTH_LONG)
+                        toastMessage!!.show()
                     }
             },
             negativeButton = DialogItem(title = R.string.action_no) {},
@@ -276,7 +278,9 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
             destroy()
         }
         deleteCache(requireContext())
-        activity?.snackbar(R.string.message_cache_cleared)
+        toastMessage?.cancel()
+        toastMessage = Toast.makeText(activity, R.string.message_cache_cleared, Toast.LENGTH_LONG)
+        toastMessage!!.show()
     }
 
     fun deleteCache(context: Context) {
@@ -341,7 +345,10 @@ class PrivacySettingsFragment : AbstractSettingsFragment() {
             destroy()
         }
         context?.let { WebUtils.eraseWebStorage(it) }
-        activity?.snackbar(R.string.message_web_storage_cleared)
+
+        toastMessage?.cancel()
+        toastMessage = Toast.makeText(activity, R.string.message_web_storage_cleared, Toast.LENGTH_LONG)
+        toastMessage!!.show()
     }
 
     companion object {
