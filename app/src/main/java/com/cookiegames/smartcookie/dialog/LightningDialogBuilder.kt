@@ -11,6 +11,7 @@ import android.webkit.MimeTypeMap
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.EditText
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.net.toUri
 import com.cookiegames.smartcookie.MainActivity
@@ -95,26 +96,27 @@ class LightningDialogBuilder @Inject constructor(
         activity: Activity,
         uiController: UIController,
         entry: Bookmark.Entry
-    ) = BrowserDialog.show(activity, R.string.action_bookmarks,
-        DialogItem(title = R.string.dialog_open_new_tab) {
+    ) = BrowserDialog.showWithIcons(activity, activity.resources.getString(R.string.action_bookmarks),
+        DialogItem(title = R.string.dialog_open_new_tab, icon = ContextCompat.getDrawable(activity, R.drawable.ic_action_tabs)) {
             uiController.handleNewTab(NewTab.FOREGROUND, entry.url)
         },
-        DialogItem(title = R.string.dialog_open_background_tab) {
+        DialogItem(title = R.string.dialog_open_background_tab, icon = ContextCompat.getDrawable(activity, R.drawable.ic_round_open_in_new_24)) {
             uiController.handleNewTab(NewTab.BACKGROUND, entry.url)
         },
         DialogItem(
             title = R.string.dialog_open_incognito_tab,
-            isConditionMet = activity is MainActivity
+            isConditionMet = activity is MainActivity,
+                icon = ContextCompat.getDrawable(activity, R.drawable.incognito_mode)
         ) {
             uiController.handleNewTab(NewTab.INCOGNITO, entry.url)
         },
-        DialogItem(title = R.string.action_share) {
+        DialogItem(title = R.string.action_share, icon = ContextCompat.getDrawable(activity, R.drawable.ic_share_black_24dp)) {
             IntentUtils(activity).shareUrl(entry.url, entry.title)
         },
-        DialogItem(title = R.string.dialog_copy_link) {
+        DialogItem(title = R.string.dialog_copy_link, icon = ContextCompat.getDrawable(activity, R.drawable.ic_content_copy_black_24dp)) {
             clipboardManager.copyToClipboard(entry.url)
         },
-        DialogItem(title = R.string.dialog_remove_bookmark) {
+        DialogItem(title = R.string.dialog_remove_bookmark, icon = ContextCompat.getDrawable(activity, R.drawable.ic_action_delete)) {
             bookmarkManager.deleteBookmark(entry)
                 .subscribeOn(databaseScheduler)
                 .observeOn(mainScheduler)
@@ -124,7 +126,7 @@ class LightningDialogBuilder @Inject constructor(
                     }
                 }
         },
-        DialogItem(title = R.string.dialog_edit_bookmark) {
+        DialogItem(title = R.string.dialog_edit_bookmark, icon = ContextCompat.getDrawable(activity, R.drawable.ic_action_edit)) {
             showEditBookmarkDialog(activity, uiController, entry)
         })
 
