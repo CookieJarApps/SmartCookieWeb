@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_desc">A free and open source web browser that blocks ads and trackers</string>
     <string name="action_new_tab">Nowa karta</string>
     <string name="action_share">Udostępnij</string>
     <string name="action_print">Drukuj</string>
@@ -9,6 +10,7 @@
     <string name="action_add_bookmark">Dodaj zakładkę</string>
     <string name="action_copy">Skopiuj link</string>
     <string name="action_forward">Przekaż dalej</string>
+    <string name="action_sort">Sort</string>
     <string name="settings">Ustawienia</string>
     <string name="location">Dostęp do lokalizacji</string>
     <string name="password">Zapisz swoje hasła</string>
@@ -90,7 +92,7 @@
     <string name="action_homepage">Domyślnie</string>
     <string name="action_back">Wróć</string>
     <string name="action_find">Znajdź na stronie</string>
-    <string name="download_pending">Rozpoczęcie pobierania \ u2026</string>
+    <string name="download_pending">Rozpoczęcie pobierania\u2026</string>
     <string name="cannot_download">Można pobierać tylko adresy URL HTTP lub HTTPS.</string>
     <string name="problem_download">Napotkano nieprawidłowy adres URL, nie można pobrać</string>
     <string name="problem_location_download">Nie można pobrać do wskazanej lokalizacji</string>
@@ -407,6 +409,7 @@
     <string name="translator">Tłumacz (beta)</string>
     <string name="coming_soon">Więcej wkrótce...</string>
     <string name="navbar_col">Ustaw kolor paska nawigacji</string>
+    <string name="color_filter">Set color filter</string>
     <string name="color">Kolor</string>
     <string name="looknfeel">Ustawienia wyglądu</string>
     <string name="customize">Ustawienia dostosowywania</string>
@@ -445,6 +448,7 @@
     <string name="onboarding_two">Kliknij numer karty lub przesuń palcem od lewej krawędzi aby otworzyć szufladę karty.</string>
     <string name="onboarding_three">Użyj narzędzi stron w liście zakładek, aby tymczasowo wyłączyć blok reklam, otwórz wersję pulpitową witryny i więcej.</string>
     <string name="load_tabs">Wczytaj wszystkie karty podczas uruchamiania przeglądarki</string>
+    <string name="navbar">Navbar</string>
     <string name="search_homepage">Szukaj...</string>
     <string name="start">Zaczynamy!</string>
     <string name="show_shortcuts">Pokaż skróty na stronie startowej</string>
@@ -452,7 +456,7 @@
     <string name="reading_mode_image_caption">Obraz z podpisem</string>
     <string name="show_second_bar">Pokaż dodatkowy pasek nawigacji</string>
     <string name="edit_cookies">Edytuj pliki cookie witryny</string>
-    <string name="ssl_size">Key size</string>
+    <string name="ssl_size">Rozmiar klucza</string>
     <string name="algorithm">Algorytm</string>
     <string name="crash_warning">Włączenie tego ustawienia z włączoną opcją \"Pozwól witrynom otwierać nowe okna\" może powodować błędy</string>
     <string name="amp_to_html">AMP na HTML (beta)</string>
@@ -461,6 +465,22 @@
     <string name="file_is">Plik jest:</string>
     <string name="translate_to">Przetłumacz na:</string>
     <string name="new_drag">Dostęp do menu opcji kart i zakładek można teraz uzyskać przez naciśnięcie ikony. Przytrzymanie tekstu pozwoli teraz na zmianę jego kolejności.</string>
-    <string name="last_loaded">Last loaded</string>
+    <string name="last_loaded">Ostatnio otwarte</string>
+    <string name="continue_download">Continue</string>
+    <string name="start_download">Start</string>
+    <string name="pausing_download">Pausing</string>
+    <string name="waiting_download">Waiting</string>
+    <string name="pause_download">Pause</string>
+    <string name="confirm_delete">Confirm delete?</string>
+    <string name="grant_permissions">Grant permissions</string>
+    <string name="grant_permissions_desc">Read/Write External Storage is required for downloads and bookmark/settings backups</string>
+    <string name="open_in_app">Open in app</string>
+    <string name="bookmark_delete">Are you sure you want to delete this bookmark?</string>
+    <string name="install_userscript">Install UserScript</string>
+    <string name="install_userscript_description">Do you want to install this UserScript?</string>
+    <string name="remove_userscript">Remove UserScript</string>
+    <string name="remove_userscript_description">Do you want to remove this UserScript?</string>
+    <string name="scripts">UserScripts</string>
+    <string name="scripts_store">UserScripts store</string>
     <!-- finish pages -->
 </resources>

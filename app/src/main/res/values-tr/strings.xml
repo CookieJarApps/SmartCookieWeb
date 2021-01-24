@@ -5,6 +5,7 @@
     <!-- Translated by users on Crowdin
     -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_desc">A free and open source web browser that blocks ads and trackers</string>
     <string name="action_new_tab">Yeni sekme</string>
     <string name="action_share">Paylaş</string>
     <string name="action_print">Yazdır</string>
@@ -14,6 +15,7 @@
     <string name="action_add_bookmark">Yer imi ekle</string>
     <string name="action_copy">Bağlantıyı kopyala</string>
     <string name="action_forward">İleri</string>
+    <string name="action_sort">Sort</string>
     <string name="settings">Ayarlar</string>
     <string name="location">Konum erişimi</string>
     <string name="password">Parolalarını kaydet</string>
@@ -410,6 +412,7 @@
     <string name="translator">Çevirmen (beta)</string>
     <string name="coming_soon">Daha fazlası yakında...</string>
     <string name="navbar_col">Gezinme çubuğu rengini ayarla</string>
+    <string name="color_filter">Set color filter</string>
     <string name="color">Renk</string>
     <string name="looknfeel">Görünüm ve Hissetme Ayarları</string>
     <string name="customize">Özelleştirme Ayarları</string>
@@ -448,6 +451,7 @@
     <string name="onboarding_two">Sekme çekmecesini açmak için sekme numarasını tıklayın veya sol kenardan kaydırın.</string>
     <string name="onboarding_three">Reklam engellemesini geçici olarak kapatmak, bir sitenin masaüstü sürümünü açmak ve daha fazlası için yer imi çekmecesinde sayfa araçlarını kullanın.</string>
     <string name="load_tabs">Tarayıcı başladığında tüm sekmeleri yükle</string>
+    <string name="navbar">Navbar</string>
     <string name="search_homepage">Arama...</string>
     <string name="start">Kullanmaya Başlayın!</string>
     <string name="show_shortcuts">Ana sayfada kısayolları göster</string>
@@ -459,6 +463,27 @@
     <string name="algorithm">Algoritma</string>
     <string name="crash_warning">Bu ayarın \'Sitelerin yeni pencere açmasına izin ver\' ile etkinleştirilmesi çökmelere neden olabilir</string>
     <string name="amp_to_html">AMP\'den HTML\'ye</string>
-    <string name="private_title">Private mode</string>
-    <string name="private_desc">Tabs in private mode work like normal tabs, but when they are closed all the data from that tab is erased. Private browsing does NOT make you anonymous, but it can keep what you do online secret from anyone else using this device.</string>
+    <string name="private_title">Özel mod</string>
+    <string name="private_desc">Özel moddaki sekmeler normal sekmeler gibi çalışır, ancak kapatıldıklarında o sekmedeki tüm veriler silinir. Gizli gezinme sizi anonim hale getirmez, ancak çevrimiçi yaptığınız şeyleri bu cihazı kullanan herhangi birinden gizli tutabilir.</string>
+    <string name="file_is">Dosya:</string>
+    <string name="translate_to">Şu dile çevir:</string>
+    <string name="new_drag">Sekme ve yer imi seçeneği menülerine artık simgesine basılarak erişilebilir. Metni basılı tutmak artık onları yeniden sıralamanıza izin verecektir.</string>
+    <string name="last_loaded">Last loaded</string>
+    <string name="continue_download">Continue</string>
+    <string name="start_download">Start</string>
+    <string name="pausing_download">Pausing</string>
+    <string name="waiting_download">Waiting</string>
+    <string name="pause_download">Pause</string>
+    <string name="confirm_delete">Confirm delete?</string>
+    <string name="grant_permissions">Grant permissions</string>
+    <string name="grant_permissions_desc">Read/Write External Storage is required for downloads and bookmark/settings backups</string>
+    <string name="open_in_app">Open in app</string>
+    <string name="bookmark_delete">Are you sure you want to delete this bookmark?</string>
+    <string name="install_userscript">Install UserScript</string>
+    <string name="install_userscript_description">Do you want to install this UserScript?</string>
+    <string name="remove_userscript">Remove UserScript</string>
+    <string name="remove_userscript_description">Do you want to remove this UserScript?</string>
+    <string name="scripts">UserScripts</string>
+    <string name="scripts_store">UserScripts store</string>
+    <!-- finish pages -->
 </resources>

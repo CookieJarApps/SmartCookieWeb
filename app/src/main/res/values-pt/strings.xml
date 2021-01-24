@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_desc">A free and open source web browser that blocks ads and trackers</string>
+    <string name="app_desc">Um navegador web open source que bloqueia anúncios e rastreadores</string>
     <string name="action_new_tab">Novo separador</string>
     <string name="action_share">Partilhar</string>
     <string name="action_print">Imprimir</string>
@@ -10,6 +10,7 @@
     <string name="action_add_bookmark">Adicionar marcador</string>
     <string name="action_copy">Copiar ligação</string>
     <string name="action_forward">Avançar</string>
+    <string name="action_sort">Ordenar</string>
     <string name="settings">Definições</string>
     <string name="location">Acesso à localização</string>
     <string name="password">Guardar palavras-passe</string>
@@ -406,7 +407,7 @@
     <string name="translator">Tradutor (beta)</string>
     <string name="coming_soon">Mais algumas a caminho...</string>
     <string name="navbar_col">Cor da barra de navegação</string>
-    <string name="color_filter">Set color filter</string>
+    <string name="color_filter">Definir filtro de cor</string>
     <string name="color">Cor</string>
     <string name="looknfeel">Definições de aspeto</string>
     <string name="customize">Definições de personalização</string>
@@ -445,7 +446,7 @@
     <string name="onboarding_two">Toque no número do separador (ou deslize desde a margem esquerda) para abrir o menu de navegação.</string>
     <string name="onboarding_three">Utilize as ferramentas no menu de marcadores para desativar o bloqueio de anúncios, abrir a versão \'desktop\' e muito mais.</string>
     <string name="load_tabs">Carregar todos os separadores ao iniciar</string>
-    <string name="navbar">Navbar</string>
+    <string name="navbar">Barra de navegação</string>
     <string name="search_homepage">Pesquisar...</string>
     <string name="start">Iniciar!</string>
     <string name="show_shortcuts">Mostrar atalhos na página inicial</string>
@@ -463,12 +464,21 @@
     <string name="translate_to">Traduzir para:</string>
     <string name="new_drag">Os menus Separadores e Marcadores são agora acedidos com um toque no ícone. A pressão no texto permite-lhe agora a reorganização.</string>
     <string name="last_loaded">Vista em</string>
-    <string name="continue_download">Continue</string>
-    <string name="start_download">Start</string>
-    <string name="pausing_download">Pausing</string>
-    <string name="waiting_download">Waiting</string>
-    <string name="pause_download">Pause</string>
-    <string name="grant_permissions">Grant permissions</string>
-    <string name="grant_permissions_desc">Read/Write External Storage is required for downloads and bookmark/settings backups</string>
+    <string name="continue_download">Continuar</string>
+    <string name="start_download">Iniciar</string>
+    <string name="pausing_download">Em pausa</string>
+    <string name="waiting_download">À espera</string>
+    <string name="pause_download">Pausa</string>
+    <string name="confirm_delete">Confirm delete?</string>
+    <string name="grant_permissions">Conceder permissões</string>
+    <string name="grant_permissions_desc">A permissão \'Read/Write External Storage\' é necessária para as descargas e para os backups</string>
+    <string name="open_in_app">Abrir na aplicação</string>
+    <string name="bookmark_delete">Are you sure you want to delete this bookmark?</string>
+    <string name="install_userscript">Install UserScript</string>
+    <string name="install_userscript_description">Do you want to install this UserScript?</string>
+    <string name="remove_userscript">Remove UserScript</string>
+    <string name="remove_userscript_description">Do you want to remove this UserScript?</string>
+    <string name="scripts">UserScripts</string>
+    <string name="scripts_store">UserScripts store</string>
     <!-- finish pages -->
 </resources>

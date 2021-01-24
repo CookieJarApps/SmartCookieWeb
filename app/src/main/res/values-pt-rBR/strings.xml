@@ -10,6 +10,7 @@
     <string name="action_add_bookmark">Adicionar aos favoritos</string>
     <string name="action_copy">Copiar link</string>
     <string name="action_forward">Avançar</string>
+    <string name="action_sort">Ordenar</string>
     <string name="settings">Configurações</string>
     <string name="location">Acesso à localização</string>
     <string name="password">Salvar suas senhas</string>
@@ -300,7 +301,7 @@
     <string name="block_ad_source">Fonte do arquivo de Hosts</string>
     <string name="block_ad_remote_refresh_frequency_description">Para arquivos remotos</string>
     <string name="block_ad_refresh_now">Recarregar lista agora</string>
-    <string name="webrtc_support">Suporte WebRTC</string>
+    <string name="webrtc_support">Permitir solicitações de permissão WebRTC</string>
     <string name="save_data">Solicitar \'Salvar Dados\'</string>
     <!-- debug strings -->
     <string name="debug_title">Configurações de depuração</string>
@@ -468,7 +469,16 @@
     <string name="pausing_download">Pausando</string>
     <string name="waiting_download">Aguardando</string>
     <string name="pause_download">Pausar</string>
+    <string name="confirm_delete">Confirmar exclusão?</string>
     <string name="grant_permissions">Conceder permissões</string>
-    <string name="grant_permissions_desc">Ler/Gravar Armazenamento Externo é necessário para fazer downloads e criar/restaurar backups de favoritos/configurações</string>
+    <string name="grant_permissions_desc">A permissão de Leitura e Gravação no Armazenamento Externo é necessária para fazer downloads e para criar e restaurar backups dos favoritos e das configurações</string>
+    <string name="open_in_app">Abrir no aplicativo</string>
+    <string name="bookmark_delete">Tem certeza que deseja excluir este favorito?</string>
+    <string name="install_userscript">Instalar UserScript</string>
+    <string name="install_userscript_description">Deseja instalar este UserScript?</string>
+    <string name="remove_userscript">Remover UserScript</string>
+    <string name="remove_userscript_description">Deseja remover este UserScript?</string>
+    <string name="scripts">UserScripts</string>
+    <string name="scripts_store">Loja de UserScripts</string>
     <!-- finish pages -->
 </resources>

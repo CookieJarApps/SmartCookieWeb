@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_desc">Un navigatore di rete gratuito e open source che blocca gli annunci e i tracciatori</string>
     <string name="action_new_tab">Nuova scheda</string>
     <string name="action_share">Condividi</string>
     <string name="action_print">Stampa</string>
@@ -9,6 +10,7 @@
     <string name="action_add_bookmark">Aggiungi segnalibro</string>
     <string name="action_copy">Copia collegamento</string>
     <string name="action_forward">Inoltra</string>
+    <string name="action_sort">Ordina</string>
     <string name="settings">Impostazioni</string>
     <string name="location">Accesso alla posizione</string>
     <string name="password">Salva le tue password</string>
@@ -17,7 +19,7 @@
     <string name="home">Pagina iniziale</string>
     <string name="fullscreen">Nascondi la barra degli indirizzi durante lo scorrimento</string>
     <string name="java">Abilita JavaScript</string>
-    <string name="download">Posizione trasferimento</string>
+    <string name="download">Percorso di trasferimento</string>
     <string name="settings_advanced">Impostazioni avanzate</string>
     <string name="settings_advanced_explain">Contenuto della casella indirizzi, modalità di rendering, codifica del testo&#8230;</string>
     <string name="apache">Licenza Apache 2.0</string>
@@ -63,9 +65,9 @@
     <string name="title_warning">Attenzione</string>
     <string name="dialog_adobe_not_installed">Adobe Flash Player non è installato.\nSi prega di installare Flash Player.</string>
     <string name="title_user_agent">User agent</string>
-    <string name="title_download_location">Posizione trasferimento</string>
+    <string name="title_download_location">Percorso di trasferimento</string>
     <string name="download_failed">Scaricamento fallito con errore:</string>
-    <string name="download_successful">Scaricamento riuscito</string>
+    <string name="download_successful">Scaricamento completato con successo</string>
     <string name="title_custom_homepage">Pagina iniziale personalizzata</string>
     <string name="action_webpage">Pagina web</string>
     <string name="title_clear_history">Svuota cronologia</string>
@@ -93,11 +95,11 @@
     <string name="download_pending">Avvio trasferimento\u2026</string>
     <string name="cannot_download">È possibile scaricare solamente indirizzi HTTP o HTTPS.</string>
     <string name="problem_download">Rilevato URL non valido, impossibile scaricare</string>
-    <string name="problem_location_download">Impossibile scaricare nella posizione specificata</string>
+    <string name="problem_location_download">Impossibile scaricare nel percorso specificato</string>
     <string name="download_no_sdcard_dlg_title">Nessuna scheda SD</string>
-    <string name="download_no_sdcard_dlg_msg">È necessario l\'archivio USB per scaricare il file.</string>
-    <string name="download_sdcard_busy_dlg_title">Archivio USB non disponibile</string>
-    <string name="download_sdcard_busy_dlg_msg">Lo spazio di archiviazione è occupato. Per consentire scaricamenti, tocca \'Disattiva archivio USB\' nella notifica.</string>
+    <string name="download_no_sdcard_dlg_msg">Memoria di archiviazione necessaria per poter scaricare il file.</string>
+    <string name="download_sdcard_busy_dlg_title">Memoria di archiviazione non disponibile</string>
+    <string name="download_sdcard_busy_dlg_msg">Memoria di archiviazione in uso. Per consentire scaricamenti, toccare \'Disattiva memoria USB\' nella notifica.</string>
     <string name="incognito_cookies">Abilita i cookie nelle schede private</string>
     <string name="title_flash">Adobe Flash</string>
     <string name="action_manual">Manuale</string>
@@ -317,8 +319,8 @@
     <string name="dialog_rename_folder">Rinomina cartella</string>
     <string name="dialog_remove_folder">Rimuovi cartella</string>
     <string name="dialog_title_close_browser">Chiudi schede</string>
-    <string name="dialog_delete_download">Elimina scaricamento</string>
-    <string name="dialog_delete_all_downloads">Elimina tutti gli scaricamenti</string>
+    <string name="dialog_delete_download">Rimuovi trasferimento dalla cronologia</string>
+    <string name="dialog_delete_all_downloads">Rimuovi tutti i trasferimenti dalla cronologia</string>
     <!-- Search Engines -->
     <string name="search_engine_custom">Indirizzo personalizzato</string>
     <string name="search_engine_google">Google</string>
@@ -405,6 +407,7 @@
     <string name="translator">Traduttore (beta)</string>
     <string name="coming_soon">A breve altre novità...</string>
     <string name="navbar_col">Imposta colore della barra di navigazione</string>
+    <string name="color_filter">Imposta filtro colore</string>
     <string name="color">Colore</string>
     <string name="looknfeel">Impostazioni aspetto e atmosfera</string>
     <string name="customize">Impostazioni personalizzazione</string>
@@ -436,13 +439,14 @@
     <string name="warn">Modifica solo se sai cosa stai facendo!</string>
     <string name="download_channel">Trasferimenti</string>
     <string name="download_description">Informazioni sull\'avanzamento del trasferimento</string>
-    <string name="download_to_sd">Trasferisci su scheda SD</string>
+    <string name="download_to_sd">Scarica su scheda SD</string>
     <string name="legacy_download_manager">Utilizza gestore trasferimenti integrato</string>
-    <string name="legacy_download_manager_desc">Scaricare i file utilizzando il gestore trasferimenti di SmartCookieWeb, invece di quello di sistema</string>
+    <string name="legacy_download_manager_desc">Scaricare i file utilizzando il gestore trasferimenti di SmartCookieWeb, invece che quello di sistema</string>
     <string name="onboarding_one">Impostazioni di accesso, segnalibri (o scorri dal bordo destro) e altro nel menù extra.</string>
     <string name="onboarding_two">Cliccare sul numero di scheda o scorrere dal bordo sinistro per aprire il cassetto schede.</string>
     <string name="onboarding_three">Usare gli strumenti di pagina del cassetto segnalibri per disattivare temporaneamente il blocco annunci, aprire la versione desktop di un sito e altro ancora.</string>
     <string name="load_tabs">Carica tutte le schede quando il navigatore viene avviato</string>
+    <string name="navbar">Barra navigazione</string>
     <string name="search_homepage">Cerca...</string>
     <string name="start">Inizia ora!</string>
     <string name="show_shortcuts">Mostra scorciatoie nella pagina iniziale</string>
@@ -459,5 +463,22 @@
     <string name="file_is">Il file è:</string>
     <string name="translate_to">Traduci in:</string>
     <string name="new_drag">I menù delle opzioni scheda e segnalibri sono ora accessibili premendo l\'icona. Tenendo premuto sul testo ora ti permetterà di riordinarli.</string>
+    <string name="last_loaded">Ultimo caricamento</string>
+    <string name="continue_download">Continua</string>
+    <string name="start_download">Avvia</string>
+    <string name="pausing_download">In pausa</string>
+    <string name="waiting_download">In attesa</string>
+    <string name="pause_download">Sospendi</string>
+    <string name="confirm_delete">Confirm delete?</string>
+    <string name="grant_permissions">Concedi autorizzazioni</string>
+    <string name="grant_permissions_desc">La lettura/scrittura di archiviazione esterna è richiesta per i backup di scaricamenti e segnalibri/impostazioni</string>
+    <string name="open_in_app">Apri in app</string>
+    <string name="bookmark_delete">Sicuri di voler eliminare questo segnalibro?</string>
+    <string name="install_userscript">Install UserScript</string>
+    <string name="install_userscript_description">Do you want to install this UserScript?</string>
+    <string name="remove_userscript">Remove UserScript</string>
+    <string name="remove_userscript_description">Do you want to remove this UserScript?</string>
+    <string name="scripts">UserScripts</string>
+    <string name="scripts_store">UserScripts store</string>
     <!-- finish pages -->
 </resources>
