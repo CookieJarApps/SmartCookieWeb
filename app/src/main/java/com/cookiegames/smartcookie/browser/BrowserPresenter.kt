@@ -229,17 +229,18 @@ class BrowserPresenter(
         intent?.dataString
     }
         val tabHashCode = intent?.extras?.getInt(INTENT_ORIGIN, 0) ?: 0
-        intented = true
         if (tabHashCode != 0 && url != null) {
             tabsModel.getTabForHashCode(tabHashCode)?.loadUrl(url)
         } else if (url != null) {
             if (URLUtil.isFileUrl(url)) {
+                intented = true
                 view.showBlockedLocalFileDialog {
                     newTab(UrlInitializer(url), true)
                     shouldClose = true
                     tabsModel.lastTab()?.isNewTab = true
                 }
             } else {
+                intented = true
                 newTab(UrlInitializer(url), true)
                 shouldClose = true
                 tabsModel.lastTab()?.isNewTab = true
