@@ -272,7 +272,7 @@ class SmartCookieWebClient(
                     + "})();", null)
         }
 
-        if(url.contains(".user.js")){
+        if(url.contains(".user.js") && view.isShown){
             val builder = MaterialAlertDialogBuilder(activity)
             builder.setTitle(activity.resources.getString(R.string.install_userscript))
             builder.setMessage(activity.resources.getString(R.string.install_userscript_description))

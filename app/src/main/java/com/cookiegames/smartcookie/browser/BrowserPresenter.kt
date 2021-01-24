@@ -170,6 +170,7 @@ class BrowserPresenter(
         val isShown = tabToDelete.isShown
         val shouldClose = shouldClose && isShown && tabToDelete.isNewTab || back && intented
         val currentTab = tabsModel.currentTab
+        intented = false
         if (tabsModel.size() == 1
             && currentTab != null
             && URLUtil.isFileUrl(currentTab.url)
@@ -235,7 +236,6 @@ class BrowserPresenter(
             if (URLUtil.isFileUrl(url)) {
                 view.showBlockedLocalFileDialog {
                     newTab(UrlInitializer(url), true)
-                    // this is where intents happen
                     shouldClose = true
                     tabsModel.lastTab()?.isNewTab = true
                 }
