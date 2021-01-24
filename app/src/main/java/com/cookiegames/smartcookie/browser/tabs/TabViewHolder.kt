@@ -58,14 +58,6 @@ class TabViewHolder(
     }
 
     override fun onLongClick(v: View): Boolean {
-        if(userPreferences.firstLaunch11) {
-            val alert = MaterialAlertDialogBuilder(v.context)
-            alert
-                    .setMessage(v.context.resources.getString(R.string.new_drag))
-                    .setPositiveButton(v.context.resources.getString(R.string.action_ok), null)
-                    .show()
-            userPreferences.firstLaunch11 = false
-        }
         return true
     }
 }
