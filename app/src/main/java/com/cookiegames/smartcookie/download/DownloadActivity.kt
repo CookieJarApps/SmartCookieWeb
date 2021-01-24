@@ -229,9 +229,12 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             }
             itemView.dl_download.text = DownloadUtil.getDataSize(completedSize) + totalSizeString!!
             when(File(downloadInfo.filePath).extension){
+                "pdf" -> itemView.dl_icon.setImageResource(R.drawable.icon_pdf)
                 "zip" -> itemView.dl_icon.setImageResource(R.drawable.icon_zip)
                 "apk" -> itemView.dl_icon.setImageResource(R.drawable.icon_apk)
                 "txt", "doc", "docx" -> itemView.dl_icon.setImageResource(R.drawable.icon_txt)
+                "jpg", "jpeg", "gif", "png" -> itemView.dl_icon.setImageResource(R.drawable.icon_img)
+                "bin" -> itemView.dl_icon.setImageResource(R.drawable.icon_bin)
             }
 
         }
