@@ -1080,9 +1080,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     override fun notifyTabViewAdded() {
         logger.log(TAG, "Notify Tab Added")
         tabsView?.tabAdded()
-        if(!isIncognito()){
-            saveOpenTabs()
-        }
     }
 
     override fun notifyTabViewChanged(position: Int) {
@@ -1608,6 +1605,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     override fun getUiColor(): Int = currentUiColor
 
     override fun updateUrl(url: String?, isLoading: Boolean) {
+        if(!isIncognito()){
+            saveOpenTabs()
+        }
         if (url == null || searchView?.hasFocus() != false) {
             return
         }

@@ -871,8 +871,7 @@ class SmartCookieWebClient(
             val file = File(url.replace(FILE, ""))
 
             if (file.exists()) {
-                val newMimeType = MimeTypeMap.getSingleton()
-                    .getMimeTypeFromExtension(Utils.guessFileExtension(file.toString()))
+                val newMimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(Utils.guessFileExtension(file.toString()))
 
                 val intent = Intent(Intent.ACTION_VIEW)
                 intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
