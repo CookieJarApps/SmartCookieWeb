@@ -49,10 +49,10 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private var downloadObserver: DownloadListener = object : DownloadListener() {
         override fun onProgress(progress: Int) {
             val downloadInfo = downloadInfo
-            val viewHolder = downloadInfo.extraData as DownloadViewHolder
+            val viewHolder = downloadInfo.extraData as DownloadViewHolder?
             val tag = map[viewHolder]
             if (tag != null && tag.id == downloadInfo.id) {
-                viewHolder.bindData(downloadInfo, status)
+                viewHolder?.bindData(downloadInfo, status)
             }
         }
 

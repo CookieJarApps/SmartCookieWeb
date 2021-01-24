@@ -80,13 +80,12 @@
         android:gravity="center"
         android:text="@string/action_open"
         android:textColor="#666666"
-        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:autoSizeTextType="uniform"
-        app:autoSizeMinTextSize="8sp"
+        app:autoSizeMinTextSize="2sp"
         app:autoSizeMaxTextSize="12sp"
-        app:autoSizeStepGranularity="2sp"/>
+        app:autoSizeStepGranularity="1sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
