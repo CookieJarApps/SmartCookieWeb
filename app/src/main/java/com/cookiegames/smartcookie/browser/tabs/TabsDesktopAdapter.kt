@@ -39,7 +39,7 @@ class TabsDesktopAdapter(
             context.dimen(R.dimen.desktop_tab_height),
             Bitmap.Config.ARGB_8888
         ).also {
-            Canvas(it).drawTrapezoid(backgroundColor, true)
+            Canvas(it).drawTrapezoid(backgroundColor, false)
         }
         backgroundTabDrawable = BitmapDrawable(resources, backgroundTabBitmap)
 
