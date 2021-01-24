@@ -78,11 +78,11 @@
             android:singleLineTitle="false"
             android:key="text_reflow"
             android:title="@string/reflow"/>
-        <SwitchPreference
+      <!--  <SwitchPreference
             android:defaultValue="false"
             android:singleLineTitle="false"
             android:key="show_extra"
-            android:title="@string/show_extra"/>
+            android:title="@string/show_extra"/> -->
         <SwitchPreference
             android:defaultValue="true"
             android:singleLineTitle="false"

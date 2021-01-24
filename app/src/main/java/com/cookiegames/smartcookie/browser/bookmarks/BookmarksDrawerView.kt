@@ -425,9 +425,10 @@ class BookmarksDrawerView @JvmOverloads constructor(
 
         val txtTitle: TextView = itemView.findViewById(R.id.textBookmark)
         val favicon: ImageView = itemView.findViewById(R.id.faviconBookmark)
+        val faviconButton: FrameLayout = itemView.findViewById(R.id.faviconButton)
 
         init {
-            favicon.setOnClickListener(this)
+            faviconButton.setOnClickListener(this)
             itemView.setOnClickListener(this)
             itemView.setOnLongClickListener(this)
 
@@ -439,7 +440,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
         }
 
         override fun onClick(v: View) {
-            if(v == favicon){
+            if(v == faviconButton){
                 val index = adapterPosition
                 if(index != RecyclerView.NO_POSITION){
                     onItemLongClickListener(adapter.itemAt(index).bookmark)
