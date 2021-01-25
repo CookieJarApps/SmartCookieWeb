@@ -44,7 +44,7 @@ class BrowserPresenter(
 
     private var currentTab: SmartCookieView? = null
     private var shouldClose: Boolean = false
-    private var intented: Boolean = false
+    private var intented: SmartCookieView? = null
     private var sslStateSubscription: Disposable? = null
 
     init {
@@ -168,9 +168,9 @@ class BrowserPresenter(
         if(!back && tabToDelete.isNewTab) tabToDelete.isNewTab = false
 
         val isShown = tabToDelete.isShown
-        val shouldClose = shouldClose && isShown && tabToDelete.isNewTab || back && intented
+        val shouldClose = shouldClose && isShown && tabToDelete.isNewTab || intented == currentTab && back && isShown
         val currentTab = tabsModel.currentTab
-        intented = false
+
         if (tabsModel.size() == 1
             && currentTab != null
             && URLUtil.isFileUrl(currentTab.url)
@@ -233,14 +233,14 @@ class BrowserPresenter(
             tabsModel.getTabForHashCode(tabHashCode)?.loadUrl(url)
         } else if (url != null) {
             if (URLUtil.isFileUrl(url)) {
-                intented = true
+                intented = currentTab
                 view.showBlockedLocalFileDialog {
                     newTab(UrlInitializer(url), true)
                     shouldClose = true
                     tabsModel.lastTab()?.isNewTab = true
                 }
             } else {
-                intented = true
+                intented = currentTab
                 newTab(UrlInitializer(url), true)
                 shouldClose = true
                 tabsModel.lastTab()?.isNewTab = true
