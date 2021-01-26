@@ -88,7 +88,7 @@
     <string name="hint_url">Indirizzo</string>
     <string name="title_edit_bookmark">Modifica segnalibro</string>
     <string name="action_edit">Modifica</string>
-    <string name="action_incognito">Nuova scheda privata</string>
+    <string name="action_incognito">Nuova scheda riservata</string>
     <string name="action_homepage">Predefinito</string>
     <string name="action_back">Indietro</string>
     <string name="action_find">Trova nella pagina</string>
@@ -100,7 +100,7 @@
     <string name="download_no_sdcard_dlg_msg">Memoria di archiviazione necessaria per poter scaricare il file.</string>
     <string name="download_sdcard_busy_dlg_title">Memoria di archiviazione non disponibile</string>
     <string name="download_sdcard_busy_dlg_msg">Memoria di archiviazione in uso. Per consentire scaricamenti, toccare \'Disattiva memoria USB\' nella notifica.</string>
-    <string name="incognito_cookies">Abilita i cookie nelle schede private</string>
+    <string name="incognito_cookies">Abilita i cookie nelle schede riservate</string>
     <string name="title_flash">Adobe Flash</string>
     <string name="action_manual">Manuale</string>
     <string name="action_auto">Automatico</string>
@@ -287,11 +287,11 @@
     <string name="message_bookmark_added">Segnalibro aggiunto.</string>
     <!-- Notifications -->
     <plurals name="notification_incognito_running_title">
-        <item quantity="one">%1$d scheda privata aperta</item>
-        <item quantity="other">%1$d schede private aperte</item>
+        <item quantity="one">%1$d scheda riservata aperta</item>
+        <item quantity="other">%1$d schede riservate aperte</item>
     </plurals>
     <string name="notification_incognito_running_message">Tocca per aprire</string>
-    <string name="notification_incognito_running_description">Notifica da scheda privata in corso</string>
+    <string name="notification_incognito_running_description">Notifica da scheda riservata in corso</string>
     <!-- Common actions -->
     <string name="action_message_canceled">Azione annullata.</string>
     <!-- permissions request -->
@@ -310,7 +310,7 @@
     <!-- Dialogs -->
     <string name="dialog_open_new_tab">Apri in nuova scheda</string>
     <string name="dialog_open_background_tab">Apri in secondo piano</string>
-    <string name="dialog_open_incognito_tab">Apri in scheda privata</string>
+    <string name="dialog_open_incognito_tab">Apri in scheda riservata</string>
     <string name="dialog_remove_bookmark">Rimuovi segnalibro</string>
     <string name="dialog_edit_bookmark">Modifica segnalibro</string>
     <string name="dialog_remove_from_history">Rimuovi dalla cronologia</string>
@@ -381,10 +381,10 @@
     <string name="uninstall_extension">Disinstalla estensione</string>
     <string name="uninstall_more">Inserisci il nome dell\'estensione che desideri disinstallare</string>
     <string name="show_extra">Mostra opzioni di menu aggiuntive</string>
-    <string name="incognito_cookies_new">La modalità privata viene eseguita in una finestra separata che viene azzerata dopo ogni sessione. Le preferenze dei cookie in modalità privata sono ora controllate dalle normali preferenze relative ai cookie.</string>
-    <string name="quit_private">Esci dalla modalità privata</string>
+    <string name="incognito_cookies_new">La modalità riservata viene eseguita in una finestra separata che viene azzerata dopo ogni sessione. Le preferenze dei cookie in modalità riservata sono ora controllate dalle normali preferenze relative ai cookie.</string>
+    <string name="quit_private">Esci dalla modalità riservata</string>
     <string name="image_url">Imposta un\'immagine di sfondo nella pagina iniziale</string>
-    <string name="start_incognito">Agisci sempre come in modalità privata</string>
+    <string name="start_incognito">Agisci sempre come in modalità riservata</string>
     <string name="bottom_navbar">Sposta la barra di navigazione in fondo</string>
     <string name="please_restart">Si prega di riavviare l\'applicazione per vedere le modifiche</string>
     <string name="site_ad_blocked">Questo sito è un annuncio. Per continuare comunque, usa l\'opzione \"Disabilita Blocco Annunci per questo sito\" cliccando sull\'icona della lista nel selettore dei segnalibri.</string>
@@ -458,8 +458,8 @@
     <string name="algorithm">Algoritmo</string>
     <string name="crash_warning">Abilitando questa impostazione con \'Consenti ai siti di aprire nuove finestre\' si possono causare arresti anormali</string>
     <string name="amp_to_html">Da AMP a HTML</string>
-    <string name="private_title">Modalità privata</string>
-    <string name="private_desc">Le schede in modalità privata funzionano come schede normali, ma quando vengono chiuse, tutti i dati da quella scheda vengono cancellati. La navigazione privata NON ti rende anonimo, ma può tenere segreto quello che fai in linea da chiunque altro usi questo dispositivo.</string>
+    <string name="private_title">Modalità riservata</string>
+    <string name="private_desc">Le schede in modalità riservata funzionano come schede normali, ma quando vengono chiuse, tutti i dati di quella scheda vengono cancellati. La navigazione riservata NON ti rende anonimo, ma può tenere segreto ciò che fai online da chiunque altro usi questo dispositivo.</string>
     <string name="file_is">Il file è:</string>
     <string name="translate_to">Traduci in:</string>
     <string name="new_drag">I menù delle opzioni scheda e segnalibri sono ora accessibili premendo l\'icona. Tenendo premuto sul testo ora ti permetterà di riordinarli.</string>
