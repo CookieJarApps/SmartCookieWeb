@@ -1,4 +1,4 @@
-<p align="center"><a href="http://smartcookieweb.com"><img src="https://lh3.googleusercontent.com/rmW1K8WcB7q136n0Kaol0R3bPsC-b-6TUvbbYq59oyWR23L7uXPYJk5ObHBMpWunkkM=s180-rw" width="150"></a></p>
+<p align="center"><a href="http://smartcookieweb.com"><img src="https://storeimg.com/uploads/600fea540711e.jpg" width="150"></a></p>
 <h2 align="center"><b>SmartCookieWeb</b></h2>
 <h4 align="center">A secure, free and open source WebView-based web browser for Android.</h4>
 
