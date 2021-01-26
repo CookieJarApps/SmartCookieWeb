@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.MailTo
 import android.net.http.SslError
 import android.os.Build
@@ -20,6 +21,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.AppTheme
@@ -470,6 +472,7 @@ class SmartCookieWebClient(
     }
 
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
+
         if(view.settings?.userAgentString!!.contains("wv")){
             view.settings?.userAgentString = view.settings?.userAgentString?.replace("wv", "")
         }

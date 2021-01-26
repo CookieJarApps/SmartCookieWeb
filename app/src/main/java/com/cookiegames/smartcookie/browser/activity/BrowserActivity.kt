@@ -377,6 +377,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         val primaryColor = ThemeUtils.getPrimaryColor(this)
         backgroundDrawable.color = primaryColor
 
+        currentTabView?.setBackgroundColor(primaryColor)
+        currentTabView?.invalidate()
+
         // Drawer stutters otherwise
         left_drawer.setLayerType(LAYER_TYPE_NONE, null)
         right_drawer.setLayerType(LAYER_TYPE_NONE, null)
@@ -2114,6 +2117,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     override fun handleNewTab(newTabType: LightningDialogBuilder.NewTab, url: String) {
+        val primaryColor = ThemeUtils.getPrimaryColor(this)
+        currentTabView?.setBackgroundColor(primaryColor)
+        currentTabView?.invalidate()
+
         val urlInitializer = UrlInitializer(url)
         when (newTabType) {
             LightningDialogBuilder.NewTab.FOREGROUND -> presenter?.newTab(urlInitializer, true)

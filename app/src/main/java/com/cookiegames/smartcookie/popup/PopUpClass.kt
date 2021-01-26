@@ -132,7 +132,7 @@ class PopUpClass {
 
 
         //Set the location of the window on the screen
-        if (userPreferences!!.bottomBar) {
+        if (userPreferences.bottomBar) {
             popupWindow.animationStyle = R.style.ToolbarAnimReverse
             popupWindow.showAtLocation(view, Gravity.BOTTOM or Gravity.END, 0, 0)
             relView.gravity = Gravity.BOTTOM

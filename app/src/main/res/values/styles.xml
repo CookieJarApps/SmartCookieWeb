@@ -162,7 +162,8 @@
     </style>
 
     <style name="ToolbarAnimReverse">
-        <item name="android:windowEnterAnimation">@anim/toolbar_out</item>
+        <item name="android:windowEnterAnimation">@anim/toolbar_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/toolbar_out_bottom</item>
     </style>
 
     <style name="AlertDialogMaterialThemeLight" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
