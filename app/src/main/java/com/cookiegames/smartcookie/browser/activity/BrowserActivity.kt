@@ -1504,6 +1504,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     override fun changeToolbarColor(tabBackground: Drawable?){
+        val primaryColor = ThemeUtils.getPrimaryColor(this)
+        currentTabView?.setBackgroundColor(primaryColor)
+        currentTabView?.invalidate()
+
         if(userPreferences.navbarColChoice == ChooseNavbarCol.COLOR && !isIncognito()){
             if(Utils.isColorTooDark(userPreferences.colorNavbar)){
 
@@ -2117,10 +2121,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     override fun handleNewTab(newTabType: LightningDialogBuilder.NewTab, url: String) {
-        val primaryColor = ThemeUtils.getPrimaryColor(this)
-        currentTabView?.setBackgroundColor(primaryColor)
-        currentTabView?.invalidate()
-
         val urlInitializer = UrlInitializer(url)
         when (newTabType) {
             LightningDialogBuilder.NewTab.FOREGROUND -> presenter?.newTab(urlInitializer, true)
