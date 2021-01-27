@@ -187,6 +187,9 @@ dependencies {
     // onboarding
     implementation 'com.github.AppIntro:AppIntro:6.0.0'
 
+    // webview
+    implementation 'org.adblockplus:adblock-android:+'
+
     // memory leak analysis
     final def leakCanaryVersion = '2.4'
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
