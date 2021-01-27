@@ -442,6 +442,10 @@
     <string name="pick_search">Choose a search engine:</string>
     <string name="enable_adblock">Enable ad and tracker blocking?</string>
 
+    <string name="adblock_type">Ad block type</string>
+    <string name="element_based">Element-based</string>
+    <string name="host_based">Host-based</string>
+
     <string name="contributors">Contributors</string>
     <string name="translations">Translations</string>
 

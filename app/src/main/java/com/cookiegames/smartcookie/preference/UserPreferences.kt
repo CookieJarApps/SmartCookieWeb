@@ -355,6 +355,9 @@ class UserPreferences @Inject constructor(
     // Size of text in drawers
     var drawerSize by preferences.enumPreference(DRAWER_SIZE, DrawerSizeChoice.AUTO)
 
+    // Whether to use hosts-based ad blocking or element-based
+    var adBlockType by preferences.enumPreference(AD_BLOCK, AdBlockChoice.ELEMENT)
+
     // Show SSL warnings
     var ssl by preferences.booleanPreference(SSL, true)
 
@@ -476,3 +479,4 @@ private const val ALL_TABS = "allTabs"
 private const val SHOW_SHORTCUTS = "showShortcuts"
 private const val SECOND_BAR = "secondBar"
 private const val NO_AMP = "noAmp"
+private const val AD_BLOCK = "adBlockStyle"

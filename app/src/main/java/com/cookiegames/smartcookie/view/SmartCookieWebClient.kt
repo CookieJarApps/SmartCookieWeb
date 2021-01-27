@@ -29,6 +29,7 @@ import com.cookiegames.smartcookie.BuildConfig
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.adblock.AdBlocker
 import com.cookiegames.smartcookie.adblock.allowlist.AllowListModel
+import com.cookiegames.smartcookie.browser.AdBlockChoice
 import com.cookiegames.smartcookie.browser.JavaScriptChoice
 import com.cookiegames.smartcookie.browser.SiteBlockChoice
 import com.cookiegames.smartcookie.constant.FILE
@@ -52,6 +53,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.subjects.PublishSubject
+import org.adblockplus.libadblockplus.android.AdblockEngine
+import org.adblockplus.libadblockplus.android.settings.AdblockHelper
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URISyntaxException
@@ -137,9 +140,9 @@ class SmartCookieWebClient(
         whitelistIntent = a
     }
 
-    private fun chooseAdBlocker(): AdBlocker = if (userPreferences.adBlockEnabled) {
+    private fun chooseAdBlocker(): AdBlocker = if (userPreferences.adBlockEnabled || userPreferences.adBlockType != AdBlockChoice.ELEMENT || userPreferences.adBlockType != AdBlockChoice.NONE) {
         activity.injector.provideBloomFilterAdBlocker()
-    } else {
+    } else{
         activity.injector.provideNoOpAdBlocker()
     }
 

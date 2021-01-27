@@ -190,6 +190,9 @@ dependencies {
     // webview
     implementation 'org.adblockplus:adblock-android-webview:+'
 
+    // adblock
+    implementation 'org.adblockplus:adblock-android-settings:+'
+
     // memory leak analysis
     final def leakCanaryVersion = '2.4'
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"

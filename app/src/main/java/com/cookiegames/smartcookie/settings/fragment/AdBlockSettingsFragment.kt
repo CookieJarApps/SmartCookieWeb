@@ -16,7 +16,9 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.preference.Preference
+import com.cookiegames.smartcookie.browser.AdBlockChoice
 import io.reactivex.Maybe
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
@@ -50,6 +52,16 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
 
         injector.inject(this)
 
+        clickableDynamicPreference(
+                preference = "ad_block_type",
+                summary =  when(userPreferences.adBlockType){
+                    AdBlockChoice.ELEMENT -> ""
+                    AdBlockChoice.HOSTS -> ""
+                    else -> ""
+                },
+                onClick = ::showAdBlockChoiceDialog
+        )
+
         switchPreference(
             preference = "cb_block_ads",
             isChecked = userPreferences.adBlockEnabled,
@@ -59,12 +71,13 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
         clickableDynamicPreference(
             preference = "preference_hosts_source",
             summary =  userPreferences.selectedHostsSource().toSummary(),
-            onClick = ::showHostsSourceChooser
+            onClick = ::showHostsSourceChooser,
+            isEnabled = userPreferences.adBlockType == AdBlockChoice.HOSTS
         )
 
         forceRefreshHostsPreference = clickableDynamicPreference(
             preference = "preference_hosts_refresh_force",
-            isEnabled = isRefreshHostsEnabled(),
+            isEnabled = isRefreshHostsEnabled() && userPreferences.adBlockType == AdBlockChoice.HOSTS,
             onClick = {
                 bloomFilterAdBlocker.populateAdBlockerFromDataSource(forceRefresh = true)
             }
@@ -119,6 +132,39 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
                     showUrlChooser(summaryUpdater)
                 }
             )
+        )
+    }
+
+    private fun showAdBlockChoiceDialog(summaryUpdater: SummaryUpdater) {
+        BrowserDialog.showListChoices(
+                activity as Activity,
+                R.string.adblock_type,
+                DialogItem(
+                        title = R.string.element_based,
+                        isConditionMet = userPreferences.adBlockType == AdBlockChoice.ELEMENT,
+                        onClick = {
+                            userPreferences.adBlockType = AdBlockChoice.ELEMENT
+                            Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()
+                        }
+                ),
+
+                DialogItem(
+                        title = R.string.host_based,
+                        isConditionMet = userPreferences.adBlockType == AdBlockChoice.HOSTS,
+                        onClick = {
+                            userPreferences.adBlockType = AdBlockChoice.HOSTS
+                            Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()
+                        }
+                ),
+
+                DialogItem(
+                        title = R.string.none,
+                        isConditionMet = userPreferences.adBlockType == AdBlockChoice.NONE,
+                        onClick = {
+                            userPreferences.adBlockType = AdBlockChoice.NONE
+                            Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()
+                        }
+                )
         )
     }
 

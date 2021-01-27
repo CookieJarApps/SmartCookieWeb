@@ -7,6 +7,11 @@
             android:singleLineTitle="false"
             android:title="@string/block_ads"/>
         <androidx.preference.Preference
+            android:key="ad_block_type"
+            android:summary="@string/adblock_type"
+            android:singleLineTitle="false"
+            android:title="@string/adblock_type"/>
+        <androidx.preference.Preference
             android:key="preference_hosts_source"
             android:summary="@string/block_source_default"
             android:singleLineTitle="false"
