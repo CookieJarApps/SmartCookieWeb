@@ -136,7 +136,7 @@ class BrowserApp : Application() {
             helper
                     .init(this, AdblockEngine.BASE_PATH_DIRECTORY, AdblockHelper.PREFERENCE_NAME)
 
-            if(userPreferences.adBlockType != AdBlockChoice.ELEMENT || userPreferences.adBlockType != AdBlockChoice.HYBRID){
+            if(userPreferences.adBlockType != AdBlockChoice.ELEMENT && userPreferences.adBlockType != AdBlockChoice.HYBRID){
                 helper.setDisabledByDefault()
             }
 

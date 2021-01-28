@@ -152,7 +152,7 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
                         title = R.string.element_based,
                         isConditionMet = userPreferences.adBlockType == AdBlockChoice.ELEMENT,
                         onClick = {
-                            userPreferences.adBlockType = AdBlockChoice.HOSTS
+                            userPreferences.adBlockType = AdBlockChoice.ELEMENT
                             Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()
                         }
                 ),
