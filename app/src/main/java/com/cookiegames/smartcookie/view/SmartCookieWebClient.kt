@@ -140,7 +140,7 @@ class SmartCookieWebClient(
         whitelistIntent = a
     }
 
-    private fun chooseAdBlocker(): AdBlocker = if (userPreferences.adBlockEnabled && userPreferences.adBlockType == AdBlockChoice.HOSTS) {
+    private fun chooseAdBlocker(): AdBlocker = if (userPreferences.adBlockEnabled && userPreferences.adBlockType != AdBlockChoice.NONE && userPreferences.adBlockType != AdBlockChoice.ELEMENT) {
         activity.injector.provideBloomFilterAdBlocker()
     } else{
         activity.injector.provideNoOpAdBlocker()

@@ -140,10 +140,19 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
                 activity as Activity,
                 R.string.adblock_type,
                 DialogItem(
+                        title = R.string.hybrid,
+                        isConditionMet = userPreferences.adBlockType == AdBlockChoice.HYBRID,
+                        onClick = {
+                            userPreferences.adBlockType = AdBlockChoice.HYBRID
+                            Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()
+                        }
+                ),
+
+                DialogItem(
                         title = R.string.element_based,
                         isConditionMet = userPreferences.adBlockType == AdBlockChoice.ELEMENT,
                         onClick = {
-                            userPreferences.adBlockType = AdBlockChoice.ELEMENT
+                            userPreferences.adBlockType = AdBlockChoice.HOSTS
                             Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()
                         }
                 ),

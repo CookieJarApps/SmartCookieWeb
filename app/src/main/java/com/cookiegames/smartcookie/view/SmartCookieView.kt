@@ -326,6 +326,8 @@ class SmartCookieView(
 
         smartCookieWebClient.updatePreferences()
 
+        webView!!.setProvider(AdblockHelper.get().getProvider())
+
         val modifiesHeaders = userPreferences.doNotTrackEnabled
             || userPreferences.saveDataEnabled
             || userPreferences.removeIdentifyingHeadersEnabled
@@ -408,10 +410,6 @@ class SmartCookieView(
                     !userPreferences.blockThirdPartyCookiesEnabled)
         }
 
-
-        if(userPreferences.adBlockType != AdBlockChoice.ELEMENT){
-            webView!!.setProvider(AdblockHelper.get().provider)
-        }
     }
     
     @SuppressLint("NewApi")

@@ -443,6 +443,7 @@
     <string name="enable_adblock">Enable ad and tracker blocking?</string>
 
     <string name="adblock_type">Ad block type</string>
+    <string name="hybrid">Hybrid</string>
     <string name="element_based">Element-based</string>
     <string name="host_based">Host-based</string>
 

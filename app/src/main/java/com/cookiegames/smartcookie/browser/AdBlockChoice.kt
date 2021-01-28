@@ -6,7 +6,8 @@ import com.cookiegames.smartcookie.preference.IntEnum
  * The available adblock choices.
  */
 enum class AdBlockChoice(override val value: Int) : IntEnum {
-    ELEMENT(0),
-    HOSTS(1),
-    NONE(2)
+    HYBRID(0),
+    ELEMENT(1),
+    HOSTS(2),
+    NONE(3)
 }

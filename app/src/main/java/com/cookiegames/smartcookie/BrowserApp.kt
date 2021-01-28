@@ -26,7 +26,13 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.plugins.RxJavaPlugins
 import org.adblockplus.libadblockplus.android.AdblockEngine
+import org.adblockplus.libadblockplus.android.AdblockEngineProvider.EngineCreatedListener
+import org.adblockplus.libadblockplus.android.AdblockEngineProvider.EngineDisposedListener
+import org.adblockplus.libadblockplus.android.AndroidHttpClientResourceWrapper
 import org.adblockplus.libadblockplus.android.settings.AdblockHelper
+import timber.log.Timber
+import timber.log.Timber.DebugTree
+import java.util.HashMap
 import javax.inject.Inject
 import kotlin.system.exitProcess
 
@@ -114,15 +120,37 @@ class BrowserApp : Application() {
             }
         })
 
-        if (!AdblockHelper.get().isInit) {
-            val basePath = getDir(AdblockEngine.BASE_PATH_DIRECTORY, Context.MODE_PRIVATE).absolutePath
-            val helper: AdblockHelper = AdblockHelper.get()
-            helper.init(this, basePath, AdblockHelper.PREFERENCE_NAME) .setDisabledByDefault()
+        if (BuildConfig.DEBUG) {
+            Timber.plant(DebugTree())
+        }
 
-            helper.getSiteKeysConfiguration().setForceChecks(true);
+        if (!AdblockHelper.get().isInit) {
+
+            // provide preloaded subscriptions
+            val map: MutableMap<String, Int> = HashMap()
+            map[AndroidHttpClientResourceWrapper.EASYLIST] = R.raw.easylist
+            map[AndroidHttpClientResourceWrapper.EASYLIST_RUSSIAN] = R.raw.easylist
+            map[AndroidHttpClientResourceWrapper.EASYLIST_CHINESE] = R.raw.easylist
+            map[AndroidHttpClientResourceWrapper.ACCEPTABLE_ADS] = R.raw.exceptionrules
+            val helper = AdblockHelper.get()
+            helper
+                    .init(this, AdblockEngine.BASE_PATH_DIRECTORY, AdblockHelper.PREFERENCE_NAME)
+
+            if(userPreferences.adBlockType != AdBlockChoice.ELEMENT || userPreferences.adBlockType != AdBlockChoice.HYBRID){
+                helper.setDisabledByDefault()
+            }
+
+            helper.siteKeysConfiguration.forceChecks = true
+
         }
     }
+    private val engineCreatedListener = EngineCreatedListener {
+        // put your Adblock FilterEngine init here
+    }
 
+    private val engineDisposedListener = EngineDisposedListener {
+        // put your Adblock FilterEngine deinit here
+    }
     /**
      * Create the [BuildType] from the [BuildConfig].
      */
