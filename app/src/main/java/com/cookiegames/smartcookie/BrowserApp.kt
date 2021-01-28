@@ -114,14 +114,12 @@ class BrowserApp : Application() {
             }
         })
 
-        //AdblockEngine().isEnabled = userPreferences.adBlockType != AdBlockChoice.ELEMENT
         if (!AdblockHelper.get().isInit) {
             val basePath = getDir(AdblockEngine.BASE_PATH_DIRECTORY, Context.MODE_PRIVATE).absolutePath
-            AdblockHelper
-                        .get()
-                        .init(this, basePath, AdblockHelper.PREFERENCE_NAME)
-                       // .setDisabledByDefault()
-            
+            val helper: AdblockHelper = AdblockHelper.get()
+            helper.init(this, basePath, AdblockHelper.PREFERENCE_NAME) .setDisabledByDefault()
+
+            helper.getSiteKeysConfiguration().setForceChecks(true);
         }
     }
 

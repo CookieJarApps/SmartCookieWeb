@@ -213,10 +213,6 @@ class SmartCookieView(
         activity.injector.inject(this)
         uiController = activity as UIController
 
-        if(userPreferences.adBlockType == AdBlockChoice.ELEMENT){
-            webView?.setProvider(AdblockHelper.get().getProvider())
-        }
-
         titleInfo = SmartCookieViewTitle(activity)
 
         maxFling = ViewConfiguration.get(activity).scaledMaximumFlingVelocity.toFloat()
@@ -410,6 +406,11 @@ class SmartCookieView(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             CookieManager.getInstance().setAcceptThirdPartyCookies(webView,
                     !userPreferences.blockThirdPartyCookiesEnabled)
+        }
+
+
+        if(userPreferences.adBlockType != AdBlockChoice.ELEMENT){
+            webView!!.setProvider(AdblockHelper.get().provider)
         }
     }
     
