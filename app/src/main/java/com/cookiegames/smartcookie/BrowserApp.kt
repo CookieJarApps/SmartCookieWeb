@@ -4,8 +4,10 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.os.Build
+import android.os.StrictMode
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatDelegate
+import com.cookiegames.smartcookie.browser.AdBlockChoice
 import com.cookiegames.smartcookie.database.bookmark.BookmarkExporter
 import com.cookiegames.smartcookie.database.bookmark.BookmarkRepository
 import com.cookiegames.smartcookie.device.BuildInfo
@@ -16,19 +18,23 @@ import com.cookiegames.smartcookie.di.DatabaseScheduler
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.preference.DeveloperPreferences
+import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.utils.FileUtils
 import com.cookiegames.smartcookie.utils.MemoryLeakUtils
 import com.cookiegames.smartcookie.utils.installMultiDex
-import android.os.StrictMode
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.plugins.RxJavaPlugins
+import org.adblockplus.libadblockplus.android.AdblockEngine
+import org.adblockplus.libadblockplus.android.settings.AdblockHelper
 import javax.inject.Inject
 import kotlin.system.exitProcess
+
 
 class BrowserApp : Application() {
 
     @Inject internal lateinit var developerPreferences: DeveloperPreferences
+    @Inject internal lateinit var userPreferences: UserPreferences
     @Inject internal lateinit var bookmarkModel: BookmarkRepository
     @Inject @field:DatabaseScheduler internal lateinit var databaseScheduler: Scheduler
     @Inject internal lateinit var logger: Logger
@@ -107,6 +113,16 @@ class BrowserApp : Application() {
                 MemoryLeakUtils.clearNextServedView(activity, this@BrowserApp)
             }
         })
+
+        //AdblockEngine().isEnabled = userPreferences.adBlockType != AdBlockChoice.ELEMENT
+        if (!AdblockHelper.get().isInit) {
+            val basePath = getDir(AdblockEngine.BASE_PATH_DIRECTORY, Context.MODE_PRIVATE).absolutePath
+            AdblockHelper
+                        .get()
+                        .init(this, basePath, AdblockHelper.PREFERENCE_NAME)
+                       // .setDisabledByDefault()
+            
+        }
     }
 
     /**

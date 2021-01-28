@@ -101,6 +101,11 @@ import kotlinx.android.synthetic.main.browser_content.*
 import kotlinx.android.synthetic.main.search.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
+import org.adblockplus.libadblockplus.android.AdblockEngine
+import org.adblockplus.libadblockplus.android.AdblockEngineProvider
+import org.adblockplus.libadblockplus.android.AndroidHttpClientResourceWrapper
+import org.adblockplus.libadblockplus.android.settings.AdblockHelper
+import timber.log.Timber
 import java.io.IOException
 import java.util.*
 import javax.inject.Inject

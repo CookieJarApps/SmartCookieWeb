@@ -4,7 +4,6 @@
 
 package com.cookiegames.smartcookie.view
 
-import android.R
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
@@ -18,6 +17,7 @@ import android.print.PrintAttributes
 import android.print.PrintDocumentAdapter
 import android.print.PrintJob
 import android.print.PrintManager
+import android.util.Log
 import android.view.*
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.View.OnTouchListener
@@ -30,6 +30,7 @@ import androidx.collection.ArrayMap
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.DeviceCapabilities
+import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.AdBlockChoice
 import com.cookiegames.smartcookie.constant.DESKTOP_USER_AGENT
 import com.cookiegames.smartcookie.controller.UIController
@@ -51,6 +52,11 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import org.adblockplus.libadblockplus.android.AdblockEngine
+import org.adblockplus.libadblockplus.android.AndroidHttpClientResourceWrapper
+import org.adblockplus.libadblockplus.android.settings.AdblockHelper
+import org.adblockplus.libadblockplus.android.settings.AdblockSettings
+import org.adblockplus.libadblockplus.android.settings.AdblockSettingsStorage
+import org.adblockplus.libadblockplus.android.settings.BuildConfig
 import org.adblockplus.libadblockplus.android.webview.AdblockWebView
 import java.lang.ref.WeakReference
 import java.util.*
@@ -207,6 +213,10 @@ class SmartCookieView(
         activity.injector.inject(this)
         uiController = activity as UIController
 
+        if(userPreferences.adBlockType == AdBlockChoice.ELEMENT){
+            webView?.setProvider(AdblockHelper.get().getProvider())
+        }
+
         titleInfo = SmartCookieViewTitle(activity)
 
         maxFling = ViewConfiguration.get(activity).scaledMaximumFlingVelocity.toFloat()
@@ -255,8 +265,6 @@ class SmartCookieView(
             loadOnboardingPage()
             userPreferences.firstLaunch = false
         }
-
-        //AdblockEngine().isEnabled = userPreferences.adBlockType != AdBlockChoice.ELEMENT
     }
 
     fun setWhitelistIntent(a: Boolean) {

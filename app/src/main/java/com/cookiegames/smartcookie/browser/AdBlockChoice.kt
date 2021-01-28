@@ -3,7 +3,7 @@ package com.cookiegames.smartcookie.browser
 import com.cookiegames.smartcookie.preference.IntEnum
 
 /**
- * The available proxy choices.
+ * The available adblock choices.
  */
 enum class AdBlockChoice(override val value: Int) : IntEnum {
     ELEMENT(0),
