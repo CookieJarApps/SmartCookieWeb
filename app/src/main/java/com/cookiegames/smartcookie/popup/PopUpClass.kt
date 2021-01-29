@@ -15,6 +15,7 @@ import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Parcelable
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -154,8 +155,9 @@ class PopUpClass {
             drawableIds = mutableListOf(R.drawable.ic_round_add, R.drawable.ic_round_print_24, R.drawable.ic_search, R.drawable.ic_content_copy_black_24dp, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings, R.drawable.ic_action_back)
         }
         if (userPreferences.navbar && !activity.isIncognito() && intent.resolveActivity(packageManager) != null && intent.resolveActivity(packageManager).packageName != activity.applicationContext.packageName && !currentUrl.isSpecialUrl()) {
-            textString.add(4, resources.getString(R.string.open_in_app))
-            drawableIds.add(4, R.drawable.ic_round_open_in_new_24)
+            var index = if(userPreferences.translateExtension && userPreferences.bottomBar){5}else{4}
+            textString.add(index, resources.getString(R.string.open_in_app))
+            drawableIds.add(index, R.drawable.ic_round_open_in_new_24)
         }
         if (userPreferences!!.bottomBar) {
             textString.reverse()
@@ -177,7 +179,8 @@ class PopUpClass {
             else if(userPreferences.translateExtension) positionList = mutableListOf(0, 1, 2, 13, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14)
             else if(userPreferences.bottomBar) positionList = mutableListOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
 
-            if(userPreferences.navbar && !activity.isIncognito() && intent.resolveActivity(packageManager) != null && intent.resolveActivity(packageManager).packageName != activity.applicationContext.packageName && !currentUrl.isSpecialUrl()) positionList.add(4, 14)
+            if(userPreferences.navbar && !userPreferences.bottomBar && !activity.isIncognito() && intent.resolveActivity(packageManager) != null && intent.resolveActivity(packageManager).packageName != activity.applicationContext.packageName && !currentUrl.isSpecialUrl()) positionList.add(4, 14)
+            if(userPreferences.navbar && userPreferences.bottomBar && !activity.isIncognito() && intent.resolveActivity(packageManager) != null && intent.resolveActivity(packageManager).packageName != activity.applicationContext.packageName && !currentUrl.isSpecialUrl()) positionList.add(8, 14)
 
             var currentView = activity.tabsManager.currentTab
             var currentUrl = uiController!!.getTabModel().currentTab?.url
