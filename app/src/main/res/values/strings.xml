@@ -577,5 +577,8 @@
 
     <string name="scripts">UserScripts</string>
     <string name="scripts_store">UserScripts store</string>
+
+    <string name="new_tab_opened">New tab opened</string>
+    <string name="switch_button">Switch</string>
     <!-- finish pages -->
 </resources>

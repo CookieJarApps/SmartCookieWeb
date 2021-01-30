@@ -93,6 +93,7 @@ import com.cookiegames.smartcookie.view.SearchView
 import com.cookiegames.smartcookie.view.find.FindResults
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy
@@ -957,12 +958,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                         return true
                     }
                 }
-                event.keyCode == KeyEvent.KEYCODE_SEARCH -> {
-                    // Highlight search field
-                    searchView?.requestFocus()
-                    searchView?.selectAll()
-                    return true
-                }
                 event.isAltPressed -> // Alt + tab number
                     tabsManager.let {
                         if (KeyEvent.KEYCODE_0 <= event.keyCode && event.keyCode <= KeyEvent.KEYCODE_9) {
@@ -975,6 +970,18 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                             return true
                         }
                     }
+                else -> when (event.keyCode) {
+                    KeyEvent.KEYCODE_SEARCH -> {
+                        // Highlight search field
+                        searchView?.requestFocus()
+                        searchView?.selectAll()
+                        return true
+                    }
+                    KeyEvent.KEYCODE_F5 -> {
+                        tabsManager.currentTab?.reload()
+                        return true
+                    }
+                }
             }
         }
         return super.dispatchKeyEvent(event)
@@ -2123,11 +2130,17 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         handleBookmarksChange()
     }
 
-    override fun handleNewTab(newTabType: LightningDialogBuilder.NewTab, url: String) {
+    override fun handleNewTab(newTabType: LightningDialogBuilder.NewTab, url: String, addToIndex: Boolean) {
         val urlInitializer = UrlInitializer(url)
         when (newTabType) {
-            LightningDialogBuilder.NewTab.FOREGROUND -> presenter?.newTab(urlInitializer, true)
-            LightningDialogBuilder.NewTab.BACKGROUND -> presenter?.newTab(urlInitializer, false)
+            LightningDialogBuilder.NewTab.FOREGROUND -> if(addToIndex){ presenter?.newTabAtPosition(urlInitializer, true, tabsManager.indexOfCurrentTab()+1) } else { presenter?.newTab(urlInitializer, true) }
+            LightningDialogBuilder.NewTab.BACKGROUND -> {
+                if(addToIndex){ presenter?.newTabAtPosition(urlInitializer, false, tabsManager.indexOfCurrentTab()+1) } else { presenter?.newTab(urlInitializer, false) }
+                val snackbar = Snackbar
+                        .make(findViewById(android.R.id.content), resources.getString(R.string.new_tab_opened), Snackbar.LENGTH_INDEFINITE)
+                        .setAction(resources.getString(R.string.switch_button)) { tabClicked(tabsManager.indexOfCurrentTab() + 1) }
+                snackbar.show()
+            }
             LightningDialogBuilder.NewTab.INCOGNITO -> {
                 drawer_layout.closeDrawers()
                 val intent = IncognitoActivity.createIntent(this, url.toUri())

@@ -211,7 +211,7 @@ interface UIController {
      * Notify the controller that a new tab action has originated from a dialog with the [url] and
      * the provided [newTabType].
      */
-    fun handleNewTab(newTabType: LightningDialogBuilder.NewTab, url: String)
+    fun handleNewTab(newTabType: LightningDialogBuilder.NewTab, url: String, addToIndex: Boolean = false)
 
 
 }

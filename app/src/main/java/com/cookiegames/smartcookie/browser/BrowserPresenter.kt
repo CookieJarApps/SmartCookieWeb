@@ -300,7 +300,7 @@ class BrowserPresenter(
      *
      * @param tabInitializer the tab initializer to run after the tab as been created.
      * @param show whether or not to switch to this tab after opening it.
-     * @return true if we successfully created the tab, false if we have hit max tabs.
+     * @return true if we successfully created the tab.
      */
     fun newTab(tabInitializer: TabInitializer, show: Boolean): Boolean {
 
@@ -317,6 +317,34 @@ class BrowserPresenter(
 
         if (show) {
             onTabChanged(tabsModel.switchToTab(tabsModel.last()))
+        }
+
+        return true
+    }
+
+    /**
+    +     * Open a new tab with the specified URL at a specific index. You can choose to show the tab or load it in the
+     * background.
+     *
+     * @param tabInitializer the tab initializer to run after the tab as been created.
+     * @param show whether or not to switch to this tab after opening it.
+     * @return true if we successfully created the tab.
+     */
+    fun newTabAtPosition(tabInitializer: TabInitializer, show: Boolean, index: Int): Boolean {
+
+
+        logger.log(TAG, "New tab, show: $show")
+
+        val startingTab = tabsModel.newTabAtPosition(view as Activity, tabInitializer, isIncognito, index)
+        if (tabsModel.size() == 1) {
+            startingTab.resumeTimers()
+        }
+
+        view.notifyTabViewAdded()
+        view.updateTabNumber(tabsModel.size())
+
+        if (show) {
+            onTabChanged(tabsModel.switchToTab(index))
         }
 
         return true
