@@ -474,7 +474,7 @@ class SmartCookieWebClient(
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
 
         if(view.settings?.userAgentString!!.contains("wv")){
-            view.settings?.userAgentString = view.settings?.userAgentString?.replace("wv", "")
+            view.settings?.userAgentString = view.settings?.userAgentString?.replace("; wv", "")
         }
         zoomed = false
         first = true
