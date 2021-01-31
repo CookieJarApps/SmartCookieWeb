@@ -7,8 +7,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.net.MailTo
+import android.net.Uri
 import android.net.http.SslError
 import android.os.Build
 import android.os.Handler
@@ -21,7 +21,6 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.AppTheme
@@ -806,7 +805,7 @@ class SmartCookieWebClient(
 
         val headers = smartCookieView.requestHeaders
 
-        if (smartCookieView.isIncognito || userPreferences.blockIntent && !url.contains("auth")) {
+        if (smartCookieView.isIncognito || userPreferences.blockIntent && !url.contains("auth") && !isMailOrIntent(url, view)) {
 
             // If we are in incognito, immediately load, we don't want the url to leave the app
             return continueLoadingUrl(view, url, headers)
@@ -851,7 +850,14 @@ class SmartCookieWebClient(
             activity.startActivity(i)
             view.reload()
             return true
-        } else if (url.startsWith("intent://")) {
+        }
+        else if (url.startsWith("tel:")){
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse(url)
+            activity.startActivity(intent)
+            return true
+        }
+        else if (url.startsWith("intent://")) {
             val intent = try {
                 Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
             } catch (ignored: URISyntaxException) {
