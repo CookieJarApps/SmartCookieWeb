@@ -456,6 +456,7 @@
     <string name="clear_settings">Reset settings</string>
     <string name="backup_settings">Settings backup</string>
     <string name="backup_bookmarks">Bookmarks backup</string>
+    <string name="backup_tabs">Tabs backup</string>
 
     <string name="reset_settings">Settings reset. App closing... Please reopen.</string>
 
@@ -585,5 +586,7 @@
 
     <string name="new_tab_opened">New tab opened</string>
     <string name="switch_button">Switch</string>
+
+    <string name="dont_ask_again">Don\'t ask again</string>
     <!-- finish pages -->
 </resources>

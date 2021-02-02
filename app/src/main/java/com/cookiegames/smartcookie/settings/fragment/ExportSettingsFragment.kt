@@ -20,6 +20,7 @@ import com.anthonycr.grant.PermissionsResultAction
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.bookmark.LegacyBookmarkImporter
 import com.cookiegames.smartcookie.bookmark.NetscapeBookmarkFormatImporter
+import com.cookiegames.smartcookie.browser.TabsManager
 import com.cookiegames.smartcookie.database.bookmark.BookmarkExporter
 import com.cookiegames.smartcookie.database.bookmark.BookmarkRepository
 import com.cookiegames.smartcookie.di.DatabaseScheduler
@@ -31,7 +32,8 @@ import com.cookiegames.smartcookie.extensions.resizeAndShow
 import com.cookiegames.smartcookie.extensions.snackbar
 import com.cookiegames.smartcookie.extensions.toast
 import com.cookiegames.smartcookie.log.Logger
-import com.cookiegames.smartcookie.utils.Utils
+import com.cookiegames.smartcookie.utils.*
+import com.cookiegames.smartcookie.view.BundleInitializer
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.Scheduler
 import io.reactivex.Single
@@ -40,15 +42,15 @@ import io.reactivex.rxkotlin.subscribeBy
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.*
-import java.lang.Double.parseDouble
 import java.util.*
 import javax.inject.Inject
 
 
-class BookmarkSettingsFragment : AbstractSettingsFragment() {
+class ExportSettingsFragment : AbstractSettingsFragment() {
 
     @Inject internal lateinit var bookmarkRepository: BookmarkRepository
     @Inject internal lateinit var application: Application
+    @Inject internal lateinit var tabModel: TabsManager
     @Inject internal lateinit var netscapeBookmarkFormatImporter: NetscapeBookmarkFormatImporter
     @Inject internal lateinit var legacyBookmarkImporter: LegacyBookmarkImporter
     @Inject @field:DatabaseScheduler internal lateinit var databaseScheduler: Scheduler
@@ -70,8 +72,12 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
         clickablePreference(preference = SETTINGS_IMPORT, onClick = this::importBookmarks)
         clickablePreference(preference = SETTINGS_DELETE_BOOKMARKS, onClick = this::deleteAllBookmarks)
 
+        //clickablePreference(preference = SETTINGS_TAB_EXPORT, onClick = this::exportTabs)
+        //clickablePreference(preference = SETTINGS_TAB_IMPORT, onClick = this::importTabs)
+
         clickablePreference(preference = SETTINGS_SETTINGS_EXPORT, onClick = this::exportSettings)
         clickablePreference(preference = SETTINGS_SETTINGS_IMPORT, onClick = this::importSettings)
+
         clickablePreference(preference = SETTINGS_DELETE_SETTINGS, onClick = this::clearSettings)
     }
 
@@ -261,6 +267,36 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
         )
     }
 
+    /*private fun exportTabs() {
+        var titles: MutableList<String> = emptyList<String>().toMutableList()
+        var urls: MutableList<String> = emptyList<String>().toMutableList()
+
+        var view = FileUtils.readBundleFromStorage(application, BUNDLE_STORAGE)!!
+        var view2 = view.keySet().filter { it.startsWith(BUNDLE_KEY) }
+        for(i in view2){
+            if(view.getBundle(i)?.get(URL_KEY) != null){
+                Log.d("exportsettings", view.getBundle(i)?.get(URL_KEY)?.toString())
+            }
+            else{
+                Log.d("exportsettings", view.getBundle(i)?.get("WEBVIEW_CHROMIUM_STATE")?.toString())
+            }
+        }
+
+    }
+
+    private fun importTabs() {
+        PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(activity, REQUIRED_PERMISSIONS,
+                object : PermissionsResultAction() {
+                    override fun onGranted() {
+                        showImportBookmarkDialog(null)
+                    }
+
+                    override fun onDenied(permission: String) {
+                        //TODO Show message
+                    }
+                })
+    }*/
+
     private fun loadFileList(path: File?): Array<File> {
         val file: File = path ?: File(Environment.getExternalStorageDirectory().toString())
 
@@ -423,10 +459,16 @@ class BookmarkSettingsFragment : AbstractSettingsFragment() {
 
         private const val SETTINGS_EXPORT = "export_bookmark"
         private const val SETTINGS_IMPORT = "import_bookmark"
+        private const val SETTINGS_TAB_EXPORT = "export_tab"
+        private const val SETTINGS_TAB_IMPORT = "import_tab"
         private const val SETTINGS_DELETE_BOOKMARKS = "delete_bookmarks"
         private const val SETTINGS_SETTINGS_EXPORT = "export_settings"
         private const val SETTINGS_SETTINGS_IMPORT = "import_settings"
         private const val SETTINGS_DELETE_SETTINGS = "clear_settings"
+
+        private const val BUNDLE_KEY = "WEBVIEW_"
+        private const val URL_KEY = "URL_KEY"
+        private const val BUNDLE_STORAGE = "SAVED_TABS.parcel"
 
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
     }

@@ -9,7 +9,7 @@
         android:summary="@string/settings_general_explain"
         android:tint="#8e4f00"/>
     <androidx.preference.Preference
-        android:fragment="com.cookiegames.smartcookie.settings.fragment.BookmarkSettingsFragment"
+        android:fragment="com.cookiegames.smartcookie.settings.fragment.ExportSettingsFragment"
         android:icon="@drawable/ic_import_export_settings"
         android:singleLineTitle="false"
         android:title="@string/import_export"
