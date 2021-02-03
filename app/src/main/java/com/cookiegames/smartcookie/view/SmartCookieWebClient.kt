@@ -171,7 +171,7 @@ class SmartCookieWebClient(
             val empty = ByteArrayInputStream(emptyResponseByteArray)
             val string = ByteArrayInputStream(activity.resources.getString(R.string.site_ad_blocked).toByteArray())
             if(request.isForMainFrame){
-                return WebResourceResponse("text/plain", "utf-8", string)
+                return null
             }
 
             return WebResourceResponse("text/plain", "utf-8", empty)
