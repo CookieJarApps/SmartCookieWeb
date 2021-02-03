@@ -7,7 +7,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.net.MailTo
 import android.net.http.SslError
 import android.os.Build
@@ -21,7 +20,6 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.AppTheme
@@ -53,8 +51,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.subjects.PublishSubject
-import org.adblockplus.libadblockplus.android.AdblockEngine
-import org.adblockplus.libadblockplus.android.settings.AdblockHelper
+import org.adblockplus.libadblockplus.android.webview.AdblockWebView.WebResponseResult
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URISyntaxException
@@ -169,7 +166,6 @@ class SmartCookieWebClient(
 
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest): WebResourceResponse? {
         if (shouldRequestBeBlocked(currentUrl, request.url.toString())) {
             val empty = ByteArrayInputStream(emptyResponseByteArray)
@@ -178,20 +174,6 @@ class SmartCookieWebClient(
                 return WebResourceResponse("text/plain", "utf-8", string)
             }
 
-            return WebResourceResponse("text/plain", "utf-8", empty)
-        }
-        return super.shouldInterceptRequest(view, request)
-    }
-
-    @Suppress("OverridingDeprecatedMember")
-    @TargetApi(Build.VERSION_CODES.KITKAT_WATCH)
-    override fun shouldInterceptRequest(view: WebView, url: String): WebResourceResponse? {
-        if (shouldRequestBeBlocked(currentUrl, url)) {
-            val empty = ByteArrayInputStream(emptyResponseByteArray)
-            return WebResourceResponse("text/plain", "utf-8", empty)
-        }
-        if(url.contains("detectPopBlock.js")){
-            val empty = ByteArrayInputStream(emptyResponseByteArray)
             return WebResourceResponse("text/plain", "utf-8", empty)
         }
         return null

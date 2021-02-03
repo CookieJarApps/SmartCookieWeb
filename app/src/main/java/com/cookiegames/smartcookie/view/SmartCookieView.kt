@@ -58,6 +58,7 @@ import org.adblockplus.libadblockplus.android.settings.AdblockSettings
 import org.adblockplus.libadblockplus.android.settings.AdblockSettingsStorage
 import org.adblockplus.libadblockplus.android.settings.BuildConfig
 import org.adblockplus.libadblockplus.android.webview.AdblockWebView
+import org.adblockplus.libadblockplus.sitekey.SiteKeysConfiguration
 import java.lang.ref.WeakReference
 import java.util.*
 import javax.inject.Inject

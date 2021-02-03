@@ -95,7 +95,6 @@
         <!-- Alert dialogs -->
         <item name="alertDialogTheme">@style/AppCompatDialogStyle.Dark</item>
         <item name="materialAlertDialogTheme">@style/AlertDialogMaterialTheme</item>
-
     </style>
 
     <style name="Theme.BaseBlackTheme" parent="Theme.MaterialComponents.Bridge">
@@ -125,7 +124,6 @@
         <!-- Alert dialogs -->
         <item name="alertDialogTheme">@style/AppCompatDialogStyle.Black</item>
         <item name="materialAlertDialogTheme">@style/AlertDialogMaterialTheme</item>
-
     </style>
 
     <!-- AlertDialog Theming -->

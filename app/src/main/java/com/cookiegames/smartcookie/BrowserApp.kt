@@ -140,7 +140,7 @@ class BrowserApp : Application() {
                 helper.setDisabledByDefault()
             }
 
-            helper.siteKeysConfiguration.forceChecks = true
+            helper.siteKeysConfiguration.forceChecks = false
 
         }
     }
