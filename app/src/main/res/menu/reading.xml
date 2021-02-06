@@ -21,6 +21,12 @@
         app:showAsAction="ifRoom">
     </item>
     <item
+        android:id="@+id/tts"
+        android:icon="@drawable/ic_round_tts"
+        android:title="@string/tts"
+        app:showAsAction="ifRoom">
+    </item>
+    <item
         android:id="@+id/download"
         android:icon="@drawable/ic_file_download_black_24dp"
         android:title="@string/action_download"

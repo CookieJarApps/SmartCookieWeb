@@ -10,12 +10,14 @@ import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.AsyncTask
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.text.Html
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.URLSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -49,13 +51,13 @@ import org.json.JSONException
 import org.json.JSONObject
 import org.jsoup.Jsoup
 import java.io.*
-import java.lang.Exception
 import java.net.URL
 import java.text.BreakIterator
 import java.util.*
 import javax.inject.Inject
 
-class ReadingActivity : AppCompatActivity() {
+
+class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     @JvmField
     @BindView(R.id.textViewTitle)
     var mTitle: TextView? = null
@@ -77,7 +79,10 @@ class ReadingActivity : AppCompatActivity() {
     @Inject
     @MainScheduler
     var mMainScheduler: Scheduler? = null
+
+    private var tts: TextToSpeech? = null
     private var mInvert = false
+    private var reading = false
     private var mUrl: String? = null
     private var file: Boolean = false
     private var mTextSize = 0
@@ -88,6 +93,7 @@ class ReadingActivity : AppCompatActivity() {
         this.injector.inject(this)
         overridePendingTransition(R.anim.slide_in_from_right, R.anim.fade_out_scale)
         mInvert = mUserPreferences!!.invertColors
+        tts = TextToSpeech(this, this)
         val color: Int
         if (mInvert) {
             if (mUserPreferences!!.useTheme === AppTheme.LIGHT) {
@@ -167,7 +173,7 @@ class ReadingActivity : AppCompatActivity() {
                 setText(title, doc.outerHtml())
                 dismissProgressDialog()
             }
-            catch(e: Exception){
+            catch (e: Exception){
                 mTitle!!.alpha = 1.0f
                 mTitle!!.visibility = View.VISIBLE
                 mTitle?.text = resources.getString(R.string.title_error)
@@ -288,6 +294,7 @@ class ReadingActivity : AppCompatActivity() {
             mProgressDialog!!.dismiss()
             mProgressDialog = null
         }
+        tts?.stop()
         super.onDestroy()
     }
 
@@ -398,8 +405,8 @@ class ReadingActivity : AppCompatActivity() {
                 val l = ArrayList<String>()
                 for (i in arr) {
                     if (i.endsWith(".txt")) {
-                        l.add(i.replaceFirst("....$".toRegex(),""))
-                        arrayAdapter.add(i.replaceFirst("....$".toRegex(),""))
+                        l.add(i.replaceFirst("....$".toRegex(), ""))
+                        arrayAdapter.add(i.replaceFirst("....$".toRegex(), ""))
                     }
                 }
 
@@ -408,7 +415,13 @@ class ReadingActivity : AppCompatActivity() {
                 builderSingle.setAdapter(arrayAdapter) { dialog: DialogInterface?, which: Int -> setTextViewHTML(mBody!!, loadFile(this, l[which])); mTitle?.text = l[which]; file = true; mUrl = l[which] }
                 builderSingle.show()
             }
-            // PRESSING INVERT CLEARS LOADED FILE
+            R.id.tts -> {
+                reading = !reading
+                val text: String = mBody?.getText().toString()
+                if(reading) tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null)
+                else tts!!.stop()
+                invalidateOptionsMenu()
+            }
             else -> finish()
         }
         return super.onOptionsItemSelected(item)
@@ -424,8 +437,8 @@ class ReadingActivity : AppCompatActivity() {
         val l = ArrayList<String>()
         for (i in arr) {
             if (i.endsWith(".txt")) {
-                l.add(i.replaceFirst("....$".toRegex(),""))
-                arrayAdapter.add(i.replaceFirst("....$".toRegex(),""))
+                l.add(i.replaceFirst("....$".toRegex(), ""))
+                arrayAdapter.add(i.replaceFirst("....$".toRegex(), ""))
             }
         }
 
@@ -466,6 +479,35 @@ class ReadingActivity : AppCompatActivity() {
         }
     }
 
+    override fun onInit(status: Int) {
+        if (status === TextToSpeech.SUCCESS) {
+            val result: Int = tts!!.setLanguage(Locale.US)
+
+            // tts.setPitch(5); // set pitch level
+
+            // tts.setSpeechRate(2); // set speech speed rate
+            if (result == TextToSpeech.LANG_MISSING_DATA
+                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "Language is not supported")
+            } else {
+                //btnSpeak.setEnabled(true)
+                //speakOut()
+            }
+        } else {
+            Log.e("TTS", "Initilization Failed")
+        }
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        val item = menu.findItem(R.id.tts)
+        if (reading) {
+            item.title = resources.getString(R.string.stop_tts)
+        } else {
+            item.title = resources.getString(R.string.tts)
+        }
+        return super.onPrepareOptionsMenu(menu)
+    }
+
     companion object {
         private const val LOAD_READING_URL = "ReadingUrl"
         private const val LOAD_FILE = "FileUrl"
@@ -483,7 +525,6 @@ class ReadingActivity : AppCompatActivity() {
             context.startActivity(intent)
         }
 
-        private const val TAG = "ReadingActivity"
         private const val XXLARGE = 30.0f
         private const val XLARGE = 26.0f
         private const val LARGE = 22.0f

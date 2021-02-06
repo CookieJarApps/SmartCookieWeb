@@ -588,5 +588,8 @@
     <string name="switch_button">Switch</string>
 
     <string name="dont_ask_again">Don\'t ask again</string>
+
+    <string name="tts">Read page</string>
+    <string name="stop_tts">Stop reading</string>
     <!-- finish pages -->
 </resources>
