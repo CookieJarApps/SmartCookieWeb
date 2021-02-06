@@ -14,6 +14,7 @@ import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.webkit.*
@@ -58,12 +59,13 @@ import java.net.URL
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+import java.util.regex.PatternSyntaxException
 import javax.inject.Inject
 import kotlin.math.abs
 
 class SmartCookieWebClient(
-    private val activity: Activity,
-    private val smartCookieView: SmartCookieView
+        private val activity: Activity,
+        private val smartCookieView: SmartCookieView
 ) : WebViewClient() {
 
     private val uiController: UIController
@@ -71,7 +73,7 @@ class SmartCookieWebClient(
     private val emptyResponseByteArray: ByteArray = byteArrayOf()
     private var urlLoaded = ""
 
-    private var badsslList: MutableList<String> = ArrayList<String>()
+    private var badsslList: MutableList<String> = ArrayList()
     private var badsslErrors: MutableList<SslError> = ArrayList<SslError>()
 
     private val startBlocked = "<html><head><script language=\"javascript\"> function reload(){setTimeout(function(){window.history.back();}, 500);"
@@ -193,62 +195,59 @@ class SmartCookieWebClient(
         return null
     }
 
-    private fun uninstallExtension(text: String) {
+    var name: String? = null
+    var version: String? = null
+    var author: String? = null
+    var description: String? = null
+    val include = ArrayList<Pattern>(0)
 
-        val path = activity.getFilesDir()
-
-        val letDirectory = File(path, "extensions")
-        letDirectory.mkdirs()
-        val file = File(letDirectory, "extension_file.txt")
-        if(!file.exists()){
-            file.appendText("/* begin extensions file */")
-        }
-        var inputAsString = FileInputStream(file).bufferedReader().use { it.readText() }
-        var result: String
-        if(inputAsString.contains("/*") && inputAsString.contains("*/")){
-            result = text.substring(text.indexOf("/*") + 2, text.indexOf("*/"))
-        }
-        else{
-            val toast = Toast.makeText(activity, "Extension not installed", Toast.LENGTH_LONG)
-            toast.show()
-            smartCookieView.loadHomePage()
-            /*smartCookieView.loadUrl("https://extensions.cookiejarapps.com/error.html")
-            Handler().postDelayed({
-            smartCookieView.webView!!.settings.javaScriptEnabled = true
-            smartCookieView.webView!!.evaluateJavascript("document.getElementById('description').innerHTML = 'The extension could not be uninstalled because it isn\'t installed.';", null)
-            smartCookieView.webView!!.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
-            }, 600)*/
-            return
-        }
-
-        var string1 = inputAsString.substring(inputAsString.indexOf("/*" + result + "*/") + 4 + result.length, inputAsString.indexOf("/*End " + result + "*/"))
-        inputAsString = inputAsString.replace(string1, "")
-        inputAsString = inputAsString.replace("/*" + result + "*/", "")
-        inputAsString = inputAsString.replace("/*End " + result + "*/", "")
-        PrintWriter(file).close()
-        file.appendText(inputAsString)
-    }
     private fun installExtension(text: String){
-        val metadataRegex: Pattern = Pattern.compile("==UserScript==(.*?)==\\/UserScript==", Pattern.DOTALL)
-        val metadataMatcher: Matcher = metadataRegex.matcher(text)
-        var metadata = ""
-        var code = ""
-        var name = ""
-        if (metadataMatcher.find()) {
-            metadata = metadataMatcher.group(1)
-            code = text.replace(metadataMatcher.group(1), "")
+        var tx = text.replace("""\"""", """"""")
+                .replace("\\n", System.lineSeparator())
+                .replace("\\t", "")
+                .replace("\\u003C", "<")
+                .replace("""/"""", """"""")
+                .replace("""//"""", """/"""")
+                .replace("""\\'""", """\'""")
+                .replace("""\\""""", """\""""")
+
+        val headerRegex = Pattern.compile("\\s*//\\s*==UserScript==\\s*", Pattern.CASE_INSENSITIVE)
+        val headerEndRegex = Pattern.compile("\\s*//\\s*==/UserScript==\\s*", Pattern.CASE_INSENSITIVE)
+        val mainRegex = Pattern.compile("\\s*//\\s*@(\\S+)(?:\\s+(.*))?", Pattern.CASE_INSENSITIVE)
+
+        val reader = BufferedReader(StringReader(tx))
+
+        if (reader.readLine()?.let { headerRegex.matcher(it).matches() } != true) {
+            Log.d("ghsdgsdgsd", "Header (start) parser error")
         }
 
-        name = text.substringAfter("@name").substringBefore("// ")
+        reader.forEachLine { line ->
+            val matcher = mainRegex.matcher(line)
+            if (!matcher.matches()) {
+                if (headerEndRegex.matcher(line).matches()) {
+                    return@forEachLine
+                }
+            } else {
+                val field = matcher.group(1)
+                val value = matcher.group(2)
+                if(field != null){
+                    parseLine(field, value)
+                }
+            }
+        }
 
-        val urls = Regex("@match (.*?)\\\\n")
-        val matches = urls.findAll(text)
-        var names = matches.map { it.groupValues[1] }.joinToString()
-        names = names.replace("\\s".toRegex(), "")
+        val metadataRegex: Pattern = Pattern.compile("==UserScript==(.*?)==\\/UserScript==", Pattern.DOTALL)
 
-        //@include(.*?).*
+        val metadataMatcher: Matcher = metadataRegex.matcher(text)
+        var code = ""
 
-        javascriptRepository.addJavaScriptIfNotExists(JavaScriptDatabase.JavaScriptEntry(name, names, code.replace("// ==UserScript====/UserScript==", "")))
+        if (metadataMatcher.find()) {
+            code = text.replace(metadataMatcher.group(0), "")
+        }
+
+        val inc = TextUtils.join(",", include)
+
+        javascriptRepository.addJavaScriptIfNotExists(JavaScriptDatabase.JavaScriptEntry(name!!, version, author, inc, "", code))
                 .subscribeOn(databaseScheduler)
                 .subscribe { aBoolean: Boolean? ->
                     if (!aBoolean!!) {
@@ -257,38 +256,93 @@ class SmartCookieWebClient(
                 }
     }
 
+    private fun parseLine(field: String?, value: String?) {
+        if ("name".equals(field, ignoreCase = true)) {
+            name = value
+        } else if ("version".equals(field, ignoreCase = true)) {
+            version = value
+        } else if ("author".equals(field, ignoreCase = true)) {
+            author = value
+        } else if ("description".equals(field, ignoreCase = true)) {
+            description = value
+        } else if ("include".equals(field, ignoreCase = true)) {
+            urlToPattern(value)?.let {
+                include.add(it)
+            }
+        } else if ("match".equals(field, ignoreCase = true) && value != null) {
+            val urlPattern = "^" + value.replace("?", "\\?").replace(".", "\\.")
+                    .replace("*", ".*").replace("+", ".+")
+                    .replace("://.*\\.", "://((?![\\./]).)*\\.").replace("^\\.\\*://".toRegex(), "https?://")
+            urlToParsedPattern(urlPattern)?.let {
+                include.add(it)
+            }
+        }
+    }
+
+    val TLD_REGEX = "^([^:]+://[^/]+)\\\\.tld(/.*)?\$".toRegex()
+    val schemeContainsPattern = Pattern.compile("^\\w+:", Pattern.CASE_INSENSITIVE)
+
+    fun urlToPattern(patternUrl: String?): Pattern? {
+        if (patternUrl == null) return null
+        try {
+            val builder = StringBuilder(patternUrl)
+            builder.toString().replace("?", "\\?").replace(".", "\\.").replace("*", ".*?").replace("+", ".+?")
+            var converted = builder.toString()
+
+            if (converted.contains(".tld", true)) {
+                converted = TLD_REGEX.replaceFirst(converted, "$1(.[a-z]{1,6}){1,3}$2")
+            }
+
+            return if (schemeContainsPattern.matcher(converted).find())
+                Pattern.compile("^$converted")
+            else
+                Pattern.compile("^\\w+://$converted")
+        } catch (e: PatternSyntaxException) {
+            Log.d(TAG, "Error: " + e)
+        }
+
+        return null
+    }
+
+    fun urlToParsedPattern(patternUrl: String): Pattern? {
+        try {
+            val converted = if (patternUrl.contains(".tld", true)) {
+                TLD_REGEX.replaceFirst(patternUrl, "$1(.[a-z]{1,6}){1,3}$2")
+            } else {
+                patternUrl
+            }
+            return Pattern.compile(converted)
+        } catch (e: PatternSyntaxException) {
+            Log.d(TAG, "Error: " + e)
+        }
+
+        return null
+    }
+
     override fun onPageFinished(view: WebView, url: String) {
         if(url.contains(BuildConfig.APPLICATION_ID + "/files/homepage.html")) {
-            view.evaluateJavascript("javascript:(function() {"
-                    + "link1var = '" + userPreferences.link1  + "';"
-                    + "})();", null)
-            view.evaluateJavascript("javascript:(function() {"
-                    + "link2var = '" + userPreferences.link2 + "';"
-                    + "})();", null)
-            view.evaluateJavascript("javascript:(function() {"
-                    + "link3var = '" + userPreferences.link3 + "';"
-                    + "})();", null)
-            view.evaluateJavascript("javascript:(function() {"
-                    + "link4var = '" + userPreferences.link4  + "';"
-                    + "})();", null)
+            val preferenceArray = arrayListOf(userPreferences.link1, userPreferences.link2, userPreferences.link3, userPreferences.link4)
+            for(i in 1..4){
+                view.evaluateJavascript("javascript:(function() {"
+                        + "link" + i + "var = '" + preferenceArray[i - 1] + "';"
+                        + "})();", null)
+            }
         }
 
         if(url.contains(".user.js") && view.isShown){
             val builder = MaterialAlertDialogBuilder(activity)
             builder.setTitle(activity.resources.getString(R.string.install_userscript))
             builder.setMessage(activity.resources.getString(R.string.install_userscript_description))
-            builder.setPositiveButton(R.string.yes){dialog, which ->
-                //Toast.makeText(activity,"Extension installed.",Toast.LENGTH_SHORT).show()
-
+            builder.setPositiveButton(R.string.yes){ dialog, which ->
                 view.evaluateJavascript("""(function() {
                 return document.body.innerText;
                 })()""".trimMargin()) {
-                    val extensionSource = it.substring(1, it.length-1)
+                    val extensionSource = it.substring(1, it.length - 1)
                     installExtension(extensionSource)
                 }
 
             }
-            builder.setNegativeButton("No"){_,_ ->
+            builder.setNegativeButton("No"){ _, _ ->
             }
             val dialog: androidx.appcompat.app.AlertDialog = builder.create()
             dialog.show()
@@ -300,9 +354,6 @@ class SmartCookieWebClient(
             uiController.setBackButtonEnabled(view.canGoBack())
             uiController.setForwardButtonEnabled(view.canGoForward())
             view.postInvalidate()
-        }
-        if(url.contains("android_asset/onboarding.html")){
-            uiController.updateUrl("", false)
         }
 
         if(userPreferences.forceZoom){
@@ -363,7 +414,7 @@ class SmartCookieWebClient(
                 val reload = activity.getString(R.string.error_reload)
                 val error = activity.getString(R.string.malware_message)
                 val end = "</button> --> </div></div></div></body></center></html>"
-                view.loadDataWithBaseURL(null, color+ start + start1 + title + start2 + error + start3 + reload + end, "text/html; charset=utf-8", "UTF-8", null)
+                view.loadDataWithBaseURL(null, color + start + start1 + title + start2 + error + start3 + reload + end, "text/html; charset=utf-8", "UTF-8", null)
                 view.invalidate()
                 view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
             }
@@ -434,9 +485,8 @@ class SmartCookieWebClient(
                 }
 
         for(i in jsList){
-            for(x in i.urlList.split(",")){
-                val regex = "\\Q$x\\E".replace("*", "\\E.*\\Q").toRegex()
-                if(view.url.matches(regex)){
+            for(x in i.include!!.split(",")){
+                if(view.url.matches(x.toRegex())){
                     view.evaluateJavascript(
                             i.code.replace("""\"""", """"""")
                                     .replace("\\n", System.lineSeparator())
@@ -633,10 +683,10 @@ class SmartCookieWebClient(
     }
 
     override fun onReceivedHttpAuthRequest(
-        view: WebView,
-        handler: HttpAuthHandler,
-        host: String,
-        realm: String
+            view: WebView,
+            handler: HttpAuthHandler,
+            host: String,
+            realm: String
     ) {
         MaterialAlertDialogBuilder(activity).apply {
             val dialogView = LayoutInflater.from(activity).inflate(R.layout.dialog_auth_request, null)

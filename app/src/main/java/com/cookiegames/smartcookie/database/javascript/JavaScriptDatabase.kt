@@ -31,7 +31,10 @@ class JavaScriptDatabase @Inject constructor(
 
     data class JavaScriptEntry(
             val name: String,
-            val urlList: String,
+            val version: String?,
+            val author: String?,
+            val include: String?,
+            val exclude: String?,
             val code: String
     )
 
@@ -41,7 +44,10 @@ class JavaScriptDatabase @Inject constructor(
         val createJavaScriptTable = "CREATE TABLE $TABLE_JAVASCRIPT(" +
                 " $KEY_ID INTEGER PRIMARY KEY," +
                 " $KEY_NAME TEXT," +
-                " $KEY_URL_LIST TEXT," +
+                " $KEY_AUTHOR TEXT," +
+                " $KEY_VERSION TEXT," +
+                " $KEY_INCLUDE TEXT," +
+                " $KEY_EXCLUDE TEXT," +
                 " $KEY_CODE TEXT" +
                 ")"
         db.execSQL(createJavaScriptTable)
@@ -73,7 +79,7 @@ class JavaScriptDatabase @Inject constructor(
                 return@fromCallable database.query(
                         TABLE_JAVASCRIPT,
                         null,
-                        "$KEY_NAME LIKE ? OR $KEY_URL_LIST LIKE ?",
+                        "$KEY_NAME LIKE ?",
                         arrayOf(search, search),
                         null,
                         null,
@@ -125,8 +131,8 @@ class JavaScriptDatabase @Inject constructor(
     fun getJavaScriptEntry(url: String): String? =
             database.query(
                     TABLE_JAVASCRIPT,
-                    arrayOf(KEY_ID, KEY_URL_LIST, KEY_CODE, KEY_NAME),
-                    "$KEY_URL_LIST = ?",
+                    arrayOf(KEY_ID, KEY_INCLUDE, KEY_CODE, KEY_NAME),
+                    "$KEY_NAME = ?",
                     arrayOf(url),
                     null,
                     null,
@@ -150,21 +156,27 @@ class JavaScriptDatabase @Inject constructor(
     fun getJavaScriptEntriesCount(): Long = DatabaseUtils.queryNumEntries(database, TABLE_JAVASCRIPT)
 
     private fun JavaScriptEntry.toContentValues() = ContentValues().apply {
-        put(KEY_URL_LIST, urlList)
         put(KEY_NAME, name)
+        put(KEY_AUTHOR, author)
+        put(KEY_VERSION, version)
+        put(KEY_INCLUDE, include)
+        put(KEY_EXCLUDE, exclude)
         put(KEY_CODE, code)
     }
 
     private fun Cursor.bindToJavaScriptEntry() = JavaScriptEntry(
             name = getString(1),
-            urlList = getString(2),
-            code = getString(3)
+            author = getString(2),
+            version = getString(3),
+            include = getString(4),
+            exclude = getString(5),
+            code = getString(6)
     )
 
     companion object {
 
         // Database version
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
 
         // Database name
         private const val DATABASE_NAME = "javascriptManager"
@@ -175,7 +187,10 @@ class JavaScriptDatabase @Inject constructor(
         // JavaScriptEntry table columns names
         private const val KEY_ID = "id"
         private const val KEY_NAME = "name"
-        private const val KEY_URL_LIST = "urls"
+        private const val KEY_AUTHOR = "author"
+        private const val KEY_VERSION = "version"
+        private const val KEY_INCLUDE = "include"
+        private const val KEY_EXCLUDE = "exclude"
         private const val KEY_CODE = "code"
 
     }
