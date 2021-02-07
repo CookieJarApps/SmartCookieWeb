@@ -939,9 +939,9 @@ class SmartCookieView(
 
         private val reference: WeakReference<SmartCookieView> = WeakReference(view)
 
-        override fun handleMessage(msg: Message) {
+        override fun handleMessage(msg: Message?) {
             super.handleMessage(msg)
-            val url = msg.data.getString("url")
+            val url = msg?.data?.getString("url")
 
             reference.get()?.longClickPage(url)
         }
