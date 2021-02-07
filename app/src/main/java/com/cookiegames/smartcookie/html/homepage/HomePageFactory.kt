@@ -78,6 +78,7 @@ class HomePageFactory @Inject constructor(
 
                         shortcuts.forEachIndexed { index, element ->
                             val connection: URLConnection = URL(element + "/favicon.ico").openConnection()
+                            connection.connectTimeout = 200
                             val contentType: String? = connection.getHeaderField("Content-Type")
                             val image = contentType?.startsWith("image/")
 

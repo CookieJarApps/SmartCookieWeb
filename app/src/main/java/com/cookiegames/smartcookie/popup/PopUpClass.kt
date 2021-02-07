@@ -63,7 +63,11 @@ class PopUpClass {
         view.context.injector.inject(this)
         //Create a View object yourself through inflater
         val inflater = view.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val popupView = inflater.inflate(R.layout.toolbar_menu, null)
+        var popupView: View?
+
+        if(userPreferences.bottomBar) popupView = inflater.inflate(R.layout.toolbar_menu_btm, null)
+        else popupView = inflater.inflate(R.layout.toolbar_menu, null)
+        
         val r = view.context.resources
 
         val px = Math.round(TypedValue.applyDimension(
@@ -78,7 +82,8 @@ class PopUpClass {
         popupWindow.isOutsideTouchable = true
         popupWindow.isFocusable = true
         popupWindow.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        val relView = popupView.findViewById<RelativeLayout>(R.id.toolbar_menu)
+
+        var relView = popupView.findViewById<RelativeLayout>(R.id.toolbar_menu)
 
         if(activity.isIncognito()){
             popupView.findViewById<ConstraintLayout>(R.id.transparent_container).setBackgroundResource(R.drawable.toolbar_dark)

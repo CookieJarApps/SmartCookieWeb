@@ -53,7 +53,7 @@ class CustomAdapter(private val mContext: Context, private val Title: Array<Stri
         val theme = mContext.theme
         theme.resolveAttribute(R.attr.iconColor, typedValue, true)
         @ColorInt val color = typedValue.data
-        // Horrifically hacky, TODO: find another way to get the theme here, this'll break if I add new themes
+        //TODO: find another way to get the theme here, this'll break if I add new themes
         if (color == -16777216) {
             tint = ContextCompat.getColor(mContext, R.color.black)
             title.setTextColor(ContextCompat.getColor(mContext, R.color.black))

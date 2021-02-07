@@ -244,7 +244,7 @@ class SmartCookieView(
             .subscribe(::setNetworkAvailable)
 
         if(WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK) && userPreferences.darkModeExtension) {
-            WebSettingsCompat.setForceDark(webView!!.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
+            WebSettingsCompat.setForceDark(webView!!.getSettings(), WebSettingsCompat.FORCE_DARK_ON)
         }
 
         if(userPreferences.firstLaunch){
