@@ -21,7 +21,9 @@
             app:layout_constrainedHeight="true"
 
             app:layout_constraintBottom_toTopOf="@+id/topBar"
-            app:layout_constraintTop_toBottomOf="@+id/transparent_container">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
             <ListView
@@ -41,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_options">
