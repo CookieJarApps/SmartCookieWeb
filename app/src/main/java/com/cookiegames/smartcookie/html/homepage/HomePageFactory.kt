@@ -1,25 +1,32 @@
 package com.cookiegames.smartcookie.html.homepage
 
 import android.app.Application
-import android.content.Context
 import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.util.Base64
 import android.util.Log
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.constant.FILE
 import com.cookiegames.smartcookie.constant.UTF8
-import com.cookiegames.smartcookie.database.history.HistoryDatabase
 import com.cookiegames.smartcookie.database.history.HistoryRepository
 import com.cookiegames.smartcookie.html.HtmlPageFactory
 import com.cookiegames.smartcookie.html.ListPageReader
 import com.cookiegames.smartcookie.html.jsoup.*
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.search.SearchEngineProvider
+import com.cookiegames.smartcookie.utils.DrawableUtils
 import dagger.Reusable
 import io.reactivex.Single
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileWriter
+import java.net.URI
+import java.net.URL
+import java.net.URLConnection
 import javax.inject.Inject
+
 
 /**
  * A factory for the home page.
@@ -48,29 +55,50 @@ class HomePageFactory @Inject constructor(
                     id("search_input") { attr("style", "background: url('" + iconUrl + "') no-repeat scroll 7px 7px;background-size: 22px 22px;") }
                     tag("script") {
                         html(
-                            if(!userPreferences.whatsNewEnabled){
-                                html()
-                                        .replace("What's new", "")
-                            }
-                        else {
-                                html()
-                                        .replace("\${BASE_URL}", queryUrl)
-                                        .replace("&", "\\u0026")
-                            }
+                                if (!userPreferences.whatsNewEnabled) {
+                                    html()
+                                            .replace("What's new", "")
+                                } else {
+                                    html()
+                                            .replace("\${BASE_URL}", queryUrl)
+                                            .replace("&", "\\u0026")
+                                }
 
                         )
                     }
                     if(userPreferences.showShortcuts){
+                        var shortcuts = arrayListOf(userPreferences.link1, userPreferences.link2, userPreferences.link3, userPreferences.link4)
+
                         id("edit_shortcuts"){ text(resources.getString(R.string.edit_shortcuts)) }
                         id("apply"){ text(resources.getString(R.string.apply)) }
-                        id("link1click"){ attr("href", userPreferences.link1)}
-                        id("link2click"){ attr("href", userPreferences.link2)}
-                        id("link3click"){ attr("href", userPreferences.link3)}
-                        id("link4click"){ attr("href", userPreferences.link4)}
-                        id("link1"){ attr("src", userPreferences.link1 + "/favicon.ico")}
-                        id("link2"){ attr("src", userPreferences.link2 + "/favicon.ico")}
-                        id("link3"){ attr("src", userPreferences.link3 + "/favicon.ico")}
-                        id("link4"){ attr("src", userPreferences.link4 + "/favicon.ico")}
+                        id("link1click"){ attr("href", shortcuts[0])}
+                        id("link2click"){ attr("href", shortcuts[1])}
+                        id("link3click"){ attr("href", shortcuts[2])}
+                        id("link4click"){ attr("href", shortcuts[3])}
+
+                        shortcuts.forEachIndexed { index, element ->
+                            val connection: URLConnection = URL(element + "/favicon.ico").openConnection()
+                            val contentType: String? = connection.getHeaderField("Content-Type")
+                            val image = contentType?.startsWith("image/")
+
+                            if(image == true) id("link" + (index + 1)){ attr("src", element + "/favicon.ico")}
+                            else {
+                                var url = URL(element.replaceFirst("www.", ""))
+
+                                var icon = DrawableUtils.createRoundedLetterImage(
+                                        url.getHost().first().toUpperCase(),
+                                        64,
+                                        64,
+                                        Color.GRAY
+                                )
+                                val byteArrayOutputStream = ByteArrayOutputStream()
+                                icon.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+                                val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
+                                val encoded: String = Base64.encodeToString(byteArray, Base64.NO_WRAP)
+                                id("link" + (index + 1)){ attr("src", "data:image/png;base64," + encoded)}
+                            }
+                        }
+
                         id("search_input"){ attr("placeholder", resources.getString(R.string.search_homepage))}
                     }
                     else{
