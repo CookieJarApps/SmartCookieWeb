@@ -5,7 +5,6 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.util.Base64
-import android.util.Log
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.constant.FILE
@@ -22,7 +21,6 @@ import io.reactivex.Single
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileWriter
-import java.net.URI
 import java.net.URL
 import java.net.URLConnection
 import javax.inject.Inject
@@ -77,8 +75,17 @@ class HomePageFactory @Inject constructor(
                         id("link4click"){ attr("href", shortcuts[3])}
 
                         shortcuts.forEachIndexed { index, element ->
+                            if(element == ""){
+                                val icon = createIconByName('?')
+                                val encoded = bitmapToBase64(icon)
+
+                                id("link" + (index + 1)){ attr("src", "data:image/png;base64," + encoded)}
+
+                                return@forEachIndexed
+                            }
+
                             val connection: URLConnection = URL(element + "/favicon.ico").openConnection()
-                            connection.connectTimeout = 200
+                            connection.connectTimeout = 50
                             val contentType: String? = connection.getHeaderField("Content-Type")
                             val image = contentType?.startsWith("image/")
 
@@ -86,16 +93,9 @@ class HomePageFactory @Inject constructor(
                             else {
                                 val url = URL(element.replaceFirst("www.", ""))
 
-                                val icon = DrawableUtils.createRoundedLetterImage(
-                                        url.getHost().first().toUpperCase(),
-                                        64,
-                                        64,
-                                        Color.GRAY
-                                )
-                                val byteArrayOutputStream = ByteArrayOutputStream()
-                                icon.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
-                                val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
-                                val encoded: String = Base64.encodeToString(byteArray, Base64.NO_WRAP)
+                                val icon = createIconByName(url.getHost().first().toUpperCase())
+                                val encoded = bitmapToBase64(icon)
+
                                 id("link" + (index + 1)){ attr("src", "data:image/png;base64," + encoded)}
                             }
                         }
@@ -142,6 +142,24 @@ class HomePageFactory @Inject constructor(
      * Create the home page file.
      */
     fun createHomePage() = File(application.filesDir, FILENAME)
+
+    fun createIconByName(name: Char): Bitmap{
+        val icon = DrawableUtils.createRoundedLetterImage(
+                name,
+                64,
+                64,
+                Color.GRAY
+        )
+        return icon
+    }
+
+    fun bitmapToBase64(bitmap: Bitmap): String{
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+        val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
+        val encoded: String = Base64.encodeToString(byteArray, Base64.NO_WRAP)
+        return encoded
+    }
 
     companion object {
 
