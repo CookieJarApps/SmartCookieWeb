@@ -83,9 +83,9 @@ class HomePageFactory @Inject constructor(
 
                             if(image == true) id("link" + (index + 1)){ attr("src", element + "/favicon.ico")}
                             else {
-                                var url = URL(element.replaceFirst("www.", ""))
+                                val url = URL(element.replaceFirst("www.", ""))
 
-                                var icon = DrawableUtils.createRoundedLetterImage(
+                                val icon = DrawableUtils.createRoundedLetterImage(
                                         url.getHost().first().toUpperCase(),
                                         64,
                                         64,
