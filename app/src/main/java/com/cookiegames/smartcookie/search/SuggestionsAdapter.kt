@@ -13,7 +13,6 @@ import com.cookiegames.smartcookie.di.NetworkScheduler
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.extensions.drawable
 import com.cookiegames.smartcookie.preference.UserPreferences
-import com.cookiegames.smartcookie.rx.join
 import com.cookiegames.smartcookie.search.suggestions.NoOpSuggestionsRepository
 import com.cookiegames.smartcookie.search.suggestions.SuggestionsRepository
 import android.content.Context
@@ -23,7 +22,6 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Filter
 import android.widget.Filterable
-import com.cookiegames.smartcookie.browser.SuggestionNumChoice
 import io.reactivex.*
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
@@ -194,22 +192,20 @@ class SuggestionsAdapter(
             // Search - 1
 
             bookmarksEntries
-                .join(
-                    historyEntries,
-                    { bookmarksEntries.map { Unit } },
-                    { historyEntries.map { Unit } }
-                ) { t1, t2 ->
-                    Pair(t1, t2)
-                }
-                .compose { bookmarksAndHistory ->
-                    bookmarksAndHistory.join(
-                        searchEntries,
-                        { bookmarksAndHistory.map { Unit } },
-                        { searchEntries.map { Unit } }
-                    ) { (bookmarks, history), t2 ->
-                        Triple(bookmarks, history, t2)
+                    .join(
+                            historyEntries,
+                            { bookmarksEntries },
+                            { historyEntries }
+                    ) { t1, t2 -> Pair(t1, t2) }
+                    .compose { bookmarksAndHistory ->
+                        bookmarksAndHistory.join(
+                                searchEntries,
+                                { bookmarksAndHistory },
+                                { searchEntries }
+                        ) { (bookmarks, history), t2 ->
+                            Triple(bookmarks, history, t2)
+                        }
                     }
-                }
         }
         .map { (bookmarks, history, searches) ->
             var choice = 5

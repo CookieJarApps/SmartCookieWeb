@@ -10,7 +10,10 @@ android {
     compileSdkVersion project.targetSdkVersion
     buildToolsVersion project.buildToolsVersion
 
-
+    dexOptions {
+        javaMaxHeapSize "8g"
+        preDexLibraries false
+    }
 
     lintOptions {
         checkReleaseBuilds false
@@ -89,6 +92,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        dataBinding true
     }
 }
 
