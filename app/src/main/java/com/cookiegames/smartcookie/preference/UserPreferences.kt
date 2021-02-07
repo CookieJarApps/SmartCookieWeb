@@ -378,6 +378,9 @@ class UserPreferences @Inject constructor(
     // Redirect from AMP sites
     var noAmp by preferences.booleanPreference(NO_AMP, false)
 
+    // Show download dialog before downloading a file
+    var showDownloadConfirmation by preferences.booleanPreference(SHOW_DOWNLOAD_CONFIRMATION, true)
+
     // First launch since v11
     var firstLaunch11 by preferences.booleanPreference(FIRST_LAUNCH11, true)
     // First launch since v11.1
@@ -476,3 +479,4 @@ private const val ALL_TABS = "allTabs"
 private const val SHOW_SHORTCUTS = "showShortcuts"
 private const val SECOND_BAR = "secondBar"
 private const val NO_AMP = "noAmp"
+private const val SHOW_DOWNLOAD_CONFIRMATION = "showDownloadConfirmation"
