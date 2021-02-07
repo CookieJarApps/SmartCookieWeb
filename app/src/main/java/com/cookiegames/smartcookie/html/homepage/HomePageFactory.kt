@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.util.Base64
+import android.webkit.URLUtil
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.constant.FILE
@@ -75,7 +76,7 @@ class HomePageFactory @Inject constructor(
                         id("link4click"){ attr("href", shortcuts[3])}
 
                         shortcuts.forEachIndexed { index, element ->
-                            if(element == ""){
+                            if(!URLUtil.isValidUrl(element)){
                                 val icon = createIconByName('?')
                                 val encoded = bitmapToBase64(icon)
 
@@ -84,20 +85,12 @@ class HomePageFactory @Inject constructor(
                                 return@forEachIndexed
                             }
 
-                            val connection: URLConnection = URL(element + "/favicon.ico").openConnection()
-                            connection.connectTimeout = 50
-                            val contentType: String? = connection.getHeaderField("Content-Type")
-                            val image = contentType?.startsWith("image/")
+                            val url = URL(element.replaceFirst("www.", ""))
+                            val icon = createIconByName(url.getHost().first().toUpperCase())
+                            val encoded = bitmapToBase64(icon)
+                            id("link" + (index + 1)){ attr("src", element + "/favicon.ico")}
+                            id("link" + (index + 1)){ attr("onerror", "this.src = 'data:image/png;base64,$encoded';")}
 
-                            if(image == true) id("link" + (index + 1)){ attr("src", element + "/favicon.ico")}
-                            else {
-                                val url = URL(element.replaceFirst("www.", ""))
-
-                                val icon = createIconByName(url.getHost().first().toUpperCase())
-                                val encoded = bitmapToBase64(icon)
-
-                                id("link" + (index + 1)){ attr("src", "data:image/png;base64," + encoded)}
-                            }
                         }
 
                         id("search_input"){ attr("placeholder", resources.getString(R.string.search_homepage))}
@@ -155,7 +148,7 @@ class HomePageFactory @Inject constructor(
 
     fun bitmapToBase64(bitmap: Bitmap): String{
         val byteArrayOutputStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream)
         val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
         val encoded: String = Base64.encodeToString(byteArray, Base64.NO_WRAP)
         return encoded
