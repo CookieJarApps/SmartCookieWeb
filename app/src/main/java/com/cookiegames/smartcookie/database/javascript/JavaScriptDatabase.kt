@@ -35,6 +35,7 @@ class JavaScriptDatabase @Inject constructor(
             val author: String?,
             val include: String?,
             val exclude: String?,
+            val time: String?,
             val code: String
     )
 
@@ -48,6 +49,7 @@ class JavaScriptDatabase @Inject constructor(
                 " $KEY_VERSION TEXT," +
                 " $KEY_INCLUDE TEXT," +
                 " $KEY_EXCLUDE TEXT," +
+                " $KEY_TIME TEXT," +
                 " $KEY_CODE TEXT" +
                 ")"
         db.execSQL(createJavaScriptTable)
@@ -161,6 +163,7 @@ class JavaScriptDatabase @Inject constructor(
         put(KEY_VERSION, version)
         put(KEY_INCLUDE, include)
         put(KEY_EXCLUDE, exclude)
+        put(KEY_TIME, time)
         put(KEY_CODE, code)
     }
 
@@ -170,7 +173,8 @@ class JavaScriptDatabase @Inject constructor(
             version = getString(3),
             include = getString(4),
             exclude = getString(5),
-            code = getString(6)
+            time = getString(6),
+            code = getString(7)
     )
 
     companion object {
@@ -191,6 +195,7 @@ class JavaScriptDatabase @Inject constructor(
         private const val KEY_VERSION = "version"
         private const val KEY_INCLUDE = "include"
         private const val KEY_EXCLUDE = "exclude"
+        private const val KEY_TIME = "time"
         private const val KEY_CODE = "code"
 
     }
