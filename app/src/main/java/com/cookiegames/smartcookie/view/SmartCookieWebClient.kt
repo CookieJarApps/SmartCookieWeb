@@ -218,7 +218,7 @@ class SmartCookieWebClient(
         val reader = BufferedReader(StringReader(tx))
 
         if (reader.readLine()?.let { headerRegex.matcher(it).matches() } != true) {
-            Log.d("ghsdgsdgsd", "Header (start) parser error")
+            Log.d(TAG, "Header (start) parser error")
         }
 
         reader.forEachLine { line ->
