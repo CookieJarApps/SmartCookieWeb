@@ -24,7 +24,7 @@
     <string name="settings_advanced_explain">Contenu de la barre d’adresse, mode de rendu, encodage du texte…</string>
     <string name="apache">Licence Apache 2.0</string>
     <string name="version">Version de l’application</string>
-    <string name="cache">Effacer le cache à la sortie</string>
+    <string name="cache">Effacer le cache à la fermeture du navigateur</string>
     <string name="reflow">Redistribuer le texte en largeur</string>
     <string name="block">Ne pas charger les images</string>
     <string name="window">Autoriser les sites à ouvrir de nouvelles fenêtres</string>
@@ -33,7 +33,7 @@
     <string name="size">Taille du texte</string>
     <string name="recommended">Conseillé</string>
     <string name="search">Moteur de recherche</string>
-    <string name="search_hint">Chercher</string>
+    <string name="search_hint">Entrez une URL ou effectuez une recherche</string>
     <string name="wideViewPort">Utiliser un viewport élargi</string>
     <string name="overViewMode">Charger les pages en mode aperçu</string>
     <string name="restore">Restaurer les onglets perdus au démarrage</string>
@@ -63,10 +63,10 @@
     <string name="unknown_size">Taille inconnue</string>
     <string name="action_cancel">Annuler</string>
     <string name="title_warning">Attention</string>
-    <string name="dialog_adobe_not_installed">Adobe Flash Player n’est pas installé.\nVeuillez installez Flash Player.</string>
+    <string name="dialog_adobe_not_installed">Adobe Flash Player n’est pas installé.\nVeuillez installer Flash Player.</string>
     <string name="title_user_agent">Agent utilisateur</string>
     <string name="title_download_location">Dossier de téléchargement</string>
-    <string name="download_failed">Le téléchargement a échoué avec une erreur:</string>
+    <string name="download_failed">Le téléchargement a échoué avec l’erreur suivante :</string>
     <string name="download_successful">Téléchargé avec succès</string>
     <string name="title_custom_homepage">Page d’accueil personnalisée</string>
     <string name="action_webpage">Page web</string>
@@ -83,7 +83,7 @@
     <string name="size_small">Petit</string>
     <string name="size_smallest">Plus petit</string>
     <string name="title_error">Erreur</string>
-    <string name="dialog_import_error">Aucun navigateur n’a été détecté depuis lequel importer des favoris.</string>
+    <string name="dialog_import_error">Pas trouvé de navigateur compatible depuis lequel importer des favoris.</string>
     <string name="hint_title">Titre</string>
     <string name="hint_url">URL</string>
     <string name="title_edit_bookmark">Modifier le favori</string>
@@ -93,13 +93,13 @@
     <string name="action_back">Retour</string>
     <string name="action_find">Chercher dans la page</string>
     <string name="download_pending">Téléchargement en cours…</string>
-    <string name="cannot_download">Ce navigateur ne peut télécharger que depuis une URL HTTP ou HTTPS.</string>
+    <string name="cannot_download">Ce navigateur ne prend en charge que le téléchargement des URLs HTTP et HTTPS.</string>
     <string name="problem_download">L’URL n’est pas valide, impossible de télécharger le fichier</string>
-    <string name="problem_location_download">Impossible de télécharger le fichier dans l’emplacement spécifié</string>
+    <string name="problem_location_download">Impossible de télécharger le fichier dans le dossier spécifié</string>
     <string name="download_no_sdcard_dlg_title">Pas de carte SD</string>
-    <string name="download_no_sdcard_dlg_msg">Le stockage USB est requis pour télécharger le fichier.</string>
+    <string name="download_no_sdcard_dlg_msg">Le stockage USB doit être activé pour télécharger le fichier.</string>
     <string name="download_sdcard_busy_dlg_title">Stockage USB indisponible</string>
-    <string name="download_sdcard_busy_dlg_msg">Le stockage USB est occupé. Pour permettre les téléchargements, appuyez sur « Désactiver le stockage USB» dans la notification.</string>
+    <string name="download_sdcard_busy_dlg_msg">Le stockage USB est occupé. Pour permettre les téléchargements, appuyez sur « Désactiver le stockage USB » dans la notification.</string>
     <string name="incognito_cookies">Activer les cookies en mode incognito</string>
     <string name="title_flash">Adobe Flash</string>
     <string name="action_manual">Manuel</string>
@@ -117,7 +117,7 @@
     <string name="licenses">Licences Open Source</string>
     <string name="suggestion">Rechercher</string>
     <string name="block_ads">Bloquer les publicités et les trackers</string>
-    <string name="message_insecure_connection">La connexion au site %1$s n’est pas sécurisée\nVoulez-vous tout de même y accéder?</string>
+    <string name="message_insecure_connection">La connexion au site %1$s n’est pas sécurisée.\nVoulez-vous tout de même y accéder ?</string>
     <string name="message_certificate_date_invalid">La date du certificat n’est pas valide</string>
     <string name="message_certificate_expired">Le certificat a expiré</string>
     <string name="message_certificate_domain_mismatch">Le domaine du certificat ne correspond pas au domaine du site</string>
@@ -138,7 +138,7 @@
     <string name="powered_by_baidu">Baidu</string>
     <string name="powered_by_naver">Naver</string>
     <string name="search_engine_naver">Naver</string>
-    <string name="shortcut_message_failed_to_add">Désolé, votre lanceur ne prend pas en charge les raccourcis.</string>
+    <string name="shortcut_message_failed_to_add">Votre lanceur ne prend pas en charge les raccourcis.</string>
     <!-- SSL -->
     <string name="ssl_info_issued_by">Délivré par</string>
     <string name="ssl_info_issued_to">Délivré à</string>
@@ -181,8 +181,8 @@
     <string name="i2p_tunnels_not_ready">Les tunnels I2P ne sont pas encore prêts.</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
-    <string name="clear_cookies_exit">Effacer les cookies à la sortie</string>
-    <string name="clear_history_exit">Effacer l’historique à la sortie</string>
+    <string name="clear_cookies_exit">Effacer les cookies à la fermeture du navigateur</string>
+    <string name="clear_history_exit">Effacer l’historique à la fermeture du navigateur</string>
     <string name="folder_default">Défaut</string>
     <string name="folder_custom">Personnalisé</string>
     <string name="untitled">Sans titre</string>
@@ -208,20 +208,20 @@
     <string name="bookmark_export_path">Favoris exportés vers</string>
     <string name="bookmark_export_failure">Désolé, les favoris n’ont pas pu être exportés.</string>
     <string name="tab_export_path">Onglets exportés vers</string>
-    <string name="tab_export_failure">Désolé, les onglets n’ont pas pu être exportés!</string>
+    <string name="tab_export_failure">Désolé, les onglets n’ont pas pu être exportés !</string>
     <string name="bookmark_settings">Paramètres de favoris</string>
     <string name="settings_bookmark_explain">Exporter et importer…</string>
     <string name="import_bookmark_error">Les favoris n’ont pas pu être importés depuis le fichier</string>
     <string name="import_tabs_error">Les onglets n’ont pas pu être importés depuis le fichier</string>
     <string name="title_chooser">Choisissez un fichier</string>
     <string name="settings_general">Paramètres généraux</string>
-    <string name="settings_general_explain">Bloqueur de publicités, moteur de recherche, page d’accueil…</string>
+    <string name="settings_general_explain">Moteur de recherche, proxy, page d’accueil…</string>
     <string name="settings_display">Paramètres d’affichage</string>
     <string name="settings_display_explain">Mode plein écran, taille du texte, thèmes…</string>
     <string name="settings_privacy">Paramètres de confidentialité et de sécurité</string>
     <string name="settings_privacy_explain">Cache, cookies, historique…</string>
     <string name="settings_about">À propos</string>
-    <string name="settings_about_explain">Numéro de version, auteur et licence…</string>
+    <string name="settings_about_explain">Numéro de version, contributions et licences…</string>
     <string name="close_tab">Fermer l’onglet sélectionné</string>
     <string name="close_all_tabs">Fermer tous les onglets</string>
     <string name="close_other_tabs">Fermer les autres onglets</string>
@@ -236,8 +236,8 @@
     <string name="url_contents">Contenu de la barre d’adresse</string>
     <string name="text_encoding">Encodage du texte</string>
     <string-array name="url_content_array">
-        <item>Domaine</item>
         <item>URL</item>
+        <item>Domaine</item>
         <item>Titre</item>
     </string-array>
     <string name="invert_color">Inverser les couleurs</string>
@@ -246,7 +246,7 @@
     <string name="tabs">Onglets</string>
     <string name="theme">Thème de l’application</string>
     <string name="light_theme">Thème clair</string>
-    <string name="black_theme">Thème noir</string>
+    <string name="black_theme">Thème noir (AMOLED)</string>
     <string name="blue_theme">Thème bleu</string>
     <string name="yellow_theme">Thème jaune</string>
     <string name="green_theme">Thème vert</string>
@@ -256,7 +256,7 @@
     <string name="title_rename_folder">Renommer le dossier</string>
     <string name="dialog_folder">Que voulez-vous faire avec ce dossier ?</string>
     <string name="clear_web_storage">Vider le stockage web</string>
-    <string name="clear_web_storage_exit">Vider le stockage web à la sortie</string>
+    <string name="clear_web_storage_exit">Vider le stockage web à la fermeture du navigateur</string>
     <string name="message_web_storage_cleared">Stockage web vidé avec succès</string>
     <string name="hosts_source">Source du fichier \'hosts\' pour le blocage des publicités</string>
     <string name="settings_adblock">Paramètres de blocage de contenu</string>
@@ -477,19 +477,19 @@
     <string name="pause_download">Pause</string>
     <string name="confirm_delete">Confirmer la suppression?</string>
     <string name="grant_permissions">Accordez les permissions</string>
-    <string name="grant_permissions_desc">Read/Write External Storage is required for downloads and bookmark/settings backups</string>
+    <string name="grant_permissions_desc">Les permissions de lecture et d’écriture sur le stockage externe sont nécessaires pour télécharger des fichiers et importer/exporter les favoris et les paramètres</string>
     <string name="open_in_app">Ouvrir dans l\'app</string>
     <string name="bookmark_delete">Souhaitez-vous vraiment supprimer ce favori ?</string>
     <string name="install_userscript">Installer UserScript</string>
-    <string name="install_userscript_description">Do you want to install this UserScript?</string>
-    <string name="remove_userscript">Remove UserScript</string>
-    <string name="remove_userscript_description">Do you want to remove this UserScript?</string>
-    <string name="scripts">UserScripts</string>
-    <string name="scripts_store">UserScripts store</string>
-    <string name="new_tab_opened">New tab opened</string>
-    <string name="switch_button">Switch</string>
-    <string name="dont_ask_again">Don\'t ask again</string>
-    <string name="tts">Read page</string>
-    <string name="stop_tts">Stop reading</string>
+    <string name="install_userscript_description">Voulez-vous installer cet userscript ?</string>
+    <string name="remove_userscript">Désinstaller cet userscript</string>
+    <string name="remove_userscript_description">Voulez-vous désinstaller cet userscript ?</string>
+    <string name="scripts">Userscripts / Scripts utilisateur</string>
+    <string name="scripts_store">Catalogue d’userscripts</string>
+    <string name="new_tab_opened">Nouvel onglet ouvert</string>
+    <string name="switch_button">Basculer</string>
+    <string name="dont_ask_again">Ne plus demander</string>
+    <string name="tts">Lire la page</string>
+    <string name="stop_tts">Arrêter la lecture</string>
     <!-- finish pages -->
 </resources>
