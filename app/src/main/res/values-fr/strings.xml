@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_desc">Un navigateur web gratuit et open source qui bloque les publicités et les trackers</string>
     <string name="action_new_tab">Nouvel onglet</string>
     <string name="action_share">Partager</string>
     <string name="action_print">Imprimer</string>
@@ -9,6 +10,7 @@
     <string name="action_add_bookmark">Ajouter un favori</string>
     <string name="action_copy">Copier le lien</string>
     <string name="action_forward">Suivant</string>
+    <string name="action_sort">Trier</string>
     <string name="settings">Paramètres</string>
     <string name="location">Localisation activée</string>
     <string name="password">Enregistrer vos mots de passe</string>
@@ -201,11 +203,16 @@
     <string name="license_gnu">Licence publique générale limitée GNU</string>
     <string name="export_bookmarks">Exporter les favoris</string>
     <string name="import_backup">Importer des favoris</string>
+    <string name="export_tabs">Exporter les onglets à sauvegarder</string>
+    <string name="import_tabs">Importer les onglets</string>
     <string name="bookmark_export_path">Favoris exportés vers</string>
     <string name="bookmark_export_failure">Désolé, les favoris n’ont pas pu être exportés.</string>
+    <string name="tab_export_path">Onglets exportés vers</string>
+    <string name="tab_export_failure">Désolé, les onglets n’ont pas pu être exportés!</string>
     <string name="bookmark_settings">Paramètres de favoris</string>
     <string name="settings_bookmark_explain">Exporter et importer…</string>
     <string name="import_bookmark_error">Les favoris n’ont pas pu être importés depuis le fichier</string>
+    <string name="import_tabs_error">Les onglets n’ont pas pu être importés depuis le fichier</string>
     <string name="title_chooser">Choisissez un fichier</string>
     <string name="settings_general">Paramètres généraux</string>
     <string name="settings_general_explain">Bloqueur de publicités, moteur de recherche, page d’accueil…</string>
@@ -398,6 +405,7 @@
     <string name="clear_settings">Réinitialiser les paramètres</string>
     <string name="backup_settings">Sauvegarde des paramètres</string>
     <string name="backup_bookmarks">Sauvegarde des signets</string>
+    <string name="backup_tabs">Sauvegarde des onglets</string>
     <string name="reset_settings">Réinitialisation des paramètres. Fermeture de l\'application... Veuillez rouvrir.</string>
     <string name="force_zoom">Forcer le zoom</string>
     <string name="dark_mode">Mode sombre</string>
@@ -405,6 +413,7 @@
     <string name="translator">Traducteur (bêta)</string>
     <string name="coming_soon">« D\'autres à venir... »</string>
     <string name="navbar_col">Définir la couleur de la barre de navigation</string>
+    <string name="color_filter">Définir le filtre de couleur</string>
     <string name="color">Couleur</string>
     <string name="looknfeel">Réglages du look and feel</string>
     <string name="customize">Paramètres de personnalisation</string>
@@ -443,6 +452,7 @@
     <string name="onboarding_two">Cliquez sur le numéro d’onglet ou glissez depuis le bord gauche pour ouvrir le tiroir d’onglets.</string>
     <string name="onboarding_three">Utilisez les outils de page dans le tiroir de signet pour désactiver temporairement le bloc de publicité, ouvrir la version de bureau d\'un site et plus encore.</string>
     <string name="load_tabs">Charger tous les onglets au démarrage du navigateur</string>
+    <string name="navbar">Barre de navigation</string>
     <string name="search_homepage">Rechercher...</string>
     <string name="start">Commencez!</string>
     <string name="show_shortcuts">Afficher les raccourcis sur la page d\'accueil</string>
@@ -459,5 +469,27 @@
     <string name="file_is">Le fichier est :</string>
     <string name="translate_to">Traduire en :</string>
     <string name="new_drag">Les menus des onglets et des signets sont maintenant accessibles en appuyant sur l\'icône. Maintenir le texte vous permettra maintenant de les réorganiser.</string>
+    <string name="last_loaded">Dernier chargement à</string>
+    <string name="continue_download">Continuer</string>
+    <string name="start_download">Commencer</string>
+    <string name="pausing_download">En pause</string>
+    <string name="waiting_download">En attente</string>
+    <string name="pause_download">Pause</string>
+    <string name="confirm_delete">Confirmer la suppression?</string>
+    <string name="grant_permissions">Accordez les permissions</string>
+    <string name="grant_permissions_desc">Read/Write External Storage is required for downloads and bookmark/settings backups</string>
+    <string name="open_in_app">Ouvrir dans l\'app</string>
+    <string name="bookmark_delete">Souhaitez-vous vraiment supprimer ce favori ?</string>
+    <string name="install_userscript">Installer UserScript</string>
+    <string name="install_userscript_description">Do you want to install this UserScript?</string>
+    <string name="remove_userscript">Remove UserScript</string>
+    <string name="remove_userscript_description">Do you want to remove this UserScript?</string>
+    <string name="scripts">UserScripts</string>
+    <string name="scripts_store">UserScripts store</string>
+    <string name="new_tab_opened">New tab opened</string>
+    <string name="switch_button">Switch</string>
+    <string name="dont_ask_again">Don\'t ask again</string>
+    <string name="tts">Read page</string>
+    <string name="stop_tts">Stop reading</string>
     <!-- finish pages -->
 </resources>

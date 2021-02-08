@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_desc">Ein kostenloser und quelloffener Webbrowser, der Werbung und Tracker blockiert</string>
     <string name="action_new_tab">Neuer Tab</string>
     <string name="action_share">Teilen</string>
     <string name="action_print">Drucken</string>
@@ -9,6 +10,7 @@
     <string name="action_add_bookmark">Lesezeichen hinzufügen</string>
     <string name="action_copy">Link kopieren</string>
     <string name="action_forward">Vor</string>
+    <string name="action_sort">Sortieren</string>
     <string name="settings">Einstellungen</string>
     <string name="location">Zugriff auf Standort</string>
     <string name="password">Passwörter speichern</string>
@@ -161,6 +163,14 @@
         <item>Keines</item>
         <item>Benutzerdefiniert</item>
     </string-array>
+    <string-array name="suggestion_name_array">
+        <item>Drei</item>
+        <item>Vier</item>
+        <item>Fünf</item>
+        <item>Sechs</item>
+        <item>Sieben</item>
+        <item>Acht</item>
+    </string-array>
     <string name="manual_proxy">Manueller Proxy</string>
     <string name="host">Host:</string>
     <string name="port">Port:</string>
@@ -193,11 +203,16 @@
     <string name="license_gnu">GNU Lesser General Public License</string>
     <string name="export_bookmarks">Lesezeichen in Backup exportieren</string>
     <string name="import_backup">Lesezeichen von Backup importieren</string>
+    <string name="export_tabs">Export tabs to backup</string>
+    <string name="import_tabs">Import tabs from backup</string>
     <string name="bookmark_export_path">Lesezeichen exportiert nach</string>
     <string name="bookmark_export_failure">Lesezeichen konnten leider nicht exportiert werden!</string>
+    <string name="tab_export_path">Tabs exported to</string>
+    <string name="tab_export_failure">Sorry, tabs could not be exported!</string>
     <string name="bookmark_settings">Lesezeichen Einstellungen</string>
     <string name="settings_bookmark_explain">Exportieren und Importieren &#8230;</string>
     <string name="import_bookmark_error">Lesezeichen konnten nicht aus Datei importiert werden</string>
+    <string name="import_tabs_error">Could not import tabs from file</string>
     <string name="title_chooser">Datei wählen</string>
     <string name="settings_general">Allgemeine Einstellungen</string>
     <string name="settings_general_explain">Suchmaschine, Proxy, Startseite &#8230;</string>
@@ -211,7 +226,7 @@
     <string name="close_all_tabs">Alle Tabs schließen</string>
     <string name="close_other_tabs">Andere Tabs schließen</string>
     <string name="third_party">Cookies von Drittanbietern blockieren</string>
-    <string name="color_mode">Farbmodus aktivieren</string>
+    <string name="color_mode">Farbmodus der Navigationsleiste aktivieren</string>
     <string name="reading_mode">Lesemodus</string>
     <string name="loading">Wird geladen…</string>
     <string name="loading_failed">Es konnte nichts von der Seite geladen werden.</string>
@@ -268,11 +283,6 @@
     <string name="block_source_local_description">Datei: %1$s</string>
     <string name="block_source_remote">Remote Hosts-Datei</string>
     <string name="block_source_remote_description">URL: %1$s</string>
-    <string-array name="block_ad_source_list">
-        <item>@string/block_source_default</item>
-        <item>@string/block_source_local</item>
-        <item>@string/block_source_remote</item>
-    </string-array>
     <!--Ad block -->
     <string name="ad_block_load_failure">Fehler beim Laden der Hosts von der Werbeblocker-Quelle.</string>
     <string name="infinity">∞</string>
@@ -344,6 +354,8 @@
     <string name="preferhttpsdesc">Immer HTTPS auf unterstützten Sites verwenden</string>
     <string name="startpagedesc">Farbe der Standard-Startseite auf die im Thema verwendete einstellen.</string>
     <string name="updatehomepage">Öffnen Sie einen neuen Tab, um die aktualisierte Homepage zu sehen</string>
+    <string name="edit_shortcuts">Verknüpfungen bearbeiten</string>
+    <string name="apply">Anwenden</string>
     <string name="inspect">JavaScript injizieren</string>
     <string name="bookmark">Lesezeichen hinzugefügt</string>
     <string name="error_title">Oh, Krümel! &lt;br&gt; Diese Seite kann nicht geladen werden.</string>
@@ -376,6 +388,7 @@
     <string name="show_extra">Schließen-Schaltfläche im Menü anzeigen</string>
     <string name="incognito_cookies_new">Der private Modus wird in einem separaten Fenster ausgeführt, das nach jeder Sitzung zurückgesetzt wird. Die Cookie-Einstellungen im privaten Modus werden jetzt durch die normalen Cookie-Einstellungen gesteuert.</string>
     <string name="quit_private">Privaten Modus beenden</string>
+    <string name="image_url">Hintergrundbild der Startseite festlegen</string>
     <string name="start_incognito">Dauerhaft wie im privaten Modus verhalten</string>
     <string name="bottom_navbar">Navigationsleiste nach unten verschieben</string>
     <string name="please_restart">Bitte starten Sie die App neu, um die Änderung zu sehen</string>
@@ -392,6 +405,7 @@
     <string name="clear_settings">Einstellungen zurücksetzen</string>
     <string name="backup_settings">Backup der Einstellungen</string>
     <string name="backup_bookmarks">Backup der Lesezeichen</string>
+    <string name="backup_tabs">Tabs backup</string>
     <string name="reset_settings">Einstellungen zurückgesetzt. App wird geschlossen... Bitte erneut öffnen.</string>
     <string name="force_zoom">Zoom-Sperre bei Websites überschreiben</string>
     <string name="dark_mode">Dunkler Modus</string>
@@ -399,6 +413,7 @@
     <string name="translator">Übersetzer (Beta)</string>
     <string name="coming_soon">Mehr kommt demnächst...</string>
     <string name="navbar_col">Farbe der Navigationsleiste festlegen</string>
+    <string name="color_filter">Farbfilter festlegen</string>
     <string name="color">Farbe</string>
     <string name="looknfeel">Erscheinungsbild Einstellungen</string>
     <string name="customize">Erscheinungsbild Einstellungen</string>
@@ -430,5 +445,51 @@
     <string name="warn">Ändern Sie dies nur, wenn Sie wissen, was Sie tun!</string>
     <string name="download_channel">Downloads</string>
     <string name="download_description">Informationen zum Download-Fortschritt</string>
+    <string name="download_to_sd">Auf SD-Karte herunterladen</string>
+    <string name="legacy_download_manager">Integrierten Download-Manager verwenden</string>
+    <string name="legacy_download_manager_desc">Dateien mit dem SmartCookieWeb-Download-Manager herunterladen, anstelle des System-Download-Managers</string>
+    <string name="onboarding_one">Zugriff auf Einstellungen, Lesezeichen (oder wischen Sie vom rechten Rand) und mehr im Überlaufmenü.</string>
+    <string name="onboarding_two">Klicken Sie auf die Tab-Nummer oder wischen Sie vom linken Rand, um die Tab-Schublade zu öffnen.</string>
+    <string name="onboarding_three">Verwenden Sie Seitenwerkzeuge in der Lesezeichen-Schublade, um den Werbeblocker vorübergehend zu deaktivieren, die Desktop-Version einer Webseite zu öffnen und mehr.</string>
+    <string name="load_tabs">Alle Tabs laden, wenn der Browser gestartet wird</string>
+    <string name="navbar">Navigationsleiste</string>
+    <string name="search_homepage">Suche...</string>
+    <string name="start">Los geht\'s!</string>
+    <string name="show_shortcuts">Verknüpfungen auf der Startseite anzeigen</string>
+    <string name="reading_mode_image_copyright">Bild Copyright</string>
+    <string name="reading_mode_image_caption">Bild mit Beschriftung</string>
+    <string name="show_second_bar">Zweite Navigationsleiste anzeigen</string>
+    <string name="edit_cookies">Website-Cookies bearbeiten</string>
+    <string name="ssl_size">Schlüssellänge</string>
+    <string name="algorithm">Algorithmus</string>
+    <string name="crash_warning">Bei aktiviertem \"Websites erlauben, neue Tabs zu öffnen\" kann diese Option zu Abstürzen führen</string>
+    <string name="amp_to_html">AMP zu HTML (Beta)</string>
+    <string name="private_title">Privater Modus</string>
+    <string name="private_desc">Tabs im privaten Modus funktionieren wie normale Tabs, aber wenn sie geschlossen werden, werden alle Daten dieses Tabs gelöscht. Der private Modus macht Sie NICHT anonym, aber er kann vor jedem, der dieses Gerät verwendet, geheim halten, was Sie online tun.</string>
+    <string name="file_is">Die Datei ist:</string>
+    <string name="translate_to">Übersetzen in:</string>
+    <string name="new_drag">Die Optionsmenüs für Tabs und Lesezeichen werden jetzt durch Drücken des Symbols aufgerufen. Wenn Sie den Text gedrückt halten, können Sie diese nun neu anordnen.</string>
+    <string name="last_loaded">Zuletzt geladen</string>
+    <string name="continue_download">Fortsetzen</string>
+    <string name="start_download">Starten</string>
+    <string name="pausing_download">Pausieren</string>
+    <string name="waiting_download">Wartend</string>
+    <string name="pause_download">Pause</string>
+    <string name="confirm_delete">Löschen bestätigen?</string>
+    <string name="grant_permissions">Berechtigungen erteilen</string>
+    <string name="grant_permissions_desc">Lesen/Schreiben des externen Speichers ist erforderlich für Downloads und Lesezeichen/Einstellungen-Backups</string>
+    <string name="open_in_app">In App öffnen</string>
+    <string name="bookmark_delete">Sind Sie sicher, dass Sie dieses Lesezeichen löschen möchten?</string>
+    <string name="install_userscript">UserScript installieren</string>
+    <string name="install_userscript_description">Möchten Sie dieses UserScript installieren?</string>
+    <string name="remove_userscript">UserScript entfernen</string>
+    <string name="remove_userscript_description">Möchten Sie dieses UserScript entfernen?</string>
+    <string name="scripts">UserScripts</string>
+    <string name="scripts_store">UserScripts Store</string>
+    <string name="new_tab_opened">New tab opened</string>
+    <string name="switch_button">Switch</string>
+    <string name="dont_ask_again">Don\'t ask again</string>
+    <string name="tts">Read page</string>
+    <string name="stop_tts">Stop reading</string>
     <!-- finish pages -->
 </resources>

@@ -203,11 +203,16 @@
     <string name="license_gnu">Mniejsza ogólna licencja publiczna GNU</string>
     <string name="export_bookmarks">Eksportuj zakładki do kopii zapasowej</string>
     <string name="import_backup">Importuj zakładki z kopii zapasowej</string>
+    <string name="export_tabs">Export tabs to backup</string>
+    <string name="import_tabs">Import tabs from backup</string>
     <string name="bookmark_export_path">Zakładki wyeksportowane do</string>
     <string name="bookmark_export_failure">Niestety, nie można wyeksportować zakładek!</string>
+    <string name="tab_export_path">Tabs exported to</string>
+    <string name="tab_export_failure">Sorry, tabs could not be exported!</string>
     <string name="bookmark_settings">Ustawienia zakładek</string>
     <string name="settings_bookmark_explain">Eksportowanie i importowanie…</string>
     <string name="import_bookmark_error">Nie można zaimportować zakładek z pliku</string>
+    <string name="import_tabs_error">Could not import tabs from file</string>
     <string name="title_chooser">Wybierz plik</string>
     <string name="settings_general">Ustawienia główne</string>
     <string name="settings_general_explain">Blokowanie reklam, wyszukiwarka, strona główna…</string>
@@ -402,6 +407,7 @@
     <string name="clear_settings">Zresetuj ustawienia</string>
     <string name="backup_settings">Ustawienia i kopia zapasowa</string>
     <string name="backup_bookmarks">Kopia zapasowa zakładek</string>
+    <string name="backup_tabs">Tabs backup</string>
     <string name="reset_settings">Resetowanie ustawień. Aplikacja zamknięta... Proszę ponownie otworzyć.</string>
     <string name="force_zoom">Wymuszaj powiększenie</string>
     <string name="dark_mode">Ciemny motyw</string>
@@ -482,5 +488,10 @@
     <string name="remove_userscript_description">Do you want to remove this UserScript?</string>
     <string name="scripts">UserScripts</string>
     <string name="scripts_store">UserScripts store</string>
+    <string name="new_tab_opened">New tab opened</string>
+    <string name="switch_button">Switch</string>
+    <string name="dont_ask_again">Don\'t ask again</string>
+    <string name="tts">Read page</string>
+    <string name="stop_tts">Stop reading</string>
     <!-- finish pages -->
 </resources>
