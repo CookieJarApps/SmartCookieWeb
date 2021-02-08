@@ -320,7 +320,7 @@ class SmartCookieWebClient(
     }
 
     override fun onPageFinished(view: WebView, url: String) {
-        if(url.contains(BuildConfig.APPLICATION_ID + "/files/homepage.html")) {
+        if(url.contains(BuildConfig.APPLICATION_ID + "/files/homepage.html")  || url.contains(BuildConfig.APPLICATION_ID + "/files/incognito.html")) {
             val preferenceArray = arrayListOf(userPreferences.link1, userPreferences.link2, userPreferences.link3, userPreferences.link4)
             for(i in 1..4){
                 view.evaluateJavascript("javascript:(function() {"
