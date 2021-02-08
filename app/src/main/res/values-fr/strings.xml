@@ -21,7 +21,7 @@
     <string name="settings_advanced_explain">Contenu de la barre d’adresse, mode de rendu, encodage du texte…</string>
     <string name="apache">Licence Apache 2.0</string>
     <string name="version">Version de l’application</string>
-    <string name="cache">Effacer le cache à la sortie</string>
+    <string name="cache">Effacer le cache à la fermeture du navigateur</string>
     <string name="reflow">Redistribuer le texte en largeur</string>
     <string name="block">Ne pas charger les images</string>
     <string name="window">Autoriser les sites à ouvrir de nouvelles fenêtres</string>
@@ -88,11 +88,11 @@
     <string name="action_back">Retour</string>
     <string name="action_find">Chercher dans la page</string>
     <string name="download_pending">Téléchargement en cours…</string>
-    <string name="cannot_download">Ce navigateur ne prend en charge que le téléchargement des URLs HTTP ou HTTPS.</string>
+    <string name="cannot_download">Ce navigateur ne prend en charge que le téléchargement des URLs HTTP et HTTPS.</string>
     <string name="problem_download">L’URL n’est pas valide, impossible de télécharger le fichier</string>
-    <string name="problem_location_download">Impossible de télécharger le fichier dans le dossier spécifié</string>
+    <string name="problem_location_download">Impossible d’enregistrer le fichier dans le dossier spécifié</string>
     <string name="download_no_sdcard_dlg_title">Pas de carte SD</string>
-    <string name="download_no_sdcard_dlg_msg">Le stockage USB est requis pour télécharger le fichier.</string>
+    <string name="download_no_sdcard_dlg_msg">Le stockage USB doit être activé pour télécharger le fichier.</string>
     <string name="download_sdcard_busy_dlg_title">Stockage USB indisponible</string>
     <string name="download_sdcard_busy_dlg_msg">Le stockage USB est occupé. Pour permettre les téléchargements, appuyez sur « Désactiver le stockage USB » dans la notification.</string>
     <string name="incognito_cookies">Activer les cookies en mode incognito</string>
@@ -172,8 +172,8 @@
     <string name="i2p_tunnels_not_ready">Les tunnels I2P ne sont pas encore prêts.</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
-    <string name="clear_cookies_exit">Effacer les cookies à la sortie</string>
-    <string name="clear_history_exit">Effacer l’historique à la sortie</string>
+    <string name="clear_cookies_exit">Effacer les cookies à la fermeture du navigateur</string>
+    <string name="clear_history_exit">Effacer l’historique à la fermeture du navigateur</string>
     <string name="folder_default">Défaut</string>
     <string name="folder_custom">Personnalisé</string>
     <string name="untitled">Sans titre</string>
@@ -201,13 +201,13 @@
     <string name="import_bookmark_error">Les favoris n’ont pas pu être importés depuis le fichier.</string>
     <string name="title_chooser">Choisissez un fichier</string>
     <string name="settings_general">Paramètres généraux</string>
-    <string name="settings_general_explain">Bloqueur de publicités, moteur de recherche, page d’accueil…</string>
+    <string name="settings_general_explain">Moteur de recherche, proxy, page d’accueil…</string>
     <string name="settings_display">Paramètres d’affichage</string>
     <string name="settings_display_explain">Mode plein écran, taille du texte, thèmes…</string>
     <string name="settings_privacy">Paramètres de confidentialité et de sécurité</string>
     <string name="settings_privacy_explain">Cache, cookies, historique…</string>
     <string name="settings_about">À propos</string>
-    <string name="settings_about_explain">Numéro de version, auteurs et licences…</string>
+    <string name="settings_about_explain">Numéro de version, contributions et licences…</string>
     <string name="close_tab">Fermer l’onglet sélectionné</string>
     <string name="close_all_tabs">Fermer tous les onglets</string>
     <string name="close_other_tabs">Fermer les autres onglets</string>
@@ -242,7 +242,7 @@
     <string name="title_rename_folder">Renommer le dossier</string>
     <string name="dialog_folder">Que voulez-vous faire avec ce dossier ?</string>
     <string name="clear_web_storage">Vider le stockage web</string>
-    <string name="clear_web_storage_exit">Vider le stockage web à la sortie</string>
+    <string name="clear_web_storage_exit">Vider le stockage web à la fermeture du navigateur</string>
     <string name="message_web_storage_cleared">Stockage web vidé avec succès</string>
     <string name="hosts_source">Source du fichier \'hosts\' pour le blocage des publicités</string>
     <string name="settings_adblock">Paramètres de blocage de contenu</string>
@@ -252,7 +252,7 @@
     <string name="tabs_in_drawer">Afficher les onglets dans le panneau de navigation</string>
     <string name="swap_bookmarks_and_tabs">Inverser les panneaux de favoris et de navigation</string>
     <string name="do_not_track">Envoyer l’en-tête \'Do Not Track\'</string>
-    <string name="remove_identifying_headers">Supprimer les en-têtes HTTP d’identification</string>
+    <string name="remove_identifying_headers">Ne pas envoyer les en-têtes HTTP d’identification</string>
     <string name="action_add_to_homescreen">Ajouter à l’écran d’accueil</string>
     <string name="message_added_to_homescreen">Raccourci ajouté à l’écran d’accueil</string>
     <string name="action_delete_all_bookmarks">Supprimer tous les favoris</string>
@@ -307,7 +307,7 @@
     <string name="block_ad_source">Source du fichier \'hosts\'</string>
     <string name="block_ad_remote_refresh_frequency_description">Pour le fichier \'hosts\' distant</string>
     <string name="block_ad_refresh_now">Actualiser le fichier \'hosts\'</string>
-    <string name="webrtc_support">Prise en charge de WebRTC</string>
+    <string name="webrtc_support">Autoriser les demandes de permissions WebRTC</string>
     <string name="save_data">Envoyer l’en-tête \'Save-Data\'</string>
 
     <!-- debug strings -->
@@ -347,32 +347,32 @@
     <string name="privacy">Politique de confidentialité</string>
     <string name="privacy_info">Lire la politique de confidentialité de SmartCookieWeb</string>
     <string name="block_malware">Bloquer les sites malveillants</string>
-    <string name="block_sites">Liste noire de sites</string>
+    <string name="block_sites">Liste noire personnalisée</string>
     <string name="block_sites_title">Sites à bloquer (séparés par une virgule)</string>
     <string name="none">Aucun</string>
     <string name="block_info">Entrez les mots à bloquer dans les URLs (séparés par une virgule).</string>
     <string name="startpage">Appliquer le thème à la page d’accueil</string>
     <string name="allpage">Appliquer le thème aux pages web (version beta)</string>
-    <string name="forcehttps">Bloquer les sites non-HTTPS</string>
+    <string name="forcehttps">Bloquer les sites sans version HTTPS</string>
     <string name="preferhttps">Préférer la version HTTPS des sites</string>
-    <string name="forcehttpsdesc">Ne charger que des sites en HTTPS</string>
+    <string name="forcehttpsdesc">Ne charger que les sites qui offrent une connexion HTTPS</string>
     <string name="preferhttpsdesc">Toujours utiliser HTTPS sur les sites pris en charge</string>
 
     <string name="startpagedesc">La page d’accueil utilisera la couleur du thème.</string>
     <string name="updatehomepage">Ouvrez un nouvel onglet pour voir la page d’accueil mise à jour.</string>
 
     <string name="inspect">Exécuter du code JavaScript</string>
-    <string name="bookmark">Signet ajouté</string>
+    <string name="bookmark">Favori ajouté</string>
 
-    <string name="error_title">Tonnerre de paris-brest ! &lt;br&gt; Impossible de charger la page.</string>
+    <string name="error_title">Mince alors ! &lt;br&gt; Impossible de charger la page.</string>
     <string name="error_reload">Recharger</string>
 
-    <string name="https_title">Tonnerre de paris-brest ! &lt;br&gt; Ce site n’a pas de version HTTPS et les sites HTTP sont bloqués.</string>
+    <string name="https_title">Mince alors ! &lt;br&gt; Ce site n’offre pas de connexion HTTPS, et vous avez bloqué les sites HTTP.</string>
 
-    <string name="malware_title">Tonnerre de paris-brest ! &lt;br&gt; Ce site semble être un malware.</string>
+    <string name="malware_title">Mince alors ! &lt;br&gt; Ce site semble être un malware.</string>
     <string name="malware_message">S’il s’agit d’une erreur, veuillez le signaler à support@cookiegames.co.uk (en anglais)</string>
 
-    <string name="blocked_title">Tonnerre de paris-brest ! &lt;br&gt; Ce site est bloqué dans les paramètres.</string>
+    <string name="blocked_title">Mince alors ! &lt;br&gt; Ce site est bloqué dans les paramètres.</string>
     <string name="close_app">Fermer le navigateur</string>
     <string name="enter_password">Entrer le mot de passe</string>
     <string name="wrong_password">Mot de passe incorrect</string>
@@ -384,8 +384,8 @@
     <string name="new_tab_foreground">Mettre les onglets au premier plan</string>
     <string name="new_tab_foreground_summary">Cacher le panneau de navigation lors de l’ouverture ou de la fermeture d’un onglet</string>
     <string name="site_not_secure">La connexion avec ce site n’est pas sécurisée.</string>
-    <string name="language_not_supported">Langue non prise en charge</string>
-    <string name="language_not_supported_text">Le magasin d’extensions n’est malheureusement pas encore disponible dans votre langue. Utilisez le bouton ci-dessous pour continuer tout de même en anglais.</string>
+    <string name="language_not_supported">Langue non disponible</string>
+    <string name="language_not_supported_text">Le magasin d’extensions n’est malheureusement pas encore disponible dans votre langue. Vous pouvez tout de même continuer sur la version anglaise du site avec le bouton ci-dessous.</string>
     <string name="extensions">Extensions</string>
     <string name="extensions_enable">Activer les extensions</string>
 
@@ -399,7 +399,7 @@
     <string name="show_extra">Afficher l’option \'Fermer le navigateur\'</string>
     <string name="incognito_cookies_new">Le mode incognito s’exécute dans une fenêtre séparée qui est réinitialisée après chaque session. Les préférences de cookies en mode incognito sont désormais contrôlées par les préférences normales des cookies.</string>
     <string name="quit_private">Sortir du mode incognito</string>
-    <string name="start_incognito">Toujours agir en mode incognito</string>
+    <string name="start_incognito">Toujours naviguer en mode incognito</string>
     <string name="bottom_navbar">Afficher la barre de navigation en bas de l’écran</string>
     <string name="please_restart">Veuillez redémarrer l’application pour que les changements soient pris en compte.</string>
     <string name="site_ad_blocked">Ce site est considéré comme une publicité et a donc été bloqué. Pour y accéder, veuillez utiliser l’option « Désactiver le blocage des publicités pour ce site » disponible depuis l’icône en bas à gauche du panneau des favoris.</string>
@@ -426,7 +426,7 @@
     <string name="dark_mode">Mode sombre</string>
     <string name="submit">Soumettre une extension</string>
 
-    <string name="translator">Traduction (bêta)</string>
+    <string name="translator">Traduction automatique (bêta)</string>
     <string name="coming_soon">Bientôt…</string>
 
     <string name="navbar_col">Couleur de la barre de navigation</string>
@@ -443,9 +443,9 @@
     <string name="search_suggestions_4">Les suggestions de recherche dans SmartCookieWeb ne sont malheureusement plus disponibles sur les appareils pré-Android 5. Pour en savoir plus, appuyez sur le bouton ci-dessous.</string>
 
     <string name="block_intent">Ouvrir les liens en interne</string>
-    <string name="block_intent_summary">Force tous les liens à s’ouvrir dans le navigateur plutôt que dans des applications externes.</string>
+    <string name="block_intent_summary">Forcer tous les liens à s’ouvrir dans le navigateur plutôt que dans des applications externes.</string>
 
-    <string name="block_javascript">Bloquer JavaScript pour ce sites</string>
+    <string name="block_javascript">Bloquer JavaScript pour ce site</string>
     <string name="allow_javascript">Autoriser JavaScript pour ce site</string>
     <string name="unlisted_javascript">Bloquer JavaScript pour les sites listés</string>
     <string name="listed_javascript">N’autoriser JavaScript que pour les sites listés</string>
@@ -453,14 +453,14 @@
     <string name="confirm">Confirmer la réinitialisation</string>
     <string name="clear">Ceci effacera toutes les données stockées par SmartCookieWeb sur votre appareil</string>
 
-    <string name="only_clear">Nettoyer uniquement à la fin de la session du navigateur</string>
+    <string name="only_clear">Nettoyer uniquement à la fin de la session</string>
     <string name="only_clear_summary">N’effacer les options choisies ci-dessus que lorsque tous les onglets ont été fermés, plutôt que lorsque vous quittez l’application.</string>
 
     <string name="enable_in_settings">La saisie automatique doit être activée dans les paramètres Android pour que cette option prenne effet</string>
 
     <string name="webrtc_description">Permettre aux sites de demander l’accès au micro et à l’appareil photo</string>
 
-    <string name="drawer_lines">Nombre max. de lignes dans les panneaux</string>
+    <string name="drawer_lines">Nombre maximum de lignes dans les panneaux</string>
     <string name="drawer_size">Taille du texte dans les panneaux</string>
 
     <string name="privacy_set">Paramètres de confidentialité</string>
