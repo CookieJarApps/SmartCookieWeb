@@ -31,11 +31,13 @@ class JavaScriptDatabase @Inject constructor(
 
     data class JavaScriptEntry(
             val name: String,
+            val namespace: String?,
             val version: String?,
             val author: String?,
             val include: String?,
             val exclude: String?,
             val time: String?,
+            val permissions: String?,
             val code: String
     )
 
@@ -45,6 +47,7 @@ class JavaScriptDatabase @Inject constructor(
         val createJavaScriptTable = "CREATE TABLE $TABLE_JAVASCRIPT(" +
                 " $KEY_ID INTEGER PRIMARY KEY," +
                 " $KEY_NAME TEXT," +
+                " $KEY_NAMESPACE TEXT," +
                 " $KEY_AUTHOR TEXT," +
                 " $KEY_VERSION TEXT," +
                 " $KEY_INCLUDE TEXT," +
@@ -164,17 +167,20 @@ class JavaScriptDatabase @Inject constructor(
         put(KEY_INCLUDE, include)
         put(KEY_EXCLUDE, exclude)
         put(KEY_TIME, time)
+        put(KEY_PERMISSIONS, permissions)
         put(KEY_CODE, code)
     }
 
     private fun Cursor.bindToJavaScriptEntry() = JavaScriptEntry(
             name = getString(1),
-            author = getString(2),
-            version = getString(3),
-            include = getString(4),
-            exclude = getString(5),
-            time = getString(6),
-            code = getString(7)
+            namespace = getString(2),
+            author = getString(3),
+            version = getString(4),
+            include = getString(5),
+            exclude = getString(6),
+            time = getString(7),
+            permissions = getString(8),
+            code = getString(9)
     )
 
     companion object {
@@ -191,11 +197,13 @@ class JavaScriptDatabase @Inject constructor(
         // JavaScriptEntry table columns names
         private const val KEY_ID = "id"
         private const val KEY_NAME = "name"
+        private const val KEY_NAMESPACE = "namespace"
         private const val KEY_AUTHOR = "author"
         private const val KEY_VERSION = "version"
         private const val KEY_INCLUDE = "include"
         private const val KEY_EXCLUDE = "exclude"
         private const val KEY_TIME = "time"
+        private const val KEY_PERMISSIONS = "permissions"
         private const val KEY_CODE = "code"
 
     }
