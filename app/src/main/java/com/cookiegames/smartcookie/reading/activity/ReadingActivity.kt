@@ -87,6 +87,8 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var file: Boolean = false
     private var mTextSize = 0
     private var mProgressDialog: ProgressDialog? = null
+    private val mPageLoaderSubscription: Disposable? = null
+    private val originalHtml: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         this.injector.inject(this)
         overridePendingTransition(R.anim.slide_in_from_right, R.anim.fade_out_scale)
@@ -130,9 +132,14 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         mBody!!.text = getString(R.string.loading)
         mTitle!!.visibility = View.INVISIBLE
         mBody!!.visibility = View.INVISIBLE
-
-        loadPage(intent)
-
+        val intent = intent
+        try {
+            if (!loadPage(intent)) {
+                //setText(getString(R.string.untitled), getString(R.string.loading_failed));
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
     }
 
     @SuppressLint("RestrictedApi")
@@ -147,56 +154,57 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         return super.onCreateOptionsMenu(menu)
     }
 
-    fun loadData() {
+    private inner class loadData : AsyncTask<Void?, Void?, Void?>() {
+        var extractedContentHtml: String? = null
+        var extractedContentHtmlWithUtf8Encoding: String? = null
+        var extractedContentPlainText: String? = null
+        var title: String? = null
+        var byline: String? = null
+        var excerpt: String? = null
 
-        val client = OkHttpClient()
-        val request: Request = Request.Builder()
-                .url(mUrl)
-                .build()
-        var output = ""
 
-        client.newCall(request).enqueue(object: Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                runOnUiThread{
-                    mTitle?.text = resources.getString(R.string.title_error)
+        override fun onPostExecute(aVoid: Void?) {
+            val html: String? = extractedContentHtmlWithUtf8Encoding?.replace("image copyright".toRegex(), resources.getString(R.string.reading_mode_image_copyright) + " ")?.replace("image caption".toRegex(), resources.getString(R.string.reading_mode_image_caption) + " ")?.replace("￼".toRegex(), "")
+            try {
+                val doc = Jsoup.parse(html)
+                for (element in doc.select("img")) {
+                    element.remove()
                 }
+                setText(title, doc.outerHtml())
+                dismissProgressDialog()
             }
-
-            @Throws(IOException::class)
-            override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    output = response.body()!!.string()
-
-                    runOnUiThread{
-                        applyResult(output)
-                    }
-                } else {
-                    runOnUiThread{
-                        mTitle?.text = resources.getString(R.string.title_error)
-                    }
-                }
+            catch (e: Exception){
+                mTitle!!.alpha = 1.0f
+                mTitle!!.visibility = View.VISIBLE
+                mTitle?.text = resources.getString(R.string.title_error)
+                dismissProgressDialog()
             }
-        })
-    }
-
-    fun applyResult(output: String){
-        val extractedContentHtmlWithUtf8Encoding: String?
-        var title: String?
-
-        val htmlData = output
-        val readability4J = Readability4J(mUrl!!, htmlData) // url is just needed to resolve relative urls
-        val article = readability4J.parse()
-        extractedContentHtmlWithUtf8Encoding = article.contentWithUtf8Encoding
-        title = article.title
-
-        val html: String? = extractedContentHtmlWithUtf8Encoding?.replace("image copyright".toRegex(), resources.getString(R.string.reading_mode_image_copyright) + " ")?.replace("image caption".toRegex(), resources.getString(R.string.reading_mode_image_caption) + " ")?.replace("￼".toRegex(), "")
-
-        val doc = Jsoup.parse(html)
-        for (element in doc.select("img")) {
-            element.remove()
         }
-        setText(title, doc.outerHtml())
-        dismissProgressDialog()
+
+        override fun doInBackground(vararg params: Void?): Void? {
+            try {
+                val google = URL(mUrl)
+                val line = BufferedReader(InputStreamReader(google.openStream()))
+                var input: String?
+                val stringBuffer = StringBuffer()
+                while (line.readLine().also { input = it } != null) {
+                    stringBuffer.append(input)
+                }
+                line.close()
+                val htmlData = stringBuffer.toString()
+                val readability4J = Readability4J(mUrl!!, htmlData) // url is just needed to resolve relative urls
+                val article = readability4J.parse()
+                extractedContentHtml = article.content
+                extractedContentHtmlWithUtf8Encoding = article.contentWithUtf8Encoding
+                extractedContentPlainText = article.textContent
+                title = article.title
+                byline = article.byline
+                excerpt = article.excerpt
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            return null
+        }
     }
 
     protected fun makeLinkClickable(strBuilder: SpannableStringBuilder, span: URLSpan?) {
@@ -208,7 +216,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 mTitle!!.text = getString(R.string.untitled)
                 mBody!!.text = getString(R.string.loading)
                 mUrl = span?.url
-                loadData()
+                loadData().execute()
             }
         }
         strBuilder.setSpan(clickable, start, end, flags)
@@ -250,7 +258,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         mProgressDialog!!.setMessage(getString(R.string.loading))
         mProgressDialog!!.show()
         setDialogSize(this@ReadingActivity, mProgressDialog!!)
-        loadData()
+        loadData().execute()
         return true
     }
 
@@ -410,7 +418,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             R.id.tts -> {
                 reading = !reading
                 val text: String = mBody?.getText().toString()
-                if (reading) tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null)
+                if(reading) tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null)
                 else tts!!.stop()
                 invalidateOptionsMenu()
             }
