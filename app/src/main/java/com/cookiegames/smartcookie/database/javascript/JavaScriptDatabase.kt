@@ -163,6 +163,7 @@ class JavaScriptDatabase @Inject constructor(
 
     private fun JavaScriptEntry.toContentValues() = ContentValues().apply {
         put(KEY_NAME, name)
+        put(KEY_NAMESPACE, namespace)
         put(KEY_AUTHOR, author)
         put(KEY_VERSION, version)
         put(KEY_INCLUDE, include)
