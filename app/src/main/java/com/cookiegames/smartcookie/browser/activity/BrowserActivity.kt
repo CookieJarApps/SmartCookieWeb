@@ -7,6 +7,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.AssetManager
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -2230,6 +2231,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         PermissionsManager.getInstance().notifyPermissionsChange(permissions, grantResults)
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+   override fun getAssets(): AssetManager {
+        return resources.assets
     }
 
     /**

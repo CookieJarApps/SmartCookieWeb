@@ -1,16 +1,5 @@
 package com.cookiegames.smartcookie.view
 
-import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.controller.UIController
-import com.cookiegames.smartcookie.di.DiskScheduler
-import com.cookiegames.smartcookie.di.injector
-import com.cookiegames.smartcookie.dialog.BrowserDialog
-import com.cookiegames.smartcookie.dialog.DialogItem
-import com.cookiegames.smartcookie.extensions.resizeAndShow
-import com.cookiegames.smartcookie.favicon.FaviconModel
-import com.cookiegames.smartcookie.preference.UserPreferences
-import com.cookiegames.smartcookie.view.webrtc.WebRtcPermissionsModel
-import com.cookiegames.smartcookie.view.webrtc.WebRtcPermissionsView
 import android.Manifest
 import android.annotation.TargetApi
 import android.app.Activity
@@ -22,16 +11,26 @@ import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.webkit.*
-import androidx.appcompat.app.AlertDialog
 import com.anthonycr.grant.PermissionsManager
 import com.anthonycr.grant.PermissionsResultAction
+import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.controller.UIController
+import com.cookiegames.smartcookie.di.DiskScheduler
+import com.cookiegames.smartcookie.di.injector
+import com.cookiegames.smartcookie.dialog.BrowserDialog
+import com.cookiegames.smartcookie.dialog.DialogItem
+import com.cookiegames.smartcookie.extensions.resizeAndShow
+import com.cookiegames.smartcookie.favicon.FaviconModel
+import com.cookiegames.smartcookie.preference.UserPreferences
+import com.cookiegames.smartcookie.view.webrtc.WebRtcPermissionsModel
+import com.cookiegames.smartcookie.view.webrtc.WebRtcPermissionsView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.Scheduler
 import javax.inject.Inject
 
 class SmartCookieChromeClient(
-    private val activity: Activity,
-    private val smartCookieView: SmartCookieView
+        private val activity: Activity,
+        private val smartCookieView: SmartCookieView
 ) : WebChromeClient(), WebRtcPermissionsView {
 
     private val geoLocationPermissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
@@ -94,13 +93,13 @@ class SmartCookieChromeClient(
             onGrant(true)
         } else {
             PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(
-                activity,
-                missingPermissions.toTypedArray(),
-                object : PermissionsResultAction() {
-                    override fun onGranted() = onGrant(true)
+                    activity,
+                    missingPermissions.toTypedArray(),
+                    object : PermissionsResultAction() {
+                        override fun onGranted() = onGrant(true)
 
-                    override fun onDenied(permission: String?) = onGrant(false)
-                }
+                        override fun onDenied(permission: String?) = onGrant(false)
+                    }
             )
         }
     }
@@ -111,13 +110,13 @@ class SmartCookieChromeClient(
         activity.runOnUiThread {
             val resourcesString = resources.joinToString(separator = "\n")
             BrowserDialog.showPositiveNegativeDialog(
-                activity = activity,
-                title = R.string.title_permission_request,
-                message = R.string.message_permission_request,
-                messageArguments = arrayOf(source, resourcesString),
-                positiveButton = DialogItem(title = R.string.action_allow) { onGrant(true) },
-                negativeButton = DialogItem(title = R.string.action_dont_allow) { onGrant(false) },
-                onCancel = { onGrant(false) }
+                    activity = activity,
+                    title = R.string.title_permission_request,
+                    message = R.string.message_permission_request,
+                    messageArguments = arrayOf(source, resourcesString),
+                    positiveButton = DialogItem(title = R.string.action_allow) { onGrant(true) },
+                    negativeButton = DialogItem(title = R.string.action_dont_allow) { onGrant(false) },
+                    onCancel = { onGrant(false) }
             )
         }
     }
@@ -155,7 +154,7 @@ class SmartCookieChromeClient(
             }
 
             override fun onDenied(permission: String) =//TODO show message and/or turn off setting
-                Unit
+                    Unit
         })
 
     override fun onCreateWindow(view: WebView, isDialog: Boolean, isUserGesture: Boolean,
@@ -190,10 +189,13 @@ class SmartCookieChromeClient(
      * @return a Bitmap that can be used as a place holder for videos.
      */
     override fun getDefaultVideoPoster(): Bitmap? {
-        val resources = activity.resources
-        return BitmapFactory.decodeResource(resources, android.R.drawable.spinner_background)
+        return if (super.getDefaultVideoPoster() == null) {
+            BitmapFactory.decodeResource(activity.resources,
+                    android.R.drawable.spinner_background)
+        } else {
+            super.getDefaultVideoPoster()
+        }
     }
-
     /**
      * Inflate a view to send to a LightningView when it needs to display a video and has to
      * show a loading dialog. Inflates a progress view and returns it.
