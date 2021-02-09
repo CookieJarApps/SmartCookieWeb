@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_desc">Un navigatore di rete gratuito e open source che blocca gli annunci e i tracker</string>
+    <string name="app_desc">Un navigatore di rete gratuito e open-source che blocca gli annunci e i tracker</string>
     <string name="action_new_tab">Nuova scheda</string>
     <string name="action_share">Condividi</string>
     <string name="action_print">Stampa</string>
@@ -114,7 +114,7 @@
     <string name="message_text_copied">Testo copiato negli appunti</string>
     <string name="message_link_copied">Collegamento copiato negli Appunti</string>
     <string name="message_blocked_local">Il caricamento del file locale è stato bloccato</string>
-    <string name="licenses">Licenze Open Source</string>
+    <string name="licenses">Licenze Open-source</string>
     <string name="suggestion">Ricerca</string>
     <string name="block_ads">Blocca pubblicità e tracciatori</string>
     <string name="message_insecure_connection">La connessione a questo sito non è sicura: %1$s Visitare comunque?</string>
@@ -188,7 +188,7 @@
     <string name="untitled">Senza titolo</string>
     <string name="mpl_license">Mozilla Public License 2.0</string>
     <string name="freeware">Gratuito</string>
-    <string name="android_open_source_project">Progetto Open Source Android</string>
+    <string name="android_open_source_project">Progetto Android Open-source</string>
     <string name="hphosts_ad_server_list">Lista host pubblicità di Steven Black</string>
     <string name="deleted_tab">Scheda precedente riaperta</string>
     <string name="rendering_mode">Modalità di rendering</string>

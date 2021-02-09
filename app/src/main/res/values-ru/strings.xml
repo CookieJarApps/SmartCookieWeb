@@ -491,7 +491,7 @@
     <string name="new_tab_opened">Открыта новая вкладка</string>
     <string name="switch_button">Переключиться</string>
     <string name="dont_ask_again">Больше не спрашивать</string>
-    <string name="tts">Read page</string>
-    <string name="stop_tts">Stop reading</string>
+    <string name="tts">Читать страницу</string>
+    <string name="stop_tts">Остановить чтение</string>
     <!-- finish pages -->
 </resources>
