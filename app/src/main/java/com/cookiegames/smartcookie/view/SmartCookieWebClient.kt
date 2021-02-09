@@ -907,7 +907,7 @@ class SmartCookieWebClient(
             activity.startActivity(intent)
             return true
         }
-        else if (url.startsWith("intent://") || url.startsWith("intent://") || url.contains("://oauth")) {
+        else if (url.startsWith("intent://") || url.startsWith("gh4b://") || url.contains("://oauth")) {
             val intent = try {
                 Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
             } catch (ignored: URISyntaxException) {
