@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_desc">Un navigatore di rete gratuito e open source che blocca gli annunci e i tracciatori</string>
+    <string name="app_desc">Un navigatore di rete gratuito e open source che blocca gli annunci e i tracker</string>
     <string name="action_new_tab">Nuova scheda</string>
     <string name="action_share">Condividi</string>
     <string name="action_print">Stampa</string>
@@ -203,11 +203,16 @@
     <string name="license_gnu">Licenza Pubblica Generale Minore GNU</string>
     <string name="export_bookmarks">Esporta i segnalibri nel backup</string>
     <string name="import_backup">Importa i segnalibri dal backup</string>
+    <string name="export_tabs">Esporta schede in backup</string>
+    <string name="import_tabs">Importa schede da backup</string>
     <string name="bookmark_export_path">Segnalibri esportati in</string>
     <string name="bookmark_export_failure">Spiacenti, non è stato possibile esportare i segnalibri!</string>
+    <string name="tab_export_path">Schede esportate in</string>
+    <string name="tab_export_failure">Spiacenti, non è stato possibile esportare le schede!</string>
     <string name="bookmark_settings">Impostazioni segnalibri</string>
     <string name="settings_bookmark_explain">Esportazione e importazione&#8230;</string>
     <string name="import_bookmark_error">Impossibile importare i segnalibri dal file</string>
+    <string name="import_tabs_error">Impossibile importare le schede da file</string>
     <string name="title_chooser">Scegli un file</string>
     <string name="settings_general">Impostazioni generali</string>
     <string name="settings_general_explain">Motore di ricerca, proxy, pagina iniziale&#8230;</string>
@@ -400,6 +405,7 @@
     <string name="clear_settings">Ripristina impostazioni</string>
     <string name="backup_settings">Backup delle impostazioni</string>
     <string name="backup_bookmarks">Backup dei segnalibri</string>
+    <string name="backup_tabs">Backup schede</string>
     <string name="reset_settings">Ripristino impostazioni. Chiusura app... Si prega di riaprirla.</string>
     <string name="force_zoom">Forza ingrandimento</string>
     <string name="dark_mode">Modalità scura</string>
@@ -459,7 +465,7 @@
     <string name="crash_warning">Abilitando questa impostazione con \'Consenti ai siti di aprire nuove finestre\' si possono causare arresti anormali</string>
     <string name="amp_to_html">Da AMP a HTML</string>
     <string name="private_title">Modalità riservata</string>
-    <string name="private_desc">Le schede in modalità riservata funzionano come schede normali, ma quando vengono chiuse, tutti i dati di quella scheda vengono cancellati. La navigazione riservata NON ti rende anonimo, ma può tenere segreto ciò che fai online da chiunque altro usi questo dispositivo.</string>
+    <string name="private_desc">Le schede in modalità riservata funzionano come schede normali, ma quando vengono chiuse, tutti i dati di quella scheda vengono cancellati. La navigazione riservata NON ti rende anonimo, ma può tenere segreto ciò che fai in rete da chiunque altro usi questo dispositivo.</string>
     <string name="file_is">Il file è:</string>
     <string name="translate_to">Traduci in:</string>
     <string name="new_drag">I menù delle opzioni scheda e segnalibri sono ora accessibili premendo l\'icona. Tenendo premuto sul testo ora ti permetterà di riordinarli.</string>
@@ -480,5 +486,10 @@
     <string name="remove_userscript_description">Si desidera rimuovere questo UserScript?</string>
     <string name="scripts">UserScript</string>
     <string name="scripts_store">Negozio per UserScript</string>
+    <string name="new_tab_opened">Nuova scheda aperta</string>
+    <string name="switch_button">Scambia</string>
+    <string name="dont_ask_again">Non chiedere di nuovo</string>
+    <string name="tts">Leggi pagina</string>
+    <string name="stop_tts">Interrompi lettura</string>
     <!-- finish pages -->
 </resources>
