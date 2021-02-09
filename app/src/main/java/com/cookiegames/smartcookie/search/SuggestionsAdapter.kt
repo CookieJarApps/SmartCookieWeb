@@ -233,8 +233,6 @@ class SuggestionsAdapter(
 
             publishSubject.onNext(constraint.trim())
 
-
-
             return FilterResults().apply { count = 1 }
         }
 

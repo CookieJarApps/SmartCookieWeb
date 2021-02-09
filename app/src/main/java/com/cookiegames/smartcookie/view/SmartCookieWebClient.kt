@@ -855,7 +855,7 @@ class SmartCookieWebClient(
 
         val headers = smartCookieView.requestHeaders
 
-        if (smartCookieView.isIncognito || userPreferences.blockIntent && !url.contains("auth") && !isMailOrIntent(url, view)) {
+        if (smartCookieView.isIncognito || userPreferences.blockIntent && !isMailOrIntent(url, view)) {
 
             // If we are in incognito, immediately load, we don't want the url to leave the app
             return continueLoadingUrl(view, url, headers)
@@ -907,7 +907,7 @@ class SmartCookieWebClient(
             activity.startActivity(intent)
             return true
         }
-        else if (url.startsWith("intent://")) {
+        else if (url.startsWith("intent://") || url.startsWith("intent://") || url.contains("://oauth")) {
             val intent = try {
                 Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
             } catch (ignored: URISyntaxException) {
