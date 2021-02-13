@@ -591,5 +591,8 @@
 
     <string name="tts">Read page</string>
     <string name="stop_tts">Stop reading</string>
+
+    <string name="translation_endpoint">Translation endpoint</string>
+    <string name="news_endpoint">News endpoint</string>
     <!-- finish pages -->
 </resources>
