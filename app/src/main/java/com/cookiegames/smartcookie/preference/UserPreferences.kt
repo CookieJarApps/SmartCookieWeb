@@ -370,6 +370,10 @@ class UserPreferences @Inject constructor(
     var link3 by preferences.stringPreference(LINK3, "https://youtube.com")
     var link4 by preferences.stringPreference(LINK4, "https://speedtest.cookiejarapps.com")
 
+    // API endpoints
+    var translationEndpoint by preferences.stringPreference(TRANSLATION_ENDPOINT, "https://cookiejarapps.com/translate/")
+    var newsEndpoint by preferences.stringPreference(NEWS_ENDPOINT, "https://smartcookieweb.com/news/api.php")
+
     var useNewDownloader by preferences.booleanPreference(LEGACY_DOWNLOADER, true)
 
     // Show second navbar at the bottom of the screen
@@ -380,6 +384,9 @@ class UserPreferences @Inject constructor(
 
     // Redirect from AMP sites
     var noAmp by preferences.booleanPreference(NO_AMP, false)
+
+    // Show download dialog before downloading a file
+    var showDownloadConfirmation by preferences.booleanPreference(SHOW_DOWNLOAD_CONFIRMATION, true)
 
     // First launch since v11
     var firstLaunch11 by preferences.booleanPreference(FIRST_LAUNCH11, true)
@@ -479,4 +486,7 @@ private const val ALL_TABS = "allTabs"
 private const val SHOW_SHORTCUTS = "showShortcuts"
 private const val SECOND_BAR = "secondBar"
 private const val NO_AMP = "noAmp"
+private const val SHOW_DOWNLOAD_CONFIRMATION = "showDownloadConfirmation"
+private const val TRANSLATION_ENDPOINT = "translationEndpoint"
+private const val NEWS_ENDPOINT = "newsEndpoint"
 private const val AD_BLOCK = "adBlockStyle"

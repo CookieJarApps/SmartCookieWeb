@@ -148,9 +148,11 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 }
 
                 override fun publishResults(charSequence: CharSequence?, filterResults: FilterResults) {
-                    downloadInfoList = filterResults.values as MutableList<DownloadInfo>
+                    if(filterResults.values != null){
+                        downloadInfoList = filterResults.values as MutableList<DownloadInfo>
 
-                    notifyDataSetChanged()
+                        notifyDataSetChanged()
+                    }
                 }
             }
         }

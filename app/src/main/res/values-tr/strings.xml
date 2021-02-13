@@ -5,7 +5,7 @@
     <!-- Translated by users on Crowdin
     -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="app_desc">A free and open source web browser that blocks ads and trackers</string>
+    <string name="app_desc">Reklamları ve izleyicileri engelleyen ücretsiz ve açık kaynaklı bir web tarayıcısı</string>
     <string name="action_new_tab">Yeni sekme</string>
     <string name="action_share">Paylaş</string>
     <string name="action_print">Yazdır</string>
@@ -15,7 +15,7 @@
     <string name="action_add_bookmark">Yer imi ekle</string>
     <string name="action_copy">Bağlantıyı kopyala</string>
     <string name="action_forward">İleri</string>
-    <string name="action_sort">Sort</string>
+    <string name="action_sort">Sırala</string>
     <string name="settings">Ayarlar</string>
     <string name="location">Konum erişimi</string>
     <string name="password">Parolalarını kaydet</string>
@@ -208,11 +208,16 @@
     <string name="license_gnu">GNU Kısıtlı Genel Kamu Lisansı</string>
     <string name="export_bookmarks">Yer imlerini yedekle</string>
     <string name="import_backup">Yer imlerini geri yükle</string>
+    <string name="export_tabs">Export tabs to backup</string>
+    <string name="import_tabs">Import tabs from backup</string>
     <string name="bookmark_export_path">Yer imlerinin yedeklendiği yer</string>
     <string name="bookmark_export_failure">Maalesef, yer imleri dışa aktarılamadı!</string>
+    <string name="tab_export_path">Tabs exported to</string>
+    <string name="tab_export_failure">Sorry, tabs could not be exported!</string>
     <string name="bookmark_settings">Yer imi ayarları</string>
     <string name="settings_bookmark_explain">İçe ve dışa aktarma&#8230;</string>
     <string name="import_bookmark_error">Yer imleri dosyadan yüklenemedi</string>
+    <string name="import_tabs_error">Could not import tabs from file</string>
     <string name="title_chooser">Bir dosya seçin</string>
     <string name="settings_general">Genel ayarlar</string>
     <string name="settings_general_explain">Arama motoru, proxy, ana sayfa&#8230;</string>
@@ -405,6 +410,7 @@
     <string name="clear_settings">Ayarları sıfırla</string>
     <string name="backup_settings">Ayarları yedekle</string>
     <string name="backup_bookmarks">Yer imlerini yedekle</string>
+    <string name="backup_tabs">Tabs backup</string>
     <string name="reset_settings">Ayarları sıfırla. Uygulama kapanıyor... Lütfen tekrar açın.</string>
     <string name="force_zoom">Yakınlaştırmayı zorla</string>
     <string name="dark_mode">Karanlık mod</string>
@@ -412,7 +418,7 @@
     <string name="translator">Çevirmen (beta)</string>
     <string name="coming_soon">Daha fazlası yakında...</string>
     <string name="navbar_col">Gezinme çubuğu rengini ayarla</string>
-    <string name="color_filter">Set color filter</string>
+    <string name="color_filter">Renk filtrelerini ayarla</string>
     <string name="color">Renk</string>
     <string name="looknfeel">Görünüm ve Hissetme Ayarları</string>
     <string name="customize">Özelleştirme Ayarları</string>
@@ -451,7 +457,7 @@
     <string name="onboarding_two">Sekme çekmecesini açmak için sekme numarasını tıklayın veya sol kenardan kaydırın.</string>
     <string name="onboarding_three">Reklam engellemesini geçici olarak kapatmak, bir sitenin masaüstü sürümünü açmak ve daha fazlası için yer imi çekmecesinde sayfa araçlarını kullanın.</string>
     <string name="load_tabs">Tarayıcı başladığında tüm sekmeleri yükle</string>
-    <string name="navbar">Navbar</string>
+    <string name="navbar">Gezinti çubuğu</string>
     <string name="search_homepage">Arama...</string>
     <string name="start">Kullanmaya Başlayın!</string>
     <string name="show_shortcuts">Ana sayfada kısayolları göster</string>
@@ -468,22 +474,27 @@
     <string name="file_is">Dosya:</string>
     <string name="translate_to">Şu dile çevir:</string>
     <string name="new_drag">Sekme ve yer imi seçeneği menülerine artık simgesine basılarak erişilebilir. Metni basılı tutmak artık onları yeniden sıralamanıza izin verecektir.</string>
-    <string name="last_loaded">Last loaded</string>
-    <string name="continue_download">Continue</string>
-    <string name="start_download">Start</string>
-    <string name="pausing_download">Pausing</string>
-    <string name="waiting_download">Waiting</string>
-    <string name="pause_download">Pause</string>
-    <string name="confirm_delete">Confirm delete?</string>
-    <string name="grant_permissions">Grant permissions</string>
-    <string name="grant_permissions_desc">Read/Write External Storage is required for downloads and bookmark/settings backups</string>
-    <string name="open_in_app">Open in app</string>
-    <string name="bookmark_delete">Are you sure you want to delete this bookmark?</string>
-    <string name="install_userscript">Install UserScript</string>
-    <string name="install_userscript_description">Do you want to install this UserScript?</string>
-    <string name="remove_userscript">Remove UserScript</string>
-    <string name="remove_userscript_description">Do you want to remove this UserScript?</string>
-    <string name="scripts">UserScripts</string>
-    <string name="scripts_store">UserScripts store</string>
+    <string name="last_loaded">Son yüklenen</string>
+    <string name="continue_download">Devam et</string>
+    <string name="start_download">Başlat</string>
+    <string name="pausing_download">Duraklatılıyor</string>
+    <string name="waiting_download">Bekleniyor</string>
+    <string name="pause_download">Duraklat</string>
+    <string name="confirm_delete">Silmeyi onaylıyor musunuz?</string>
+    <string name="grant_permissions">İzinleri verin</string>
+    <string name="grant_permissions_desc">İndirmeler ve yer imi/ayar yedeklemeleri için Harici Depolama Okuma/Yazma gereklidir</string>
+    <string name="open_in_app">Uygulamada aç</string>
+    <string name="bookmark_delete">Bu yer imini silmek istediğinizden emin misiniz?</string>
+    <string name="install_userscript">Kullanıcı Betiği Kur</string>
+    <string name="install_userscript_description">Bu Kullanıcı Betiğini kurmak istiyor musunuz?</string>
+    <string name="remove_userscript">Kullanıcı Betiğini Kaldır</string>
+    <string name="remove_userscript_description">Bu Kullanıcı Betiğini kaldırmak istiyor musunuz?</string>
+    <string name="scripts">Kullanıcı Betiği</string>
+    <string name="scripts_store">Kullanıcı Betiği deposu</string>
+    <string name="new_tab_opened">New tab opened</string>
+    <string name="switch_button">Switch</string>
+    <string name="dont_ask_again">Don\'t ask again</string>
+    <string name="tts">Read page</string>
+    <string name="stop_tts">Stop reading</string>
     <!-- finish pages -->
 </resources>

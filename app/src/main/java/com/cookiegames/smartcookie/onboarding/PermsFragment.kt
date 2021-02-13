@@ -13,13 +13,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import com.anthonycr.grant.PermissionsManager
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.preference.UserPreferences
-import com.cookiegames.smartcookie.search.SearchEngineProvider
-import com.cookiegames.smartcookie.settings.fragment.BookmarkSettingsFragment
 import com.github.appintro.SlidePolicy
 import javax.inject.Inject
 

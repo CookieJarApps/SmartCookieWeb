@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_desc">Бесплатный веб-браузер с открытым исходным кодом, блокирующий рекламу и трекеры</string>
     <string name="action_new_tab">Новая вкладка</string>
     <string name="action_share">Поделиться</string>
     <string name="action_print">Печать</string>
@@ -9,6 +10,7 @@
     <string name="action_add_bookmark">Добавить закладку</string>
     <string name="action_copy">Копировать ссылку</string>
     <string name="action_forward">Вперёд</string>
+    <string name="action_sort">Сортировка</string>
     <string name="settings">Настройки</string>
     <string name="location">Доступ к местоположению</string>
     <string name="password">Сохранить пароли</string>
@@ -201,11 +203,16 @@
     <string name="license_gnu">GNU Lesser General Public License</string>
     <string name="export_bookmarks">Сделать резервную копию закладок</string>
     <string name="import_backup">Импорт закладок из резервной копии</string>
+    <string name="export_tabs">Экспорт настроек в резервную копию</string>
+    <string name="import_tabs">Импорт настроек из резервной копии</string>
     <string name="bookmark_export_path">Закладки экспортированы в:</string>
     <string name="bookmark_export_failure">Не удалось экспортировать закладки!</string>
+    <string name="tab_export_path">Экспортировать вкладки в</string>
+    <string name="tab_export_failure">Извините, не получилось экспортировать вкладки!</string>
     <string name="bookmark_settings">Настройки закладки</string>
     <string name="settings_bookmark_explain">Экспорт и импорт ...</string>
     <string name="import_bookmark_error">Не удалось импортировать закладки из файла</string>
+    <string name="import_tabs_error">Не удалось импортировать закладки из файла</string>
     <string name="title_chooser">Выберите файл</string>
     <string name="settings_general">Общие настройки</string>
     <string name="settings_general_explain">Поисковая система, прокси, домашняя страница&#8230;</string>
@@ -400,6 +407,7 @@
     <string name="clear_settings">Сброс настроек</string>
     <string name="backup_settings">Резервирование настроек</string>
     <string name="backup_bookmarks">Резервное копирование закладок</string>
+    <string name="backup_tabs">Резервная копия вкладок</string>
     <string name="reset_settings">Настройки сброшены. Закрытие приложения... Повторите открытие.</string>
     <string name="force_zoom">Принудительное увеличение</string>
     <string name="dark_mode">Тёмный режим</string>
@@ -407,6 +415,7 @@
     <string name="translator">Переводчик (бета)</string>
     <string name="coming_soon">Скоро будет больше...</string>
     <string name="navbar_col">Установить цвет панели навигации</string>
+    <string name="color_filter">Установить цветовой фильтр</string>
     <string name="color">Цвет</string>
     <string name="looknfeel">Настройки внешнего вида</string>
     <string name="customize">Параметры настройки</string>
@@ -441,5 +450,48 @@
     <string name="download_to_sd">Загрузить на SD-карту</string>
     <string name="legacy_download_manager">Использовать встроенный менеджер загрузок</string>
     <string name="legacy_download_manager_desc">Загружать файлы с помощью менеджера загрузок SmartCookieWeb вместо системного</string>
+    <string name="onboarding_one">Доступ к настройкам, закладкам и многое другое в верхнем меню (или проведите пальцем по правому краю).</string>
+    <string name="onboarding_two">Нажмите на номер вкладки или проведите пальцем c левого края, чтобы открыть панель вкладок.</string>
+    <string name="onboarding_three">Используйте настройки страницы в меню закладок, чтобы временно отключить блокировку рекламы, открыть настольную версию сайта и многое другое.</string>
+    <string name="load_tabs">Загружать все вкладки при запуске браузера</string>
+    <string name="navbar">Панель навигации</string>
+    <string name="search_homepage">Поиск...</string>
+    <string name="start">Начать!</string>
+    <string name="show_shortcuts">Показывать ярлыки на домашней странице</string>
+    <string name="reading_mode_image_copyright">Изображение принадлежит</string>
+    <string name="reading_mode_image_caption">Изображение с подписью</string>
+    <string name="show_second_bar">Показать вторую панель навигации</string>
+    <string name="edit_cookies">Редактировать cookies сайта</string>
+    <string name="ssl_size">Размер ключа</string>
+    <string name="algorithm">Алгоритм</string>
+    <string name="crash_warning">Включение этой настройки с параметром «Разрешить сайтам открывать новые окна» может привести к сбоям</string>
+    <string name="amp_to_html">AMP в HTML (бета)</string>
+    <string name="private_title">Приватный режим</string>
+    <string name="private_desc">Вкладки в приватном режиме работают как обычные, но при закрытии все данные стираются. Приватный просмотр не делает вас анонимным, но он может сохранить то, что вы делаете онлайн секретом от кого-либо другого с этим устройством.</string>
+    <string name="file_is">Файл:</string>
+    <string name="translate_to">Перевести на:</string>
+    <string name="new_drag">Меню вкладок и закладок теперь доступны нажатием на значок. Удерживание на тексте позволит изменить его порядок.</string>
+    <string name="last_loaded">Последняя загрузка</string>
+    <string name="continue_download">Продолжить</string>
+    <string name="start_download">Начать</string>
+    <string name="pausing_download">Приостановить</string>
+    <string name="waiting_download">Ожидание</string>
+    <string name="pause_download">Пауза</string>
+    <string name="confirm_delete">Подтвердить удаление?</string>
+    <string name="grant_permissions">Предоставьте разрешения</string>
+    <string name="grant_permissions_desc">Для загрузки резервных копий закладок или настроек требуется внешнее хранилище для чтения/записи</string>
+    <string name="open_in_app">Открыть в приложении</string>
+    <string name="bookmark_delete">Вы уверены, что хотите удалить эту закладку?</string>
+    <string name="install_userscript">Установить UserScript</string>
+    <string name="install_userscript_description">Вы уверены что хотите установить этот UserScript?</string>
+    <string name="remove_userscript">Удалить UserScript</string>
+    <string name="remove_userscript_description">Вы действительно хотите удалить этот UserScript?</string>
+    <string name="scripts">UserScripts</string>
+    <string name="scripts_store">Магазин UserScripts</string>
+    <string name="new_tab_opened">Открыта новая вкладка</string>
+    <string name="switch_button">Переключиться</string>
+    <string name="dont_ask_again">Больше не спрашивать</string>
+    <string name="tts">Читать страницу</string>
+    <string name="stop_tts">Остановить чтение</string>
     <!-- finish pages -->
 </resources>

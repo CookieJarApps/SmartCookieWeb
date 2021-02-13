@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_desc">一款免费的开源网络浏览器，阻止广告和跟踪器</string>
     <string name="action_new_tab">新标签</string>
     <string name="action_share">分享</string>
     <string name="action_print">打印</string>
@@ -9,6 +10,7 @@
     <string name="action_add_bookmark">添加书签</string>
     <string name="action_copy">复制链接</string>
     <string name="action_forward">向前</string>
+    <string name="action_sort">排序</string>
     <string name="settings">设置</string>
     <string name="location">位置访问</string>
     <string name="password">保存密码</string>
@@ -201,11 +203,16 @@
     <string name="license_gnu">GNU Lesser General Public License</string>
     <string name="export_bookmarks">导出书签到备份文件</string>
     <string name="import_backup">从备份文件导入书签</string>
+    <string name="export_tabs">导出标签页到备份</string>
+    <string name="import_tabs">从备份导入标签页</string>
     <string name="bookmark_export_path">书签已导出到</string>
     <string name="bookmark_export_failure">抱歉，无法导出书签！</string>
+    <string name="tab_export_path">标签已导出至</string>
+    <string name="tab_export_failure">抱歉，无法导出标签！</string>
     <string name="bookmark_settings">书签设置</string>
     <string name="settings_bookmark_explain">导出和导入&#8230;</string>
     <string name="import_bookmark_error">无法从文件导入书签</string>
+    <string name="import_tabs_error">无法从文件导入标签</string>
     <string name="title_chooser">选择一个文件</string>
     <string name="settings_general">通用设置</string>
     <string name="settings_general_explain">搜索引擎，代理，主页&#8230;</string>
@@ -397,6 +404,7 @@
     <string name="clear_settings">重置设定</string>
     <string name="backup_settings">设置备份</string>
     <string name="backup_bookmarks">书签备份</string>
+    <string name="backup_tabs">标签备份</string>
     <string name="reset_settings">设置重置。关闭应用... 请重新打开。</string>
     <string name="force_zoom">强制缩放</string>
     <string name="dark_mode">深色模式</string>
@@ -404,6 +412,7 @@
     <string name="translator">翻译 (测试版)</string>
     <string name="coming_soon">敬请期待。</string>
     <string name="navbar_col">设置导航栏颜色</string>
+    <string name="color_filter">设置颜色过滤器</string>
     <string name="color">颜色</string>
     <string name="looknfeel">外观和感觉设置</string>
     <string name="customize">自定义设置</string>
@@ -442,11 +451,44 @@
     <string name="onboarding_two">单击标签页编号或从左边缘滑动以打开选项卡抽屉。</string>
     <string name="onboarding_three">使用书签抽屉中的页面工具暂时关闭广告拦截，打开网站的桌面版本等等。</string>
     <string name="load_tabs">启动浏览器时加载所有标签</string>
+    <string name="navbar">导航栏</string>
     <string name="search_homepage">搜索…</string>
     <string name="start">开始使用！</string>
     <string name="show_shortcuts">在主页上显示快捷方式</string>
     <string name="reading_mode_image_copyright">图片版权属于</string>
     <string name="reading_mode_image_caption">带说明的图片</string>
     <string name="show_second_bar">显示辅助导航栏</string>
+    <string name="edit_cookies">编辑站点 Cookies</string>
+    <string name="ssl_size">密钥长度</string>
+    <string name="algorithm">算法</string>
+    <string name="crash_warning">在“允许网站打开新窗口”的情况下启用这个设置可能会导致崩溃。</string>
+    <string name="amp_to_html">AMP 到 HTML (测试版)</string>
+    <string name="private_title">隐私模式</string>
+    <string name="private_desc">隐私模式下的标签页像普通的选项卡一样工作，但是当它们关闭时，所有数据都会被删除。隐私浏览并不会让你匿名，但它可以让你在网上做的事情对除你以外的使用该设备的任何人保密。</string>
+    <string name="file_is">文件是：</string>
+    <string name="translate_to">翻译到：</string>
+    <string name="new_drag">标签和书签选项菜单现在可以通过按住图标来访问。现在可以通过按住文本对它们进行重新排序。</string>
+    <string name="last_loaded">上次加载</string>
+    <string name="continue_download">继续</string>
+    <string name="start_download">开始</string>
+    <string name="pausing_download">正在暂停</string>
+    <string name="waiting_download">等待中</string>
+    <string name="pause_download">暂停</string>
+    <string name="confirm_delete">确认删除？</string>
+    <string name="grant_permissions">授予权限</string>
+    <string name="grant_permissions_desc">下载和书签/设置备份需要读取/写入外部存储</string>
+    <string name="open_in_app">在应用程序中打开</string>
+    <string name="bookmark_delete">确定要删除此书签吗？</string>
+    <string name="install_userscript">安装 UserScript</string>
+    <string name="install_userscript_description">你想安装这个 UserScript 吗？</string>
+    <string name="remove_userscript">删除 UserScript</string>
+    <string name="remove_userscript_description">你想要删除此 UserScript 吗？</string>
+    <string name="scripts">UserScripts</string>
+    <string name="scripts_store">UserScripts 商店</string>
+    <string name="new_tab_opened">新标签已打开</string>
+    <string name="switch_button">切换</string>
+    <string name="dont_ask_again">不要再询问</string>
+    <string name="tts">语音播报页面</string>
+    <string name="stop_tts">停止播报</string>
     <!-- finish pages -->
 </resources>

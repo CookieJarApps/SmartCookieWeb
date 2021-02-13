@@ -9,14 +9,12 @@ import com.cookiegames.smartcookie.browser.activity.ThemableBrowserActivity
 import com.cookiegames.smartcookie.browser.bookmarks.BookmarksDrawerView
 import com.cookiegames.smartcookie.device.BuildInfo
 import com.cookiegames.smartcookie.dialog.LightningDialogBuilder
-import com.cookiegames.smartcookie.download.DownloadHandler
 import com.cookiegames.smartcookie.download.LightningDownloadListener
 import com.cookiegames.smartcookie.reading.activity.ReadingActivity
 import com.cookiegames.smartcookie.search.SuggestionsAdapter
 import com.cookiegames.smartcookie.settings.activity.SettingsActivity
 import com.cookiegames.smartcookie.settings.activity.ThemableSettingsActivity
 import com.cookiegames.smartcookie.settings.fragment.*
-import com.cookiegames.smartcookie.utils.ProxyUtils
 import com.cookiegames.smartcookie.view.SmartCookieChromeClient
 import com.cookiegames.smartcookie.view.SmartCookieView
 import com.cookiegames.smartcookie.view.SmartCookieWebClient
@@ -24,7 +22,6 @@ import android.app.Application
 import com.cookiegames.smartcookie.download.DownloadActivity
 import com.cookiegames.smartcookie.history.HistoryActivity
 import com.cookiegames.smartcookie.onboarding.*
-import com.cookiegames.smartcookie.popup.CustomAdapter
 import com.cookiegames.smartcookie.popup.PopUpClass
 import dagger.BindsInstance
 import dagger.Component
@@ -52,7 +49,7 @@ interface AppComponent {
 
     fun inject(activity: HistoryActivity)
 
-    fun inject(fragment: BookmarkSettingsFragment)
+    fun inject(fragment: ExportSettingsFragment)
 
     fun inject(builder: LightningDialogBuilder)
 

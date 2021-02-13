@@ -203,11 +203,16 @@
     <string name="license_gnu">Licença Pública Geral GNU Lesser</string>
     <string name="export_bookmarks">Exportar backup de favoritos</string>
     <string name="import_backup">Importar backup de favoritos</string>
+    <string name="export_tabs">Exportar backup de abas</string>
+    <string name="import_tabs">Importar backup de abas</string>
     <string name="bookmark_export_path">Favoritos exportados para</string>
     <string name="bookmark_export_failure">Desculpe, os favoritos não puderam ser exportados!</string>
+    <string name="tab_export_path">Abas exportadas para</string>
+    <string name="tab_export_failure">Desculpe, as abas não puderam ser exportadas!</string>
     <string name="bookmark_settings">Configurações de favoritos</string>
     <string name="settings_bookmark_explain">Exportação e importação&#8230;</string>
     <string name="import_bookmark_error">Não foi possível importar os favoritos</string>
+    <string name="import_tabs_error">Não foi possível importar as abas do arquivo</string>
     <string name="title_chooser">Escolha um arquivo</string>
     <string name="settings_general">Configurações gerais</string>
     <string name="settings_general_explain">Motor de busca, proxy, página inicial&#8230;</string>
@@ -400,6 +405,7 @@
     <string name="clear_settings">Redefinir configurações</string>
     <string name="backup_settings">Backup de configurações</string>
     <string name="backup_bookmarks">Backup de Favoritos</string>
+    <string name="backup_tabs">Backup de abas</string>
     <string name="reset_settings">Configurações redefinidas. Fechando aplicativo... Por favor, reabra.</string>
     <string name="force_zoom">Forçar zoom</string>
     <string name="dark_mode">Modo noturno</string>
@@ -480,5 +486,10 @@
     <string name="remove_userscript_description">Deseja remover este UserScript?</string>
     <string name="scripts">UserScripts</string>
     <string name="scripts_store">Loja de UserScripts</string>
+    <string name="new_tab_opened">Nova aba aberta</string>
+    <string name="switch_button">Trocar</string>
+    <string name="dont_ask_again">Não perguntar novamente</string>
+    <string name="tts">Ler página</string>
+    <string name="stop_tts">Parar leitura</string>
     <!-- finish pages -->
 </resources>

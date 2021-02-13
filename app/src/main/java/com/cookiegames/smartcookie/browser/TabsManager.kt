@@ -285,6 +285,38 @@ class TabsManager @Inject constructor(
     }
 
     /**
+     * Create and return a new tab at a specific position. The tab is automatically added to the tabs list.
+     *
+     * @param activity the activity needed to create the tab.
+     * @param tabInitializer the initializer to run on the tab after it's been created.
+     * @param isIncognito whether the tab is an incognito tab or not.
+     * @return a valid initialized tab.
+     */
+    fun newTabAtPosition(
+            activity: Activity,
+            tabInitializer: TabInitializer,
+            isIncognito: Boolean,
+            index: Int
+    ): SmartCookieView {
+        logger.log(TAG, "New tab")
+        val tab = SmartCookieView(
+                activity,
+                tabInitializer,
+                isIncognito,
+                homePageInitializer,
+                incognitoPageInitializer,
+                bookmarkPageInitializer,
+                downloadPageInitializer,
+                onboardingPageInitializer,
+                historyPageInitializer,
+                logger
+        )
+        tabList.add(index, tab)
+        tabNumberListeners.forEach { it(size()) }
+        return tab
+    }
+
+    /**
      * Removes a tab from the list and destroys the tab. If the tab removed is the current tab, the
      * reference to the current tab will be nullified.
      *

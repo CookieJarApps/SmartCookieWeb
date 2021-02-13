@@ -212,11 +212,16 @@
     <string name="license_gnu">GNU Lesser General Public License</string>
     <string name="export_bookmarks">Export bookmarks to backup</string>
     <string name="import_backup">Import bookmarks from backup</string>
+    <string name="export_tabs">Export tabs to backup</string>
+    <string name="import_tabs">Import tabs from backup</string>
     <string name="bookmark_export_path">Bookmarks exported to</string>
     <string name="bookmark_export_failure">Sorry, bookmarks could not be exported!</string>
+    <string name="tab_export_path">Tabs exported to</string>
+    <string name="tab_export_failure">Sorry, tabs could not be exported!</string>
     <string name="bookmark_settings">Bookmark settings</string>
     <string name="settings_bookmark_explain">Exporting and importing&#8230;</string>
     <string name="import_bookmark_error">Could not import bookmarks from file</string>
+    <string name="import_tabs_error">Could not import tabs from file</string>
     <string name="title_chooser">Choose a file</string>
     <string name="settings_general">General settings</string>
     <string name="settings_general_explain">Search engine, proxy, homepage&#8230;</string>
@@ -456,6 +461,7 @@
     <string name="clear_settings">Reset settings</string>
     <string name="backup_settings">Settings backup</string>
     <string name="backup_bookmarks">Bookmarks backup</string>
+    <string name="backup_tabs">Tabs backup</string>
 
     <string name="reset_settings">Settings reset. App closing... Please reopen.</string>
 
@@ -582,5 +588,16 @@
 
     <string name="scripts">UserScripts</string>
     <string name="scripts_store">UserScripts store</string>
+
+    <string name="new_tab_opened">New tab opened</string>
+    <string name="switch_button">Switch</string>
+
+    <string name="dont_ask_again">Don\'t ask again</string>
+
+    <string name="tts">Read page</string>
+    <string name="stop_tts">Stop reading</string>
+
+    <string name="translation_endpoint">Translation endpoint</string>
+    <string name="news_endpoint">News endpoint</string>
     <!-- finish pages -->
 </resources>

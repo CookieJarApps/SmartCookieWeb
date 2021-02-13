@@ -34,7 +34,7 @@
             android:key="scripts_store">
         <intent
             android:action="android.intent.action.VIEW"
-            android:data="https://cookiejarapps.com/scripts/">
+            android:data="https://smartcookieweb.com/scripts/">
             <extra
                 android:name="SOURCE"
                 android:value="SELF" />

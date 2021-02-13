@@ -2,7 +2,6 @@ package com.cookiegames.smartcookie.dialog
 
 import android.app.Activity
 import android.content.ClipboardManager
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -11,6 +10,7 @@ import android.webkit.MimeTypeMap
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.EditText
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.net.toUri
@@ -35,6 +35,7 @@ import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.utils.IntentUtils
 import com.cookiegames.smartcookie.utils.isBookmarkUrl
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.huxq17.download.DownloadProvider
 import dagger.Reusable
 import io.reactivex.Scheduler
@@ -353,10 +354,10 @@ class LightningDialogBuilder @Inject constructor(
         url: String
     ) = BrowserDialog.show(activity, url,
         DialogItem(title = R.string.dialog_open_new_tab) {
-            uiController.handleNewTab(NewTab.FOREGROUND, url)
+            uiController.handleNewTab(NewTab.FOREGROUND, url, true)
         },
         DialogItem(title = R.string.dialog_open_background_tab) {
-            uiController.handleNewTab(NewTab.BACKGROUND, url)
+            uiController.handleNewTab(NewTab.BACKGROUND, url, true)
         },
         DialogItem(
             title = R.string.dialog_open_incognito_tab,
