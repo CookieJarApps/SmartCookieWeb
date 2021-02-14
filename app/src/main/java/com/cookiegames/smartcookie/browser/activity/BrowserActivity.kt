@@ -7,6 +7,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.content.res.AssetManager
 import android.content.res.Configuration
 import android.graphics.Bitmap
@@ -40,7 +41,6 @@ import android.widget.AdapterView.OnItemClickListener
 import android.widget.TextView.OnEditorActionListener
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
@@ -54,7 +54,6 @@ import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.IncognitoActivity
-import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.*
 import com.cookiegames.smartcookie.browser.bookmarks.BookmarksDrawerView
@@ -108,6 +107,7 @@ import java.util.*
 import javax.inject.Inject
 import kotlin.math.roundToInt
 import kotlin.system.exitProcess
+
 
 abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIController, OnClickListener, OnKeyboardVisibilityListener {
 
@@ -347,11 +347,20 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     override fun onVisibilityChanged(visible: Boolean) {
             val extraBar = findViewById<BottomNavigationView>(R.id.bottom_navigation)
             if(visible){
-                extraBar?.visibility = View.GONE
+                extraBar?.visibility = GONE
             }
             else{
                 extraBar?.visibility = View.VISIBLE
             }
+    }
+
+    fun isPackageInstalled(packageName: String, packageManager: PackageManager): Boolean {
+        return try {
+            packageManager.getPackageInfo(packageName, 0)
+            true
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
     }
 
     private fun initialize(savedInstanceState: Bundle?) {
@@ -394,17 +403,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     .displayMetrics)
 
             val param = toolbar.layoutParams as ViewGroup.MarginLayoutParams
-            param.setMargins(toolbar.marginLeft,toolbar.marginTop,toolbar.marginRight,marginInDp.roundToInt())
+            param.setMargins(toolbar.marginLeft, toolbar.marginTop, toolbar.marginRight, marginInDp.roundToInt())
             toolbar.layoutParams = param
 
         }
-        var x1: Float
-        var x2: Float
-        var MIN_DISTANCE = 150
-
-       // toolbar.setOnTouchListener { v, event ->
-
-        //}
 
         setNavigationDrawerWidth()
         drawer_layout.addDrawerListener(DrawerLocker())
@@ -489,7 +491,11 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         }
 
         customView.findViewById<FrameLayout>(R.id.more_button).setOnClickListener(this)
+        customView.findViewById<FrameLayout>(R.id.download_button).setOnClickListener(this)
 
+        if(!isPackageInstalled("com.cookiejarapps.smartcookieweb_ytdl", packageManager)){
+            customView.findViewById<FrameLayout>(R.id.download_button).visibility = GONE
+        }
 
         // create the search EditText in the ToolBar
         searchView = customView.findViewById<SearchView>(R.id.search).apply {
@@ -2133,9 +2139,17 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     override fun handleNewTab(newTabType: LightningDialogBuilder.NewTab, url: String, addToIndex: Boolean) {
         val urlInitializer = UrlInitializer(url)
         when (newTabType) {
-            LightningDialogBuilder.NewTab.FOREGROUND -> if(addToIndex){ presenter?.newTabAtPosition(urlInitializer, true, tabsManager.indexOfCurrentTab()+1) } else { presenter?.newTab(urlInitializer, true) }
+            LightningDialogBuilder.NewTab.FOREGROUND -> if (addToIndex) {
+                presenter?.newTabAtPosition(urlInitializer, true, tabsManager.indexOfCurrentTab() + 1)
+            } else {
+                presenter?.newTab(urlInitializer, true)
+            }
             LightningDialogBuilder.NewTab.BACKGROUND -> {
-                if(addToIndex){ presenter?.newTabAtPosition(urlInitializer, false, tabsManager.indexOfCurrentTab()+1) } else { presenter?.newTab(urlInitializer, false) }
+                if (addToIndex) {
+                    presenter?.newTabAtPosition(urlInitializer, false, tabsManager.indexOfCurrentTab() + 1)
+                } else {
+                    presenter?.newTab(urlInitializer, false)
+                }
                 val snackbar = Snackbar
                         .make(findViewById(android.R.id.content), resources.getString(R.string.new_tab_opened), Snackbar.LENGTH_INDEFINITE)
                         .setAction(resources.getString(R.string.switch_button)) { tabClicked(tabsManager.indexOfCurrentTab() + 1) }
@@ -2201,6 +2215,18 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             }
             R.id.more_button -> {
                 popUpClass.showPopupWindow(v, this)
+            }
+            R.id.download_button -> {
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, currentTab.url)
+                    type = "text/plain"
+                }
+                sendIntent.setClassName("com.cookiejarapps.smartcookieweb_ytdl",
+                        "com.cookiejarapps.smartcookieweb_ytdl.ui.MainActivity")
+
+                val shareIntent = Intent.createChooser(sendIntent, null)
+                startActivity(shareIntent)
             }
             R.id.button_next -> findResult?.nextResult()
             R.id.button_back -> findResult?.previousResult()

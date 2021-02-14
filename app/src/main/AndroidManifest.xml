@@ -9,6 +9,7 @@
             <category android:name="android.intent.category.BROWSABLE" />
             <data android:scheme="https" />
         </intent>
+        <package android:name="com.cookiejarapps.smartcookieweb_ytdl"/>
     </queries>
 
     <uses-permission android:name="android.permission.INTERNET" />
