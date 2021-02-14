@@ -2223,7 +2223,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     type = "text/plain"
                 }
                 sendIntent.setClassName("com.cookiejarapps.smartcookieweb_ytdl",
-                        "com.cookiejarapps.smartcookieweb_ytdl.ui.MainActivity")
+                        "com.cookiejarapps.smartcookieweb_ytdl.MainActivity")
 
                 val shareIntent = Intent.createChooser(sendIntent, null)
                 startActivity(shareIntent)
