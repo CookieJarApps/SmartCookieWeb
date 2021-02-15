@@ -37,11 +37,11 @@
         android:id="@+id/download_button"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
         android:background="?attr/actionBarItemBackground"
         android:clickable="true"
         android:focusable="true"
-        android:gravity="center"
-        android:layout_marginStart="8dp">
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/download_button_view"

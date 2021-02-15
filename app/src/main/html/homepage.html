@@ -174,6 +174,69 @@
   cursor: pointer;
 }
 
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 100%;
+  border-radius: 5px;
+  padding-top: 4px;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.card-content {
+  padding: 2px 16px;
+}
+
+@media screen and (min-width: 1408px){
+.container:not(.is-max-desktop):not(.is-max-widescreen) {
+    max-width: 1344px;
+}}
+@media screen and (min-width: 1216px){
+.container:not(.is-max-desktop) {
+    max-width: 1152px;
+}}
+@media screen and (min-width: 1024px){
+.container {
+    max-width: 960px;
+}}
+.container {
+    flex-grow: 1;
+    margin: 0 auto;
+    position: relative;
+    width: auto;
+}
+
+@media screen and (min-width: 769px), print{
+.column.is-offset-one-quarter, .column.is-offset-one-quarter-tablet {
+    margin-left: 25%;
+}}
+@media screen and (min-width: 769px), print{
+.column.is-half, .column.is-half-tablet {
+    flex: none;
+    width: 50%;
+}}
+
+.column {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: .75rem;
+}
+
+
 </style>
 
 <body>
@@ -212,8 +275,15 @@
                       <!--<svg class="exit" style="float: left;" xmlns="http://www.w3.org/2000/svg" height="12" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path xmlns="http://www.w3.org/2000/svg" d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"/></svg>-->
                    </div>
             </div>
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+      </div>
+    </div>
+
         </div>
     </div>
+
+
     <script type="text/javascript">
         function search() {
             if (document.getElementById("search_input").value != "") {
@@ -222,32 +292,8 @@
             }
             return false;
         }
-        
-    </script>
+</script>
 
-   <!--<center><button id="new" onclick="window.location.href = 'https://cookiejarapps.com/smartcookieweb/whatsnew.html';">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z" fill="#FFFFFF"/></svg>
-      What's new</button></center>-->
-    <style>
-    #new {
-    background: #434343;
-    color: #fff;
-    display: block;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    width: auto;
-    border-radius: 24px; 
-   position: absolute;
-        bottom: 5%;
-        left: 50%;
-        margin-right: -50%;
-        transform: translate(-50%, -50%);
-          border: none;
-  
-}
-
-</style>
 <div id="editModal" class="modal">
 
   <!-- Modal content -->
@@ -312,11 +358,32 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 } 
+
+var req = new XMLHttpRequest();
+req.overrideMimeType("application/json");
+req.open('GET', "https://smartcookieweb.com/news/api.php", true);
+req.onload  = function() {
+   var jsonResponse = JSON.parse(req.responseText);
+
+   for(i in jsonResponse["articles"]){
+     console.log(jsonResponse["articles"][i]["url"]);
+      var div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML = `<div onclick="window.location.href = '` + jsonResponse["articles"][i]["url"] + `';">
+      <img src='` + jsonResponse["articles"][i]["urlToImage"] + `' onerror='this.src = "https://via.placeholder.com/650x350?text=No+image+available"' style='width:95%'/> <div class='card-content'>
+      <h1>` + jsonResponse["articles"][i]["title"] + `</h1>
+      <p>` + jsonResponse["articles"][i]["source"]["name"] + ` | by ` + jsonResponse["articles"][i]["author"] + `</p>
+      </div></div>`;
+      document.getElementsByClassName('column')[0].appendChild(div);
+      
+      var br = document.createElement('br');
+      document.getElementsByClassName('column')[0].appendChild(br);
+   }
+};
+req.send(null);
+
+        
 </script>
 
 
 </body>
-
-
-</html>
-
