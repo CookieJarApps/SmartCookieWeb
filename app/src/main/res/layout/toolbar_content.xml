@@ -41,7 +41,8 @@
         android:background="?attr/actionBarItemBackground"
         android:clickable="true"
         android:focusable="true"
-        android:gravity="center">
+        android:gravity="center"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/download_button_view"

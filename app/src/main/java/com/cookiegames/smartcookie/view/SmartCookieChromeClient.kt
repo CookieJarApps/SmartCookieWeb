@@ -3,6 +3,7 @@ package com.cookiegames.smartcookie.view
 import android.Manifest
 import android.annotation.TargetApi
 import android.app.Activity
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -11,6 +12,7 @@ import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.webkit.*
+import android.widget.FrameLayout
 import com.anthonycr.grant.PermissionsManager
 import com.anthonycr.grant.PermissionsResultAction
 import com.cookiegames.smartcookie.R
@@ -182,6 +184,15 @@ class SmartCookieChromeClient(
         return true
     }
 
+    fun isPackageInstalled(packageName: String, packageManager: PackageManager): Boolean {
+        return try {
+            packageManager.getPackageInfo(packageName, 0)
+            true
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
+    }
+
     /**
      * Obtain an image that is displayed as a placeholder on a video until the video has initialized
      * and can begin loading.
@@ -189,6 +200,9 @@ class SmartCookieChromeClient(
      * @return a Bitmap that can be used as a place holder for videos.
      */
     override fun getDefaultVideoPoster(): Bitmap? {
+        if(isPackageInstalled("com.cookiejarapps.smartcookieweb_ytdl", activity.packageManager)){
+            activity.findViewById<FrameLayout>(R.id.download_button).visibility = View.VISIBLE
+        }
         return if (super.getDefaultVideoPoster() == null) {
             BitmapFactory.decodeResource(activity.resources,
                     android.R.drawable.spinner_background)

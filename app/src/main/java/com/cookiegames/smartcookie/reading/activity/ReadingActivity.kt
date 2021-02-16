@@ -314,13 +314,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         while (end != BreakIterator.DONE) {
             end = iterator.next()
         }
-        val translateUrl = HttpUrl.Builder()
-                .scheme("https")
-                .host("cookiejarapps.com")
-                .addPathSegment("translate")
-                .addQueryParameter("text", Html.toHtml(mBody!!.text as Spanned).replace("\"", "\\\""))
-                .addQueryParameter("lang", lang)
-                .build()
+        val translateUrl = mUserPreferences?.translationEndpoint + "?text=" + Html.toHtml(mBody!!.text as Spanned).replace("\"", "\\\"") + "&lang=" + lang
         val request = Request.Builder()
                 .url(translateUrl)
                 .addHeader("Accept", "application/json")

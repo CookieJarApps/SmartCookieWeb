@@ -6,6 +6,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.MailTo
 import android.net.Uri
@@ -17,11 +18,9 @@ import android.os.Message
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.webkit.*
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.FileProvider
 import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.AppTheme
@@ -72,6 +71,8 @@ class SmartCookieWebClient(
     private val intentUtils = IntentUtils(activity)
     private val emptyResponseByteArray: ByteArray = byteArrayOf()
     private var urlLoaded = ""
+
+    private var knownUndetectedVideoUrls: Array<String> = arrayOf("xvideos.com")
 
     private var badsslList: MutableList<String> = ArrayList()
     private var badsslErrors: MutableList<SslError> = ArrayList<SslError>()
@@ -520,7 +521,22 @@ class SmartCookieWebClient(
         super.onLoadResource(view, url)
     }
 
+    fun isPackageInstalled(packageName: String, packageManager: PackageManager): Boolean {
+        return try {
+            packageManager.getPackageInfo(packageName, 0)
+            true
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
+    }
+
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
+        if(isPackageInstalled("com.cookiejarapps.smartcookieweb_ytdl", activity.packageManager) && stringContainsItemFromList(url, knownUndetectedVideoUrls)){
+            activity.findViewById<FrameLayout>(R.id.download_button).visibility = View.VISIBLE
+        }
+        else{
+            activity.findViewById<FrameLayout>(R.id.download_button).visibility = View.GONE
+        }
 
         if(view.settings?.userAgentString!!.contains("wv")){
             view.settings?.userAgentString = view.settings?.userAgentString?.replace("; wv", "")

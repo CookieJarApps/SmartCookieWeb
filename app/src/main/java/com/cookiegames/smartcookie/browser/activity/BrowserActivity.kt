@@ -354,15 +354,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             }
     }
 
-    fun isPackageInstalled(packageName: String, packageManager: PackageManager): Boolean {
-        return try {
-            packageManager.getPackageInfo(packageName, 0)
-            true
-        } catch (e: PackageManager.NameNotFoundException) {
-            false
-        }
-    }
-
     private fun initialize(savedInstanceState: Bundle?) {
         initializeToolbarHeight(resources.configuration)
         setSupportActionBar(toolbar)
@@ -492,10 +483,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
         customView.findViewById<FrameLayout>(R.id.more_button).setOnClickListener(this)
         customView.findViewById<FrameLayout>(R.id.download_button).setOnClickListener(this)
-
-        if(!isPackageInstalled("com.cookiejarapps.smartcookieweb_ytdl", packageManager)){
-            customView.findViewById<FrameLayout>(R.id.download_button).visibility = GONE
-        }
 
         // create the search EditText in the ToolBar
         searchView = customView.findViewById<SearchView>(R.id.search).apply {
