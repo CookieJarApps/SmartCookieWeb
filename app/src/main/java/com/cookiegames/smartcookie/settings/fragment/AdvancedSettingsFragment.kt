@@ -1,5 +1,6 @@
 package com.cookiegames.smartcookie.settings.fragment
 
+import android.content.Intent
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.SearchBoxDisplayChoice
 import com.cookiegames.smartcookie.constant.TEXT_ENCODINGS
@@ -9,9 +10,14 @@ import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.view.RenderingMode
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.cookiegames.smartcookie.DeviceCapabilities
+import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.isSupported
+import com.cookiegames.smartcookie.settings.activity.SettingsActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import javax.inject.Inject
 
@@ -26,6 +32,18 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
         super.onCreate(savedInstanceState)
 
         injector.inject(this)
+
+        clickableDynamicPreference(
+                preference = SETTINGS_NEWS_ENDPOINT,
+                summary = userPreferences.newsEndpoint,
+                onClick = this::showNewsEndpointPicker
+        )
+
+        clickableDynamicPreference(
+                preference = SETTINGS_TRANSLATION_ENDPOINT,
+                summary = userPreferences.translationEndpoint,
+                onClick = this::showTranslationEndpointPicker
+        )
 
         clickableDynamicPreference(
             preference = SETTINGS_RENDERING_MODE,
@@ -197,6 +215,52 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
         RenderingMode.INCREASE_CONTRAST -> R.string.name_increase_contrast
     })
 
+    private fun showNewsEndpointPicker(summaryUpdater: SummaryUpdater) {
+        val dialogView = LayoutInflater.from(activity).inflate(R.layout.dialog_edit_text, null)
+        val editText = dialogView.findViewById<EditText>(R.id.dialog_edit_text)
+
+        editText.setText(userPreferences.newsEndpoint)
+
+        val editorDialog = MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.news_endpoint)
+                .setView(dialogView)
+                .setCancelable(false)
+                .setNegativeButton(R.string.action_back) { dialog, which ->
+                }
+                .setPositiveButton(R.string.action_ok
+                ) { _, _ ->
+                    userPreferences.newsEndpoint = editText.text.toString()
+                }
+
+        val dialog = editorDialog.show()
+        BrowserDialog.setDialogSize(requireContext(), dialog)
+
+        summaryUpdater.updateSummary(editText.text.toString())
+    }
+
+    private fun showTranslationEndpointPicker(summaryUpdater: SummaryUpdater) {
+        val dialogView = LayoutInflater.from(activity).inflate(R.layout.dialog_edit_text, null)
+        val editText = dialogView.findViewById<EditText>(R.id.dialog_edit_text)
+
+        editText.setText(userPreferences.translationEndpoint)
+
+        val editorDialog = MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.news_endpoint)
+                .setView(dialogView)
+                .setCancelable(false)
+                .setNegativeButton(R.string.action_back) { dialog, which ->
+                }
+                .setPositiveButton(R.string.action_ok
+                ) { _, _ ->
+                    userPreferences.translationEndpoint = editText.text.toString()
+                }
+
+        val dialog = editorDialog.show()
+        BrowserDialog.setDialogSize(requireContext(), dialog)
+
+        summaryUpdater.updateSummary(editText.text.toString())
+    }
+
     companion object {
         private const val SETTINGS_NEW_WINDOW = "allow_new_window"
         private const val SETTINGS_ENABLE_COOKIES = "allow_cookies"
@@ -208,6 +272,8 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_BLOCK_INTENT = "block_intent"
         private const val SETTINGS_SHOW_SSL = "show_ssl"
         private const val SETTINGS_LEGACY_DOWNLOADER = "downloader"
+        private const val SETTINGS_TRANSLATION_ENDPOINT = "translation_endpoint"
+        private const val SETTINGS_NEWS_ENDPOINT = "news_endpoint"
     }
 
 }

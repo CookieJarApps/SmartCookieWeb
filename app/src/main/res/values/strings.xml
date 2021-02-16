@@ -594,5 +594,8 @@
 
     <string name="translation_endpoint">Translation endpoint</string>
     <string name="news_endpoint">News endpoint</string>
+
+    <string name="select_translate_text">Please select the text you would like to translate</string>
+    <string name="select_tts_text">Please select the text you would like read</string>
     <!-- finish pages -->
 </resources>

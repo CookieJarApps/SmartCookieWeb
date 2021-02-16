@@ -54,15 +54,10 @@ class HomePageFactory @Inject constructor(
                     id("search_input") { attr("style", "background: url('" + iconUrl + "') no-repeat scroll 7px 7px;background-size: 22px 22px;") }
                     tag("script") {
                         html(
-                                if (!userPreferences.whatsNewEnabled) {
-                                    html()
-                                            .replace("What's new", "")
-                                } else {
-                                    html()
-                                            .replace("\${BASE_URL}", queryUrl)
-                                            .replace("&", "\\u0026")
-                                }
-
+                                html()
+                                        .replace("\${BASE_URL}", queryUrl)
+                                        .replace("\${ENDPOINT}", userPreferences.newsEndpoint)
+                                        .replace("&", "\\u0026")
                         )
                     }
                     if(userPreferences.showShortcuts){

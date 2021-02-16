@@ -292,6 +292,8 @@ img {
             }
             return false;
         }
+
+        var endpoint = "${ENDPOINT}";
 </script>
 
 <div id="editModal" class="modal">
@@ -358,10 +360,12 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 } 
+</script>
 
+<script>
 var req = new XMLHttpRequest();
 req.overrideMimeType("application/json");
-req.open('GET', "https://smartcookieweb.com/news/api.php", true);
+req.open('GET', endpoint, true);
 req.onload  = function() {
    var jsonResponse = JSON.parse(req.responseText);
 
@@ -380,9 +384,7 @@ req.onload  = function() {
       document.getElementsByClassName('column')[0].appendChild(br);
    }
 };
-req.send(null);
-
-        
+req.send(null);     
 </script>
 
 
