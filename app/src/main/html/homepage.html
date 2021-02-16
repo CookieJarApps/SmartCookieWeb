@@ -71,14 +71,14 @@
     
     .middle {
         display: table-cell;
-        vertical-align: middle;
     }
     
     .inner {
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 10%;
-        width: 100%;
+        width: 100%;    
+        margin-top: 25vh;
     }
     
     img.smaller {
@@ -293,7 +293,7 @@ img {
             return false;
         }
 
-        var endpoint = "${ENDPOINT}";
+        var endpoint = "https://smartcookieweb.com/news/api.php";
 </script>
 
 <div id="editModal" class="modal">
@@ -360,9 +360,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 } 
-</script>
 
-<script>
 var req = new XMLHttpRequest();
 req.overrideMimeType("application/json");
 req.open('GET', endpoint, true);
@@ -375,7 +373,7 @@ req.onload  = function() {
       div.className = 'card';
       div.innerHTML = `<div onclick="window.location.href = '` + jsonResponse["articles"][i]["url"] + `';">
       <img src='` + jsonResponse["articles"][i]["urlToImage"] + `' onerror='this.src = "https://via.placeholder.com/650x350?text=No+image+available"' style='width:95%'/> <div class='card-content'>
-      <h1>` + jsonResponse["articles"][i]["title"] + `</h1>
+      <h1>` + jsonResponse["articles"][i]["title"].replace(" - " + jsonResponse["articles"][i]["source"]["name"], ""); + `</h1>
       <p>` + jsonResponse["articles"][i]["source"]["name"] + ` | by ` + jsonResponse["articles"][i]["author"] + `</p>
       </div></div>`;
       document.getElementsByClassName('column')[0].appendChild(div);
