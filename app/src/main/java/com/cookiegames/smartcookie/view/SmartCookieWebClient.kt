@@ -531,7 +531,7 @@ class SmartCookieWebClient(
     }
 
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
-        if(isPackageInstalled("com.cookiejarapps.smartcookieweb_ytdl", activity.packageManager) && stringContainsItemFromList(url, knownUndetectedVideoUrls)){
+        if(isPackageInstalled(activity.resources.getString(R.string.ytdl_package_name), activity.packageManager) && stringContainsItemFromList(url, knownUndetectedVideoUrls)){
             activity.findViewById<FrameLayout>(R.id.download_button).visibility = View.VISIBLE
         }
         else{

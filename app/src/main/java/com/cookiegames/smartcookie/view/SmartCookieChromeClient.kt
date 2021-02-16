@@ -200,7 +200,7 @@ class SmartCookieChromeClient(
      * @return a Bitmap that can be used as a place holder for videos.
      */
     override fun getDefaultVideoPoster(): Bitmap? {
-        if(isPackageInstalled("com.cookiejarapps.smartcookieweb_ytdl", activity.packageManager)){
+        if(isPackageInstalled(activity.resources.getString(R.string.ytdl_package_name), activity.packageManager)){
             activity.findViewById<FrameLayout>(R.id.download_button).visibility = View.VISIBLE
         }
         return if (super.getDefaultVideoPoster() == null) {
