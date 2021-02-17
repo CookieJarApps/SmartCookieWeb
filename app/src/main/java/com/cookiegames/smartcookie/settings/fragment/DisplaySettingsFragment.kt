@@ -192,6 +192,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
             }
             withSingleChoiceItems(values, userPreferences.homepageType) {
                 userPreferences.homepageType = it
+                summaryUpdater.updateSummary(homePageTypeToDisplayTitle(it))
             }
             setPositiveButton(R.string.action_ok, null)
         }

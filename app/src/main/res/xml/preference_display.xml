@@ -23,7 +23,7 @@
     <PreferenceCategory android:title="@string/home">
         <Preference
             android:key="home"
-            android:title="@string/action_homepage"
+            android:title="@string/home"
             android:singleLineTitle="false"/>
         <Preference
             android:key="homepage_type"
