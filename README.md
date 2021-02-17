@@ -76,7 +76,7 @@ Please read the license before forking.
 
 ## Online services
 
-SmartCookieWeb uses some online services to improve the browser. Information about what is stored is available [here](ONLINE.md). A document outlining how to replace the current services with your own will be available soon.
+SmartCookieWeb uses some online services to improve the browser. Information about what is stored is available [here](ONLINE.md). A document outlining how to replace the current services is available [here](https://smartcookieweb.com/help/development/#web-services).
 
 ---
 
