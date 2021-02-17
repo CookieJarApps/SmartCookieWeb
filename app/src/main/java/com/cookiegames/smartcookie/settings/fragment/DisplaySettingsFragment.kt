@@ -1,12 +1,14 @@
 package com.cookiegames.smartcookie.settings.fragment
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.webkit.URLUtil
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
@@ -16,15 +18,17 @@ import androidx.core.view.size
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.browser.*
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.extensions.resizeAndShow
 import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
 import com.cookiegames.smartcookie.preference.UserPreferences
 import javax.inject.Inject
-import com.cookiegames.smartcookie.browser.ChooseNavbarCol
-import com.cookiegames.smartcookie.browser.DrawerLineChoice
-import com.cookiegames.smartcookie.browser.DrawerSizeChoice
+import com.cookiegames.smartcookie.constant.SCHEME_BLANK
+import com.cookiegames.smartcookie.constant.SCHEME_BOOKMARKS
+import com.cookiegames.smartcookie.constant.SCHEME_HOMEPAGE
+import com.cookiegames.smartcookie.utils.ProxyUtils
 import com.flask.colorpicker.ColorPickerView
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -162,7 +166,110 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
                 preference = SETTINGS_IMAGE_URL,
                 onClick = ::showImageUrlPicker
         )
+        clickableDynamicPreference(
+                preference = SETTINGS_HOME,
+                summary = homePageUrlToDisplayTitle(userPreferences.homepage),
+                onClick = ::showHomePageDialog
+        )
+        clickableDynamicPreference(
+                preference = SETTINGS_HOMEPAGE_TYPE,
+                isEnabled = userPreferences.homepage == SCHEME_HOMEPAGE,
+                summary = homePageTypeToDisplayTitle(userPreferences.homepageType),
+                onClick = ::showHomepageTypePicker
+        )
     }
+
+    private fun showHomepageTypePicker(summaryUpdater: SummaryUpdater) {
+        BrowserDialog.showCustomDialog(activity) {
+            setTitle(R.string.http_proxy)
+            val stringArray = resources.getStringArray(R.array.homepage_type)
+            val values = HomepageTypeChoice.values().map {
+                Pair(it, when (it) {
+                    HomepageTypeChoice.DEFAULT -> stringArray[0]
+                    HomepageTypeChoice.FOCUSED -> stringArray[1]
+                    HomepageTypeChoice.INFORMATIVE -> stringArray[2]
+                })
+            }
+            withSingleChoiceItems(values, userPreferences.homepageType) {
+                userPreferences.homepageType = it
+            }
+            setPositiveButton(R.string.action_ok, null)
+        }
+    }
+
+    private fun homePageTypeToDisplayTitle(choice: HomepageTypeChoice): String = when (choice) {
+        HomepageTypeChoice.DEFAULT -> resources.getString(R.string.agent_default)
+        HomepageTypeChoice.FOCUSED -> resources.getString(R.string.focused)
+        HomepageTypeChoice.INFORMATIVE -> resources.getString(R.string.informational)
+        else -> choice.toString()
+    }
+
+    private fun homePageUrlToDisplayTitle(url: String): String = when (url) {
+        SCHEME_HOMEPAGE -> resources.getString(R.string.action_homepage)
+        SCHEME_BLANK -> resources.getString(R.string.action_blank)
+        SCHEME_BOOKMARKS -> resources.getString(R.string.action_bookmarks)
+        else -> url
+    }
+
+    private fun showHomePageDialog(summaryUpdater: SummaryUpdater) {
+        BrowserDialog.showCustomDialog(activity) {
+            setTitle(R.string.home)
+            val n = when (userPreferences.homepage) {
+                SCHEME_HOMEPAGE -> 0
+                SCHEME_BLANK -> 1
+                SCHEME_BOOKMARKS -> 2
+                else -> 3
+            }
+
+            setSingleChoiceItems(R.array.homepage, n) { _, which ->
+                when (which) {
+                    0 -> {
+                        userPreferences.homepage = SCHEME_HOMEPAGE
+                        summaryUpdater.updateSummary(resources.getString(R.string.action_homepage))
+                    }
+                    1 -> {
+                        userPreferences.homepage = SCHEME_BLANK
+                        summaryUpdater.updateSummary(resources.getString(R.string.action_blank))
+                    }
+                    2 -> {
+                        userPreferences.homepage = SCHEME_BOOKMARKS
+                        summaryUpdater.updateSummary(resources.getString(R.string.action_bookmarks))
+                    }
+                    3 -> {
+                        showCustomHomePagePicker(summaryUpdater)
+                    }
+                }
+            }
+            setPositiveButton(resources.getString(R.string.action_ok), null)
+        }
+    }
+
+    private fun showCustomHomePagePicker(summaryUpdater: SummaryUpdater) {
+        val currentHomepage: String = if (!URLUtil.isAboutUrl(userPreferences.homepage)) {
+            userPreferences.homepage
+        } else {
+            "https://www.google.com"
+        }
+
+        activity?.let {
+            BrowserDialog.showEditText(it,
+                    R.string.title_custom_homepage,
+                    R.string.title_custom_homepage,
+                    currentHomepage,
+                    R.string.action_ok) { url ->
+                if(url.contains("http")){
+                    userPreferences.homepage = url
+                    summaryUpdater.updateSummary(url)
+                }
+                else{
+                    userPreferences.homepage = "https://" + url
+                    summaryUpdater.updateSummary("https://" + url)
+                }
+
+            }
+        }
+    }
+
 
     private fun showImageUrlPicker() {
         activity?.let {
@@ -371,10 +478,11 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_NAVBAR_COL = "navbar_col"
         private const val SETTINGS_LINES = "drawer_lines"
         private const val SETTINGS_SIZE = "drawer_size"
-        private const val SETTINGS_WHATSNEW = "show_whats_new"
         private const val SETTINGS_IMAGE_URL = "image_url"
         private const val SETTINGS_SHORTCUTS = "show_shortcuts"
         private const val SETTINGS_NAVBAR = "second_bar"
+        private const val SETTINGS_HOME = "home"
+        private const val SETTINGS_HOMEPAGE_TYPE = "homepage_type"
 
         private const val XXXX_LARGE = 38.0f
         private const val XXX_LARGE = 34.0f

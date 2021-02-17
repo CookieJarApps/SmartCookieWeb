@@ -81,12 +81,6 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
        )
 
         clickableDynamicPreference(
-                preference = SETTINGS_HOME,
-                summary = homePageUrlToDisplayTitle(userPreferences.homepage),
-                onClick = ::showHomePageDialog
-        )
-
-        clickableDynamicPreference(
                 preference = SETTINGS_SEARCH_ENGINE,
                 summary = getSearchEngineSummary(searchEngineProvider.provideSearchEngine()),
                 onClick = ::showSearchProviderDialog
@@ -357,72 +351,6 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
         }
     }
 
-    private fun homePageUrlToDisplayTitle(url: String): String = when (url) {
-        SCHEME_HOMEPAGE -> resources.getString(R.string.action_homepage)
-        SCHEME_BLANK -> resources.getString(R.string.action_blank)
-        SCHEME_BOOKMARKS -> resources.getString(R.string.action_bookmarks)
-        else -> url
-    }
-
-    private fun showHomePageDialog(summaryUpdater: SummaryUpdater) {
-        BrowserDialog.showCustomDialog(activity) {
-            setTitle(R.string.home)
-            val n = when (userPreferences.homepage) {
-                SCHEME_HOMEPAGE -> 0
-                SCHEME_BLANK -> 1
-                SCHEME_BOOKMARKS -> 2
-                else -> 3
-            }
-
-            setSingleChoiceItems(R.array.homepage, n) { _, which ->
-                when (which) {
-                    0 -> {
-                        userPreferences.homepage = SCHEME_HOMEPAGE
-                        summaryUpdater.updateSummary(resources.getString(R.string.action_homepage))
-                    }
-                    1 -> {
-                        userPreferences.homepage = SCHEME_BLANK
-                        summaryUpdater.updateSummary(resources.getString(R.string.action_blank))
-                    }
-                    2 -> {
-                        userPreferences.homepage = SCHEME_BOOKMARKS
-                        summaryUpdater.updateSummary(resources.getString(R.string.action_bookmarks))
-                    }
-                    3 -> {
-                        showCustomHomePagePicker(summaryUpdater)
-                    }
-                }
-            }
-            setPositiveButton(resources.getString(R.string.action_ok), null)
-        }
-    }
-
-    private fun showCustomHomePagePicker(summaryUpdater: SummaryUpdater) {
-        val currentHomepage: String = if (!URLUtil.isAboutUrl(userPreferences.homepage)) {
-            userPreferences.homepage
-        } else {
-            "https://www.google.com"
-        }
-
-        activity?.let {
-            BrowserDialog.showEditText(it,
-                    R.string.title_custom_homepage,
-                    R.string.title_custom_homepage,
-                    currentHomepage,
-                    R.string.action_ok) { url ->
-                if(url.contains("http")){
-                    userPreferences.homepage = url
-                    summaryUpdater.updateSummary(url)
-                }
-                else{
-                    userPreferences.homepage = "https://" + url
-                    summaryUpdater.updateSummary("https://" + url)
-                }
-
-            }
-        }
-    }
-
     private fun getSearchEngineSummary(baseSearchEngine: BaseSearchEngine): String {
         return if (baseSearchEngine is CustomSearch) {
             baseSearchEngine.queryUrl
@@ -593,7 +521,6 @@ class GeneralSettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_COLOR_MODE = "cb_colormode"
         private const val SETTINGS_USER_AGENT = "agent"
         private const val SETTINGS_DOWNLOAD = "download"
-        private const val SETTINGS_HOME = "home"
         private const val SETTINGS_SEARCH_ENGINE = "search"
         private const val SETTINGS_SUGGESTIONS = "suggestions_choice"
         private const val SETTINGS_SUGGESTIONS_NUM = "suggestions_number"

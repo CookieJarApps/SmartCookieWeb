@@ -22,8 +22,17 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/home">
         <Preference
+            android:key="home"
+            android:title="@string/action_homepage"
+            android:singleLineTitle="false"/>
+        <Preference
+            android:key="homepage_type"
+            android:title="@string/homepage_type"
+            android:singleLineTitle="false"/>
+        <Preference
             android:key="image_url"
-            android:title="@string/image_url"/>
+            android:title="@string/image_url"
+            android:singleLineTitle="false"/>
         <SwitchPreference
             android:defaultValue="true"
             android:singleLineTitle="false"

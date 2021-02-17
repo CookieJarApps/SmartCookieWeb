@@ -385,10 +385,11 @@ class UserPreferences @Inject constructor(
     // Show download dialog before downloading a file
     var showDownloadConfirmation by preferences.booleanPreference(SHOW_DOWNLOAD_CONFIRMATION, true)
 
-    // First launch since v11
-    var firstLaunch11 by preferences.booleanPreference(FIRST_LAUNCH11, true)
     // First launch since v11.1
     var firstLaunch111 by preferences.booleanPreference(FIRST_LAUNCH111, true)
+
+    // Switches between 3 types for the default homepage
+    var homepageType by preferences.enumPreference(HOMEPAGE_TYPE, HomepageTypeChoice.DEFAULT)
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
@@ -486,3 +487,4 @@ private const val NO_AMP = "noAmp"
 private const val SHOW_DOWNLOAD_CONFIRMATION = "showDownloadConfirmation"
 private const val TRANSLATION_ENDPOINT = "translationEndpoint"
 private const val NEWS_ENDPOINT = "newsEndpoint"
+private const val HOMEPAGE_TYPE = "homepageType"

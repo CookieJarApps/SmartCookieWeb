@@ -54,10 +54,6 @@
             android:singleLineTitle="false"
             android:title="@string/download"/>
         <Preference
-            android:key="home"
-            android:singleLineTitle="false"
-            android:title="@string/home"/>
-        <Preference
             android:key="search"
             android:singleLineTitle="false"
             android:title="@string/search"/>

@@ -293,7 +293,9 @@ img {
             return false;
         }
 
-        var endpoint = "https://smartcookieweb.com/news/api.php";
+        var endpoint = "${ENDPOINT}";
+		console.log(endpoint);
+		var homepageType = "${HOMEPAGE_TYPE}";
 </script>
 
 <div id="editModal" class="modal">

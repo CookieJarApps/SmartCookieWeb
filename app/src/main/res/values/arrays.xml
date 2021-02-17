@@ -19,6 +19,12 @@
         <item>@string/listed_javascript</item>
     </string-array>
 
+    <string-array name="homepage_type">
+        <item>@string/agent_default</item>
+        <item>@string/focused</item>
+        <item>@string/informational</item>
+    </string-array>
+
     <string-array name="navbar_col">
         <item>@string/agent_default</item>
         <item>@string/color</item>

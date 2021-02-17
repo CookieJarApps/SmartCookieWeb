@@ -8,6 +8,7 @@ import android.util.Base64
 import android.webkit.URLUtil
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.browser.HomepageTypeChoice
 import com.cookiegames.smartcookie.constant.FILE
 import com.cookiegames.smartcookie.constant.UTF8
 import com.cookiegames.smartcookie.database.history.HistoryRepository
@@ -19,6 +20,7 @@ import com.cookiegames.smartcookie.search.SearchEngineProvider
 import com.cookiegames.smartcookie.utils.DrawableUtils
 import dagger.Reusable
 import io.reactivex.Single
+import org.jsoup.nodes.DataNode
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileWriter
@@ -50,18 +52,31 @@ class HomePageFactory @Inject constructor(
                 title { title }
                 charset { UTF8 }
                 body {
+                    // Add background image
                     if(userPreferences.imageUrlString != ""){ tag("body") { attr("style", "background: url('" + userPreferences.imageUrlString + "') no-repeat scroll;") } }
+
+                    // Set search engine icon
                     id("search_input") { attr("style", "background: url('" + iconUrl + "') no-repeat scroll 7px 7px;background-size: 22px 22px;") }
+
+                    // Fill params in scripts
                     tag("script") {
                         html(
-                                html()
-                                        .replace("\${BASE_URL}", queryUrl)
-                                        .replace("\${ENDPOINT}", userPreferences.newsEndpoint)
-                                        .replace("&", "\\u0026")
+                                if(userPreferences.homepageType == HomepageTypeChoice.INFORMATIVE){
+                                    html()
+                                            .replace("\${ENDPOINT}", userPreferences.newsEndpoint)
+                                            .replace("\${BASE_URL}", queryUrl)
+                                            .replace("&", "\\u0026")
+                                } else{
+                                    html()
+                                            .replace("\${BASE_URL}", queryUrl)
+                                            .replace("&", "\\u0026")
+                                }
                         )
                     }
+
+                    // Shortcuts
                     if(userPreferences.showShortcuts){
-                        var shortcuts = arrayListOf(userPreferences.link1, userPreferences.link2, userPreferences.link3, userPreferences.link4)
+                        val shortcuts = arrayListOf(userPreferences.link1, userPreferences.link2, userPreferences.link3, userPreferences.link4)
 
                         id("edit_shortcuts"){ text(resources.getString(R.string.edit_shortcuts)) }
                         id("apply"){ text(resources.getString(R.string.apply)) }
