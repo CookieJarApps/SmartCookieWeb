@@ -59,7 +59,7 @@ import java.util.*
 import javax.inject.Inject
 
 
-class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
+class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener, TextToSpeech.OnUtteranceCompletedListener {
     @JvmField
     @BindView(R.id.textViewTitle)
     var mTitle: TextView? = null
@@ -420,9 +420,14 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
             R.id.tts -> {
                 reading = !reading
-                val text: String = mBody?.getText().toString()
+                if(!reading) tts!!.stop()
+                val source = mBody!!.text.substring(mBody!!.selectionStart, mBody!!.selectionEnd)
+                if(source == ""){
+                    Toast.makeText(this, resources.getString(R.string.select_translate_text), Toast.LENGTH_LONG).show()
+                    return false
+                }
+                val text: String = source
                 if (reading) tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null)
-                else tts!!.stop()
                 invalidateOptionsMenu()
             }
             else -> finish()
@@ -485,20 +490,20 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     override fun onInit(status: Int) {
         if (status === TextToSpeech.SUCCESS) {
             val result: Int = tts!!.setLanguage(Locale.US)
+            tts!!.setOnUtteranceCompletedListener(this);
 
-            // tts.setPitch(5); // set pitch level
-
-            // tts.setSpeechRate(2); // set speech speed rate
             if (result == TextToSpeech.LANG_MISSING_DATA
                     || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                 Log.e("TTS", "Language is not supported")
-            } else {
-                //btnSpeak.setEnabled(true)
-                //speakOut()
             }
         } else {
             Log.e("TTS", "Initilization Failed")
         }
+    }
+
+    override fun onUtteranceCompleted(utteranceId: String?) {
+        reading = false
+        invalidateOptionsMenu()
     }
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
