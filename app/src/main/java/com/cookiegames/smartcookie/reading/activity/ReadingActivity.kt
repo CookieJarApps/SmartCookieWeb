@@ -310,8 +310,10 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener, TextTo
     fun translate(lang: String?) {
         val client = OkHttpClient()
         val iterator = BreakIterator.getSentenceInstance(Locale.US)
+        val startSelection = mBody!!.selectionStart
+        val endSelection = mBody!!.selectionEnd
         val spanned = mBody!!.text as Spanned
-        val source = mBody!!.text.substring(mBody!!.selectionStart, mBody!!.selectionEnd)
+        val source = mBody!!.text.substring(startSelection, endSelection)
 
         if(source == ""){
             Toast.makeText(this, resources.getString(R.string.select_translate_text), Toast.LENGTH_LONG).show()
@@ -323,7 +325,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener, TextTo
         while (end != BreakIterator.DONE) {
             end = iterator.next()
         }
-        val translateUrl = mUserPreferences?.translationEndpoint + "?text=" + Html.toHtml(spanned.subSequence(mBody!!.selectionStart, mBody!!.selectionEnd) as Spanned).replace("\"", "\\\"") + "&lang=" + lang
+        val translateUrl = mUserPreferences?.translationEndpoint + "?text=" + Html.toHtml(spanned.subSequence(startSelection, endSelection) as Spanned).replace("\"", "\\\"") + "&lang=" + lang
         val request = Request.Builder()
                 .url(translateUrl)
                 .addHeader("Accept", "application/json")
@@ -344,7 +346,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener, TextTo
                     runOnUiThread {
                         try {
                             val jsonObject = JSONObject(values)
-                            mBody!!.text = TextUtils.concat(mBody!!.text.subSequence(0, mBody!!.selectionStart), Html.fromHtml(jsonObject.getString("text")), mBody!!.text.subSequence(mBody!!.selectionEnd, mBody!!.text.length))
+                            mBody!!.text = TextUtils.concat(mBody!!.text.subSequence(0, startSelection), Html.fromHtml(jsonObject.getString("text")), mBody!!.text.subSequence(endSelection, mBody!!.text.length))
                         } catch (ignored: JSONException) {
                         }
                     }
@@ -363,7 +365,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener, TextTo
                 }
             }
             R.id.translate_item -> {
-                val builderSingle = AlertDialog.Builder(this@ReadingActivity)
+                val builderSingle = MaterialAlertDialogBuilder(this@ReadingActivity)
                 builderSingle.setTitle(resources.getString(R.string.translate_to))
                 val arrayAdapter = ArrayAdapter<String>(this@ReadingActivity, android.R.layout.select_dialog_singlechoice)
                 arrayAdapter.addAll("English", "Français", "Português", "Português do Brasil", "Italiano")
