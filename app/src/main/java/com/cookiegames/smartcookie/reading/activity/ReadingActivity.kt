@@ -419,13 +419,16 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener, TextTo
                 builderSingle.show()
             }
             R.id.tts -> {
-                reading = !reading
-                if(!reading) tts!!.stop()
+                if(reading){
+                    tts!!.stop()
+                    reading = !reading
+                }
                 val source = mBody!!.text.substring(mBody!!.selectionStart, mBody!!.selectionEnd)
                 if(source == ""){
                     Toast.makeText(this, resources.getString(R.string.select_translate_text), Toast.LENGTH_LONG).show()
                     return false
                 }
+                reading = !reading
                 val text: String = source
                 if (reading) tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null)
                 invalidateOptionsMenu()
