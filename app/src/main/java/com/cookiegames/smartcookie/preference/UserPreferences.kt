@@ -40,7 +40,7 @@ class UserPreferences @Inject constructor(
     /**
      * True if Web RTC is enabled in the browser, false otherwise.
      */
-    var webRtcEnabled by preferences.booleanPreference(WEB_RTC, false)
+    var webRtcEnabled by preferences.booleanPreference(WEB_RTC, true)
 
     var blockMalwareEnabled by preferences.booleanPreference(BLOCK_MALWARE, true)
 

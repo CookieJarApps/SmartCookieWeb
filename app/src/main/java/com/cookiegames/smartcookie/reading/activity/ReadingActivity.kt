@@ -439,7 +439,6 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener, TextTo
         val builderSingle = MaterialAlertDialogBuilder(this@ReadingActivity)
         builderSingle.setTitle(resources.getString(R.string.action_delete) + ":")
         val arrayAdapter = ArrayAdapter<String>(this@ReadingActivity, android.R.layout.select_dialog_singlechoice)
-        var deletingFile: String
 
         val arr: Array<String> = filesDir.list()
         val l = ArrayList<String>()

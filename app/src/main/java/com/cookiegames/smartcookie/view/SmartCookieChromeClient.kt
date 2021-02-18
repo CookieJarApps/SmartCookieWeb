@@ -89,7 +89,7 @@ class SmartCookieChromeClient(
 
     override fun requestPermissions(permissions: Set<String>, onGrant: (Boolean) -> Unit) {
         val missingPermissions = permissions
-            .filter { PermissionsManager.getInstance().hasPermission(activity, it) }
+            .filter { !PermissionsManager.getInstance().hasPermission(activity, it) }
 
         if (missingPermissions.isEmpty()) {
             onGrant(true)
