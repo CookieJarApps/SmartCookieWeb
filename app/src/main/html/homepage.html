@@ -123,6 +123,30 @@
         box-shadow: 0 0 2px #bbb;
         padding-bottom: 16px;
     }
+	
+.button-material {
+	position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    padding: 0 16px;
+    min-width: 64px;
+    height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    color: #000000;
+    background-color: #ffffffff;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 36px;
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
 
     .link {
   height: 35px;
@@ -142,7 +166,7 @@
   display: none; 
   position: fixed; 
   z-index: 1;
-  padding-top: 75px; 
+  padding-top: 5vh; 
   left: 0;
   top: 0;
   width: 100%; 
@@ -156,22 +180,8 @@
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
   width: 80%;
-}
-
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+  border-radius: 8px;
 }
 
 .card {
@@ -248,7 +258,7 @@ img {
                 </br>
                 </br>
                 <form onsubmit="return search()" class="search_bar" id="search_bar" autocomplete="off">
-                    <button type="submit" id="search_submit" value="Search"><img alt="\" style="vertical-align: middle; display: inline-block;" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDBWMHoiLz48cGF0aCBkPSJNMTUuNSAxNGgtLjc5bC0uMjgtLjI3YzEuMi0xLjQgMS44Mi0zLjMxIDEuNDgtNS4zNC0uNDctMi43OC0yLjc5LTUtNS41OS01LjM0LTQuMjMtLjUyLTcuNzkgMy4wNC03LjI3IDcuMjcuMzQgMi44IDIuNTYgNS4xMiA1LjM0IDUuNTkgMi4wMy4zNCAzLjk0LS4yOCA1LjM0LTEuNDhsLjI3LjI4di43OWw0LjI1IDQuMjVjLjQxLjQxIDEuMDguNDEgMS40OSAwIC40MS0uNDEuNDEtMS4wOCAwLTEuNDlMMTUuNSAxNHptLTYgMEM3LjAxIDE0IDUgMTEuOTkgNSA5LjVTNy4wMSA1IDkuNSA1IDE0IDcuMDEgMTQgOS41IDExLjk5IDE0IDkuNSAxNHoiLz48L3N2Zz4=" />
+                    <button type="submit" id="search_submit" value="Search"><img alt="\" style="display: inline-block;" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDBWMHoiLz48cGF0aCBkPSJNMTUuNSAxNGgtLjc5bC0uMjgtLjI3YzEuMi0xLjQgMS44Mi0zLjMxIDEuNDgtNS4zNC0uNDctMi43OC0yLjc5LTUtNS41OS01LjM0LTQuMjMtLjUyLTcuNzkgMy4wNC03LjI3IDcuMjcuMzQgMi44IDIuNTYgNS4xMiA1LjM0IDUuNTkgMi4wMy4zNCAzLjk0LS4yOCA1LjM0LTEuNDhsLjI3LjI4di43OWw0LjI1IDQuMjVjLjQxLjQxIDEuMDguNDEgMS40OSAwIC40MS0uNDEuNDEtMS4wOCAwLTEuNDlMMTUuNSAxNHptLTYgMEM3LjAxIDE0IDUgMTEuOTkgNSA5LjVTNy4wMSA1IDkuNSA1IDE0IDcuMDEgMTQgOS41IDExLjk5IDE0IDkuNSAxNHoiLz48L3N2Zz4=" />
                     </button>
                     
                     <span>
@@ -302,7 +312,6 @@ img {
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
     <h1 id="edit_shortcuts">Edit shortcuts</h1>
     <label for="link1">Link 1:</label><br>
   <input type="url" id="link1inp" name="link1" value="https://github.com"><br><br>
@@ -313,7 +322,11 @@ img {
       <label for="link4">Link 4:</label><br>
   <input type="url" id="link4inp" name="link4" value="https://speedtest.cookiejarapps.com"><br><br>
 
-   <button class="save" id="apply">Apply</button>
+   <div style="float: right;">
+    <button class="close button-material" id="close">Close</button>
+    <button class="save button-material" id="apply">Apply</button>
+   </div>
+   <br>
   </div>
  
 
@@ -375,7 +388,7 @@ req.onload  = function() {
       div.className = 'card';
       div.innerHTML = `<div onclick="window.location.href = '` + jsonResponse["articles"][i]["url"] + `';">
       <img src='` + jsonResponse["articles"][i]["urlToImage"] + `' onerror='this.src = "https://via.placeholder.com/650x350?text=No+image+available"' style='width:95%'/> <div class='card-content'>
-      <h1>` + jsonResponse["articles"][i]["title"].replace(" - " + jsonResponse["articles"][i]["source"]["name"], "") + `</h1>
+      <h2>` + jsonResponse["articles"][i]["title"].replace(" - " + jsonResponse["articles"][i]["source"]["name"], "") + `</h2>
       <p>` + jsonResponse["articles"][i]["source"]["name"] + ` | by ` + jsonResponse["articles"][i]["author"] + `</p>
       </div></div>`;
       document.getElementsByClassName('column')[0].appendChild(div);
