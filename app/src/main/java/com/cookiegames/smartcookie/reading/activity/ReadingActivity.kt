@@ -14,6 +14,7 @@ import android.speech.tts.TextToSpeech
 import android.text.Html
 import android.text.SpannableStringBuilder
 import android.text.Spanned
+import android.text.TextUtils
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.URLSpan
@@ -26,6 +27,7 @@ import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuBuilder
@@ -308,13 +310,20 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     fun translate(lang: String?) {
         val client = OkHttpClient()
         val iterator = BreakIterator.getSentenceInstance(Locale.US)
-        val source = mBody!!.text.toString()
+        val spanned = mBody!!.text as Spanned
+        val source = mBody!!.text.substring(mBody!!.selectionStart, mBody!!.selectionEnd)
+
+        if(source == ""){
+            Toast.makeText(this, resources.getString(R.string.select_translate_text), Toast.LENGTH_LONG).show()
+            return
+        }
+
         iterator.setText(source)
         var end = iterator.next()
         while (end != BreakIterator.DONE) {
             end = iterator.next()
         }
-        val translateUrl = mUserPreferences?.translationEndpoint + "?text=" + Html.toHtml(mBody!!.text as Spanned).replace("\"", "\\\"") + "&lang=" + lang
+        val translateUrl = mUserPreferences?.translationEndpoint + "?text=" + Html.toHtml(spanned.subSequence(mBody!!.selectionStart, mBody!!.selectionEnd) as Spanned).replace("\"", "\\\"") + "&lang=" + lang
         val request = Request.Builder()
                 .url(translateUrl)
                 .addHeader("Accept", "application/json")
@@ -325,7 +334,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 e.printStackTrace()
             }
 
-            // TODO: This is... not a good way of doing this...
+            @SuppressLint("SetTextI18n")
             @Throws(IOException::class)
             override fun onResponse(call: Call, response: Response) {
                 if (!response.isSuccessful) {
@@ -334,8 +343,8 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     val values = response.body()!!.string()
                     runOnUiThread {
                         try {
-                            val Jobject = JSONObject(values)
-                            mBody!!.text = Html.fromHtml(Jobject.getString("text"))
+                            val jsonObject = JSONObject(values)
+                            mBody!!.text = TextUtils.concat(mBody!!.text.subSequence(0, mBody!!.selectionStart), Html.fromHtml(jsonObject.getString("text")), mBody!!.text.subSequence(mBody!!.selectionEnd, mBody!!.text.length))
                         } catch (ignored: JSONException) {
                         }
                     }
@@ -412,7 +421,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             R.id.tts -> {
                 reading = !reading
                 val text: String = mBody?.getText().toString()
-                if(reading) tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null)
+                if (reading) tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null)
                 else tts!!.stop()
                 invalidateOptionsMenu()
             }
