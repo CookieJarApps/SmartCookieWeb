@@ -186,7 +186,8 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
             val values = HomepageTypeChoice.values().map {
                 Pair(it, when (it) {
                     HomepageTypeChoice.DEFAULT -> stringArray[0]
-                    HomepageTypeChoice.INFORMATIVE -> stringArray[1]
+                    HomepageTypeChoice.FOCUSED -> stringArray[1]
+                    HomepageTypeChoice.INFORMATIVE -> stringArray[2]
                 })
             }
             withSingleChoiceItems(values, userPreferences.homepageType) {
@@ -199,6 +200,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
 
     private fun homePageTypeToDisplayTitle(choice: HomepageTypeChoice): String = when (choice) {
         HomepageTypeChoice.DEFAULT -> resources.getString(R.string.agent_default)
+        HomepageTypeChoice.FOCUSED -> resources.getString(R.string.focused)
         HomepageTypeChoice.INFORMATIVE -> resources.getString(R.string.informational)
         else -> choice.toString()
     }
