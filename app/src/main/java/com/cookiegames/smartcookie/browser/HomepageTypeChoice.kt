@@ -7,6 +7,5 @@ import com.cookiegames.smartcookie.preference.IntEnum
  */
 enum class HomepageTypeChoice(override val value: Int) : IntEnum {
     DEFAULT(0),
-    FOCUSED(1),
-    INFORMATIVE(2)
+    INFORMATIVE(1)
 }

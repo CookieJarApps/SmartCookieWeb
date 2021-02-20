@@ -5,12 +5,13 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import android.graphics.Rect
 import android.os.Handler
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.webkit.CookieManager
 import android.widget.*
 import androidx.core.widget.TextViewCompat
@@ -305,29 +306,29 @@ class BookmarksDrawerView @JvmOverloads constructor(
                     builder.show()
 
                 }, DialogItem(
-                        icon = context.drawable(R.drawable.ic_round_storage_24),
-                        title = R.string.edit_cookies
-                ) {
+                icon = context.drawable(R.drawable.ic_round_storage_24),
+                title = R.string.edit_cookies
+        ) {
 
-                     val cookieManager = CookieManager.getInstance()
-                     if(cookieManager.getCookie(currentTab.url) != null){
-                         val builder = MaterialAlertDialogBuilder(context)
-                         val inflater = activity.layoutInflater
-                         builder.setTitle(R.string.edit_cookies)
-                         val dialogLayout = inflater.inflate(R.layout.dialog_multi_line, null)
-                         val editText = dialogLayout.findViewById<EditText>(R.id.dialog_multi_line)
-                         editText.setText(cookieManager.getCookie(currentTab.url))
-                         builder.setView(dialogLayout)
-                         builder.setPositiveButton("OK") { dialogInterface, i ->
-                             val cookiesList = editText.text.toString().split(";")
-                             cookiesList.forEach { item ->
-                                 CookieManager.getInstance().setCookie(currentTab.url, item)
-                             }
-                         }
-                         builder.show()
-                     }
+            val cookieManager = CookieManager.getInstance()
+            if (cookieManager.getCookie(currentTab.url) != null) {
+                val builder = MaterialAlertDialogBuilder(context)
+                val inflater = activity.layoutInflater
+                builder.setTitle(R.string.edit_cookies)
+                val dialogLayout = inflater.inflate(R.layout.dialog_multi_line, null)
+                val editText = dialogLayout.findViewById<EditText>(R.id.dialog_multi_line)
+                editText.setText(cookieManager.getCookie(currentTab.url))
+                builder.setView(dialogLayout)
+                builder.setPositiveButton("OK") { dialogInterface, i ->
+                    val cookiesList = editText.text.toString().split(";")
+                    cookiesList.forEach { item ->
+                        CookieManager.getInstance().setCookie(currentTab.url, item)
+                    }
+                }
+                builder.show()
+            }
 
-                },
+        },
                 DialogItem(
                         icon = context.drawable(R.drawable.ic_baseline_code_24),
                         title = R.string.page_source
@@ -336,13 +337,13 @@ class BookmarksDrawerView @JvmOverloads constructor(
                     val prefs: SharedPreferences = activity.getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
                     var name: String? = prefs.getString("source", "Source could not be extracted") //"No name defined" is the default value.
 
-                   // Hacky workaround for weird WebView encoding bug
+                    // Hacky workaround for weird WebView encoding bug
                     name = name?.replace("\\u003C", "<")
                     name = name?.replace("\\n", System.getProperty("line.separator").toString())
                     name = name?.replace("\\t", "")
                     name = name?.replace("\\\"", "\"")
                     name = name?.substring(1, name.length - 1);
-                    if(name?.contains("mod_pagespeed")!!){
+                    if (name?.contains("mod_pagespeed")!!) {
                         Toast.makeText(activity, R.string.pagespeed_error,
                                 Toast.LENGTH_LONG).show()
                     }
@@ -355,6 +356,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
                     builder.setView(dialogLayout)
                     builder.setPositiveButton("OK") { dialogInterface, i -> editText.setText(editText.text?.toString()?.replace("\'", "\\\'")); currentTab.loadUrl("javascript:(function() { document.documentElement.innerHTML = '" + editText.text.toString() + "'; })()") }
                     builder.show()
+
                 },
                 DialogItem(
                         icon = context.drawable(R.drawable.ic_block),

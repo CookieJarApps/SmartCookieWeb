@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.AsyncTask
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.speech.tts.TextToSpeech.OnUtteranceCompletedListener
 import android.text.Html
 import android.text.SpannableStringBuilder
 import android.text.Spanned
@@ -28,7 +29,6 @@ import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.appcompat.widget.Toolbar
@@ -59,7 +59,7 @@ import java.util.*
 import javax.inject.Inject
 
 
-class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener, TextToSpeech.OnUtteranceCompletedListener {
+class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     @JvmField
     @BindView(R.id.textViewTitle)
     var mTitle: TextView? = null
@@ -421,12 +421,12 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener, TextTo
                 builderSingle.show()
             }
             R.id.tts -> {
-                if(reading){
+                if (reading) {
                     tts!!.stop()
                     reading = !reading
                 }
                 val source = mBody!!.text.substring(mBody!!.selectionStart, mBody!!.selectionEnd)
-                if(source == ""){
+                if (source == "") {
                     Toast.makeText(this, resources.getString(R.string.select_translate_text), Toast.LENGTH_LONG).show()
                     return false
                 }
@@ -494,7 +494,13 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener, TextTo
     override fun onInit(status: Int) {
         if (status === TextToSpeech.SUCCESS) {
             val result: Int = tts!!.setLanguage(Locale.US)
-            tts!!.setOnUtteranceCompletedListener(this);
+
+            tts!!.setOnUtteranceCompletedListener(OnUtteranceCompletedListener {
+                runOnUiThread {
+                    reading = false
+                    invalidateOptionsMenu()
+                }
+            })
 
             if (result == TextToSpeech.LANG_MISSING_DATA
                     || result == TextToSpeech.LANG_NOT_SUPPORTED) {
@@ -503,11 +509,6 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener, TextTo
         } else {
             Log.e("TTS", "Initilization Failed")
         }
-    }
-
-    override fun onUtteranceCompleted(utteranceId: String?) {
-        reading = false
-        invalidateOptionsMenu()
     }
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
