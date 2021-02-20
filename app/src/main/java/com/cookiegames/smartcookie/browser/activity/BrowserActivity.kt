@@ -798,6 +798,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         }
         else{
             extraBar.visibility = VISIBLE
+            if(!userPreferences.showTabsInDrawer){
+                extraBar.menu.removeItem(R.id.tabs)
+            }
             extraBar.setOnNavigationItemSelectedListener { item ->
                 when(item.itemId) {
                     R.id.tabs -> {
