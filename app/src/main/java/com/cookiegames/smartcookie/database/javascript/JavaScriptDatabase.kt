@@ -36,8 +36,8 @@ class JavaScriptDatabase @Inject constructor(
             val exclude: String?,
             val time: String?,
             val permissions: String?,
-            val requirements: String?,
-            val code: String
+            val code: String,
+            val requirements: String?
     )
 
 
@@ -53,8 +53,8 @@ class JavaScriptDatabase @Inject constructor(
                 " $KEY_EXCLUDE TEXT," +
                 " $KEY_TIME TEXT," +
                 " $KEY_PERMISSIONS TEXT," +
-                " $KEY_REQUIREMENTS TEXT," +
                 " $KEY_CODE TEXT" +
+                " $KEY_REQUIREMENTS TEXT," +
                 ")"
         db.execSQL(createJavaScriptTable)
     }
@@ -172,8 +172,8 @@ class JavaScriptDatabase @Inject constructor(
         put(KEY_EXCLUDE, exclude)
         put(KEY_TIME, time)
         put(KEY_PERMISSIONS, permissions)
-        put(KEY_REQUIREMENTS, requirements)
         put(KEY_CODE, code)
+        put(KEY_REQUIREMENTS, requirements)
     }
 
     private fun Cursor.bindToJavaScriptEntry() = JavaScriptEntry(
@@ -185,14 +185,14 @@ class JavaScriptDatabase @Inject constructor(
             exclude = getString(6),
             time = getString(7),
             permissions = getString(8),
-            requirements = getString(9),
-            code = getString(10)
+            code = getString(9),
+            requirements = getString(10)
     )
 
     companion object {
 
         // Database version
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 3
 
         // Database name
         private const val DATABASE_NAME = "javascriptManager"
