@@ -248,7 +248,7 @@ class SmartCookieWebClient(
 
         val inc = TextUtils.join(",", include)
 
-        javascriptRepository.addJavaScriptIfNotExists(JavaScriptDatabase.JavaScriptEntry(name!!, "", version, author, inc, "", "", "", code))
+        javascriptRepository.addJavaScriptIfNotExists(JavaScriptDatabase.JavaScriptEntry(name!!, "", version, author, inc, "", "", "", "", code))
                 .subscribeOn(databaseScheduler)
                 .subscribe { aBoolean: Boolean? ->
                     if (!aBoolean!!) {

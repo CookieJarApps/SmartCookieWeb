@@ -1,8 +1,5 @@
 package com.cookiegames.smartcookie.database.javascript
 
-import com.cookiegames.smartcookie.database.databaseDelegate
-import com.cookiegames.smartcookie.extensions.firstOrNullMap
-import com.cookiegames.smartcookie.extensions.useMap
 import android.app.Application
 import android.content.ContentValues
 import android.database.Cursor
@@ -10,8 +7,9 @@ import android.database.DatabaseUtils
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.annotation.WorkerThread
-import com.cookiegames.smartcookie.database.WebPage
-import com.cookiegames.smartcookie.database.downloads.DownloadsDatabase
+import com.cookiegames.smartcookie.database.databaseDelegate
+import com.cookiegames.smartcookie.extensions.firstOrNullMap
+import com.cookiegames.smartcookie.extensions.useMap
 import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
@@ -38,6 +36,7 @@ class JavaScriptDatabase @Inject constructor(
             val exclude: String?,
             val time: String?,
             val permissions: String?,
+            val requirements: String?,
             val code: String
     )
 
@@ -54,17 +53,20 @@ class JavaScriptDatabase @Inject constructor(
                 " $KEY_EXCLUDE TEXT," +
                 " $KEY_TIME TEXT," +
                 " $KEY_PERMISSIONS TEXT," +
+                " $KEY_REQUIREMENTS TEXT," +
                 " $KEY_CODE TEXT" +
                 ")"
         db.execSQL(createJavaScriptTable)
     }
 
+    private val DATABASE_ALTER_3 = ("ALTER TABLE "
+            + TABLE_JAVASCRIPT) + " ADD COLUMN " + KEY_REQUIREMENTS + " string;"
+
     // Upgrading database
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // Drop older table if it exists
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_JAVASCRIPT")
-        // Create tables again
-        onCreate(db)
+        if (oldVersion < 3) {
+            db.execSQL(DATABASE_ALTER_3)
+        }
     }
 
     override fun deleteJavaScript(): Completable = Completable.fromAction {
@@ -170,6 +172,7 @@ class JavaScriptDatabase @Inject constructor(
         put(KEY_EXCLUDE, exclude)
         put(KEY_TIME, time)
         put(KEY_PERMISSIONS, permissions)
+        put(KEY_REQUIREMENTS, requirements)
         put(KEY_CODE, code)
     }
 
@@ -182,7 +185,8 @@ class JavaScriptDatabase @Inject constructor(
             exclude = getString(6),
             time = getString(7),
             permissions = getString(8),
-            code = getString(9)
+            requirements = getString(9),
+            code = getString(10)
     )
 
     companion object {
@@ -206,6 +210,7 @@ class JavaScriptDatabase @Inject constructor(
         private const val KEY_EXCLUDE = "exclude"
         private const val KEY_TIME = "time"
         private const val KEY_PERMISSIONS = "permissions"
+        private const val KEY_REQUIREMENTS = "requirements"
         private const val KEY_CODE = "code"
 
     }
