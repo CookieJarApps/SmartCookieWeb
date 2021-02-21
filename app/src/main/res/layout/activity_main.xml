@@ -67,10 +67,8 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
             android:background="@color/white"
-            android:outlineAmbientShadowColor="@android:color/transparent"
-            android:outlineSpotShadowColor="@android:color/transparent"
-            android:translationZ="0dp"
-            app:labelVisibilityMode="labeled"
+            android:elevation="3dp"
+            app:labelVisibilityMode="unlabeled"
             app:menu="@menu/bottom_menu"
             />
 
