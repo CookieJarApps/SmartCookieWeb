@@ -489,7 +489,14 @@
     <string name="new_tab_opened">Novo separador aberto</string>
     <string name="switch_button">Trocar</string>
     <string name="dont_ask_again">Não perguntar novamente</string>
-    <string name="tts">Read page</string>
-    <string name="stop_tts">Stop reading</string>
+    <string name="tts">Ler página</string>
+    <string name="stop_tts">Parar de ler</string>
+    <string name="translation_endpoint">Translation endpoint</string>
+    <string name="news_endpoint">News endpoint</string>
+    <string name="select_translate_text">Please select the text you would like to translate</string>
+    <string name="select_tts_text">Please select the text you would like read</string>
+    <string name="homepage_type">Homepage type</string>
+    <string name="focused">Focused</string>
+    <string name="informational">Informational</string>
     <!-- finish pages -->
 </resources>

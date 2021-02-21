@@ -59,7 +59,7 @@
     <string name="agent_custom">Настраиваемый</string>
     <string name="title_search_engine">Поисковая система</string>
     <string name="action_ok">ОК</string>
-    <string name="dialog_download">Загрузить файл? (%1$s)</string>
+    <string name="dialog_download">Загрузить файл?</string>
     <string name="unknown_size">Неизвестный размер</string>
     <string name="action_cancel">Отменить</string>
     <string name="title_warning">Предупреждение</string>
@@ -493,5 +493,12 @@
     <string name="dont_ask_again">Больше не спрашивать</string>
     <string name="tts">Читать страницу</string>
     <string name="stop_tts">Остановить чтение</string>
+    <string name="translation_endpoint">Translation endpoint</string>
+    <string name="news_endpoint">News endpoint</string>
+    <string name="select_translate_text">Please select the text you would like to translate</string>
+    <string name="select_tts_text">Please select the text you would like read</string>
+    <string name="homepage_type">Homepage type</string>
+    <string name="focused">Focused</string>
+    <string name="informational">Informational</string>
     <!-- finish pages -->
 </resources>

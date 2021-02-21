@@ -491,5 +491,12 @@
     <string name="dont_ask_again">Não perguntar novamente</string>
     <string name="tts">Ler página</string>
     <string name="stop_tts">Parar leitura</string>
+    <string name="translation_endpoint">\'Endpoint\' de tradução</string>
+    <string name="news_endpoint">\'Endpoint\' de notícias</string>
+    <string name="select_translate_text">Selecione o texto que você deseja que seja traduzido</string>
+    <string name="select_tts_text">Selecione o texto que você deseja que seja lido</string>
+    <string name="homepage_type">Tipo de página inicial</string>
+    <string name="focused">Focada</string>
+    <string name="informational">Informativa</string>
     <!-- finish pages -->
 </resources>
