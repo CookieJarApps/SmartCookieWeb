@@ -5,13 +5,12 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import android.graphics.Rect
 import android.os.Handler
+import android.text.method.ScrollingMovementMethod
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.webkit.CookieManager
 import android.widget.*
 import androidx.core.widget.TextViewCompat
@@ -43,6 +42,7 @@ import com.cookiegames.smartcookie.favicon.FaviconModel
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.reading.activity.ReadingActivity
 import com.cookiegames.smartcookie.utils.isSpecialUrl
+import com.github.ahmadaghazadeh.editor.widget.CodeEditor
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.Scheduler
 import io.reactivex.Single
@@ -52,6 +52,7 @@ import java.net.URL
 import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
+
 
 /**
  * The view that displays bookmarks in a list and some controls.
@@ -350,11 +351,11 @@ class BookmarksDrawerView @JvmOverloads constructor(
                     val builder = MaterialAlertDialogBuilder(context)
                     val inflater = activity.layoutInflater
                     builder.setTitle(R.string.page_source)
-                    val dialogLayout = inflater.inflate(R.layout.dialog_multi_line, null)
-                    val editText = dialogLayout.findViewById<EditText>(R.id.dialog_multi_line)
-                    editText.setText(name)
+                    val dialogLayout = inflater.inflate(R.layout.dialog_view_source, null)
+                    val editText = dialogLayout.findViewById<CodeEditor>(R.id.dialog_multi_line)
+                    editText.setText(name, 1)
                     builder.setView(dialogLayout)
-                    builder.setPositiveButton("OK") { dialogInterface, i -> editText.setText(editText.text?.toString()?.replace("\'", "\\\'")); currentTab.loadUrl("javascript:(function() { document.documentElement.innerHTML = '" + editText.text.toString() + "'; })()") }
+                    builder.setPositiveButton("OK") { dialogInterface, i -> editText.setText(editText.text?.toString()?.replace("\'", "\\\'"), 1); currentTab.loadUrl("javascript:(function() { document.documentElement.innerHTML = '" + editText.text.toString() + "'; })()") }
                     builder.show()
 
                 },
