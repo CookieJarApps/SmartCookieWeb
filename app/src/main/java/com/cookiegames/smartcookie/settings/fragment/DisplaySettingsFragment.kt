@@ -69,6 +69,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         switchPreference(
                 preference = SETTINGS_NAVBAR,
                 isChecked = userPreferences.navbar,
+                isEnabled = !userPreferences.bottomBar && !userPreferences.navbar,
                 onCheckChange = { userPreferences.navbar = it }
         )
 
@@ -146,6 +147,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         switchPreference(
                 preference = SETTINGS_BOTTOM_BAR,
                 isChecked = userPreferences.bottomBar,
+                isEnabled = !userPreferences.navbar && !userPreferences.bottomBar,
                 onCheckChange = {userPreferences.bottomBar = it; Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()}
         )
         clickablePreference(
@@ -157,11 +159,6 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
                 preference = SETTINGS_SIZE,
                 onClick = ::showDrawerSize
         )
-        /* switchPreference(
-                preference = SETTINGS_WHATSNEW,
-                isChecked = userPreferences.whatsNewEnabled,
-                onCheckChange = {userPreferences.whatsNewEnabled = it}
-        )*/
         clickablePreference(
                 preference = SETTINGS_IMAGE_URL,
                 onClick = ::showImageUrlPicker
