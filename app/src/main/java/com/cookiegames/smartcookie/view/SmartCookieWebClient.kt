@@ -585,7 +585,6 @@ class SmartCookieWebClient(
                 view.evaluateJavascript("""(function() {
                 return localStorage.getItem("shouldUpdate");
                 })()""".trimMargin()) {
-                    Log.d("itxxa2qw", it)
                     if(it.substring(1, it.length - 1) == "yes"){
                         view.evaluateJavascript("""(function() {
                                 return localStorage.getItem("link1");
