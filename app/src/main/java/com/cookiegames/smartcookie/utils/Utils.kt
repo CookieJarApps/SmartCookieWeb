@@ -1,51 +1,42 @@
 /*
  * Copyright 2014 A.C.R. Development
  */
-package com.cookiegames.smartcookie.utils;
+package com.cookiegames.smartcookie.utils
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ShortcutInfo;
-import android.content.pm.ShortcutManager;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Icon;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.webkit.URLUtil;
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.content.pm.ShortcutInfo
+import android.content.pm.ShortcutManager
+import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Icon
+import android.net.Uri
+import android.os.Build
+import android.os.Environment
+import android.text.TextUtils
+import android.util.Log
+import android.webkit.URLUtil
+import androidx.annotation.StringRes
+import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.constant.HTTPS
+import com.cookiegames.smartcookie.database.HistoryEntry
+import com.cookiegames.smartcookie.dialog.BrowserDialog.setDialogSize
+import com.cookiegames.smartcookie.extensions.snackbar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.io.Closeable
+import java.io.File
+import java.io.IOException
+import java.net.URI
+import java.net.URISyntaxException
+import java.text.SimpleDateFormat
+import java.util.*
 
-import java.io.Closeable;
-import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import com.cookiegames.smartcookie.R;
-import com.cookiegames.smartcookie.constant.Constants;
-import com.cookiegames.smartcookie.database.HistoryEntry;
-import com.cookiegames.smartcookie.dialog.BrowserDialog;
-import com.cookiegames.smartcookie.extensions.ActivityExtensions;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AlertDialog;
-
-public final class Utils {
-
-    private static final String TAG = "Utils";
-
-    private Utils() {}
+object Utils {
+    private const val TAG = "Utils"
 
     /**
      * Creates a new intent that can launch the email
@@ -58,17 +49,15 @@ public final class Utils {
      * @param cc      extra addresses to CC.
      * @return a valid intent.
      */
-    @NonNull
-    public static Intent newEmailIntent(String address, String subject,
-                                        String body, String cc) {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{address});
-        intent.putExtra(Intent.EXTRA_TEXT, body);
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        intent.putExtra(Intent.EXTRA_CC, cc);
-        intent.setType("message/rfc822");
-        return intent;
-
+    fun newEmailIntent(address: String, subject: String?,
+                       body: String?, cc: String?): Intent {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(address))
+        intent.putExtra(Intent.EXTRA_TEXT, body)
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+        intent.putExtra(Intent.EXTRA_CC, cc)
+        intent.type = "message/rfc822"
+        return intent
     }
 
     /**
@@ -78,17 +67,16 @@ public final class Utils {
      * @param title    the title of the dialog.
      * @param message  the message of the dialog.
      */
-    public static void createInformativeDialog(@NonNull Activity activity, @StringRes int title, @StringRes int message) {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
-        builder.setTitle(title);
+    fun createInformativeDialog(activity: Activity, @StringRes title: Int, @StringRes message: Int) {
+        val builder = MaterialAlertDialogBuilder(activity)
+        builder.setTitle(title)
         builder.setMessage(message)
-            .setCancelable(true)
-            .setPositiveButton(activity.getResources().getString(R.string.action_ok),
-                (dialog, id) -> {
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
-        BrowserDialog.setDialogSize(activity, alert);
+                .setCancelable(true)
+                .setPositiveButton(activity.resources.getString(R.string.action_ok)
+                ) { dialog: DialogInterface?, id: Int -> }
+        val alert = builder.create()
+        alert.show()
+        setDialogSize(activity, alert)
     }
 
     /**
@@ -97,9 +85,10 @@ public final class Utils {
      * @param dp the number of density pixels to convert.
      * @return the number of pixels that the conversion generates.
      */
-    public static int dpToPx(float dp) {
-        DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
-        return (int) (dp * metrics.density + 0.5f);
+    @JvmStatic
+    fun dpToPx(dp: Float): Int {
+        val metrics = Resources.getSystem().displayMetrics
+        return (dp * metrics.density + 0.5f).toInt()
     }
 
     /**
@@ -111,101 +100,120 @@ public final class Utils {
      * could not be extracted. The domain name may include
      * HTTPS if the URL is an SSL supported URL.
      */
-    @NonNull
-    public static String getDomainName(@Nullable String url) {
-        if (url == null || url.isEmpty()) return "";
-
-        boolean ssl = URLUtil.isHttpsUrl(url);
-        int index = url.indexOf('/', 8);
+    fun getDomainName(url: String?): String {
+        var url = url
+        if (url == null || url.isEmpty()) return ""
+        val ssl = URLUtil.isHttpsUrl(url)
+        val index = url.indexOf('/', 8)
         if (index != -1) {
-            url = url.substring(0, index);
+            url = url.substring(0, index)
         }
-
-        URI uri;
-        String domain;
+        val uri: URI
+        var domain: String?
         try {
-            uri = new URI(url);
-            domain = uri.getHost();
-        } catch (URISyntaxException e) {
-            Log.e(TAG, "Unable to parse URI", e);
-            domain = null;
+            uri = URI(url)
+            domain = uri.host
+        } catch (e: URISyntaxException) {
+            Log.e(TAG, "Unable to parse URI", e)
+            domain = null
         }
-
         if (domain == null || domain.isEmpty()) {
-            return url;
+            return url
         }
-        if (ssl)
-            return Constants.HTTPS + domain;
-        else
-            return domain.startsWith("www.") ? domain.substring(4) : domain;
+        return if (ssl) HTTPS + domain else if (domain.startsWith("www.")) domain.substring(4) else domain
     }
 
-    public static void trimCache(@NonNull Context context) {
+    @JvmStatic
+    fun trimCache(context: Context) {
         try {
-            File dir = context.getCacheDir();
-
-            if (dir != null && dir.isDirectory()) {
-                deleteDir(dir);
+            val dir = context.cacheDir
+            if (dir != null && dir.isDirectory) {
+                deleteDir(dir)
             }
-        } catch (Exception ignored) {
-
+        } catch (ignored: Exception) {
         }
     }
 
-    private static boolean deleteDir(@Nullable File dir) {
-        if (dir != null && dir.isDirectory()) {
-            String[] children = dir.list();
-            for (String aChildren : children) {
-                boolean success = deleteDir(new File(dir, aChildren));
+    private fun deleteDir(dir: File?): Boolean {
+        if (dir != null && dir.isDirectory) {
+            val children = dir.list()
+            for (aChildren in children) {
+                val success = deleteDir(File(dir, aChildren))
                 if (!success) {
-                    return false;
+                    return false
                 }
             }
         }
         // The directory is now empty so delete it
-        return dir != null && dir.delete();
+        return dir != null && dir.delete()
     }
 
-    public static boolean isColorTooDark(int color) {
-        final byte RED_CHANNEL = 16;
-        final byte GREEN_CHANNEL = 8;
+    fun isColorTooDark(color: Int): Boolean {
+        val RED_CHANNEL: Byte = 16
+        val GREEN_CHANNEL: Byte = 8
         //final byte BLUE_CHANNEL = 0;
-
-        int r = ((int) ((float) (color >> RED_CHANNEL & 0xff) * 0.3f)) & 0xff;
-        int g = ((int) ((float) (color >> GREEN_CHANNEL & 0xff) * 0.59)) & 0xff;
-        int b = ((int) ((float) (color /* >> BLUE_CHANNEL */ & 0xff) * 0.11)) & 0xff;
-        int gr = (r + g + b) & 0xff;
-        int gray = gr /* << BLUE_CHANNEL */ + (gr << GREEN_CHANNEL) + (gr << RED_CHANNEL);
-
-        return gray < 0x727272;
+        val r = ((color shr RED_CHANNEL.toInt() and 0xff).toFloat() * 0.3f).toInt() and 0xff
+        val g = ((color shr GREEN_CHANNEL.toInt() and 0xff).toFloat() * 0.59).toInt() and 0xff
+        val b = ((color /* >> BLUE_CHANNEL */ and 0xff).toFloat() * 0.11).toInt() and 0xff
+        val gr = r + g + b and 0xff
+        val gray = gr /* << BLUE_CHANNEL */ + (gr shl GREEN_CHANNEL.toInt()) + (gr shl RED_CHANNEL.toInt())
+        return gray < 0x727272
     }
 
-    public static int mixTwoColors(int color1, int color2, float amount) {
-        final byte ALPHA_CHANNEL = 24;
-        final byte RED_CHANNEL = 16;
-        final byte GREEN_CHANNEL = 8;
+    fun mixTwoColors(color1: Int, color2: Int, amount: Float): Int {
+        val ALPHA_CHANNEL: Byte = 24
+        val RED_CHANNEL: Byte = 16
+        val GREEN_CHANNEL: Byte = 8
         //final byte BLUE_CHANNEL = 0;
+        val inverseAmount = 1.0f - amount
+        val r = ((color1 shr RED_CHANNEL.toInt() and 0xff).toFloat() * amount + (color2 shr RED_CHANNEL.toInt() and 0xff).toFloat() * inverseAmount).toInt() and 0xff
+        val g = ((color1 shr GREEN_CHANNEL.toInt() and 0xff).toFloat() * amount + (color2 shr GREEN_CHANNEL.toInt() and 0xff).toFloat() * inverseAmount).toInt() and 0xff
+        val b = ((color1 and 0xff).toFloat() * amount + (color2 and 0xff).toFloat() * inverseAmount).toInt() and 0xff
+        return 0xff shl ALPHA_CHANNEL.toInt() or (r shl RED_CHANNEL.toInt()) or (g shl GREEN_CHANNEL.toInt()) or b
+    }
 
-        final float inverseAmount = 1.0f - amount;
+    fun buildErrorPage(color: String?, title: String?, error: String?, reload: String?, showButton: Boolean, reloadCode: String = "window.history.back();"): String {
+        var reloadButtonCode = "<button onclick=\"reload();\" id=\"reload-button\" class=\"blue-button text-button reload\">$reload</button>"
+        when(showButton){
+            false -> reloadButtonCode = ""
+        }
+        val page = "<html>" +
+                "<head>" +
+                "<script language=\"javascript\"> " +
+                "function reload(){setTimeout(function(){$reloadCode}, 500);" +
+                "};</script>" +
+                "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+                "<style>html{-webkit-text-size-adjust: 100%;font-size: 125%;}body{background-color:#f7f7f7; color: #646464; font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 75%;}div{display:block;}h1{margin-top: 0; color: #333; font-size: 1.6em; font-weight: normal; line-height: 1.25em; margin-bottom: 16px;}button{-webkit-user-select: none; background: rgb(76, 142, 250); border: 0; border-radius: 2px; box-sizing: border-box; color: #fff; cursor: pointer; font-size: .875em; margin: 0; padding: 10px 24px; transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);}button:hover{box-shadow: 0 1px 2px rgba(1, 1, 1, 0.5);}.error-code{color: #777; display: inline; font-size: .86667em; margin-top: 15px; opacity: .5; text-transform: uppercase;}.interstitial-wrapper{box-sizing: border-box;font-size: 1em;margin: 100px auto 0;max-width: 600px;width: 100%;}.offline .interstitial-wrapper{color: #2b2b2b;font-size: 1em;line-height: 1.55;margin: 0 auto;max-width: 600px;padding-top: 100px;width: 100%;}.hidden{display: none;}.nav-wrapper{margin-top: 51px; display:inline-block;}#buttons::after{clear: both; content: ''; display: block; width: 100%;}.nav-wrapper::after{clear: both; content: ''; display: table; width: 100%;}.small-link{color: #696969; font-size: .875em;}@media (max-width: 640px), (max-height: 640px){h1{margin: 0 0 15px;}button{width: 100%;}}.reload{border: none; padding: 12px 16px; font-size: 16px; cursor: pointer;}.reload:before{content: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0V0z'/%3E%3Cpath d='M17.65 6.35c-1.63-1.63-3.94-2.57-6.48-2.31-3.67.37-6.69 3.35-7.1 7.02C3.52 15.91 7.27 20 12 20c3.19 0 5.93-1.87 7.21-4.56.32-.67-.16-1.44-.9-1.44-.37 0-.72.2-.88.53-1.13 2.43-3.84 3.97-6.8 3.31-2.22-.49-4.01-2.3-4.48-4.52C5.31 9.44 8.26 6 12 6c1.66 0 3.14.69 4.22 1.78l-1.51 1.51c-.63.63-.19 1.71.7 1.71H19c.55 0 1-.45 1-1V6.41c0-.89-1.08-1.34-1.71-.71l-.64.65z'/%3E%3C/svg%3E\"); filter: invert(1); width: 20px; float: left; margin-right: 5px; margin-top: -2px;}" +
+                "</style>" +
+                "</head>" +
+                "<center>" +
+                "<body class=\"offline\">" +
+                "<div class=\"interstitial-wrapper\">" +
+                "<div id=\"main-content\">" +
+                "<img src=\"file:///android_asset/warning.webp\" height=\"52\" width=\"52\"><br><br>" +
+                "<div class=\"icon icon-offline\"></div>" +
+                "<div id=\"main-message\">" +
+                "<h1>$title</h1>" +
+                "</h1><p></p><div class=\"error-code\">$error" +
+                "</div></div></div><div id=\"buttons\" class=\"nav-wrapper\"><div id=\"control-buttons\">$reloadButtonCode" +
+                "</div></div></div></body></center></html>" +
+                color
 
-        int r = ((int) (((float) (color1 >> RED_CHANNEL & 0xff) * amount) + ((float) (color2 >> RED_CHANNEL & 0xff) * inverseAmount))) & 0xff;
-        int g = ((int) (((float) (color1 >> GREEN_CHANNEL & 0xff) * amount) + ((float) (color2 >> GREEN_CHANNEL & 0xff) * inverseAmount))) & 0xff;
-        int b = ((int) (((float) (color1 & 0xff) * amount) + ((float) (color2 & 0xff) * inverseAmount))) & 0xff;
-
-        return 0xff << ALPHA_CHANNEL | r << RED_CHANNEL | g << GREEN_CHANNEL | b;
+        return page
     }
 
     @SuppressLint("SimpleDateFormat")
-    public static File createImageFile() throws IOException {
+    @Throws(IOException::class)
+    fun createImageFile(): File {
         // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + '_';
-        File storageDir = Environment
-            .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        return File.createTempFile(imageFileName, /* prefix */
-            ".jpg", /* suffix */
-            storageDir /* directory */
-        );
+        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val imageFileName = "JPEG_" + timeStamp + '_'
+        val storageDir = Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile(imageFileName,  /* prefix */
+                ".jpg",  /* suffix */
+                storageDir /* directory */
+        )
     }
 
     /**
@@ -214,92 +222,84 @@ public final class Utils {
      *
      * @param closeable the object to close
      */
-    public static void close(@Nullable Closeable closeable) {
+    @JvmStatic
+    fun close(closeable: Closeable?) {
         if (closeable == null) {
-            return;
+            return
         }
         try {
-            closeable.close();
-        } catch (IOException e) {
-            Log.e(TAG, "Unable to close closeable", e);
+            closeable.close()
+        } catch (e: IOException) {
+            Log.e(TAG, "Unable to close closeable", e)
         }
     }
 
     /**
      * Creates a shortcut on the homescreen using the
-     * {@link HistoryEntry} information that opens the
+     * [HistoryEntry] information that opens the
      * browser. The icon, URL, and title are used in
      * the creation of the shortcut.
      *
      * @param activity the activity needed to create
-     *                 the intent and show a snackbar message
+     * the intent and show a snackbar message
      * @param historyEntry     the HistoryEntity to create the shortcut from
      */
-    public static void createShortcut(@NonNull Activity activity,
-                                      @NonNull HistoryEntry historyEntry,
-                                      @NonNull Bitmap favicon) {
-        Intent shortcutIntent = new Intent(Intent.ACTION_VIEW);
-        shortcutIntent.setData(Uri.parse(historyEntry.getUrl()));
-        shortcutIntent.setPackage("com.cookiegames.smartcookie");
-
-        final String title = TextUtils.isEmpty(historyEntry.getTitle()) ? activity.getString(R.string.untitled) : historyEntry.getTitle();
-
+    fun createShortcut(activity: Activity,
+                       historyEntry: HistoryEntry,
+                       favicon: Bitmap) {
+        val shortcutIntent = Intent(Intent.ACTION_VIEW)
+        shortcutIntent.data = Uri.parse(historyEntry.url)
+        shortcutIntent.setPackage("com.cookiegames.smartcookie")
+        val title = if (TextUtils.isEmpty(historyEntry.title)) activity.getString(R.string.untitled) else historyEntry.title
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            Intent addIntent = new Intent();
-            addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
-            addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, title);
-            addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, favicon);
-            addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
-            activity.sendBroadcast(addIntent);
-            ActivityExtensions.snackbar(activity, R.string.message_added_to_homescreen);
+            val addIntent = Intent()
+            addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent)
+            addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, title)
+            addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, favicon)
+            addIntent.action = "com.android.launcher.action.INSTALL_SHORTCUT"
+            activity.sendBroadcast(addIntent)
+            activity.snackbar(R.string.message_added_to_homescreen)
         } else {
-            ShortcutManager shortcutManager = activity.getSystemService(ShortcutManager.class);
-            if (shortcutManager.isRequestPinShortcutSupported()) {
-                ShortcutInfo pinShortcutInfo =
-                    new ShortcutInfo.Builder(activity, "browser-shortcut-" + historyEntry.getUrl().hashCode())
+            val shortcutManager = activity.getSystemService(ShortcutManager::class.java)
+            if (shortcutManager.isRequestPinShortcutSupported) {
+                val pinShortcutInfo = ShortcutInfo.Builder(activity, "browser-shortcut-" + historyEntry.url.hashCode())
                         .setIntent(shortcutIntent)
                         .setIcon(Icon.createWithBitmap(favicon))
                         .setShortLabel(title)
-                        .build();
-
-                shortcutManager.requestPinShortcut(pinShortcutInfo, null);
-                ActivityExtensions.snackbar(activity, R.string.message_added_to_homescreen);
+                        .build()
+                shortcutManager.requestPinShortcut(pinShortcutInfo, null)
+                activity.snackbar(R.string.message_added_to_homescreen)
             } else {
-                ActivityExtensions.snackbar(activity, R.string.shortcut_message_failed_to_add);
+                activity.snackbar(R.string.shortcut_message_failed_to_add)
             }
         }
     }
 
-    public static int calculateInSampleSize(@NonNull BitmapFactory.Options options,
-                                            int reqWidth, int reqHeight) {
+    fun calculateInSampleSize(options: BitmapFactory.Options,
+                              reqWidth: Int, reqHeight: Int): Int {
         // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-
+        val height = options.outHeight
+        val width = options.outWidth
+        var inSampleSize = 1
         if (height > reqHeight || width > reqWidth) {
-
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
+            val halfHeight = height / 2
+            val halfWidth = width / 2
 
             // Calculate the largest inSampleSize value that is a power of 2 and keeps both
             // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) >= reqHeight
-                && (halfWidth / inSampleSize) >= reqWidth) {
-                inSampleSize *= 2;
+            while (halfHeight / inSampleSize >= reqHeight
+                    && halfWidth / inSampleSize >= reqWidth) {
+                inSampleSize *= 2
             }
         }
-
-        return inSampleSize;
+        return inSampleSize
     }
 
-    @Nullable
-    public static String guessFileExtension(@NonNull String filename) {
-        int lastIndex = filename.lastIndexOf('.') + 1;
-        if (lastIndex > 0 && filename.length() > lastIndex) {
-            return filename.substring(lastIndex);
-        }
-        return null;
+    @JvmStatic
+    fun guessFileExtension(filename: String): String? {
+        val lastIndex = filename.lastIndexOf('.') + 1
+        return if (lastIndex > 0 && filename.length > lastIndex) {
+            filename.substring(lastIndex)
+        } else null
     }
-
 }
