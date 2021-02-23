@@ -53,8 +53,8 @@ class JavaScriptDatabase @Inject constructor(
                 " $KEY_EXCLUDE TEXT," +
                 " $KEY_TIME TEXT," +
                 " $KEY_PERMISSIONS TEXT," +
-                " $KEY_CODE TEXT" +
-                " $KEY_REQUIREMENTS TEXT," +
+                " $KEY_CODE TEXT," +
+                " $KEY_REQUIREMENTS TEXT" +
                 ")"
         db.execSQL(createJavaScriptTable)
     }
