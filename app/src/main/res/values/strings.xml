@@ -610,5 +610,13 @@
     <string name="export_as_html">Export as HTML</string>
     <string name="export_as_list">Export as list</string>
 
+    <!-- block page -->
+    <string name="page_blocked">Page blocked</string>
+    <string name="page_blocked_adblocker">BLOCKED_BY_ADBLOCKER</string>
+    <string name="page_blocked_parental">BLOCKED_BY_PARENTAL_CONTROLS</string>
+    <string name="go_back">Go back</string>
+    <string name="proceed">Proceed anyway</string>
+
+
     <!-- finish pages -->
 </resources>

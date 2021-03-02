@@ -177,7 +177,8 @@ object Utils {
         when(showButton){
             false -> reloadButtonCode = ""
         }
-        val page = "<html>" +
+
+        return "<html>" +
                 "<head>" +
                 "<script language=\"javascript\"> " +
                 "function reload(){setTimeout(function(){$reloadCode}, 500);" +
@@ -198,8 +199,38 @@ object Utils {
                 "</div></div></div><div id=\"buttons\" class=\"nav-wrapper\"><div id=\"control-buttons\">$reloadButtonCode" +
                 "</div></div></div></body></center></html>" +
                 color
+    }
 
-        return page
+    fun buildBlockPage(activity: Activity, color: String?, title: String?, error: String?, blockedURL: String, showProceedButton: Boolean): String {
+        val proceedString = activity.resources.getString(R.string.proceed)
+        val goBackString = activity.resources.getString(R.string.go_back)
+
+        var proceedButton = "<button onclick=\"location.href = '$blockedURL';\" id=\"reload-button\" class=\"blue-button text-button reload\">$proceedString</button>"
+        val goBackButton = "<button onclick=\"window.history.back();\" id=\"reload-button\" class=\"blue-button text-button reload\">$goBackString</button>"
+        when(showProceedButton){
+            false -> proceedButton = ""
+        }
+
+        return "<html>" +
+                "<head>" +
+                "<script language=\"javascript\"> " +
+                "function reload(){setTimeout(function(){$!!!}, 500);" +
+                "};</script>" +
+                "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+                "<style>html{-webkit-text-size-adjust: 100%;font-size: 125%;}body{background-color:#ffffff; color: #646464; font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"; font-size: 75%;}div{display:block;}h1{margin-top: 0; color: #333; font-size: 1.6em; font-weight: normal; line-height: 1.25em; margin-bottom: 16px;}button{border: solid 1px; border-radius: 4px; border-color: #000000FF; padding: 0 16px; min-width: 64px; line-height: 34px; background-color: transparent; -webkit-user-select: none; text-transform: uppercase; color: rgb(76, 142, 250); box-sizing: border-box; cursor: pointer; font-size: .875em; margin: 0; font-weight: 500;}button:hover{box-shadow: 0 1px 2px rgba(1, 1, 1, 0.5);}.error-code{color: #777; display: inline; font-size: .86667em; margin-top: 15px; opacity: .5; text-transform: uppercase;}.interstitial-wrapper{box-sizing: border-box;font-size: 1em;margin: 100px auto 0;max-width: 600px;width: 100%;}.offline .interstitial-wrapper{color: #2b2b2b;font-size: 1em;line-height: 1.55;margin: 0 auto;max-width: 600px;padding-top: 100px;width: 100%;}.hidden{display: none;}.nav-wrapper{margin-top: 51px; display:inline-block;}#buttons::after{clear: both; content: ''; display: block; width: 100%;}.nav-wrapper::after{clear: both; content: ''; display: table; width: 100%;}.small-link{color: #696969; font-size: .875em;}@media (max-width: 640px), (max-height: 640px){h1{margin: 0 0 15px;}button{width: 100%;}}" +
+                "</style>" +
+                "</head>" +
+                "<center>" +
+                "<body class=\"offline\">" +
+                "<div class=\"interstitial-wrapper\">" +
+                "<div id=\"main-content\">" +
+                "<div class=\"icon icon-offline\"></div>" +
+                "<div id=\"main-message\">" +
+                "<h1>$title</h1>" +
+                "</h1><p></p><div class=\"error-code\">$error" +
+                "</div></div></div><div id=\"buttons\" class=\"nav-wrapper\"><div id=\"control-buttons\">$proceedButton <br /><br /> $goBackButton" +
+                "</div></div></div></body></center></html>" +
+                color
     }
 
     @SuppressLint("SimpleDateFormat")
