@@ -187,8 +187,8 @@ class PopUpClass {
             if(userPreferences.navbar && !userPreferences.bottomBar && !activity.isIncognito() && intent.resolveActivity(packageManager) != null && intent.resolveActivity(packageManager).packageName != activity.applicationContext.packageName && !currentUrl.isSpecialUrl()) positionList.add(4, 14)
             if(userPreferences.navbar && userPreferences.bottomBar && !activity.isIncognito() && intent.resolveActivity(packageManager) != null && intent.resolveActivity(packageManager).packageName != activity.applicationContext.packageName && !currentUrl.isSpecialUrl()) positionList.add(8, 14)
 
-            var currentView = activity.tabsManager.currentTab
-            var currentUrl = uiController!!.getTabModel().currentTab?.url
+            val currentView = activity.tabsManager.currentTab
+            val currentUrl = uiController!!.getTabModel().currentTab?.url
 
             when(positionList[position]){
                 0 -> uiController!!.newTabButtonClicked() // 0 - New tab
@@ -196,7 +196,13 @@ class PopUpClass {
                 2 -> IntentUtils(activity).shareUrl(currentUrl, currentView?.title) // 2 - Share
                 3 -> currentView!!.webView?.let { currentView.createWebPagePrint(it) } // 3 - Print
                 4 -> view.context.startActivity(Intent(view.context, HistoryActivity::class.java)) // 4 - History
-                5 -> view.context.startActivity(Intent(view.context, DownloadActivity::class.java)) // 5 - Download
+                5 -> {
+                    when(userPreferences.useNewDownloader){
+                        true -> view.context.startActivity(Intent(view.context, DownloadActivity::class.java))
+                        false -> currentView?.loadDownloadsPage()
+                    }
+
+                } // 5 - Download
                 6 -> activity.findInPage() // 6 - Find in Page
                 7 -> {
                     if (currentUrl != null && !currentUrl.isSpecialUrl()) { // 7 - Copy link
