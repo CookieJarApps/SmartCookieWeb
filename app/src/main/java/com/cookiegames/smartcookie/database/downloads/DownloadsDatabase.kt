@@ -142,9 +142,9 @@ class DownloadsDatabase @Inject constructor(
      * Binds a [Cursor] to a single [DownloadEntry].
      */
     private fun Cursor.bindToDownloadItem() = DownloadEntry(
-        url = getString(getColumnIndex(KEY_URL)),
-        title = getString(getColumnIndex(KEY_TITLE)),
-        contentSize = getString(getColumnIndex(KEY_SIZE))
+        url = getString(getColumnIndexOrThrow(KEY_URL)),
+        title = getString(getColumnIndexOrThrow(KEY_TITLE)),
+        contentSize = getString(getColumnIndexOrThrow(KEY_SIZE))
     )
 
     companion object {

@@ -108,7 +108,7 @@ class HostsDatabase @Inject constructor(
      * Binds a [Cursor] to a single [Host].
      */
     private fun Cursor.bindToHost() = Host(
-        name = getString(getColumnIndex(KEY_NAME))
+        name = getString(getColumnIndexOrThrow(KEY_NAME))
     )
 
     companion object {
