@@ -177,40 +177,31 @@ class PopUpClass {
         list = popupView.findViewById(R.id.menuList)
         list?.setAdapter(adapter)
         list?.setOnItemClickListener { parent, view, position, id ->
-            var positionList = mutableListOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14)
-            if(activity.isIncognito() && !userPreferences.bottomBar) positionList = mutableListOf(0, 3, 6, 7, 8, 9, 10, 11, 12)
-            else if(activity.isIncognito()) positionList = mutableListOf(12, 11, 10, 9, 8, 7, 6, 3, 0)
-            else if(userPreferences.translateExtension && userPreferences.bottomBar) positionList = mutableListOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 13, 2, 1, 0)
-            else if(userPreferences.translateExtension) positionList = mutableListOf(0, 1, 2, 13, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14)
-            else if(userPreferences.bottomBar) positionList = mutableListOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
-
-            if(userPreferences.navbar && !userPreferences.bottomBar && !activity.isIncognito() && intent.resolveActivity(packageManager) != null && intent.resolveActivity(packageManager).packageName != activity.applicationContext.packageName && !currentUrl.isSpecialUrl()) positionList.add(4, 14)
-            if(userPreferences.navbar && userPreferences.bottomBar && !activity.isIncognito() && intent.resolveActivity(packageManager) != null && intent.resolveActivity(packageManager).packageName != activity.applicationContext.packageName && !currentUrl.isSpecialUrl()) positionList.add(8, 14)
 
             val currentView = activity.tabsManager.currentTab
             val currentUrl = uiController!!.getTabModel().currentTab?.url
 
-            when(positionList[position]){
-                0 -> uiController!!.newTabButtonClicked() // 0 - New tab
-                1 -> view.context.startActivity(Intent(view.context, IncognitoActivity::class.java)) // 1 - New incognito tab
-                2 -> IntentUtils(activity).shareUrl(currentUrl, currentView?.title) // 2 - Share
-                3 -> currentView!!.webView?.let { currentView.createWebPagePrint(it) } // 3 - Print
-                4 -> view.context.startActivity(Intent(view.context, HistoryActivity::class.java)) // 4 - History
-                5 -> {
+            when(textString[position]){
+                resources.getString(R.string.action_new_tab) -> uiController!!.newTabButtonClicked() // 0 - New tab
+                resources.getString(R.string.action_incognito) -> view.context.startActivity(Intent(view.context, IncognitoActivity::class.java)) // 1 - New incognito tab
+                resources.getString(R.string.action_share) -> IntentUtils(activity).shareUrl(currentUrl, currentView?.title) // 2 - Share
+                resources.getString(R.string.action_print) -> currentView!!.webView?.let { currentView.createWebPagePrint(it) } // 3 - Print
+                resources.getString(R.string.action_history) -> view.context.startActivity(Intent(view.context, HistoryActivity::class.java)) // 4 - History
+                resources.getString(R.string.action_downloads) -> {
                     when(userPreferences.useNewDownloader){
                         true -> view.context.startActivity(Intent(view.context, DownloadActivity::class.java))
                         false -> currentView?.loadDownloadsPage()
                     }
 
                 } // 5 - Download
-                6 -> activity.findInPage() // 6 - Find in Page
-                7 -> {
+                resources.getString(R.string.action_find) -> activity.findInPage() // 6 - Find in Page
+                resources.getString(R.string.action_copy) -> {
                     if (currentUrl != null && !currentUrl.isSpecialUrl()) { // 7 - Copy link
                         activity.clipboardManager.copyToClipboard(currentUrl)
                         activity.snackbar(R.string.message_link_copied)
                     }
                 }
-                8 -> {
+                resources.getString(R.string.action_add_to_homescreen) -> {
                     if (currentView != null
                             && currentView.url.isNotBlank()
                             && !currentView.url.isSpecialUrl()) { // 8 - Add to Homepage
@@ -219,24 +210,24 @@ class PopUpClass {
                         }
                     }
                 }
-                9 -> activity.drawer_layout.openDrawer(activity.getBookmarkDrawer()) // 9 - Bookmarks
-                10 -> {
+                resources.getString(R.string.action_bookmarks) -> activity.drawer_layout.openDrawer(activity.getBookmarkDrawer()) // 9 - Bookmarks
+                resources.getString(R.string.reading_mode) -> {
                     if (currentUrl != null) { // 10 - Reading mode
                         ReadingActivity.launch(view.context, currentUrl, false)
                     }
                 }
-                11 -> {
+                resources.getString(R.string.settings) -> {
                     val settings = Intent(view.context, SettingsActivity::class.java) // 11 - Settings
                     view.context.startActivity(settings)
                 }
-                12 -> {
+                resources.getString(R.string.close) -> {
                     activity.onBackPressed() // 12 - Quit
                     activity.finish()
                 }
-                13 -> {
+                resources.getString(R.string.translator) -> {
                     currentView?.loadUrl("https://translatetheweb.com/?scw=yes&a=" + currentUrl!!) // 13 - Translate
                 }
-                14 -> {
+                resources.getString(R.string.open_in_app) -> {
                     val components = arrayOf(ComponentName(activity, BrowserActivity::class.java))
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
                         activity.startActivity(Intent.createChooser(intent, null).putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS,components))
