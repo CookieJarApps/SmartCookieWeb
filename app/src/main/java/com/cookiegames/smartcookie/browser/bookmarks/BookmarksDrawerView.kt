@@ -335,29 +335,29 @@ class BookmarksDrawerView @JvmOverloads constructor(
                         title = R.string.page_source
 
                 ) {
-                    val prefs: SharedPreferences = activity.getSharedPreferences("com.cookiegames.smartcookie", MODE_PRIVATE)
-                    var name: String? = prefs.getString("source", "Source could not be extracted") //"No name defined" is the default value.
+                    currentTab.webView?.evaluateJavascript("""(function() {
+                        return "<html>" + document.getElementsByTagName('html')[0].innerHTML + "</html>";
+                     })()""".trimMargin()) {
+                        // Hacky workaround for weird WebView encoding bug
+                        var name = it?.replace("\\u003C", "<")
+                        name = name?.replace("\\n", System.getProperty("line.separator").toString())
+                        name = name?.replace("\\t", "")
+                        name = name?.replace("\\\"", "\"")
+                        name = name?.substring(1, name.length - 1);
 
-                    // Hacky workaround for weird WebView encoding bug
-                    name = name?.replace("\\u003C", "<")
-                    name = name?.replace("\\n", System.getProperty("line.separator").toString())
-                    name = name?.replace("\\t", "")
-                    name = name?.replace("\\\"", "\"")
-                    name = name?.substring(1, name.length - 1);
-                    if (name?.contains("mod_pagespeed")!!) {
-                        Toast.makeText(activity, R.string.pagespeed_error,
-                                Toast.LENGTH_LONG).show()
+                        val builder = MaterialAlertDialogBuilder(context)
+                        val inflater = activity.layoutInflater
+                        builder.setTitle(R.string.page_source)
+                        val dialogLayout = inflater.inflate(R.layout.dialog_view_source, null)
+                        val editText = dialogLayout.findViewById<CodeEditor>(R.id.dialog_multi_line)
+                        editText.setText(name, 1)
+                        builder.setView(dialogLayout)
+                        builder.setPositiveButton("OK") { _, _ ->
+                            editText.setText(editText.text?.toString()?.replace("\'", "\\\'"), 1);
+                            currentTab.loadUrl("javascript:(function() { document.documentElement.innerHTML = '" + editText.text.toString() + "'; })()")
+                        }
+                        builder.show()
                     }
-                    val builder = MaterialAlertDialogBuilder(context)
-                    val inflater = activity.layoutInflater
-                    builder.setTitle(R.string.page_source)
-                    val dialogLayout = inflater.inflate(R.layout.dialog_view_source, null)
-                    val editText = dialogLayout.findViewById<CodeEditor>(R.id.dialog_multi_line)
-                    editText.setText(name, 1)
-                    builder.setView(dialogLayout)
-                    builder.setPositiveButton("OK") { dialogInterface, i -> editText.setText(editText.text?.toString()?.replace("\'", "\\\'"), 1); currentTab.loadUrl("javascript:(function() { document.documentElement.innerHTML = '" + editText.text.toString() + "'; })()") }
-                    builder.show()
-
                 },
                 DialogItem(
                         icon = context.drawable(R.drawable.ic_block),
