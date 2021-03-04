@@ -23,7 +23,7 @@
  <a href='https://cookiejarapps.com/device/'>
   <img alt='Try this app in your browser' src='https://storeimg.com/uploads/6009aab9069a2.png' height="50"/></a>
 <p align="center"><a href="https://github.com/CookieJarApps/SmartCookieWeb-beta"><b>Beta Releases</b></a> &bull; <a href="https://help.cookiejarapps.com"><b>FAQ</b></a> &bull; <a href="https://smartcookieweb.com"><b>Website</b></a> &bull; <a href="https://smartcookieweb.com/contributors.php"><b>Contributors</b></a></p>
-<h4 align="center"><em>Important note: Google recently announced that embedded browser frameworks, or any browsers that fake their user agent will be banned from Google sign in starting January next year. If you notice any issues signing in to Google apps, even with your user agent set to 'mobile', please open an issue as soon as possible so I can invesigate</em></h4>
+<h4 align="center"><em>Important note: Google recently announced that embedded browser frameworks, or any browsers that fake their user agent will be banned from Google sign in starting January next year. Now, even if you change your user agent, Google logins redirected from other apps may not work. Turning off "Allow sites to open new windows" in Advanced settings and turning on "Remove identifying HTTP headers" in Privacy and Security Settings, as well as setting the user agent in General Settings to "Mobile" should solve the issue. </em></h4>
 
 ---
 
