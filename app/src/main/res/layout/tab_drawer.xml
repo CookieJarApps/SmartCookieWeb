@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:parentTag="android.widget.LinearLayout">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/dividerColor"
@@ -16,26 +16,39 @@
 
         <ImageView
             android:id="@+id/tab_header_button"
-            android:layout_width="?attr/actionBarSize"
+            android:layout_width="@dimen/material_grid_small_icon"
+            android:layout_marginStart="@dimen/material_grid_margin"
             android:layout_height="match_parent"
             android:background="?attr/actionBarItemBackground"
-            android:contentDescription="@string/action_new_tab"
+            android:contentDescription="@string/tabs"
             android:scaleType="center"
             app:srcCompat="@drawable/ic_action_tabs" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/material_grid_margin"
+            android:layout_marginStart="@dimen/material_grid_margin"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical"
             android:maxLines="1"
             android:minHeight="?android:attr/listPreferredItemHeight"
             android:text="@string/tabs"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:clickable="true"
-            android:focusable="true"/>
-    </LinearLayout>
+            android:layout_toEndOf="@id/tab_header_button"/>
+
+        <ImageView
+            android:id="@+id/tabs_sort_button"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="match_parent"
+            android:background="?attr/actionBarItemBackground"
+            android:contentDescription="@string/action_sort"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_action_sort"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tabs_list"
