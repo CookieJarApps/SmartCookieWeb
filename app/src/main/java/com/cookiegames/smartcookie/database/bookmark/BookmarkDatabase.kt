@@ -14,6 +14,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import androidx.core.database.getStringOrNull
+import com.cookiegames.smartcookie.database.history.HistoryDatabase
 import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Single
@@ -40,17 +41,17 @@ class BookmarkDatabase @Inject constructor(
             "${DatabaseUtils.sqlEscapeString(KEY_URL)} TEXT," +
             "${DatabaseUtils.sqlEscapeString(KEY_TITLE)} TEXT," +
             "${DatabaseUtils.sqlEscapeString(KEY_FOLDER)} TEXT," +
-            "${DatabaseUtils.sqlEscapeString(KEY_POSITION)} INTEGER" +
+            "${DatabaseUtils.sqlEscapeString(KEY_POSITION)} INTEGER," +
+            "${DatabaseUtils.sqlEscapeString(KEY_CREATED)} INTEGER"
             ')'
         db.execSQL(createBookmarkTable)
     }
 
     // Upgrading database
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // Drop older table if it exists
-        db.execSQL("DROP TABLE IF EXISTS ${DatabaseUtils.sqlEscapeString(TABLE_BOOKMARK)}")
-        // Create tables again
-        onCreate(db)
+        if(newVersion > 1){
+            db.execSQL("ALTER TABLE ${DatabaseUtils.sqlEscapeString(TABLE_BOOKMARK)} ADD COLUMN ${DatabaseUtils.sqlEscapeString(KEY_CREATED)} INTEGER;")
+        }
     }
 
     /**
@@ -267,6 +268,7 @@ class BookmarkDatabase @Inject constructor(
         put(KEY_URL, url)
         put(KEY_FOLDER, folder.title)
         put(KEY_POSITION, position)
+        put(KEY_CREATED, created)
     }
 
     /**
@@ -303,7 +305,7 @@ class BookmarkDatabase @Inject constructor(
     companion object {
 
         // Database version
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
 
         // Database name
         private const val DATABASE_NAME = "bookmarkManager"
@@ -317,6 +319,7 @@ class BookmarkDatabase @Inject constructor(
         private const val KEY_TITLE = "title"
         private const val KEY_FOLDER = "folder"
         private const val KEY_POSITION = "position"
+        private const val KEY_CREATED = "created"
 
     }
 

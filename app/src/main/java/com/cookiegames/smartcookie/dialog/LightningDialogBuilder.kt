@@ -183,7 +183,8 @@ class LightningDialogBuilder @Inject constructor(
                         title = getTitle.text.toString(),
                         url = getUrl.text.toString(),
                         folder = getFolder.text.toString().asFolder(),
-                        position = entry.position
+                        position = entry.position,
+                        created = System.currentTimeMillis()
                     )
                     bookmarkManager.addBookmarkIfNotExists(editedItem)
                         .subscribeOn(databaseScheduler)

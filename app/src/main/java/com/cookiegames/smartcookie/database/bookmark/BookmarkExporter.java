@@ -64,7 +64,8 @@ public final class BookmarkExporter {
                                     object.getString(KEY_URL),
                                     object.getString(KEY_TITLE),
                                     object.getInt(KEY_ORDER),
-                                    WebPageKt.asFolder(folderTitle)
+                                    WebPageKt.asFolder(folderTitle),
+                                    System.currentTimeMillis()
                             )
                     );
                 } catch (JSONException e) {
@@ -138,7 +139,8 @@ public final class BookmarkExporter {
                         object.getString(KEY_URL),
                         object.getString(KEY_TITLE),
                         object.getInt(KEY_ORDER),
-                        WebPageKt.asFolder(folderName)
+                        WebPageKt.asFolder(folderName),
+                        System.currentTimeMillis()
                 );
                 bookmarks.add(entry);
             }

@@ -6,6 +6,7 @@ import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.browser.SortChoice
 import com.cookiegames.smartcookie.controller.UIController
 import com.cookiegames.smartcookie.extensions.desaturate
 import com.cookiegames.smartcookie.extensions.inflater
@@ -17,8 +18,8 @@ import java.util.*
  * The adapter for vertical mobile style browser tabs.
  */
 class TabsDrawerAdapter(
-    private val uiController: UIController,
-    private val userPreferences: UserPreferences
+        private val uiController: UIController,
+        private val userPreferences: UserPreferences
 ) : RecyclerView.Adapter<TabViewHolder>() {
 
     private var tabList: List<TabViewState> = emptyList()

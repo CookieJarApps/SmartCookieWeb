@@ -390,6 +390,9 @@ class UserPreferences @Inject constructor(
 
     // Switches between 3 types for the default homepage
     var homepageType by preferences.enumPreference(HOMEPAGE_TYPE, HomepageTypeChoice.DEFAULT)
+
+    // Sorting type
+    var bookmarkSortingType by preferences.enumPreference(SORT_CHOICE, SortChoice.NONE)
 }
 
 private const val FIRST_LAUNCH = "firstLaunch"
@@ -485,3 +488,4 @@ private const val SHOW_DOWNLOAD_CONFIRMATION = "showDownloadConfirmation"
 private const val TRANSLATION_ENDPOINT = "translationEndpoint"
 private const val NEWS_ENDPOINT = "newsEndpoint"
 private const val HOMEPAGE_TYPE = "homepageType"
+private const val SORT_CHOICE = "sortChoice"

@@ -617,6 +617,10 @@
     <string name="go_back">Go back</string>
     <string name="proceed">Proceed anyway</string>
 
+    <!-- ... -->
+    <string name="a_z">A to Z</string>
+    <string name="z_a">Z to A</string>
+    <string name="date">Date</string>
 
     <!-- finish pages -->
 </resources>

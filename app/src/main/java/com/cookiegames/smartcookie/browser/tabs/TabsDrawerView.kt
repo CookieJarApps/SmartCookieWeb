@@ -3,6 +3,7 @@ package com.cookiegames.smartcookie.browser.tabs
 import android.R.attr.button
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnLongClickListener
@@ -13,12 +14,14 @@ import androidx.recyclerview.widget.ItemTouchHelper.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.browser.SortChoice
 import com.cookiegames.smartcookie.browser.TabsView
 import com.cookiegames.smartcookie.controller.UIController
 import com.cookiegames.smartcookie.extensions.inflater
 import com.cookiegames.smartcookie.list.VerticalItemAnimator
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.view.SmartCookieView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
 /**

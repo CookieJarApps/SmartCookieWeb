@@ -21,10 +21,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.adblock.allowlist.AllowListModel
 import com.cookiegames.smartcookie.animation.AnimationUtils
-import com.cookiegames.smartcookie.browser.BookmarksView
-import com.cookiegames.smartcookie.browser.DrawerSizeChoice
-import com.cookiegames.smartcookie.browser.JavaScriptChoice
-import com.cookiegames.smartcookie.browser.TabsManager
+import com.cookiegames.smartcookie.browser.*
+import com.cookiegames.smartcookie.browser.tabs.TabViewState
 import com.cookiegames.smartcookie.controller.UIController
 import com.cookiegames.smartcookie.database.Bookmark
 import com.cookiegames.smartcookie.database.bookmark.BookmarkRepository
@@ -123,6 +121,22 @@ class BookmarksDrawerView @JvmOverloads constructor(
         context.injector.inject(this)
 
         uiController = context as UIController
+
+
+        findViewById<View>(R.id.bookmark_sort_button).setOnClickListener {
+            val singleItems = arrayOf(resources.getString(R.string.agent_default), resources.getString(R.string.a_z), resources.getString(R.string.z_a), resources.getString(R.string.date))
+            val checkedItem = userPreferences.bookmarkSortingType.value
+
+            MaterialAlertDialogBuilder(context)
+                    .setTitle(resources.getString(R.string.action_sort))
+                    .setPositiveButton(resources.getString(R.string.action_ok)) { dialog, which ->
+                        bookmarkAdapter!!.sortBy(userPreferences.bookmarkSortingType)
+                    }
+                    .setSingleChoiceItems(singleItems, checkedItem) { dialog, which ->
+                        userPreferences.bookmarkSortingType = SortChoice.values()[which]
+                    }
+                    .show()
+        }
 
         bookmarkRecyclerView = findViewById(R.id.bookmark_list_view)
         backNavigationView = findViewById(R.id.bookmark_back_button)
@@ -485,6 +499,33 @@ class BookmarksDrawerView @JvmOverloads constructor(
         fun deleteItem(item: BookmarksViewModel) {
             val newList = bookmarks - item
             updateItems(newList)
+        }
+
+        fun sortBy(type: SortChoice){
+            when(type){
+                SortChoice.A_Z -> {
+                    Collections.sort(bookmarks, object : Comparator<BookmarksViewModel?> {
+                        override fun compare(o1: BookmarksViewModel?, o2: BookmarksViewModel?): Int {
+                            return o1!!.bookmark.title.compareTo(o2!!.bookmark.title)
+                        }
+                    })
+                    notifyDataSetChanged()
+                }
+                SortChoice.Z_A -> {
+                    Collections.sort(bookmarks, object : Comparator<BookmarksViewModel?> {
+                        override fun compare(o1: BookmarksViewModel?, o2: BookmarksViewModel?): Int {
+                            return o1!!.bookmark.title.compareTo(o2!!.bookmark.title)
+                        }
+                    })
+                    Collections.reverse(bookmarks)
+                    notifyDataSetChanged()
+                }
+                SortChoice.DATE -> {
+                    Collections.reverse(bookmarks)
+                    notifyDataSetChanged()
+                }
+                else -> return
+            }
         }
 
         fun moveItem(recyclerView: RecyclerView, viewTarget: RecyclerView.ViewHolder, from: Int, to: Int){

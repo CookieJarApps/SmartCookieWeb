@@ -38,16 +38,6 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_toEndOf="@id/tab_header_button"/>
 
-        <ImageView
-            android:id="@+id/tabs_sort_button"
-            android:layout_width="?attr/actionBarSize"
-            android:layout_height="match_parent"
-            android:background="?attr/actionBarItemBackground"
-            android:contentDescription="@string/action_sort"
-            android:scaleType="center"
-            app:srcCompat="@drawable/ic_action_sort"
-            android:layout_alignParentEnd="true"/>
-
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView

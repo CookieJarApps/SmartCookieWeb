@@ -44,7 +44,8 @@ sealed class Bookmark(
         override val url: String,
         override val title: String,
         val position: Int,
-        val folder: Folder
+        val folder: Folder,
+        val created: Long = 0
     ) : Bookmark(url, title)
 
     /**
