@@ -147,12 +147,12 @@ class BookmarkDatabase @Inject constructor(
         return@fromCallable id != -1L
     }
 
-    override fun moveBookmark(entry: Bookmark.Entry, oldPosition: Int, newPosition: Int): Completable = Completable.fromAction{
+    override fun moveBookmark(entry: Bookmark.Entry, newPosition: Int): Completable = Completable.fromAction{
         val contentValues = ContentValues(1).apply {
             put(KEY_POSITION, newPosition)
         }
 
-        database.update(TABLE_BOOKMARK, contentValues, "$KEY_TITLE=?", arrayOf(entry.title))
+        database.update(TABLE_BOOKMARK, contentValues, "$KEY_URL=?", arrayOf(entry.url))
     }
 
     override fun addBookmarkList(bookmarkItems: List<Bookmark.Entry>): Completable = Completable.fromAction {

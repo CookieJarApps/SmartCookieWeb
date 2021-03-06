@@ -3,10 +3,7 @@ package com.cookiegames.smartcookie.browser.bookmarks
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
 import android.os.Handler
-import android.text.method.ScrollingMovementMethod
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -105,7 +102,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
                         val adapter = recyclerView.adapter as BookmarkListAdapter
                         val from = viewHolder.adapterPosition
                         val to = target.adapterPosition
-                        adapter.moveItem(recyclerView, viewHolder, from, to)
+                        adapter.moveItem(from, to)
                         adapter.notifyItemMoved(from, to)
 
                         return true
@@ -153,6 +150,8 @@ class BookmarksDrawerView @JvmOverloads constructor(
                 bookmarkModel,
                 databaseScheduler
         )
+
+        itemTouchHelper.attachToRecyclerView(bookmarkRecyclerView)
 
         bookmarkRecyclerView?.let {
             it.layoutManager = LinearLayoutManager(context)
@@ -487,7 +486,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
             updateItems(newList)
         }
 
-        fun moveItem(recyclerView: RecyclerView, viewTarget: RecyclerView.ViewHolder, from: Int, to: Int){
+        fun moveItem(from: Int, to: Int){
             if (from < to) {
                 for (i in from until to) {
                     Collections.swap(bookmarks, i, i + 1)
@@ -498,30 +497,33 @@ class BookmarksDrawerView @JvmOverloads constructor(
                 }
             }
 
-            bookmarkManager.deleteAllBookmarks()
-                    .subscribeOn(databaseScheduler)
-                    .subscribe{}
-
-            for(i in bookmarks){
-                when(i.bookmark){
-                    is Bookmark.Entry ->
-                        bookmarkManager.addBookmarkIfNotExists(i.bookmark)
+            bookmarks.forEachIndexed { index, element ->
+                when(bookmarks[index].bookmark){
+                    is Bookmark.Entry -> {
+                        bookmarkManager.moveBookmark(bookmarks[index].bookmark as Bookmark.Entry, index)
                                 .subscribeOn(databaseScheduler)
-                                .subscribe()
+                                .observeOn(mainScheduler)
+                                .subscribe {  }
+                    }
+                    is Bookmark.Folder -> {
+                        iterateBookmarksInFolder(bookmarks[index].bookmark.title, index)
+                    }
                 }
             }
+        }
 
-           bookmarkManager.getAllBookmarksSorted()
+        fun iterateBookmarksInFolder(name: String, position: Int){
+            bookmarkManager.getBookmarksFromFolderSorted(name)
                     .subscribeOn(databaseScheduler)
-                    .subscribe { list ->
-                        for(i in list.indices){
-                            bookmarkManager.moveBookmark(list[i], list[i].position, i)
+                    .observeOn(mainScheduler)
+                    .subscribe { bookmarksAndFolders ->
+                        bookmarksAndFolders.forEachIndexed { index, element ->
+                            bookmarkManager.moveBookmark(element as Bookmark.Entry, index + position)
                                     .subscribeOn(databaseScheduler)
                                     .observeOn(mainScheduler)
                                     .subscribe {  }
                         }
                     }
-
         }
 
         fun updateItems(newList: List<BookmarksViewModel>) {
