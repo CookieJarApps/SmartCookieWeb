@@ -41,6 +41,7 @@ import com.cookiegames.smartcookie.history.HistoryActivity
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.reading.activity.ReadingActivity
 import com.cookiegames.smartcookie.settings.activity.SettingsActivity
+import com.cookiegames.smartcookie.utils.DeviceUtils
 import com.cookiegames.smartcookie.utils.IntentUtils
 import com.cookiegames.smartcookie.utils.Utils
 import com.cookiegames.smartcookie.utils.isSpecialUrl
@@ -105,7 +106,12 @@ class PopUpClass {
             currentView?.goForward()
         }
         popupView.findViewById<ImageButton>(R.id.close_option).setOnClickListener {
-            activity.closeApp()
+            if(Build.VERSION.SDK_INT >= 21){
+                activity.finishAndRemoveTask()
+            }
+            else{
+                activity.finish()
+            }
         }
 
         val uri = Uri.parse(currentUrl)
