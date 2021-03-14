@@ -279,6 +279,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injector.inject(this)
+
         if (userPreferences.bottomBar) {
             setContentView(R.layout.activity_main_btm)
         } else {

@@ -178,7 +178,7 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
 
     private fun showHomepageTypePicker(summaryUpdater: SummaryUpdater) {
         BrowserDialog.showCustomDialog(activity) {
-            setTitle(R.string.http_proxy)
+            setTitle(R.string.homepage_type)
             val stringArray = resources.getStringArray(R.array.homepage_type)
             val values = HomepageTypeChoice.values().map {
                 Pair(it, when (it) {
