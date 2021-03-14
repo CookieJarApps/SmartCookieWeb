@@ -370,8 +370,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         shouldShowTabsInDrawer = userPreferences.showTabsInDrawer
         swapBookmarksAndTabs = userPreferences.bookmarksAndTabsSwapped
 
-        isFullScreen = userPreferences.fullScreenEnabled
-
+        if(!userPreferences.bottomBar){
+            isFullScreen = userPreferences.fullScreenEnabled
+        }
 
         // initialize background ColorDrawable
         val primaryColor = ThemeUtils.getPrimaryColor(this)
@@ -1465,7 +1466,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         tabsManager.resumeAll()
         initializePreferences()
 
-        isFullScreen = userPreferences.fullScreenEnabled
+
+        if(!userPreferences.bottomBar){
+            isFullScreen = userPreferences.fullScreenEnabled
+        }
 
         if (isFullScreen) {
             overlayToolbarOnWebView()
@@ -2038,7 +2042,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
      * incorrect so that the animation can happen correctly.
      */
     override fun hideActionBar() {
-        Log.d("gsdgsd", "hide!")
         if (isFullScreen) {
             if (toolbar_layout == null || content_frame == null)
                 return
