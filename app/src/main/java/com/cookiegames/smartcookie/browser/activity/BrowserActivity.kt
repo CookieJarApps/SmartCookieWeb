@@ -370,9 +370,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         shouldShowTabsInDrawer = userPreferences.showTabsInDrawer
         swapBookmarksAndTabs = userPreferences.bookmarksAndTabsSwapped
 
-        if (!userPreferences.bottomBar) {
-            isFullScreen = userPreferences.fullScreenEnabled
-        }
+        isFullScreen = userPreferences.fullScreenEnabled
 
 
         // initialize background ColorDrawable
@@ -1467,9 +1465,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         tabsManager.resumeAll()
         initializePreferences()
 
-        if(!userPreferences.bottomBar){
-            isFullScreen = userPreferences.fullScreenEnabled
-        }
+        isFullScreen = userPreferences.fullScreenEnabled
 
         if (isFullScreen) {
             overlayToolbarOnWebView()
@@ -2042,6 +2038,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
      * incorrect so that the animation can happen correctly.
      */
     override fun hideActionBar() {
+        Log.d("gsdgsd", "hide!")
         if (isFullScreen) {
             if (toolbar_layout == null || content_frame == null)
                 return
@@ -2141,7 +2138,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     presenter?.newTab(urlInitializer, false)
                 }
                 val snackbar = Snackbar
-                        .make(findViewById(android.R.id.content), resources.getString(R.string.new_tab_opened), Snackbar.LENGTH_INDEFINITE)
+                        .make(findViewById(android.R.id.content), resources.getString(R.string.new_tab_opened), Snackbar.LENGTH_SHORT)
                         .setAction(resources.getString(R.string.switch_button)) { tabClicked(tabsManager.indexOfCurrentTab() + 1) }
                 snackbar.show()
             }
