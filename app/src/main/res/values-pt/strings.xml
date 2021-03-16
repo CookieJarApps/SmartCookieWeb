@@ -491,12 +491,12 @@
     <string name="dont_ask_again">Não perguntar novamente</string>
     <string name="tts">Ler página</string>
     <string name="stop_tts">Parar de ler</string>
-    <string name="translation_endpoint">Translation endpoint</string>
-    <string name="news_endpoint">News endpoint</string>
-    <string name="select_translate_text">Please select the text you would like to translate</string>
-    <string name="select_tts_text">Please select the text you would like read</string>
-    <string name="homepage_type">Homepage type</string>
-    <string name="focused">Focused</string>
-    <string name="informational">Informational</string>
+    <string name="translation_endpoint">URL da API de tradução</string>
+    <string name="news_endpoint">URL da API de notícias</string>
+    <string name="select_translate_text">Selecione o texto que pretende traduzir</string>
+    <string name="select_tts_text">Selecione o texto que pretende ler</string>
+    <string name="homepage_type">Tipo de página inicial</string>
+    <string name="focused">Foco</string>
+    <string name="informational">Informações</string>
     <!-- finish pages -->
 </resources>
