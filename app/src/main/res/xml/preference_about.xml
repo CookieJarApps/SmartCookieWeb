@@ -17,6 +17,9 @@
         <Preference
             android:key="pref_version"
             android:title="@string/version" />
+        <Preference
+            android:key="pref_webview"
+            android:title="@string/webview_version" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/licenses">
         <Preference

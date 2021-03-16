@@ -619,6 +619,8 @@
     <string name="go_back">Go back</string>
     <string name="proceed">Proceed anyway</string>
 
+    <string name="webview_version">WebView version</string>
+    <string name="unknown">Unknown</string>
 
     <!-- finish pages -->
 </resources>
