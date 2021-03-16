@@ -18,7 +18,6 @@
             android:key="pref_version"
             android:title="@string/version" />
     </PreferenceCategory>
-    <!-- Copyright 2020 CookieJarApps. Removing this section is in violation of the open source licenses used. -->
     <PreferenceCategory android:title="@string/licenses">
         <Preference
             android:summary="@string/mpl_license"
@@ -54,11 +53,11 @@
             </intent>
         </Preference>
         <Preference
-            android:summary="@string/mit_license"
-            android:title="@string/hphosts_ad_server_list">
+            android:summary="@string/license_gnu_gpl"
+            android:title="@string/adguard_ad_server_list">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/StevenBlack/hosts">
+                android:data="https://www.gnu.org/licenses/gpl-3.0.en.html">
                 <extra
                     android:name="SOURCE"
                     android:value="SELF" />

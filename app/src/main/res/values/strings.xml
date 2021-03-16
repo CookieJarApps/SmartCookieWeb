@@ -200,6 +200,7 @@
     <string name="freeware">Freeware</string>
     <string name="android_open_source_project">Android Open Source Project</string>
     <string name="hphosts_ad_server_list">Steven Black\'s Ad Hosts List</string>
+    <string name="adguard_ad_server_list">AdGuard DNS filter</string>
     <string name="deleted_tab">Reopened old tab</string>
     <string name="rendering_mode">Rendering mode</string>
     <string name="name_inverted">Inverted</string>
@@ -211,6 +212,7 @@
     <string name="title_file_chooser">File chooser</string>
     <string name="library_netcipher">NetCipher</string>
     <string name="license_gnu">GNU Lesser General Public License</string>
+    <string name="license_gnu_gpl">GNU General Public License</string>
     <string name="export_bookmarks">Export bookmarks to backup</string>
     <string name="import_backup">Import bookmarks from backup</string>
     <string name="export_tabs">Export tabs to backup</string>
