@@ -199,9 +199,6 @@ dependencies {
 
     // code editor
     implementation 'com.github.ahmadaghazadeh:CodeEditor:1.0.17'
-
-    // GSON
-    implementation 'com.google.code.gson:gson:2.8.6'
 }
 
 kapt {
