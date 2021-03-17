@@ -38,7 +38,8 @@
             android:minHeight="?android:attr/listPreferredItemHeight"
             android:text="@string/action_bookmarks"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_toEndOf="@id/bookmark_back_button"/>
+            android:layout_toEndOf="@id/bookmark_back_button"
+            android:textStyle="bold"/>
 
     </RelativeLayout>
 
