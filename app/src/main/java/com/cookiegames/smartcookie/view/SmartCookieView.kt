@@ -16,6 +16,7 @@ import android.os.Handler
 import android.os.Message
 import android.print.*
 import android.provider.Settings.Global.getString
+import android.util.Log
 import android.view.*
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.View.OnTouchListener
@@ -645,7 +646,8 @@ class SmartCookieView(
             // User has been notified
             return
         }
-        webView?.reload()
+        //webView?.reload()
+        smartCookieWebClient.reloadIncludingErrorPage(webView)
     }
 
     /**

@@ -82,6 +82,7 @@ class SmartCookieWebClient(
 
     private var zoomed = false
     private var first = true
+    private var errored = false
     private var initScale = 0f
 
     private var color = "<style>body{background-color:#424242 !important;} h1{color:#ffffff !important;} .error-code{color:#e6e6e6 !important;}</style>"
@@ -519,7 +520,17 @@ class SmartCookieWebClient(
         }
     }
 
+    fun reloadIncludingErrorPage(view: WebView?){
+        if(errored){
+            view?.loadUrl(currentUrl)
+        }
+        else{
+            view?.reload()
+        }
+    }
+
     override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
+        errored = true
         if(isPackageInstalled(activity.resources.getString(R.string.ytdl_package_name), activity.packageManager) && stringContainsItemFromList(url, knownUndetectedVideoUrls)){
             activity.findViewById<FrameLayout>(R.id.download_button).visibility = View.VISIBLE
         }
@@ -712,8 +723,8 @@ class SmartCookieWebClient(
     }
 
     override fun onReceivedError(webview: WebView, errorCode: Int, error: String, failingUrl: String) {
-
         if(errorCode != -1) {
+            errored = true
             Thread.sleep(500)
             webview.settings.javaScriptEnabled = true
             if (userPreferences.useTheme == AppTheme.LIGHT) {
