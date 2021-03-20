@@ -26,8 +26,7 @@ abstract class BaseSuggestionsModel internal constructor(
     private val requestFactory: RequestFactory,
     private val encoding: String,
     locale: Locale,
-    private val logger: Logger,
-    private val userPreferences: UserPreferences
+    private val logger: Logger
 ) : SuggestionsRepository {
 
     private val language = locale.language.takeIf(String::isNotEmpty) ?: DEFAULT_LANGUAGE
@@ -62,13 +61,10 @@ abstract class BaseSuggestionsModel internal constructor(
 
                     return@fromCallable emptyList<SearchSuggestion>()
                 }
-                var choice = 5
-                choice = userPreferences.suggestionChoice.value + 3
                 return@fromCallable client.downloadSuggestionsForQuery(query, language)
                     ?.body()
                     ?.safeUse(::parseResults)
-                    ?.take(choice) ?: emptyList()
-
+                    ?.take(MAX_RESULTS) ?: emptyList()
             }
         }
 
@@ -95,7 +91,7 @@ abstract class BaseSuggestionsModel internal constructor(
 
         private const val TAG = "BaseSuggestionsModel"
 
-        private const val MAX_RESULTS = 5
+        private const val MAX_RESULTS = 8
         private const val DEFAULT_LANGUAGE = "en"
 
     }

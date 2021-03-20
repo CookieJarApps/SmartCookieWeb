@@ -21,9 +21,8 @@ class BaiduSuggestionsModel(
     okHttpClient: Single<OkHttpClient>,
     requestFactory: RequestFactory,
     application: Application,
-    logger: Logger,
-    userPreferences: UserPreferences
-) : BaseSuggestionsModel(okHttpClient, requestFactory, UTF8, application.preferredLocale, logger, userPreferences) {
+    logger: Logger
+) : BaseSuggestionsModel(okHttpClient, requestFactory, UTF8, application.preferredLocale, logger) {
 
     private val searchSubtitle = application.getString(R.string.suggestion)
     private val inputEncoding = "GBK"
