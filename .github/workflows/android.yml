@@ -21,6 +21,8 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Unit Test
+      run: ./gradlew test
     - name: Upload APK
       uses: actions/upload-artifact@v2
       with:
