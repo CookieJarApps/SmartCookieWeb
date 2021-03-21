@@ -18,7 +18,7 @@ import javax.inject.Inject
  * on the user's preference.
  */
 @Reusable
-class SearchEngineProvider @Inject constructor(
+class  SearchEngineProvider @Inject constructor(
     private val userPreferences: UserPreferences,
     @SuggestionsClient private val okHttpClient: Single<OkHttpClient>,
     private val requestFactory: RequestFactory,
