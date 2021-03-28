@@ -7,6 +7,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.content.res.AssetManager
 import android.content.res.Configuration
@@ -1860,7 +1861,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         customViewCallback = callback
         customView = view
 
-        setRequestedOrientation(requestedOrientation)
+        //setRequestedOrientation(requestedOrientation)
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR)
         val decorView = window.decorView as FrameLayout
 
         fullscreenContainerView = FrameLayout(this)
