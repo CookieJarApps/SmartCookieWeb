@@ -51,19 +51,9 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         injector.inject(this)
 
         // preferences storage
-        clickableDynamicPreference(
-            preference = SETTINGS_THEME,
-            summary = userPreferences.useTheme.toDisplayString(),
-            onClick = ::showThemePicker
-        )
         clickablePreference(
             preference = SETTINGS_TEXTSIZE,
             onClick = ::showTextSizePicker
-        )
-
-        clickablePreference(
-                preference = SETTINGS_NAVBAR_COL,
-                onClick = ::showColorPicker
         )
 
         switchPreference(
@@ -77,12 +67,6 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
             preference = SETTINGS_HIDESTATUSBAR,
             isChecked = userPreferences.hideStatusBarEnabled,
             onCheckChange = { userPreferences.hideStatusBarEnabled = it }
-        )
-
-        switchPreference(
-                preference = SETTINGS_SHORTCUTS,
-                isChecked = userPreferences.showShortcuts,
-                onCheckChange = { userPreferences.showShortcuts = it }
         )
 
         switchPreference(
@@ -116,12 +100,6 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         )
 
         switchPreference(
-            preference = SETTINGS_BLACK_STATUS,
-            isChecked = userPreferences.useBlackStatusBar,
-            onCheckChange = { userPreferences.useBlackStatusBar = it }
-        )
-
-        switchPreference(
             preference = SETTINGS_DRAWERTABS,
             isChecked = userPreferences.showTabsInDrawer,
             onCheckChange = { userPreferences.showTabsInDrawer = it }
@@ -131,12 +109,6 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
             preference = SETTINGS_SWAPTABS,
             isChecked = userPreferences.bookmarksAndTabsSwapped,
             onCheckChange = { userPreferences.bookmarksAndTabsSwapped = it }
-        )
-
-        switchPreference(
-                preference = SETTINGS_STARTPAGE,
-                isChecked = userPreferences.startPageThemeEnabled,
-                onCheckChange = { userPreferences.startPageThemeEnabled = it }
         )
 
         switchPreference(
@@ -159,146 +131,6 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
                 preference = SETTINGS_SIZE,
                 onClick = ::showDrawerSize
         )
-        clickablePreference(
-                preference = SETTINGS_IMAGE_URL,
-                onClick = ::showImageUrlPicker
-        )
-        clickableDynamicPreference(
-                preference = SETTINGS_HOME,
-                summary = homePageUrlToDisplayTitle(userPreferences.homepage),
-                onClick = ::showHomePageDialog
-        )
-        clickableDynamicPreference(
-                preference = SETTINGS_HOMEPAGE_TYPE,
-                isEnabled = userPreferences.homepage == SCHEME_HOMEPAGE,
-                summary = homePageTypeToDisplayTitle(userPreferences.homepageType),
-                onClick = ::showHomepageTypePicker
-        )
-    }
-
-    private fun showHomepageTypePicker(summaryUpdater: SummaryUpdater) {
-        BrowserDialog.showCustomDialog(activity) {
-            setTitle(R.string.homepage_type)
-            val stringArray = resources.getStringArray(R.array.homepage_type)
-            val values = HomepageTypeChoice.values().map {
-                Pair(it, when (it) {
-                    HomepageTypeChoice.DEFAULT -> stringArray[0]
-                    HomepageTypeChoice.FOCUSED -> stringArray[1]
-                    HomepageTypeChoice.INFORMATIVE -> stringArray[2]
-                })
-            }
-            withSingleChoiceItems(values, userPreferences.homepageType) {
-                userPreferences.homepageType = it
-                summaryUpdater.updateSummary(homePageTypeToDisplayTitle(it))
-            }
-            setPositiveButton(R.string.action_ok, null)
-        }
-    }
-
-    private fun homePageTypeToDisplayTitle(choice: HomepageTypeChoice): String = when (choice) {
-        HomepageTypeChoice.DEFAULT -> resources.getString(R.string.agent_default)
-        HomepageTypeChoice.FOCUSED -> resources.getString(R.string.focused)
-        HomepageTypeChoice.INFORMATIVE -> resources.getString(R.string.informational)
-        else -> choice.toString()
-    }
-
-    private fun homePageUrlToDisplayTitle(url: String): String = when (url) {
-        SCHEME_HOMEPAGE -> resources.getString(R.string.action_homepage)
-        SCHEME_BLANK -> resources.getString(R.string.action_blank)
-        SCHEME_BOOKMARKS -> resources.getString(R.string.action_bookmarks)
-        else -> url
-    }
-
-    private fun showHomePageDialog(summaryUpdater: SummaryUpdater) {
-        BrowserDialog.showCustomDialog(activity) {
-            setTitle(R.string.home)
-            val n = when (userPreferences.homepage) {
-                SCHEME_HOMEPAGE -> 0
-                SCHEME_BLANK -> 1
-                SCHEME_BOOKMARKS -> 2
-                else -> 3
-            }
-
-            setSingleChoiceItems(R.array.homepage, n) { _, which ->
-                when (which) {
-                    0 -> {
-                        userPreferences.homepage = SCHEME_HOMEPAGE
-                        summaryUpdater.updateSummary(resources.getString(R.string.action_homepage))
-                    }
-                    1 -> {
-                        userPreferences.homepage = SCHEME_BLANK
-                        summaryUpdater.updateSummary(resources.getString(R.string.action_blank))
-                    }
-                    2 -> {
-                        userPreferences.homepage = SCHEME_BOOKMARKS
-                        summaryUpdater.updateSummary(resources.getString(R.string.action_bookmarks))
-                    }
-                    3 -> {
-                        showCustomHomePagePicker(summaryUpdater)
-                    }
-                }
-            }
-            setPositiveButton(resources.getString(R.string.action_ok), null)
-        }
-    }
-
-    private fun showCustomHomePagePicker(summaryUpdater: SummaryUpdater) {
-        val currentHomepage: String = if (!URLUtil.isAboutUrl(userPreferences.homepage)) {
-            userPreferences.homepage
-        } else {
-            "https://www.google.com"
-        }
-
-        activity?.let {
-            BrowserDialog.showEditText(it,
-                    R.string.title_custom_homepage,
-                    R.string.title_custom_homepage,
-                    currentHomepage,
-                    R.string.action_ok) { url ->
-                if(url.contains("http")){
-                    userPreferences.homepage = url
-                    summaryUpdater.updateSummary(url)
-                }
-                else{
-                    userPreferences.homepage = "https://" + url
-                    summaryUpdater.updateSummary("https://" + url)
-                }
-
-            }
-        }
-    }
-
-
-    private fun showImageUrlPicker() {
-        activity?.let {
-            BrowserDialog.showEditText(it,
-                    R.string.image_url,
-                    R.string.hint_url,
-                    userPreferences.imageUrlString,
-                    R.string.action_ok) { s ->
-                userPreferences.imageUrlString = s
-            }
-        }
-    }
-
-    private fun showColorPicker() {
-        BrowserDialog.showCustomDialog(activity) {
-            setTitle(R.string.navbar_col)
-            val stringArray = resources.getStringArray(R.array.navbar_col)
-            val values = ChooseNavbarCol.values().map {
-                Pair(it, when (it) {
-                    ChooseNavbarCol.NONE -> stringArray[0]
-                    ChooseNavbarCol.COLOR -> stringArray[1]
-                })
-            }
-            withSingleChoiceItems(values, userPreferences.navbarColChoice) {
-                userPreferences.navbarColChoice = it
-            }
-            setPositiveButton(R.string.action_ok) { _, _ ->
-                updateNavbarCol(userPreferences.navbarColChoice)
-            }
-        }
-
     }
 
     private fun showDrawerSize() {
@@ -406,41 +238,6 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         }.resizeAndShow()
     }
 
-
-    private fun showThemePicker(summaryUpdater: SummaryUpdater) {
-       val currentTheme = userPreferences.useTheme
-        MaterialAlertDialogBuilder(requireContext()).apply {
-            setTitle(resources.getString(R.string.theme))
-            val values = AppTheme.values().map { Pair(it, it.toDisplayString()) }
-            withSingleChoiceItems(values, userPreferences.useTheme) {
-                userPreferences.useTheme = it
-                summaryUpdater.updateSummary(it.toDisplayString())
-            }
-            setPositiveButton(resources.getString(com.cookiegames.smartcookie.R.string.action_ok)) { _, _ ->
-                if (currentTheme != userPreferences.useTheme) {
-                    //activity.onBackPressed()
-                    val intent = Intent(activity, MainActivity::class.java)
-                    startActivity(intent)
-                }
-            }
-            setOnCancelListener {
-                if (currentTheme != userPreferences.useTheme) {
-                    activity?.onBackPressed()
-                }
-            }
-        }.resizeAndShow()
-
-    }
-
-    private fun AppTheme.toDisplayString(): String = getString(when (this) {
-        AppTheme.LIGHT -> R.string.light_theme
-        AppTheme.DARK -> R.string.dark_theme
-        AppTheme.BLACK -> R.string.black_theme
-        /*AppTheme.BLUE -> R.string.blue_theme
-        AppTheme.GREEN -> R.string.green_theme
-        AppTheme.YELLOW -> R.string.yellow_theme*/
-    })
-
     private class TextSeekBarListener(
         private val sampleText: TextView,
         private val sizeText: TextView
@@ -464,23 +261,15 @@ class DisplaySettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_VIEWPORT = "wideViewPort"
         private const val SETTINGS_OVERVIEWMODE = "overViewMode"
         private const val SETTINGS_REFLOW = "text_reflow"
-        private const val SETTINGS_THEME = "app_theme"
         private const val SETTINGS_TEXTSIZE = "text_size"
         private const val SETTINGS_DRAWERTABS = "cb_drawertabs"
         private const val SETTINGS_SWAPTABS = "cb_swapdrawers"
-        private const val SETTINGS_BLACK_STATUS = "black_status_bar"
-        private const val SETTINGS_STARTPAGE = "startpage_theme"
         private const val SETTINGS_FOREGROUND = "new_tabs_foreground"
         private const val SETTINGS_EXTRA = "show_extra"
         private const val SETTINGS_BOTTOM_BAR = "bottom_bar"
-        private const val SETTINGS_NAVBAR_COL = "navbar_col"
         private const val SETTINGS_LINES = "drawer_lines"
         private const val SETTINGS_SIZE = "drawer_size"
-        private const val SETTINGS_IMAGE_URL = "image_url"
-        private const val SETTINGS_SHORTCUTS = "show_shortcuts"
         private const val SETTINGS_NAVBAR = "second_bar"
-        private const val SETTINGS_HOME = "home"
-        private const val SETTINGS_HOMEPAGE_TYPE = "homepage_type"
 
         private const val XXXX_LARGE = 38.0f
         private const val XXX_LARGE = 34.0f

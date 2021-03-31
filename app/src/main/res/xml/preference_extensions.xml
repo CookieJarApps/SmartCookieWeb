@@ -23,7 +23,7 @@
             android:defaultValue="false"
             android:key="amp"
             android:singleLineTitle="false"
-            android:icon="@drawable/ic_round_amp_stories_24"
+            android:icon="@drawable/ic_round_amp_stories"
             android:title="@string/amp_to_html"/>
         <Preference android:title="@string/coming_soon"
             android:key="coming_soon">

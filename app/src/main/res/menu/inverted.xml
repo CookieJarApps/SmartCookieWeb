@@ -46,7 +46,7 @@
         android:id="@+id/translate"
         android:title="@string/translator"/>
      <item
-        android:icon="@drawable/ic_content_copy_black_24dp"
+        android:icon="@drawable/ic_content_copy_black"
         android:id="@+id/action_copy"
         android:title="@string/action_copy"/>   
     <item
@@ -54,7 +54,7 @@
         android:id="@+id/action_find"
         android:title="@string/action_find"/>
      <item
-        android:icon="@drawable/ic_file_download_black_24dp"
+        android:icon="@drawable/ic_file_download_black"
         android:id="@+id/action_downloads"
         android:title="@string/action_downloads"/>   
     <item
@@ -62,11 +62,11 @@
         android:id="@+id/action_history"
         android:title="@string/action_history"/>
     <item
-        android:icon="@drawable/ic_round_print_24"
+        android:icon="@drawable/ic_round_print"
         android:id="@+id/action_print"
         android:title="@string/action_print"/>
     <item
-        android:icon="@drawable/ic_share_black_24dp"
+        android:icon="@drawable/ic_share_black"
         android:id="@+id/action_share"
         android:title="@string/action_share"/>
     <item

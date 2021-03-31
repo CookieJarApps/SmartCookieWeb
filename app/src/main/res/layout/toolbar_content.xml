@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_file_download_black_24dp"
+            app:srcCompat="@drawable/ic_file_download_black"
             app:tint="?attr/iconColor" />
     </FrameLayout>
 
@@ -63,7 +63,7 @@
         android:gravity="center">
 
         <ImageView
-        app:srcCompat="@drawable/ic_baseline_more_vert_24"
+        app:srcCompat="@drawable/ic_baseline_more_vert"
         android:id="@+id/overflow_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,43 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/theme">
-        <Preference
-            android:key="app_theme"
-            android:singleLineTitle="false"
-            android:title="@string/theme"/>
-        <Preference
-            android:key="navbar_col"
-            android:singleLineTitle="false"
-            android:title="@string/navbar_col"/>
-        <SwitchPreference
-            android:defaultValue="false"
-            android:singleLineTitle="false"
-            android:key="black_status_bar"
-            android:title="@string/settings_black_status_bar"/>
-        <SwitchPreference
-            android:defaultValue="true"
-            android:singleLineTitle="false"
-            android:key="startpage_theme"
-            android:title="@string/startpage"/>
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/home">
-        <Preference
-            android:key="home"
-            android:title="@string/home"
+    <PreferenceCategory android:title="@string/app_elements">
+        <androidx.preference.Preference
+            android:fragment="com.cookiegames.smartcookie.settings.fragment.ThemeSettingsFragment"
+            android:icon="@drawable/ic_settings_theme_layers"
+            android:title="@string/theme_settings"
             android:singleLineTitle="false"/>
-        <Preference
-            android:key="homepage_type"
-            android:title="@string/homepage_type"
+        <androidx.preference.Preference
+            android:fragment="com.cookiegames.smartcookie.settings.fragment.HomepageSettingsFragment"
+            android:icon="@drawable/ic_settings_homepage_layers"
+            android:title="@string/homepage_settings"
             android:singleLineTitle="false"/>
-        <Preference
-            android:key="image_url"
-            android:title="@string/image_url"
+        <androidx.preference.Preference
+            android:fragment="com.cookiegames.smartcookie.settings.fragment.DrawerSettingsFragment"
+            android:icon="@drawable/ic_settings_drawers_layers"
+            android:title="@string/drawer_settings"
             android:singleLineTitle="false"/>
-        <SwitchPreference
-            android:defaultValue="true"
-            android:singleLineTitle="false"
-            android:key="show_shortcuts"
-            android:title="@string/show_shortcuts"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/settings_display">
         <SwitchPreference
@@ -45,16 +23,6 @@
             android:singleLineTitle="false"
             android:key="second_bar"
             android:title="@string/show_second_bar" />
-        <SwitchPreference
-            android:defaultValue="true"
-            android:singleLineTitle="false"
-            android:key="cb_drawertabs"
-            android:title="@string/tabs_in_drawer"/>
-        <SwitchPreference
-            android:defaultValue="true"
-            android:singleLineTitle="false"
-            android:key="cb_swapdrawers"
-            android:title="@string/swap_bookmarks_and_tabs"/>
         <SwitchPreference
             android:defaultValue="false"
             android:singleLineTitle="false"
@@ -87,33 +55,16 @@
             android:singleLineTitle="false"
             android:key="text_reflow"
             android:title="@string/reflow"/>
-      <!--  <SwitchPreference
-            android:defaultValue="false"
-            android:singleLineTitle="false"
-            android:key="show_extra"
-            android:title="@string/show_extra"/> -->
         <SwitchPreference
             android:defaultValue="true"
             android:singleLineTitle="false"
             android:key="new_tabs_foreground"
             android:title="@string/new_tab_foreground"
             android:summary="@string/new_tab_foreground_summary"/>
-       <!-- <SwitchPreference
-            android:defaultValue="true"
-            android:key="show_whats_new"
-            android:title="@string/whats_new"/>-->
         <Preference
             android:key="text_size"
             android:singleLineTitle="false"
             android:title="@string/title_text_size"/>
-        <Preference
-            android:key="drawer_lines"
-            android:singleLineTitle="false"
-            android:title="@string/drawer_lines"/>
-        <Preference
-            android:key="drawer_size"
-            android:singleLineTitle="false"
-            android:title="@string/drawer_size"/>
     </PreferenceCategory>
 
 </PreferenceScreen>

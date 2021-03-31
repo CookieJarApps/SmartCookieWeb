@@ -10,7 +10,6 @@ import android.webkit.MimeTypeMap
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.EditText
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.net.toUri
@@ -35,7 +34,6 @@ import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.utils.IntentUtils
 import com.cookiegames.smartcookie.utils.isBookmarkUrl
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
 import com.huxq17.download.DownloadProvider
 import dagger.Reusable
 import io.reactivex.Scheduler
@@ -101,7 +99,7 @@ class LightningDialogBuilder @Inject constructor(
         DialogItem(title = R.string.dialog_open_new_tab, icon = ContextCompat.getDrawable(activity, R.drawable.ic_action_tabs)) {
             uiController.handleNewTab(NewTab.FOREGROUND, entry.url)
         },
-        DialogItem(title = R.string.dialog_open_background_tab, icon = ContextCompat.getDrawable(activity, R.drawable.ic_round_open_in_new_24)) {
+        DialogItem(title = R.string.dialog_open_background_tab, icon = ContextCompat.getDrawable(activity, R.drawable.ic_round_open_in_new)) {
             uiController.handleNewTab(NewTab.BACKGROUND, entry.url)
         },
         DialogItem(
@@ -111,10 +109,10 @@ class LightningDialogBuilder @Inject constructor(
         ) {
             uiController.handleNewTab(NewTab.INCOGNITO, entry.url)
         },
-        DialogItem(title = R.string.action_share, icon = ContextCompat.getDrawable(activity, R.drawable.ic_share_black_24dp)) {
+        DialogItem(title = R.string.action_share, icon = ContextCompat.getDrawable(activity, R.drawable.ic_share_black)) {
             IntentUtils(activity).shareUrl(entry.url, entry.title)
         },
-        DialogItem(title = R.string.dialog_copy_link, icon = ContextCompat.getDrawable(activity, R.drawable.ic_content_copy_black_24dp)) {
+        DialogItem(title = R.string.dialog_copy_link, icon = ContextCompat.getDrawable(activity, R.drawable.ic_content_copy_black)) {
             clipboardManager.copyToClipboard(entry.url)
         },
         DialogItem(title = R.string.dialog_remove_bookmark, icon = ContextCompat.getDrawable(activity, R.drawable.ic_action_delete)) {

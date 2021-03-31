@@ -89,6 +89,12 @@ interface AppComponent {
 
     fun inject(adBlockSettingsFragment: AdBlockSettingsFragment)
 
+    fun inject(drawerSettingsFragment: DrawerSettingsFragment)
+
+    fun inject(homepageSettingsFragment: HomepageSettingsFragment)
+
+    fun inject(themeSettingsFragment: ThemeSettingsFragment)
+
     fun inject(parentalSettingsFragment: ParentalControlSettingsFragment)
 
     fun inject(bookmarksView: BookmarksDrawerView)

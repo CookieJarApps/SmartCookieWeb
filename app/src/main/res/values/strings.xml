@@ -622,5 +622,14 @@
     <string name="webview_version">WebView version</string>
     <string name="unknown">Unknown</string>
 
+    <string name="rotate_site_popup">Would you like to follow system rotation?</string>
+    <string name="rotate_site">Follow system rotation?</string>
+
+    <string name="app_elements">App elements</string>
+    <string name="theme_settings">Theme settings</string>
+    <string name="homepage_settings">Homepage settings</string>
+    <string name="navbar_settings">Navbar settings</string>
+    <string name="drawer_settings">Drawer settings</string>
+
     <!-- finish pages -->
 </resources>

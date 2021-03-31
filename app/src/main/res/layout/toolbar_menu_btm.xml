@@ -76,7 +76,7 @@
                 android:paddingStart="6dp"
                 android:paddingTop="4dp"
                 android:paddingEnd="6dp"
-                app:srcCompat="@drawable/ic_round_open_in_new_24" />
+                app:srcCompat="@drawable/ic_round_open_in_new" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/bookmark_option"

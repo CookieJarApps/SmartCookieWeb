@@ -306,7 +306,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
                     builder.show()
 
                 }, DialogItem(
-                icon = context.drawable(R.drawable.ic_round_storage_24),
+                icon = context.drawable(R.drawable.ic_round_storage),
                 title = R.string.edit_cookies
         ) {
 
@@ -330,7 +330,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
 
         },
                 DialogItem(
-                        icon = context.drawable(R.drawable.ic_baseline_code_24),
+                        icon = context.drawable(R.drawable.ic_baseline_code),
                         title = R.string.page_source
 
                 ) {

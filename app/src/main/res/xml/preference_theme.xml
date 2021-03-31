@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/theme_settings">
+        <Preference
+            android:key="app_theme"
+            android:singleLineTitle="false"
+            android:title="@string/theme"/>
+        <Preference
+            android:key="navbar_col"
+            android:singleLineTitle="false"
+            android:title="@string/navbar_col"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:singleLineTitle="false"
+            android:key="black_status_bar"
+            android:title="@string/settings_black_status_bar"/>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:singleLineTitle="false"
+            android:key="startpage_theme"
+            android:title="@string/startpage"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

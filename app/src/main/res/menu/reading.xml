@@ -28,13 +28,13 @@
     </item>
     <item
         android:id="@+id/download"
-        android:icon="@drawable/ic_file_download_black_24dp"
+        android:icon="@drawable/ic_file_download_black"
         android:title="@string/action_download"
         app:showAsAction="ifRoom">
     </item>
     <item
         android:id="@+id/open"
-        android:icon="@drawable/ic_round_open_in_new_24"
+        android:icon="@drawable/ic_round_open_in_new"
         android:title="@string/action_open"
         app:showAsAction="ifRoom">
     </item>

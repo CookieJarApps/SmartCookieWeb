@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_file_download_black_24dp" />
+        app:srcCompat="@drawable/ic_file_download_black" />
 
     <ProgressBar
         android:id="@+id/dl_progress"

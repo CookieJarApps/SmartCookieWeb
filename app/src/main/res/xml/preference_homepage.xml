@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/homepage_settings">
+        <Preference
+            android:key="home"
+            android:title="@string/home"
+            android:singleLineTitle="false"/>
+        <Preference
+            android:key="homepage_type"
+            android:title="@string/homepage_type"
+            android:singleLineTitle="false"/>
+        <Preference
+            android:key="image_url"
+            android:title="@string/image_url"
+            android:singleLineTitle="false"/>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:singleLineTitle="false"
+            android:key="show_shortcuts"
+            android:title="@string/show_shortcuts"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -5,7 +5,6 @@
 
 package com.cookiegames.smartcookie.popup
 
-import android.content.ActivityNotFoundException
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -14,17 +13,12 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
-import android.os.Parcelable
-import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
-import androidx.annotation.NonNull
-import androidx.annotation.Nullable
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat.startActivity
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.IncognitoActivity
 import com.cookiegames.smartcookie.R
@@ -41,7 +35,6 @@ import com.cookiegames.smartcookie.history.HistoryActivity
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.reading.activity.ReadingActivity
 import com.cookiegames.smartcookie.settings.activity.SettingsActivity
-import com.cookiegames.smartcookie.utils.DeviceUtils
 import com.cookiegames.smartcookie.utils.IntentUtils
 import com.cookiegames.smartcookie.utils.Utils
 import com.cookiegames.smartcookie.utils.isSpecialUrl
@@ -155,20 +148,20 @@ class PopUpClass {
         popupWindow.setBackgroundDrawable(ColorDrawable(Color.WHITE))
         val resources = view.context.resources
         var textString: MutableList<String> = mutableListOf(resources.getString(R.string.action_new_tab), resources.getString(R.string.action_incognito), resources.getString(R.string.action_share), resources.getString(R.string.action_print), resources.getString(R.string.action_history), resources.getString(R.string.action_downloads), resources.getString(R.string.action_find), resources.getString(R.string.action_copy), resources.getString(R.string.action_add_to_homescreen), resources.getString(R.string.action_bookmarks), resources.getString(R.string.reading_mode), resources.getString(R.string.settings))
-        var drawableIds: MutableList<Int> = mutableListOf(R.drawable.ic_round_add, R.drawable.incognito_mode, R.drawable.ic_share_black_24dp, R.drawable.ic_round_print_24, R.drawable.ic_history, R.drawable.ic_file_download_black_24dp, R.drawable.ic_search, R.drawable.ic_content_copy_black_24dp, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings)
+        var drawableIds: MutableList<Int> = mutableListOf(R.drawable.ic_round_add, R.drawable.incognito_mode, R.drawable.ic_share_black, R.drawable.ic_round_print, R.drawable.ic_history, R.drawable.ic_file_download_black, R.drawable.ic_search, R.drawable.ic_content_copy_black, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings)
 
         if(userPreferences.translateExtension){
             textString = mutableListOf(resources.getString(R.string.action_new_tab), resources.getString(R.string.action_incognito), resources.getString(R.string.action_share), resources.getString(R.string.translator), resources.getString(R.string.action_print), resources.getString(R.string.action_history), resources.getString(R.string.action_downloads), resources.getString(R.string.action_find), resources.getString(R.string.action_copy), resources.getString(R.string.action_add_to_homescreen), resources.getString(R.string.action_bookmarks), resources.getString(R.string.reading_mode), resources.getString(R.string.settings))
-            drawableIds = mutableListOf(R.drawable.ic_round_add, R.drawable.incognito_mode, R.drawable.ic_share_black_24dp, R.drawable.translate, R.drawable.ic_round_print_24, R.drawable.ic_history, R.drawable.ic_file_download_black_24dp, R.drawable.ic_search, R.drawable.ic_content_copy_black_24dp, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings)
+            drawableIds = mutableListOf(R.drawable.ic_round_add, R.drawable.incognito_mode, R.drawable.ic_share_black, R.drawable.translate, R.drawable.ic_round_print, R.drawable.ic_history, R.drawable.ic_file_download_black, R.drawable.ic_search, R.drawable.ic_content_copy_black, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings)
         }
         if(activity.isIncognito()){
             textString = mutableListOf(resources.getString(R.string.action_new_tab), resources.getString(R.string.action_print), resources.getString(R.string.action_find), resources.getString(R.string.action_copy), resources.getString(R.string.action_add_to_homescreen), resources.getString(R.string.action_bookmarks), resources.getString(R.string.reading_mode), resources.getString(R.string.settings), resources.getString(R.string.quit_private))
-            drawableIds = mutableListOf(R.drawable.ic_round_add, R.drawable.ic_round_print_24, R.drawable.ic_search, R.drawable.ic_content_copy_black_24dp, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings, R.drawable.ic_action_back)
+            drawableIds = mutableListOf(R.drawable.ic_round_add, R.drawable.ic_round_print, R.drawable.ic_search, R.drawable.ic_content_copy_black, R.drawable.ic_round_smartphone, R.drawable.state_ic_bookmark, R.drawable.ic_action_reading, R.drawable.ic_round_settings, R.drawable.ic_action_back)
         }
         if (userPreferences.navbar && !activity.isIncognito() && intent.resolveActivity(packageManager) != null && intent.resolveActivity(packageManager).packageName != activity.applicationContext.packageName && !currentUrl.isSpecialUrl()) {
             var index = if(userPreferences.translateExtension && userPreferences.bottomBar){5}else{4}
             textString.add(index, resources.getString(R.string.open_in_app))
-            drawableIds.add(index, R.drawable.ic_round_open_in_new_24)
+            drawableIds.add(index, R.drawable.ic_round_open_in_new)
         }
         if (userPreferences!!.bottomBar) {
             textString.reverse()
@@ -228,6 +221,10 @@ class PopUpClass {
                 }
                 resources.getString(R.string.close) -> {
                     activity.onBackPressed() // 12 - Quit
+                    activity.finish()
+                }
+                resources.getString(R.string.quit_private) -> {
+                    view.context.startActivity(Intent(view.context, BrowserActivity::class.java))
                     activity.finish()
                 }
                 resources.getString(R.string.translator) -> {

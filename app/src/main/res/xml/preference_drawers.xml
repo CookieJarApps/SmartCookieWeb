@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/drawer_settings">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:singleLineTitle="false"
+            android:key="cb_drawertabs"
+            android:title="@string/tabs_in_drawer"/>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:singleLineTitle="false"
+            android:key="cb_swapdrawers"
+            android:title="@string/swap_bookmarks_and_tabs"/>
+        <Preference
+            android:key="drawer_lines"
+            android:singleLineTitle="false"
+            android:title="@string/drawer_lines"/>
+        <Preference
+            android:key="drawer_size"
+            android:singleLineTitle="false"
+            android:title="@string/drawer_size"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

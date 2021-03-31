@@ -24,7 +24,6 @@ import android.webkit.MimeTypeMap
 import android.webkit.URLUtil
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.net.toUri
 import com.cookiegames.smartcookie.BuildConfig
 import com.cookiegames.smartcookie.MainActivity
@@ -171,7 +170,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
 
         builder.setContentTitle(context.getString(R.string.action_download))
                 .setContentText(fileName)
-                .setSmallIcon(R.drawable.ic_file_download_black_24dp)
+                .setSmallIcon(R.drawable.ic_file_download_black)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setOnlyAlertOnce(true)
 
@@ -197,7 +196,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
                         notificationManager.cancel(uniqid)
                         builder.setContentTitle(context.getString(R.string.download_successful))
                                 .setContentText(URLUtil.guessFileName(url, contentDisposition, mimeType))
-                                .setSmallIcon(R.drawable.ic_file_download_black_24dp)
+                                .setSmallIcon(R.drawable.ic_file_download_black)
                                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                                 .setContentIntent(rpIntent)
                                 .setOnlyAlertOnce(true)
