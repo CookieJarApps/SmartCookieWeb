@@ -312,6 +312,12 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         val iterator = BreakIterator.getSentenceInstance(Locale.US)
         val startSelection = mBody!!.selectionStart
         val endSelection = mBody!!.selectionEnd
+
+        if(endSelection < 1){
+            Toast.makeText(this, resources.getString(R.string.select_translate_text), Toast.LENGTH_LONG).show()
+            return
+        }
+
         val spanned = mBody!!.text as Spanned
         val source = mBody!!.text.substring(startSelection, endSelection)
 
@@ -433,9 +439,13 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     tts!!.stop()
                     reading = !reading
                 }
+                if(mBody!!.selectionEnd < 1){
+                    Toast.makeText(this, resources.getString(R.string.select_translate_text), Toast.LENGTH_LONG).show()
+                    return false
+                }
                 val source = mBody!!.text.substring(mBody!!.selectionStart, mBody!!.selectionEnd)
                 if (source == "") {
-                    Toast.makeText(this, resources.getString(R.string.select_translate_text), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, resources.getString(R.string.select_tts_text), Toast.LENGTH_LONG).show()
                     return false
                 }
                 reading = !reading
