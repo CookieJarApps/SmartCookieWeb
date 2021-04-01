@@ -23,8 +23,6 @@ class UserPreferences @Inject constructor(
     @UserPrefs preferences: SharedPreferences,
     screenSize: ScreenSize
 ) {
-    var menuItems by preferences.stringPreference(MENU_ITEMS, "")
-
     var siteBlockChoice by preferences.enumPreference(SITE_BLOCK, SiteBlockChoice.NONE)
     var siteBlockNames by preferences.stringPreference(USE_SITE_BLOCK, "")
 
@@ -373,7 +371,7 @@ class UserPreferences @Inject constructor(
     var link4 by preferences.stringPreference(LINK4, "https://speedtest.cookiejarapps.com")
 
     // API endpoints
-    var translationEndpoint by preferences.stringPreference(TRANSLATION_ENDPOINT, "https://cookiejarapps.com/translate/")
+    var translationEndpoint by preferences.stringPreference(TRANSLATION_ENDPOINT, "https://smartcookieweb.com/translate/")
     var newsEndpoint by preferences.stringPreference(NEWS_ENDPOINT, "https://smartcookieweb.com/news/api.php")
 
     var useNewDownloader by preferences.booleanPreference(LEGACY_DOWNLOADER, true)

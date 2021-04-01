@@ -361,6 +361,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         setSupportActionBar(toolbar)
         val actionBar = requireNotNull(supportActionBar)
 
+        if(userPreferences.translationEndpoint == "https://cookiejarapps.com/translate/"){
+            userPreferences.translationEndpoint = "https://smartcookieweb.com/translate/"
+        }
+
         if(userPreferences.firstLaunch){
             startActivity(Intent(this, Onboarding::class.java))
             userPreferences.firstLaunch = false
