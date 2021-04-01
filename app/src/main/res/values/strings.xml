@@ -631,5 +631,8 @@
     <string name="navbar_settings">Navbar settings</string>
     <string name="drawer_settings">Drawer settings</string>
 
+    <string name="drawer_item_offset">Drawer item offset</string>
+    <string name="example_item">Example item</string>
+    <string name="stack_items_reverse">Stack items from bottom of drawer</string>
     <!-- finish pages -->
 </resources>

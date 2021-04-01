@@ -77,12 +77,22 @@ class TabsDrawerView @JvmOverloads constructor(
             moveDuration = 200
         }
 
+        val layoutManagerItem = LinearLayoutManager(context)
+        layoutManagerItem.reverseLayout = userPreferences.stackFromBottom
+
         tabList = findViewById<RecyclerView>(R.id.tabs_list).apply {
             setLayerType(View.LAYER_TYPE_NONE, null)
             itemAnimator = animator
-            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            layoutManager = layoutManagerItem
             adapter = tabsAdapter
             setHasFixedSize(true)
+        }
+
+        if(userPreferences.stackFromBottom){
+            tabList.setPadding(tabList.paddingLeft, 0, tabList.paddingRight, userPreferences.drawerOffset * 10)
+        }
+        else{
+            tabList.setPadding(tabList.paddingLeft, userPreferences.drawerOffset * 10, tabList.paddingRight, tabList.paddingBottom)
         }
 
         itemTouchHelper.attachToRecyclerView(tabList)

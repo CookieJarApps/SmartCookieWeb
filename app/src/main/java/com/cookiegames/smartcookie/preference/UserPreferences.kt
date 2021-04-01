@@ -31,6 +31,7 @@ class UserPreferences @Inject constructor(
 
     var navbarColChoice by preferences.enumPreference(NAVBAR_COL, ChooseNavbarCol.NONE)
 
+    var drawerOffset by preferences.intPreference(DRAWER_OFFSET, 0)
 
     var passwordChoice by preferences.enumPreference(PASSWORD, PasswordChoice.NONE)
     var passwordText by preferences.stringPreference(USE_PASSWORD, "")
@@ -47,6 +48,8 @@ class UserPreferences @Inject constructor(
     var startPageThemeEnabled by preferences.booleanPreference(START_THEME, true)
 
     var tabsToForegroundEnabled by preferences.booleanPreference(FOREGROUND, true)
+
+    var stackFromBottom by preferences.booleanPreference(STACK_FROM_BOTTOM, false)
 
     /**
      * True if the browser should block ads, false otherwise.
@@ -485,5 +488,5 @@ private const val SHOW_DOWNLOAD_CONFIRMATION = "showDownloadConfirmation"
 private const val TRANSLATION_ENDPOINT = "translationEndpoint"
 private const val NEWS_ENDPOINT = "newsEndpoint"
 private const val HOMEPAGE_TYPE = "homepageType"
-private const val FOLLOW_SYSTEM_ROTATION = "followSystem"
-private const val SHOW_ROTATION_SNACKBAR = "showRotationSnackbar"
+private const val STACK_FROM_BOTTOM = "stackFromBottom"
+private const val DRAWER_OFFSET = "drawerOffset"

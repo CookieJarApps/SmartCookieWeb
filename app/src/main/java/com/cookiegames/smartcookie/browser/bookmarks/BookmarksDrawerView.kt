@@ -153,12 +153,21 @@ class BookmarksDrawerView @JvmOverloads constructor(
 
         itemTouchHelper.attachToRecyclerView(bookmarkRecyclerView)
 
+        val layoutManagerItem = LinearLayoutManager(context)
+        layoutManagerItem.reverseLayout = userPreferences.stackFromBottom
+
         bookmarkRecyclerView?.let {
-            it.layoutManager = LinearLayoutManager(context)
+            it.layoutManager = layoutManagerItem
             it.adapter = bookmarkAdapter
         }
 
-        //itemTouchHelper.attachToRecyclerView(bookmarkRecyclerView)
+        bookmarkRecyclerView?.let {
+            if (userPreferences.stackFromBottom) {
+                it.setPadding(it.paddingLeft, 0, it.paddingRight, userPreferences.drawerOffset * 10)
+            } else {
+                it.setPadding(it.paddingLeft, userPreferences.drawerOffset * 10, it.paddingRight, it.paddingBottom)
+            }
+        }
 
         setBookmarksShown(null, true)
     }

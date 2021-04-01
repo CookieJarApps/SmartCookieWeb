@@ -95,6 +95,8 @@ interface AppComponent {
 
     fun inject(themeSettingsFragment: ThemeSettingsFragment)
 
+    fun inject(drawerOffsetFragment: DrawerOffsetFragment)
+
     fun inject(parentalSettingsFragment: ParentalControlSettingsFragment)
 
     fun inject(bookmarksView: BookmarksDrawerView)

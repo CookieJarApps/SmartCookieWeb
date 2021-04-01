@@ -11,6 +11,11 @@
             android:singleLineTitle="false"
             android:key="cb_swapdrawers"
             android:title="@string/swap_bookmarks_and_tabs"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:singleLineTitle="false"
+            android:key="stack_from_bottom"
+            android:title="@string/stack_items_reverse"/>
         <Preference
             android:key="drawer_lines"
             android:singleLineTitle="false"
@@ -19,6 +24,10 @@
             android:key="drawer_size"
             android:singleLineTitle="false"
             android:title="@string/drawer_size"/>
+        <androidx.preference.Preference
+            android:fragment="com.cookiegames.smartcookie.settings.fragment.DrawerOffsetFragment"
+            android:singleLineTitle="false"
+            android:title="@string/drawer_item_offset" />
     </PreferenceCategory>
 
 </PreferenceScreen>

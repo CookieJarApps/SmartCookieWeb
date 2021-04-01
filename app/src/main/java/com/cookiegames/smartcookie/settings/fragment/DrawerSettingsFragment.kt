@@ -36,6 +36,12 @@ class DrawerSettingsFragment : AbstractSettingsFragment() {
         )
 
         switchPreference(
+                preference = SETTINGS_STACK_FROM_BOTTOM,
+                isChecked = userPreferences.stackFromBottom,
+                onCheckChange = { userPreferences.stackFromBottom = it }
+        )
+
+        switchPreference(
             preference = SETTINGS_SWAPTABS,
             isChecked = userPreferences.bookmarksAndTabsSwapped,
             onCheckChange = { userPreferences.bookmarksAndTabsSwapped = it }
@@ -99,5 +105,6 @@ class DrawerSettingsFragment : AbstractSettingsFragment() {
         private const val SETTINGS_SWAPTABS = "cb_swapdrawers"
         private const val SETTINGS_LINES = "drawer_lines"
         private const val SETTINGS_SIZE = "drawer_size"
+        private const val SETTINGS_STACK_FROM_BOTTOM = "stack_from_bottom"
     }
 }
