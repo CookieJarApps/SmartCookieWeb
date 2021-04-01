@@ -320,6 +320,13 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             return
         }
 
+        mProgressDialog = ProgressDialog(this@ReadingActivity)
+        mProgressDialog!!.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+        mProgressDialog!!.setCancelable(false)
+        mProgressDialog!!.isIndeterminate = true
+        mProgressDialog!!.setMessage(getString(R.string.loading))
+        mProgressDialog!!.show()
+
         iterator.setText(source)
         var end = iterator.next()
         while (end != BreakIterator.DONE) {
@@ -347,6 +354,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                         try {
                             val jsonObject = JSONObject(values)
                             mBody!!.text = TextUtils.concat(mBody!!.text.subSequence(0, startSelection), Html.fromHtml(jsonObject.getString("text")), mBody!!.text.subSequence(endSelection, mBody!!.text.length))
+                            mProgressDialog!!.hide()
                         } catch (ignored: JSONException) {
                         }
                     }
