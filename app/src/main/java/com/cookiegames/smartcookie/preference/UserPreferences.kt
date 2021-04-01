@@ -23,6 +23,8 @@ class UserPreferences @Inject constructor(
     @UserPrefs preferences: SharedPreferences,
     screenSize: ScreenSize
 ) {
+    var menuItems by preferences.stringPreference(MENU_ITEMS, "")
+
     var siteBlockChoice by preferences.enumPreference(SITE_BLOCK, SiteBlockChoice.NONE)
     var siteBlockNames by preferences.stringPreference(USE_SITE_BLOCK, "")
 
@@ -489,4 +491,5 @@ private const val TRANSLATION_ENDPOINT = "translationEndpoint"
 private const val NEWS_ENDPOINT = "newsEndpoint"
 private const val HOMEPAGE_TYPE = "homepageType"
 private const val STACK_FROM_BOTTOM = "stackFromBottom"
+private const val MENU_ITEMS = "menu_items"
 private const val DRAWER_OFFSET = "drawerOffset"

@@ -19,17 +19,18 @@ import androidx.annotation.Nullable
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.browser.MenuItemClass
 import com.cookiegames.smartcookie.preference.UserPreferences
 import javax.inject.Inject
 
-class CustomAdapter(private val mContext: Context, private val Title: Array<String>, private val imge: IntArray) : BaseAdapter() {
+class MenuItemAdapter(private val mContext: Context, private val items: MutableList<MenuItemClass>) : BaseAdapter() {
 
     @Inject
     lateinit var userPreferences: UserPreferences
 
     override fun getCount(): Int {
         // TODO Auto-generated method stub
-        return Title.size
+        return items.size
     }
 
     override fun getItemId(position: Int): Long {
@@ -39,18 +40,18 @@ class CustomAdapter(private val mContext: Context, private val Title: Array<Stri
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val row: View
-        row = inflater.inflate(R.layout.menu_row, parent, false)
-        val title: TextView
-        val i1: ImageView
-        i1 = row.findViewById<View>(R.id.imgIcon) as ImageView
-        title = row.findViewById<View>(R.id.txtTitle) as TextView
-        title.textSize = 14f
-        title.text = Title[position]
-        i1.setImageResource(imge[position])
-        var tint = ContextCompat.getColor(mContext, R.color.black)
+        val row: View = inflater.inflate(R.layout.menu_row, parent, false)
+
+        val icon: ImageView = row.findViewById<View>(R.id.imgIcon) as ImageView
+        val title: TextView = row.findViewById<View>(R.id.txtTitle) as TextView
+
+        icon.setImageResource(items[position].icon)
+        title.text = mContext.resources?.getString(items[position].name)
+
+        val tint: Int
         val typedValue = TypedValue()
         val theme = mContext.theme
+
         theme.resolveAttribute(R.attr.iconColor, typedValue, true)
         @ColorInt val color = typedValue.data
         //TODO: find another way to get the theme here, this'll break if I add new themes
@@ -61,12 +62,13 @@ class CustomAdapter(private val mContext: Context, private val Title: Array<Stri
             tint = ContextCompat.getColor(mContext, R.color.white)
             title.setTextColor(ContextCompat.getColor(mContext, R.color.white))
         }
-        ImageViewCompat.setImageTintList(i1, ColorStateList.valueOf(tint))
+        ImageViewCompat.setImageTintList(icon, ColorStateList.valueOf(tint))
+
         return row
     }
 
     override fun getItem(position: Int): Any {
-        return Title.get(position)
+        return items.get(position)
     }
 
 }
