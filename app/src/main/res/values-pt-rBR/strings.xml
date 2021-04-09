@@ -3,7 +3,7 @@
     <string name="app_desc">Um navegador gratuito e de código aberto que bloqueia anúncios e rastreadores</string>
     <string name="action_new_tab">Nova aba</string>
     <string name="action_share">Compartilhar</string>
-    <string name="action_print">Captura de tela</string>
+    <string name="action_print">Imprimir</string>
     <string name="action_history">Histórico</string>
     <string name="action_bookmarks">Favoritos</string>
     <string name="action_downloads">Downloads</string>
@@ -22,7 +22,7 @@
     <string name="download">Local de download</string>
     <string name="settings_advanced">Configurações avançadas</string>
     <string name="settings_advanced_explain">Conteúdo da barra de endereço, modo de renderização, codificação do texto&#8230;</string>
-    <string name="apache">Licença Apache 2.0</string>
+    <string name="apache">Apache License 2.0</string>
     <string name="version">Versão do aplicativo</string>
     <string name="cache">Limpar cache ao sair</string>
     <string name="reflow">Ativar ajuste de texto</string>
@@ -186,10 +186,11 @@
     <string name="folder_default">Padrão</string>
     <string name="folder_custom">Personalizado</string>
     <string name="untitled">Sem título</string>
-    <string name="mpl_license">Licença Pública Mozilla 2.0</string>
+    <string name="mpl_license">Mozilla Public License 2.0</string>
     <string name="freeware">Freeware</string>
     <string name="android_open_source_project">Projeto Open Source Android</string>
     <string name="hphosts_ad_server_list">Steven Black\'s Ad Hosts List</string>
+    <string name="adguard_ad_server_list">Filtro DNS do AdGuard</string>
     <string name="deleted_tab">Aba antiga reaberta</string>
     <string name="rendering_mode">Modo de renderização</string>
     <string name="name_inverted">Invertido</string>
@@ -200,7 +201,8 @@
     <string name="sync_history">Sincronizar histórico com o Google</string>
     <string name="title_file_chooser">Seletor de arquivos</string>
     <string name="library_netcipher">NetCipher</string>
-    <string name="license_gnu">Licença Pública Geral GNU Lesser</string>
+    <string name="license_gnu">GNU Lesser General Public License</string>
+    <string name="license_gnu_gpl">GNU General Public License</string>
     <string name="export_bookmarks">Exportar backup de favoritos</string>
     <string name="import_backup">Importar backup de favoritos</string>
     <string name="export_tabs">Exportar backup de abas</string>
@@ -232,7 +234,7 @@
     <string name="loading_failed">Não foi possível carregar a página.</string>
     <string name="snacktory">Snacktory</string>
     <string name="jsoup">jsoup: Java HTML Parser</string>
-    <string name="mit_license">Licença MIT</string>
+    <string name="mit_license">MIT License</string>
     <string name="url_contents">Conteúdo da barra de endereço</string>
     <string name="text_encoding">Codificação de texto</string>
     <string-array name="url_content_array">
@@ -489,14 +491,38 @@
     <string name="new_tab_opened">Nova aba aberta</string>
     <string name="switch_button">Trocar</string>
     <string name="dont_ask_again">Não perguntar novamente</string>
+    <!-- text-to-speech -->
     <string name="tts">Ler página</string>
     <string name="stop_tts">Parar leitura</string>
     <string name="translation_endpoint">\'Endpoint\' de tradução</string>
     <string name="news_endpoint">\'Endpoint\' de notícias</string>
     <string name="select_translate_text">Selecione o texto que você deseja que seja traduzido</string>
     <string name="select_tts_text">Selecione o texto que você deseja que seja lido</string>
+    <!-- homepage type -->
     <string name="homepage_type">Tipo de página inicial</string>
     <string name="focused">Focada</string>
     <string name="informational">Informativa</string>
+    <!-- tab export -->
+    <string name="export_to_file">Exportar para arquivo</string>
+    <string name="export_as_html">Exportar como HTML</string>
+    <string name="export_as_list">Exportar como lista</string>
+    <!-- block page -->
+    <string name="page_blocked">Página bloqueada</string>
+    <string name="page_blocked_adblocker">BLOCKED_BY_ADBLOCKER</string>
+    <string name="page_blocked_parental">BLOCKED_BY_PARENTAL_CONTROLS</string>
+    <string name="go_back">Voltar</string>
+    <string name="proceed">Continuar mesmo assim</string>
+    <string name="webview_version">Versão do WebView</string>
+    <string name="unknown">Desconhecido</string>
+    <string name="rotate_site_popup">Gostaria de acompanhar a rotação do sistema?</string>
+    <string name="rotate_site">Seguir rotação do sistema?</string>
+    <string name="app_elements">Elementos do aplicativo</string>
+    <string name="theme_settings">Configurações do tema</string>
+    <string name="homepage_settings">Configurações da página inicial</string>
+    <string name="navbar_settings">Configurações da barra de navegação</string>
+    <string name="drawer_settings">Configurações do menu</string>
+    <string name="drawer_item_offset">Deslocamento de itens no menu</string>
+    <string name="example_item">Exemplo de item</string>
+    <string name="stack_items_reverse">Empilhar itens da parte inferior do menu</string>
     <!-- finish pages -->
 </resources>

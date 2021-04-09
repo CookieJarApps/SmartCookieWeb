@@ -55,7 +55,6 @@ import javax.inject.Inject
  * The view that displays bookmarks in a list and some controls.
  */
 
-//TODO: DOESN'T SAVE MOVED BOOKMARKS!
 class BookmarksDrawerView @JvmOverloads constructor(
         context: Context,
         private val activity: Activity,

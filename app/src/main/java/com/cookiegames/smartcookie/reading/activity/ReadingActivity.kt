@@ -510,7 +510,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     override fun onInit(status: Int) {
-        if (status === TextToSpeech.SUCCESS) {
+        if (status == TextToSpeech.SUCCESS) {
             val result: Int = tts!!.setLanguage(Locale.US)
 
             tts!!.setOnUtteranceCompletedListener(OnUtteranceCompletedListener {

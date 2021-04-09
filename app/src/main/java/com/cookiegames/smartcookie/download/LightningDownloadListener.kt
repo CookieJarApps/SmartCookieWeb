@@ -48,8 +48,7 @@ class LightningDownloadListener(context: Activity) : DownloadListener {
                 object : PermissionsResultAction() {
                     override fun onGranted() {
                         val fileName = URLUtil.guessFileName(url, contentDisposition, mimetype)
-                        val downloadSize: String
-                        downloadSize = if (contentLength > 0) {
+                        val downloadSize: String = if (contentLength > 0) {
                             Formatter.formatFileSize(mActivity, contentLength)
                         } else {
                             mActivity.getString(R.string.unknown_size)
