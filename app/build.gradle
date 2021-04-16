@@ -23,8 +23,8 @@ android {
     defaultConfig {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
-        versionName "13.0.2"
-        versionCode 145
+        versionName "13.1.0"
+        versionCode 146
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
@@ -205,9 +205,6 @@ dependencies {
 
     // code editor
     implementation 'com.github.ahmadaghazadeh:CodeEditor:1.0.17'
-
-    // JSON
-    implementation 'com.google.code.gson:gson:2.8.6'
 }
 
 kapt {
