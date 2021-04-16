@@ -22,6 +22,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.IncognitoActivity
 import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.browser.MenuDividerClass
 import com.cookiegames.smartcookie.browser.MenuItemClass
 import com.cookiegames.smartcookie.browser.TabsManager
 import com.cookiegames.smartcookie.browser.activity.BrowserActivity
@@ -137,19 +138,25 @@ class PopUpClass {
         }
 
         val menu = mutableListOf(
+                MenuDividerClass(),
                 MenuItemClass("new_tab", R.string.action_new_tab, R.drawable.ic_round_add, true),
                 MenuItemClass("new_private_tab", R.string.action_incognito, R.drawable.incognito_mode, true),
+                MenuDividerClass(),
                 MenuItemClass("share", R.string.action_share, R.drawable.ic_share_black, true),
                 MenuItemClass("open_in_app", R.string.open_in_app, R.drawable.ic_round_open_in_new, userPreferences.navbar && !activity.isIncognito() && intent.resolveActivity(packageManager) != null && intent.resolveActivity(packageManager).packageName != activity.applicationContext.packageName && !currentUrl.isSpecialUrl()),
+                MenuDividerClass(),
                 MenuItemClass("translate", R.string.translator, R.drawable.translate, userPreferences.translateExtension),
                 MenuItemClass("print", R.string.action_print, R.drawable.ic_round_print, true),
+                MenuDividerClass(),
                 MenuItemClass("history", R.string.action_history, R.drawable.ic_history, true),
+                MenuItemClass("bookmarks", R.string.action_bookmarks, R.drawable.ic_action_star, true),
                 MenuItemClass("downloads", R.string.action_downloads, R.drawable.ic_file_download_black, true),
+                MenuDividerClass(),
                 MenuItemClass("find_in_page", R.string.action_find, R.drawable.ic_search_find, true),
                 MenuItemClass("copy_link", R.string.dialog_copy_link, R.drawable.ic_content_copy_black, true),
-                MenuItemClass("add_to_homepage", R.string.action_add_to_homescreen, R.drawable.ic_round_smartphone, true),
-                MenuItemClass("bookmarks", R.string.action_bookmarks, R.drawable.ic_action_star, true),
                 MenuItemClass("reading_mode", R.string.reading_mode, R.drawable.ic_action_reading, true),
+                MenuDividerClass(),
+                MenuItemClass("add_to_homepage", R.string.action_add_to_homescreen, R.drawable.ic_round_smartphone, true),
                 MenuItemClass("settings", R.string.settings, R.drawable.ic_round_settings, true)
         )
 
@@ -166,7 +173,7 @@ class PopUpClass {
         )
 
         val finalMenu = if(activity.isIncognito()) incognitoMenu else menu
-        finalMenu.removeAll { !it.enabled }
+        finalMenu.removeAll { it is MenuItemClass && !it.enabled }
         if (userPreferences.bottomBar) finalMenu.reverse()
 
         //Set the location of the window on the screen
@@ -185,8 +192,11 @@ class PopUpClass {
         list = popupView.findViewById(R.id.menuList)
         list?.adapter = adapter
         list?.setOnItemClickListener { parent, listView, position, id ->
+            if(finalMenu[position] !is MenuItemClass){
+                return@setOnItemClickListener
+            }
 
-            when(finalMenu[position].id){
+            when((finalMenu[position] as MenuItemClass).id){
                 "new_tab" -> uiController!!.newTabButtonClicked() // 0 - New tab
                 "new_private_tab" -> view.context.startActivity(Intent(view.context, IncognitoActivity::class.java)) // 1 - New incognito tab
                 "share" -> IntentUtils(activity).shareUrl(currentUrl, currentView?.title) // 2 - Share

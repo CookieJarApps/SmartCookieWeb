@@ -15,15 +15,15 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ColorInt
-import androidx.annotation.Nullable
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.browser.MenuDividerClass
 import com.cookiegames.smartcookie.browser.MenuItemClass
 import com.cookiegames.smartcookie.preference.UserPreferences
 import javax.inject.Inject
 
-class MenuItemAdapter(private val mContext: Context, private val items: MutableList<MenuItemClass>) : BaseAdapter() {
+class MenuItemAdapter(private val mContext: Context, private val items: MutableList<out Any>) : BaseAdapter() {
 
     @Inject
     lateinit var userPreferences: UserPreferences
@@ -38,33 +38,45 @@ class MenuItemAdapter(private val mContext: Context, private val items: MutableL
         return position.toLong()
     }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
         val inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val row: View = inflater.inflate(R.layout.menu_row, parent, false)
 
-        val icon: ImageView = row.findViewById<View>(R.id.imgIcon) as ImageView
-        val title: TextView = row.findViewById<View>(R.id.txtTitle) as TextView
+        // TODO: Move to an item decoration for dividers
+        when(items[position]){
+            is MenuItemClass ->{
+                val row: View = inflater.inflate(R.layout.menu_row, parent, false)
 
-        icon.setImageResource(items[position].icon)
-        title.text = mContext.resources?.getString(items[position].name)
+                val icon: ImageView = row.findViewById<View>(R.id.imgIcon) as ImageView
+                val title: TextView = row.findViewById<View>(R.id.txtTitle) as TextView
 
-        val tint: Int
-        val typedValue = TypedValue()
-        val theme = mContext.theme
+                icon.setImageResource((items[position] as MenuItemClass).icon)
+                title.text = mContext.resources?.getString((items[position] as MenuItemClass).name)
 
-        theme.resolveAttribute(R.attr.iconColor, typedValue, true)
-        @ColorInt val color = typedValue.data
-        //TODO: find another way to get the theme here, this'll break if I add new themes
-        if (color == -16777216) {
-            tint = ContextCompat.getColor(mContext, R.color.black)
-            title.setTextColor(ContextCompat.getColor(mContext, R.color.black))
-        } else {
-            tint = ContextCompat.getColor(mContext, R.color.white)
-            title.setTextColor(ContextCompat.getColor(mContext, R.color.white))
+                val tint: Int
+                val typedValue = TypedValue()
+                val theme = mContext.theme
+
+                theme.resolveAttribute(R.attr.iconColor, typedValue, true)
+                @ColorInt val color = typedValue.data
+                //TODO: find another way to get the theme here, this'll break if I add new themes
+                if (color == -16777216) {
+                    tint = ContextCompat.getColor(mContext, R.color.black)
+                    title.setTextColor(ContextCompat.getColor(mContext, R.color.black))
+                } else {
+                    tint = ContextCompat.getColor(mContext, R.color.white)
+                    title.setTextColor(ContextCompat.getColor(mContext, R.color.white))
+                }
+                ImageViewCompat.setImageTintList(icon, ColorStateList.valueOf(tint))
+
+                return row
+            }
+            is MenuDividerClass -> {
+                return inflater.inflate(R.layout.divider, parent, false)
+            }
+            else -> return null
         }
-        ImageViewCompat.setImageTintList(icon, ColorStateList.valueOf(tint))
 
-        return row
+
     }
 
     override fun getItem(position: Int): Any {
