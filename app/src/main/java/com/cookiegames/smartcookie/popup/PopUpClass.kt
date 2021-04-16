@@ -144,7 +144,6 @@ class PopUpClass {
                 MenuDividerClass(),
                 MenuItemClass("share", R.string.action_share, R.drawable.ic_share_black, true),
                 MenuItemClass("open_in_app", R.string.open_in_app, R.drawable.ic_round_open_in_new, userPreferences.navbar && !activity.isIncognito() && intent.resolveActivity(packageManager) != null && intent.resolveActivity(packageManager).packageName != activity.applicationContext.packageName && !currentUrl.isSpecialUrl()),
-                MenuDividerClass(),
                 MenuItemClass("translate", R.string.translator, R.drawable.translate, userPreferences.translateExtension),
                 MenuItemClass("print", R.string.action_print, R.drawable.ic_round_print, true),
                 MenuDividerClass(),
@@ -162,12 +161,15 @@ class PopUpClass {
 
         val incognitoMenu = mutableListOf(
                 MenuItemClass("new_tab", R.string.action_new_tab, R.drawable.ic_round_add, true),
+                MenuDividerClass(),
                 MenuItemClass("print", R.string.action_print, R.drawable.ic_round_print, true),
                 MenuItemClass("find_in_page", R.string.action_find, R.drawable.ic_search_find, true),
                 MenuItemClass("copy_link", R.string.dialog_copy_link, R.drawable.ic_content_copy_black, true),
                 MenuItemClass("add_to_homepage", R.string.action_add_to_homescreen, R.drawable.ic_round_smartphone, true),
+                MenuDividerClass(),
                 MenuItemClass("bookmarks", R.string.action_bookmarks, R.drawable.ic_action_star, true),
                 MenuItemClass("reading_mode", R.string.reading_mode, R.drawable.ic_action_reading, true),
+                MenuDividerClass(),
                 MenuItemClass("settings", R.string.settings, R.drawable.ic_round_settings, true),
                 MenuItemClass("exit_private", R.string.quit_private, R.drawable.incognito_mode, true)
         )

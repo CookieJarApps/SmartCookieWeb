@@ -1,12 +1,8 @@
-
 package com.cookiegames.smartcookie.browser.activity
 
 import android.app.Activity
 import android.app.NotificationManager
-import android.content.ClipboardManager
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
+import android.content.*
 import android.content.pm.ActivityInfo
 import android.content.res.AssetManager
 import android.content.res.Configuration
@@ -41,6 +37,7 @@ import android.widget.AdapterView.OnItemClickListener
 import android.widget.TextView.OnEditorActionListener
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
@@ -94,12 +91,12 @@ import com.cookiegames.smartcookie.view.find.FindResults
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import com.google.gson.Gson
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.browser_content.*
+import kotlinx.android.synthetic.main.dialog_app_lock.view.*
 import kotlinx.android.synthetic.main.search.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -563,36 +560,40 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         }
 
         if(userPreferences.passwordChoiceLock == PasswordChoice.CUSTOM){
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this)
 
-        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_edit_text, null)
+            val customLayout: View = layoutInflater.inflate(R.layout.dialog_app_lock, null)
+            builder.setView(customLayout)
+            builder.setCancelable(false)
 
+            customLayout.forgot_password.setOnClickListener {
+                val forgotBuilder: AlertDialog.Builder = AlertDialog.Builder(this)
+                forgotBuilder.setTitle(R.string.forgot_password)
+                forgotBuilder.setMessage(R.string.recover_app_lock)
+                forgotBuilder.setCancelable(false)
 
-        val editText = dialogView.findViewById<EditText>(R.id.dialog_edit_text)
-
-        editText.setHint(R.string.enter_password)
-
-        val editorDialog = MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.enter_password)
-                .setView(dialogView)
-                .setCancelable(false)
-                .setNegativeButton(R.string.action_back) { dialog, which ->
-                    moveTaskToBack(true);
-                    exitProcess(-1)
-                }
-                .setPositiveButton(R.string.action_ok
-                ) { _, _ ->
-                    if (editText.text.toString() != userPreferences.passwordTextLock){
-                        val duration = Toast.LENGTH_SHORT
-                        val toast = Toast.makeText(this, resources.getString(R.string.wrong_password), duration)
-                        toast.show()
-                        moveTaskToBack(true);
-                        exitProcess(-1)
+                forgotBuilder.setPositiveButton(resources.getString(R.string.action_back)) { dialog, which ->
+                    if (customLayout.textFieldText.text.toString() == userPreferences.passwordTextLock) {
+                        dialog.cancel()
                     }
                 }
+                forgotBuilder.show()
+            }
 
-        val dialog = editorDialog.show()
-        BrowserDialog.setDialogSize(this, dialog)
+            builder.setPositiveButton(resources.getString(R.string.action_ok)) { dialog, which ->
+                if (customLayout.textFieldText.text.toString() == userPreferences.passwordTextLock) {
+                    dialog.cancel()
+                }
+                else{
+                    this.finishAffinity()
+                }
+            }
+            builder.setNegativeButton(resources.getString(R.string.action_cancel)) { dialog, which ->
+                this.finishAffinity()
+            }
 
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
         }
     }
 
@@ -2197,7 +2198,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
      * this class as a click listener. This method should
      * distinguish between the various views using their IDs.
      *
-     * @param v the view that the user has clicked
+     * @param v the view that the user has clickedf
      */
     override fun onClick(v: View) {
         val currentTab = tabsManager.currentTab ?: return
