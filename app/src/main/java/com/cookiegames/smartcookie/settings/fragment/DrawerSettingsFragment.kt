@@ -38,7 +38,7 @@ class DrawerSettingsFragment : AbstractSettingsFragment() {
         switchPreference(
                 preference = SETTINGS_STACK_FROM_BOTTOM,
                 isChecked = userPreferences.stackFromBottom,
-                onCheckChange = { userPreferences.stackFromBottom = it }
+                onCheckChange = { userPreferences.stackFromBottom = it; Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show() }
         )
 
         switchPreference(
