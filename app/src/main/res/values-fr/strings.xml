@@ -190,6 +190,7 @@
     <string name="freeware">Gratuiciel</string>
     <string name="android_open_source_project">Projet Open Source Android</string>
     <string name="hphosts_ad_server_list">Fichier \'hosts\' anti-pubs fourni par Steven Black</string>
+    <string name="adguard_ad_server_list">Filtre DNS AdGuard</string>
     <string name="deleted_tab">Onglet rouvert</string>
     <string name="rendering_mode">Mode de rendu</string>
     <string name="name_inverted">Inversé</string>
@@ -201,6 +202,7 @@
     <string name="title_file_chooser">Sélecteur de fichier</string>
     <string name="library_netcipher">NetCipher</string>
     <string name="license_gnu">Licence publique générale limitée GNU</string>
+    <string name="license_gnu_gpl">Licence publique générale GNU</string>
     <string name="export_bookmarks">Exporter les favoris</string>
     <string name="import_backup">Importer des favoris</string>
     <string name="export_tabs">Exporter les onglets à sauvegarder</string>
@@ -489,14 +491,40 @@
     <string name="new_tab_opened">Nouvel onglet ouvert</string>
     <string name="switch_button">Basculer</string>
     <string name="dont_ask_again">Ne plus demander</string>
+    <!-- text-to-speech -->
     <string name="tts">Lire la page</string>
     <string name="stop_tts">Arrêter la lecture</string>
-    <string name="translation_endpoint">Translation endpoint</string>
-    <string name="news_endpoint">News endpoint</string>
-    <string name="select_translate_text">Please select the text you would like to translate</string>
-    <string name="select_tts_text">Please select the text you would like read</string>
-    <string name="homepage_type">Homepage type</string>
-    <string name="focused">Focused</string>
-    <string name="informational">Informational</string>
+    <string name="translation_endpoint">URL de l’outil de traduction</string>
+    <string name="news_endpoint">URL du fil d’actualités</string>
+    <string name="select_translate_text">Veuillez sélectionner le texte à traduire</string>
+    <string name="select_tts_text">Veuillez sélectionner le texte à lire</string>
+    <!-- homepage type -->
+    <string name="homepage_type">Contenu de la page d’accueil</string>
+    <string name="focused">Horloge et météo</string>
+    <string name="informational">Actualités</string>
+    <!-- tab export -->
+    <string name="export_to_file">Exporter en tant que fichier</string>
+    <string name="export_as_html">Exporter en tant que page HTML</string>
+    <string name="export_as_list">Exporter en tant que liste</string>
+    <!-- block page -->
+    <string name="page_blocked">Page bloquée</string>
+    <string name="page_blocked_adblocker">Page bloquée par le bloqueur de publicités</string>
+    <string name="page_blocked_parental">Page bloquée par le contrôle parental</string>
+    <string name="go_back">Revenir en arrière</string>
+    <string name="proceed">Continuer tout de même</string>
+    <string name="webview_version">Version de WebView</string>
+    <string name="unknown">Inconnu</string>
+    <string name="rotate_site_popup">Voulez-vous conserver la rotation du système ?</string>
+    <string name="rotate_site">Conserver la rotation du système ?</string>
+    <string name="app_elements">Personnalisation des éléments de navigation</string>
+    <string name="theme_settings">Paramètres du thème</string>
+    <string name="homepage_settings">Paramètres de la page d’accueil</string>
+    <string name="navbar_settings">Paramètres de la barre de navigation</string>
+    <string name="drawer_settings">Paramètres des panneaux de navigation</string>
+    <string name="drawer_item_offset">Espacement des éléments du panneau de navigation</string>
+    <string name="example_item">Exemple</string>
+    <string name="stack_items_reverse">Aligner les éléments en bas du panneau de navigation</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="recover_app_lock">Please visit <a href="https://smartcookieweb.com/recover.php">smartcookieweb.com/recover.php</a> in another browser to recover your app lock password.</string>
     <!-- finish pages -->
 </resources>

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_desc">متصفح ويب مجاني ومفتوح المصدر يحجب الإعلانات والمتتبعين</string>
     <string name="action_new_tab">علامة تبويب جديدة</string>
     <string name="action_share">مشاركة</string>
+    <string name="action_print">طباعة</string>
     <string name="action_history">التاريخ</string>
     <string name="action_bookmarks">إشارات مرجعية</string>
     <string name="action_downloads">التحميلات</string>
     <string name="action_add_bookmark">إضافة إشارة مرجعية</string>
     <string name="action_copy">نسخ الرابط</string>
     <string name="action_forward">إلى الأمام</string>
+    <string name="action_sort">فرز</string>
     <string name="settings">الإعدادات</string>
     <string name="location">الوصول إلى الموقع</string>
     <string name="password">حفظ كلمات المرور الخاصة بك</string>
@@ -63,6 +66,8 @@
     <string name="dialog_adobe_not_installed">Adobe Flash Player غير مثبت.\nالرجاء تثبيت Flash Player.</string>
     <string name="title_user_agent">وكيل المستخدم</string>
     <string name="title_download_location">موقع التحميل</string>
+    <string name="download_failed">فشل التحميل مع الخطأ:</string>
+    <string name="download_successful">تم التحميل</string>
     <string name="title_custom_homepage">صفحة رئيسية مخصصة</string>
     <string name="action_webpage">صفحة ويب</string>
     <string name="title_clear_history">مسح سجل التصفح</string>
@@ -158,6 +163,14 @@
         <item>لا يوجد</item>
         <item>مخصص</item>
     </string-array>
+    <string-array name="suggestion_name_array">
+        <item>ثلاثة</item>
+        <item>أربعة</item>
+        <item>خمسة</item>
+        <item>ستة</item>
+        <item>سبعة</item>
+        <item>ثمانية</item>
+    </string-array>
     <string name="manual_proxy">الوكيل اليدوي</string>
     <string name="host">المضيف:</string>
     <string name="port">المنفذ:</string>
@@ -177,6 +190,7 @@
     <string name="freeware">مجانية</string>
     <string name="android_open_source_project">مشروع أندرويد مفتوح المصدر</string>
     <string name="hphosts_ad_server_list">قائمة ستيفن بلاك لاستضافة الإعلانات</string>
+    <string name="adguard_ad_server_list">مرشح DNS AdGuard</string>
     <string name="deleted_tab">فتح علامة التبويب القديمة</string>
     <string name="rendering_mode">وضع التقديم</string>
     <string name="name_inverted">معكوس</string>
@@ -188,13 +202,19 @@
     <string name="title_file_chooser">ملف منتقي</string>
     <string name="library_netcipher">Netcipher</string>
     <string name="license_gnu">رخصة غنو العامة الصغرى</string>
+    <string name="license_gnu_gpl">رخصة جنو العمومية العامة</string>
     <string name="export_bookmarks">تصدير الإشارات المرجعية إلى النسخ الاحتياطي</string>
     <string name="import_backup">استيراد الإشارات المرجعية من النسخ الاحتياطي</string>
+    <string name="export_tabs">تصدير الإشارات المرجعية إلى النسخ الاحتياطي</string>
+    <string name="import_tabs">استيراد الإشارات المرجعية من النسخ الاحتياطي</string>
     <string name="bookmark_export_path">تم تصدير الإشارات المرجعية إلى</string>
     <string name="bookmark_export_failure">عذرًا ، تعذر تصدير الإشارات المرجعية!</string>
+    <string name="tab_export_path">تم تصدير الإشارات المرجعية إلى</string>
+    <string name="tab_export_failure">عذرًا ، تعذر تصدير الإشارات المرجعية!</string>
     <string name="bookmark_settings">إعدادات إشارة مرجعية</string>
     <string name="settings_bookmark_explain">تصدير واستيراد&#8230;</string>
     <string name="import_bookmark_error">لا يمكن استيراد الإشارات المرجعية من الملف</string>
+    <string name="import_tabs_error">لا يمكن استيراد الإشارات المرجعية من الملف</string>
     <string name="title_chooser">اختيار ملف</string>
     <string name="settings_general">الاعدادات العامة</string>
     <string name="settings_general_explain">محرك البحث، البروكسي، الصفحة الرئيسية&#8230;</string>
@@ -265,11 +285,6 @@
     <string name="block_source_local_description">الملف %1$s</string>
     <string name="block_source_remote">ملف المضيف البعيد</string>
     <string name="block_source_remote_description">عنوان: %1$s</string>
-    <string-array name="block_ad_source_list">
-        <item>@string/block_source_default</item>
-        <item>@string/block_source_local</item>
-        <item>@string/block_source_remote</item>
-    </string-array>
     <!--Ad block -->
     <string name="ad_block_load_failure">أخفق تحميل المضيفين من مصدر منع الإعلانات.</string>
     <string name="infinity">∞</string>
@@ -329,7 +344,7 @@
     <string name="search_engine_baidu">Baidu</string>
     <string name="search_engine_yandex">Yandex</string>
     <string name="search_engine_searx">SearX.be</string>
-    <string name="search_engine_searx_cookiejarapps">CookieJarApps SearX</string>
+    <string name="search_engine_searx_cookiejarapps">SearX CookieJarApps</string>
     <string name="privacy">عرض سياسة الخصوصية</string>
     <string name="privacy_info">اقرأ سياسة خصوصية SmartCookieWeb</string>
     <string name="block_malware">حظر المواقع الخبيثة</string>
@@ -345,6 +360,8 @@
     <string name="preferhttpsdesc">استخدم HTTPS دائمًا على المواقع المدعومة (قد تتسبب في حدوث مشكلات)</string>
     <string name="startpagedesc">اضبط لون الصفحة الرئيسية الافتراضية على اللون المستخدم في السمة.</string>
     <string name="updatehomepage">افتح علامة تبويب جديدة لرؤية الصفحة الرئيسية المحدثة</string>
+    <string name="edit_shortcuts">تحرير الاختصار</string>
+    <string name="apply">تطبيق</string>
     <string name="inspect">حقن جافا سكريبت</string>
     <string name="bookmark">تمت إضافة الإشارة المرجعية</string>
     <string name="error_title">لا يمكن تحميل هذا الموقع. &lt;br&gt;.</string>
@@ -377,6 +394,7 @@
     <string name="show_extra">اعرض خيارات القائمة الإضافية</string>
     <string name="incognito_cookies_new">يتم تشغيل الوضع الخاص في اطار منفصل يتم أعاده تعيينه بعد كل جلسة عمل. يتم التحكم الآن تفضيلات ملف تعريف الارتباط الوضع الخاص بتفضيلات ملف تعريف الارتباط العادي.</string>
     <string name="quit_private">إنهاء الوضع الخاص</string>
+    <string name="image_url">تعيين صورة خلفية الصفحة الرئيسية</string>
     <string name="start_incognito">التصرف دائمًا مثل الوضع الخاص</string>
     <string name="bottom_navbar">تحريك شريط التنقل إلى الأسفل</string>
     <string name="please_restart">الرجاء إعادة تشغيل التطبيق لرؤية التغييرات</string>
@@ -393,6 +411,7 @@
     <string name="clear_settings">إعادة تعيين الإعدادات</string>
     <string name="backup_settings">النسخ الاحتياطي للإعدادات</string>
     <string name="backup_bookmarks">النسخ الاحتياطي للإشارات المرجعية</string>
+    <string name="backup_tabs">النسخ الاحتياطي للإشارات المرجعية</string>
     <string name="reset_settings">إعادة تعيين الإعدادات. إغلاق التطبيق... الرجاء إعادة الفتح.</string>
     <string name="force_zoom">التكبير إجبارياً</string>
     <string name="dark_mode">الوضع المظلم</string>
@@ -400,6 +419,7 @@
     <string name="translator">مترجم (تجريبي)</string>
     <string name="coming_soon">المزيد قريباً...</string>
     <string name="navbar_col">تعيين لون شريط التنقل</string>
+    <string name="color_filter">تعيين مرشح الألوان</string>
     <string name="color">اللون</string>
     <string name="looknfeel">إعدادات الشكل والمظهر</string>
     <string name="customize">إعدادات التخصيص</string>
@@ -411,7 +431,7 @@
     <string name="block_intent">التعامل مع جميع الروابط النقر عليها داخل هذا المتصفح</string>
     <string name="block_intent_summary">الكتل البرمجية تدعو إلى فتح الروابط في التطبيقات الخارجية</string>
     <string name="block_javascript">حظر جافا سكريبت للمواقع</string>
-    <string name="allow_javascript">Allow JavaScript for site</string>
+    <string name="allow_javascript">السماح بجافا سكريبت للموقع</string>
     <string name="unlisted_javascript">حظر جافا سكريبت للمواقع المدرجة</string>
     <string name="listed_javascript">السماح فقط بجافا سكريبت للمواقع المدرجة</string>
     <string name="confirm">تأكيد إعادة التعيين</string>
@@ -419,7 +439,96 @@
     <string name="only_clear">مسح فقط في نهاية جلسة المتصفح</string>
     <string name="only_clear_summary">إزالة الخيارات أعلاه فقط عندما يتم إغلاق جميع علامات التبويب المتصفح، بدلاً من كل مرة يتم فيها الخروج من التطبيق</string>
     <string name="enable_in_settings">يجب إعداد التعبئة التلقائية في إعدادات Android لكي يصبح هذا الخيار نافذ المفعول</string>
-    <string name="webrtc_description">Allow websites to request access to the microphone and camera</string>
+    <string name="webrtc_description">السماح لمواقع الويب بطلب الوصول إلى الميكروفون والكاميرا</string>
     <string name="drawer_lines">سطر النص الأقصى في القائمة</string>
     <string name="drawer_size">نص درج التغيير التلقائي</string>
+    <string name="privacy_set">إعدادات الخصوصيّة</string>
+    <string name="security_set">إعدادات الحماية</string>
+    <string name="page_source">عرض مصدر الصفحة</string>
+    <string name="pagespeed_error">يستخدم هذا الموقع \"PageSped\". قد لا يعمل تعديل المصدر كما هو متوقع.</string>
+    <string name="app_lock">تعيين كلمة مرور التطبيق</string>
+    <string name="show_ssl">إظهار مربعات حوار تحذير SSL</string>
+    <string name="warn">قم بتغيير هذا فقط إذا كنت تعرف ماذا تفعل!</string>
+    <string name="download_channel">التنزيلات</string>
+    <string name="download_description">معلومات عن التقدم في التنزيل</string>
+    <string name="download_to_sd">تحميل إلى بطاقة SD</string>
+    <string name="legacy_download_manager">استخدام مدير التحميل المتكامل</string>
+    <string name="legacy_download_manager_desc">تحميل الملفات باستخدام مدير تنزيل SmartCookieWeb بدلا من النظام</string>
+    <string name="onboarding_one">الوصول إلى الإعدادات، الإشارات المرجعية (أو السحب من الحافة اليمنى) والمزيد في القائمة العائمة.</string>
+    <string name="onboarding_two">انقر فوق رقم علامة التبويب أو اسحب من الحافة اليسرى لفتح درج التبويب.</string>
+    <string name="onboarding_three">استخدم أدوات الصفحة في درج الإشارات المرجعية لإيقاف تشغيل حجب الإعلانات مؤقتا، وفتح إصدار سطح المكتب من موقع وأكثر.</string>
+    <string name="load_tabs">تحميل جميع علامات التبويب عند تشغيل المتصفح</string>
+    <string name="navbar">شريط التنـقل</string>
+    <string name="search_homepage">البحث...</string>
+    <string name="start">ابدأ الآن!</string>
+    <string name="show_shortcuts">إظهار الاختصارات على الصفحة الرئيسية</string>
+    <string name="reading_mode_image_copyright">صورة منسوبة إلى</string>
+    <string name="reading_mode_image_caption">صورة مع شرح توضيحي</string>
+    <string name="show_second_bar">إظهار شريط التنقل الثانوي</string>
+    <string name="edit_cookies">تعديل ملفات تعريف الارتباط</string>
+    <string name="ssl_size">حجم المفتاح</string>
+    <string name="algorithm">الخوارزمية</string>
+    <string name="crash_warning">تمكين هذا الإعداد مع \'السماح للمواقع بفتح نوافذ جديدة\' على قد يتسبب في حوادث</string>
+    <string name="amp_to_html">AMP إلى HTML (بيتا)</string>
+    <string name="private_title">الوضع الخاص</string>
+    <string name="private_desc">علامات التبويب في الوضع الخاص تعمل مثل علامات التبويب العادية، ولكن عندما يتم إغلاقها يتم مسح جميع البيانات من ذلك التبويب. التصفح الخاص لا يجعلك مجهول الهوية، ولكن يمكن أن يبقي ما تفعله على الإنترنت سرية من أي شخص آخر يستخدم هذا الجهاز.</string>
+    <string name="file_is">الملف هو:</string>
+    <string name="translate_to">ترجم إلى:</string>
+    <string name="new_drag">يتم الآن الوصول إلى قائمة خيارات علامة التبويب والإشارة المرجعية عن طريق الضغط على الأيقونة. الاحتفاظ على النص سيسمح لك الآن بإعادة ترتيبها.</string>
+    <string name="last_loaded">آخر تحميل</string>
+    <string name="continue_download">استمر</string>
+    <string name="start_download">ابدأ</string>
+    <string name="pausing_download">إيقاف مؤقت</string>
+    <string name="waiting_download">انتظار</string>
+    <string name="pause_download">إيقاف</string>
+    <string name="confirm_delete">تأكيد الحذف؟</string>
+    <string name="grant_permissions">الصلاحيات الممنوحة</string>
+    <string name="grant_permissions_desc">قراءة / كتابة التخزين الخارجي مطلوب للتنزيلات والنسخ الاحتياطية/الإعدادات الاحتياطية</string>
+    <string name="open_in_app">افتح في التطبيق</string>
+    <string name="bookmark_delete">هل تريد بالتأكيد حذف هذه العلامة؟</string>
+    <string name="install_userscript">تثبيت البرنامج النصي المستخدم</string>
+    <string name="install_userscript_description">هل ترغب في تثبيت هذا البرنامج النصي للمستخدم؟</string>
+    <string name="remove_userscript">إزالة البرنامج النصي المستخدم</string>
+    <string name="remove_userscript_description">هل تريد حذف هذا البرنامج النصي للمستخدم؟</string>
+    <string name="scripts">سكريبت المستخدم</string>
+    <string name="scripts_store">متجر سكريبتات المستخدم</string>
+    <string name="new_tab_opened">تم فتح علامة التبويب جديدة</string>
+    <string name="switch_button">تبديل</string>
+    <string name="dont_ask_again">لا تسأل مرة أخري</string>
+    <!-- text-to-speech -->
+    <string name="tts">قراءة الصفحة</string>
+    <string name="stop_tts">إيقاف القراءة</string>
+    <string name="translation_endpoint">نقاط نهاية الترجمة</string>
+    <string name="news_endpoint">نقطة النهاية للأخبار</string>
+    <string name="select_translate_text">يرجى إدخال النص الذي تريد ترجمته</string>
+    <string name="select_tts_text">يرجى إدخال النص الذي تريد ترجمته</string>
+    <!-- homepage type -->
+    <string name="homepage_type">نزوع الصفحة الرئيسية</string>
+    <string name="focused">مركّز</string>
+    <string name="informational">معلومات</string>
+    <!-- tab export -->
+    <string name="export_to_file">تصدير إلى ملف</string>
+    <string name="export_as_html">التصدير إلى HTML</string>
+    <string name="export_as_list">تصدير كقائمة</string>
+    <!-- block page -->
+    <string name="page_blocked">تم حظر الصفحة</string>
+    <string name="page_blocked_adblocker">محجوب_BY_ADBLOCKER</string>
+    <string name="page_blocked_parental">محجوب_BY_PARENTAL_CONTROLS</string>
+    <string name="go_back">الرجوع للخلف</string>
+    <string name="proceed">المتابعة على أي حال</string>
+    <string name="webview_version">إصدار WebView</string>
+    <string name="unknown">غير معروف</string>
+    <string name="rotate_site_popup">هل ترغب في اتباع تدوير النظام؟</string>
+    <string name="rotate_site">متابعة دوران النظام؟</string>
+    <string name="app_elements">عناصر التطبيق</string>
+    <string name="theme_settings">إعدادات السمة</string>
+    <string name="homepage_settings">اعدادات الصفحة الرئيسية</string>
+    <string name="navbar_settings">إعدادات شريط التنقل</string>
+    <string name="drawer_settings">إعدادات الدرج</string>
+    <string name="drawer_item_offset">إزاحة عناصر الدرج</string>
+    <string name="example_item">مثال للعنصر</string>
+    <string name="stack_items_reverse">تكديس العناصر من أسفل درج العناصر</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="recover_app_lock">Please visit <a href="https://smartcookieweb.com/recover.php">smartcookieweb.com/recover.php</a> in another browser to recover your app lock password.</string>
+    <!-- finish pages -->
 </resources>

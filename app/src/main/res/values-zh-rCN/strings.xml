@@ -190,6 +190,7 @@
     <string name="freeware">免费软件</string>
     <string name="android_open_source_project">Android开源项目</string>
     <string name="hphosts_ad_server_list">Steven Black\'s Ad Hosts List</string>
+    <string name="adguard_ad_server_list">AdGuard DNS 过滤器</string>
     <string name="deleted_tab">重新打开旧标签</string>
     <string name="rendering_mode">渲染模式</string>
     <string name="name_inverted">反色</string>
@@ -201,6 +202,7 @@
     <string name="title_file_chooser">文件选择器</string>
     <string name="library_netcipher">NetCipher</string>
     <string name="license_gnu">GNU Lesser General Public License</string>
+    <string name="license_gnu_gpl">GNU 通用公共许可证</string>
     <string name="export_bookmarks">导出书签到备份文件</string>
     <string name="import_backup">从备份文件导入书签</string>
     <string name="export_tabs">导出标签页到备份</string>
@@ -488,7 +490,40 @@
     <string name="new_tab_opened">新标签已打开</string>
     <string name="switch_button">切换</string>
     <string name="dont_ask_again">不要再询问</string>
+    <!-- text-to-speech -->
     <string name="tts">语音播报页面</string>
     <string name="stop_tts">停止播报</string>
+    <string name="translation_endpoint">翻译端点</string>
+    <string name="news_endpoint">新闻端点</string>
+    <string name="select_translate_text">请选择你想翻译的文本</string>
+    <string name="select_tts_text">请选择你想进行语音播报的文本</string>
+    <!-- homepage type -->
+    <string name="homepage_type">主页类型</string>
+    <string name="focused">专注</string>
+    <string name="informational">信息丰富</string>
+    <!-- tab export -->
+    <string name="export_to_file">导出到文件</string>
+    <string name="export_as_html">导出为 HTML</string>
+    <string name="export_as_list">导出为列表</string>
+    <!-- block page -->
+    <string name="page_blocked">页面被拦截</string>
+    <string name="page_blocked_adblocker">被广告拦截器拦截</string>
+    <string name="page_blocked_parental">被家长控制拦截</string>
+    <string name="go_back">返回</string>
+    <string name="proceed">仍要继续</string>
+    <string name="webview_version">WebView 版本</string>
+    <string name="unknown">未知</string>
+    <string name="rotate_site_popup">你要跟随系统屏幕方向吗？</string>
+    <string name="rotate_site">跟随系统屏幕方向吗？</string>
+    <string name="app_elements">应用元素</string>
+    <string name="theme_settings">主题设置</string>
+    <string name="homepage_settings">主页设置</string>
+    <string name="navbar_settings">导航栏设置</string>
+    <string name="drawer_settings">抽屉设置</string>
+    <string name="drawer_item_offset">抽屉项目偏移</string>
+    <string name="example_item">示例项目</string>
+    <string name="stack_items_reverse">把抽屉底部项目堆叠起来</string>
+    <string name="forgot_password">忘记密码</string>
+    <string name="recover_app_lock">请在另一个浏览器中访问 <a href="https://smartcookieweb.com/recover.php">smartcookieweb.com/recover.php</a>来恢复你的应用锁定密码</string>
     <!-- finish pages -->
 </resources>
