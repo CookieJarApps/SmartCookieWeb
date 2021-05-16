@@ -33,7 +33,7 @@
     <string name="size">Размер текста</string>
     <string name="recommended">Рекомендуемое</string>
     <string name="search">Поисковая система</string>
-    <string name="search_hint">Искать</string>
+    <string name="search_hint">Искать или ввести веб-адрес</string>
     <string name="wideViewPort">Широкий вид</string>
     <string name="overViewMode">Загружать страницы в режиме обзора</string>
     <string name="restore">Восстанавливать вкладки при запуске</string>
@@ -119,12 +119,12 @@
     <string name="block_ads">Блокировать рекламу и трекеры</string>
     <string name="message_insecure_connection">Соединение с этим сайтом небезопасно: %1$s Все равно посетить сайт?</string>
     <string name="message_certificate_date_invalid">Дата сертификата недействительна</string>
-    <string name="message_certificate_expired">Срок действия сертификата истек</string>
+    <string name="message_certificate_expired">Срок действия сертификата истёк</string>
     <string name="message_certificate_domain_mismatch">Домен в сертификате не соответствует домену сайта</string>
     <string name="message_certificate_invalid">Сертификат недействителен</string>
-    <string name="message_certificate_not_yet_valid">Сертификат еще не действителен</string>
+    <string name="message_certificate_not_yet_valid">Сертификат ещё не действителен</string>
     <string name="message_certificate_untrusted">К сертификату нет доверия</string>
-    <string name="title_form_resubmission">Форма повторной подачи</string>
+    <string name="title_form_resubmission">Повторное заполнение формы</string>
     <string name="message_form_resubmission">Отправить данные повторно?</string>
     <string name="message_location">\nИспользовать ваше местоположение</string>
     <string name="action_allow">Разрешить</string>
@@ -190,6 +190,7 @@
     <string name="freeware">Бесплатное ПО</string>
     <string name="android_open_source_project">Android Open Source Project</string>
     <string name="hphosts_ad_server_list">Список рекламных хостов Стивена Блэка</string>
+    <string name="adguard_ad_server_list">DNS-фильтр AdGuard</string>
     <string name="deleted_tab">Открыта старая вкладка</string>
     <string name="rendering_mode">Режим рендеринга</string>
     <string name="name_inverted">Инвертированный</string>
@@ -201,6 +202,7 @@
     <string name="title_file_chooser">Выбор файла</string>
     <string name="library_netcipher">NetCipher</string>
     <string name="license_gnu">GNU Lesser General Public License</string>
+    <string name="license_gnu_gpl">Стандартная общественная лицензия GNU</string>
     <string name="export_bookmarks">Сделать резервную копию закладок</string>
     <string name="import_backup">Импорт закладок из резервной копии</string>
     <string name="export_tabs">Экспорт настроек в резервную копию</string>
@@ -220,7 +222,7 @@
     <string name="settings_display_explain">Полноэкранный режим, размер текста, темы&#8230;</string>
     <string name="settings_privacy">Настройки конфиденциальности и безопасности</string>
     <string name="settings_privacy_explain">Кэш, cookies, история&#8230;</string>
-    <string name="settings_about">Подробнее</string>
+    <string name="settings_about">О программе</string>
     <string name="settings_about_explain">Номер версии, автор и лицензии&#8230;</string>
     <string name="close_tab">Закрыть текущую вкладку</string>
     <string name="close_all_tabs">Закрыть все вкладки</string>
@@ -278,7 +280,7 @@
     <string name="description">Узнайте о SmartCookieWeb</string>
     <string name="faq">ЧаВо</string>
     <string name="faq_description">Часто задаваемые вопросы...</string>
-    <string name="block_source_default">Хосты по умолчанию</string>
+    <string name="block_source_default">Файл hosts по умолчанию</string>
     <string name="block_source_local">Локальный файл хостов</string>
     <string name="block_source_local_description">Файл: %1$s</string>
     <string name="block_source_remote">Удалить файл хостов</string>
@@ -344,7 +346,7 @@
     <string name="privacy">Просмотр политики конфиденциальности</string>
     <string name="privacy_info">Ознакомьтесь с политикой конфиденциальности SmartCookieWeb</string>
     <string name="block_malware">Блокировать вредоносные сайты</string>
-    <string name="block_sites">Пользовательский ярлык</string>
+    <string name="block_sites">Пользовательский блок сайта</string>
     <string name="block_sites_title">Пользовательский ярлык (отдельные сайты через запятую)</string>
     <string name="none">Ничего</string>
     <string name="block_info">Введите слова для блокировки URL (через запятую).</string>
@@ -387,7 +389,7 @@
     <string name="extensions_list">Список расширений</string>
     <string name="uninstall_extension">Удалить расширение</string>
     <string name="uninstall_more">Введите название расширения, которое вы хотите удалить</string>
-    <string name="show_extra">Показать дополнительные пункты меню</string>
+    <string name="show_extra">Показать кнопку закрытия в меню</string>
     <string name="incognito_cookies_new">Приватный режим запускается в отдельном окне, который сбрасывается после каждой сессии. Настройки приватных cookies теперь управляются обычными настройками cookie.</string>
     <string name="quit_private">Выйти из приватного режима</string>
     <string name="image_url">Установить фоновое изображение домашней страницы</string>
@@ -396,7 +398,7 @@
     <string name="please_restart">Перезапустите приложение, чтобы увидеть изменения</string>
     <string name="site_ad_blocked">На этом сайте присутствует реклама. Чтобы продолжить, используйте опцию \"Отключить блокировку рекламы для этого сайта\", нажав на значок списка в меню закладок.</string>
     <string name="onboarding_reshow">Адаптировать снова</string>
-    <string name="onboarding_reshow_desc">Показать расстановку снова.</string>
+    <string name="onboarding_reshow_desc">Показать настройки снова.</string>
     <string name="pick_search">Выберите поисковую систему:</string>
     <string name="enable_adblock">Включить блокировку рекламы и трекеров?</string>
     <string name="contributors">Участники</string>
@@ -437,7 +439,7 @@
     <string name="enable_in_settings">Автозаполнение должно быть настроено в настройках Android для вступления в силу</string>
     <string name="webrtc_description">Разрешить сайтам запрашивать доступ к микрофону и камере</string>
     <string name="drawer_lines">Максимум строк текста в меню</string>
-    <string name="drawer_size">Текст меню автоизменения размера</string>
+    <string name="drawer_size">Размер текста в меню</string>
     <string name="privacy_set">Настройка конфиденциальности</string>
     <string name="security_set">Настройки безопасности</string>
     <string name="page_source">Исходный код страницы</string>
@@ -450,7 +452,7 @@
     <string name="download_to_sd">Загрузить на SD-карту</string>
     <string name="legacy_download_manager">Использовать встроенный менеджер загрузок</string>
     <string name="legacy_download_manager_desc">Загружать файлы с помощью менеджера загрузок SmartCookieWeb вместо системного</string>
-    <string name="onboarding_one">Доступ к настройкам, закладкам и многое другое в верхнем меню (или проведите пальцем по правому краю).</string>
+    <string name="onboarding_one">Доступ к настройкам, закладкам и многое другое в перекрывающем меню (или проведите пальцем по правому краю).</string>
     <string name="onboarding_two">Нажмите на номер вкладки или проведите пальцем c левого края, чтобы открыть панель вкладок.</string>
     <string name="onboarding_three">Используйте настройки страницы в меню закладок, чтобы временно отключить блокировку рекламы, открыть настольную версию сайта и многое другое.</string>
     <string name="load_tabs">Загружать все вкладки при запуске браузера</string>
@@ -491,14 +493,40 @@
     <string name="new_tab_opened">Открыта новая вкладка</string>
     <string name="switch_button">Переключиться</string>
     <string name="dont_ask_again">Больше не спрашивать</string>
+    <!-- text-to-speech -->
     <string name="tts">Читать страницу</string>
     <string name="stop_tts">Остановить чтение</string>
-    <string name="translation_endpoint">Translation endpoint</string>
-    <string name="news_endpoint">News endpoint</string>
-    <string name="select_translate_text">Please select the text you would like to translate</string>
-    <string name="select_tts_text">Please select the text you would like read</string>
-    <string name="homepage_type">Homepage type</string>
-    <string name="focused">Focused</string>
-    <string name="informational">Informational</string>
+    <string name="translation_endpoint">Конечная точка переводов</string>
+    <string name="news_endpoint">Конечная точка новостей</string>
+    <string name="select_translate_text">Выберите текст, который вы хотите перевести</string>
+    <string name="select_tts_text">Выберите текст, который вы хотите прочитать</string>
+    <!-- homepage type -->
+    <string name="homepage_type">Тип главной страницы</string>
+    <string name="focused">Сфокусировано</string>
+    <string name="informational">Информация</string>
+    <!-- tab export -->
+    <string name="export_to_file">Экспорт в файл</string>
+    <string name="export_as_html">Экспорт в HTML</string>
+    <string name="export_as_list">Экспорт в список</string>
+    <!-- block page -->
+    <string name="page_blocked">Страница заблокирована</string>
+    <string name="page_blocked_adblocker">ЗАБЛОКИРОВАНО_ADBLOCKER-ом</string>
+    <string name="page_blocked_parental">ЗАБЛОКИРОВАНО_РОДИТЕЛЬСКИМ_КОНТРОЛЕМ</string>
+    <string name="go_back">Вернуться обратно</string>
+    <string name="proceed">Всё равно продолжить</string>
+    <string name="webview_version">Версия WebView</string>
+    <string name="unknown">Неизвестно</string>
+    <string name="rotate_site_popup">Вы хотите учитывать поворот экрана в системе?</string>
+    <string name="rotate_site">Учитывать поворот экрана?</string>
+    <string name="app_elements">Элементы приложения</string>
+    <string name="theme_settings">Настройки темы</string>
+    <string name="homepage_settings">Настройки домашней страницы</string>
+    <string name="navbar_settings">Настройки панели навигации</string>
+    <string name="drawer_settings">Настройки выдвижного меню</string>
+    <string name="drawer_item_offset">Смещение элемента выдвижного меню</string>
+    <string name="example_item">Пример элемента</string>
+    <string name="stack_items_reverse">Стек элементов снизу выдвижной панели</string>
+    <string name="forgot_password">Забыл пароль</string>
+    <string name="recover_app_lock">Пожалуйста, посетите <a href="https://smartcookieweb.com/recover.php">smartcookieweb.com/recover.php</a> в другом браузере для восстановления пароля блокировки приложения.</string>
     <!-- finish pages -->
 </resources>
