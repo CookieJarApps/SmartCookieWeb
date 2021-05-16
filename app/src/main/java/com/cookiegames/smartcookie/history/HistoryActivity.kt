@@ -79,7 +79,7 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         setSupportActionBar(toolbar)
         if (supportActionBar != null) supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        list = findViewById<RecyclerView>(R.id.history)
+        list = findViewById(R.id.history)
         val linearLayoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
 
         historyRepository
@@ -88,7 +88,6 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                     historyList = list
                 }
 
-        //val downloadAdapter = HistoryAdapter(map, downloadInfoList)
         arrayAdapter = CustomAdapter(historyList)
         list.layoutManager = linearLayoutManager
         list?.adapter = arrayAdapter
@@ -96,8 +95,8 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         list.addOnItemTouchListener(
                 RecyclerItemClickListener(context, list, object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View?, position: Int) {
-                        val i = Intent(ACTION_VIEW, historyList[position].url.toUri())
-                        i.setData(Uri.parse(historyList[position].url))
+                        val i = Intent(ACTION_VIEW)
+                        i.setData(Uri.parse((list.adapter as CustomAdapter).getItem(position).url))
                         i.setPackage(context!!.packageName)
                         startActivity(i, null)
                     }
@@ -107,15 +106,6 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                     }
                 })
         )
-
-        /*//Sort download list if need.
-        Collections.sort(downloadInfoList) { o1, o2 -> (o1.createTime - o2.createTime).toInt() }
-        list.layoutManager = linearLayoutManager
-        activity_download.xmldownloadAdapter = DownloadActivity.DownloadAdapter(map, downloadInfoList)
-        list.adapter = downloadAdapter
-        downloadObserver.enable()*/
-
-        //downloadAdapter!!.notifyDataSetChanged()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -173,11 +163,13 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             }
         }
 
+        fun getItem(position: Int) = dataSet[position]
+
         /**
          * Provide a reference to the type of views that you are using
          * (custom ViewHolder).
          */
-        class ViewHolder(view: View, private val dataSet: List<HistoryEntry>) : RecyclerView.ViewHolder(view) {
+        class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val textView: TextView
             val historyUrl: TextView
             val historyDate: TextView
@@ -188,13 +180,6 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 historyUrl = view.findViewById(R.id.historyUrl)
                 historyDate = view.findViewById(R.id.historyTime)
             }
-
-           /*override fun onClick(v: View?) {
-                val i = Intent(ACTION_VIEW, dataSet[layoutPosition].url.toUri())
-                i.setData(Uri.parse(dataSet[adapterPosition].url))
-                i.setPackage(v!!.context!!.packageName)
-                startActivity(v.context, i, null)
-            }*/
         }
 
         // Create new views (invoked by the layout manager)
@@ -203,7 +188,7 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             val view = LayoutInflater.from(viewGroup.context)
                     .inflate(R.layout.history_row, viewGroup, false)
             oldList = dataSet.toMutableList()
-            return ViewHolder(view, dataSet)
+            return ViewHolder(view)
         }
 
         // Replace the contents of a view (invoked by the layout manager)
@@ -242,7 +227,7 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextChange(query: String?): Boolean {
-        arrayAdapter?.getFilter()?.filter(query)
+        arrayAdapter.getFilter()?.filter(query)
         return false
     }
 
