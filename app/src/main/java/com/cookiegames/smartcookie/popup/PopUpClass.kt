@@ -5,6 +5,7 @@
 
 package com.cookiegames.smartcookie.popup
 
+import android.app.AlertDialog
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -13,15 +14,19 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
+import android.os.Handler
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.webkit.CookieManager
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.IncognitoActivity
 import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.adblock.allowlist.AllowListModel
+import com.cookiegames.smartcookie.browser.JavaScriptChoice
 import com.cookiegames.smartcookie.browser.MenuDividerClass
 import com.cookiegames.smartcookie.browser.MenuItemClass
 import com.cookiegames.smartcookie.browser.TabsManager
@@ -30,8 +35,12 @@ import com.cookiegames.smartcookie.controller.UIController
 import com.cookiegames.smartcookie.database.Bookmark
 import com.cookiegames.smartcookie.database.HistoryEntry
 import com.cookiegames.smartcookie.di.injector
+import com.cookiegames.smartcookie.dialog.BrowserDialog
+import com.cookiegames.smartcookie.dialog.DialogItem
 import com.cookiegames.smartcookie.download.DownloadActivity
+import com.cookiegames.smartcookie.extensions.color
 import com.cookiegames.smartcookie.extensions.copyToClipboard
+import com.cookiegames.smartcookie.extensions.drawable
 import com.cookiegames.smartcookie.extensions.snackbar
 import com.cookiegames.smartcookie.history.HistoryActivity
 import com.cookiegames.smartcookie.preference.UserPreferences
@@ -40,7 +49,11 @@ import com.cookiegames.smartcookie.settings.activity.SettingsActivity
 import com.cookiegames.smartcookie.utils.IntentUtils
 import com.cookiegames.smartcookie.utils.Utils
 import com.cookiegames.smartcookie.utils.isSpecialUrl
+import com.cookiegames.smartcookie.utils.stringContainsItemFromList
+import com.github.ahmadaghazadeh.editor.widget.CodeEditor
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_main.*
+import java.net.URL
 import javax.inject.Inject
 import kotlin.math.roundToInt
 
@@ -54,6 +67,9 @@ class PopUpClass {
 
     @Inject
     lateinit var tabsManager: TabsManager
+
+    @Inject
+    lateinit var allowListModel: AllowListModel
 
     //PopupWindow display method
     fun showPopupWindow(view: View, activity: BrowserActivity) {
@@ -155,6 +171,7 @@ class PopUpClass {
                 MenuItemClass("copy_link", R.string.dialog_copy_link, R.drawable.ic_content_copy_black, true),
                 MenuItemClass("reading_mode", R.string.reading_mode, R.drawable.ic_action_reading, true),
                 MenuDividerClass(),
+                MenuItemClass("page_tools", R.string.dialog_tools_title, R.drawable.ic_page_tools, true),
                 MenuItemClass("add_to_homepage", R.string.action_add_to_homescreen, R.drawable.ic_round_smartphone, true),
                 MenuItemClass("settings", R.string.settings, R.drawable.ic_round_settings, true)
         )
@@ -232,6 +249,149 @@ class PopUpClass {
                     if (currentUrl != null) { // 10 - Reading mode
                         ReadingActivity.launch(view.context, currentUrl, false)
                     }
+                }
+                "page_tools" -> {
+                    val currentTab = activity.tabsManager.currentTab ?: return@setOnItemClickListener
+                    val isAllowedAds = allowListModel.isUrlAllowedAds(currentTab.url)
+                    val whitelistString = if (isAllowedAds) {
+                        R.string.dialog_adblock_enable_for_site
+                    } else {
+                        R.string.dialog_adblock_disable_for_site
+                    }
+                    val arrayOfURLs = userPreferences.javaScriptBlocked
+                    val strgs: Array<String>
+                    if (arrayOfURLs.contains(", ")) {
+                        strgs = arrayOfURLs.split(", ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+                    } else {
+                        strgs = arrayOfURLs.split(",".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+                    }
+                    var jsEnabledString = if(userPreferences.javaScriptChoice == JavaScriptChoice.BLACKLIST && !stringContainsItemFromList(currentTab.url, strgs) || userPreferences.javaScriptChoice == JavaScriptChoice.WHITELIST && stringContainsItemFromList(currentTab.url, strgs)) {
+                        R.string.allow_javascript
+                    } else{
+                        R.string.block_javascript
+                    }
+
+
+                    BrowserDialog.showWithIcons(activity, activity.getString(R.string.dialog_tools_title),
+                        DialogItem(
+                            icon = activity.drawable(R.drawable.ic_action_desktop),
+                            title = R.string.dialog_toggle_desktop
+                        ) {
+                            activity.tabsManager.currentTab?.apply {
+                                toggleDesktopUA()
+                                reload()
+                                // TODO add back drawer closing
+                            }
+                        },
+                        DialogItem(
+                            icon = activity.drawable(R.drawable.ic_page_tools),
+                            title = R.string.inspect
+
+                        ) {
+                            val builder = AlertDialog.Builder(activity)
+                            val inflater = activity.layoutInflater
+                            builder.setTitle(R.string.inspect)
+                            val dialogLayout = inflater.inflate(R.layout.dialog_edit_text, null)
+                            val editText = dialogLayout.findViewById<EditText>(R.id.dialog_edit_text)
+                            builder.setView(dialogLayout)
+                            builder.setPositiveButton("OK") { dialogInterface, i -> currentTab.loadUrl("javascript:(function() {" + editText.text.toString() + "})()") }
+                            builder.show()
+
+                        }, DialogItem(
+                            icon = activity.drawable(R.drawable.ic_round_storage),
+                            title = R.string.edit_cookies
+                        ) {
+
+                            val cookieManager = CookieManager.getInstance()
+                            if (cookieManager.getCookie(currentTab.url) != null) {
+                                val builder = MaterialAlertDialogBuilder(activity)
+                                val inflater = activity.layoutInflater
+                                builder.setTitle(R.string.edit_cookies)
+                                val dialogLayout = inflater.inflate(R.layout.dialog_multi_line, null)
+                                val editText = dialogLayout.findViewById<EditText>(R.id.dialog_multi_line)
+                                editText.setText(cookieManager.getCookie(currentTab.url))
+                                builder.setView(dialogLayout)
+                                builder.setPositiveButton("OK") { dialogInterface, i ->
+                                    val cookiesList = editText.text.toString().split(";")
+                                    cookiesList.forEach { item ->
+                                        CookieManager.getInstance().setCookie(currentTab.url, item)
+                                    }
+                                }
+                                builder.show()
+                            }
+
+                        },
+                        DialogItem(
+                            icon = activity.drawable(R.drawable.ic_baseline_code),
+                            title = R.string.page_source
+
+                        ) {
+                            currentTab.webView?.evaluateJavascript("""(function() {
+                        return "<html>" + document.getElementsByTagName('html')[0].innerHTML + "</html>";
+                     })()""".trimMargin()) {
+                                // Hacky workaround for weird WebView encoding bug
+                                var name = it?.replace("\\u003C", "<")
+                                name = name?.replace("\\n", System.getProperty("line.separator").toString())
+                                name = name?.replace("\\t", "")
+                                name = name?.replace("\\\"", "\"")
+                                name = name?.substring(1, name.length - 1);
+
+                                val builder = MaterialAlertDialogBuilder(activity)
+                                val inflater = activity.layoutInflater
+                                builder.setTitle(R.string.page_source)
+                                val dialogLayout = inflater.inflate(R.layout.dialog_view_source, null)
+                                val editText = dialogLayout.findViewById<CodeEditor>(R.id.dialog_multi_line)
+                                editText.setText(name, 1)
+                                builder.setView(dialogLayout)
+                                builder.setPositiveButton("OK") { _, _ ->
+                                    editText.setText(editText.text?.toString()?.replace("\'", "\\\'"), 1);
+                                    currentTab.loadUrl("javascript:(function() { document.documentElement.innerHTML = '" + editText.text.toString() + "'; })()")
+                                }
+                                builder.show()
+                            }
+                        },
+                        DialogItem(
+                            icon = activity.drawable(R.drawable.ic_block),
+                            colorTint = activity.color(R.color.error_red).takeIf { isAllowedAds },
+                            title = whitelistString,
+                            isConditionMet = !currentTab.url.isSpecialUrl()
+                        ) {
+                            if (isAllowedAds) {
+                                allowListModel.removeUrlFromAllowList(currentTab.url)
+                            } else {
+                                allowListModel.addUrlToAllowList(currentTab.url)
+                            }
+                            activity.tabsManager.currentTab?.reload()
+                        }, DialogItem(
+                            icon = activity.drawable(R.drawable.ic_action_delete),
+                            title = jsEnabledString,
+                            isConditionMet = !currentTab.url.isSpecialUrl()
+                        ) {
+                            val url = URL(currentTab.url)
+                            if (userPreferences.javaScriptChoice != JavaScriptChoice.NONE) {
+                                if (!stringContainsItemFromList(currentTab.url, strgs)) {
+                                    if (userPreferences.javaScriptBlocked.equals("")) {
+                                        userPreferences.javaScriptBlocked = url.host
+                                    } else {
+                                        userPreferences.javaScriptBlocked = userPreferences.javaScriptBlocked + ", " + url.host
+                                    }
+                                } else {
+                                    if (!userPreferences.javaScriptBlocked.contains(", " + url.host)) {
+                                        userPreferences.javaScriptBlocked = userPreferences.javaScriptBlocked.replace(url.host, "")
+                                    } else {
+                                        userPreferences.javaScriptBlocked = userPreferences.javaScriptBlocked.replace(", " + url.host, "")
+                                    }
+                                }
+                            } else {
+                                userPreferences.javaScriptChoice = JavaScriptChoice.WHITELIST
+                            }
+                            activity.tabsManager.currentTab?.reload()
+                            Handler().postDelayed({
+                                activity.tabsManager.currentTab?.reload()
+                            }, 250)
+
+                        }
+                    ) // 14 - Page Tools
                 }
                 "settings" -> {
                     val settings = Intent(view.context, SettingsActivity::class.java) // 11 - Settings
