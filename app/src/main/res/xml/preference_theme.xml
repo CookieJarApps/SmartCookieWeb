@@ -11,6 +11,11 @@
             android:title="@string/navbar_col"/>
         <SwitchPreference
             android:defaultValue="false"
+            android:key="dark_mode"
+            android:singleLineTitle="false"
+            android:title="@string/web_dark_theme"/>
+        <SwitchPreference
+            android:defaultValue="false"
             android:singleLineTitle="false"
             android:key="black_status_bar"
             android:title="@string/settings_black_status_bar"/>

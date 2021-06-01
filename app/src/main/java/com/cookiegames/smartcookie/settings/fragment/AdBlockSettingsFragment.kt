@@ -50,6 +50,19 @@ class AdBlockSettingsFragment : AbstractSettingsFragment() {
 
         injector.inject(this)
 
+
+        switchPreference(
+            preference = "block_cookies",
+            isChecked = userPreferences.cookieBlockEnabled,
+            onCheckChange = { userPreferences.cookieBlockEnabled = it }
+        )
+
+        switchPreference(
+            preference = "block_malicious_sites",
+            isChecked = userPreferences.blockMalwareEnabled,
+            onCheckChange = { userPreferences.blockMalwareEnabled = it }
+        )
+
         switchPreference(
             preference = "cb_block_ads",
             isChecked = userPreferences.adBlockEnabled,

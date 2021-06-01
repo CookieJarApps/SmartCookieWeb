@@ -48,28 +48,6 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
 
         injector.inject(this)
 
-        switchPreference(
-                preference = DARK_MODE,
-                isChecked = userPreferences.darkModeExtension,
-                onCheckChange = { userPreferences.darkModeExtension = it; Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()}
-        )
-
-        switchPreference(
-                preference = "block_cookies",
-                isChecked = userPreferences.cookieBlockEnabled,
-                onCheckChange = { userPreferences.cookieBlockEnabled = it }
-        )
-         switchPreference(
-                preference = TRANSLATE,
-                isChecked = userPreferences.translateExtension,
-                onCheckChange = { userPreferences.translateExtension = it }
-        )
-        switchPreference(
-                preference = AMP,
-                isChecked = userPreferences.noAmp,
-                onCheckChange = { userPreferences.noAmp = it }
-        )
-
         clickablePreference(
                 preference = SCRIPT_UNINSTALL,
                 onClick = ::uninstallUserScript
@@ -108,9 +86,6 @@ class ExtensionsSettingsFragment : AbstractSettingsFragment() {
 
 
     companion object {
-        private const val DARK_MODE = "dark_mode"
-        private const val TRANSLATE = "translate"
         private const val SCRIPT_UNINSTALL = "remove_userscript"
-        private const val AMP = "amp"
     }
 }

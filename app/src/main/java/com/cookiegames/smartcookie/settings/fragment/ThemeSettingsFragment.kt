@@ -51,6 +51,12 @@ class ThemeSettingsFragment : AbstractSettingsFragment() {
         )
 
         switchPreference(
+            preference = SETTINGS_DARK_MODE,
+            isChecked = userPreferences.darkModeExtension,
+            onCheckChange = { userPreferences.darkModeExtension = it; Toast.makeText(activity, R.string.please_restart, Toast.LENGTH_LONG).show()}
+        )
+
+        switchPreference(
                 preference = SETTINGS_BLACK_STATUS,
                 isChecked = userPreferences.useBlackStatusBar,
                 onCheckChange = { userPreferences.useBlackStatusBar = it }
@@ -145,6 +151,7 @@ class ThemeSettingsFragment : AbstractSettingsFragment() {
     companion object {
         private const val SETTINGS_THEME = "app_theme"
         private const val SETTINGS_NAVBAR_COL = "navbar_col"
+        private const val SETTINGS_DARK_MODE = "dark_mode"
         private const val SETTINGS_BLACK_STATUS = "black_status_bar"
         private const val SETTINGS_STARTPAGE = "startpage_theme"
     }

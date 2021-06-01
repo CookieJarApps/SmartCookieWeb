@@ -1,34 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/extensions_enable">
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="dark_mode"
-            android:singleLineTitle="false"
-            android:icon="@drawable/dark_mode"
-            android:title="@string/dark_mode"/>
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="block_cookies"
-            android:singleLineTitle="false"
-            android:icon="@drawable/ic_block"
-            android:title="@string/cookie_category"/>
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="translate"
-            android:singleLineTitle="false"
-            android:icon="@drawable/translate"
-            android:title="@string/translator"/>
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="amp"
-            android:singleLineTitle="false"
-            android:icon="@drawable/ic_round_amp_stories"
-            android:title="@string/amp_to_html"/>
-        <Preference android:title="@string/coming_soon"
-            android:key="coming_soon">
-        </Preference>
-    </PreferenceCategory>
     <PreferenceCategory android:title="@string/scripts">
         <Preference android:title="@string/scripts_store"
             android:key="scripts_store">

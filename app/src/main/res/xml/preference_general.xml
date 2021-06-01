@@ -20,6 +20,16 @@
             android:title="@string/load_tabs"/>
         <SwitchPreference
             android:defaultValue="false"
+            android:key="translate"
+            android:singleLineTitle="false"
+            android:title="@string/translator"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="amp"
+            android:singleLineTitle="false"
+            android:title="@string/amp_to_html"/>
+        <SwitchPreference
+            android:defaultValue="false"
             android:key="cb_colormode"
             android:singleLineTitle="false"
             android:title="@string/color_mode"/>
