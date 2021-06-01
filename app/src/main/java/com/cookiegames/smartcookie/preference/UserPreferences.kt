@@ -374,7 +374,7 @@ class UserPreferences @Inject constructor(
     var translationEndpoint by preferences.stringPreference(TRANSLATION_ENDPOINT, "https://smartcookieweb.com/translate/")
     var newsEndpoint by preferences.stringPreference(NEWS_ENDPOINT, "https://smartcookieweb.com/news/api.php")
 
-    var useNewDownloader by preferences.booleanPreference(LEGACY_DOWNLOADER, true)
+    var useNewDownloader by preferences.booleanPreference(NEW_DOWNLOADER, false)
 
     // Show second navbar at the bottom of the screen
     var navbar by preferences.booleanPreference(SECOND_BAR, false)
@@ -479,7 +479,7 @@ private const val LINK1 = "link1"
 private const val LINK2 = "link2"
 private const val LINK3 = "link3"
 private const val LINK4 = "link4"
-private const val LEGACY_DOWNLOADER = "legacyDownloader"
+private const val NEW_DOWNLOADER = "legacyDownloader"
 private const val ALL_TABS = "allTabs"
 private const val SHOW_SHORTCUTS = "showShortcuts"
 private const val SECOND_BAR = "secondBar"
