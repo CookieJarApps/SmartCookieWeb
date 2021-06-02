@@ -50,6 +50,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.subjects.PublishSubject
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URISyntaxException
@@ -59,6 +61,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 import java.util.regex.PatternSyntaxException
 import javax.inject.Inject
+import javax.net.ssl.HttpsURLConnection
 import kotlin.math.abs
 
 class SmartCookieWebClient(
@@ -202,6 +205,7 @@ class SmartCookieWebClient(
     var version: String? = null
     var author: String? = null
     var description: String? = null
+    var requirements = ArrayList<String>(0)
     val include = ArrayList<Pattern>(0)
 
     private fun installExtension(text: String){
@@ -249,8 +253,9 @@ class SmartCookieWebClient(
         }
 
         val inc = TextUtils.join(",", include)
+        val reqs = TextUtils.join(",", requirements)
 
-        javascriptRepository.addJavaScriptIfNotExists(JavaScriptDatabase.JavaScriptEntry(name!!, "", version, author, inc, "", "", "", code, ""))
+        javascriptRepository.addJavaScriptIfNotExists(JavaScriptDatabase.JavaScriptEntry(name!!, "", version, author, inc, "", "", "", code, reqs))
                 .subscribeOn(databaseScheduler)
                 .subscribe { aBoolean: Boolean? ->
                     if (!aBoolean!!) {
@@ -268,6 +273,10 @@ class SmartCookieWebClient(
             author = value
         } else if ("description".equals(field, ignoreCase = true)) {
             description = value
+        } else if ("require".equals(field, ignoreCase = true)) {
+            if (value != null) {
+                requirements.add(value)
+            }
         } else if ("include".equals(field, ignoreCase = true)) {
             urlToPattern(value)?.let {
                 include.add(it)
@@ -468,30 +477,6 @@ class SmartCookieWebClient(
         if(userPreferences.noAmp){
             view.evaluateJavascript(noAMP.provideJs(), null)
         }
-
-        var jsList = emptyList<JavaScriptDatabase.JavaScriptEntry>()
-        javascriptRepository.lastHundredVisitedJavaScriptEntries()
-                .subscribe { list ->
-                    jsList = list
-                }
-
-        for(i in jsList){
-            for(x in i.include!!.split(",")){
-                if(view.url.matches(x.toRegex())){
-                    view.evaluateJavascript(
-                            i.code.replace("""\"""", """"""")
-                                    .replace("\\n", System.lineSeparator())
-                                    .replace("\\t", "")
-                                    .replace("\\u003C", "<")
-                                    .replace("""/"""", """"""")
-                                    .replace("""//"""", """/"""")
-                                    .replace("""\\'""", """\'""")
-                                    .replace("""\\""""", """\""""")
-                            , null)
-                    break
-                }
-            }
-        }
     }
 
         fun stringContainsItemFromList(inputStr: String, items: Array<String>): Boolean {
@@ -502,6 +487,65 @@ class SmartCookieWebClient(
             }
             return false
         }
+
+    override fun onPageCommitVisible(view: WebView?, url: String?) {
+        var jsList = emptyList<JavaScriptDatabase.JavaScriptEntry>()
+        javascriptRepository.lastHundredVisitedJavaScriptEntries()
+            .subscribe { list ->
+                jsList = list
+            }
+
+        for(i in jsList){
+            for(x in i.include!!.split(",")) {
+                if (view?.url?.matches(x.toRegex()) == true) {
+                    GlobalScope.launch {
+                        var requirementJS = ""
+                        if (!i.requirements.isNullOrEmpty()) {
+                            val requirementList = (i.requirements as CharSequence).split(",").map { it.trim() }
+                            try {
+                                for (req in requirementList) {
+                                    val requirementUrl = URL(req)
+                                    val urlConnection: HttpsURLConnection = requirementUrl.openConnection() as HttpsURLConnection
+                                    val br = BufferedReader(InputStreamReader(urlConnection.getInputStream()))
+                                    var line: String?
+                                    val builder = java.lang.StringBuilder()
+                                    while (br.readLine().also { line = it } != null) {
+                                        builder.append(line)
+                                    }
+                                    requirementJS += builder
+                                }
+
+                                activity.runOnUiThread {
+                                    view.evaluateJavascript(
+                                        requirementJS, null
+                                    )
+                                }
+
+                            } catch (e: IOException) {
+                                e.printStackTrace()
+                            }
+
+                            activity.runOnUiThread {
+                                view.evaluateJavascript(
+                                    i.code.replace("""\"""", """"""")
+                                        .replace("\\n", System.lineSeparator())
+                                        .replace("\\t", "")
+                                        .replace("\\u003C", "<")
+                                        .replace("""/"""", """"""")
+                                        .replace("""//"""", """/"""")
+                                        .replace("""\\'""", """\'""")
+                                        .replace("""\\""""", """\"""""), null
+                                )
+                            }
+                        }
+                    }
+
+                    break
+                }
+            }
+        }
+        super.onPageCommitVisible(view, url)
+    }
 
     override fun onLoadResource(view: WebView?, url: String?) {
         //TODO: explore whether this fixes patchy js load on cached reload
