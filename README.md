@@ -30,7 +30,7 @@
 Need help? Open an issue here, or:
 
 - Visit the [Docs](https://smartcookieweb.com/docs/intro)
-- Email me at `support@cookiejarapps.com`
+- [Email me](mailto:support@cookiejarapps.com) at `support@cookiejarapps.com`
 - Join the [Telegram chat](https://t.me/scwgroup)
 - Join the [Matrix chat](https://matrix.to/#/#smartcookieweb:matrix.org)
 
