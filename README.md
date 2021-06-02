@@ -20,7 +20,7 @@
 <p align="center">
  <a href='https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png' height="50"/></a> 
  <a href='https://f-droid.org/en/packages/com.cookiegames.smartcookie/'><img alt='Get it on F-Droid' src='https://gitlab.com/fdroid/artwork/-/raw/master/badge/get-it-on-en.png' height="50"/></a>
-<p align="center"><a href="https://github.com/CookieJarApps/SmartCookieWeb-beta/releases"><b>Beta Releases</b></a> &bull; <a href="https://smartcookieweb.com/docs/intro"><b>Docs</b></a> &bull; <a href="https://smartcookieweb.com"><b>Website</b></a> &bull; <a href="https://smartcookieweb.com/contributors.php"><b>Contributors</b></a></p>
+<p align="center"><a href="https://github.com/CookieJarApps/SmartCookieWeb-beta/releases"><b>Beta Releases</b></a> &bull; <a href="https://smartcookieweb.com/docs/intro"><b>Docs</b></a> &bull; <a href="https://smartcookieweb.com"><b>Website</b></a> </p>
 <h4 align="center"><em>Important note: Google recently announced that embedded browser frameworks, or any browsers that fake their user agent will be banned from Google sign in starting January next year. Now, even if you change your user agent, Google logins redirected from other apps may not work. Turning off "Allow sites to open new windows" in Advanced settings and turning on "Remove identifying HTTP headers" in Privacy and Security Settings, as well as setting the user agent in General Settings to "Mobile" should solve the issue. </em></h4>
 
 ---
@@ -29,7 +29,7 @@
 
 Need help? Open an issue here, or:
 
-- Visit the [Docs](https://smartcookieweb.com/docs/intro)
+- Visit the [docs](https://smartcookieweb.com/docs/intro)
 - [Email me](mailto:support@cookiejarapps.com) at `support@cookiejarapps.com`
 - Join the [Telegram chat](https://t.me/scwgroup)
 - Join the [Matrix chat](https://matrix.to/#/#smartcookieweb:matrix.org)
@@ -59,12 +59,6 @@ Contributions are greatly appreciated. Feel free to open an issue or pull reques
 
 ---
 
-## Contributors
-
-See the contributors list [here](https://smartcookieweb.com/contributors.php)
-
----
-
 ## License
 
 - **[MPL-2.0 license](https://www.mozilla.org/en-US/MPL/2.0/)**
@@ -75,7 +69,7 @@ Please read the license before forking.
 
 ## Online services
 
-SmartCookieWeb uses some online services to improve the browser. Information about what is stored is available [here](ONLINE.md). A document outlining how to replace the current services is available [here](https://smartcookieweb.com/help/development/#web-services).
+SmartCookieWeb uses some online services to improve the browser. Information about what is stored is available [here](ONLINE.md). A document outlining how to replace the current services is available [here](https://smartcookieweb.com/docs/smartcookieweb/developer/development/#web-services).
 
 ---
 
