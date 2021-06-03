@@ -296,8 +296,9 @@ img {
 
     <script type="text/javascript">
         function search() {
-            if (document.getElementById("search_input").value != "") {
-                window.location.href = "${BASE_URL}" + document.getElementById("search_input").value;
+            const search_query = document.getElementById("search_input").value.trim();
+            if (search_query != "") {
+                window.location.href = "${BASE_URL}" + encodeURIComponent(search_query).replaceAll("%20", "+");
                 document.getElementById("search_input").value = "";
             }
             return false;
