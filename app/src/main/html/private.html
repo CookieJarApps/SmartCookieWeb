@@ -227,7 +227,7 @@
         function search() {
             var search_query = document.getElementById("search_input").value.trim();
             if (search_query != "") {
-                window.location.href = "${BASE_URL}" + encodeURIComponent(search_query).replaceAll("%20", "+");
+                window.location.href = "${BASE_URL}" + encodeURIComponent(search_query).replace(/%20/g, "+");
                 document.getElementById("search_input").value = "";
             }
             return false;
@@ -237,8 +237,8 @@
             if (key.keyCode == 13) search()
         }
 
-        document.querySelector("#search_submit").addEventListener("click", search)
-        document.querySelector("#search_input").addEventListener("keydown", key => enter(key))
+        document.querySelector("#search_submit").addEventListener("click", search);
+        document.querySelector("#search_input").addEventListener("keydown", function(key) {enter(key)});
         
     </script>
 
