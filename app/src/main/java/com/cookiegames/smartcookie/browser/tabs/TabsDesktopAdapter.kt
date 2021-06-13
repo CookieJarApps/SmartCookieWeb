@@ -8,6 +8,7 @@ import com.cookiegames.smartcookie.utils.Utils
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
@@ -15,6 +16,7 @@ import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.cookiegames.smartcookie.preference.UserPreferences
 
@@ -28,30 +30,7 @@ class TabsDesktopAdapter(
     private val userPreferences: UserPreferences
 ) : RecyclerView.Adapter<TabViewHolder>() {
 
-    private val backgroundTabDrawable: Drawable?
-    private val foregroundTabBitmap: Bitmap?
     private var tabList: List<TabViewState> = emptyList()
-
-    init {
-        val backgroundColor = Utils.mixTwoColors(ThemeUtils.getPrimaryColor(context), Color.BLACK, 0.85f)
-        val backgroundTabBitmap = Bitmap.createBitmap(
-            context.dimen(R.dimen.desktop_tab_width),
-            context.dimen(R.dimen.desktop_tab_height),
-            Bitmap.Config.ARGB_8888
-        ).also {
-            Canvas(it).drawTrapezoid(backgroundColor, false)
-        }
-        backgroundTabDrawable = BitmapDrawable(resources, backgroundTabBitmap)
-
-        val foregroundColor = ThemeUtils.getPrimaryColorDark(context)
-        foregroundTabBitmap = Bitmap.createBitmap(
-            context.dimen(R.dimen.desktop_tab_width),
-            context.dimen(R.dimen.desktop_tab_height),
-            Bitmap.Config.ARGB_8888
-        ).also {
-            Canvas(it).drawTrapezoid(foregroundColor, false)
-        }
-    }
 
     fun showTabs(tabs: List<TabViewState>) {
         val oldList = tabList
@@ -87,7 +66,8 @@ class TabsDesktopAdapter(
 
     private fun updateViewHolderAppearance(viewHolder: TabViewHolder, favicon: Bitmap?, isForeground: Boolean) {
         if (isForeground) {
-            val foregroundDrawable = BitmapDrawable(resources, foregroundTabBitmap)
+            val foregroundDrawable = resources.getDrawable(R.drawable.desktop_tab_selected)
+            foregroundDrawable.tint(ThemeUtils.getPrimaryColor(uiController as Context))
             if (uiController.isColorMode()) {
                 foregroundDrawable.tint(uiController.getUiColor())
             }
@@ -95,8 +75,10 @@ class TabsDesktopAdapter(
             viewHolder.layout.background = foregroundDrawable
             uiController.changeToolbarBackground(favicon, foregroundDrawable)
         } else {
+            val backgroundDrawable = resources.getDrawable(R.drawable.desktop_tab)
+            backgroundDrawable.tint(Utils.mixTwoColors(ThemeUtils.getPrimaryColor(uiController as Context), Color.BLACK, 0.85f))
             TextViewCompat.setTextAppearance(viewHolder.txtTitle, R.style.normalText)
-            viewHolder.layout.background = backgroundTabDrawable
+            viewHolder.layout.background = backgroundDrawable
         }
     }
 

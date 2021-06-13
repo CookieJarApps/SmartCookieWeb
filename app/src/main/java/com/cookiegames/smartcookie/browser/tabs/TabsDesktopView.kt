@@ -1,20 +1,29 @@
 package com.cookiegames.smartcookie.browser.tabs
 
-import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.browser.TabsView
-import com.cookiegames.smartcookie.list.HorizontalItemAnimator
-import com.cookiegames.smartcookie.controller.UIController
-import com.cookiegames.smartcookie.extensions.color
-import com.cookiegames.smartcookie.extensions.inflater
-import com.cookiegames.smartcookie.view.SmartCookieView
+import android.app.Activity
 import android.content.Context
+import android.graphics.Color
+import android.os.Build
 import android.util.AttributeSet
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.browser.TabsView
+import com.cookiegames.smartcookie.browser.activity.BrowserActivity
+import com.cookiegames.smartcookie.controller.UIController
+import com.cookiegames.smartcookie.extensions.color
+import com.cookiegames.smartcookie.extensions.inflater
+import com.cookiegames.smartcookie.list.HorizontalItemAnimator
 import com.cookiegames.smartcookie.preference.UserPreferences
+import com.cookiegames.smartcookie.utils.ThemeUtils
+import com.cookiegames.smartcookie.utils.Utils
+import com.cookiegames.smartcookie.view.SmartCookieView
+
 
 /**
  * A view which displays browser tabs in a horizontal [RecyclerView].
@@ -31,10 +40,10 @@ class TabsDesktopView @JvmOverloads constructor(
     private val tabList: RecyclerView
 
     init {
-        setBackgroundColor(context.color(R.color.black))
+        setBackgroundColor(Utils.mixTwoColors(ThemeUtils.getPrimaryColor(uiController as Context), Color.BLACK, 0.85f))
         context.inflater.inflate(R.layout.tab_strip, this, true)
         findViewById<ImageView>(R.id.new_tab_button).apply {
-            setColorFilter(context.color(R.color.icon_dark_theme))
+            setColorFilter(ThemeUtils.getTextColor(uiController as Context))
             setOnClickListener {
                 uiController.newTabButtonClicked()
             }
@@ -63,6 +72,9 @@ class TabsDesktopView @JvmOverloads constructor(
             adapter = tabsAdapter
             setHasFixedSize(true)
         }
+
+        val backgroundColor = Utils.mixTwoColors(ThemeUtils.getPrimaryColor(uiController as Context), Color.BLACK, 0.85f)
+        tabList.setBackgroundColor(backgroundColor)
     }
 
     override fun tabAdded() {

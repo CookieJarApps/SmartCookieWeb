@@ -11,8 +11,6 @@
         android:id="@+id/tabs_list"
         android:layout_width="0dp"
         android:layout_height="@dimen/desktop_tab_height"
-        android:fadingEdge="horizontal"
-        android:overScrollMode="never"
         android:scrollbars="none"
         app:layout_constraintEnd_toStartOf="@+id/new_tab_button"
         app:layout_constraintStart_toStartOf="parent"

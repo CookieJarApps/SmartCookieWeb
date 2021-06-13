@@ -7,8 +7,8 @@
     android:clickable="false"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
     android:weightSum="1">
 
     <FrameLayout
