@@ -77,8 +77,8 @@ android {
             dimension 'capabilities'
             applicationId 'com.cookiejarapps.smartcookiebeta'
             resValue "string", "app_name", "SmartCookieWeb beta"
-            versionCode 11
-            versionName "13.0.0-beta1"
+            versionCode 12
+            versionName "15.0-beta1"
         }
     }
 
