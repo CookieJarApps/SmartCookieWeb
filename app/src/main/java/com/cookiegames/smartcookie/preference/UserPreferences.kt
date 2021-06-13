@@ -372,7 +372,7 @@ class UserPreferences @Inject constructor(
 
     // API endpoints
     var translationEndpoint by preferences.stringPreference(TRANSLATION_ENDPOINT, "https://smartcookieweb.com/translate/")
-    var newsEndpoint by preferences.stringPreference(NEWS_ENDPOINT, "https://smartcookieweb.com/news/api.php")
+    var newsEndpoint by preferences.stringPreference(NEWS_ENDPOINT, "https://news.smartcookieweb.com/api.php")
 
     var useNewDownloader by preferences.booleanPreference(NEW_DOWNLOADER, false)
 
