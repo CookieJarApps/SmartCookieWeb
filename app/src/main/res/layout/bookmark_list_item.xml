@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="52dp"
-    android:background="?attr/listBackground"
-    android:gravity="center_vertical"
-    android:orientation="horizontal">
+              android:layout_width="match_parent"
+              android:layout_height="52dp" xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:background="?attr/listBackground"
+              android:gravity="center_vertical"
+              android:orientation="horizontal">
 
-    <FrameLayout
-        android:id="@+id/faviconButton"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/faviconBookmark"
-            android:layout_width="@dimen/material_grid_small_icon"
-            android:layout_height="@dimen/material_grid_small_icon"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/material_grid_margin"
-            android:layout_marginRight="@dimen/material_grid_margin"
-            android:contentDescription="@null"
-            android:gravity="center_vertical" />
-    </FrameLayout>
+    <ImageView
+        android:id="@+id/faviconBookmark"
+        android:layout_width="@dimen/material_grid_small_icon"
+        android:layout_height="@dimen/material_grid_small_icon"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/material_grid_margin"
+        android:layout_marginRight="@dimen/material_grid_margin"
+        android:contentDescription="@null"
+        android:gravity="center_vertical"
+        android:background="?attr/selectableItemBackgroundBorderless" />
 
     <TextView
         android:id="@+id/textBookmark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="10dp"
         android:layout_weight="1"
         android:autoSizeTextType="uniform"
         android:autoSizeMinTextSize="8sp"
@@ -40,5 +33,17 @@
         android:minHeight="?android:attr/listPreferredItemHeightSmall"
         android:singleLine="false"
         android:textAppearance="?android:attr/textAppearanceListItemSmall" />
+
+    <ImageButton
+          android:id="@+id/dropdownBookmark"
+          android:layout_width="@dimen/material_grid_small_icon"
+          android:layout_height="@dimen/material_grid_small_icon"
+          android:layout_gravity="center_vertical"
+          android:layout_marginLeft="@dimen/material_grid_margin"
+          android:layout_marginRight="@dimen/material_grid_margin"
+          android:contentDescription="@null"
+          android:gravity="center_vertical"
+          android:background="?attr/selectableItemBackgroundBorderless"
+          app:srcCompat="@drawable/ic_baseline_more_vert" />
 
 </LinearLayout>

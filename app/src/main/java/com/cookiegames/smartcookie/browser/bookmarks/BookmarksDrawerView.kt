@@ -288,10 +288,10 @@ class BookmarksDrawerView @JvmOverloads constructor(
 
         val txtTitle: TextView = itemView.findViewById(R.id.textBookmark)
         val favicon: ImageView = itemView.findViewById(R.id.faviconBookmark)
-        val faviconButton: FrameLayout = itemView.findViewById(R.id.faviconButton)
+        val overflowButton: ImageButton = itemView.findViewById(R.id.dropdownBookmark)
 
         init {
-            faviconButton.setOnClickListener(this)
+            overflowButton.setOnClickListener(this)
             itemView.setOnClickListener(this)
             itemView.setOnLongClickListener(this)
 
@@ -303,15 +303,18 @@ class BookmarksDrawerView @JvmOverloads constructor(
         }
 
         override fun onClick(v: View) {
-            if(v == faviconButton){
-                val index = adapterPosition
-                if(index != RecyclerView.NO_POSITION){
-                    onItemLongClickListener(adapter.itemAt(index).bookmark)
+            when(v){
+                overflowButton ->{
+                    val index = adapterPosition
+                    if(index != RecyclerView.NO_POSITION){
+                        onItemLongClickListener(adapter.itemAt(index).bookmark)
+                    }
                 }
-            }else{
-                val index = adapterPosition
-                if (index.toLong() != RecyclerView.NO_ID) {
-                    onItemClickListener(adapter.itemAt(index).bookmark)
+                else -> {
+                    val index = adapterPosition
+                    if (index.toLong() != RecyclerView.NO_ID) {
+                        onItemClickListener(adapter.itemAt(index).bookmark)
+                    }
                 }
             }
         }
