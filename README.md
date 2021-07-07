@@ -21,7 +21,7 @@
  <a href='https://play.google.com/store/apps/details?id=com.cookiegames.smartcookie&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_gb/badges/static/images/badges/en_badge_web_generic.png' height="50"/></a> 
  <a href='https://f-droid.org/en/packages/com.cookiegames.smartcookie/'><img alt='Get it on F-Droid' src='https://gitlab.com/fdroid/artwork/-/raw/master/badge/get-it-on-en.png' height="50"/></a>
 <p align="center"><a href="https://github.com/CookieJarApps/SmartCookieWeb-beta/releases"><b>Beta Releases</b></a> &bull; <a href="https://smartcookieweb.com/docs/intro"><b>Docs</b></a> &bull; <a href="https://smartcookieweb.com"><b>Website</b></a> </p>
-<h4 align="center"><em>Important note: Google recently announced that embedded browser frameworks, or any browsers that fake their user agent will be banned from Google sign in starting January next year. Now, even if you change your user agent, Google logins redirected from other apps may not work. Turning off "Allow sites to open new windows" in Advanced settings and turning on "Remove identifying HTTP headers" in Privacy and Security Settings, as well as setting the user agent in General Settings to "Mobile" should solve the issue. </em></h4>
+<h4 align="center"><em>This project is temporarily on hold. The WebView-based <a href="https://github.com/Slion/Fulguris">Fulguris</a> is currently in more active development and has a similar feature set.</em></h4>
 
 ---
 
