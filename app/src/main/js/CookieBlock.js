@@ -1,35 +1,107 @@
-// Copyright 2020 CookieJarApps
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
+(function() {
+    'use strict';
 
-// Disabled more advanced popups
-var fbPopup = document.getElementsByClassName("_5m_x _9fyr");
-while(fbPopup.length > 0){
-    fbPopup[0].parentNode.removeChild(fbPopup[0]);
-}
+    var cookieDialogs = {
+        selectors: {
+            rules: [
+                {hostname: /google/, target: '.HTjtHe'},
+                {hostname: /polygon/, target: '#privacy-consent'},
+                {hostname: /payback/, target: 'div[data-userhiddencontent-name="dsgvo"]'},
+                {hostname: /blogspot/, target: '#cookieChoiceInfo'},
+                {hostname: /sivantos/, target: '.cookie-confirmation'},
+                {hostname: /ikea/, target: '#cookieMsgBlock'},
+                {hostname: /paypal/, target: '#gdprCookieBanner'},
+                {hostname: /microsoft/, target: '#uhfCookieAlert'},
+                {hostname: /facebook/, target: '._5m_x'},
+                {hostname: /twitter/, target: '.r-1m3jxhj'},
+                {hostname: /citroen/, target: "#_psaihm_main_div,#_psaihm_overlay"},
+                {hostname: /nhs/, target: ".nhsuk-cookie-banner"},
 
-var element = document.getElementsByTagName("body")[0]
-  element.classList.remove("cookiebanner");
+                {hostname: /./, target: '.eupopup-container'},
+                {hostname: /./, target: '.g-consentmanager'},
+                {hostname: /./, target: '.cookie_hint'},
+                {hostname: /./, target: '.cookiebanner'},
+                {hostname: /./, target: '#cookiebanner'},
+                {hostname: /./, target: '#cookieBar'},
+                {hostname: /./, target: '#onetrust-consent-sdk'},
+                {hostname: /./, target: '.fc-consent-root'},
+                {hostname: /./, target: '.cc_banner-wrapper'},
+                {hostname: /./, target: '#js-eu-cookie'},
+                {hostname: /./, target: '#AcceptCookiesBanner'},
+                {hostname: /./, target: '.js-CookieBanner'},
+                {hostname: /./, target: '#ck-cookie-statement'},
+                {hostname: /./, target: '.cc-window,.cc-banner,.cc-overlay'},
+                {hostname: /./, target: '#cookie-law-info-bar'},
+                {hostname: /./, target: '#cookie-banner'},
+                {hostname: /./, target: '#cmpbox'},
+                {hostname: /./, target: '#cmpbox2'},
+                {hostname: /./, target: "#cookie-notice"},
+                {hostname: /./, target: "#sp-cc"},
+                {hostname: /./, target: "#cookie_law"},
+                {hostname: /./, target: "#gdpr"},
+                {hostname: /./, target: ".responsive-app__cookies"},
+                {hostname: /./, target: ".x-cookies"},
+                {hostname: /./, target: ".cookie"},
+                {hostname: /./, target: "#js-gdpr-cookie-banner"},
+                {hostname: /./, target: "#mscc-banner"},
+                {hostname: /./, target: "div[id^=\'sp_message_container\']"},
+                {hostname: /./, target: ".ConsentBanner"},
+                {hostname: /./, target: ".cc-cookieAlert"},
+                {hostname: /./, target: ".cc_overlay_lock"},
+                {hostname: /./, target: ".banner-gdpr"},
+                {hostname: /./, target: "#cookies-consent"},
+                {hostname: /./, target: ".cookie-consent--GDPR"},
+                {hostname: /./, target: ".c-cookie-disclaimer"},
+                {hostname: /./, target: ".important-banner--cookies"},
+                {hostname: /./, target: ".cookie-policy"},
+                {hostname: /./, target: ".cookie-banner-optout"},
+                {hostname: /./, target: ".cookie-banner--wrapper"},
+            ]
+        }
+    };
 
-var oneTrust = document.getElementById("onetrust-consent-sdk")
-if(oneTrust != null){
-    oneTrust.remove();
-}
+    function executeRemove(node, selector) {
+        for (var i = 0; i < node.length; i++) {
+            node[i].remove();
+        }
+        if (node.length && selector) { console.log('remove', selector); }
+    }
 
-var element = document.getElementsByTagName("html")[0]
-  element.classList.remove("sp-message-open");
+    function executeRule(rule) {
+        if (typeof rule.hostname == 'string' && rule.hostname !== location.hostname) { return; }
+        if (typeof rule.hostname == 'object' && typeof rule.hostname.match == 'function' && !rule.hostname.match(location.hostname)) { return; }
 
-if(window.location.href.includes("consent-management/")){
-  window.location.href = window.location.origin;
-}
+        executeRemove(document.querySelectorAll(rule.target), rule.target);
+    }
 
-var styles = '.gem-c-cookie-banner, #sp-cc, .fc-consent-root, .fc-dialog-container, #cookie_law, #gdpr, .responsive-app__cookies, .x-cookies, .cookie, #uhfCookieAlert, #js-gdpr-consent-banner, #msccBanner, div[id^=\'sp_message_container\'], #sp_message_iframe_200665, ._5m_x _9fyr, #cookieChoiceInfo, .message-overlay, .message-container, .aID8W, .bErdLd, .gu-overlay, #_5vCeX-ntJ_XzxgPg75egDQ6, .nhsuk-cookie-banner, [class*="ConsentBanner"], #cookieChoiceInfo, #cookie-notice, .type-bottom, .cc_cookieAlert, .message-container, .rgpd-notice, #cookiemessage-root, #privacy_policy_wrapper, .cc_overlay_lock, .banner-gdpr, .eu-cookies-show, #cookies-consent, #privconsentContainer, #cookieConsentGTM, #js-cookie-banner, #ma-cookie-law-info, #ma-cookies-law-info, #js--tracking--note, #ideocookie-widget, #headerCookieInfo, .wx-cookie-ppp, .ip-cookie-banner, .cookie-consent--GDPR, #gd-cookiebar, .bottom-bar-cookies, #stickyCookieBar, .app_gdpr--2k2uB.css, -tes4ja-ConsentBanner, .qc-cmp2-container, .qc-cmp-ui-container, .cc_banner-wrapper, .cc-floating, #cookiePrompt, .kLCTYz, #gdpr-banner, #popup-announcements, .cookie-ui__cookieUI___3fxp1, #cookieWarning, #CybotCookiebotDialog, #catapult-cookie-bar, .FAVrq, #gpdr, .gpdr, .we-love-cookies, #privacy_notice, .cookiebar-bar, #stickyCookieBar, #onetrust-consent-sdk, .qc-cmp-cleanslate, .js-cookie-msg, #consent, .qc-cmp2-container, .lmZkxY, .cookiebanner, .bbccookies-banner, .butterBar-message, .gl-modal__main-content, .md-cookiesoptinout, .lOPC8 , .cp-overlay, .cp-dialog, .cc-light, .xFNJP, .yAVMkd, .vk_c, .evidon-consent-button, .cookie-warn, .cc-banner, .cc-bottom, .qc-cmp-ui-content, .hnf-banner, .m-privacy-consent, .c-cookie-disclaimer, .important-banner--cookies, .cookie-policy, .cookie-banner-optout, .cookie-banner__wrapper { visibility: hidden !important; height: 0 !important; } .qc-cmp-ui-showing{ overflow: auto !important; } .QVCmK{ overflow: scroll !important; position: absolute !important; } body{ overflow: auto !important; }'
+    function execute() {
+        cookieDialogs.selectors.rules.forEach(executeRule);
+    }
 
-var styleSheet = document.createElement("style")
-styleSheet.type = "text/css"
-styleSheet.innerText = styles
-document.head.appendChild(styleSheet)
+    function undoScrollLock() {
+        const googleLock = document.querySelectorAll(".EM1Mrb");
 
-var fc = document.getElementsByClassName("fc-consent-root");
-while(fc.length > 0){
-    fc[0].parentNode.removeChild(fc[0]);
-}
+        [].forEach.call(googleLock, function(el) {
+            el.classList.remove("EM1Mrb");
+        });
+
+        const consentManagerLock = document.querySelectorAll(".is-display-consentmanager");
+
+        [].forEach.call(consentManagerLock, function(el) {
+            el.classList.remove("is-display-consentmanager");
+        });
+
+        const body = document.querySelectorAll("body");
+
+        [].forEach.call(body, function(el) {
+            el.style.removeProperty('overflow');
+        });
+    }
+
+    undoScrollLock();
+    execute();
+})();
