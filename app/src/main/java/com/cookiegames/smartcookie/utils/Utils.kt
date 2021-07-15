@@ -280,7 +280,7 @@ object Utils {
                        favicon: Bitmap) {
         val shortcutIntent = Intent(Intent.ACTION_VIEW)
         shortcutIntent.data = Uri.parse(historyEntry.url)
-        shortcutIntent.setPackage("com.cookiegames.smartcookie")
+        shortcutIntent.setPackage(activity.packageName)
         val title = if (TextUtils.isEmpty(historyEntry.title)) activity.getString(R.string.untitled) else historyEntry.title
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             val addIntent = Intent()
