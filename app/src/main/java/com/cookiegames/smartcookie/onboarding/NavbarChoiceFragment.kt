@@ -21,7 +21,7 @@ import com.github.appintro.SlidePolicy
 import javax.inject.Inject
 
 
-class NavbarChoiceFragment : Fragment(), SlidePolicy {
+class NavbarChoiceFragment : Fragment() {
     @Inject
     lateinit var searchEngineProvider: SearchEngineProvider
 
@@ -38,23 +38,27 @@ class NavbarChoiceFragment : Fragment(), SlidePolicy {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //checkBox = view.findViewById(R.id.check_box)
 
         var col: Int
-        when (userPreferences.useTheme) {
-            AppTheme.LIGHT -> col = Color.WHITE
-            AppTheme.DARK -> col = Color.BLACK
-            AppTheme.BLACK -> col = Color.BLACK
-        }
         var textCol: Int
+
         when (userPreferences.useTheme) {
-            AppTheme.LIGHT -> textCol = Color.BLACK
-            AppTheme.DARK -> textCol = Color.WHITE
-            AppTheme.BLACK -> textCol = Color.WHITE
+            AppTheme.LIGHT ->{
+                col = Color.WHITE
+                textCol = Color.BLACK
+            }
+            AppTheme.DARK ->{
+                textCol = Color.WHITE
+                col = Color.BLACK
+            }
+            AppTheme.BLACK ->{
+                textCol = Color.WHITE
+                col = Color.BLACK
+            }
         }
 
         requireView().setBackgroundColor(col)
-        requireView().findViewById<TextView>(R.id.textView4).setTextColor(textCol)
+        requireView().findViewById<TextView>(R.id.permissionsTitle).setTextColor(textCol)
 
         val rGroup = getView()?.findViewById(R.id.radioGroup) as RadioGroup
         rGroup.setOnCheckedChangeListener { group, checkedId ->
@@ -81,17 +85,6 @@ class NavbarChoiceFragment : Fragment(), SlidePolicy {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injector.inject(this)
-    }
-
-    override val isPolicyRespected: Boolean
-        get() = true //checkBox.isChecked
-
-    override fun onUserIllegallyRequestedNextPage() {
-        Toast.makeText(
-                requireContext(),
-                R.string.tabs,
-                Toast.LENGTH_SHORT
-        ).show()
     }
 
     companion object {

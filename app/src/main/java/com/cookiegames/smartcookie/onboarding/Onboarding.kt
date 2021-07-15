@@ -44,19 +44,23 @@ class Onboarding : AppIntro2(){
 
     private fun showSlide(){
         isWizardMode = true
-
+        
         var col: Int
-        when (userPreferences.useTheme) {
-            AppTheme.LIGHT -> col = Color.WHITE
-            AppTheme.DARK -> col = Color.BLACK
-            AppTheme.BLACK -> col = Color.BLACK
-        }
-
         var textCol: Int
+
         when (userPreferences.useTheme) {
-            AppTheme.LIGHT -> textCol = Color.BLACK
-            AppTheme.DARK -> textCol = Color.WHITE
-            AppTheme.BLACK -> textCol = Color.WHITE
+            AppTheme.LIGHT ->{
+                col = Color.WHITE
+                textCol = Color.BLACK
+            }
+            AppTheme.DARK ->{
+                textCol = Color.WHITE
+                col = Color.BLACK
+            }
+            AppTheme.BLACK ->{
+                textCol = Color.WHITE
+                col = Color.BLACK
+            }
         }
 
         val a = TypedValue()
@@ -82,7 +86,7 @@ class Onboarding : AppIntro2(){
         askForPermissions(
                 permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE),
                 slideNumber = 2,
-                required = true)
+                required = false)
 
 
         setIndicatorColor(

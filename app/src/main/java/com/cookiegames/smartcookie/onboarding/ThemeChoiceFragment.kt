@@ -5,8 +5,6 @@
 
 package com.cookiegames.smartcookie.onboarding
 
-import android.animation.ArgbEvaluator
-import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
@@ -22,45 +20,45 @@ import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.search.SearchEngineProvider
-import com.cookiegames.smartcookie.search.engine.BaseSearchEngine
-import com.github.appintro.SlidePolicy
-import org.w3c.dom.Text
 import javax.inject.Inject
 
 
-class ThemeChoiceFragment : Fragment(), SlidePolicy {
+class ThemeChoiceFragment : Fragment() {
     @Inject
     lateinit var searchEngineProvider: SearchEngineProvider
 
     @Inject
     lateinit var userPreferences: UserPreferences
 
-    private lateinit var checkBox: CheckBox
-
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.theme_choice, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_onboarding_theme_choice, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //checkBox = view.findViewById(R.id.check_box)
+
         var col: Int
-        when (userPreferences.useTheme) {
-            AppTheme.LIGHT -> col = Color.WHITE
-            AppTheme.DARK -> col = Color.BLACK
-            AppTheme.BLACK -> col = Color.BLACK
-        }
         var textCol: Int
+
         when (userPreferences.useTheme) {
-            AppTheme.LIGHT -> textCol = Color.BLACK
-            AppTheme.DARK -> textCol = Color.WHITE
-            AppTheme.BLACK -> textCol = Color.WHITE
+            AppTheme.LIGHT ->{
+                col = Color.WHITE
+                textCol = Color.BLACK
+            }
+            AppTheme.DARK ->{
+                textCol = Color.WHITE
+                col = Color.BLACK
+            }
+            AppTheme.BLACK ->{
+                textCol = Color.WHITE
+                col = Color.BLACK
+            }
         }
 
         requireView().setBackgroundColor(col)
-        requireView().findViewById<TextView>(R.id.textView4).setTextColor(textCol)
+        requireView().findViewById<TextView>(R.id.themeTitle).setTextColor(textCol)
 
         val listView = activity?.findViewById<ListView>(R.id.themes)
         val values = AppTheme.values().map { it }
@@ -70,7 +68,7 @@ class ThemeChoiceFragment : Fragment(), SlidePolicy {
         listView?.choiceMode = CHOICE_MODE_SINGLE
         listView?.setItemChecked(0, true)
 
-        listView!!.onItemClickListener = OnItemClickListener { adapterView, view, i, l ->
+        listView!!.onItemClickListener = OnItemClickListener { _, _, i, _ ->
             userPreferences.useTheme = values[i]
             activity?.recreate()
         }
@@ -80,26 +78,12 @@ class ThemeChoiceFragment : Fragment(), SlidePolicy {
         AppTheme.LIGHT -> R.string.light_theme
         AppTheme.DARK -> R.string.dark_theme
         AppTheme.BLACK -> R.string.black_theme
-        /*AppTheme.BLUE -> R.string.blue_theme
-        AppTheme.GREEN -> R.string.green_theme
-        AppTheme.YELLOW -> R.string.yellow_theme*/
     })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         injector.inject(this)
-    }
-
-    override val isPolicyRespected: Boolean
-        get() = true //checkBox.isChecked
-
-    override fun onUserIllegallyRequestedNextPage() {
-        Toast.makeText(
-                requireContext(),
-                R.string.tabs,
-                Toast.LENGTH_SHORT
-        ).show()
     }
 
     companion object {

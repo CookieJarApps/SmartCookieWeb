@@ -14,7 +14,7 @@
     app:layout_constraintTop_toTopOf="parent">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/permissionsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -26,19 +26,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/permissionsImage"
         style="@style/AppIntroDefaultImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/permissionsDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/permissionsTitle"
         app:srcCompat="@drawable/perms" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/permissionsDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"

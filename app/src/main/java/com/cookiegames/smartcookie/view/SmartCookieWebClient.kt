@@ -552,6 +552,9 @@ class SmartCookieWebClient(
         if(smartCookieView.toggleDesktop){
             view?.evaluateJavascript(setWidenView.provideJs(), null)
         }
+        if(userPreferences.cookieBlockEnabled){
+            view?.evaluateJavascript(cookieBlock.provideJs(), null)
+        }
         super.onLoadResource(view, url)
     }
 
@@ -670,9 +673,6 @@ class SmartCookieWebClient(
                         }, 100)
                     }
                 }
-        }
-        if(userPreferences.cookieBlockEnabled){
-            view.evaluateJavascript(cookieBlock.provideJs(), null)
         }
         if (userPreferences.javaScriptChoice === JavaScriptChoice.BLACKLIST) {
             if (userPreferences.javaScriptBlocked !== "" && userPreferences.javaScriptBlocked !== " ") {
