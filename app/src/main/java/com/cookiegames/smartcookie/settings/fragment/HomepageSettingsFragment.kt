@@ -137,7 +137,7 @@ class HomepageSettingsFragment : AbstractSettingsFragment() {
                     R.string.title_custom_homepage,
                     currentHomepage,
                     R.string.action_ok) { url ->
-                if(url.contains("http")){
+                if(url.startsWith("http") || url.startsWith("file")){
                     userPreferences.homepage = url
                     summaryUpdater.updateSummary(url)
                 }
