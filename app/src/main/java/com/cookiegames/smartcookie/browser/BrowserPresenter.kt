@@ -15,14 +15,20 @@ import com.cookiegames.smartcookie.view.UrlInitializer
 import com.cookiegames.smartcookie.view.find.FindResults
 import android.app.Activity
 import android.content.Intent
+import android.os.Environment
 import android.util.Log
 import android.webkit.URLUtil
+import android.widget.Toast
 import com.cookiegames.smartcookie.constant.*
 import com.cookiegames.smartcookie.html.incognito.IncognitoPageFactory
 import com.cookiegames.smartcookie.html.onboarding.OnboardingPageFactory
 import io.reactivex.Scheduler
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStreamWriter
 
 /**
  * Presenter in charge of keeping track of the current tab and setting the current tab of the
@@ -223,6 +229,34 @@ class BrowserPresenter(
      * @param intent the intent to handle, may be null.
      */
     fun onNewIntent(intent: Intent?) = tabsModel.doAfterInitialization {
+        if(intent?.getBooleanExtra("EXPORT_TABS", false) == true){
+
+            try {
+                var bookmarksExport = File(
+                    Environment.getExternalStorageDirectory(),
+                    "TabsExport.txt")
+                var counter = 0
+                while (bookmarksExport.exists()) {
+                    counter++
+                    bookmarksExport = File(
+                        Environment.getExternalStorageDirectory(),
+                        "TabsExport-$counter.txt")
+                }
+                val exportFile = bookmarksExport
+
+                val fOut = FileOutputStream(exportFile)
+                val myOutWriter = OutputStreamWriter(fOut)
+                for(i in tabsModel.allTabs){
+                    myOutWriter.append("${i.title}\n${i.url}\n=================\n")
+                }
+                myOutWriter.close()
+                fOut.close()
+            } catch (e: IOException) {
+                Log.e("Exception", "File write failed: " + e.toString())
+            }
+
+            return@doAfterInitialization
+        }
      val url = if (intent?.action == Intent.ACTION_WEB_SEARCH) {
         tabsModel.extractSearchFromIntent(intent)
     } else {

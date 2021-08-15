@@ -44,6 +44,9 @@ import org.json.JSONObject
 import java.io.*
 import java.util.*
 import javax.inject.Inject
+import android.content.Intent
+import com.cookiegames.smartcookie.MainActivity
+import com.cookiegames.smartcookie.browser.activity.BrowserActivity
 
 
 class ExportSettingsFragment : AbstractSettingsFragment() {
@@ -72,8 +75,8 @@ class ExportSettingsFragment : AbstractSettingsFragment() {
         clickablePreference(preference = SETTINGS_IMPORT, onClick = this::importBookmarks)
         clickablePreference(preference = SETTINGS_DELETE_BOOKMARKS, onClick = this::deleteAllBookmarks)
 
-        //clickablePreference(preference = SETTINGS_TAB_EXPORT, onClick = this::exportTabs)
-        //clickablePreference(preference = SETTINGS_TAB_IMPORT, onClick = this::importTabs)
+        clickablePreference(preference = SETTINGS_TAB_EXPORT, onClick = this::exportTabs)
+        clickablePreference(preference = SETTINGS_TAB_IMPORT, onClick = this::importTabs)
 
         clickablePreference(preference = SETTINGS_SETTINGS_EXPORT, onClick = this::exportSettings)
         clickablePreference(preference = SETTINGS_SETTINGS_IMPORT, onClick = this::importSettings)
@@ -97,6 +100,32 @@ class ExportSettingsFragment : AbstractSettingsFragment() {
 
         exportSubscription?.dispose()
         importSubscription?.dispose()
+    }
+
+    private fun importTabs() {
+
+    }
+
+    private fun exportTabs() {
+        PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(activity, REQUIRED_PERMISSIONS,
+            object : PermissionsResultAction() {
+                override fun onGranted() {
+                    val intent = Intent(context, MainActivity::class.java)
+                    intent.putExtra("EXPORT_TABS", true)
+                    startActivity(intent)
+                    application.toast(R.string.save_file_success)
+                }
+
+                override fun onDenied(permission: String) {
+                    val activity = activity
+                    if (activity != null && !activity.isFinishing && isAdded) {
+                        Utils.createInformativeDialog(activity, R.string.title_error, R.string.import_bookmark_error)
+                    } else {
+                        application.toast(R.string.bookmark_export_failure)
+                    }
+                }
+            })
+
     }
 
     private fun clearSettings() {

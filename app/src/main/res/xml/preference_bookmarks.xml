@@ -16,16 +16,12 @@
             android:title="@string/action_delete_all_bookmarks"/>
     </PreferenceCategory>
 
-    <!--<PreferenceCategory android:title="@string/backup_tabs">
+    <PreferenceCategory android:title="@string/backup_tabs">
         <Preference
             android:key="export_tab"
             android:singleLineTitle="false"
             android:title="@string/export_tabs"/>
-        <Preference
-            android:key="import_tab"
-            android:singleLineTitle="false"
-            android:title="@string/import_tabs"/>
-    </PreferenceCategory>-->
+    </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/backup_settings">
         <Preference
