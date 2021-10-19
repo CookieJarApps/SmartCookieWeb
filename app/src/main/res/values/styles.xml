@@ -38,7 +38,7 @@
     </style>
 
     <!-- Base Themes -->
-    <style name="Theme.BaseLightTheme" parent="Theme.MaterialComponents.Light.Bridge">
+    <style name="Theme.BaseLightTheme" parent="Theme.MaterialComponents.Light">
 
         <!-- Theme Colors -->
         <item name="colorPrimary">@color/primary_color</item>
@@ -68,7 +68,7 @@
 
     </style>
 
-    <style name="Theme.BaseDarkTheme" parent="Theme.MaterialComponents.Bridge">
+    <style name="Theme.BaseDarkTheme" parent="Theme.MaterialComponents">
 
         <!-- Theme colors -->
         <item name="colorPrimary">@color/primary_color_dark</item>
@@ -98,7 +98,7 @@
 
     </style>
 
-    <style name="Theme.BaseBlackTheme" parent="Theme.MaterialComponents.Bridge">
+    <style name="Theme.BaseBlackTheme" parent="Theme.MaterialComponents">
 
         <!-- Theme Colors -->
         <item name="colorPrimary">@color/black</item>

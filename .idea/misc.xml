@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CookieJarApps/SmartCookieWeb/app/src/main/res/drawable/card_bg_elevate.xml" value="0.21875" />
+        <entry key="..\:/CookieJarApps/SmartCookieWeb/app/src/main/res/layout/dialog_app_lock.xml" value="0.20260416666666667" />
+        <entry key="..\:/CookieJarApps/SmartCookieWeb/app/src/main/res/layout/fragment_drawer_offset.xml" value="0.20260416666666667" />
         <entry key="..\:/CookieJarApps/SmartCookieWeb/app/src/main/res/layout/tab_drawer.xml" value="0.2957427536231884" />
+        <entry key="..\:/CookieJarApps/SmartCookieWeb/app/src/main/res/layout/toolbar.xml" value="0.1953125" />
         <entry key="..\:/CookieJarApps/SmartCookieWeb/app/src/main/res/xml/preference_bookmarks.xml" value="0.2957427536231884" />
       </map>
     </option>
@@ -11,5 +15,5 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>
