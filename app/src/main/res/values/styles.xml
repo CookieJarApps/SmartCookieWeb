@@ -38,7 +38,7 @@
     </style>
 
     <!-- Base Themes -->
-    <style name="Theme.BaseLightTheme" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.BaseLightTheme" parent="Theme.Material3.Light">
 
         <!-- Theme Colors -->
         <item name="colorPrimary">@color/primary_color</item>
@@ -68,7 +68,7 @@
 
     </style>
 
-    <style name="Theme.BaseDarkTheme" parent="Theme.MaterialComponents">
+    <style name="Theme.BaseDarkTheme" parent="Theme.Material3.Dark">
 
         <!-- Theme colors -->
         <item name="colorPrimary">@color/primary_color_dark</item>
@@ -98,7 +98,7 @@
 
     </style>
 
-    <style name="Theme.BaseBlackTheme" parent="Theme.MaterialComponents">
+    <style name="Theme.BaseBlackTheme" parent="Theme.Material3.Dark">
 
         <!-- Theme Colors -->
         <item name="colorPrimary">@color/black</item>

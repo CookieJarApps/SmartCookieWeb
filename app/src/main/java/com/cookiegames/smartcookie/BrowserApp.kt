@@ -20,6 +20,7 @@ import com.cookiegames.smartcookie.utils.FileUtils
 import com.cookiegames.smartcookie.utils.MemoryLeakUtils
 import com.cookiegames.smartcookie.utils.installMultiDex
 import android.os.StrictMode
+import com.google.android.material.color.DynamicColors
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.plugins.RxJavaPlugins
@@ -107,6 +108,8 @@ class BrowserApp : Application() {
                 MemoryLeakUtils.clearNextServedView(activity, this@BrowserApp)
             }
         })
+
+        DynamicColors.applyToActivitiesIfAvailable(this)
     }
 
     /**
