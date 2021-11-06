@@ -6,6 +6,7 @@
     <color name="gray_medium">#cdcdcd</color>
     <color name="white">#ffffff</color>
     <color name="gray_list_bg">#0d000000</color>
+    <color name="gray">#333333</color>
 
     <color name="primary_color">#FFFFFF</color>
     <color name="secondary_color">#8d4e00</color>
