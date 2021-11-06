@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/dialog_padding">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
@@ -89,5 +94,7 @@
         android:layout_marginTop="@dimen/material_grid_unit"
         android:paddingStart="@dimen/material_grid_unit"
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
-        tools:text="tomorrow" />=
-</LinearLayout>
+        tools:text="tomorrow" />
+    </LinearLayout>
+
+</ScrollView>
