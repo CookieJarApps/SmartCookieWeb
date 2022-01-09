@@ -84,7 +84,8 @@
             android:launchMode="singleTask"
             android:resizeableActivity="true"
             android:theme="@style/Theme.LightTheme"
-            android:windowSoftInputMode="stateHidden|adjustResize">
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.PROCESS_TEXT" />
@@ -176,7 +177,8 @@
             android:parentActivityName=".MainActivity"
             android:process=":incognito"
             android:theme="@style/Theme.DarkTheme"
-            android:windowSoftInputMode="stateHidden|adjustResize">
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.INCOGNITO" />
 
@@ -187,7 +189,8 @@
             android:name=".settings.activity.SettingsActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
             android:label="@string/settings"
-            android:theme="@style/Theme.SettingsTheme">
+            android:theme="@style/Theme.SettingsTheme"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.SETTINGS" />
 
@@ -198,7 +201,8 @@
             android:name=".reading.activity.ReadingActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
             android:label="@string/reading_mode"
-            android:theme="@style/Theme.SettingsTheme">
+            android:theme="@style/Theme.SettingsTheme"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.READING" />
 
