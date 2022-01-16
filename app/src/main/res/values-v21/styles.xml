@@ -4,10 +4,6 @@
     <!-- Settings themes -->
     <style name="Theme.SettingsTheme" parent="Theme.LightTheme">
         <item name="android:windowBackground">?android:attr/colorBackground</item>
-        <item name="colorPrimary">?android:attr/colorBackground</item>
-        <item name="colorPrimaryDark">?android:attr/colorBackground</item>
-        <item name="actionBarWidgetTheme">@null</item>
-        <item name="actionBarTheme">@style/ThemeOverlay.Material3.Dark.ActionBar</item>
     </style>
 
     <style name="Theme.SettingsTheme.Dark" parent="Theme.DarkTheme">
