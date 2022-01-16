@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.util.Base64
+import android.util.Log
 import android.webkit.URLUtil
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
@@ -24,6 +25,7 @@ import org.jsoup.nodes.DataNode
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileWriter
+import java.net.URI
 import java.net.URL
 import java.net.URLConnection
 import javax.inject.Inject
@@ -95,15 +97,17 @@ class HomePageFactory @Inject constructor(
                                 val icon = createIconByName('?')
                                 val encoded = bitmapToBase64(icon)
 
-                                id("link" + (index + 1)){ attr("src", "data:image/png;base64," + encoded)}
+                                id("link" + (index + 1)){ attr("src",
+                                        "data:image/png;base64,$encoded"
+                                )}
 
                                 return@forEachIndexed
                             }
 
-                            val url = URL(element.replaceFirst("www.", ""))
-                            val icon = createIconByName(url.getHost().first().toUpperCase())
+                            val url = URI(element.replaceFirst("www.", ""))
+                            val icon = createIconByName(url.host.first().toUpperCase())
                             val encoded = bitmapToBase64(icon)
-                            id("link" + (index + 1)){ attr("src", element + "/favicon.ico")}
+                            id("link" + (index + 1)){ attr("src", "https://${URI(element).host}/favicon.ico")}
                             id("link" + (index + 1)){ attr("onerror", "this.src = 'data:image/png;base64,$encoded';")}
 
                         }
