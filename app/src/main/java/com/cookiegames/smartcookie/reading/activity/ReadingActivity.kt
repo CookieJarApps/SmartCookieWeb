@@ -341,6 +341,8 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 e.printStackTrace()
+                mProgressDialog!!.hide()
+                Toast.makeText(this@ReadingActivity, resources.getString(R.string.error), Toast.LENGTH_LONG).show()
             }
 
             @SuppressLint("SetTextI18n")
