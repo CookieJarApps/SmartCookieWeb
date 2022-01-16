@@ -3,6 +3,7 @@ package com.cookiegames.smartcookie.ssl
 import android.content.Context
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import androidx.core.content.res.ResourcesCompat
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.utils.DrawableUtils
 
@@ -11,20 +12,12 @@ import com.cookiegames.smartcookie.utils.DrawableUtils
  */
 fun Context.createSslDrawableForState(sslState: SslState): Drawable? = when (sslState) {
     is SslState.None -> {
-        val bitmap = DrawableUtils.createImageInsetInRoundedSquare(this, R.drawable.ic_unsecured)
-        val unsecuredDrawable = BitmapDrawable(resources, bitmap)
-        unsecuredDrawable
+        ResourcesCompat.getDrawable(resources, R.drawable.ic_unsecured, theme)
     }
-   is SslState.Valid -> {val bitmap = DrawableUtils.createImageInsetInRoundedSquare(this, R.drawable.ic_secured)
-        val securedDrawable = BitmapDrawable(resources, bitmap)
-        securedDrawable
+   is SslState.Valid -> {
+       ResourcesCompat.getDrawable(resources, R.drawable.ic_secured, theme)
     }
     is SslState.Invalid -> {
-        /*val bitmap = DrawableUtils.createImageInsetInRoundedSquare(this, R.drawable.ic_alert)
-        val securedDrawable = BitmapDrawable(resources, bitmap)
-        securedDrawable*/
-        val bitmap = DrawableUtils.createImageInsetInRoundedSquare(this, R.drawable.ic_unsecured_severe)
-        val unsecuredDrawable = BitmapDrawable(resources, bitmap)
-        unsecuredDrawable
+        ResourcesCompat.getDrawable(resources, R.drawable.ic_unsecured_severe, theme)
     }
 }

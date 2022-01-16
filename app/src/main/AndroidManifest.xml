@@ -189,7 +189,7 @@
             android:name=".settings.activity.SettingsActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
             android:label="@string/settings"
-            android:theme="@style/Theme.SettingsTheme"
+            android:theme="@style/Theme.LightTheme"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.SETTINGS" />

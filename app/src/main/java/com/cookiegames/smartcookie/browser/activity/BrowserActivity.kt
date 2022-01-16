@@ -89,6 +89,7 @@ import com.cookiegames.smartcookie.view.*
 import com.cookiegames.smartcookie.view.SearchView
 import com.cookiegames.smartcookie.view.find.FindResults
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import io.reactivex.Completable
@@ -283,6 +284,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         } else {
             setContentView(R.layout.activity_main)
         }
+
+        DynamicColors.applyIfAvailable(this)
 
         ButterKnife.bind(this)
 

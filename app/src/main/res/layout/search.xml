@@ -23,7 +23,7 @@
         android:layout_width="@dimen/material_grid_touch_small"
         android:layout_height="match_parent"
         android:background="?selectableItemBackgroundBorderless"
-        android:padding="6dp"
+        android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

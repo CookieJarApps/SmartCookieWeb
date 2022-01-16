@@ -7,7 +7,7 @@
             android:shape="rectangle" >
             <corners android:radius="20dp" />
 
-            <solid android:color="@color/secondary_color" />
+            <solid android:color="@color/cookie_dark" />
             <!--<solid android:color="@color/transparent" />-->
         </shape>
     </item>

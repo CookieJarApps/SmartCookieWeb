@@ -6,10 +6,10 @@ import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.utils.ThemeUtils
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import javax.inject.Inject
+
 
 abstract class ThemableSettingsActivity : AppCompatPreferenceActivity() {
 
@@ -25,17 +25,15 @@ abstract class ThemableSettingsActivity : AppCompatPreferenceActivity() {
         when (themeId) {
             AppTheme.LIGHT -> {
                 setTheme(R.style.Theme_SettingsTheme)
-                window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColor(this)))
             }
             AppTheme.DARK -> {
                 setTheme(R.style.Theme_SettingsTheme_Dark)
-                window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColorDark(this)))
             }
             AppTheme.BLACK -> {
                 setTheme(R.style.Theme_SettingsTheme_Black)
-                window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColorDark(this)))
             }
         }
+
         super.onCreate(savedInstanceState)
 
         resetPreferences()

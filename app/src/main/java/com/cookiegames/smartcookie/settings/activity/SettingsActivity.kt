@@ -20,38 +20,30 @@ import javax.inject.Inject
 
 class SettingsActivity : AppCompatActivity() {
 
-    private var themeId: AppTheme = AppTheme.LIGHT
     @Inject
     internal lateinit var userPreferences: UserPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         injector.inject(this)
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
-        themeId = userPreferences.useTheme
-
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
 
         // set the theme
-        when (themeId) {
+        when (userPreferences.useTheme) {
             AppTheme.LIGHT -> {
                 setTheme(R.style.Theme_SettingsTheme)
-                window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColor(this)))
-                toolbar.setBackgroundColor(ThemeUtils.getPrimaryColor(this))
             }
             AppTheme.DARK -> {
                 setTheme(R.style.Theme_SettingsTheme_Dark)
-                window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColorDark(this)))
-                toolbar.setBackgroundColor(ThemeUtils.getPrimaryColorDark(this))
             }
             AppTheme.BLACK -> {
                 setTheme(R.style.Theme_SettingsTheme_Black)
-                window.setBackgroundDrawable(ColorDrawable(ThemeUtils.getPrimaryColorDark(this)))
-                toolbar.setBackgroundColor(ThemeUtils.getPrimaryColorDark(this))
             }
         }
 
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_settings)
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
 
         try {
             setSupportActionBar(toolbar)

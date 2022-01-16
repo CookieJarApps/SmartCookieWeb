@@ -3,18 +3,23 @@
 
     <!-- Settings themes -->
     <style name="Theme.SettingsTheme" parent="Theme.LightTheme">
-        <item name="android:windowBackground">@null</item>
-        <item name="toolbarSettingsBackground">@drawable/toolbar_elevate</item>
+        <item name="android:windowBackground">?android:attr/colorBackground</item>
+        <item name="colorPrimary">?android:attr/colorBackground</item>
+        <item name="colorPrimaryDark">?android:attr/colorBackground</item>
     </style>
 
     <style name="Theme.SettingsTheme.Dark" parent="Theme.DarkTheme">
+        <item name="android:windowBackground">?android:attr/colorBackground</item>
+        <item name="colorPrimary">?android:attr/colorBackground</item>
         <item name="toolbarSettingsBackground">@drawable/toolbar_elevate_dark</item>
         <!-- Dark settings has a special primary dark -->
         <item name="colorPrimaryDark">@color/secondary_color_settings_dark</item>
     </style>
 
     <style name="Theme.SettingsTheme.Black" parent="Theme.BlackTheme">
-        <item name="android:windowBackground">@null</item>
+        <item name="android:windowBackground">?android:attr/colorBackground</item>
+        <item name="colorPrimary">?android:attr/colorBackground</item>
+        <item name="colorPrimaryDark">?android:attr/colorBackground</item>
         <item name="toolbarSettingsBackground">@drawable/toolbar_elevate_black</item>
     </style>
 
@@ -22,13 +27,13 @@
     <style name="Theme.LightTheme" parent="Theme.BaseLightTheme">
         <item name="searchBackground">@drawable/card_bg_elevate</item>
         <item name="listBackground">@drawable/list_bg</item>
-        <item name="progressBackgroundColor">@color/secondary_color</item>
+        <item name="progressBackgroundColor">@color/cookie_dark</item>
     </style>
 
     <style name="Theme.DarkTheme" parent="Theme.BaseDarkTheme">
         <item name="searchBackground">@drawable/card_bg_elevate</item>
         <item name="listBackground">@drawable/list_bg</item>
-        <item name="progressBackgroundColor">@color/secondary_color</item>
+        <item name="progressBackgroundColor">@color/cookie_dark</item>
     </style>
 
     <style name="Theme.BlackTheme" parent="Theme.BaseBlackTheme">
@@ -38,15 +43,15 @@
     </style>
 
     <!-- Base Themes -->
-    <style name="Theme.BaseLightTheme" parent="Theme.Material3.Light">
+    <style name="Theme.BaseLightTheme" parent="Theme.Material3.DynamicColors.Light">
 
         <!-- Theme Colors -->
-        <item name="colorPrimary">@color/gray</item>
         <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorSecondary">@color/gray</item>
         <item name="colorAccent">@color/gray</item>
         <item name="drawerBackground">@color/drawer_background</item>
-        <item name="dividerColor">@color/divider_light</item>
+        <item name="dividerColor">@color/drawer_background</item>
+
+        <item name="android:colorBackground">@color/white</item>
 
         <item name="iconColor">@color/icon_light_theme</item>
         <item name="iconColorState">@color/state_color_icons_light</item>
@@ -68,14 +73,15 @@
 
     </style>
 
-    <style name="Theme.BaseDarkTheme" parent="Theme.Material3.Dark">
+    <style name="Theme.BaseDarkTheme" parent="Theme.Material3.DynamicColors.Dark">
 
         <!-- Theme colors -->
-        <item name="colorPrimary">@color/primary_color_dark</item>
         <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/accent_color</item>
+        <item name="colorAccent">@color/cookie_light</item>
         <item name="drawerBackground">@color/drawer_background_dark</item>
         <item name="dividerColor">@color/divider_dark</item>
+
+        <item name="android:colorBackground">@color/black</item>
 
         <item name="iconColor">@color/icon_dark_theme</item>
         <item name="iconColorState">@color/state_color_icons_dark</item>
@@ -97,14 +103,15 @@
 
     </style>
 
-    <style name="Theme.BaseBlackTheme" parent="Theme.Material3.Dark">
+    <style name="Theme.BaseBlackTheme" parent="Theme.Material3.DynamicColors.Dark">
 
-        <!-- Theme Colors -->
-        <item name="colorPrimary">@color/black</item>
+        <!-- Theme colors -->
         <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/accent_color</item>
+        <item name="colorAccent">@color/cookie_light</item>
         <item name="drawerBackground">@color/black</item>
         <item name="dividerColor">@color/black</item>
+
+        <item name="android:colorBackground">@color/black</item>
 
         <item name="iconColor">@color/icon_dark_theme</item>
         <item name="iconColorState">@color/state_color_icons_dark</item>
@@ -122,21 +129,21 @@
         <item name="actionOverflowButtonStyle">@style/overFlowButtonStyle</item>
 
         <!-- Alert dialogs -->
-        <item name="alertDialogTheme">@style/AppCompatDialogStyle.Black</item>
+        <item name="alertDialogTheme">@style/AppCompatDialogStyle.Dark</item>
 
     </style>
 
     <!-- AlertDialog Theming -->
     <style name="AppCompatDialogStyle.Light" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorAccent">@color/accent_color</item>
+        <item name="colorAccent">@color/cookie_light</item>
     </style>
 
     <style name="AppCompatDialogStyle.Dark" parent="Theme.AppCompat.Dialog.Alert">
-        <item name="colorAccent">@color/accent_color</item>
+        <item name="colorAccent">@color/cookie_light</item>
     </style>
 
     <style name="AppCompatDialogStyle.Black" parent="Theme.AppCompat.Dialog.Alert">
-        <item name="colorAccent">@color/accent_color</item>
+        <item name="colorAccent">@color/cookie_light</item>
     </style>
 
     <!-- Overflow Menu Customization -->
