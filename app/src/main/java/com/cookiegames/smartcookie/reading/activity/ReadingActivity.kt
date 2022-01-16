@@ -349,6 +349,8 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             @Throws(IOException::class)
             override fun onResponse(call: Call, response: Response) {
                 if (!response.isSuccessful) {
+                    mProgressDialog!!.hide()
+                    Toast.makeText(this@ReadingActivity, resources.getString(R.string.error), Toast.LENGTH_LONG).show()
                     throw IOException("Unexpected code $response")
                 } else {
                     val values = response.body()!!.string()
