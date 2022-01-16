@@ -341,16 +341,24 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 e.printStackTrace()
-                mProgressDialog!!.hide()
-                Toast.makeText(this@ReadingActivity, resources.getString(R.string.error), Toast.LENGTH_LONG).show()
+                runOnUiThread {
+                    mProgressDialog!!.hide()
+                    Toast.makeText(this@ReadingActivity, resources.getString(R.string.error), Toast.LENGTH_LONG).show()
+                }
             }
 
             @SuppressLint("SetTextI18n")
             @Throws(IOException::class)
             override fun onResponse(call: Call, response: Response) {
                 if (!response.isSuccessful) {
-                    mProgressDialog!!.hide()
-                    Toast.makeText(this@ReadingActivity, resources.getString(R.string.error), Toast.LENGTH_LONG).show()
+                    runOnUiThread {
+                        mProgressDialog!!.hide()
+                        Toast.makeText(
+                            this@ReadingActivity,
+                            resources.getString(R.string.error),
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                     throw IOException("Unexpected code $response")
                 } else {
                     val values = response.body()!!.string()
