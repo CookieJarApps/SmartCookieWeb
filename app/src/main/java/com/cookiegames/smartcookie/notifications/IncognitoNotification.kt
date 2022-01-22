@@ -10,6 +10,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import androidx.core.os.BuildCompat
 
 
 /**
@@ -48,10 +49,16 @@ class IncognitoNotification(
         require(number > 0)
         val incognitoIntent = IncognitoActivity.createIntent(context)
 
+        val flags = if (BuildCompat.isAtLeastS()) {
+            PendingIntent.FLAG_IMMUTABLE
+        } else{
+            0
+        }
+
         val incognitoNotification = NotificationCompat.Builder(context, channelId)
             .setSmallIcon(R.drawable.ic_notification_incognito)
             .setContentTitle(context.resources.getQuantityString(R.plurals.notification_incognito_running_title, number, number))
-            .setContentIntent(PendingIntent.getActivity(context, 0, incognitoIntent, 0))
+            .setContentIntent(PendingIntent.getActivity(context, 0, incognitoIntent, flags))
             .setContentText(context.getString(R.string.notification_incognito_running_message))
             .setAutoCancel(false)
             .setColor(ThemeUtils.getAccentColor(context))
