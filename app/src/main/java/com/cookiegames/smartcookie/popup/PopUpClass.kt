@@ -103,6 +103,7 @@ class PopUpClass {
             when(userPreferences.useTheme){
                 AppTheme.DARK -> popupView.findViewById<ConstraintLayout>(R.id.transparent_container).setBackgroundResource(R.drawable.toolbar_dark)
                 AppTheme.BLACK -> popupView.findViewById<ConstraintLayout>(R.id.transparent_container).setBackgroundResource(R.drawable.toolbar_black)
+                else -> {}
             }
         }
 

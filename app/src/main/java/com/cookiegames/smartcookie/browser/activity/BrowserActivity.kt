@@ -812,12 +812,12 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 when(item.itemId) {
                     R.id.tabs -> {
                         drawer_layout.closeDrawer(getBookmarkDrawer())
-                        drawer_layout.openDrawer(getTabDrawer())
+                        toggleDrawer(drawer_layout, getTabDrawer())
                         true
                     }
                     R.id.bookmarks -> {
                         drawer_layout.closeDrawer(getTabDrawer())
-                        drawer_layout.openDrawer(getBookmarkDrawer())
+                        toggleDrawer(drawer_layout, getBookmarkDrawer())
                         true
                     }
                     R.id.forward -> {
@@ -835,6 +835,15 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     else -> false
                 }
             }
+        }
+    }
+
+    private fun toggleDrawer(layout: DrawerLayout, drawer: View) {
+        if(layout.isDrawerOpen(drawer)){
+            layout.closeDrawer(drawer)
+        }
+        else{
+            layout.openDrawer(drawer)
         }
     }
 

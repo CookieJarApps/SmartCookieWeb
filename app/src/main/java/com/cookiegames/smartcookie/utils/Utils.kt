@@ -176,6 +176,7 @@ object Utils {
         var reloadButtonCode = "<button onclick=\"reload();\" id=\"reload-button\" class=\"blue-button text-button reload\">$reload</button>"
         when(showButton){
             false -> reloadButtonCode = ""
+            else -> {}
         }
 
         return "<html>" +
@@ -209,6 +210,7 @@ object Utils {
         val goBackButton = "<button onclick=\"window.history.back();\" id=\"reload-button\" class=\"blue-button text-button reload\">$goBackString</button>"
         when(showProceedButton){
             false -> proceedButton = ""
+            else -> {}
         }
 
         return "<html>" +
