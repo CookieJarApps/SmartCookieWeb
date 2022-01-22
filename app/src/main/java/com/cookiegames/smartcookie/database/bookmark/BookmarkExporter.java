@@ -15,6 +15,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,20 +86,20 @@ public final class BookmarkExporter {
      * Exports the list of bookmarks to a file.
      *
      * @param bookmarkList the bookmarks to export.
-     * @param file         the file to export to.
+     * @param aStream the stream to export to.
      * @return an observable that emits a completion
      * event when the export is complete, or an error
      * event if there is a problem.
      */
     @NonNull
     public static Completable exportBookmarksToFile(@NonNull final List<Bookmark.Entry> bookmarkList,
-                                                    @NonNull final File file) {
+                                                    @NonNull final OutputStream aStream) {
         return Completable.fromAction(() -> {
             Preconditions.checkNonNull(bookmarkList);
             BufferedWriter bookmarkWriter = null;
             try {
                 //noinspection IOResourceOpenedButNotSafelyClosed
-                bookmarkWriter = new BufferedWriter(new FileWriter(file, false));
+                bookmarkWriter = new BufferedWriter(new OutputStreamWriter(aStream));
 
                 JSONObject object = new JSONObject();
                 for (Bookmark.Entry item : bookmarkList) {
