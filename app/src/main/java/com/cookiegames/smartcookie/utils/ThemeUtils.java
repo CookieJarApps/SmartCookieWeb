@@ -186,4 +186,15 @@ public final class ThemeUtils {
     public static int getTextColor(@NonNull Context context) {
         return getColor(context, android.R.attr.editTextColor);
     }
+
+    /**
+     * Gets the surface color for the current theme.
+     *
+     * @param context the context to use.
+     * @return a surface color.
+     */
+    @ColorInt
+    public static int getColorBackground(@NonNull Context context) {
+        return getColor(context, android.R.attr.colorBackground);
+    }
 }

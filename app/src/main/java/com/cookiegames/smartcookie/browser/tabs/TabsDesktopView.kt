@@ -40,7 +40,7 @@ class TabsDesktopView @JvmOverloads constructor(
     private val tabList: RecyclerView
 
     init {
-        setBackgroundColor(Utils.mixTwoColors(ThemeUtils.getPrimaryColor(uiController as Context), Color.BLACK, 0.85f))
+        setBackgroundColor(Utils.mixTwoColors(ThemeUtils.getColorBackground(uiController as Context), Color.BLACK, 0.85f))
         context.inflater.inflate(R.layout.tab_strip, this, true)
         findViewById<ImageView>(R.id.new_tab_button).apply {
             setColorFilter(ThemeUtils.getTextColor(uiController as Context))
@@ -73,7 +73,7 @@ class TabsDesktopView @JvmOverloads constructor(
             setHasFixedSize(true)
         }
 
-        val backgroundColor = Utils.mixTwoColors(ThemeUtils.getPrimaryColor(uiController as Context), Color.BLACK, 0.85f)
+        val backgroundColor = Utils.mixTwoColors(ThemeUtils.getColorBackground(uiController as Context), Color.BLACK, 0.85f)
         tabList.setBackgroundColor(backgroundColor)
     }
 

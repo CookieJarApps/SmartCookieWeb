@@ -67,7 +67,7 @@ class TabsDesktopAdapter(
     private fun updateViewHolderAppearance(viewHolder: TabViewHolder, favicon: Bitmap?, isForeground: Boolean) {
         if (isForeground) {
             val foregroundDrawable = resources.getDrawable(R.drawable.desktop_tab_selected)
-            foregroundDrawable.tint(ThemeUtils.getPrimaryColor(uiController as Context))
+            foregroundDrawable.tint(ThemeUtils.getColorBackground(uiController as Context))
             if (uiController.isColorMode()) {
                 foregroundDrawable.tint(uiController.getUiColor())
             }
@@ -76,7 +76,7 @@ class TabsDesktopAdapter(
             uiController.changeToolbarBackground(favicon, foregroundDrawable)
         } else {
             val backgroundDrawable = resources.getDrawable(R.drawable.desktop_tab)
-            backgroundDrawable.tint(Utils.mixTwoColors(ThemeUtils.getPrimaryColor(uiController as Context), Color.BLACK, 0.85f))
+            backgroundDrawable.tint(Utils.mixTwoColors(ThemeUtils.getColorBackground(uiController as Context), Color.BLACK, 0.85f))
             TextViewCompat.setTextAppearance(viewHolder.txtTitle, R.style.normalText)
             viewHolder.layout.background = backgroundDrawable
         }

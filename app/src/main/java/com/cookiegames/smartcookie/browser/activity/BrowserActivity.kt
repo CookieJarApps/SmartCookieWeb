@@ -1527,7 +1527,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     private fun loadState(above: Int) = tabsManager.currentTab?.let { it.progress >= above } ?: false
 
     override fun changeToolbarColor(tabBackground: Drawable?){
-        val primaryColor = ThemeUtils.getPrimaryColor(this)
+        val primaryColor = ThemeUtils.getColorBackground(this)
 
         if(userPreferences.darkModeExtension) currentTabView?.setBackgroundColor(if (loadState(50)) Color.WHITE else primaryColor); currentTabView?.invalidate()
 
