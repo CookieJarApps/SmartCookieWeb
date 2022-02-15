@@ -22,8 +22,8 @@ android {
     defaultConfig {
         minSdkVersion project.minSdkVersion
         targetSdkVersion project.targetSdkVersion
-        versionName "16.2"
-        versionCode 151
+        versionName "16.3"
+        versionCode 152
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
