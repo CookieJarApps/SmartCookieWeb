@@ -60,15 +60,15 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         val color: Int
         if (mUserPreferences!!.useTheme === AppTheme.LIGHT) {
             setTheme(R.style.Theme_SettingsTheme)
-            color = ThemeUtils.getPrimaryColor(this)
+            color = ThemeUtils.getColorBackground(this)
             window.setBackgroundDrawable(ColorDrawable(color))
         } else if (mUserPreferences!!.useTheme === AppTheme.DARK) {
             setTheme(R.style.Theme_SettingsTheme_Dark)
-            color = ThemeUtils.getPrimaryColor(this)
+            color = ThemeUtils.getColorBackground(this)
             window.setBackgroundDrawable(ColorDrawable(color))
         } else {
             setTheme(R.style.Theme_SettingsTheme_Black)
-            color = ThemeUtils.getPrimaryColor(this)
+            color = ThemeUtils.getColorBackground(this)
             window.setBackgroundDrawable(ColorDrawable(color))
         }
 

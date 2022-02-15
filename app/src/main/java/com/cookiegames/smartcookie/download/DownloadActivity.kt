@@ -72,15 +72,15 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         val color: Int
         if (mUserPreferences!!.useTheme === AppTheme.LIGHT) {
             setTheme(R.style.Theme_SettingsTheme)
-            color = ThemeUtils.getPrimaryColor(this)
+            color = ThemeUtils.getColorBackground(this)
             window.setBackgroundDrawable(ColorDrawable(color))
         } else if (mUserPreferences!!.useTheme === AppTheme.DARK) {
             setTheme(R.style.Theme_SettingsTheme_Dark)
-            color = ThemeUtils.getPrimaryColor(this)
+            color = ThemeUtils.getColorBackground(this)
             window.setBackgroundDrawable(ColorDrawable(color))
         } else {
             setTheme(R.style.Theme_SettingsTheme_Black)
-            color = ThemeUtils.getPrimaryColor(this)
+            color = ThemeUtils.getColorBackground(this)
             window.setBackgroundDrawable(ColorDrawable(color))
         }
 
@@ -221,7 +221,7 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                     speed = downloadInfo.speed
                 }
                 DownloadInfo.Status.FINISHED -> itemView.dl_status.text = itemView.context.getString(R.string.action_open)
-                DownloadInfo.Status.FAILED -> itemView.dl_status.text = itemView.context.getString(R.string.title_error)
+                else -> itemView.dl_status.text = itemView.context.getString(R.string.title_error)
             }
             itemView.dl_speed.text = speed
             val completedSize = downloadInfo.completedSize
@@ -308,7 +308,7 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                     }
                     DownloadInfo.Status.RUNNING -> Pump.pause(downloadInfo.id)
                     DownloadInfo.Status.FINISHED -> openFile(downloadInfo.filePath, v)
-                    DownloadInfo.Status.FAILED -> Pump.resume(downloadInfo.id)
+                    else -> Pump.resume(downloadInfo.id)
                 }
             }
 
