@@ -10,6 +10,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -403,7 +404,8 @@ class PopUpClass {
                     activity.finish()
                 }
                 "translate" -> {
-                    currentView?.loadUrl("https://translatetheweb.com/?scw=yes&a=" + currentUrl!!) // 12 - Translate
+                    val locale = Resources.getSystem().configuration.locale
+                    currentView?.loadUrl("https://www.translatetheweb.com/?from=&to=$locale&dl=$locale&a=$currentUrl")
                 }
                 "open_in_app" -> {
                     val components = arrayOf(ComponentName(activity, BrowserActivity::class.java))

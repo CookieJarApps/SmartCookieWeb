@@ -341,7 +341,7 @@ class SmartCookieWebClient(
             }
         }
 
-        if(url.contains(".user.js") && view.isShown){
+        if(url.contains(".user.js") && view.isShown && userPreferences.javaScriptEnabled){
             val builder = MaterialAlertDialogBuilder(activity)
             builder.setTitle(activity.resources.getString(R.string.install_userscript))
             builder.setMessage(activity.resources.getString(R.string.install_userscript_description))
@@ -351,6 +351,7 @@ class SmartCookieWebClient(
                 })()""".trimMargin()) {
                     val extensionSource = it.substring(1, it.length - 1)
                     installExtension(extensionSource)
+                    uiController.tabCloseClicked(uiController.getTabModel().positionOf(uiController.getTabModel().currentTab))
                 }
 
             }
