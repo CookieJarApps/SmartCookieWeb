@@ -351,7 +351,9 @@ class SmartCookieWebClient(
                 })()""".trimMargin()) {
                     val extensionSource = it.substring(1, it.length - 1)
                     installExtension(extensionSource)
-                    uiController.tabCloseClicked(uiController.getTabModel().positionOf(uiController.getTabModel().currentTab))
+                    if(uiController.getTabModel().allTabs.size > 1) {
+                        uiController.tabCloseClicked(uiController.getTabModel().positionOf(uiController.getTabModel().currentTab))
+                    }
                 }
 
             }
