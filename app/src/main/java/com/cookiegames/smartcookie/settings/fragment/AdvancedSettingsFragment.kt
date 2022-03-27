@@ -80,7 +80,6 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
                 onCheckChange = { userPreferences.blockIntent = it }
         )
 
-
         switchPreference(
             preference = SETTINGS_COOKIES_INCOGNITO,
             isChecked = userPreferences.incognitoCookiesEnabled,
@@ -92,7 +91,6 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
                 isChecked = userPreferences.ssl,
                 onCheckChange = { userPreferences.ssl = it }
         )
-
 
         switchPreference(
             preference = SETTINGS_RESTORE_TABS,

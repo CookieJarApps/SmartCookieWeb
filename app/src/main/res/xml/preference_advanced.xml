@@ -43,6 +43,16 @@
             android:title="@string/show_ssl"
             android:summary="@string/warn"/>
         <Preference
+            android:key="webview_devtools"
+            android:title="@string/webview_devtools">
+            <intent
+                android:action="com.android.webview.SHOW_DEV_UI">
+                <extra
+                    android:name="SOURCE"
+                    android:value="SELF" />
+            </intent>
+        </Preference>
+        <Preference
             android:key="text_encoding"
             android:singleLineTitle="false"
             android:title="@string/text_encoding" />

@@ -638,5 +638,7 @@
 
     <string name="forgot_password">Forgot password</string>
     <string name="recover_app_lock">Please visit <a href="https://smartcookieweb.com/recover.php">smartcookieweb.com/recover.php</a> in another browser to recover your app lock password.</string>
+
+    <string name="webview_devtools">WebView DevTools</string>
     <!-- finish pages -->
 </resources>
