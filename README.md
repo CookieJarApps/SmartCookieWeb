@@ -87,7 +87,6 @@ SmartCookieWeb is a fork of Lightning Browser intended to continue development. 
 - Bug fixes
 - 'Force Zoom' option
 - 'Inject JavaScript' option
-- Extensions
 - 'Force HTTPS' option
 - 'Always incognito' option
 - Cookie dialog blocker
