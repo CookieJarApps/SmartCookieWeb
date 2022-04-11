@@ -379,6 +379,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
                             FetchUrlMimeType.Result.FAILURE_ENQUEUE -> context.snackbar(R.string.cannot_download)
                             FetchUrlMimeType.Result.FAILURE_LOCATION -> context.snackbar(R.string.problem_location_download)
                             FetchUrlMimeType.Result.SUCCESS -> context.snackbar(R.string.download_pending)
+                            else -> context.snackbar(R.string.cannot_download)
                         }
                     }
         } else {
