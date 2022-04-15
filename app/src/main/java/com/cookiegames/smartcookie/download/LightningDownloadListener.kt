@@ -4,8 +4,12 @@
 package com.cookiegames.smartcookie.download
 
 import android.Manifest
+import android.R.attr.label
 import android.app.Activity
 import android.app.Dialog
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.DialogInterface
 import android.text.format.Formatter
 import android.view.View
@@ -13,6 +17,8 @@ import android.webkit.DownloadListener
 import android.webkit.URLUtil
 import android.widget.CheckBox
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import com.anthonycr.grant.PermissionsManager
 import com.anthonycr.grant.PermissionsResultAction
 import com.cookiegames.smartcookie.R
@@ -23,6 +29,7 @@ import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import javax.inject.Inject
+
 
 class LightningDownloadListener(context: Activity) : DownloadListener {
     private val mActivity: Activity
@@ -64,6 +71,11 @@ class LightningDownloadListener(context: Activity) : DownloadListener {
                                 } else {
                                     downloadHandler!!.legacyDownloadStart(mActivity, userPreferences!!, url, userAgent, contentDisposition, mimetype, downloadSize)
                                 }
+                                DialogInterface.BUTTON_NEUTRAL -> {
+                                    val clipboard = getSystemService(mActivity, ClipboardManager::class.java)
+                                    clipboard?.setPrimaryClip(ClipData.newPlainText("", url))
+                                    Toast.makeText(mActivity, mActivity.resources.getString(R.string.copied), Toast.LENGTH_SHORT).show()
+                                }
                                 DialogInterface.BUTTON_NEGATIVE -> {
                                 }
                             }
@@ -76,6 +88,8 @@ class LightningDownloadListener(context: Activity) : DownloadListener {
                                     .setView(checkBoxView)
                                     .setPositiveButton(mActivity.resources.getString(R.string.action_download),
                                             dialogClickListener)
+                                    .setNeutralButton(R.string.action_copy,
+                                        dialogClickListener)
                                     .setNegativeButton(mActivity.resources.getString(R.string.action_cancel),
                                             dialogClickListener).show()
                             setDialogSize(mActivity, dialog)
