@@ -245,40 +245,16 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             val intent = Intent()
             intent.action = Intent.ACTION_VIEW
             val fileURI = filePath.toUri()
-            if(getFileExtension(filePath) != "apk"){
-                val finalUri = FileProvider.getUriForFile(v.context, BuildConfig.APPLICATION_ID + ".fileprovider", File(filePath))
-                intent.setDataAndType(finalUri, MimeTypeMap.getSingleton().getMimeTypeFromExtension(getFileExtension(filePath)))
-                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                if (intent.resolveActivity(v.context.packageManager) != null) {
-                    v.context.startActivity(intent)
-                } else {
-                    Toast.makeText(v.context, v.context.resources.getString(R.string.title_error), Toast.LENGTH_LONG).show()
-                }
+
+            val finalUri = FileProvider.getUriForFile(v.context, BuildConfig.APPLICATION_ID + ".fileprovider", File(filePath))
+            intent.setDataAndType(finalUri, MimeTypeMap.getSingleton().getMimeTypeFromExtension(getFileExtension(filePath)))
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            if (intent.resolveActivity(v.context.packageManager) != null) {
                 v.context.startActivity(intent)
+            } else {
+                Toast.makeText(v.context, v.context.resources.getString(R.string.title_error), Toast.LENGTH_LONG).show()
             }
-            else{
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    val contentUri = FileProvider.getUriForFile(
-                            v.context,
-                            BuildConfig.APPLICATION_ID + ".fileprovider",
-                            File(filePath)
-                    )
-                    val install = Intent(Intent.ACTION_VIEW)
-                    install.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                    install.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    install.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
-                    install.data = contentUri
-                    v.context.startActivity(install)
-                } else {
-                    val install = Intent(Intent.ACTION_VIEW)
-                    install.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                    install.setDataAndType(
-                            fileURI,
-                            "\"application/vnd.android.package-archive\""
-                    )
-                    v.context.startActivity(install)
-                }
-            }
+            v.context.startActivity(intent)
         }
 
         fun getFileExtension(filename: String?): String? {
