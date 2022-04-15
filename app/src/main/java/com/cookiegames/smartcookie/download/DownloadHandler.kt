@@ -66,6 +66,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
                                           @param:NetworkScheduler private val networkScheduler: Scheduler,
                                           @param:MainScheduler private val mainScheduler: Scheduler,
                                           private val logger: Logger) {
+
     fun legacyDownloadStart(context: Activity, manager: UserPreferences, url: String, userAgent: String,
                             contentDisposition: String?, mimeType: String, contentSize: String) {
         logger.log(TAG, "DOWNLOAD: Trying to download from URL: $url")
@@ -105,36 +106,6 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
         }
         onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize)
     }
-
-    fun createAndSaveFileFromBase64Url(url: String, context: Context): String? {
-        val path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-        val filetype = url.substring(url.indexOf("/") + 1, url.indexOf(";"))
-        val filename = System.currentTimeMillis().toString() + "." + filetype
-        val file = File(path, filename)
-        try {
-            if (!path.exists()) path.mkdirs()
-            if (!file.exists()) file.createNewFile()
-            val base64EncodedString = url.substring(url.indexOf(",") + 1)
-            val decodedBytes: ByteArray = android.util.Base64.decode(base64EncodedString, android.util.Base64.DEFAULT)
-            val os: OutputStream = FileOutputStream(file)
-            os.write(decodedBytes)
-            os.close()
-
-            //Tell the media scanner about the new file so that it is immediately available to the user.
-            MediaScannerConnection.scanFile(context, arrayOf(file.toString()), null,
-                    object : MediaScannerConnection.OnScanCompletedListener {
-                        override fun onScanCompleted(path: String, uri: Uri) {
-                            Log.i("ExternalStorage", "Scanned $path:")
-                            Log.i("ExternalStorage", "-> uri=$uri")
-                        }
-                    })
-        } catch (e: IOException) {
-            Log.w("ExternalStorage", "Error writing $file", e)
-            //Toast.makeText(getApplicationContext(), R.string.error_downloading, Toast.LENGTH_LONG).show()
-        }
-        return file.toString()
-    }
-
     fun onDownloadStart(context: Activity, manager: UserPreferences, url: String, userAgent: String,
                         contentDisposition: String?, mimeType: String, contentSize: String) {
         logger.log(TAG, "DOWNLOAD: Trying to download from URL: $url")
@@ -143,7 +114,6 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
         logger.log(TAG, "DOWNLOAD: User agent: $userAgent")
 
         if(url.toUri().scheme == "data"){
-            val path = createAndSaveFileFromBase64Url(url, context)
             return
         }
 
@@ -176,8 +146,6 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
                 .setOnlyAlertOnce(true)
 
         // Issue the initial notification with zero progress
-
-        // Issue the initial notification with zero progress
         val PROGRESS_MAX = 100
         val PROGRESS_CURRENT = 0
         builder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false)
@@ -206,28 +174,18 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
 
                         val file = downloadInfo.filePath
 
-                        MediaScannerConnection.scanFile(context, arrayOf(file.toString()), null,
-                                object : MediaScannerConnection.OnScanCompletedListener {
-                                    override fun onScanCompleted(path: String, uri: Uri) {
-                                        Log.i("ExternalStorage", "Scanned $path:")
-                                        Log.i("ExternalStorage", "-> uri=$uri")
-                                    }
-                                })
+                        MediaScannerConnection.scanFile(context, arrayOf(file.toString()), null
+                        ) { path, uri ->
+                            Log.i("ExternalStorage", "Scanned $path:")
+                            Log.i("ExternalStorage", "-> uri=$uri")
+                        }
 
                     }
                     override fun onFailed() {
                         notificationManager.cancel(uniqid)
-                        LogUtil.e("onFailed code=" + getDownloadInfo().getErrorCode())
+                        LogUtil.e("onFailed code=" + downloadInfo.errorCode)
                     }
                     override fun onProgress(progress: Int) {
-                        val downloadInfo: DownloadInfo = getDownloadInfo()
-                        //Get download file
-                        val downloadFile = File(downloadInfo.filePath)
-                        //Get download url
-                        val url = downloadInfo.url
-                        //Get download speed
-                        val speed = downloadInfo.speed
-
                         if (progress.toString().contains("0")){
                             builder.setProgress(100, progress, false)
                             notificationManager.notify(uniqid, builder.build())
@@ -238,45 +196,10 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
             .threadNum(1)
             .submit()
 
-        // if we're dealing wih A/V content that's not explicitly marked
-        // for download, check if it's streamable.
-        if (contentDisposition == null
-                || !contentDisposition.regionMatches(0, "attachment", 0, 10, ignoreCase = true)) {
-            // query the package manager to see if there's a registered handler
-            // that matches.
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.setDataAndType(Uri.parse(url), mimeType)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.addCategory(Intent.CATEGORY_BROWSABLE)
-            intent.component = null
-            intent.selector = null
-            val info = context.packageManager.resolveActivity(intent,
-                    PackageManager.MATCH_DEFAULT_ONLY)
-            if (info != null) {
-                // If we resolved to ourselves, we don't want to attempt to
-                // load the url only to try and download it again.
-                if (BuildConfig.APPLICATION_ID == info.activityInfo.packageName || MainActivity::class.java.name == info.activityInfo.name) {
-                    // someone (other than us) knows how to handle this mime
-                    // type with this scheme, don't download.
-                    try {
-                        context.startActivity(intent)
-                        return
-                    } catch (ex: ActivityNotFoundException) {
-                        // Best behavior is to fall back to a download in this
-                        // case
-                    }
-                }
-            }
-        }
-
     }
 
     class DownloadCancelReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            if (intent != null) {
-                //PRDownloader.cancelAll()
-                Log.d("downloader", "cancel")
-            }
             Log.d("downloader", "null")
         }
     }
@@ -417,7 +340,6 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
     companion object {
         private const val TAG = "DownloadHandler"
         private const val COOKIE_REQUEST_HEADER = "Cookie"
-        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
         fun getFileNameFromURL(url: String?, contentDisposition: String?, mimeType: String?): String {
             return URLUtil.guessFileName(url, contentDisposition, mimeType)
