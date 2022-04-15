@@ -409,7 +409,7 @@ class SmartCookieView(
                 mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
             } else if (API >= Build.VERSION_CODES.LOLLIPOP) {
                 // We're in Incognito mode, reject
-                mixedContentMode = WebSettings .MIXED_CONTENT_NEVER_ALLOW
+                mixedContentMode = WebSettings.MIXED_CONTENT_NEVER_ALLOW
             }
 
             if (!isIncognito || DeviceCapabilities.FULL_INCOGNITO.isSupported) {
