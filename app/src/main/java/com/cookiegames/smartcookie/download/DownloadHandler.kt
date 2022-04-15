@@ -45,6 +45,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.huxq17.download.Pump
 import com.huxq17.download.core.DownloadInfo
 import com.huxq17.download.core.DownloadListener
+import com.huxq17.download.utils.LogUtil
 import io.reactivex.Scheduler
 import java.io.File
 import java.io.FileOutputStream
@@ -216,6 +217,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
                     }
                     override fun onFailed() {
                         notificationManager.cancel(uniqid)
+                        LogUtil.e("onFailed code=" + getDownloadInfo().getErrorCode())
                     }
                     override fun onProgress(progress: Int) {
                         val downloadInfo: DownloadInfo = getDownloadInfo()
@@ -233,7 +235,8 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
 
                     }
                 })
-                .submit()
+            .threadNum(1)
+            .submit()
 
         // if we're dealing wih A/V content that's not explicitly marked
         // for download, check if it's streamable.
@@ -331,8 +334,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
         }
         val addressString = webAddress.toString()
         val uri = Uri.parse(addressString)
-        val request: DownloadManager.Request
-        request = try {
+        val request: DownloadManager.Request = try {
             DownloadManager.Request(uri)
         } catch (e: IllegalArgumentException) {
             context.snackbar(R.string.cannot_download)

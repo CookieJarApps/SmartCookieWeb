@@ -4,7 +4,6 @@
 
 package com.cookiegames.smartcookie.view
 
-import android.R
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
@@ -748,9 +747,9 @@ class SmartCookieView(
         builder.setMediaSize(PrintAttributes.MediaSize.ISO_A5)
         val printJob: PrintJob = printManager.print(jobName, printAdapter, builder.build())
         if (printJob.isCompleted()) {
-            Toast.makeText(activity, R.string.yes, Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, android.R.string.yes, Toast.LENGTH_LONG).show()
         } else if (printJob.isFailed()) {
-            Toast.makeText(activity, R.string.no, Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, android.R.string.no, Toast.LENGTH_LONG).show()
         }
         // Save the job object for later status checking
     }
