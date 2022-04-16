@@ -1,24 +1,21 @@
 package com.cookiegames.smartcookie.browser.tabs
 
-import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.controller.UIController
-import com.cookiegames.smartcookie.extensions.*
-import com.cookiegames.smartcookie.utils.ThemeUtils
-import com.cookiegames.smartcookie.utils.Utils
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.controller.UIController
+import com.cookiegames.smartcookie.extensions.desaturate
+import com.cookiegames.smartcookie.extensions.inflater
+import com.cookiegames.smartcookie.extensions.tint
 import com.cookiegames.smartcookie.preference.UserPreferences
+import com.cookiegames.smartcookie.utils.ThemeUtils
+import com.cookiegames.smartcookie.utils.Utils
 
 /**
  * The adapter for horizontal desktop style browser tabs.

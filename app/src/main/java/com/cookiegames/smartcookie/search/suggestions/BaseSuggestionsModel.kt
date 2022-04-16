@@ -1,12 +1,8 @@
 package com.cookiegames.smartcookie.search.suggestions
 
-import android.app.Activity
-import android.util.Log
-import com.cookiegames.smartcookie.browser.SuggestionNumChoice
 import com.cookiegames.smartcookie.database.SearchSuggestion
 import com.cookiegames.smartcookie.extensions.safeUse
 import com.cookiegames.smartcookie.log.Logger
-import com.cookiegames.smartcookie.preference.UserPreferences
 import io.reactivex.Single
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient

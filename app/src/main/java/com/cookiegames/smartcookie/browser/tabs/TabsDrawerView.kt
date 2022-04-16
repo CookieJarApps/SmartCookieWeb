@@ -1,12 +1,8 @@
 package com.cookiegames.smartcookie.browser.tabs
 
-import android.R.attr.button
 import android.content.Context
 import android.util.AttributeSet
-import android.view.MotionEvent
 import android.view.View
-import android.view.View.OnLongClickListener
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.*

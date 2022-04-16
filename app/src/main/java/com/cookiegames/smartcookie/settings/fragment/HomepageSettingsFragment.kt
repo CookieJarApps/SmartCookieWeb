@@ -7,9 +7,8 @@ package com.cookiegames.smartcookie.settings.fragment
 
 import android.os.Bundle
 import android.webkit.URLUtil
-import android.widget.Toast
 import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.browser.*
+import com.cookiegames.smartcookie.browser.HomepageTypeChoice
 import com.cookiegames.smartcookie.constant.SCHEME_BLANK
 import com.cookiegames.smartcookie.constant.SCHEME_BOOKMARKS
 import com.cookiegames.smartcookie.constant.SCHEME_HOMEPAGE

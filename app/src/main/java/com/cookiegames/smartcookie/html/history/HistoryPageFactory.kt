@@ -1,20 +1,19 @@
 package com.cookiegames.smartcookie.html.history
 
+import android.app.Application
+import android.content.res.Resources
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.constant.FILE
 import com.cookiegames.smartcookie.database.history.HistoryRepository
 import com.cookiegames.smartcookie.html.HtmlPageFactory
 import com.cookiegames.smartcookie.html.ListPageReader
 import com.cookiegames.smartcookie.html.jsoup.*
-import android.app.Application
-import android.content.res.Resources
 import dagger.Reusable
 import io.reactivex.Completable
 import io.reactivex.Single
 import java.io.File
 import java.io.FileWriter
 import java.text.DateFormat.getDateTimeInstance
-import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 

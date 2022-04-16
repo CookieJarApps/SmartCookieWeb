@@ -1,22 +1,16 @@
 package com.cookiegames.smartcookie.browser.tabs
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Color
-import android.os.Build
 import android.util.AttributeSet
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.TabsView
-import com.cookiegames.smartcookie.browser.activity.BrowserActivity
 import com.cookiegames.smartcookie.controller.UIController
-import com.cookiegames.smartcookie.extensions.color
 import com.cookiegames.smartcookie.extensions.inflater
 import com.cookiegames.smartcookie.list.HorizontalItemAnimator
 import com.cookiegames.smartcookie.preference.UserPreferences

@@ -1,10 +1,17 @@
 package com.cookiegames.smartcookie.browser
 
-import com.cookiegames.smartcookie.BuildConfig
+import android.app.Activity
+import android.content.Intent
+import android.os.Environment
+import android.util.Log
+import android.webkit.URLUtil
 import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.constant.*
 import com.cookiegames.smartcookie.di.MainScheduler
 import com.cookiegames.smartcookie.html.bookmark.BookmarkPageFactory
 import com.cookiegames.smartcookie.html.homepage.HomePageFactory
+import com.cookiegames.smartcookie.html.incognito.IncognitoPageFactory
+import com.cookiegames.smartcookie.html.onboarding.OnboardingPageFactory
 import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.ssl.SslState
@@ -13,15 +20,6 @@ import com.cookiegames.smartcookie.view.SmartCookieView
 import com.cookiegames.smartcookie.view.TabInitializer
 import com.cookiegames.smartcookie.view.UrlInitializer
 import com.cookiegames.smartcookie.view.find.FindResults
-import android.app.Activity
-import android.content.Intent
-import android.os.Environment
-import android.util.Log
-import android.webkit.URLUtil
-import android.widget.Toast
-import com.cookiegames.smartcookie.constant.*
-import com.cookiegames.smartcookie.html.incognito.IncognitoPageFactory
-import com.cookiegames.smartcookie.html.onboarding.OnboardingPageFactory
 import io.reactivex.Scheduler
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy

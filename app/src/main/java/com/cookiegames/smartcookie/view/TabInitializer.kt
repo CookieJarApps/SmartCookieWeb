@@ -1,5 +1,10 @@
 package com.cookiegames.smartcookie.view
 
+import android.app.Activity
+import android.os.Bundle
+import android.os.Message
+import android.webkit.WebView
+import androidx.appcompat.app.AlertDialog
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.constant.SCHEME_BOOKMARKS
 import com.cookiegames.smartcookie.constant.SCHEME_HOMEPAGE
@@ -11,15 +16,9 @@ import com.cookiegames.smartcookie.html.bookmark.BookmarkPageFactory
 import com.cookiegames.smartcookie.html.download.DownloadPageFactory
 import com.cookiegames.smartcookie.html.history.HistoryPageFactory
 import com.cookiegames.smartcookie.html.homepage.HomePageFactory
-import com.cookiegames.smartcookie.preference.UserPreferences
-import android.app.Activity
-import android.os.Bundle
-import android.os.Message
-import android.util.Log
-import android.webkit.WebView
-import androidx.appcompat.app.AlertDialog
 import com.cookiegames.smartcookie.html.incognito.IncognitoPageFactory
 import com.cookiegames.smartcookie.html.onboarding.OnboardingPageFactory
+import com.cookiegames.smartcookie.preference.UserPreferences
 import dagger.Reusable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy

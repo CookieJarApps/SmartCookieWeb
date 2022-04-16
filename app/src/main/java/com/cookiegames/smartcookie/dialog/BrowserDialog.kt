@@ -15,13 +15,6 @@
  */
 package com.cookiegames.smartcookie.dialog
 
-import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.extensions.dimen
-import com.cookiegames.smartcookie.extensions.inflater
-import com.cookiegames.smartcookie.extensions.resizeAndShow
-import com.cookiegames.smartcookie.list.RecyclerViewDialogItemAdapter
-import com.cookiegames.smartcookie.list.RecyclerViewStringAdapter
-import com.cookiegames.smartcookie.utils.DeviceUtils
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
@@ -30,9 +23,15 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.extensions.dimen
+import com.cookiegames.smartcookie.extensions.inflater
+import com.cookiegames.smartcookie.extensions.resizeAndShow
+import com.cookiegames.smartcookie.list.RecyclerViewDialogItemAdapter
+import com.cookiegames.smartcookie.list.RecyclerViewStringAdapter
+import com.cookiegames.smartcookie.utils.DeviceUtils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 object BrowserDialog {

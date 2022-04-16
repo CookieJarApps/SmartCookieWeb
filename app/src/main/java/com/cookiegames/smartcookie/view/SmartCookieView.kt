@@ -13,9 +13,10 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.print.*
-import android.provider.Settings.Global.getString
-import android.util.Log
+import android.print.PrintAttributes
+import android.print.PrintDocumentAdapter
+import android.print.PrintJob
+import android.print.PrintManager
 import android.view.*
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.View.OnTouchListener
@@ -25,7 +26,6 @@ import android.webkit.WebSettings.LayoutAlgorithm
 import android.webkit.WebView
 import android.widget.Toast
 import androidx.collection.ArrayMap
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewFeature
 import com.cookiegames.smartcookie.DeviceCapabilities
@@ -49,7 +49,6 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import java.lang.ref.WeakReference
-import java.util.*
 import javax.inject.Inject
 
 /**

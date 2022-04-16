@@ -1,19 +1,18 @@
 package com.cookiegames.smartcookie.database.bookmark
 
-import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.database.Bookmark
-import com.cookiegames.smartcookie.database.asFolder
-import com.cookiegames.smartcookie.database.databaseDelegate
-import com.cookiegames.smartcookie.extensions.firstOrNullMap
-import com.cookiegames.smartcookie.extensions.useMap
 import android.app.Application
 import android.content.ContentValues
 import android.database.Cursor
 import android.database.DatabaseUtils
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
 import androidx.core.database.getStringOrNull
+import com.cookiegames.smartcookie.R
+import com.cookiegames.smartcookie.database.Bookmark
+import com.cookiegames.smartcookie.database.asFolder
+import com.cookiegames.smartcookie.database.databaseDelegate
+import com.cookiegames.smartcookie.extensions.firstOrNullMap
+import com.cookiegames.smartcookie.extensions.useMap
 import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Single

@@ -4,19 +4,20 @@
 package com.cookiegames.smartcookie.settings.fragment
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ActivityManager
 import android.app.Application
 import android.content.Context.ACTIVITY_SERVICE
+import android.content.Intent
 import android.os.Bundle
-import android.os.Environment
 import android.os.Handler
-import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import com.anthonycr.grant.PermissionsManager
 import com.anthonycr.grant.PermissionsResultAction
+import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.bookmark.LegacyBookmarkImporter
 import com.cookiegames.smartcookie.bookmark.NetscapeBookmarkFormatImporter
@@ -28,36 +29,21 @@ import com.cookiegames.smartcookie.di.MainScheduler
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.dialog.DialogItem
-import com.cookiegames.smartcookie.extensions.resizeAndShow
 import com.cookiegames.smartcookie.extensions.snackbar
 import com.cookiegames.smartcookie.extensions.toast
 import com.cookiegames.smartcookie.log.Logger
-import com.cookiegames.smartcookie.utils.*
-import com.cookiegames.smartcookie.view.BundleInitializer
+import com.cookiegames.smartcookie.utils.Preconditions.checkNonNull
+import com.cookiegames.smartcookie.utils.Utils
+import com.cookiegames.smartcookie.utils.Utils.close
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
-import org.json.JSONArray
 import org.json.JSONObject
 import java.io.*
-import java.util.*
 import javax.inject.Inject
-import android.content.Intent
-import android.icu.text.SimpleDateFormat
-import android.os.Build
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.net.toFile
-import com.cookiegames.smartcookie.MainActivity
-import com.cookiegames.smartcookie.browser.activity.BrowserActivity
-import com.cookiegames.smartcookie.database.Bookmark
-import com.cookiegames.smartcookie.database.asFolder
-import com.cookiegames.smartcookie.settings.activity.SettingsActivity
-import com.cookiegames.smartcookie.utils.Preconditions.checkNonNull
-import com.cookiegames.smartcookie.utils.Utils.close
-import io.reactivex.Completable
 
 
 class ExportSettingsFragment : AbstractSettingsFragment() {

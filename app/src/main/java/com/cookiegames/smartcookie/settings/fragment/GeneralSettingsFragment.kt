@@ -7,7 +7,6 @@ import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
 import android.view.LayoutInflater
-import android.webkit.URLUtil
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -16,9 +15,6 @@ import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.JavaScriptChoice
 import com.cookiegames.smartcookie.browser.ProxyChoice
 import com.cookiegames.smartcookie.browser.SuggestionNumChoice
-import com.cookiegames.smartcookie.constant.SCHEME_BLANK
-import com.cookiegames.smartcookie.constant.SCHEME_BOOKMARKS
-import com.cookiegames.smartcookie.constant.SCHEME_HOMEPAGE
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.extensions.withSingleChoiceItems

@@ -7,20 +7,17 @@ package com.cookiegames.smartcookie.onboarding
 
 import android.Manifest
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
 import androidx.fragment.app.Fragment
-import androidx.preference.PreferenceManager
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.github.appintro.AppIntro2
-import com.github.appintro.AppIntroFragment
 import com.github.appintro.AppIntroFragment.Companion.createInstance
 import javax.inject.Inject
 

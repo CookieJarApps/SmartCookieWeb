@@ -1,14 +1,11 @@
 package com.cookiegames.smartcookie.html.onboarding
 
 import android.app.Application
-import android.content.Context
 import android.content.res.Resources
-import android.util.Log
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.constant.FILE
 import com.cookiegames.smartcookie.constant.UTF8
-import com.cookiegames.smartcookie.database.history.HistoryDatabase
 import com.cookiegames.smartcookie.database.history.HistoryRepository
 import com.cookiegames.smartcookie.html.HtmlPageFactory
 import com.cookiegames.smartcookie.html.ListPageReader

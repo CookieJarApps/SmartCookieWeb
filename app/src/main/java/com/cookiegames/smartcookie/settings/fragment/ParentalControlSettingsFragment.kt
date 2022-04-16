@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.PasswordChoice
 import com.cookiegames.smartcookie.browser.SiteBlockChoice

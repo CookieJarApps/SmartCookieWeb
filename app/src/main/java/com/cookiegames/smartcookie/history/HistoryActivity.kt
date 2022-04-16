@@ -11,15 +11,12 @@ import android.content.Intent.ACTION_VIEW
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.ArrayAdapter
 import android.widget.Filter
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import butterknife.ButterKnife
 import com.cookiegames.smartcookie.AppTheme
@@ -32,7 +29,6 @@ import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.utils.RecyclerItemClickListener
 import com.cookiegames.smartcookie.utils.ThemeUtils
 import com.huxq17.download.DownloadProvider.context
-import com.huxq17.download.core.DownloadInfo
 import java.text.DateFormat
 import java.util.*
 import javax.inject.Inject

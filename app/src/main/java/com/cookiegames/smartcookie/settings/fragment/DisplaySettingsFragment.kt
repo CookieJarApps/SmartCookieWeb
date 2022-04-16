@@ -1,38 +1,27 @@
 package com.cookiegames.smartcookie.settings.fragment
 
-import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.webkit.URLUtil
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.core.view.size
-import com.cookiegames.smartcookie.AppTheme
-import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.browser.*
+import com.cookiegames.smartcookie.browser.ChooseNavbarCol
+import com.cookiegames.smartcookie.browser.DrawerLineChoice
+import com.cookiegames.smartcookie.browser.DrawerSizeChoice
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.extensions.resizeAndShow
 import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
 import com.cookiegames.smartcookie.preference.UserPreferences
-import javax.inject.Inject
-import com.cookiegames.smartcookie.constant.SCHEME_BLANK
-import com.cookiegames.smartcookie.constant.SCHEME_BOOKMARKS
-import com.cookiegames.smartcookie.constant.SCHEME_HOMEPAGE
-import com.cookiegames.smartcookie.utils.ProxyUtils
 import com.flask.colorpicker.ColorPickerView
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.w3c.dom.Text
+import javax.inject.Inject
 
 
 class DisplaySettingsFragment : AbstractSettingsFragment() {

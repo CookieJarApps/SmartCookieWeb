@@ -4,12 +4,10 @@
 package com.cookiegames.smartcookie.download
 
 import android.Manifest
-import android.R.attr.label
 import android.app.Activity
 import android.app.Dialog
 import android.content.ClipData
 import android.content.ClipboardManager
-import android.content.Context
 import android.content.DialogInterface
 import android.text.format.Formatter
 import android.view.View
@@ -17,7 +15,6 @@ import android.webkit.DownloadListener
 import android.webkit.URLUtil
 import android.widget.CheckBox
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import com.anthonycr.grant.PermissionsManager
 import com.anthonycr.grant.PermissionsResultAction

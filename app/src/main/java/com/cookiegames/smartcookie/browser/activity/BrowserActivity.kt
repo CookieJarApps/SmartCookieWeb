@@ -2,7 +2,10 @@ package com.cookiegames.smartcookie.browser.activity
 
 import android.app.Activity
 import android.app.NotificationManager
-import android.content.*
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.content.res.AssetManager
 import android.content.res.Configuration
@@ -102,7 +105,6 @@ import kotlinx.android.synthetic.main.search.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.io.IOException
-import java.util.*
 import javax.inject.Inject
 import kotlin.math.roundToInt
 import kotlin.system.exitProcess

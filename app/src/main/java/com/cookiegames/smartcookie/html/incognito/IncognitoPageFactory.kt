@@ -1,23 +1,18 @@
 package com.cookiegames.smartcookie.html.incognito
 
 import android.app.Application
-import android.content.Context
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.util.Base64
-import android.util.Log
 import android.webkit.URLUtil
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.constant.FILE
 import com.cookiegames.smartcookie.constant.UTF8
-import com.cookiegames.smartcookie.database.history.HistoryDatabase
 import com.cookiegames.smartcookie.database.history.HistoryRepository
 import com.cookiegames.smartcookie.html.HtmlPageFactory
 import com.cookiegames.smartcookie.html.ListPageReader
-import com.cookiegames.smartcookie.html.homepage.HomePageFactory
-import com.cookiegames.smartcookie.html.homepage.HomePageReader
 import com.cookiegames.smartcookie.html.jsoup.*
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.search.SearchEngineProvider

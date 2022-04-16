@@ -7,10 +7,7 @@ package com.cookiegames.smartcookie.download
 
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.util.Log
 import android.view.*
 import android.webkit.MimeTypeMap
 import android.widget.Filter
@@ -38,7 +35,6 @@ import kotlinx.android.synthetic.main.download_item.view.*
 import java.io.File
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.HashMap
 
 
 class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {

@@ -5,7 +5,6 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.util.Base64
-import android.util.Log
 import android.webkit.URLUtil
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
@@ -21,13 +20,10 @@ import com.cookiegames.smartcookie.search.SearchEngineProvider
 import com.cookiegames.smartcookie.utils.DrawableUtils
 import dagger.Reusable
 import io.reactivex.Single
-import org.jsoup.nodes.DataNode
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileWriter
 import java.net.URI
-import java.net.URL
-import java.net.URLConnection
 import javax.inject.Inject
 
 
