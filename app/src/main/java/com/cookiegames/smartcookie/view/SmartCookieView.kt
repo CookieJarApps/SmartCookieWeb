@@ -942,7 +942,7 @@ class SmartCookieView(
 
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
-            val url = msg?.data?.getString("url")
+            val url = msg.data?.getString("url")
 
             reference.get()?.longClickPage(url)
         }

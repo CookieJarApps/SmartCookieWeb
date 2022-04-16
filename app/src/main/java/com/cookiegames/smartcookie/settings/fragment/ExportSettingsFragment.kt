@@ -456,7 +456,6 @@ class ExportSettingsFragment : AbstractSettingsFragment() {
                                     val userPref = application.getSharedPreferences("settings", 0)
                                     userPref.edit().clear().commit()
                                     while (line != null) {
-                                        Log.d("gdsgsdg", line)
                                         val `object` = JSONObject(line)
                                         val key = `object`.getString("key")
                                         val value = `object`.getString("value")

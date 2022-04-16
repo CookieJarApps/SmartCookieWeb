@@ -200,7 +200,7 @@ public class VerticalItemAnimator extends SimpleItemAnimator {
         final ViewPropertyAnimatorCompat animation = ViewCompat.animate(view);
         mRemoveAnimations.add(holder);
         animation.setDuration(getRemoveDuration())
-            .alpha(0).translationX(-holder.itemView.getWidth() / 2)
+            .alpha(0).translationX(-holder.itemView.getWidth() / 2F)
             .setInterpolator(new AccelerateInterpolator()).setListener(new VpaListenerAdapter() {
             @Override
             public void onAnimationStart(View view) {
@@ -223,7 +223,7 @@ public class VerticalItemAnimator extends SimpleItemAnimator {
     public boolean animateAdd(@NonNull final ViewHolder holder) {
         resetAnimation(holder);
         ViewCompat.setAlpha(holder.itemView, 0);
-        ViewCompat.setTranslationX(holder.itemView, -holder.itemView.getWidth() / 2);
+        ViewCompat.setTranslationX(holder.itemView, -holder.itemView.getWidth() / 2F);
         mPendingAdditions.add(holder);
         return true;
     }
@@ -322,17 +322,6 @@ public class VerticalItemAnimator extends SimpleItemAnimator {
     @Override
     public boolean animateChange(@NonNull ViewHolder oldHolder, @Nullable ViewHolder newHolder,
                                  int fromX, int fromY, int toX, int toY) {
-//        if (oldHolder != newHolder) {
-//            if (oldHolder != null) {
-//                dispatchChangeFinished(oldHolder, true);
-//            }
-//            if (newHolder != null) {
-//                dispatchChangeFinished(newHolder, false);
-//            }
-//        } else if (oldHolder != null) {
-//            dispatchChangeFinished(oldHolder, true);
-//        }
-//        return false;
         if (oldHolder == newHolder) {
             // Don't know how to run change animations when the same view holder is re-used.
             // run a move animation to handle position changes.

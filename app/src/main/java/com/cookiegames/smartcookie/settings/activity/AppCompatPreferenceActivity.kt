@@ -1,11 +1,8 @@
 package com.cookiegames.smartcookie.settings.activity
 
-import com.cookiegames.smartcookie.R
 import android.content.res.Configuration
 import android.os.Bundle
-import android.preference.Preference
 import android.preference.PreferenceActivity
-import android.preference.PreferenceScreen
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +10,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
+import com.cookiegames.smartcookie.R
 
 /**
  * A [android.preference.PreferenceActivity] which implements and proxies the necessary calls

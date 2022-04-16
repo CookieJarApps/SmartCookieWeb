@@ -1,5 +1,10 @@
 package com.cookiegames.smartcookie.settings.fragment
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import androidx.preference.Preference
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.adblock.BloomFilterAdBlocker
 import com.cookiegames.smartcookie.adblock.source.HostsSourceType
@@ -12,18 +17,12 @@ import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.dialog.DialogItem
 import com.cookiegames.smartcookie.extensions.toast
 import com.cookiegames.smartcookie.preference.UserPreferences
-import android.app.Activity
-import android.content.Intent
-import android.net.Uri
-import android.os.Bundle
-import androidx.preference.Preference
 import io.reactivex.Maybe
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.rxkotlin.subscribeBy
 import okhttp3.HttpUrl
-import okio.Okio
 import okio.buffer
 import okio.sink
 import okio.source

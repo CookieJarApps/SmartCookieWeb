@@ -12,11 +12,14 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.text.TextUtils
+import android.util.Base64
 import android.util.Log
 import android.webkit.CookieManager
 import android.webkit.MimeTypeMap
@@ -42,15 +45,18 @@ import com.cookiegames.smartcookie.utils.FileUtils
 import com.cookiegames.smartcookie.utils.Utils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.huxq17.download.Pump
+import com.huxq17.download.core.DownloadInfo
 import com.huxq17.download.core.DownloadListener
 import com.huxq17.download.utils.LogUtil
 import io.reactivex.Scheduler
 import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
+
 
 /**
  * Handle download requests
@@ -379,7 +385,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
             for (c in chars) {
                 if (c == '[' || c == ']' || c == '|') {
                     sb.append('%')
-                    sb.append(Integer.toHexString(c.toInt()))
+                    sb.append(Integer.toHexString(c.code))
                 } else {
                     sb.append(c)
                 }

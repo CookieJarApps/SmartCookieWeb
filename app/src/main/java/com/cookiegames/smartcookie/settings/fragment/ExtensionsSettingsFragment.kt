@@ -1,15 +1,8 @@
 package com.cookiegames.smartcookie.settings.fragment
 
-import android.content.Context.MODE_PRIVATE
 import android.content.DialogInterface
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.Preference
 import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import com.anthonycr.bonsai.Scheduler
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.database.javascript.JavaScriptDatabase
 import com.cookiegames.smartcookie.database.javascript.JavaScriptRepository
@@ -18,11 +11,6 @@ import com.cookiegames.smartcookie.di.MainScheduler
 import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.io.File
-import java.io.FileInputStream
-import java.io.PrintWriter
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 import javax.inject.Inject
 
 /**

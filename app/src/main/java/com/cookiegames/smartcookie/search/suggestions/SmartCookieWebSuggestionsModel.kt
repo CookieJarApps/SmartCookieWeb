@@ -1,23 +1,18 @@
 package com.cookiegames.smartcookie.search.suggestions
 
-import android.app.Activity
+import android.app.Application
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.constant.UTF8
 import com.cookiegames.smartcookie.database.SearchSuggestion
+import com.cookiegames.smartcookie.extensions.map
 import com.cookiegames.smartcookie.extensions.preferredLocale
 import com.cookiegames.smartcookie.log.Logger
-import android.app.Application
-import android.util.Log
-import com.cookiegames.smartcookie.extensions.map
-import com.cookiegames.smartcookie.preference.UserPreferences
 import io.reactivex.Single
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import org.json.JSONArray
 import org.json.JSONObject
-import org.xmlpull.v1.XmlPullParser
-import org.xmlpull.v1.XmlPullParserFactory
 
 /**
  * Search suggestions provider for Google search engine.

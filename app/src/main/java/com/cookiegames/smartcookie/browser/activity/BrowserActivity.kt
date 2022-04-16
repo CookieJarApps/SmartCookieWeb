@@ -569,21 +569,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             builder.setView(customLayout)
             builder.setCancelable(false)
 
-            customLayout.forgot_password.setOnClickListener {
-                val forgotBuilder: AlertDialog.Builder = AlertDialog.Builder(this)
-                forgotBuilder.setTitle(R.string.forgot_password)
-                forgotBuilder.setMessage(R.string.recover_app_lock)
-                forgotBuilder.setCancelable(false)
-
-                forgotBuilder.setPositiveButton(resources.getString(R.string.action_back)) { dialog, which ->
-                    if (customLayout.textFieldText.text.toString() == userPreferences.passwordTextLock) {
-                        dialog.cancel()
-                    }
-                }
-                forgotBuilder.show()
-            }
-
-            builder.setPositiveButton(resources.getString(R.string.action_ok)) { dialog, which ->
+            builder.setPositiveButton(resources.getString(R.string.action_ok)) { dialog, _ ->
                 if (customLayout.textFieldText.text.toString() == userPreferences.passwordTextLock) {
                     dialog.cancel()
                 }
@@ -591,7 +577,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     this.finishAffinity()
                 }
             }
-            builder.setNegativeButton(resources.getString(R.string.action_cancel)) { dialog, which ->
+            builder.setNegativeButton(resources.getString(R.string.action_cancel)) { _, _ ->
                 this.finishAffinity()
             }
 
@@ -688,10 +674,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             val currentView = tabsManager.currentTab
             if (currentView?.url!!.contains("data:text/html;charset=utf-8")) {
 
-            } else if (!hasFocus && currentView != null) {
+            } else if (!hasFocus) {
                 setIsLoading(currentView.progress < 100)
                 updateUrl(currentView.url, false)
-            } else if (hasFocus && currentView != null) {
+            } else if (hasFocus) {
 
                 // Hack to make sure the text gets selected
                 (v as SearchView).selectAll()
@@ -712,7 +698,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             val url = currentView.url
             if (!url.isSpecialUrl()) {
                 if (searchView?.hasFocus() == false) {
-                    if (url.contains("data:text/html") || url.equals("about:blank")) {
+                    if (url.contains("data:text/html") || url == "about:blank") {
 
                     } else {
                         searchView?.setText(url)
@@ -1532,9 +1518,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         if(userPreferences.darkModeExtension) currentTabView?.setBackgroundColor(if (loadState(50)) Color.WHITE else primaryColor); currentTabView?.invalidate()
 
         if(userPreferences.navbarColChoice == ChooseNavbarCol.COLOR && !isIncognito()){
-            if(Utils.isColorTooDark(userPreferences.colorNavbar)){
-
-            }
             tabBackground?.tint(userPreferences.colorNavbar)
             toolbar_layout.setBackgroundColor(userPreferences.colorNavbar)
             currentUiColor = userPreferences.colorNavbar

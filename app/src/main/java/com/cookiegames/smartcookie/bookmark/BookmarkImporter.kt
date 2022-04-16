@@ -1,7 +1,6 @@
 package com.cookiegames.smartcookie.bookmark
 
-import  com.cookiegames.smartcookie.database.Bookmark
-import com.cookiegames.smartcookie.database.SettingsKeys
+import com.cookiegames.smartcookie.database.Bookmark
 import java.io.InputStream
 
 /**

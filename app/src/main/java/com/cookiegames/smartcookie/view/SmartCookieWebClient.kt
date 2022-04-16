@@ -243,7 +243,7 @@ class SmartCookieWebClient(
             }
         }
 
-        val metadataRegex: Pattern = Pattern.compile("==UserScript==(.*?)==\\/UserScript==", Pattern.DOTALL)
+        val metadataRegex: Pattern = Pattern.compile("==UserScript==(.*?)==/UserScript==", Pattern.DOTALL)
 
         val metadataMatcher: Matcher = metadataRegex.matcher(text)
         var code = ""
@@ -292,7 +292,7 @@ class SmartCookieWebClient(
     }
 
     val TLD_REGEX = "^([^:]+://[^/]+)\\\\.tld(/.*)?\$".toRegex()
-    val schemeContainsPattern = Pattern.compile("^\\w+:", Pattern.CASE_INSENSITIVE)
+    val schemeContainsPattern: Pattern = Pattern.compile("^\\w+:", Pattern.CASE_INSENSITIVE)
 
     private fun urlToPattern(patternUrl: String?): Pattern? {
         if (patternUrl == null) return null
@@ -588,8 +588,8 @@ class SmartCookieWebClient(
             activity.findViewById<FrameLayout>(R.id.download_button).visibility = View.GONE
         }
 
-        if(view.settings?.userAgentString!!.contains("wv")){
-            view.settings?.userAgentString = view.settings?.userAgentString?.replace("; wv", "")
+        if(view.settings.userAgentString!!.contains("wv")){
+            view.settings.userAgentString = view.settings.userAgentString?.replace("; wv", "")
         }
         zoomed = false
         first = true

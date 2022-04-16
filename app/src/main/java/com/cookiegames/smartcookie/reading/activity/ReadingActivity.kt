@@ -150,7 +150,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         return super.onCreateOptionsMenu(menu)
     }
 
-    private inner class loadData : AsyncTask<Void?, Void?, Void?>() {
+    private inner class LoadData : AsyncTask<Void?, Void?, Void?>() {
         var extractedContentHtml: String? = null
         var extractedContentHtmlWithUtf8Encoding: String? = null
         var extractedContentPlainText: String? = null
@@ -212,7 +212,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 mTitle!!.text = getString(R.string.untitled)
                 mBody!!.text = getString(R.string.loading)
                 mUrl = span?.url
-                loadData().execute()
+                LoadData().execute()
             }
         }
         strBuilder.setSpan(clickable, start, end, flags)
@@ -254,7 +254,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         mProgressDialog!!.setMessage(getString(R.string.loading))
         mProgressDialog!!.show()
         setDialogSize(this@ReadingActivity, mProgressDialog!!)
-        loadData().execute()
+        LoadData().execute()
         return true
     }
 

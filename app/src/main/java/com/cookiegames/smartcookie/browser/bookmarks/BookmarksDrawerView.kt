@@ -298,7 +298,7 @@ class BookmarksDrawerView @JvmOverloads constructor(
             txtTitle.maxLines = userPreferences.drawerLines.value + 1
             if(userPreferences.drawerSize != DrawerSizeChoice.AUTO){
                 TextViewCompat.setAutoSizeTextTypeWithDefaults(txtTitle, TextViewCompat.AUTO_SIZE_TEXT_TYPE_NONE)
-                txtTitle.setTextSize(userPreferences.drawerSize.value.toFloat() * 7)
+                txtTitle.textSize = userPreferences.drawerSize.value.toFloat() * 7
             }
         }
 

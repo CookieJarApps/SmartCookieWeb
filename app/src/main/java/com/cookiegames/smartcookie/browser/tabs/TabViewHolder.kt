@@ -1,21 +1,16 @@
 package com.cookiegames.smartcookie.browser.tabs
 
-import android.os.Build
-import android.util.Log
-import com.cookiegames.smartcookie.R
-import com.cookiegames.smartcookie.controller.UIController
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.cookiegames.smartcookie.browser.DrawerLineChoice
+import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.DrawerSizeChoice
+import com.cookiegames.smartcookie.controller.UIController
 import com.cookiegames.smartcookie.preference.UserPreferences
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 /**
  * The [RecyclerView.ViewHolder] for both vertical and horizontal tabs.

@@ -160,8 +160,10 @@ dependencies {
 
 
     //TODO: drop android 4.4 support - no TLS1.2 support on OKhttp3
-    implementation ("com.squareup.okhttp3:okhttp:3.12.12"){
-        force = true //API 19 support
+    implementation ("com.squareup.okhttp3:okhttp"){
+        version{
+            strictly "3.12.12"
+        }
     }
     implementation 'com.squareup.okio:okio:2.8.0'
 

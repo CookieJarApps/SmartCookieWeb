@@ -1,13 +1,11 @@
 package com.cookiegames.smartcookie.utils;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import android.util.Log;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebStorage;
@@ -17,7 +15,6 @@ import android.webkit.WebViewDatabase;
 import com.cookiegames.smartcookie.database.history.HistoryRepository;
 
 import java.io.File;
-import java.util.Map;
 
 import io.reactivex.Scheduler;
 
@@ -89,8 +86,8 @@ public final class WebUtils {
     public static boolean deleteDir(File dir) {
         if (dir != null && dir.isDirectory()) {
             String[] children = dir.list();
-            for (int i = 0; i < children.length; i++) {
-                boolean success = deleteDir(new File(dir, children[i]));
+            for (String child : children) {
+                boolean success = deleteDir(new File(dir, child));
                 if (!success) {
                     return false;
                 }

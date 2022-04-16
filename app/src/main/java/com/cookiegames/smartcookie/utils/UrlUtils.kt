@@ -47,7 +47,7 @@ fun smartUrlFilter(url: String, canBeSearch: Boolean, searchUrl: String): String
     if (matcher.matches()) {
         // force scheme to lowercase
         val scheme = matcher.group(1)
-        val lcScheme = scheme.toLowerCase(Locale.getDefault())
+        val lcScheme = scheme.lowercase(Locale.getDefault())
         if (lcScheme != scheme) {
             inUrl = lcScheme + matcher.group(2)
         }

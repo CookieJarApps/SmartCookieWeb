@@ -1,15 +1,13 @@
 package com.cookiegames.smartcookie.search
 
+import android.app.Application
 import com.cookiegames.smartcookie.di.SuggestionsClient
 import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.search.engine.*
 import com.cookiegames.smartcookie.search.suggestions.*
-import android.app.Application
 import dagger.Reusable
 import io.reactivex.Single
-import okhttp3.Cookie
-import okhttp3.CookieJar
 import okhttp3.OkHttpClient
 import javax.inject.Inject
 

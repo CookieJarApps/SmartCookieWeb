@@ -323,17 +323,6 @@ public class HorizontalItemAnimator extends SimpleItemAnimator {
     @Override
     public boolean animateChange(@NonNull ViewHolder oldHolder, @Nullable ViewHolder newHolder,
                                  int fromX, int fromY, int toX, int toY) {
-//        if (oldHolder != newHolder) {
-//            if (oldHolder != null) {
-//                dispatchChangeFinished(oldHolder, true);
-//            }
-//            if (newHolder != null) {
-//                dispatchChangeFinished(newHolder, false);
-//            }
-//        } else if (oldHolder != null) {
-//            dispatchChangeFinished(oldHolder, true);
-//        }
-//        return false;
         if (oldHolder == newHolder) {
             // Don't know how to run change animations when the same view holder is re-used.
             // run a move animation to handle position changes.

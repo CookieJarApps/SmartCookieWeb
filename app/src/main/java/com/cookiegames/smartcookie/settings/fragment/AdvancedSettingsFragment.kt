@@ -1,23 +1,19 @@
 package com.cookiegames.smartcookie.settings.fragment
 
-import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.EditText
+import com.cookiegames.smartcookie.DeviceCapabilities
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.browser.SearchBoxDisplayChoice
 import com.cookiegames.smartcookie.constant.TEXT_ENCODINGS
 import com.cookiegames.smartcookie.di.injector
+import com.cookiegames.smartcookie.dialog.BrowserDialog
 import com.cookiegames.smartcookie.extensions.resizeAndShow
 import com.cookiegames.smartcookie.extensions.withSingleChoiceItems
+import com.cookiegames.smartcookie.isSupported
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.view.RenderingMode
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.widget.EditText
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import com.cookiegames.smartcookie.DeviceCapabilities
-import com.cookiegames.smartcookie.dialog.BrowserDialog
-import com.cookiegames.smartcookie.isSupported
-import com.cookiegames.smartcookie.settings.activity.SettingsActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import javax.inject.Inject
 

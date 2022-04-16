@@ -90,13 +90,13 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         arrayAdapter = CustomAdapter(historyList)
         list.layoutManager = linearLayoutManager
-        list?.adapter = arrayAdapter
+        list.adapter = arrayAdapter
 
         list.addOnItemTouchListener(
                 RecyclerItemClickListener(context, list, object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View?, position: Int) {
                         val i = Intent(ACTION_VIEW)
-                        i.setData(Uri.parse((list.adapter as CustomAdapter).getItem(position).url))
+                        i.data = Uri.parse((list.adapter as CustomAdapter).getItem(position).url)
                         i.setPackage(context!!.packageName)
                         startActivity(i, null)
                     }
@@ -141,10 +141,10 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                     } else {
                         val filteredList: MutableList<HistoryEntry> = ArrayList()
                         for (row in oldList) {
-                            if (row.title.toLowerCase().contains(charString.toLowerCase())) {
+                            if (row.title.lowercase(Locale.getDefault()).contains(charString.lowercase(Locale.getDefault()))) {
                                 filteredList.add(row)
                             }
-                            else if(row.url.toLowerCase().contains(charString.toLowerCase())){
+                            else if(row.url.lowercase(Locale.getDefault()).contains(charString.lowercase(Locale.getDefault()))){
                                 filteredList.add(row)
                             }
                         }

@@ -1,6 +1,5 @@
 package com.cookiegames.smartcookie.database.javascript
 
-import com.cookiegames.smartcookie.database.downloads.DownloadEntry
 import io.reactivex.Completable
 import io.reactivex.Single
 

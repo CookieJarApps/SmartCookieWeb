@@ -21,6 +21,7 @@ import com.cookiegames.smartcookie.di.injector
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.github.appintro.AppIntro2
 import com.github.appintro.AppIntroFragment
+import com.github.appintro.AppIntroFragment.Companion.createInstance
 import javax.inject.Inject
 
 
@@ -66,14 +67,16 @@ class Onboarding : AppIntro2(){
         val a = TypedValue()
         theme.resolveAttribute(android.R.attr.windowBackground, a, true)
 
-        addSlide(AppIntroFragment.newInstance(
+        addSlide(
+            createInstance(
                 title = resources.getString(R.string.app_name),
-                backgroundColor = col,
-                titleColor = textCol,
-                descriptionColor = textCol,
+                description = resources.getString(R.string.app_desc),
                 imageDrawable = R.drawable.slide1,
-                description = resources.getString(R.string.app_desc)
-        ))
+                backgroundColorRes = col,
+                titleColorRes = textCol,
+                descriptionColorRes = textCol
+            )
+        )
 
         addSlide(PermsFragment.newInstance())
 

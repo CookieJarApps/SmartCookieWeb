@@ -96,13 +96,11 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         val linearLayoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
 
         //Sort download list if need.
-        Collections.sort(downloadInfoList) { o1, o2 -> (o1.createTime - o2.createTime).toInt() }
+        downloadInfoList.sortWith { o1, o2 -> (o1.createTime - o2.createTime).toInt() }
         list.layoutManager = linearLayoutManager
         downloadAdapter = DownloadAdapter(map, downloadInfoList)
         list.adapter = downloadAdapter
         downloadObserver.enable()
-
-        //downloadAdapter!!.notifyDataSetChanged()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -116,10 +114,6 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     override fun onDestroy() {
         super.onDestroy()
         downloadObserver.disable()
-        /*for (downloadInfo in downloadInfoList) {
-            Pump.stop(downloadInfo.id)
-        }
-        Pump.shutdown()*/
     }
 
     class DownloadAdapter(var map: HashMap<DownloadViewHolder, DownloadInfo>, var downloadInfoList: MutableList<DownloadInfo>) : androidx.recyclerview.widget.RecyclerView.Adapter<DownloadViewHolder>() {
@@ -127,7 +121,7 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         lateinit var filtered: MutableList<DownloadInfo>
         lateinit var oldList: MutableList<DownloadInfo>
 
-        fun getFilter(): Filter? {
+        fun getFilter(): Filter {
             return object : Filter() {
                 override fun performFiltering(charSequence: CharSequence): FilterResults? {
                     val charString = charSequence.toString()
@@ -136,7 +130,7 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                     } else {
                         val filteredList: MutableList<DownloadInfo> = ArrayList()
                         for (row in oldList) {
-                            if (row.getName().toLowerCase().contains(charString.toLowerCase())) {
+                            if (row.name.lowercase(Locale.getDefault()).contains(charString.lowercase(Locale.getDefault()))) {
                                 filteredList.add(row)
                             }
                         }
@@ -183,7 +177,7 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         }
     }
 
-    class DownloadViewHolder(itemView: View, adapter: DownloadAdapter) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView), View.OnClickListener, View.OnLongClickListener {
+    class DownloadViewHolder(itemView: View, adapter: DownloadAdapter) : RecyclerView.ViewHolder(itemView), View.OnClickListener, View.OnLongClickListener {
         lateinit var downloadInfo: DownloadInfo
         lateinit var status: DownloadInfo.Status
         private var totalSizeString: String? = null
@@ -269,7 +263,7 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             return if (indexOfExtension == -1) {
                 null
             } else {
-                filename.substring(indexOfExtension + 1).toLowerCase()
+                filename.substring(indexOfExtension + 1).lowercase(Locale.getDefault())
             }
         }
 
@@ -300,7 +294,7 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         menuInflater.inflate(R.menu.download, menu)
 
         val searchItem: MenuItem = menu.findItem(R.id.action_search)
-        val searchView: SearchView = searchItem.getActionView() as SearchView
+        val searchView: SearchView = searchItem.actionView as SearchView
         searchView.setOnQueryTextListener(this)
 
         return super.onCreateOptionsMenu(menu)

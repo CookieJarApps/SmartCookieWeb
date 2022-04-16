@@ -6,7 +6,6 @@ import android.view.KeyEvent
 import android.view.Menu
 import android.webkit.CookieManager
 import android.webkit.CookieSyncManager
-import androidx.appcompat.view.menu.MenuBuilder
 import com.cookiegames.smartcookie.browser.activity.BrowserActivity
 import io.reactivex.Completable
 

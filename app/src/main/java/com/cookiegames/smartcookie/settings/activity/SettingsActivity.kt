@@ -3,18 +3,16 @@
  */
 package com.cookiegames.smartcookie.settings.activity
 
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import com.cookiegames.smartcookie.preference.UserPreferences
 import androidx.appcompat.widget.Toolbar
 import com.cookiegames.smartcookie.AppTheme
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.di.injector
+import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.settings.fragment.SettingsFragment
-import com.cookiegames.smartcookie.utils.ThemeUtils
 import javax.inject.Inject
 
 

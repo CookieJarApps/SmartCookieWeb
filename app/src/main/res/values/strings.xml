@@ -512,8 +512,7 @@
     <string name="privacy_set">Privacy settings</string>
     <string name="security_set">Security settings</string>
 
-    <string name="page_source">View page source</string>
-    <string name="pagespeed_error">This website uses PageSpeed. Source editing may not work as expected.</string>
+    <string name="page_source">Edit page source</string>
 
     <string name="app_lock">Set app password</string>
 

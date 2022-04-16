@@ -1,14 +1,11 @@
 package com.cookiegames.smartcookie.widget
 
 import android.app.PendingIntent
-import android.app.SearchManager
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
-import android.widget.SearchView
-import androidx.core.content.ContextCompat.getSystemService
 import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
 

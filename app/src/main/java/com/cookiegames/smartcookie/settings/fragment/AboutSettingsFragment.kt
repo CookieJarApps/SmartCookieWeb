@@ -3,9 +3,7 @@
  */
 package com.cookiegames.smartcookie.settings.fragment
 
-import android.os.Build
 import android.os.Bundle
-import android.webkit.WebView
 import androidx.appcompat.app.AlertDialog
 import androidx.webkit.WebViewCompat
 import com.cookiegames.smartcookie.BuildConfig
