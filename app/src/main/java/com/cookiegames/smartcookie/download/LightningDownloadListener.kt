@@ -66,11 +66,7 @@ class LightningDownloadListener(context: Activity) : DownloadListener {
                         checkBox.text = mActivity.resources.getString(R.string.dont_ask_again)
                         val dialogClickListener = DialogInterface.OnClickListener { dialog: DialogInterface?, which: Int ->
                             when (which) {
-                                DialogInterface.BUTTON_POSITIVE -> if (userPreferences!!.useNewDownloader) {
-                                    downloadHandler!!.onDownloadStart(mActivity, userPreferences!!, url, userAgent, contentDisposition, mimetype, downloadSize)
-                                } else {
-                                    downloadHandler!!.legacyDownloadStart(mActivity, userPreferences!!, url, userAgent, contentDisposition, mimetype, downloadSize)
-                                }
+                                DialogInterface.BUTTON_POSITIVE -> downloadHandler!!.onDownloadStart(mActivity, userPreferences!!, url, userAgent, contentDisposition, mimetype, downloadSize)
                                 DialogInterface.BUTTON_NEUTRAL -> {
                                     val clipboard = getSystemService(mActivity, ClipboardManager::class.java)
                                     clipboard?.setPrimaryClip(ClipData.newPlainText("", url))
@@ -96,11 +92,7 @@ class LightningDownloadListener(context: Activity) : DownloadListener {
                             logger!!.log(TAG, "Downloading: $fileName")
                         } else {
                             Toast.makeText(mActivity, mActivity.resources.getString(R.string.download_pending), Toast.LENGTH_LONG).show()
-                            if (userPreferences!!.useNewDownloader) {
-                                downloadHandler!!.onDownloadStart(mActivity, userPreferences!!, url, userAgent, contentDisposition, mimetype, downloadSize)
-                            } else {
-                                downloadHandler!!.legacyDownloadStart(mActivity, userPreferences!!, url, userAgent, contentDisposition, mimetype, downloadSize)
-                            }
+                            downloadHandler!!.onDownloadStart(mActivity, userPreferences!!, url, userAgent, contentDisposition, mimetype, downloadSize)
                         }
                     }
 

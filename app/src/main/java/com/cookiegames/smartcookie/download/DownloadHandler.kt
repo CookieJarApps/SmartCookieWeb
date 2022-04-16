@@ -6,7 +6,6 @@
 // MPL-2.0
 package com.cookiegames.smartcookie.download
 
-import android.Manifest
 import android.app.*
 import android.content.ActivityNotFoundException
 import android.content.BroadcastReceiver
@@ -43,14 +42,11 @@ import com.cookiegames.smartcookie.utils.FileUtils
 import com.cookiegames.smartcookie.utils.Utils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.huxq17.download.Pump
-import com.huxq17.download.core.DownloadInfo
 import com.huxq17.download.core.DownloadListener
 import com.huxq17.download.utils.LogUtil
 import io.reactivex.Scheduler
 import java.io.File
-import java.io.FileOutputStream
 import java.io.IOException
-import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -67,7 +63,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
                                           @param:MainScheduler private val mainScheduler: Scheduler,
                                           private val logger: Logger) {
 
-    fun legacyDownloadStart(context: Activity, manager: UserPreferences, url: String, userAgent: String,
+    fun onDownloadStart(context: Activity, manager: UserPreferences, url: String, userAgent: String,
                             contentDisposition: String?, mimeType: String, contentSize: String) {
         logger.log(TAG, "DOWNLOAD: Trying to download from URL: $url")
         logger.log(TAG, "DOWNLOAD: Content disposition: $contentDisposition")
@@ -104,18 +100,20 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
                 }
             }
         }
-        onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize)
+
+        if(manager.useNewDownloader){
+            onDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize)
+        }
+        else{
+            legacyOnDownloadStartNoStream(context, manager, url, userAgent, contentDisposition, mimeType, contentSize)
+        }
     }
-    fun onDownloadStart(context: Activity, manager: UserPreferences, url: String, userAgent: String,
+    fun onDownloadStartNoStream(context: Activity, manager: UserPreferences, url: String, userAgent: String,
                         contentDisposition: String?, mimeType: String, contentSize: String) {
         logger.log(TAG, "DOWNLOAD: Trying to download from URL: $url")
         logger.log(TAG, "DOWNLOAD: Content disposition: $contentDisposition")
         logger.log(TAG, "DOWNLOAD: MimeType: $mimeType")
         logger.log(TAG, "DOWNLOAD: User agent: $userAgent")
-
-        if(url.toUri().scheme == "data"){
-            return
-        }
 
         var location
                 = manager.downloadDirectory
@@ -216,7 +214,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
      * @param contentSize        The size of the content
      */
     /* package */
-    private fun onDownloadStartNoStream(context: Activity, preferences: UserPreferences,
+    private fun legacyOnDownloadStartNoStream(context: Activity, preferences: UserPreferences,
                                         url: String, userAgent: String,
                                         contentDisposition: String?, mimetype: String?, contentSize: String) {
         val filename = URLUtil.guessFileName(url, contentDisposition, mimetype)
