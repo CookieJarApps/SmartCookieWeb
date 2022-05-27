@@ -21,8 +21,10 @@ import android.util.Log
 import android.webkit.CookieManager
 import android.webkit.MimeTypeMap
 import android.webkit.URLUtil
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.net.toUri
 import com.cookiegames.smartcookie.BuildConfig
 import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
@@ -119,6 +121,11 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
                 = manager.downloadDirectory
         location = FileUtils.addNecessarySlashes(location)
         val downloadFolder = Uri.parse(location)
+
+        if(url.toUri().scheme == "data"){
+            Toast.makeText(context, R.string.data_scheme, Toast.LENGTH_LONG).show()
+            return
+        }
 
         val now = Date()
         val uniqid = SimpleDateFormat("ddHHmmss", Locale.US).format(now).toInt()

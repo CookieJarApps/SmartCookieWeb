@@ -234,7 +234,6 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         fun openFile(filePath: String, v: View){
             val intent = Intent()
             intent.action = Intent.ACTION_VIEW
-            val fileURI = filePath.toUri()
 
             val finalUri = FileProvider.getUriForFile(v.context, BuildConfig.APPLICATION_ID + ".fileprovider", File(filePath))
             intent.setDataAndType(finalUri, MimeTypeMap.getSingleton().getMimeTypeFromExtension(getFileExtension(filePath)))
@@ -242,9 +241,8 @@ class DownloadActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             if (intent.resolveActivity(v.context.packageManager) != null) {
                 v.context.startActivity(intent)
             } else {
-                Toast.makeText(v.context, v.context.resources.getString(R.string.title_error), Toast.LENGTH_LONG).show()
+                Toast.makeText(v.context, v.context.resources.getString(R.string.no_installed_app), Toast.LENGTH_LONG).show()
             }
-            v.context.startActivity(intent)
         }
 
         fun getFileExtension(filename: String?): String? {
