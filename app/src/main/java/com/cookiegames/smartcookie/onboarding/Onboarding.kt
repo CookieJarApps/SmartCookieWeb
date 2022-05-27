@@ -48,16 +48,16 @@ class Onboarding : AppIntro2(){
 
         when (userPreferences.useTheme) {
             AppTheme.LIGHT ->{
-                col = Color.WHITE
-                textCol = Color.BLACK
+                col = R.color.white
+                textCol = R.color.black
             }
             AppTheme.DARK ->{
-                textCol = Color.WHITE
-                col = Color.BLACK
+                textCol = R.color.white
+                col = R.color.black
             }
             AppTheme.BLACK ->{
-                textCol = Color.WHITE
-                col = Color.BLACK
+                textCol = R.color.white
+                col = R.color.black
             }
         }
 

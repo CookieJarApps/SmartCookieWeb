@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SmartCookieWeb.iml" filepath="$PROJECT_DIR$/.idea/SmartCookieWeb.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartCookieWeb.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartCookieWeb.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartCookieWeb.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartCookieWeb.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartCookieWeb.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartCookieWeb.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartCookieWeb.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartCookieWeb.app.unitTest.iml" />
     </modules>
   </component>
 </project>
