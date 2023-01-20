@@ -48,6 +48,8 @@ import com.huxq17.download.utils.LogUtil
 import io.reactivex.Scheduler
 import java.io.File
 import java.io.IOException
+import java.net.URLDecoder
+import java.nio.charset.StandardCharsets
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -164,7 +166,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
             getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
         }
 
-        Pump.newRequest(url, downloadFolder.toString() + "/" + URLUtil.guessFileName(url, contentDisposition, mimeType)) //Set id,optionally
+        Pump.newRequest(url, "$downloadFolder/$fileName") //Set id,optionally
                 .listener(object : DownloadListener() {
                     override fun onSuccess() {
                         notificationManager.cancel(uniqid)
@@ -224,7 +226,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
     private fun legacyOnDownloadStartNoStream(context: Activity, preferences: UserPreferences,
                                         url: String, userAgent: String,
                                         contentDisposition: String?, mimetype: String?, contentSize: String) {
-        val filename = URLUtil.guessFileName(url, contentDisposition, mimetype)
+        val filename = getFileNameFromURL(url, contentDisposition, mimetype)
 
         // Check to see if we have an SDCard
         val status = Environment.getExternalStorageState()
@@ -279,7 +281,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
             context.snackbar(R.string.problem_location_download)
             return
         }
-        val newMimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(Utils.guessFileExtension(filename))
+        val newMimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(filename)
         logger.log(TAG, "New mimetype: $newMimeType")
         request.setMimeType(newMimeType)
         request.setDestinationUri(Uri.parse(FILE + location + filename))
@@ -347,7 +349,13 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
         private const val COOKIE_REQUEST_HEADER = "Cookie"
 
         fun getFileNameFromURL(url: String?, contentDisposition: String?, mimeType: String?): String {
-            return URLUtil.guessFileName(url, contentDisposition, mimeType)
+            return if(contentDisposition?.contains("filename=") == true) {
+                var fileName: String? = ContentDispositionFileNameParser.parse(contentDisposition)
+                fileName = URLDecoder.decode(fileName, StandardCharsets.ISO_8859_1.toString())
+                fileName
+            } else {
+                URLUtil.guessFileName(url, contentDisposition, mimeType)
+            }
         }
 
         private fun isWriteAccessAvailable(fileUri: Uri): Boolean {

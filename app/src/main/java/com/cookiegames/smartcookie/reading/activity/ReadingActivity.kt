@@ -303,22 +303,8 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     fun translate(lang: String?) {
         val client = OkHttpClient()
-        val iterator = BreakIterator.getSentenceInstance(Locale.US)
-        val startSelection = mBody!!.selectionStart
-        val endSelection = mBody!!.selectionEnd
-
-        if(endSelection < 1){
-            Toast.makeText(this, resources.getString(R.string.select_translate_text), Toast.LENGTH_LONG).show()
-            return
-        }
 
         val spanned = mBody!!.text as Spanned
-        val source = mBody!!.text.substring(startSelection, endSelection)
-
-        if(source == ""){
-            Toast.makeText(this, resources.getString(R.string.select_translate_text), Toast.LENGTH_LONG).show()
-            return
-        }
 
         mProgressDialog = ProgressDialog(this@ReadingActivity)
         mProgressDialog!!.setProgressStyle(ProgressDialog.STYLE_SPINNER)
@@ -327,16 +313,15 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         mProgressDialog!!.setMessage(getString(R.string.loading))
         mProgressDialog!!.show()
 
-        iterator.setText(source)
-        var end = iterator.next()
-        while (end != BreakIterator.DONE) {
-            end = iterator.next()
-        }
-        val translateUrl = mUserPreferences?.translationEndpoint + "?text=" + Html.toHtml(spanned.subSequence(startSelection, endSelection) as Spanned).replace("\"", "\\\"") + "&lang=" + lang
+        val formBody: RequestBody = FormBody.Builder()
+            .add("text", Html.toHtml(spanned).replace("\"", "\\\""))
+            .add("lang", lang)
+            .build()
+        val translateUrl = mUserPreferences?.translationEndpoint
         val request = Request.Builder()
                 .url(translateUrl)
                 .addHeader("Accept", "application/json")
-                .method("GET", null)
+                .method("POST", formBody)
                 .build()
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
@@ -365,7 +350,7 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     runOnUiThread {
                         try {
                             val jsonObject = JSONObject(values)
-                            mBody!!.text = TextUtils.concat(mBody!!.text.subSequence(0, startSelection), Html.fromHtml(jsonObject.getString("text")), mBody!!.text.subSequence(endSelection, mBody!!.text.length))
+                            mBody!!.text = Html.fromHtml(jsonObject.getString("text"))
                             mProgressDialog!!.hide()
                         } catch (ignored: JSONException) {
                         }
