@@ -7,10 +7,7 @@
 package com.cookiegames.smartcookie.download
 
 import android.app.*
-import android.content.ActivityNotFoundException
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
+import android.content.*
 import android.content.pm.PackageManager
 import android.media.MediaScannerConnection
 import android.net.Uri
@@ -213,7 +210,7 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
 
     /**
      * Notify the host application a download should be done, even if there is a
-     * streaming viewer available for thise type.
+     * streaming viewer available for this type.
      *
      * @param context            The context in which the download is requested.
      * @param url                The full url to the content that should be downloaded
@@ -354,7 +351,12 @@ class DownloadHandler @Inject constructor(private val downloadsRepository: Downl
                 fileName = URLDecoder.decode(fileName, StandardCharsets.ISO_8859_1.toString())
                 fileName
             } else {
-                URLUtil.guessFileName(url, contentDisposition, mimeType)
+                var substring: String? = url!!.substring(url.lastIndexOf('/') + 1).split("\\?")[0].split("#")[0]
+                if(substring?.contains(".") == true) {
+                    substring
+                } else {
+                    URLUtil.guessFileName(url, contentDisposition, mimeType)
+                }
             }
         }
 
