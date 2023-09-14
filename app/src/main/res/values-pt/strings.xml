@@ -152,28 +152,6 @@
     <string name="dialog_adblock_enable_for_site">Ativar bloqueio de anúncios para este site</string>
     <string name="dialog_adblock_disable_for_site">Desativar bloqueio de anúncios para este site</string>
     <string name="search_suggestions_off">Não utilizar sugestões</string>
-    <string name="http_proxy">Proxy HTTP</string>
-    <string-array name="proxy_choices_array">
-        <item>Nenhum</item>
-        <item>Orbot</item>
-        <item>I2P</item>
-        <item>Manual</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>Nenhuma</item>
-        <item>Personalizada</item>
-    </string-array>
-    <string-array name="suggestion_name_array">
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-    </string-array>
-    <string name="manual_proxy">Proxy manual</string>
-    <string name="host">Servidor:</string>
-    <string name="port">Porta:</string>
     <string name="use_tor_prompt">Parece que tem Orbot instalado. Deseja utilizar a rede Tor?</string>
     <string name="use_i2p_prompt">Parece que tem I2P instalado. Deseja utilizar a rede I2P?</string>
     <string name="install_orbot">Instale Orbot para fazer proxy com Tor.</string>

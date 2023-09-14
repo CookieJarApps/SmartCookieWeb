@@ -151,27 +151,6 @@
     <string name="dialog_adblock_disable_for_site">Απενεργοποίηση αποκλεισμού διαφημίσεων για ιστότοπο</string>
     <string name="search_suggestions_off">Δεν υπάρχουν προτάσεις αναζήτησης</string>
     <string name="http_proxy">HTTP proxy</string>
-    <string-array name="proxy_choices_array">
-        <item>Κανένας</item>
-        <item>Orbot</item>
-        <item>I2P</item>
-        <item>Χειροκίνητα</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>Κανένας</item>
-        <item>Προσαρμοσμένο</item>
-    </string-array>
-    <string-array name="suggestion_name_array">
-        <item>Τρεις</item>
-        <item>Τέσσερις</item>
-        <item>Πέντε</item>
-        <item>Έξι</item>
-        <item>Επτά</item>
-        <item>Οκτώ</item>
-    </string-array>
-    <string name="manual_proxy">Μη αυτόματο διακομιστή μεσολάβησης</string>
-    <string name="host">Πλήθος:</string>
-    <string name="port">Λιμάνι:</string>
     <string name="use_tor_prompt">Φαίνεται ότι έχετε εγκαταστήσει το Orbot. Θέλετε να χρησιμοποιήσετε το Tor;</string>
     <string name="use_i2p_prompt">Φαίνεται ότι έχετε εγκαταστήσει το I2P. Θέλετε να χρησιμοποιήσετε το I2P;</string>
     <string name="install_orbot">Εγκαταστήστε Orbot για να μεσολάβετε με το Tor.spac</string>

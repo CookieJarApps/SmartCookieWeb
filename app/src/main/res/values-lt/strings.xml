@@ -151,28 +151,6 @@
     <string name="dialog_adblock_enable_for_site">Įgalinti svetainės skelbimų/reklamų blokavimą</string>
     <string name="dialog_adblock_disable_for_site">Išjungti svetainės skelbimų/reklamų blokavimą</string>
     <string name="search_suggestions_off">Paieškos pasiūlymų nėra</string>
-    <string name="http_proxy">„HTTP proxy“</string>
-    <string-array name="proxy_choices_array">
-        <item>Nieko nėra</item>
-        <item>„Orbotas“</item>
-        <item>„I2P“</item>
-        <item>Rankinis</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>Nieko nėra</item>
-        <item>Pasirinktinis</item>
-    </string-array>
-    <string-array name="suggestion_name_array">
-        <item>Trys</item>
-        <item>Keturi</item>
-        <item>Penki</item>
-        <item>Šeši</item>
-        <item>Septyni</item>
-        <item>Aštuoni</item>
-    </string-array>
-    <string name="manual_proxy">Rankinis tarpinis serveris</string>
-    <string name="host">Pagrindinis kompiuteris:</string>
-    <string name="port">Prievadas:</string>
     <string name="use_tor_prompt">Panašu, kad įdiegėte „Orbot“. Ar norite naudoti „Tor“?</string>
     <string name="use_i2p_prompt">Panašu, kad turite įdiegtą I2P. Ar norite naudoti I2P?</string>
     <string name="install_orbot">Įdiekite „Orbot“, kad galėtumėte naudotis tarpiniu serveriu su Tor.spac</string>

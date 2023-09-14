@@ -147,20 +147,6 @@
     <string name="dialog_adblock_enable_for_site">サイトの広告ブロックを有効にする</string>
     <string name="dialog_adblock_disable_for_site">サイトの広告ブロックを無効にする</string>
     <string name="search_suggestions_off">検索候補はありません</string>
-    <string name="http_proxy">HTTPプロキシ</string>
-    <string-array name="proxy_choices_array">
-        <item>無し</item>
-        <item>オーボット</item>
-        <item>I2P</item>
-        <item>マニュアル</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>無し</item>
-        <item>カスタム</item>
-    </string-array>
-    <string name="manual_proxy">手動プロキシ</string>
-    <string name="host">ホスト：</string>
-    <string name="port">港：</string>
     <string name="use_tor_prompt">Orbotがインストールされているようです。 Torを使用しますか？</string>
     <string name="use_i2p_prompt">I2Pがインストールされているようです。 I2Pを使用しますか？</string>
     <string name="install_orbot">Tor.spacでプロキシするためにOrbotをインストールします</string>

@@ -157,20 +157,6 @@
     <string name="dialog_adblock_disable_for_site">사이트에 광고 차단 사용 중지</string>
 
     <string name="search_suggestions_off">추천 검색어가 없습니다.</string>
-    <string name="http_proxy">HTTP 프록시</string>
-    <string-array name="proxy_choices_array">
-        <item>없음</item>
-        <item>오 보트</item>
-        <item>I2P</item>
-        <item>설명서</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>없음</item>
-        <item>커스텀</item>
-    </string-array>
-    <string name="manual_proxy">수동 프록시</string>
-    <string name="host">숙주:</string>
-    <string name="port">포트:</string>
     <string name="use_tor_prompt">Orbot이 설치되어있는 것 같습니다. Tor를 사용 하시겠습니까?</string>
     <string name="use_i2p_prompt">I2P가 설치된 것 같습니다. I2P를 사용 하시겠습니까?</string>
     <string name="install_orbot">Tor.spac로 프록시하기 위해 Orbot 설치</string>

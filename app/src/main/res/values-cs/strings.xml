@@ -152,28 +152,6 @@
     <string name="dialog_adblock_enable_for_site">Povolit blokování reklam pro web</string>
     <string name="dialog_adblock_disable_for_site">Zakázat blok reklam pro web</string>
     <string name="search_suggestions_off">Žádné návrhy hledání</string>
-    <string name="http_proxy">HTTP proxy</string>
-    <string-array name="proxy_choices_array">
-        <item>Nic</item>
-        <item>Orbot</item>
-        <item>I2P</item>
-        <item>Ruční</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>Nic</item>
-        <item>Vlastní</item>
-    </string-array>
-    <string-array name="suggestion_name_array">
-        <item>Tři</item>
-        <item>Čtyři</item>
-        <item>Pět</item>
-        <item>Šest</item>
-        <item>Sedm</item>
-        <item>Osm</item>
-    </string-array>
-    <string name="manual_proxy">Manuální proxy</string>
-    <string name="host">Hostitel:</string>
-    <string name="port">Přístav:</string>
     <string name="use_tor_prompt">Zdá se, že máte Orbot nainstalovaný. Chcete použít Tor?</string>
     <string name="use_i2p_prompt">Vypadá to, že máte nainstalovaný I2P. Chcete použít I2P?</string>
     <string name="install_orbot">Nainstalujte Orbot pro proxy pomocí Tor.</string>

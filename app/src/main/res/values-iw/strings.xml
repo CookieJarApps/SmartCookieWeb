@@ -157,20 +157,6 @@
     <string name="dialog_adblock_disable_for_site">השבת חסימת מודעות לאתר</string>
 
     <string name="search_suggestions_off">אין הצעות חיפוש</string>
-    <string name="http_proxy">פרוקסי HTTP</string>
-    <string-array name="proxy_choices_array">
-        <item>אף אחד</item>
-        <item>אורבוט</item>
-        <item>I2P</item>
-        <item>מדריך ל</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>אף אחד</item>
-        <item>המותאם אישית</item>
-    </string-array>
-    <string name="manual_proxy">פרוקסי ידני</string>
-    <string name="host">מנחה:</string>
-    <string name="port">נמל:</string>
     <string name="use_tor_prompt">נראה כי התקנת Orbot. האם אתה רוצה להשתמש ב- Tor?</string>
     <string name="use_i2p_prompt">נראה כי התקנת I2P. האם אתה רוצה להשתמש ב- I2P?</string>
     <string name="install_orbot">התקן את Orbot על מנת ליצור שרת באמצעות Tor.spac</string>

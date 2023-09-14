@@ -152,28 +152,6 @@
     <string name="dialog_adblock_enable_for_site">Włącz blok reklam dla witryny</string>
     <string name="dialog_adblock_disable_for_site">Wyłącz blokowanie reklam dla tej witryny</string>
     <string name="search_suggestions_off">Brak sugestii wyszukiwania</string>
-    <string name="http_proxy">Http Proxy</string>
-    <string-array name="proxy_choices_array">
-        <item>Żaden</item>
-        <item>Orbot</item>
-        <item>I2P</item>
-        <item>podręcznik</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>Brak</item>
-        <item>Zwyczaj</item>
-    </string-array>
-    <string-array name="suggestion_name_array">
-        <item>Trzy</item>
-        <item>Cztery</item>
-        <item>Pięć</item>
-        <item>Sześć</item>
-        <item>Siedem</item>
-        <item>Osiem</item>
-    </string-array>
-    <string name="manual_proxy">Ręczny serwer proxy</string>
-    <string name="host">Gospodarz:</string>
-    <string name="port">Port:</string>
     <string name="use_tor_prompt">Wygląda na to, że masz zainstalowanego Orbota. Czy chcesz użyć Tora?</string>
     <string name="use_i2p_prompt">Wygląda na to, że masz zainstalowany I2P. Czy chcesz korzystać z I2P?</string>
     <string name="install_orbot">Zainstaluj Orbota, aby proxy z Tor.spac</string>

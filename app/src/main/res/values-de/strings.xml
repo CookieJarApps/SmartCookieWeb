@@ -152,28 +152,6 @@
     <string name="dialog_adblock_enable_for_site">Werbeblocker für diese Site aktivieren</string>
     <string name="dialog_adblock_disable_for_site">Werbeblocker für diese Site deaktivieren</string>
     <string name="search_suggestions_off">Keine Suchvorschläge</string>
-    <string name="http_proxy">HTTP-Proxy</string>
-    <string-array name="proxy_choices_array">
-        <item>Keiner</item>
-        <item>Orbot</item>
-        <item>I2P</item>
-        <item>Benutzerdefiniert</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>Keines</item>
-        <item>Benutzerdefiniert</item>
-    </string-array>
-    <string-array name="suggestion_name_array">
-        <item>Drei</item>
-        <item>Vier</item>
-        <item>Fünf</item>
-        <item>Sechs</item>
-        <item>Sieben</item>
-        <item>Acht</item>
-    </string-array>
-    <string name="manual_proxy">Manueller Proxy</string>
-    <string name="host">Host:</string>
-    <string name="port">Port:</string>
     <string name="use_tor_prompt">Anscheinend haben Sie Orbot installiert. Wollen Sie Tor benutzen?</string>
     <string name="use_i2p_prompt">Anscheinend haben Sie I2P installiert. Wollen Sie I2P verwenden?</string>
     <string name="install_orbot">Installieren Sie Orbot, um einen Proxy mit Tor zu nutzen.</string>

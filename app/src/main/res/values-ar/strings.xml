@@ -152,28 +152,6 @@
     <string name="dialog_adblock_enable_for_site">تمكين حظر الإعلانات</string>
     <string name="dialog_adblock_disable_for_site">تمكين حظر الإعلانات للموقع</string>
     <string name="search_suggestions_off">لا توجد اقتراحات للبحث</string>
-    <string name="http_proxy">وكيل HTTP</string>
-    <string-array name="proxy_choices_array">
-        <item>لا يوجد</item>
-        <item>Orbot</item>
-        <item>I2P</item>
-        <item>الدليل</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>لا يوجد</item>
-        <item>مخصص</item>
-    </string-array>
-    <string-array name="suggestion_name_array">
-        <item>ثلاثة</item>
-        <item>أربعة</item>
-        <item>خمسة</item>
-        <item>ستة</item>
-        <item>سبعة</item>
-        <item>ثمانية</item>
-    </string-array>
-    <string name="manual_proxy">الوكيل اليدوي</string>
-    <string name="host">المضيف:</string>
-    <string name="port">المنفذ:</string>
     <string name="use_tor_prompt">يبدو أنك قمت بتثبيت Orbot. هل تريد استخدام Tor؟</string>
     <string name="use_i2p_prompt">يبدو أنك قمت بتثبيت I2P. هل تريد استخدام I2P؟</string>
     <string name="install_orbot">تثبيت Orbot من أجل وكيل مع Tor. spac.</string>

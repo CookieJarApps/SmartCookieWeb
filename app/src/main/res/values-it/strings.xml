@@ -152,28 +152,6 @@
     <string name="dialog_adblock_enable_for_site">Abilita Blocco Annunci per il sito</string>
     <string name="dialog_adblock_disable_for_site">Disabilita Blocco Annunci per il sito</string>
     <string name="search_suggestions_off">Nessun suggerimento di ricerca</string>
-    <string name="http_proxy">Proxy HTTP</string>
-    <string-array name="proxy_choices_array">
-        <item>Alcuno</item>
-        <item>Orbot</item>
-        <item>I2P</item>
-        <item>Manuale</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>Alcuna</item>
-        <item>Personalizzata</item>
-    </string-array>
-    <string-array name="suggestion_name_array">
-        <item>Tre</item>
-        <item>Quattro</item>
-        <item>Cinque</item>
-        <item>Sei</item>
-        <item>Sette</item>
-        <item>Otto</item>
-    </string-array>
-    <string name="manual_proxy">Proxy manuale</string>
-    <string name="host">Host:</string>
-    <string name="port">Porta:</string>
     <string name="use_tor_prompt">Sembra che tu abbia Orbot installato. Vuoi usare Tor?</string>
     <string name="use_i2p_prompt">Sembra che tu abbia I2P installato. Vuoi usare I2P?</string>
     <string name="install_orbot">Installa Orbot per poter delegare Tor.</string>

@@ -150,28 +150,6 @@
     <string name="dialog_adblock_enable_for_site">Schakel advertentieblok voor site in</string>
     <string name="dialog_adblock_disable_for_site">Schakel advertentieblok voor site uit</string>
     <string name="search_suggestions_off">Geen zoeksuggesties</string>
-    <string name="http_proxy">Http-proxy</string>
-    <string-array name="proxy_choices_array">
-        <item>Geen</item>
-        <item>Orbot</item>
-        <item>I2P</item>
-        <item>Handleiding</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>Geen</item>
-        <item>gewoonte</item>
-    </string-array>
-    <string-array name="suggestion_name_array">
-        <item>Drie</item>
-        <item>Vier</item>
-        <item>Vijf</item>
-        <item>Zes</item>
-        <item>Zeven</item>
-        <item>Acht</item>
-    </string-array>
-    <string name="manual_proxy">Handmatige proxy</string>
-    <string name="host">Gastheer:</string>
-    <string name="port">Haven:</string>
     <string name="use_tor_prompt">Het lijkt erop dat je Orbot hebt geïnstalleerd. Wil je Tor gebruiken?</string>
     <string name="use_i2p_prompt">Het lijkt erop dat je I2P hebt geïnstalleerd. Wilt u I2P gebruiken?</string>
     <string name="install_orbot">Installeer Orbot om proxy te maken met Tor.spac</string>

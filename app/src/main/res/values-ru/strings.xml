@@ -152,28 +152,6 @@
     <string name="dialog_adblock_enable_for_site">Включить блокировку рекламы для сайта</string>
     <string name="dialog_adblock_disable_for_site">Отключить блокировку рекламы для сайта</string>
     <string name="search_suggestions_off">Нет предложений</string>
-    <string name="http_proxy">HTTP-прокси</string>
-    <string-array name="proxy_choices_array">
-        <item>Ничего</item>
-        <item>Orbot</item>
-        <item>I2P</item>
-        <item>Руководство</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>Ничего</item>
-        <item>Пользовательский</item>
-    </string-array>
-    <string-array name="suggestion_name_array">
-        <item>Три</item>
-        <item>Четыре</item>
-        <item>Пять</item>
-        <item>Шесть</item>
-        <item>Семь</item>
-        <item>Восемь</item>
-    </string-array>
-    <string name="manual_proxy">Пользовательский прокси</string>
-    <string name="host">Хост:</string>
-    <string name="port">Порт:</string>
     <string name="use_tor_prompt">Похоже, у вас установлен Orbot. Вы хотите использовать Tor?</string>
     <string name="use_i2p_prompt">Похоже, у вас установлен I2P. Вы хотите использовать I2P?</string>
     <string name="install_orbot">Установите Orbot для использования прокси через Tor.</string>

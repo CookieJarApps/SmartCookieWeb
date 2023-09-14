@@ -157,28 +157,6 @@
     <string name="dialog_adblock_enable_for_site">Site için reklam engellemeyi etkinleştir</string>
     <string name="dialog_adblock_disable_for_site">Site için reklam engellemeyi devre dışı bırak</string>
     <string name="search_suggestions_off">Arama önerisi yok</string>
-    <string name="http_proxy">HTTP proxy\'si</string>
-    <string-array name="proxy_choices_array">
-        <item>Hiç biri</item>
-        <item>Orbot</item>
-        <item>I2P</item>
-        <item>Elle</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>Hiç biri</item>
-        <item>Özel</item>
-    </string-array>
-    <string-array name="suggestion_name_array">
-        <item>Üç</item>
-        <item>Dört</item>
-        <item>Beş</item>
-        <item>Altı</item>
-        <item>Yedi</item>
-        <item>Sekiz</item>
-    </string-array>
-    <string name="manual_proxy">Manuel proxy</string>
-    <string name="host">Ana bilgisayar:</string>
-    <string name="port">Bağlantı noktası:</string>
     <string name="use_tor_prompt">Görünüşe göre Orbot yüklü. Tor\'u kullanmak ister misiniz?</string>
     <string name="use_i2p_prompt">Görünüşe göre I2P kurulu. I2P\'yi kullanmak istiyor musunuz?</string>
     <string name="install_orbot">Tor ile proxy yapmak için Orbot\'u yükleyin.</string>

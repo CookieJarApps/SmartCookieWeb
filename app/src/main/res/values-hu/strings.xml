@@ -147,20 +147,6 @@
     <string name="dialog_adblock_enable_for_site">Reklámblokkoló engedélyezése a webhelyen</string>
     <string name="dialog_adblock_disable_for_site">Reklámblokkoló letiltása a webhelyen</string>
     <string name="search_suggestions_off">Nincsenek keresési javaslatok</string>
-    <string name="http_proxy">HTTP-proxy</string>
-    <string-array name="proxy_choices_array">
-        <item>Nincs</item>
-        <item>Orbot</item>
-        <item>I2P</item>
-        <item>Manuális</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>Nincs</item>
-        <item>Egyedi</item>
-    </string-array>
-    <string name="manual_proxy">Kézi proxy</string>
-    <string name="host">Házigazda:</string>
-    <string name="port">Kikötő:</string>
     <string name="use_tor_prompt">Úgy tűnik, hogy az Orbot telepítve van. Akarsz Tor-ot használni?</string>
     <string name="use_i2p_prompt">Úgy tűnik, hogy az I2P telepítve van. Szeretné használni az I2P-t?</string>
     <string name="install_orbot">Telepítse az Orbotot a Pro.spac-val való proxy létrehozásához</string>

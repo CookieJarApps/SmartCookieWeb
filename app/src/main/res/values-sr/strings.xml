@@ -150,28 +150,6 @@
     <string name="dialog_adblock_enable_for_site">Омогући блок огласа за веб локацију</string>
     <string name="dialog_adblock_disable_for_site">Онемогући блок огласа за веб локацију</string>
     <string name="search_suggestions_off">Нема предлога за претрагу</string>
-    <string name="http_proxy">ХТТП проки</string>
-    <string-array name="proxy_choices_array">
-        <item>Ниједан</item>
-        <item>Орбот</item>
-        <item>И2П</item>
-        <item>Упутство</item>
-    </string-array>
-    <string-array name="password_set_array">
-        <item>Ниједан</item>
-        <item>Обичај</item>
-    </string-array>
-    <string-array name="suggestion_name_array">
-        <item>Three</item>
-        <item>Four</item>
-        <item>Five</item>
-        <item>Six</item>
-        <item>Seven</item>
-        <item>Eight</item>
-    </string-array>
-    <string name="manual_proxy">Ручни проки</string>
-    <string name="host">Домаћин:</string>
-    <string name="port">Лука:</string>
     <string name="use_tor_prompt">Изгледа да имате инсталиран Орбот. Да ли желите да користите Тор?</string>
     <string name="use_i2p_prompt">Изгледа да вам је инсталиран И2П. Да ли желите да користите И2П?</string>
     <string name="install_orbot">Инсталирајте Орбот да бисте проки са Тор.спац</string>
