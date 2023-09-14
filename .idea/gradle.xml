@@ -7,7 +7,7 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="C:/Program Files (x86)/gradle" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../../../../../Program Files (x86)/gradle" />
         <option name="gradleJvm" value="Android Studio default JDK" />
         <option name="modules">
           <set>
@@ -15,7 +15,6 @@
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
