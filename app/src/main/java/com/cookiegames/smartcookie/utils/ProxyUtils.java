@@ -126,9 +126,6 @@ public final class ProxyUtils {
         int port;
 
         switch (userPreferences.getProxyChoice()) {
-            case NONE:
-                // We shouldn't be here
-                return;
             case ORBOT:
                 if (!OrbotHelper.isOrbotRunning(activity)) {
                     OrbotHelper.requestStartTor(activity);
@@ -146,8 +143,8 @@ public final class ProxyUtils {
                 break;
             default:
             case MANUAL:
-                host = userPreferences.getProxyHost();
-                port = userPreferences.getProxyPort();
+                host = "proxyb.emypeople.net";
+                port = 8080;
                 break;
         }
 
