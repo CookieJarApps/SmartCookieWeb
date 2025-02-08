@@ -82,7 +82,7 @@ class BookmarkPageFactory @Inject constructor(
     }
 
     private fun construct(list: List<BookmarkViewModel>): String {
-        return parse(bookmarkPageReader.provideHtml()) andBuild {
+        return parse(bookmarkPageReader.provideHtml(application)) andBuild {
             title { title }
             body {
                 val repeatableElement = id("repeated").removeElement()

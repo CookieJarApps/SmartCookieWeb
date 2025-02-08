@@ -34,7 +34,6 @@ import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.utils.IntentUtils
 import com.cookiegames.smartcookie.utils.isBookmarkUrl
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.huxq17.download.DownloadProvider
 import dagger.Reusable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy
@@ -281,7 +280,7 @@ class LightningDialogBuilder @Inject constructor(
         DialogItem(title = R.string.dialog_open_new_tab) {
             val i = Intent(Intent.ACTION_VIEW, url.toUri())
             i.setData(Uri.parse(url))
-            i.setPackage(DownloadProvider.context!!.packageName)
+            i.setPackage(activity.packageName)
             startActivity(activity as Context, i, null)
         },
         DialogItem(title = R.string.action_share) {
@@ -298,7 +297,6 @@ class LightningDialogBuilder @Inject constructor(
             activity.dataChanged()
         })
 
-    // TODO There should be a way in which we do not need an activity reference to dowload a file
     fun showLongPressImageDialog(
         activity: Activity,
         uiController: UIController,

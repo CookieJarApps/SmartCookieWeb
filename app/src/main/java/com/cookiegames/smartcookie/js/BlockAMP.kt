@@ -1,11 +1,17 @@
 package com.cookiegames.smartcookie.js
 
-import com.anthonycr.mezzanine.FileStream
+import android.content.Context
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import javax.inject.Inject
 
 
-@FileStream("app/src/main/js/AmpBlock.js")
-interface BlockAMP {
+class BlockAMP @Inject constructor() {
 
-    fun provideJs(): String
+    fun provideJs(context: Context): String {
+        val inputStream = context.assets.open("AmpBlock.js")
+        val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+        return bufferedReader.use { it.readText() }
+    }
 
 }

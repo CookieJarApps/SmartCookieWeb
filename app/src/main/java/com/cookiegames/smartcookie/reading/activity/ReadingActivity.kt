@@ -61,11 +61,9 @@ import javax.inject.Inject
 
 class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     @JvmField
-    @BindView(R.id.textViewTitle)
     var mTitle: TextView? = null
 
     @JvmField
-    @BindView(R.id.textViewBody)
     var mBody: TextView? = null
 
     @JvmField
@@ -118,7 +116,8 @@ class ReadingActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.reading_view)
-        ButterKnife.bind(this)
+        mBody = findViewById(R.id.textViewBody)
+        mTitle = findViewById(R.id.textViewTitle)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         if (supportActionBar != null) supportActionBar!!.setDisplayHomeAsUpEnabled(true)

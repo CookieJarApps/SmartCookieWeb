@@ -1,13 +1,16 @@
 package com.cookiegames.smartcookie.js
 
-import com.anthonycr.mezzanine.FileStream
+import android.content.Context
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import javax.inject.Inject
 
-/**
- * Force the text to reflow.
- */
-@FileStream("app/src/main/js/TextReflow.js")
-interface TextReflow {
+class TextReflow @Inject constructor() {
 
-    fun provideJs(): String
+    fun provideJs(context: Context): String {
+        val inputStream = context.assets.open("TextReflow.js")
+        val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+        return bufferedReader.use { it.readText() }
+    }
 
 }

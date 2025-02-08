@@ -46,7 +46,7 @@ class HomePageFactory @Inject constructor(
     override fun buildPage(): Single<String> = Single
         .just(searchEngineProvider.provideSearchEngine())
         .map { (iconUrl, queryUrl, _) ->
-            parse(homePageReader.provideHtml()) andBuild {
+            parse(homePageReader.provideHtml(application)) andBuild {
                 title { title }
                 charset { UTF8 }
                 body {

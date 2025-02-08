@@ -1,13 +1,19 @@
 package com.cookiegames.smartcookie.html.bookmark
 
-import com.anthonycr.mezzanine.FileStream
+import android.content.Context
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import javax.inject.Inject
 
 /**
  * The store for the bookmarks HTML.
  */
-@FileStream("app/src/main/html/bookmark.html")
-interface BookmarkPageReader {
+class BookmarkPageReader @Inject constructor() {
 
-    fun provideHtml(): String
+    fun provideHtml(context: Context): String {
+        val inputStream = context.assets.open("bookmarks.html")
+        val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+        return bufferedReader.use { it.readText() }
+    }
 
 }

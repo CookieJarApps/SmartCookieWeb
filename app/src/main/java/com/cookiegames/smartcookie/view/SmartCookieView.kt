@@ -65,7 +65,6 @@ class SmartCookieView(
         private val incognitoPageInitializer: IncognitoPageInitializer,
         private val bookmarkPageInitializer: BookmarkPageInitializer,
         private val downloadPageInitializer: DownloadPageInitializer,
-        private val onboardingPageInitializer: OnboardingPageInitializer,
         private val historyPageInitializer: HistoryPageInitializer,
         private val logger: Logger
 ) {
@@ -245,11 +244,6 @@ class SmartCookieView(
         if(WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK) && userPreferences.darkModeExtension) {
             WebSettingsCompat.setForceDark(webView!!.getSettings(), WebSettingsCompat.FORCE_DARK_ON)
         }
-
-        if(userPreferences.firstLaunch){
-            loadOnboardingPage()
-            userPreferences.firstLaunch = false
-        }
     }
 
     fun setWhitelistIntent(a: Boolean) {
@@ -282,13 +276,6 @@ class SmartCookieView(
      */
     fun loadBookmarkPage() {
         reinitialize(bookmarkPageInitializer)
-    }
-
-    /**
-     * This function loads the onboarding page via the [OnboardingPageInitializer].
-     */
-    fun loadOnboardingPage() {
-        reinitialize(onboardingPageInitializer)
     }
 
     /**
@@ -412,12 +399,10 @@ class SmartCookieView(
 
             if (!isIncognito || DeviceCapabilities.FULL_INCOGNITO.isSupported) {
                 domStorageEnabled = true
-                setAppCacheEnabled(true)
                 databaseEnabled = true
                 cacheMode = WebSettings.LOAD_DEFAULT
             } else {
                 domStorageEnabled = false
-                setAppCacheEnabled(false)
                 databaseEnabled = false
                 cacheMode = WebSettings.LOAD_NO_CACHE
             }
@@ -429,13 +414,6 @@ class SmartCookieView(
             allowFileAccess = true
             allowFileAccessFromFileURLs = false
             allowUniversalAccessFromFileURLs = false
-
-            getPathObservable("appcache")
-                .subscribeOn(databaseScheduler)
-                .observeOn(mainScheduler)
-                .subscribe { file ->
-                    setAppCachePath(file.path)
-                }
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                 getPathObservable("geolocation")
@@ -891,7 +869,12 @@ class SmartCookieView(
          */
         private var canTriggerLongPress = true
 
-        override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+        override fun onFling(
+            e1: MotionEvent?,
+            e2: MotionEvent,
+            velocityX: Float,
+            velocityY: Float
+        ): Boolean {
             val power = (velocityY * 100 / maxFling).toInt()
             if (power < -10) {
                 uiController.hideActionBar()

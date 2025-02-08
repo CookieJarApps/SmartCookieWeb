@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="AnimatedProgressBar">
+        <attr name="progressColor" format="color" />
+        <attr name="bidirectionalAnimate" format="boolean" />
+        <attr name="animationDuration" format="integer" />
+    </declare-styleable>
 
     <attr name="iconColor" format="reference|color" />
     <attr name="iconColorState" format="reference|color" />
@@ -12,7 +17,6 @@
     <attr name="drawerBackground" format="reference|color" />
     <attr name="dividerColor" format="reference|color" />
     <attr name="selectedBackground" format="reference|color" />
-
 
     <declare-styleable name="TabCountView">
         <attr name="tabIconColor" format="reference|color" />

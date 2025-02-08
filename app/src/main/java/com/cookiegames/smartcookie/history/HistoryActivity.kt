@@ -28,7 +28,6 @@ import com.cookiegames.smartcookie.dialog.LightningDialogBuilder
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.utils.RecyclerItemClickListener
 import com.cookiegames.smartcookie.utils.ThemeUtils
-import com.huxq17.download.DownloadProvider.context
 import java.text.DateFormat
 import java.util.*
 import javax.inject.Inject
@@ -89,11 +88,11 @@ class HistoryActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         list.adapter = arrayAdapter
 
         list.addOnItemTouchListener(
-                RecyclerItemClickListener(context, list, object : RecyclerItemClickListener.OnItemClickListener {
+                RecyclerItemClickListener(this, list, object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View?, position: Int) {
                         val i = Intent(ACTION_VIEW)
                         i.data = Uri.parse((list.adapter as CustomAdapter).getItem(position).url)
-                        i.setPackage(context!!.packageName)
+                        i.setPackage(this@HistoryActivity.packageName)
                         startActivity(i, null)
                     }
 

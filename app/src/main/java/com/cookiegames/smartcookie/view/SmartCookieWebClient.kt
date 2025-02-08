@@ -386,9 +386,9 @@ class SmartCookieWebClient(
                 lang = Locale.getDefault().displayLanguage
             }
             when(lang){
-                "pt-BR" -> view.evaluateJavascript("lang = 'pt'; " + translate.provideJs(), null)
-                "pt", "português" -> view.evaluateJavascript("lang = 'pt-PT'; " + translate.provideJs(), null)
-                else -> view.evaluateJavascript("lang = '" + lang + "'; " + translate.provideJs(), null)
+                "pt-BR" -> view.evaluateJavascript("lang = 'pt'; " + translate.provideJs(activity), null)
+                "pt", "português" -> view.evaluateJavascript("lang = 'pt-PT'; " + translate.provideJs(activity), null)
+                else -> view.evaluateJavascript("lang = '" + lang + "'; " + translate.provideJs(activity), null)
             }
         }
 
@@ -398,10 +398,10 @@ class SmartCookieWebClient(
             smartCookieView.titleInfo.setTitle(view.title)
         }
         if (smartCookieView.invertPage) {
-            view.evaluateJavascript(invertPageJs.provideJs(), null)
+            view.evaluateJavascript(invertPageJs.provideJs(activity), null)
         }
         if (userPreferences.darkModeExtension && !WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
-            view.evaluateJavascript(darkMode.provideJs(), null)
+            view.evaluateJavascript(darkMode.provideJs(activity), null)
         }
 
         if (userPreferences.blockMalwareEnabled) {
@@ -417,7 +417,7 @@ class SmartCookieWebClient(
                 val reload = activity.getString(R.string.error_reload)
                 val error = activity.getString(R.string.malware_message)
 
-                view.loadDataWithBaseURL(null, Utils.buildErrorPage(color, title, error, reload, false), "text/html; charset=utf-8", "UTF-8", null)
+                view.loadDataWithBaseURL(null, buildErrorPage(color, title, error, reload, false), "text/html; charset=utf-8", "UTF-8", null)
                 view.invalidate()
                 view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
             }
@@ -474,11 +474,11 @@ class SmartCookieWebClient(
             }
         }
         if(userPreferences.cookieBlockEnabled){
-            view.evaluateJavascript(cookieBlock.provideJs(), null)
+            view.evaluateJavascript(cookieBlock.provideJs(activity), null)
         }
 
         if(userPreferences.noAmp){
-            view.evaluateJavascript(noAMP.provideJs(), null)
+            view.evaluateJavascript(noAMP.provideJs(activity), null)
         }
     }
 
@@ -553,10 +553,10 @@ class SmartCookieWebClient(
     override fun onLoadResource(view: WebView?, url: String?) {
         //TODO: explore whether this fixes patchy js load on cached reload
         if(smartCookieView.toggleDesktop){
-            view?.evaluateJavascript(setWidenView.provideJs(), null)
+            view?.evaluateJavascript(setWidenView.provideJs(activity), null)
         }
         if(userPreferences.cookieBlockEnabled){
-            view?.evaluateJavascript(cookieBlock.provideJs(), null)
+            view?.evaluateJavascript(cookieBlock.provideJs(activity), null)
         }
         super.onLoadResource(view, url)
     }
@@ -597,7 +597,7 @@ class SmartCookieWebClient(
         view.settings.javaScriptEnabled = userPreferences.javaScriptEnabled
 
         if(userPreferences.noAmp){
-            view.evaluateJavascript(noAMP.provideJs(), null)
+            view.evaluateJavascript(noAMP.provideJs(activity), null)
             if(url.contains("&ampcf=1")){
                 view.evaluateJavascript("window.location.replace(\"" + url.replace("&ampcf=1", "") + "\");", null)
             }
@@ -816,11 +816,11 @@ class SmartCookieWebClient(
                     zoomScale = newScale
 
                     val textScale = (newScale / initScale)
-                    view.evaluateJavascript(textReflowJs.provideJs() + textScale.toString() + " + 'px'; }());") { isRunning = false }
+                    view.evaluateJavascript(textReflowJs.provideJs(activity) + textScale.toString() + " + 'px'; }());") { isRunning = false }
                 }, 100)
             }
             else{
-                view.evaluateJavascript(textReflowJs.provideJs() + "window.document.documentElement.clientWidth + 'px'; }());") { isRunning = false }
+                view.evaluateJavascript(textReflowJs.provideJs(activity) + "window.document.documentElement.clientWidth + 'px'; }());") { isRunning = false }
             }
         }
     }

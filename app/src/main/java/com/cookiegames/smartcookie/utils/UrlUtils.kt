@@ -25,7 +25,6 @@ import com.cookiegames.smartcookie.html.homepage.HomePageFactory
 import android.util.Patterns
 import android.webkit.URLUtil
 import com.cookiegames.smartcookie.html.incognito.IncognitoPageFactory
-import com.cookiegames.smartcookie.html.onboarding.OnboardingPageFactory
 import java.util.*
 import java.util.regex.Pattern
 
@@ -80,7 +79,6 @@ fun String?.isSpecialUrl(): Boolean =
         || this.endsWith(DownloadPageFactory.FILENAME)
         || this.endsWith(HistoryPageFactory.FILENAME)
         || this.endsWith(HomePageFactory.FILENAME)
-        || this.endsWith(OnboardingPageFactory.FILENAME)
         || this.endsWith(IncognitoPageFactory.FILENAME))
 
 /**

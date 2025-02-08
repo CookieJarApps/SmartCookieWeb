@@ -17,7 +17,6 @@ import com.cookiegames.smartcookie.html.download.DownloadPageFactory
 import com.cookiegames.smartcookie.html.history.HistoryPageFactory
 import com.cookiegames.smartcookie.html.homepage.HomePageFactory
 import com.cookiegames.smartcookie.html.incognito.IncognitoPageFactory
-import com.cookiegames.smartcookie.html.onboarding.OnboardingPageFactory
 import com.cookiegames.smartcookie.preference.UserPreferences
 import dagger.Reusable
 import io.reactivex.Scheduler
@@ -91,17 +90,6 @@ class IncognitoPageInitializer @Inject constructor(
     }
 
 }
-
-
-/**
- * An initializer that displays the onboarding page.
- */
-@Reusable
-class OnboardingPageInitializer @Inject constructor(
-        onboardingPageFactory: OnboardingPageFactory,
-        @DiskScheduler diskScheduler: Scheduler,
-        @MainScheduler foregroundScheduler: Scheduler
-) : HtmlPageFactoryInitializer(onboardingPageFactory, diskScheduler, foregroundScheduler)
 
 /**
  * An initializer that displays the start page.

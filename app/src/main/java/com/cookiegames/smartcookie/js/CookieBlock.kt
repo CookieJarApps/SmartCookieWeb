@@ -1,11 +1,17 @@
 package com.cookiegames.smartcookie.js
 
-import com.anthonycr.mezzanine.FileStream
+import android.content.Context
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import javax.inject.Inject
 
 
-@FileStream("app/src/main/js/CookieBlock.js")
-interface CookieBlock {
+class CookieBlock @Inject constructor() {
 
-    fun provideJs(): String
+    fun provideJs(context: Context): String {
+        val inputStream = context.assets.open("CookieBlock.js")
+        val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+        return bufferedReader.use { it.readText() }
+    }
 
 }

@@ -26,13 +26,142 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                    <include layout="@layout/toolbar" />
+                <LinearLayout
+                    android:id="@+id/toolbar_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorPrimary"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:elevation="3dp"
+                    android:fitsSystemWindows="true"
+                    android:orientation="vertical"
+                    >
 
+                    <FrameLayout
+                        android:id="@+id/tabs_toolbar_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
+                        app:contentInsetEnd="0dp"
+                        app:contentInsetStart="0dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tabs_toolbar_container"
+                        />
 
-                <include layout="@layout/browser_content"/>
+                    <com.cookiegames.smartcookie.browser.progress.AnimatedProgressBar
+                        android:id="@+id/progress_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/progress_bar_height"
+                        android:background="@color/transparent"
+                        app:bidirectionalAnimate="false"
+                        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:progressColor="?attr/colorAccent" />
 
-                <include layout="@layout/search_interface"/>
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/content_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/primary_color"
+                    android:clipChildren="true"/>
+
+                <RelativeLayout
+                    android:id="@+id/search_bar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/drawerBackground"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:elevation="4dp">
+
+                    <LinearLayout
+                        android:id="@+id/row1"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:background="?attr/drawerBackground"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/search_query"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/material_grid_margin"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceListItem"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/row2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/row1"
+                        android:background="?attr/drawerBackground"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/button_search"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="86dp"
+                            android:layout_height="match_parent"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:contentDescription="@null"
+                            android:tint="?attr/iconColor"
+                            app:srcCompat="@drawable/ic_search" />
+
+                        <ImageButton
+                            android:id="@+id/button_back"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="86dp"
+                            android:layout_height="match_parent"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:contentDescription="@null"
+                            android:tint="?attr/iconColor"
+                            app:srcCompat="@drawable/ic_action_collapse" />
+
+                        <ImageButton
+                            android:id="@+id/button_next"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="86dp"
+                            android:layout_height="match_parent"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:contentDescription="@null"
+                            android:tint="?attr/iconColor"
+                            app:srcCompat="@drawable/ic_action_expand" />
+
+                        <ImageButton
+                            android:id="@+id/button_quit"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="86dp"
+                            android:layout_height="match_parent"
+                            android:background="?selectableItemBackgroundBorderless"
+                            android:contentDescription="@null"
+                            android:tint="?attr/iconColor"
+                            app:srcCompat="@drawable/ic_action_delete" />
+                    </LinearLayout>
+                </RelativeLayout>
+
             </LinearLayout>
 
             <FrameLayout

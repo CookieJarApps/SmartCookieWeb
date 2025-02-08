@@ -13,8 +13,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.webkit.*
 import android.widget.FrameLayout
-import com.anthonycr.grant.PermissionsManager
-import com.anthonycr.grant.PermissionsResultAction
+import com.cookiegames.smartcookie.permissions.PermissionsManager
+import com.cookiegames.smartcookie.permissions.PermissionsResultAction
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.controller.UIController
 import com.cookiegames.smartcookie.di.DiskScheduler
@@ -89,18 +89,18 @@ class SmartCookieChromeClient(
 
     override fun requestPermissions(permissions: Set<String>, onGrant: (Boolean) -> Unit) {
         val missingPermissions = permissions
-            .filter { !PermissionsManager.getInstance().hasPermission(activity, it) }
+            .filter { !PermissionsManager.instance.hasPermission(activity, it) }
 
         if (missingPermissions.isEmpty()) {
             onGrant(true)
         } else {
-            PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(
+            PermissionsManager.instance.requestPermissionsIfNecessaryForResult(
                     activity,
                     missingPermissions.toTypedArray(),
                     object : PermissionsResultAction() {
                         override fun onGranted() = onGrant(true)
 
-                        override fun onDenied(permission: String?) = onGrant(false)
+                        override fun onDenied(permission: String) = onGrant(false)
                     }
             )
         }
@@ -134,7 +134,7 @@ class SmartCookieChromeClient(
 
     override fun onGeolocationPermissionsShowPrompt(origin: String,
                                                     callback: GeolocationPermissions.Callback) =
-        PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(activity, geoLocationPermissions, object : PermissionsResultAction() {
+        PermissionsManager.instance.requestPermissionsIfNecessaryForResult(activity, geoLocationPermissions, object : PermissionsResultAction() {
             override fun onGranted() {
                 val remember = true
                 MaterialAlertDialogBuilder(activity).apply {

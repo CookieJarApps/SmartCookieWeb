@@ -11,7 +11,6 @@ import com.cookiegames.smartcookie.di.MainScheduler
 import com.cookiegames.smartcookie.html.bookmark.BookmarkPageFactory
 import com.cookiegames.smartcookie.html.homepage.HomePageFactory
 import com.cookiegames.smartcookie.html.incognito.IncognitoPageFactory
-import com.cookiegames.smartcookie.html.onboarding.OnboardingPageFactory
 import com.cookiegames.smartcookie.log.Logger
 import com.cookiegames.smartcookie.preference.UserPreferences
 import com.cookiegames.smartcookie.ssl.SslState
@@ -40,7 +39,6 @@ class BrowserPresenter(
         @MainScheduler private val mainScheduler: Scheduler,
         private val homePageFactory: HomePageFactory,
         private val incognitoPageFactory: IncognitoPageFactory,
-        private val onboardingPageFactory: OnboardingPageFactory,
         private val bookmarkPageFactory: BookmarkPageFactory,
         private val recentTabModel: RecentTabModel,
         private val logger: Logger
@@ -153,7 +151,6 @@ class BrowserPresenter(
     private fun mapHomepageToCurrentUrl(): String = when (val homepage = userPreferences.homepage) {
         SCHEME_HOMEPAGE -> "$FILE${homePageFactory.createHomePage()}"
         SCHEME_INCOGNITO -> "$FILE${incognitoPageFactory.createIncognitoPage()}"
-        SCHEME_ONBOARDING -> "$FILE${onboardingPageFactory.createOnboarding()}"
         SCHEME_BOOKMARKS -> "$FILE${bookmarkPageFactory.createBookmarkPage(null)}"
         else -> homepage
     }

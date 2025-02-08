@@ -29,7 +29,7 @@ class DownloadPageFactory @Inject constructor(
     override fun buildPage(): Single<String> = manager
         .getAllDownloads()
         .map { list ->
-            parse(listPageReader.provideHtml()) andBuild {
+            parse(listPageReader.provideHtml(application)) andBuild {
                 title { application.getString(R.string.action_downloads) }
                 body {
                     val repeatableElement = id("repeated").removeElement()

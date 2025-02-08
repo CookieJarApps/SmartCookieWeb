@@ -1,13 +1,16 @@
 package com.cookiegames.smartcookie.html
 
-import com.anthonycr.mezzanine.FileStream
+import android.content.Context
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import javax.inject.Inject
 
-/**
- * The store for the list view HTML.
- */
-@FileStream("app/src/main/html/list.html")
-interface ListPageReader {
+class ListPageReader @Inject constructor() {
 
-    fun provideHtml(): String
+    fun provideHtml(context: Context): String {
+        val inputStream = context.assets.open("list.html")
+        val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+        return bufferedReader.use { it.readText() }
+    }
 
 }

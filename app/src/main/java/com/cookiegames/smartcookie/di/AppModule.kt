@@ -27,9 +27,7 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.RequiresApi
 import androidx.core.content.getSystemService
-import com.anthonycr.mezzanine.MezzanineGenerator
 import com.cookiegames.smartcookie.html.incognito.IncognitoPageReader
-import com.cookiegames.smartcookie.html.onboarding.OnboardingPageReader
 import com.cookiegames.smartcookie.js.*
 import dagger.Module
 import dagger.Provides
@@ -187,48 +185,6 @@ class AppModule {
     @Provides
     @Singleton
     fun provideI2PAndroidHelper(application: Application): I2PAndroidHelper = I2PAndroidHelper(application)
-
-    @Provides
-    fun providesListPageReader(): ListPageReader = MezzanineGenerator.ListPageReader()
-
-    @Provides
-    fun providesHomePageReader(): HomePageReader = MezzanineGenerator.HomePageReader()
-
-    @Provides
-    fun providesIncognitoPageReader(): IncognitoPageReader = MezzanineGenerator.IncognitoPageReader()
-
-    @Provides
-    fun providesOnboardingPageReader(): OnboardingPageReader = MezzanineGenerator.OnboardingPageReader()
-
-    @Provides
-    fun providesBookmarkPageReader(): BookmarkPageReader = MezzanineGenerator.BookmarkPageReader()
-
-    @Provides
-    fun providesTextReflow(): TextReflow = MezzanineGenerator.TextReflow()
-
-    @Provides
-    fun providesThemeColor(): ThemeColor = MezzanineGenerator.ThemeColor()
-
-    @Provides
-    fun providesInvertPage(): InvertPage = MezzanineGenerator.InvertPage()
-
-    @Provides
-    fun providesDarkMode(): DarkMode = MezzanineGenerator.DarkMode()
-
-    @Provides
-    fun providesTranslate(): Translate = MezzanineGenerator.Translate()
-
-    @Provides
-    fun providesCookieBlock(): CookieBlock = MezzanineGenerator.CookieBlock()
-
-    @Provides
-    fun providesAdBlock(): BlockAds = MezzanineGenerator.BlockAds()
-
-    @Provides
-    fun providesAmpBlock(): BlockAMP = MezzanineGenerator.BlockAMP()
-
-    @Provides
-    fun providesWidenViewport(): SetWidenViewport = MezzanineGenerator.SetWidenViewport()
 }
 
 @Qualifier

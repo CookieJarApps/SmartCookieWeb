@@ -15,8 +15,8 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import com.anthonycr.grant.PermissionsManager
-import com.anthonycr.grant.PermissionsResultAction
+import com.cookiegames.smartcookie.permissions.PermissionsManager
+import com.cookiegames.smartcookie.permissions.PermissionsResultAction
 import com.cookiegames.smartcookie.MainActivity
 import com.cookiegames.smartcookie.R
 import com.cookiegames.smartcookie.bookmark.LegacyBookmarkImporter
@@ -83,7 +83,7 @@ class ExportSettingsFragment : AbstractSettingsFragment() {
         injector.inject(this)
 
         PermissionsManager
-            .getInstance()
+            .instance
             .requestPermissionsIfNecessaryForResult(activity, REQUIRED_PERMISSIONS, null)
 
         clickablePreference(preference = SETTINGS_EXPORT, onClick = this::exportBookmarks)
@@ -127,14 +127,14 @@ class ExportSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun exportTabs() {
-        PermissionsManager.getInstance()
+        PermissionsManager.instance
             .requestPermissionsIfNecessaryForResult(activity, REQUIRED_PERMISSIONS,
                 object : PermissionsResultAction() {
                     override fun onGranted() {
                         val intent = Intent(context, MainActivity::class.java)
                         intent.putExtra("EXPORT_TABS", true)
                         startActivity(intent)
-                        application.toast(R.string.save_file_success)
+                        // TODO: Toast
                     }
 
                     override fun onDenied(permission: String) {
@@ -179,7 +179,7 @@ class ExportSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun exportSettings() {
-        PermissionsManager.getInstance()
+        PermissionsManager.instance
             .requestPermissionsIfNecessaryForResult(activity, REQUIRED_PERMISSIONS,
                 object : PermissionsResultAction() {
                     override fun onGranted() {
@@ -267,7 +267,7 @@ class ExportSettingsFragment : AbstractSettingsFragment() {
         }
 
     private fun exportBookmarks() {
-        PermissionsManager.getInstance()
+        PermissionsManager.instance
             .requestPermissionsIfNecessaryForResult(activity, REQUIRED_PERMISSIONS,
                 object : PermissionsResultAction() {
                     override fun onGranted() {
@@ -349,7 +349,7 @@ class ExportSettingsFragment : AbstractSettingsFragment() {
         }
 
     private fun importBookmarks() {
-        PermissionsManager.getInstance()
+        PermissionsManager.instance
             .requestPermissionsIfNecessaryForResult(activity, REQUIRED_PERMISSIONS,
                 object : PermissionsResultAction() {
                     override fun onGranted() {
@@ -363,7 +363,7 @@ class ExportSettingsFragment : AbstractSettingsFragment() {
     }
 
     private fun importSettings() {
-        PermissionsManager.getInstance()
+        PermissionsManager.instance
             .requestPermissionsIfNecessaryForResult(activity, REQUIRED_PERMISSIONS,
                 object : PermissionsResultAction() {
                     override fun onGranted() {

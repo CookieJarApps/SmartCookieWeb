@@ -1,13 +1,19 @@
 package com.cookiegames.smartcookie.html.incognito
 
-import com.anthonycr.mezzanine.FileStream
+import android.content.Context
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import javax.inject.Inject
 
 /**
  * The store for the homepage HTML.
  */
-@FileStream("app/src/main/html/private.html")
-interface IncognitoPageReader {
+class IncognitoPageReader @Inject constructor() {
 
-    fun provideHtml(): String
+    fun provideHtml(context: Context): String {
+        val inputStream = context.assets.open("incognito.html")
+        val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+        return bufferedReader.use { it.readText() }
+    }
 
 }

@@ -331,9 +331,6 @@ class UserPreferences @Inject constructor(
      */
     var hostsRemoteFile by preferences.nullableStringPreference(HOSTS_REMOTE_FILE)
 
-
-    //EXTENSIONS
-
     var darkModeExtension by preferences.booleanPreference(DARK_MODE, false)
     var translateExtension by preferences.booleanPreference(TRANSLATE, false)
 
@@ -374,7 +371,7 @@ class UserPreferences @Inject constructor(
     var translationEndpoint by preferences.stringPreference(TRANSLATION_ENDPOINT, "https://smartcookieweb.com/translate/")
     var newsEndpoint by preferences.stringPreference(NEWS_ENDPOINT, "https://news.smartcookieweb.com/api.php")
 
-    var useNewDownloader by preferences.booleanPreference(NEW_DOWNLOADER, false)
+    var useThirdPartyDownloaderApps by preferences.booleanPreference(USE_THIRD_PARTY_DOWNLOADER_APPS, false)
 
     // Show second navbar at the bottom of the screen
     var navbar by preferences.booleanPreference(SECOND_BAR, false)
@@ -479,7 +476,7 @@ private const val LINK1 = "link1"
 private const val LINK2 = "link2"
 private const val LINK3 = "link3"
 private const val LINK4 = "link4"
-private const val NEW_DOWNLOADER = "legacyDownloader"
+private const val USE_THIRD_PARTY_DOWNLOADER_APPS = "useThirdPartyDownloaderApps"
 private const val ALL_TABS = "allTabs"
 private const val SHOW_SHORTCUTS = "showShortcuts"
 private const val SECOND_BAR = "secondBar"
@@ -489,5 +486,4 @@ private const val TRANSLATION_ENDPOINT = "translationEndpoint"
 private const val NEWS_ENDPOINT = "newsEndpoint"
 private const val HOMEPAGE_TYPE = "homepageType"
 private const val STACK_FROM_BOTTOM = "stackFromBottom"
-private const val MENU_ITEMS = "menu_items"
 private const val DRAWER_OFFSET = "drawerOffset"

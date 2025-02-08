@@ -1,11 +1,17 @@
 package com.cookiegames.smartcookie.js
 
-import com.anthonycr.mezzanine.FileStream
+import android.content.Context
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import javax.inject.Inject
 
+// TODO: refactor to use browser UserScript system
+class BlockAds @Inject constructor() {
 
-@FileStream("app/src/main/js/ElementBlockTest.js")
-interface BlockAds {
-
-    fun provideJs(): String
+    fun provideJs(context: Context): String {
+        val inputStream = context.assets.open("ElementBlockTest.js")
+        val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+        return bufferedReader.use { it.readText() }
+    }
 
 }

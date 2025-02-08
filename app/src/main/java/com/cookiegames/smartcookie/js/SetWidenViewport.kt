@@ -1,8 +1,16 @@
 package com.cookiegames.smartcookie.js
 
-import com.anthonycr.mezzanine.FileStream
+import android.content.Context
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import javax.inject.Inject
 
-@FileStream("app/src/main/js/WidenViewport.js")
-interface SetWidenViewport{
-    fun provideJs(): String
+class SetWidenViewport @Inject constructor() {
+
+    fun provideJs(context: Context): String {
+        val inputStream = context.assets.open("WidenViewport.js")
+        val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+        return bufferedReader.use { it.readText() }
+    }
+
 }

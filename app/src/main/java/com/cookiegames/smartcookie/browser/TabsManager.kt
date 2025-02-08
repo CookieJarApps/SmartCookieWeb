@@ -35,7 +35,6 @@ class TabsManager @Inject constructor(
     private val bookmarkPageInitializer: BookmarkPageInitializer,
     private val historyPageInitializer: HistoryPageInitializer,
     private val downloadPageInitializer: DownloadPageInitializer,
-    private val onboardingPageInitializer: OnboardingPageInitializer,
     private val logger: Logger,
     private val userPreferences: UserPreferences
 ) {
@@ -273,7 +272,6 @@ class TabsManager @Inject constructor(
             incognitoPageInitializer,
             bookmarkPageInitializer,
             downloadPageInitializer,
-            onboardingPageInitializer,
             historyPageInitializer,
             logger
         )
@@ -305,7 +303,6 @@ class TabsManager @Inject constructor(
                 incognitoPageInitializer,
                 bookmarkPageInitializer,
                 downloadPageInitializer,
-                onboardingPageInitializer,
                 historyPageInitializer,
                 logger
         )

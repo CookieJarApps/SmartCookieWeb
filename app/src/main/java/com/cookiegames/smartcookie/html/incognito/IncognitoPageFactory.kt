@@ -44,7 +44,7 @@ class IncognitoPageFactory @Inject constructor(
     override fun buildPage(): Single<String> = Single
             .just(searchEngineProvider.provideSearchEngine())
             .map { (iconUrl, queryUrl, _) ->
-                parse(incognitoPageReader.provideHtml()) andBuild {
+                parse(incognitoPageReader.provideHtml(application)) andBuild {
                     title { title }
                     charset { UTF8 }
                     body {

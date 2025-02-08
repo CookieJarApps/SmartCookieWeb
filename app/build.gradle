@@ -1,18 +1,13 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.getkeepsafe.dexcount'
 apply plugin: 'jacoco'
 
 android {
-    compileSdkVersion project.targetSdkVersion
-    buildToolsVersion project.buildToolsVersion
-
-    dexOptions {
-        javaMaxHeapSize "8g"
-        preDexLibraries false
-    }
+    namespace 'com.cookiegames.smartcookie'
+    compileSdk 35
 
     lintOptions {
         checkReleaseBuilds false
@@ -94,10 +89,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
     buildFeatures {
-        dataBinding true
+        viewBinding = true
+        compose = true
+        buildConfig = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
 }
 
@@ -105,45 +105,39 @@ jacoco {
     toolVersion = "0.8.6"
 }
 
-dexcount {
-    includeClasses = false
-    includeFieldCount = false
-    format = "tree"
-    orderByMethodCount = true
-    verbose = false
-}
-
 dependencies {
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:1.10.19'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:2.18.3'
     testImplementation 'com.nhaarman:mockito-kotlin:1.6.0', {
         exclude group: 'org.jetbrains.kotlin'
     }
 
     // support libraries
     implementation "androidx.palette:palette-ktx:1.0.0"
-    implementation "androidx.annotation:annotation:1.3.0"
-    implementation "androidx.appcompat:appcompat:1.4.0"
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation "androidx.recyclerview:recyclerview:1.2.1"
-    implementation "androidx.core:core-ktx:1.7.0"
-    implementation "androidx.constraintlayout:constraintlayout:2.1.2"
-    implementation "androidx.drawerlayout:drawerlayout:1.1.1"
-    implementation "androidx.preference:preference-ktx:1.1.1"
+    implementation "androidx.annotation:annotation:1.9.1"
+    implementation "androidx.appcompat:appcompat:1.7.0"
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation "androidx.recyclerview:recyclerview:1.3.2"
+    implementation "androidx.core:core-ktx:1.15.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.2.0"
+    implementation "androidx.drawerlayout:drawerlayout:1.2.0"
+    implementation "androidx.preference:preference-ktx:1.2.1"
 
     // html parsing for reading mode
-    implementation 'org.jsoup:jsoup:1.13.1'
+    implementation 'org.jsoup:jsoup:1.15.3'
+
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    androidTestImplementation 'androidx.test:rules:1.4.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    androidTestImplementation 'androidx.test:rules:1.6.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.6.1'
 
-    implementation "com.anthonycr.mezzanine:mezzanine:1.1.1"
-    kapt "com.anthonycr.mezzanine:mezzanine-compiler:1.1.1"
+    // downloads
+    implementation "org.mozilla.components:concept-fetch:131.0.3"
+    implementation "org.mozilla.components:lib-fetch-httpurlconnection:131.0.3"
 
     // dependency injection
-    final def daggerVersion = '2.38.1'
+    final def daggerVersion = '2.48.1'
     implementation "com.google.dagger:dagger:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     compileOnly 'javax.annotation:jsr250-api:1.0'
@@ -153,11 +147,10 @@ dependencies {
     kapt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
     // permissions
-    implementation 'com.anthonycr.grant:permissions:1.1.2'
+    implementation 'com.guolindev.permissionx:permissionx:1.7.1'
 
     // proxy support
     implementation 'net.i2p.android:helper:0.9.5'
-
 
     //TODO: drop android 4.4 support - no TLS1.2 support on OKhttp3
     implementation ("com.squareup.okhttp3:okhttp"){
@@ -165,23 +158,15 @@ dependencies {
             strictly "3.12.12"
         }
     }
-    implementation 'com.squareup.okio:okio:2.8.0'
+    implementation 'com.squareup.okio:okio:2.10.0'
 
     // rx
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.17'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
 
-    implementation 'com.anthonycr.bonsai:bonsai:1.1.0'
+    implementation 'org.apache.httpcomponents:httpcore:4.4.16'
 
-    // tor proxy
-    final def netCipherVersion = '2.0.0-alpha1'
-    implementation "info.guardianproject.netcipher:netcipher:$netCipherVersion"
-    implementation "info.guardianproject.netcipher:netcipher-webkit:$netCipherVersion"
-
-    implementation 'org.apache.httpcomponents:httpcore:4.4.11'
-
-    implementation 'com.anthonycr.progress:animated-progress:1.0'
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
@@ -192,29 +177,27 @@ dependencies {
     implementation 'net.dankito.readability4j:readability4j:1.0.3'
 
     // webview tools
-    implementation 'androidx.webkit:webkit:1.4.0'
-
-    // downloader
-    implementation'com.huxq17.pump:download:1.3.10'
+    implementation 'androidx.webkit:webkit:1.12.1'
 
     // onboarding
     implementation 'com.github.AppIntro:AppIntro:6.2.0'
 
     // memory leak analysis
-    final def leakCanaryVersion = '2.8.1'
+    final def leakCanaryVersion = '2.10'
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
 
     // code editor
     implementation 'com.github.ahmadaghazadeh:CodeEditor:1.0.17'
+
+    // compose
+    implementation 'androidx.compose.ui:ui:1.7.5'
+    implementation 'androidx.compose.material:material:1.7.5'
+    implementation 'androidx.compose.ui:ui-tooling:1.7.5'
+    implementation 'androidx.compose.runtime:runtime:1.7.5'
+    implementation 'androidx.compose.foundation:foundation:1.7.5'
 }
 
-kapt {
-    arguments {
-        arg("mezzanine.projectPath", project.rootDir)
-    }
-}
-
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+tasks.withType(KotlinCompile).configureEach {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 

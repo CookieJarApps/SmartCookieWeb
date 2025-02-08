@@ -21,7 +21,6 @@ import com.cookiegames.smartcookie.view.SmartCookieWebClient
 import android.app.Application
 import com.cookiegames.smartcookie.download.DownloadActivity
 import com.cookiegames.smartcookie.history.HistoryActivity
-import com.cookiegames.smartcookie.onboarding.*
 import com.cookiegames.smartcookie.popup.PopUpClass
 import dagger.BindsInstance
 import dagger.Component
@@ -106,14 +105,4 @@ interface AppComponent {
     fun provideNoOpAdBlocker(): NoOpAdBlocker
 
     fun inject(popUpClass: PopUpClass)
-
-    fun inject(searchEngineFragment: SearchEngineFragment)
-
-    fun inject(themeChoiceFragment: ThemeChoiceFragment)
-
-    fun inject(navbarChoiceFragment: NavbarChoiceFragment)
-
-    fun inject(permsFragmenst: PermsFragment)
-
-    fun inject(onboarding: Onboarding)
 }

@@ -13,13 +13,14 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.TypedValue;
 
-import com.cookiegames.smartcookie.R;
 import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
+
+import com.cookiegames.smartcookie.R;
 
 public final class ThemeUtils {
 
@@ -35,18 +36,7 @@ public final class ThemeUtils {
      */
     @ColorInt
     public static int getPrimaryColor(@NonNull Context context) {
-        return getColor(context, R.attr.colorPrimary);
-    }
-
-    /**
-     * Gets the primary dark color of the current theme.
-     *
-     * @param context the context to get the theme from.
-     * @return the primary dark color of the current theme.
-     */
-    @ColorInt
-    public static int getPrimaryColorDark(@NonNull Context context) {
-        return getColor(context, R.attr.colorPrimaryDark);
+        return getColor(context, android.R.attr.colorPrimary);
     }
 
     /**
@@ -57,7 +47,7 @@ public final class ThemeUtils {
      */
     @ColorInt
     public static int getAccentColor(@NonNull Context context) {
-        return getColor(context, R.attr.colorAccent);
+        return getColor(context, android.R.attr.colorAccent);
     }
 
     /**

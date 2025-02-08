@@ -53,7 +53,6 @@ import com.cookiegames.smartcookie.utils.isSpecialUrl
 import com.cookiegames.smartcookie.utils.stringContainsItemFromList
 import com.github.ahmadaghazadeh.editor.widget.CodeEditor
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.android.synthetic.main.activity_main.*
 import java.net.URL
 import javax.inject.Inject
 import kotlin.math.roundToInt
@@ -169,7 +168,7 @@ class PopUpClass {
                 MenuItemClass("bookmarks", R.string.action_bookmarks, R.drawable.ic_action_star, true),
                 MenuItemClass("downloads", R.string.action_downloads, R.drawable.ic_file_download_black, true),
                 MenuDividerClass(),
-                MenuItemClass("find_in_page", R.string.action_find, R.drawable.ic_search_find, true),
+                MenuItemClass("find_in_page", R.string.action_find, R.drawable.ic_search, true),
                 MenuItemClass("copy_link", R.string.dialog_copy_link, R.drawable.ic_content_copy_black, true),
                 MenuItemClass("reading_mode", R.string.reading_mode, R.drawable.ic_action_reading, true),
                 MenuDividerClass(),
@@ -182,7 +181,7 @@ class PopUpClass {
                 MenuItemClass("new_tab", R.string.action_new_tab, R.drawable.ic_round_add, true),
                 MenuDividerClass(),
                 MenuItemClass("print", R.string.action_print, R.drawable.ic_round_print, true),
-                MenuItemClass("find_in_page", R.string.action_find, R.drawable.ic_search_find, true),
+                MenuItemClass("find_in_page", R.string.action_find, R.drawable.ic_search, true),
                 MenuItemClass("copy_link", R.string.dialog_copy_link, R.drawable.ic_content_copy_black, true),
                 MenuItemClass("add_to_homepage", R.string.action_add_to_homescreen, R.drawable.ic_round_smartphone, true),
                 MenuDividerClass(),
@@ -223,13 +222,7 @@ class PopUpClass {
                 "share" -> IntentUtils(activity).shareUrl(currentUrl, currentView?.title) // 2 - Share
                 "print" -> currentView!!.webView?.let { currentView.createWebPagePrint(it) } // 3 - Print
                 "history" -> view.context.startActivity(Intent(view.context, HistoryActivity::class.java)) // 4 - History
-                "downloads" -> {
-                    when(userPreferences.useNewDownloader){
-                        true -> view.context.startActivity(Intent(view.context, DownloadActivity::class.java))
-                        false -> currentView?.loadDownloadsPage()
-                    }
-
-                } // 5 - Download
+                "downloads" -> currentView?.loadDownloadsPage() // 5 - Download
                 "find_in_page" -> activity.findInPage() // 6 - Find in Page
                 "copy_link" -> {
                     if (currentUrl != null && !currentUrl.isSpecialUrl()) { // 7 - Copy link
@@ -246,7 +239,7 @@ class PopUpClass {
                         }
                     }
                 }
-                "bookmarks" -> activity.drawer_layout.openDrawer(activity.getBookmarkDrawer()) // 9 - Bookmarks
+                "bookmarks" -> activity.openBookmarksDrawer() // 9 - Bookmarks
                 "reading_mode" -> {
                     if (currentUrl != null) { // 10 - Reading mode
                         ReadingActivity.launch(view.context, currentUrl, false)

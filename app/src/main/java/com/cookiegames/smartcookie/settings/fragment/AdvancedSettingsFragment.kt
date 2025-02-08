@@ -94,12 +94,6 @@ class AdvancedSettingsFragment : AbstractSettingsFragment() {
             onCheckChange = { userPreferences.restoreLostTabsEnabled = it }
         )
 
-        switchPreference(
-                preference = SETTINGS_LEGACY_DOWNLOADER,
-                isChecked = userPreferences.useNewDownloader,
-                onCheckChange = { userPreferences.useNewDownloader = it }
-        )
-
         val incognitoCheckboxPreference = switchPreference(
                 preference = SETTINGS_COOKIES_INCOGNITO,
                 isEnabled = !DeviceCapabilities.FULL_INCOGNITO.isSupported,
