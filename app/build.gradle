@@ -136,6 +136,9 @@ dependencies {
     implementation "org.mozilla.components:concept-fetch:131.0.3"
     implementation "org.mozilla.components:lib-fetch-httpurlconnection:131.0.3"
 
+    // proxy support
+    implementation "info.guardianproject.netcipher:netcipher-webkit:2.1.0"
+
     // dependency injection
     final def daggerVersion = '2.48.1'
     implementation "com.google.dagger:dagger:$daggerVersion"

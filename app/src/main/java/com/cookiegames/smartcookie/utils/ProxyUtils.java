@@ -1,15 +1,9 @@
 package com.cookiegames.smartcookie.utils;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.util.Log;
 
 import net.i2p.android.ui.I2PAndroidHelper;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -17,15 +11,12 @@ import javax.inject.Singleton;
 import com.cookiegames.smartcookie.BrowserApp;
 import com.cookiegames.smartcookie.R;
 import com.cookiegames.smartcookie.browser.ProxyChoice;
-import com.cookiegames.smartcookie.dialog.BrowserDialog;
 import com.cookiegames.smartcookie.extensions.ActivityExtensions;
-import com.cookiegames.smartcookie.extensions.AlertDialogExtensionsKt;
 import com.cookiegames.smartcookie.preference.DeveloperPreferences;
 import com.cookiegames.smartcookie.preference.UserPreferences;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import kotlin.Pair;
-import kotlin.Unit;
+
+import info.guardianproject.netcipher.webkit.WebkitProxy;
 
 @Singleton
 public final class ProxyUtils {
@@ -92,6 +83,11 @@ public final class ProxyUtils {
             Log.d(TAG, "error enabling web proxying", e);
         }
 
+        try {
+            WebkitProxy.setProxy(BrowserApp.class.getName(), activity.getApplicationContext(), null, host, port);
+        } catch (Exception e) {
+            Log.d(TAG, "error enabling web proxying", e);
+        }
     }
 
     public boolean isProxyReady(@NonNull Activity activity) {
@@ -113,6 +109,7 @@ public final class ProxyUtils {
             initializeProxy(activity);
         } else {
             try {
+                WebkitProxy.resetProxy(BrowserApp.class.getName(), activity.getApplicationContext());
             } catch (Exception e) {
                 Log.e(TAG, "Unable to reset proxy", e);
             }
