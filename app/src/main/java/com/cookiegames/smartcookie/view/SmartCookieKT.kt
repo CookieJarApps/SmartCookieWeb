@@ -234,7 +234,7 @@ class LightningWebClient internal constructor(private val mActivity: Activity, p
                             val start3 = "</div></div></div><div id=\"buttons\" class=\"nav-wrapper\"><div id=\"control-buttons\"><!-- <button onclick=\"reload();\" id=\"reload-button\" class=\"blue-button text-button reload\">"
                             val reload = mActivity.getString(R.string.error_reload)
                             val end = "</button> --> </div></div></div></body></center></html>"
-                            view.loadDataWithBaseURL(null, start + start1 + title + start2 + "NET::ERR_HTTPS_NOT_SUPPORTED" + start3 + reload + end, "text/html; charset=utf-8", "UTF-8", null)
+                            view.loadDataWithBaseURL("https://smartcookieweb-error.local", start + start1 + title + start2 + "NET::ERR_HTTPS_NOT_SUPPORTED" + start3 + reload + end, "text/html; charset=utf-8", "UTF-8", null)
                             view.invalidate()
                             view.settings.javaScriptEnabled = mPreferences!!.getJavaScriptEnabled()
                         }
@@ -268,7 +268,7 @@ class LightningWebClient internal constructor(private val mActivity: Activity, p
         val start3 = "</div></div></div><div id=\"buttons\" class=\"nav-wrapper\"><div id=\"control-buttons\"><!-- <button onclick=\"reload();\" id=\"reload-button\" class=\"blue-button text-button reload\">"
         val reload = mActivity.getString(R.string.error_reload)
         val end = "</button> --> </div></div></div></body></center></html>"
-        webview.loadDataWithBaseURL(null, start + start1 + title + start2 + error + start3 + reload + end, "text/html; charset=utf-8", "UTF-8", null)
+        webview.loadDataWithBaseURL("https://smartcookieweb-error.local", start + start1 + title + start2 + error + start3 + reload + end, "text/html; charset=utf-8", "UTF-8", null)
         webview.invalidate()
         webview.settings.javaScriptEnabled = mPreferences!!.getJavaScriptEnabled()
     }
@@ -285,7 +285,7 @@ class LightningWebClient internal constructor(private val mActivity: Activity, p
                 val reload = mActivity.getString(R.string.error_reload)
                 val error = mActivity.getString(R.string.malware_message)
                 val end = "</button> --> </div></div></div></body></center></html>"
-                view.loadDataWithBaseURL(null, start + start1 + title + start2 + error + start3 + reload + end, "text/html; charset=utf-8", "UTF-8", null)
+                view.loadDataWithBaseURL("https://smartcookieweb-error.local", start + start1 + title + start2 + error + start3 + reload + end, "text/html; charset=utf-8", "UTF-8", null)
                 view.invalidate()
                 view.settings.javaScriptEnabled = mPreferences!!.getJavaScriptEnabled()
             }
@@ -312,7 +312,7 @@ class LightningWebClient internal constructor(private val mActivity: Activity, p
                         val start3 = "</div></div></div><div id=\"buttons\" class=\"nav-wrapper\"><div id=\"control-buttons\"><!-- <button onclick=\"reload();\" id=\"reload-button\" class=\"blue-button text-button reload\">"
                         val reload = mActivity.getString(R.string.error_reload)
                         val end = "</button> --> </div></div></div></body></center></html>"
-                        view.loadDataWithBaseURL(null, start + start1 + title + start2 + "NET::SITE_BLOCKED_BY_LIST" + start3 + reload + end, "text/html; charset=utf-8", "UTF-8", null)
+                        view.loadDataWithBaseURL("https://smartcookieweb-error.local", start + start1 + title + start2 + "NET::SITE_BLOCKED_BY_LIST" + start3 + reload + end, "text/html; charset=utf-8", "UTF-8", null)
                         view.invalidate()
                         view.settings.javaScriptEnabled = mPreferences!!.getJavaScriptEnabled()
                     }
@@ -339,7 +339,7 @@ class LightningWebClient internal constructor(private val mActivity: Activity, p
                         val start3 = "</div></div></div><div id=\"buttons\" class=\"nav-wrapper\"><div id=\"control-buttons\"><!-- <button onclick=\"reload();\" id=\"reload-button\" class=\"blue-button text-button reload\">"
                         val reload = mActivity.getString(R.string.error_reload)
                         val end = "</button> --> </div></div></div></body></center></html>"
-                        view.loadDataWithBaseURL(null, start + start1 + title + start2 + "NET::SITE_BLOCKED_BY_LIST" + start3 + reload + end, "text/html; charset=utf-8", "UTF-8", null)
+                        view.loadDataWithBaseURL("https://smartcookieweb-error.local", start + start1 + title + start2 + "NET::SITE_BLOCKED_BY_LIST" + start3 + reload + end, "text/html; charset=utf-8", "UTF-8", null)
                         view.invalidate()
                         view.settings.javaScriptEnabled = mPreferences!!.getJavaScriptEnabled()
                     }
